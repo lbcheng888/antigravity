@@ -1,0 +1,44 @@
+/**
+ * What the Hub's two readers of a login shell's environment share: this
+ * computer's (loginShellEnv.ts) and an SSH host's (bootstrapScript.ts).
+ */
+
+/**
+ * Set for the login shell, and never taken from it. rc files can skip slow or
+ * interactive work under ANTIGRAVITY_RESOLVING_ENVIRONMENT, as for the
+ * language server's own reader (VS Code's VSCODE_RESOLVING_ENVIRONMENT);
+ * oh-my-zsh neither updates itself nor starts tmux.
+ */
+export const LOGIN_SHELL_INJECTED_ENV: Readonly<Record<string, string>> = {
+  ANTIGRAVITY_RESOLVING_ENVIRONMENT: '1',
+  DISABLE_AUTO_UPDATE: 'true',
+  ZSH_TMUX_AUTOSTARTED: 'true',
+  ZSH_TMUX_AUTOSTART: 'false',
+};
+
+/**
+ * Never taken from the login shell: its own state, and SSH_CLIENT, with which
+ * `bash -c` reads ~/.bashrc again.
+ */
+export const LOGIN_SHELL_DROPPED_VARS: readonly string[] = [
+  'PWD',
+  'OLDPWD',
+  'SHLVL',
+  '_',
+  'PS1',
+  'PS2',
+  'PROMPT_COMMAND',
+  'TERM',
+  'COLUMNS',
+  'LINES',
+  'SSH_CLIENT',
+];
+
+/** How long a caller waits for the login shell's environment. */
+export const LOGIN_SHELL_ENV_WAIT_SEC = 10;
+
+/**
+ * Shells whose -l works only alone, and with -c makes no login shell: they
+ * get -l and read the command on stdin. The others get -i -l -c.
+ */
+export const LOGIN_SHELLS_READING_STDIN: readonly string[] = ['csh', 'tcsh'];

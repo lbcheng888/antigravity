@@ -1,0 +1,9 @@
+export const WCV_CATCHER_POINTER_DOWN_CHANNEL = 'wcv:catcher-pointer-down';
+export const WCV_CATCHER_POINTER_MOVE_CHANNEL = 'wcv:catcher-pointer-move';
+export const WCV_CATCHER_POINTER_UP_CHANNEL = 'wcv:catcher-pointer-up';
+export const WCV_CATCHER_POINTER_LEAVE_CHANNEL = 'wcv:catcher-pointer-leave';
+export const WCV_CATCHER_WHEEL_CHANNEL = 'wcv:catcher-wheel';
+export const WCV_CATCHER_PINCH_CHANNEL = 'wcv:catcher-pinch';
+export const WCV_CATCHER_RESET_DRAG_CHANNEL = 'wcv:catcher-reset-drag';
+export const WCV_CATCHER_SET_CURSOR_CHANNEL = 'wcv:catcher-set-cursor';
+export const WCV_CATCHER_DRAG_CHANNEL = 'wcv:catcher-drag';
