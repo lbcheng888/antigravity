@@ -1,0 +1,13 @@
+{
+  "name": "antigravity-cli-analysis",
+  "version": "1.5.9",
+  "description": "Offline extracted resources and static Go/JS metadata analysis workspace for Antigravity CLI (agy)",
+  "private": true,
+  "scripts": {
+    "extract": "python3 scripts/extract-agy.py",
+    "build": "../node_modules/.bin/tsc -p tsconfig.json",
+    "typecheck": "../node_modules/.bin/tsc -p tsconfig.json --noEmit",
+    "report": "npm run build && node build/cliAnalyzer.js",
+    "check": "node scripts/check-cli.js"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "binary_path": "/Users/mac/.local/bin/agy",
+  "version": "1.5.9",
+  "size_bytes": 223424816,
+  "sha256": "fad3628ad91fe8613a72f074a1c5fde7cd816517788a5b9be96703f7d256741a",
+  "format": "Mach-O 64-bit executable arm64",
+  "go_buildinfo": {
+    "offset": 178065424,
+    "raw_strings": [
+      "ego1.28-20261102-RC00 cl/1012564305 +298f53e483 X:fieldtrack,boringcrypto,simd,nogolistexportnewformat",
+      " Go fipsinfo "
+    ],
+    "go_version": "ego1.28-20261102-RC00 cl/1012564305 +298f53e483 X:fieldtrack,boringcrypto,simd,nogolistexportnewformat",
+    "build_flags": " Go fipsinfo "
+  },
+  "linked_libraries": [
+    "/usr/lib/libresolv.9.dylib",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/usr/lib/libobjc.A.dylib",
+    "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "/usr/lib/libc++.1.dylib",
+    "/System/Library/Frameworks/AVFoundation.framework/Versions/A/AVFoundation",
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+    "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+    "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+    "/usr/lib/libSystem.B.dylib"
+  ],
+  "node_sea_present": false,
+  "app_asar_present": false
+}

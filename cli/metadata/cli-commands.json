@@ -1,0 +1,58 @@
+{
+  "version": "1.5.9",
+  "root_help": "Usage of agy:\n  --add-dir                       Add a directory to the workspace (repeatable) (default [])\n  --agent                         Agent for the current CLI session\n  -c                              Short alias for --continue\n  --continue                      Continue the most recent conversation\n  --conversation                  Resume a previous conversation by ID\n  --dangerously-skip-permissions  Auto-approve all tool permission requests without prompting\n  --disable-slash-commands        Disable slash command and skill expansion in print mode\n  --effort                        Reasoning effort for the current CLI session (low|medium|high|xhigh|max)\n  -i                              Short alias for --prompt-interactive\n  --input-format                  Input format for print mode (text, stream-json). stream-json reads one NDJSON message per line from stdin and runs a turn for each; it requires --output-format stream-json (default text)\n  --json-schema                   Optional JSON schema string or path to a schema file to enforce structured output (for stream-json, only applicable to the final result)\n  --log-file                      Override CLI log file path\n  --mode                          Set the agent execution mode for this session (accept-edits, auto, plan)\n  --model                         Model for the current CLI session\n  --new-project                   Create a new project for this session\n  --output-format                 Output format for print mode (text, json, stream-json) (default text)\n  -p                              Short alias for --print\n  --print                         Run a single prompt non-interactively and print the response\n  --print-timeout                 Optional time limit for print mode; 0 waits until the turn completes (default 0s)\n  --project                       Project ID or project name for the current CLI session\n  --prompt                        Alias for --print\n  --prompt-interactive            Run an initial prompt interactively and continue the session\n  --remote-agent                  Run this session's conversations using remote agents; --project then names a remote project by ID or name, otherwise they open in this machine's default remote project\n  --remote-control                Create a remote connection for the CLI session on start up\n  --sandbox                       Run in a sandbox with terminal restrictions enabled\n  --settings                      Settings for this session only, never saved: a JSON object of settings.json keys, inline or as a file path\n\nAvailable subcommands:\n  acp             Start the Agent Client Protocol (ACP) stdio server\n  agent           List available agents\n  agents          List available agents\n  changelog       Show changelog and release notes\n  help            Show help for subcommands\n  install         Configure environment paths and shell settings\n  mcp             Manage MCP servers (add, remove, list, enable, disable)\n  mic-serve       Serve this machine's microphone to a CLI on another host\n  models          List available models\n  plugin          Manage plugins (install, uninstall, list, enable, disable)\n  plugins         Alias for plugin\n  remote-control  Manage the remote-control background daemon (start, status, stop)\n  update          Update CLI",
+  "subcommands": {
+    "acp": {
+      "help": "Usage: agy acp [flags]\n\nStart the Agent Client Protocol (ACP) stdio server\n\nFlags:\n  --add-dir                         Add a directory to the workspace (repeatable) (default [])\n  --agent                           Agent for the ACP session\n  --app-data-dir                    Path where application data is stored (default antigravity-cli)\n  --app_data_dir                    Path where application data is stored (default antigravity-cli)\n  --cli_dir_name                    Subdirectory under app_data_dir for CLI settings and logs\n  --cli_log_file                    Override ACP log file path\n  --cloud_code_endpoint             CCPA API URL (default https://daily-cloudcode-pa.googleapis.com)\n  --dangerously-skip-permissions    Auto-approve all tool permission requests\n  --disable-telemetry               If true, disable telemetry\n  --disable_telemetry               If true, disable telemetry\n  --gemini-dir                      Path where Gemini files are stored (default .gemini)\n  --gemini_dir                      Path where Gemini files are stored (default .gemini)\n  -h                                Show help\n  --help                            Show help\n  --ide-mcp-port                    Port for host IDE tools MCP server (requires 'nc' in $PATH) (default 0)\n  --ide_mcp_port                    Port for host IDE tools MCP server (requires 'nc' in $PATH) (default 0)\n  --include-default-customizations  Include default customizations (default true)\n  --is_google3_workspace            Whether running in Google environment\n  --is_google_internal              Deprecated: use is_google3_workspace\n  --log-file                        Override ACP log file path\n  --login                           Log in with Google interactively, then exit (ACP terminal auth)\n  --override_user_agent_name        Override user agent name for HTTP requests\n  --process-per-session             Serve each session from an isolated worker process\n  --sandbox                         Run in a sandbox with terminal restrictions enabled\n  --stdio                           Use stdio JSON-RPC transport (default)\n  --use_stubby_auth                 Use LOAS auth\n  --worker                          Serve a single session for an ACP front process (internal)",
+      "subcommands": {}
+    },
+    "agent": {
+      "help": "Usage: agy agent [flags]\n\nList available agents\n\nFlags:\n  -h      Show help\n  --help  Show help",
+      "subcommands": {}
+    },
+    "changelog": {
+      "help": "Usage: agy changelog [flags]\n\nShow changelog and release notes\n\nFlags:\n  -h      Show help\n  --help  Show help",
+      "subcommands": {}
+    },
+    "install": {
+      "help": "Usage: agy install [flags]\n\nConfigure environment paths and shell settings\n\nFlags:\n  --dir           Custom directory target to configure PATH for\n  -h              Show help\n  --help          Show help\n  --skip-aliases  Bypasses shell profile alias purging\n  --skip-path     Bypasses shell profile PATH appending",
+      "subcommands": {}
+    },
+    "mcp": {
+      "help": "Usage: agy mcp <subcommand> [flags] [args]\n\nAvailable subcommands:\n  add      Add or update an MCP server configuration\n  remove   Remove an MCP server configuration\n  list     List all configured MCP servers\n  enable   Enable an MCP server\n  disable  Disable an MCP server\n\nRun \"agy mcp <subcommand> --help\" for flags, argument rules, and examples.",
+      "subcommands": {
+        "add": "Usage: agy mcp add [flags] <name> <commandOrUrl> [args...]\n\nAdd or update an MCP server configuration\n\nFlags:\n  -H        Short alias for --header (default [])\n  -e        Short alias for --env (default [])\n  --env     Environment variable KEY=value (repeatable) (default [])\n  -h        Show help\n  --header  HTTP header Key: Value (repeatable) (default [])\n  --help    Show help\n  -t        Short alias for --type (default stdio)\n  --type    Server type: 'stdio' or 'http' (default stdio)\n\nArguments:\n  <name>          Unique name for the server.\n  <commandOrUrl>  Executable for a stdio server, or the URL for an http server.\n  [args...]       Arguments passed to the stdio command.\n\nNotes:\n  Flags must come before <name>; a flag placed after it is rejected.\n  http/https URLs are detected automatically, so --type is usually unnecessary.\n  Use -- before the command to pass a command or args that begin with '-'.\n\nExamples:\n  agy mcp add fs npx -y @modelcontextprotocol/server-filesystem /work\n  agy mcp add --header \"Authorization: Bearer TOKEN\" api https://example.com/mcp\n  agy mcp add --env GITHUB_TOKEN=xxx gh -- docker run -i ghcr.io/github/mcp",
+        "remove": "Usage: agy mcp remove <name> [flags]\n\nRemove an MCP server configuration\n\nFlags:\n  -h      Show help\n  --help  Show help",
+        "list": "Usage: agy mcp list [flags]\n\nList all configured MCP servers\n\nFlags:\n  -h      Show help\n  --help  Show help",
+        "enable": "Usage: agy mcp enable <name> [flags]\n\nEnable an MCP server\n\nFlags:\n  -h      Show help\n  --help  Show help",
+        "disable": "Usage: agy mcp disable <name> [flags]\n\nDisable an MCP server\n\nFlags:\n  -h      Show help\n  --help  Show help"
+      }
+    },
+    "mic-serve": {
+      "help": "Usage: agy mic-serve [flags]\n\nServe this machine's microphone to a CLI on another host\n\nFlags:\n  --addr  Address to listen on; keep it on loopback (default 127.0.0.1:4713)\n  -h      Show help\n  --help  Show help",
+      "subcommands": {}
+    },
+    "models": {
+      "help": "Usage: agy models [flags]\n\nList available models\n\nFlags:\n  -h      Show help\n  --help  Show help",
+      "subcommands": {}
+    },
+    "plugin": {
+      "help": "Usage: agy plugin <command> [arguments]\n\nCommands:\n  list [--json]          List installed plugins\n  import [source]        Import plugins from gemini or claude\n  install <target>       Install a plugin (supports plugin[@marketplace])\n  uninstall <name>       Uninstall a plugin\n  enable <name>          Enable a plugin\n  disable <name>         Disable a plugin\n  validate [path] [--strict] [--json]\n                         Check a plugin's manifest and files\n  link <mp> <target>     Generate link to a marketplace\n  help                   Show this help",
+      "subcommands": {
+        "validate": "Usage: agy plugin validate [path] [--strict] [--json]\n\nChecks a plugin the way the plugin loader reads it, and reports the files and\nfields that the loader skips or ignores.\n\nArguments:\n  path        A plugin directory, or its plugin.json (default: the current\n              directory)\n\nFlags:\n  --strict    Also fail on warnings\n  --json      Print the report as JSON\n  -h, --help  Show this help\n\nEach finding is an error (the loader skips a file or the plugin, or an item\ncan never work), a warning (a field or file is ignored or falls back to a\ndefault, or the plugin marketplace in Antigravity can't build or list the\nplugin) or a note (how the plugin loads). Exits non-zero if there are errors,\nor warnings with --strict."
+      }
+    },
+    "remote-control": {
+      "help": "Usage: agy remote-control <subcommand>\n\nAvailable subcommands:\n  start    Register and start the remote-control daemon\n  status   Show the daemon's status\n  stop     Stop the daemon and unregister it\n\nRun \"agy remote-control <subcommand> --help\" for flags.",
+      "subcommands": {
+        "start": "Usage: agy remote-control start [flags]\n\nRegister and start the remote-control daemon\n\nFlags:\n  -h         Show help\n  --help     Show help\n  --name     Set this machine's instance name shown in Remote Control\n  --session  Register the daemon login-scoped (stops at logout) instead of starting at boot",
+        "status": "Usage: agy remote-control status [flags]\n\nShow the daemon's status\n\nFlags:\n  -h      Show help\n  --help  Show help",
+        "stop": "Usage: agy remote-control stop [flags]\n\nStop the daemon and unregister it\n\nFlags:\n  -h      Show help\n  --help  Show help"
+      }
+    },
+    "update": {
+      "help": "Usage of update:",
+      "subcommands": {}
+    }
+  }
+}
