@@ -13,6 +13,7 @@
 | :--- | :--- |
 | [bin/agy-info.json](file:///Users/mac/antigravity/cli/bin/agy-info.json) | 源二进制 SHA-256、Mach-O 格式、Go 构建版本与动态链接库快照 |
 | [docs/architecture.md](file:///Users/mac/antigravity/cli/docs/architecture.md) | `agy` 单体六层架构、与桌面端的同源差异及认证/运行模式分析 |
+| [docs/auth-and-requests.md](file:///Users/mac/antigravity/cli/docs/auth-and-requests.md) | CLI (`agy`) 与桌面版 (`Antigravity.app`) 授权及请求链路同源对比分析 |
 | [docs/cli-reference.md](file:///Users/mac/antigravity/cli/docs/cli-reference.md) | 实测抓取的 `agy` 主参数与所有子命令参数参考 |
 | [docs/package-map.md](file:///Users/mac/antigravity/cli/docs/package-map.md) | Go 模块分类统计、19 个 Protobuf/ConnectRPC 服务与提取清单 |
 | [metadata/](file:///Users/mac/antigravity/cli/metadata) | 还原出的 `go-files.txt`、`jetski-files.txt`、`cli-files.txt`、`jetski-packages.json`、`jetski-functions.jsonl`、`proto-services.json`、`cli-commands.json`、`embedded-manifest.json` |

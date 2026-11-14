@@ -42,6 +42,7 @@ function main() {
     'tsconfig.json',
     'bin/agy-info.json',
     'docs/architecture.md',
+    'docs/auth-and-requests.md',
     'docs/cli-reference.md',
     'docs/package-map.md',
     'metadata/macho-segments.json',
