@@ -1,0 +1,24 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d22346 (va 0x103d22346, __TEXT.__rodata), descriptor length 304 B, sha256 e9047858f6dc69da
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc;
+
+import "google/protobuf/any.proto";
+
+option java_package = "com.google.rpc.proto1api";
+option java_outer_classname = "StatusProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/rpc/status;status";
+option cc_enable_arenas = true;
+option objc_class_prefix = "RPC";
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.rpc";
+
+message Status {
+  int32 code = 1;
+  string message = 2;
+  repeated protobuf.Any details = 3;
+}

@@ -1,0 +1,83 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d98299 (va 0x103d98299, __TEXT.__rodata), descriptor length 1774 B, sha256 ca9bb57fa8659ef0
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.gca.aicode.v1main;
+
+import "google/api/field_behavior.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.gca.aicode.v1main";
+option java_outer_classname = "AicodeContentProto";
+option java_multiple_files = true;
+
+enum DiffChangeType {
+  DIFF_CHANGE_TYPE_UNSPECIFIED = 0;
+  INSERT = 1;
+  DELETE = 2;
+  UNCHANGED = 3;
+}
+
+message CodeBlock {
+  string content = 1;
+  string programming_language = 2;
+}
+
+message SourceFile {
+  repeated InclusionReason inclusion_reason = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string file_uri = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  optional string programming_language = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated FileSegment segments = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum InclusionReason {
+    INCLUSION_REASON_UNSPECIFIED = 0;
+    ACTIVE = 1;
+    OPEN = 2;
+    RECENTLY_CLOSED = 3;
+    RECENTLY_EDITED = 4;
+    COLOCATED = 5;
+    RELATED = 6;
+    USER_SELECTED = 7;
+  }
+
+  message FileSegment {
+    string content = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    bool is_selected = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+}
+
+message FileEdit {
+  string file_uri = 1;
+  repeated CodeEdit edit = 2;
+  EditType edit_type = 3;
+
+  enum EditType {
+    EDIT_TYPE_UNSPECIFIED = 0;
+    TYPED = 1;
+    PASTED = 2;
+    AI_GENERATED = 3;
+  }
+}
+
+message CodeEdit {
+  int32 start_line = 1;
+  int32 end_line = 2;
+  repeated DiffLine lines = 3;
+}
+
+message DiffLine {
+  string text = 1;
+  DiffChangeType type = 2;
+  CharacterDiff character_diff = 3;
+}
+
+message CharacterDiff {
+  repeated CharacterDiffChange changes = 1;
+}
+
+message CharacterDiffChange {
+  string text = 1;
+  DiffChangeType type = 2;
+}

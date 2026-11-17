@@ -1,0 +1,28 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d50667 (va 0x103d50667, __TEXT.__rodata), descriptor length 833 B, sha256 7ef016a4db13aa3b
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/gemini_coder/proto/trajectory.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "CortexTrajectoryStepOuterClass";
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+
+export message CortexTrajectoryStep {
+  option features.(unresolved_option_1001) = "(\002";
+  gemini_coder.Step step = 1;
+  exa.cortex_pb.CortexTrajectoryReference reference = 2;
+  string trajectory_id = 3 [(unresolved_option_40075780) = 2300];
+  string execution_id = 4 [(unresolved_option_40075780) = 2300];
+  int32 metadata_index = 5 [(unresolved_option_40075780) = 2300];
+  string error = 6 [(unresolved_option_40075780) = 9901];
+  repeated exa.cortex_pb.CortexTrajectoryReference parent_references = 7;
+  string root_conversation_id = 8 [(unresolved_option_40075780) = 2300];
+}

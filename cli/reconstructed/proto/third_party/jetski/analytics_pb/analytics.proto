@@ -1,0 +1,131 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ec4a04 (va 0x103ec4a04, __TEXT.__rodata), descriptor length 5609 B, sha256 e1154100dc753800
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.analytics_pb;
+
+import "google/protobuf/timestamp.proto";
+import "third_party/gemini_coder/proto/trajectory.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/context_module_pb/context_module.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/prompt_pb/prompt.proto";
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message RecordCommandUsageRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string command = 2;
+  string selection = 3;
+  codeium_common_pb.CommandRequestSource request_source = 4;
+  string prompt_id = 5;
+  string completion_id = 6;
+  string completion = 7;
+  string prompt = 8;
+  codeium_common_pb.Model requested_model_id = 9;
+  codeium_common_pb.StopReason stop_reason = 10;
+  codeium_common_pb.Language language = 11;
+  codeium_common_pb.ProviderSource provider_source = 12;
+  prompt_pb.UnifiedPromptComponents command_prompt_components = 13;
+  cortex_pb.CortexTrajectoryReference cortex_trajectory_reference = 14;
+  codeium_common_pb.SuperCompleteFilterReason super_complete_filter_reason = 15;
+  codeium_common_pb.SupercompleteTriggerCondition supercomplete_trigger_condition = 17;
+  repeated codeium_common_pb.PromptStageLatency prompt_stage_latencies = 16;
+  codeium_common_pb.CompletionProfile completion_profile = 18;
+}
+
+message RecordCommandUsageResponse {
+}
+
+message BatchRecordPromptsRequest {
+  repeated RecordPromptRequest prompts = 1;
+}
+
+message BatchRecordPromptsResponse {
+}
+
+message RecordPromptRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.CompletionsRequest request = 2;
+  string prompt_id = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  string ip = 5;
+  string inference_address = 6;
+  codeium_common_pb.ProviderSource provider_source = 7;
+  string api_server_address = 8;
+  codeium_common_pb.Model firstline_model = 9;
+  codeium_common_pb.PromptComponents prompt_components = 10;
+  bool is_server_side_prompt = 11;
+  prompt_pb.UnifiedPromptComponents unified_prompt_components = 12;
+  cortex_pb.CortexTrajectoryReference cortex_trajectory_reference = 13;
+}
+
+message RecordCompletionsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated codeium_common_pb.CompletionWithLatencyInfo completions_with_latency_info = 2;
+  string prompt_id = 3;
+  uint64 prompt_length = 4;
+  codeium_common_pb.ProviderSource provider_source = 5;
+  string relative_path = 6;
+  codeium_common_pb.Repository repository = 7;
+  string model_tag = 8;
+  google.protobuf.Timestamp timestamp = 9;
+}
+
+message RecordCompletionsResponse {
+}
+
+message BatchRecordCompletionsRequest {
+  repeated RecordCompletionsRequest completions = 1;
+}
+
+message BatchRecordCompletionsResponse {
+}
+
+message RecordContextToPromptRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  context_module_pb.ContextUseCase prompt_user = 2;
+  string chat_message_id = 3;
+  repeated context_module_pb.RetrievedCodeContextItemMetadata retrieved_code_context_item_metadata = 4;
+  uint64 latency_ms = 5;
+  google.protobuf.Timestamp timestamp = 6;
+  cortex_pb.CortexWorkflowState cortex_state = 7;
+  string prompt_id = 8;
+}
+
+message RecordContextToPromptResponse {
+}
+
+message RecordCortexTrajectoryRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string trajectory_id = 2;
+  string cascade_id = 5;
+  cortex_pb.CortexTrajectoryType trajectory_type = 3;
+  cortex_pb.CortexTrajectorySource trajectory_source = 7;
+  repeated cortex_pb.CortexTrajectoryReference parents = 4;
+  cortex_pb.CortexTrajectoryMetadata trajectory_metadata = 6;
+}
+
+message RecordCortexTrajectoryResponse {
+}
+
+message RecordCortexTrajectoryStepRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  gemini_coder.Step step = 2;
+  cortex_pb.CortexTrajectoryReference reference = 3;
+}
+
+message RecordCortexTrajectoryStepResponse {
+}
+
+service AnalyticsService {
+  rpc RecordCommandUsage(RecordCommandUsageRequest) returns (RecordCommandUsageResponse);
+  rpc RecordCompletions(RecordCompletionsRequest) returns (RecordCompletionsResponse);
+  rpc RecordContextToPrompt(RecordContextToPromptRequest) returns (RecordContextToPromptResponse);
+  rpc RecordCortexTrajectory(RecordCortexTrajectoryRequest) returns (RecordCortexTrajectoryResponse);
+  rpc RecordCortexTrajectoryStep(RecordCortexTrajectoryStepRequest) returns (RecordCortexTrajectoryStepResponse);
+  rpc BatchRecordPrompts(BatchRecordPromptsRequest) returns (BatchRecordPromptsResponse);
+  rpc BatchRecordCompletions(BatchRecordCompletionsRequest) returns (BatchRecordCompletionsResponse);
+}

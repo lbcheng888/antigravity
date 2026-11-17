@@ -1,0 +1,353 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fb6f3c (va 0x103fb6f3c, __TEXT.__rodata), descriptor length 11710 B, sha256 59a3d8cfb47f46ea
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/v1beta1/accelerator_type.proto";
+import "google/cloud/automl/common/proto_field_options.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "learning/genai/api/interactions/proto/environment.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "EnvironmentProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+message Environment {
+  option (unresolved_option_1053) = "\n%aiplatform.googleapis.com/Environment\022Bprojects/{project}/locations/{location}/environments/{environment}*\014environments2\013environment";
+  option (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\026internal,ui,v1beta1,v1";
+  reserved 22;
+  reserved "attachments";
+  oneof environment_type {
+    RemoteEnvironment remote = 17 [(unresolved_option_1052) = "\001\005", (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+    LocalEnvironment local = 18 [(unresolved_option_1052) = "\001\005", (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+  }
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_135496935) = "\022\010RESOURCE", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string id = 2 [(unresolved_option_1052) = "\005", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  EnvironmentConfig.EnvironmentType type = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+  EnvironmentState state = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  repeated EnvironmentConfig.DataSource sources = 5 [(unresolved_option_40075780) = 1100];
+  EnvironmentConfig.NetworkConfig network = 6 [(unresolved_option_40075780) = 1100];
+  protobuf.Timestamp created = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp updated = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp last_active = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string display_name = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string environment_template = 11 [(unresolved_option_1052) = "\001\005", (unresolved_option_1055) = "\n-aiplatform.googleapis.com/EnvironmentTemplate", (unresolved_option_40075780) = 1119];
+  rpc.Status error = 12 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12017];
+  protobuf.Timestamp expire_time = 13 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  EnvironmentMode mode = 14 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string placement_location = 15 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n!locations.googleapis.com/Location", (unresolved_option_40075780) = 1119];
+  TrustTier trust_tier = 16 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum EnvironmentState {
+    ENVIRONMENT_STATE_UNSPECIFIED = 0;
+    ACTIVE = 1;
+    SNAPSHOTTED = 2;
+    PROVISIONING = 3;
+    DEPROVISIONING = 4;
+    TERMINATED = 5;
+    DELETED = 6;
+  }
+
+  enum EnvironmentMode {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    ENVIRONMENT_MODE_UNSPECIFIED = 0;
+    ON_DEMAND = 1;
+    ALWAYS_ON = 2;
+    SELF_HOSTED = 3;
+  }
+
+  enum TrustTier {
+    TRUST_TIER_UNSPECIFIED = 0;
+    COMPANION = 1;
+    PLATFORM_ONLY = 2;
+  }
+}
+
+message EnvironmentConfig {
+  EnvironmentType type = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+  repeated DataSource sources = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  NetworkConfig network = 3 [(unresolved_option_1052) = "\001"];
+
+  enum EnvironmentType {
+    ENVIRONMENT_TYPE_UNSPECIFIED = 0;
+    REMOTE = 1;
+    LOCAL = 2;
+  }
+
+  enum DataSourceType {
+    DATA_SOURCE_TYPE_UNSPECIFIED = 0;
+    GCS = 1;
+    SKILL_REGISTRY = 2;
+  }
+
+  message DataSource {
+    DataSourceType type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022=$ != DATA_SOURCE_TYPE_UNSPECIFIED ?: [REQUIRED_FIELD_MISSING]"];
+    string source = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]"];
+    string target = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  }
+
+  message NetworkConfig {
+    repeated AllowlistEntry allowlist = 1 [(unresolved_option_1052) = "\001"];
+
+    message AllowlistEntry {
+      string domain = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1906];
+    }
+  }
+}
+
+message RemoteEnvironment {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof source {
+    string template_revision = 1 [(unresolved_option_1052) = "\001\005", (unresolved_option_1055) = "\n5aiplatform.googleapis.com/EnvironmentTemplateRevision", (unresolved_option_40075780) = 1119];
+    EnvironmentSpec inline_spec = 2 [(unresolved_option_1052) = "\001\005"];
+  }
+  EnvironmentSpec overrides = 3 [(unresolved_option_1052) = "\001"];
+  string resolved_template_revision = 4 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n5aiplatform.googleapis.com/EnvironmentTemplateRevision", (unresolved_option_40075780) = 1119];
+  string provider = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000];
+  repeated EnvironmentPort ports = 6 [(unresolved_option_1052) = "\003"];
+}
+
+message LocalEnvironment {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string device_id = 1 [(unresolved_option_1052) = "\002\005", (unresolved_option_40075780) = 1000];
+  repeated EnvironmentCapability declared_capabilities = 2 [(unresolved_option_1052) = "\001"];
+  ClientInfo client_info = 3 [(unresolved_option_1052) = "\001"];
+  string workspace_root = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string skill_dirs = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ClientLimits limits = 6 [(unresolved_option_1052) = "\001"];
+  protobuf.Timestamp lease_expire_time = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+
+  message ClientInfo {
+    string app_version = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1500];
+    string os = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1500];
+    string os_version = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1500];
+    string arch = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1402];
+  }
+
+  message ClientLimits {
+    int32 max_browser_leases = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  }
+}
+
+message EnvironmentCapability {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Kind kind = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+  string path_prefix = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    FILESYSTEM = 1;
+    EXEC = 2;
+    HTTP = 3;
+    BROWSER = 4;
+    DISPLAY = 5;
+    PORT_ACCESS = 6;
+    CLIENT_RELAY_MOUNT = 7;
+    SUSPEND_RUNTIME_STATE = 8;
+    FORK = 9;
+  }
+}
+
+message EnvironmentPort {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+  int32 number = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+  Protocol protocol = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  Access access = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+  enum Protocol {
+    PROTOCOL_UNSPECIFIED = 0;
+    HTTP = 1;
+    WEBSOCKET = 2;
+    TCP = 3;
+  }
+
+  enum Access {
+    ACCESS_UNSPECIFIED = 0;
+    NONE = 1;
+    TOKEN = 2;
+  }
+}
+
+message EnvironmentSpec {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  reserved 10;
+  reserved "override_bounds";
+  Runtime runtime = 1 [(unresolved_option_1052) = "\001"];
+  Resources resources = 2 [(unresolved_option_1052) = "\001"];
+  repeated EnvironmentCapability capabilities = 3 [(unresolved_option_1052) = "\001"];
+  NetworkPolicy network = 4 [(unresolved_option_1052) = "\001"];
+  LifecyclePolicy lifecycle = 5 [(unresolved_option_1052) = "\001"];
+  ReadinessProbe readiness = 6 [(unresolved_option_1052) = "\001"];
+  StartupClass startup_class = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  repeated Mount mounts = 8 [(unresolved_option_1052) = "\001"];
+  Placement placement = 9 [(unresolved_option_1052) = "\001"];
+  IdentityPolicy identity = 11 [(unresolved_option_1052) = "\001"];
+
+  enum StartupClass {
+    STARTUP_CLASS_UNSPECIFIED = 0;
+    INSTANT = 1;
+    FAST = 2;
+    SLOW = 3;
+  }
+
+  message Runtime {
+    oneof base {
+      string image_uri = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+      string catalog_base = 2 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n5aiplatform.googleapis.com/EnvironmentTemplateRevision", (unresolved_option_40075780) = 1119];
+    }
+    repeated string entrypoint = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    map<string, EnvVar> env = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    string working_dir = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+  }
+
+  message EnvVar {
+    oneof value {
+      string plain = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2600];
+      string secret_version = 2 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n*secretmanager.googleapis.com/SecretVersion", (unresolved_option_40075780) = 1119];
+    }
+  }
+
+  message Resources {
+    string size = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    string cpu = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    string memory = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    int64 disk_size_gb = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    AcceleratorType accelerator_type = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    int32 accelerator_count = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  }
+
+  message NetworkPolicy {
+    repeated genai.EnvironmentConfig.EgressRule egress = 1 [(unresolved_option_1052) = "\001"];
+    repeated string egress_cidrs = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1300];
+    bool deny_all_egress = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    string network_attachment = 4 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n(compute.googleapis.com/NetworkAttachment", (unresolved_option_40075780) = 1119];
+    repeated ManagedEgress managed_egress = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    repeated EnvironmentPort ingress_ports = 6 [(unresolved_option_1052) = "\001"];
+    Enforcement enforcement = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    enum ManagedEgress {
+      MANAGED_EGRESS_UNSPECIFIED = 0;
+      SKYLIFT_TURN = 1;
+    }
+
+    enum Enforcement {
+      ENFORCEMENT_UNSPECIFIED = 0;
+      LOCAL = 1;
+      AGENT_GATEWAY = 2;
+    }
+  }
+
+  message LifecyclePolicy {
+    protobuf.Duration max_lifetime = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    IdleAction idle_action = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    protobuf.Duration idle_timeout = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    SuspendMode suspend_mode = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    bool auto_resume = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    bool cascade_delete = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    enum IdleAction {
+      IDLE_ACTION_UNSPECIFIED = 0;
+      NONE = 1;
+      SUSPEND = 2;
+      DELETE = 3;
+    }
+
+    enum SuspendMode {
+      SUSPEND_MODE_UNSPECIFIED = 0;
+      RUNTIME_STATE = 1;
+      DISK_ONLY = 2;
+      PROVIDER_DEFAULT = 3;
+    }
+  }
+
+  message ReadinessProbe {
+    repeated Check checks = 1 [(unresolved_option_1052) = "\001"];
+    protobuf.Duration timeout = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    message Check {
+      oneof check {
+        HttpGet http_get = 1 [(unresolved_option_1052) = "\001"];
+        int32 tcp_port = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+        string exec_command = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+      }
+    }
+
+    message HttpGet {
+      int32 port = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+      string path = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    }
+  }
+
+  message Mount {
+    Type type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+    string source = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+    string target = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1906];
+    string content = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    bool read_only = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    LoadPolicy load_policy = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    string local_environment = 7 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n%aiplatform.googleapis.com/Environment", (unresolved_option_40075780) = 1119];
+
+    enum Type {
+      TYPE_UNSPECIFIED = 0;
+      GCS = 1;
+      REPOSITORY = 2;
+      INLINE = 3;
+      SKILL_REGISTRY = 4;
+      CLIENT_RELAY = 5;
+    }
+
+    enum LoadPolicy {
+      LOAD_POLICY_UNSPECIFIED = 0;
+      EAGER = 1;
+      LAZY = 2;
+    }
+  }
+
+  message Placement {
+    string provider = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    CostTier cost_tier = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    enum CostTier {
+      COST_TIER_UNSPECIFIED = 0;
+      STANDARD = 1;
+      SPOT = 2;
+    }
+  }
+
+  message IdentityPolicy {
+    Mode mode = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    Delivery delivery = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    protobuf.Duration token_lifetime = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    repeated string audiences = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+    bool service_agent_token = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    enum Mode {
+      MODE_UNSPECIFIED = 0;
+      NONE = 1;
+      AGENT = 2;
+    }
+
+    enum Delivery {
+      DELIVERY_UNSPECIFIED = 0;
+      EGRESS_PROXY = 1;
+      METADATA_SERVER = 2;
+    }
+  }
+}

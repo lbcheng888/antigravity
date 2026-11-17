@@ -1,0 +1,74 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e074aa (va 0x103e074aa, __TEXT.__rodata), descriptor length 3253 B, sha256 6221bae3ca95868b
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/android/gmscore/proto/gmscore_build.proto";
+import "java/com/google/android/gmscore/proto/gmscore_device.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "logs/proto/wireless/android/play/playlog/accessibility_state.proto";
+import "logs/proto/wireless/android/play/playlog/webview_version_info.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "wireless/android/play/playlog/proto/client_info/android_device_type.proto";
+import "wireless/android/play/playlog/proto/device_restriction_enum.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "AndroidProto";
+option java_multiple_files = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message AndroidClientInfo {
+  option (unresolved_option_10) = "OPAQUE_V0";
+  extensions 21 [(unresolved_option_1) = "\022/wireless_android_play_playlog.ChimeraConfigInfo"];
+  optional int64 android_id = 1 [(unresolved_option_40075780) = 1107];
+  optional int64 gms_device_id = 39 [deprecated = true, (unresolved_option_40075780) = 1000];
+  optional bytes gms_device_id_zwieback = 40 [(unresolved_option_40075780) = 1000];
+  optional string logging_id = 2 [deprecated = true, (unresolved_option_40075780) = 1000];
+  optional int64 device_id = 18 [(unresolved_option_40075780) = 1100];
+  optional int32 sdk_version = 3 [(unresolved_option_40075780) = 1500];
+  optional int32 sdk_version_full = 38 [(unresolved_option_40075780) = 1500];
+  repeated ExtensionVersion extension_version = 34 [(unresolved_option_40075780) = 1500];
+  optional string model = 4 [(unresolved_option_40075780) = 999];
+  optional string product = 5 [(unresolved_option_40075780) = 999];
+  optional string hardware = 8 [(unresolved_option_40075780) = 999];
+  optional string device = 9 [(unresolved_option_40075780) = 999];
+  optional string os_build = 6 [(unresolved_option_40075780) = 1500];
+  optional string application_build = 7 [(unresolved_option_40075780) = 1500];
+  optional string mcc_mnc = 10 [(unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\020\000"];
+  optional string locale = 11 [(unresolved_option_40075780) = 1601];
+  optional string country = 12 [(unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\020\000\030\001"];
+  optional string manufacturer = 13 [(unresolved_option_40075780) = 999];
+  optional string brand = 14 [(unresolved_option_40075780) = 999];
+  optional string board = 15 [(unresolved_option_40075780) = 999];
+  optional string radio_version = 16 [(unresolved_option_40075780) = 1500];
+  optional string fingerprint = 17 [(unresolved_option_40075780) = 1500];
+  optional int32 gms_core_version_code = 19 [(unresolved_option_40075780) = 1500];
+  optional com.google.android.gmscore.proto.GmsCoreBuildVariant gmscore_variant = 32 [(unresolved_option_40075780) = 1500];
+  optional com.google.android.gmscore.proto.GmsCoreDeviceInfo gmscore_device_info = 37 [(unresolved_option_40075780) = 999];
+  optional bool is_sidewinder_device = 20 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional bool using_log_source_int = 22 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional DeviceRestriction.Id device_restriction = 23 [(unresolved_option_40075780) = 999];
+  optional AndroidDeviceType android_device_type = 24 [(unresolved_option_40075780) = 999];
+  optional AccessibilityState accessibility_state = 25 [(unresolved_option_40075780) = 999];
+  optional string type = 26 [(unresolved_option_40075780) = 999];
+  optional string ro_oem_key1 = 27 [(unresolved_option_40075780) = 1400];
+  optional string device_data_version_info = 28 [(unresolved_option_40075780) = 1500];
+  repeated string native_platform = 31 [(unresolved_option_40075780) = 999];
+  optional int32 sim_carrier_id = 33 [(unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\020\000"];
+  optional WebViewVersionInfo webview_version_info = 35 [(unresolved_option_40075780) = 1500];
+  optional uint64 user_consent_state = 36;
+
+  message ExtensionVersion {
+    optional int32 extension = 1 [(unresolved_option_40075780) = 1500];
+    optional int32 version = 2 [(unresolved_option_40075780) = 1500];
+  }
+}

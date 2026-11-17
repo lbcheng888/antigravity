@@ -1,0 +1,16 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d32db8 (va 0x103d32db8, __TEXT.__rodata), descriptor length 459 B, sha256 d83da522dbd5c3af
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "learning/genai/api/interactions/proto/events.proto";
+import "learning/genai/api/interactions/proto/interaction.proto";
+
+service InteractionService {
+  rpc CreateInteractionBidiStream(stream ClientEventBatch) returns (stream ServerEventBatch);
+  rpc CreateInteractionStream(CreateInteractionEvent) returns (stream ServerEventBatch);
+  rpc CreateInteraction(CreateInteractionEvent) returns (Interaction);
+}

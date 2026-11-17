@@ -1,0 +1,57 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d84e9b (va 0x103d84e9b, __TEXT.__rodata), descriptor length 1518 B, sha256 ad91e5af359089a4
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/protobuf/duration.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "privacy/pattributes/annotations/proto_field.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_multiple_files = true;
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+
+message CuiMetric {
+  optional int32 cui_id = 1 [(unresolved_option_40075780) = 1500, (unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  optional google.protobuf.Duration duration = 2 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  optional fixed64 trace_id = 3 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2300, (unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  optional Status status = 4 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  optional IncompleteReason incomplete_reason = 5;
+  repeated Operation operation = 6;
+
+  enum Status {
+    UNKNOWN = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+    CANCELED = 3;
+    TIMEOUT = 4;
+    INTERRUPTED = 5;
+    INCOMPLETE = 6;
+  }
+
+  enum IncompleteReason {
+    UNKNOWN_INCOMPLETE_REASON = 0;
+    DUPLICATE_START = 1;
+    UNPROPAGATED_TRACE = 2;
+    MISMATCHED_CUI = 3;
+    DUPLICATE_END = 4;
+    NO_TRACE_AT_START = 5;
+    NO_TRACE_AT_END = 8;
+    NO_ACTIVE_CUI = 6;
+    NO_END = 7;
+  }
+
+  message Operation {
+    optional int32 functional_requirement_id = 1;
+    optional google.protobuf.Duration start_offset = 2;
+    optional google.protobuf.Duration duration = 3;
+    optional Status status = 4;
+  }
+}

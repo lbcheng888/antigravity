@@ -1,0 +1,285 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f838b8 (va 0x103f838b8, __TEXT.__rodata), descriptor length 9793 B, sha256 06ba104b596143a6
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import public "wireless/android/play/playlog/proto/client_info/client_info.proto";
+import "experiments/framework/extensions/heterodyne/proto/experiment_ids.proto";
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "java/com/google/apps/jspb/jspb_disable_randomization.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "wireless/android/play/playlog/proto/clearcut_logger_aggregation_metadata.proto";
+import "wireless/android/play/playlog/proto/clearcut_logger_remote_config_metadata.proto";
+import "wireless/android/play/playlog/proto/compliance.proto";
+import "wireless/android/play/playlog/proto/log_source_enum.proto";
+import "wireless/android/privacy/annotations/proto/collection_basis_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto.proto1api";
+option java_outer_classname = "ClientAnalytics";
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127176) = 1;
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.wireless.android.play.playlog.proto";
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message LogEventKeyValues {
+  optional string key = 1 [(unresolved_option_40075780) = 9903];
+  optional string value = 2 [(unresolved_option_40075780) = 9904];
+}
+
+message ActiveExperiments {
+  repeated string client_altering_experiment = 1 [(unresolved_option_40075780) = 2301];
+  repeated string other_experiment = 2 [(unresolved_option_40075780) = 2301];
+  repeated int32 gws_experiment = 3 [(unresolved_option_40075780) = 2301];
+  repeated int64 play_experiment = 4 [(unresolved_option_40075780) = 2301];
+  repeated int64 unsupported_play_experiment = 5 [(unresolved_option_40075780) = 2301];
+}
+
+message LogEvent {
+  option (unresolved_option_448127181) = 1;
+  extensions 31 [(unresolved_option_1) = "\022<wireless_android_play_playlog.LogEventVisualElementExtension"];
+  extensions 1000 to max;
+  optional int64 event_time_ms = 1 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2100];
+  optional int64 event_uptime_ms = 17 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2100];
+  optional int64 boot_count = 22 [(unresolved_option_40075780) = 999];
+  optional int64 sequence_position = 21 [(unresolved_option_40075780) = 999];
+  optional string tag = 2 [(unresolved_option_40075780) = 999];
+  optional int32 event_code = 11 [(unresolved_option_40075780) = 999];
+  optional string component_id = 26 [(unresolved_option_40075780) = 999];
+  optional int64 event_flow_id = 12 [(unresolved_option_40075780) = 2300];
+  optional bool is_user_initiated = 10 [(unresolved_option_40075780) = 999];
+  repeated LogEventKeyValues value = 3 [(unresolved_option_40075780) = 9902];
+  optional bytes store = 4 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional AppUsage1pLogEvent app_usage_1p = 9 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional bytes source_extension = 6 [(unresolved_option_40075780) = 9900];
+  optional string source_extension_js = 8 [(unresolved_option_40075780) = 9900];
+  optional string source_extension_json = 13 [(unresolved_option_40075780) = 9900];
+  optional string source_extension_json_proto3 = 29 [(unresolved_option_40075780) = 9900];
+  optional ActiveExperiments exp = 7 [(unresolved_option_40075780) = 2301];
+  optional string test_id = 14 [(unresolved_option_40075780) = 1500];
+  optional sint64 timezone_offset_seconds = 15 [default = 180000, (unresolved_option_40075780) = 999];
+  optional experiments.heterodyne.ExperimentIds experiment_ids = 16 [(unresolved_option_40075780) = 2301];
+  optional bytes client_ve = 18 [(unresolved_option_40075780) = 999];
+  optional string client_ve_js = 24 [(unresolved_option_40075780) = 999];
+  optional InternalEvent internal_event = 19 [(unresolved_option_40075780) = 999];
+  repeated int32 test_code = 20 [(unresolved_option_40075780) = 999];
+  repeated int32 generic_dimensions = 27 [packed = true, (unresolved_option_40075780) = 999];
+  optional NetworkConnectionInfo network_connection_info = 23 [(unresolved_option_40075780) = 999];
+  optional bool in_direct_boot_mode = 25 [(unresolved_option_40075780) = 999];
+  optional string zwieback_cookie_override = 28 [(unresolved_option_40075780) = 1001];
+  optional double module_applied_sampling_rate = 30 [(unresolved_option_40075780) = 999];
+  optional double client_applied_sampling_rate = 32 [(unresolved_option_40075780) = 999];
+  optional ClearcutLoggerRemoteConfigMetadata remote_config_metadata = 35;
+  optional ComplianceData compliance_data = 33 [(unresolved_option_40075780) = 999];
+  optional bool use_session_zwieback = 34;
+  optional AggregationMetadata aggregation_metadata = 36;
+
+  enum InternalEvent {
+    NONE = 0;
+    WALL_CLOCK_SET = 1;
+    DEVICE_BOOT = 2;
+  }
+}
+
+message NetworkConnectionInfo {
+  optional NetworkType network_type = 1 [default = NONE, (unresolved_option_40075780) = 999];
+  optional MobileSubtype mobile_subtype = 2 [default = UNKNOWN_MOBILE_SUBTYPE, (unresolved_option_40075780) = 999];
+
+  enum NetworkType {
+    NONE = -1;
+    MOBILE = 0;
+    WIFI = 1;
+    MOBILE_MMS = 2;
+    MOBILE_SUPL = 3;
+    MOBILE_DUN = 4;
+    MOBILE_HIPRI = 5;
+    WIMAX = 6;
+    BLUETOOTH = 7;
+    DUMMY = 8;
+    ETHERNET = 9;
+    MOBILE_FOTA = 10;
+    MOBILE_IMS = 11;
+    MOBILE_CBS = 12;
+    WIFI_P2P = 13;
+    MOBILE_IA = 14;
+    MOBILE_EMERGENCY = 15;
+    PROXY = 16;
+    VPN = 17;
+  }
+
+  enum MobileSubtype {
+    UNKNOWN_MOBILE_SUBTYPE = 0;
+    GPRS = 1;
+    EDGE = 2;
+    UMTS = 3;
+    CDMA = 4;
+    EVDO_0 = 5;
+    EVDO_A = 6;
+    RTT = 7;
+    HSDPA = 8;
+    HSUPA = 9;
+    HSPA = 10;
+    IDEN = 11;
+    EVDO_B = 12;
+    LTE = 13;
+    EHRPD = 14;
+    HSPAP = 15;
+    GSM = 16;
+    TD_SCDMA = 17;
+    IWLAN = 18;
+    LTE_CA = 19;
+    NR = 20;
+    COMBINED = 100;
+  }
+}
+
+message ExperimentIdList {
+  repeated string id = 1 [(unresolved_option_40075780) = 2301];
+}
+
+message AppUsage1pLogEvent {
+  optional int32 app_type = 1 [(unresolved_option_40075780) = 999];
+  optional string android_package_name = 2 [(unresolved_option_40075780) = 1500];
+  optional string version = 3 [(unresolved_option_40075780) = 1500];
+}
+
+message BatchedLogRequest {
+  reserved 2;
+  repeated LogRequest log_request = 1 [(unresolved_option_40075780) = 999, (unresolved_option_238270952) = "\020\002"];
+  optional bool enable_per_request_status = 3 [(unresolved_option_40075780) = 999, (unresolved_option_238270952) = "\020r"];
+  optional bool in_direct_boot_mode = 4 [(unresolved_option_40075780) = 999, (unresolved_option_238270952) = "\020r"];
+  optional int64 last_zwieback_reset_wall_time_ms = 5 [deprecated = true, (unresolved_option_40075780) = 2100, (unresolved_option_238270952) = "\020r"];
+  repeated ProductIdZwiebackToken product_id_zwieback_tokens = 6 [deprecated = true, (unresolved_option_40075780) = 1000];
+  repeated SessionZwieback session_zwiebacks = 7 [(unresolved_option_40075780) = 1000];
+}
+
+message RetainImports {
+  optional LogSourceEnum.LogSource log_source = 1 [default = UNKNOWN];
+}
+
+message LogRequest {
+  option (unresolved_option_271193650) = "\020r";
+  reserved 15;
+  extensions 17 [(unresolved_option_1) = "\0221wireless_android_play_playlog.LogRequestExtension"];
+  extensions 1000 to max;
+  optional int64 request_time_ms = 4 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2100];
+  optional int64 request_uptime_ms = 8 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2100];
+  optional ClientInfo client_info = 1 [(unresolved_option_40075780) = 999];
+  optional LogSourceEnum.LogSource log_source = 2 [default = UNKNOWN, (unresolved_option_40075780) = 999];
+  optional string log_source_name = 6 [(unresolved_option_40075780) = 999];
+  optional string zwieback_cookie = 7 [(unresolved_option_40075780) = 1000, (unresolved_option_40093572) = "\010\351\007"];
+  repeated LogEvent log_event = 3 [(unresolved_option_40075780) = 999, (unresolved_option_238270952) = "\020\002"];
+  repeated bytes serialized_log_events = 5 [(unresolved_option_40075780) = 999, (unresolved_option_238270952) = "\020\002"];
+  optional int64 log_event_dropped_count = 14 [(unresolved_option_40075780) = 999];
+  optional QosTierConfiguration.QosTier qos_tier = 9 [default = DEFAULT, (unresolved_option_40075780) = 999];
+  optional SchedulerType scheduler = 10 [(unresolved_option_40075780) = 999];
+  optional DeviceStatus device_status = 11 [(unresolved_option_40075780) = 999];
+  optional ExternalTimestamp external_timestamp = 12 [(unresolved_option_40075780) = 999];
+  optional CollectForDebug collect_for_debug = 13 [(unresolved_option_40075780) = 999];
+  optional uint32 app_mobilespec_id = 16 [(unresolved_option_40075780) = 1500];
+  optional ComplianceData compliance_data = 18 [(unresolved_option_40075780) = 999];
+
+  enum SchedulerType {
+    UNKNOWN_SCHEDULER = 0;
+    ASAP = 1;
+    DEFAULT_PERIODIC = 2;
+    QOS_FAST_ONEOFF = 3;
+    QOS_DEFAULT_PERIODIC = 4;
+    QOS_UNMETERED_PERIODIC = 5;
+    BACKSTOP_PERIODIC = 6;
+  }
+}
+
+message DeviceStatus {
+  optional bool is_unmetered = 1 [(unresolved_option_40075780) = 999];
+  optional bool is_charging = 2 [(unresolved_option_40075780) = 999];
+  optional AutomaticTime auto_time_status = 3 [(unresolved_option_40075780) = 999];
+  optional bool is_googler_device = 4 [(unresolved_option_40075780) = 999];
+
+  enum AutomaticTime {
+    UNKNOWN = 0;
+    AUTO_TIME_OFF = 1;
+    AUTO_TIME_ON = 2;
+  }
+}
+
+message ExternalTimestamp {
+  optional int64 time_ms = 1 [(unresolved_option_40075780) = 2100];
+  optional int64 uptime_ms = 2 [(unresolved_option_40075780) = 2100];
+  optional string source = 3 [(unresolved_option_40075780) = 999];
+}
+
+message CollectForDebug {
+  optional int64 collect_start_ms = 3 [(unresolved_option_40075780) = 2100];
+  optional int64 collect_until_ms = 1 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2100];
+  optional bool skip_persistent_log_storage = 2 [(unresolved_option_40075780) = 999];
+}
+
+message QosTierConfiguration {
+  optional string log_source_name = 1;
+  optional QosTier qos_tier = 2;
+  optional LogSourceEnum.LogSource log_source = 3 [default = UNKNOWN];
+
+  enum QosTier {
+    option allow_alias = true;
+    DEFAULT = 0 [deprecated = true];
+    ANY_NETWORK_OK = 0;
+    UNMETERED_ONLY = 1;
+    UNMETERED_OR_DAILY = 2;
+    FAST_IF_RADIO_AWAKE = 3;
+    NEVER = 4;
+  }
+}
+
+message ProductIdZwiebackToken {
+  option deprecated = true;
+  optional int32 product_id = 1 [(unresolved_option_238270952) = "\020r"];
+  optional string zwieback_token = 2 [(unresolved_option_40075780) = 1000, (unresolved_option_238270952) = "\020r"];
+}
+
+message SessionZwieback {
+  optional string log_source_name = 1 [default = "UNKNOWN", (unresolved_option_40075780) = 1001, (unresolved_option_238270952) = "\020r"];
+  optional string zwieback_token = 2 [(unresolved_option_40075780) = 1000, (unresolved_option_238270952) = "\020r"];
+}
+
+message QosTiersOverride {
+  repeated QosTierConfiguration qos_tier_configuration = 1;
+  optional int64 qos_tier_fingerprint = 2;
+}
+
+message LogSourceBatchingDenylist {
+  repeated string log_source_name = 1;
+}
+
+message LogResponseDetails {
+  optional int32 log_request_index = 1;
+  optional ResponseAction response_action = 2;
+
+  enum ResponseAction {
+    RESPONSE_ACTION_UNKNOWN = 0;
+    RETRY_REQUEST_LATER = 1;
+    DELETE_REQUEST = 2;
+  }
+}
+
+message LogResponse {
+  extensions 1000 to max;
+  optional int64 next_request_wait_millis = 1 [default = -1, (unresolved_option_17703) = 2];
+  optional ExperimentIdList experiments = 2;
+  optional QosTiersOverride qos_tier = 3;
+  optional LogSourceBatchingDenylist log_source_batching_denylist = 4;
+  repeated LogResponseDetails log_response_details = 5;
+  repeated ProductIdZwiebackToken product_id_zwieback_tokens = 6 [deprecated = true, (unresolved_option_40075780) = 1000];
+  repeated SessionZwieback session_zwiebacks = 7;
+}

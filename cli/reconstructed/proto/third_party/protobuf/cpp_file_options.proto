@@ -1,0 +1,17 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x912b5a4 (va 0x10912b5a4, __TEXT.__const), descriptor length 209 B, sha256 5960e5ff530079c2
+// boundary: edition_end
+
+edition = "2024";
+
+package pb.file;
+
+import "net/proto2/proto/descriptor.proto";
+
+local message CppFileOptions {
+  string namespace = 1;
+}
+
+extend proto2.FileOptions {
+  CppFileOptions cpp = 990 [feature_support = { edition_introduced: 1002 }];
+}

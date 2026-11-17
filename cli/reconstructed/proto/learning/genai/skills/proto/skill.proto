@@ -1,0 +1,34 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d51a1e (va 0x103d51a1e, __TEXT.__rodata), descriptor length 856 B, sha256 d3acc7b97c2ce276
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai.skills;
+
+message SkillFile {
+  string mime_type = 1;
+  oneof content {
+    string text = 2;
+    bytes data = 3;
+  }
+}
+
+message Skill {
+  string name = 1;
+  string skill_id = 2;
+  string description = 3;
+  string content = 4;
+  repeated string allowed_tools = 5;
+  map<string, string> metadata = 6;
+  oneof resources {
+    InlineResources inline_resources = 7;
+    SkillFile zipped_resources = 8;
+  }
+  string version = 9;
+  repeated string channels = 10;
+
+  message InlineResources {
+    map<string, SkillFile> resources = 1;
+  }
+}

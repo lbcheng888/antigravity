@@ -1,0 +1,25 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d44e2c (va 0x103d44e2c, __TEXT.__rodata), descriptor length 679 B, sha256 20ea9ffd4c518f08
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package s2a.proto;
+
+import "security/zatar/s2a/proto/common.proto";
+import option "third_party/golang/protobuf/v2/src/google/protobuf/go_features.proto";
+
+option java_package = "com.google.net.grpc.s2a.handshaker";
+option features.field_presence = IMPLICIT;
+option features.(unresolved_option_1002) = "\020\002";
+
+message S2AContext {
+  string application_protocol = 1;
+  TLSVersion tls_version = 2;
+  Ciphersuite ciphersuite = 3;
+  Identity peer_identity = 4;
+  Identity local_identity = 5;
+  bytes peer_cert_fingerprint = 6;
+  bytes local_cert_fingerprint = 7;
+  bool is_handshake_resumed = 8;
+}

@@ -1,0 +1,13 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d0e1bc (va 0x103d0e1bc, __TEXT.__rodata), descriptor length 194 B, sha256 d8c1b8a6f7ec0745
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package keytracking;
+
+import "net/proto2/proto/descriptor.proto";
+
+extend proto2.FieldOptions {
+  bool used_kms_key = 535801341;
+}

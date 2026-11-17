@@ -1,0 +1,35 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d46e7d (va 0x103d46e7d, __TEXT.__rodata), descriptor length 706 B, sha256 3d4e3c9cd7cfc868
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package af.data;
+
+import "net/proto2/proto/descriptor.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.apps.framework.data";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/apps/framework/data";
+option cc_enable_arenas = true;
+option objc_class_prefix = "AFD";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+enum FrontendMethodType {
+  UNKNOWN_FRONTEND_METHOD_TYPE = 0;
+  FETCH = 1;
+  MUTATE = 2;
+  SERVER_STREAM = 3;
+}
+
+extend proto2.FileOptions {
+  optional bool types_can_be_used_with_json_format_clients = 140442106;
+}
+
+extend proto2.MethodOptions {
+  optional FrontendMethodType frontend_method_type = 140442103;
+  optional bool to_be_removed = 140442104;
+  optional bool code_access_only = 140442105;
+}

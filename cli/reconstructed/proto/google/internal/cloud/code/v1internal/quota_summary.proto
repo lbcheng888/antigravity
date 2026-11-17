@@ -1,0 +1,45 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d6e7ea (va 0x103d6e7ea, __TEXT.__rodata), descriptor length 1235 B, sha256 25fb955c9f1e1dd3
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.cloud.code.v1internal;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.internal.cloud.code.v1internal";
+option java_outer_classname = "QuotaSummaryProto";
+option java_multiple_files = true;
+
+message RetrieveUserQuotaSummaryRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+}
+
+message QuotaSummaryBucket {
+  string bucket_id = 1 [(unresolved_option_40075780) = 999];
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string description = 7 [(unresolved_option_40075780) = 999];
+  string window = 3 [(unresolved_option_40075780) = 999];
+  oneof remaining {
+    float remaining_fraction = 4;
+    int64 remaining_amount = 5;
+  }
+  bool disabled = 8 [(unresolved_option_40075780) = 999];
+  protobuf.Timestamp reset_time = 6;
+}
+
+message QuotaSummaryGroup {
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string description = 3 [(unresolved_option_40075780) = 999];
+  repeated QuotaSummaryBucket buckets = 1;
+}
+
+message RetrieveUserQuotaSummaryResponse {
+  repeated QuotaSummaryBucket buckets = 1 [deprecated = true];
+  repeated QuotaSummaryGroup groups = 2;
+  string description = 3;
+}

@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x912464c (va 0x10912464c, __TEXT.__const), descriptor length 329 B, sha256 5bbe8ef2d9d5858d
+// boundary: edition_end
+
+edition = "2023";
+
+package util;
+
+import "google/protobuf/any.proto";
+import "net/proto2/bridge/proto/message_set.proto";
+
+option java_package = "com.google.net.util";
+option (unresolved_option_5) = 2;
+
+message NonMessageSetPayload {
+  repeated google.protobuf.Any payloads = 1;
+
+  extend proto2.bridge.MessageSet {
+    NonMessageSetPayload message_set_extension = 258191113;
+  }
+}

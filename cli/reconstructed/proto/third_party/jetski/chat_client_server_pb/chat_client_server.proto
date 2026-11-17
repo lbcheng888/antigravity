@@ -1,0 +1,54 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d88ab9 (va 0x103d88ab9, __TEXT.__rodata), descriptor length 1565 B, sha256 30fe0eeabaf4bf24
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.chat_client_server_pb;
+
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+enum ChatClientRequestStreamClientType {
+  CHAT_CLIENT_REQUEST_STREAM_CLIENT_TYPE_UNSPECIFIED = 0;
+  CHAT_CLIENT_REQUEST_STREAM_CLIENT_TYPE_IDE = 1;
+  CHAT_CLIENT_REQUEST_STREAM_CLIENT_TYPE_BROWSER = 2 [deprecated = true];
+}
+
+message StartChatClientRequestStreamRequest {
+  ChatClientRequestStreamClientType client_type = 1;
+}
+
+message ChatClientRequest {
+  oneof request {
+    AddCascadeInputRequest add_cascade_input = 1;
+    SendActionToChatPanelRequest send_action_to_chat_panel = 2;
+    InitialAckRequest initial_ack = 3;
+    RefreshCustomizationRequest refresh_customization = 4;
+  }
+}
+
+message AddCascadeInputRequest {
+  repeated codeium_common_pb.TextOrScopeItem items = 1;
+  repeated codeium_common_pb.ImageData images = 2 [deprecated = true];
+  repeated codeium_common_pb.Media media = 3;
+}
+
+message SendActionToChatPanelRequest {
+  string action_type = 1;
+  repeated bytes payload = 2;
+}
+
+message InitialAckRequest {
+}
+
+message RefreshCustomizationRequest {
+  codeium_common_pb.RefreshCustomizationType config_type = 1;
+}
+
+service ChatClientServerService {
+  rpc StartChatClientRequestStream(StartChatClientRequestStreamRequest) returns (stream ChatClientRequest) {
+    option deprecated = true;
+  }
+}

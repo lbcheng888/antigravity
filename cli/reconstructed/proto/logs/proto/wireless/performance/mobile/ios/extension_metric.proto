@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3daf35a (va 0x103daf35a, __TEXT.__rodata), descriptor length 2087 B, sha256 064c52c2f51e3170
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile.ios;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option objc_class_prefix = "PRM";
+option (unresolved_option_71304954) = "latest";
+
+message MetricExtension {
+  reserved 1;
+  extensions 2 [(unresolved_option_1) = "\n\021youtube_extension\022;logs.proto.wireless.performance.mobile.ios.YouTubeExtension"];
+  extensions 3 [(unresolved_option_1) = "\n\rhub_extension\0223logs.proto.wireless.performance.mobile.HubExtension"];
+  extensions 4 [(unresolved_option_1) = "\n\022microapp_extension\0228logs.proto.wireless.performance.mobile.MicroappExtension"];
+  extensions 5 [(unresolved_option_1) = "\n\016gpay_extension\0224logs.proto.wireless.performance.mobile.GPayExtension"];
+  extensions 6 [(unresolved_option_1) = "\n(ios_test_only_logsite_metadata_extension\022Glogs.proto.wireless.performance.mobile.TestOnlyLogsiteMetadataExtension"];
+  extensions 448379730 [(unresolved_option_1) = "\n\rgmm_extension\0223logs.proto.wireless.performance.mobile.GmmExtension"];
+  extensions 463116665 [(unresolved_option_1) = "\n\rgsa_extension\0227logs.proto.wireless.performance.mobile.ios.GsaExtension"];
+  extensions 480665888 [(unresolved_option_1) = "\n\020photos_extension\022:logs.proto.wireless.performance.mobile.ios.PhotosExtension"];
+  extensions 502909396 [(unresolved_option_1) = "\n\025docs_common_extension\022>logs.proto.wireless.performance.mobile.ios.DocsCommonExtension"];
+  extensions 508713347 [(unresolved_option_1) = "\n\017drive_extension\0225logs.proto.wireless.performance.mobile.DriveExtension"];
+  extensions 7 [(unresolved_option_1) = "\n\022calendar_extension\0228logs.proto.wireless.performance.mobile.CalendarExtension"];
+  extensions 8 [(unresolved_option_1) = "\n\022nova_ios_extension\022;logs.proto.wireless.performance.mobile.ios.NovaIosExtension"];
+  extensions 9 [(unresolved_option_1) = "\n1apps_telemetry_ios_system_health_metric_extension\022+apps.telemetry.proto.AppsTelemetryExtension"];
+  extensions 10 [(unresolved_option_1) = "\n\023translate_extension\022=logs.proto.wireless.performance.mobile.ios.TranslateExtension"];
+  extensions 11 [(unresolved_option_1) = "\n\016keep_extension\0224logs.proto.wireless.performance.mobile.KeepExtension"];
+  extensions 12 [(unresolved_option_1) = "\n\017spark_extension\0225logs.proto.wireless.performance.mobile.SparkExtension"];
+  extensions 13 [(unresolved_option_1) = "\n\022snapseed_extension\022<logs.proto.wireless.performance.mobile.ios.SnapseedExtension"];
+  extensions 14 [(unresolved_option_1) = "\n\033glasses_companion_extension\022Dlogs.proto.wireless.performance.mobile.ios.GlassesCompanionExtension"];
+  extensions 15 [(unresolved_option_1) = "\n\034shared_docs_common_extension\022:logs.proto.wireless.performance.mobile.DocsCommonExtension"];
+  extensions 16 [(unresolved_option_1) = "\n\025antigravity_extension\022?logs.proto.wireless.performance.mobile.ios.AntigravityExtension"];
+}

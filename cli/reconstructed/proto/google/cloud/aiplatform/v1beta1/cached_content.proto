@@ -1,0 +1,74 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3de5a4e (va 0x103de5a4e, __TEXT.__rodata), descriptor length 2757 B, sha256 47232e4282f6c456
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/v1beta1/content.proto";
+import "google/cloud/aiplatform/v1beta1/encryption_spec.proto";
+import "google/cloud/aiplatform/v1beta1/tool.proto";
+import "google/cloud/automl/common/proto_field_options.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "CachedContentProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+option (unresolved_option_525000017) = "\n\003all";
+
+message CachedContent {
+  option (unresolved_option_1053) = "\n'aiplatform.googleapis.com/CachedContent\022Gprojects/{project}/locations/{location}/cachedContents/{cached_content}*\016cachedContents2\rcachedContent";
+  option (unresolved_option_143069646) = "\022\nv1beta1,v1";
+  oneof expiration {
+    protobuf.Timestamp expire_time = 9;
+    protobuf.Duration ttl = 10 [(unresolved_option_1052) = "\004"];
+  }
+  string name = 1 [(unresolved_option_1052) = "\010\005", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string display_name = 11 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 1900];
+  string model = 2 [(unresolved_option_1052) = "\005", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  Content system_instruction = 3 [(unresolved_option_1052) = "\001\005\004", (unresolved_option_40075780) = 1900];
+  repeated Content contents = 4 [(unresolved_option_1052) = "\001\005\004", (unresolved_option_40075780) = 1900];
+  repeated Tool tools = 5 [(unresolved_option_1052) = "\001\005\004", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022?len($)<=1 ?: [FIELD_INVALID] At most one tool can be specified."];
+  ToolConfig tool_config = 6 [(unresolved_option_1052) = "\001\005\004", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp create_time = 7 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp update_time = 8 [(unresolved_option_1052) = "\003"];
+  UsageMetadata usage_metadata = 12 [(unresolved_option_1052) = "\003"];
+  EncryptionSpec encryption_spec = 13 [(unresolved_option_1052) = "\004\005", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_337978583) = 1];
+
+  message UsageMetadata {
+    int32 total_token_count = 1;
+    int32 text_count = 2;
+    int32 image_count = 3;
+    int32 video_duration_seconds = 4;
+    int32 audio_duration_seconds = 5;
+  }
+}
+
+message ContextCacheConfig {
+  option (unresolved_option_72295727) = "\022\033DURABLE_CACHE_TRUSTED_USERS";
+  oneof retention_config {
+    EphemeralRetention ephemeral_retention = 1 [deprecated = true, (unresolved_option_1052) = "\001"];
+    DurableRetention durable_retention = 2 [deprecated = true, (unresolved_option_1052) = "\001"];
+  }
+
+  message EphemeralRetention {
+    option deprecated = true;
+  }
+
+  message DurableRetention {
+  }
+}

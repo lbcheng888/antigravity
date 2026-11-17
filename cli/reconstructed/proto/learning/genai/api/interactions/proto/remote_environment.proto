@@ -1,0 +1,184 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e16e3e (va 0x103e16e3e, __TEXT.__rodata), descriptor length 3463 B, sha256 ec0f6f22bbee8459
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+
+message FilesystemRequest {
+  bytes request_id = 1;
+  oneof operation {
+    ReadFile read_file = 2;
+    WriteFile write_file = 3;
+    WriteFileData write_file_data = 4;
+    Stat stat = 5;
+    ReadDir read_dir = 6;
+    MkdirAll mkdir_all = 7;
+    Remove remove = 8;
+    Rename rename = 9;
+    Cancel cancel = 15;
+  }
+
+  message ReadFile {
+    bytes path = 1;
+  }
+
+  message WriteFile {
+    bytes path = 1;
+    uint32 permissions = 2;
+    bool append = 3;
+    bytes data = 4;
+    bool more_data = 5;
+  }
+
+  message WriteFileData {
+    bytes data = 1;
+    bool more_data = 2;
+  }
+
+  message Stat {
+    bytes path = 1;
+  }
+
+  message ReadDir {
+    bytes path = 1;
+  }
+
+  message MkdirAll {
+    bytes path = 1;
+    uint32 permissions = 2;
+  }
+
+  message Remove {
+    bytes path = 1;
+    bool recursive = 2;
+  }
+
+  message Rename {
+    bytes old_path = 1;
+    bytes new_path = 2;
+  }
+
+  message Cancel {
+  }
+}
+
+message FilesystemResponse {
+  bytes request_id = 1;
+  oneof result {
+    Error error = 2;
+    ReadFileData read_file_data = 3;
+    FileInfo stat = 4;
+    ReadDirData read_dir_data = 5;
+    Done done = 6;
+  }
+
+  message Error {
+    Code code = 1;
+    string message = 2;
+
+    enum Code {
+      CODE_UNSPECIFIED = 0;
+      NOT_EXIST = 1;
+      EXIST = 2;
+      PERMISSION = 3;
+      IS_DIR = 4;
+      NOT_DIR = 5;
+      INVALID = 6;
+      UNIMPLEMENTED = 7;
+      CANCELLED = 8;
+      OTHER = 9;
+    }
+  }
+
+  message ReadFileData {
+    bytes data = 1;
+    bool more_data = 2;
+  }
+
+  message FileInfo {
+    bytes name = 1;
+    Type type = 2;
+    uint32 permissions = 3;
+    int64 size = 4;
+    int64 mod_time_micros = 5;
+
+    enum Type {
+      TYPE_UNSPECIFIED = 0;
+      TYPE_REGULAR = 1;
+      TYPE_DIRECTORY = 2;
+      TYPE_SYMLINK = 3;
+      TYPE_NAMED_PIPE = 4;
+      TYPE_SOCKET = 5;
+      TYPE_DEVICE = 6;
+      TYPE_CHAR_DEVICE = 7;
+      TYPE_IRREGULAR = 8;
+    }
+  }
+
+  message ReadDirData {
+    repeated FileInfo entries = 1;
+    bool more_data = 2;
+  }
+
+  message Done {
+  }
+}
+
+message CommandExecutionRequest {
+  bytes request_id = 1;
+  oneof operation {
+    Start start = 2;
+    Stdin stdin = 3;
+    CloseStdin close_stdin = 4;
+    Cancel cancel = 5;
+  }
+
+  message Start {
+    bytes command_line = 1;
+    bytes working_dir = 2;
+    repeated EnvironmentVariable env = 3;
+
+    message EnvironmentVariable {
+      bytes name = 1;
+      bytes value = 2;
+    }
+  }
+
+  message Stdin {
+    bytes data = 1;
+  }
+
+  message CloseStdin {
+  }
+
+  message Cancel {
+  }
+}
+
+message CommandExecutionResponse {
+  bytes request_id = 1;
+  oneof event {
+    Started started = 2;
+    bytes stdout = 3;
+    bytes stderr = 4;
+    Exited exited = 5;
+    Error error = 6;
+  }
+
+  message Started {
+  }
+
+  message Exited {
+    int32 exit_code = 1;
+    int32 signal = 2;
+  }
+
+  message Error {
+    string message = 1;
+  }
+}

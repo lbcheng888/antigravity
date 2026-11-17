@@ -1,0 +1,31 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d531b6 (va 0x103d531b6, __TEXT.__rodata), descriptor length 871 B, sha256 0999ae7b62c92476
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "PlayCeProto";
+option java_multiple_files = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message PlayCeClientInfo {
+  optional string client_id = 1 [(unresolved_option_40075780) = 1400];
+  optional string logging_id = 7 [(unresolved_option_40075780) = 1000];
+  optional string make = 3 [(unresolved_option_40075780) = 999];
+  optional string model = 4 [(unresolved_option_40075780) = 999];
+  optional string application_build = 5 [(unresolved_option_40075780) = 1500];
+  optional string platform_version = 6 [(unresolved_option_40075780) = 1500];
+  optional string country = 8 [(unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\020\000"];
+}

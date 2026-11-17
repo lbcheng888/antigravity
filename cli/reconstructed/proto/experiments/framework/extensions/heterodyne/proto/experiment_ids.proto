@@ -1,0 +1,24 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d35da0 (va 0x103d35da0, __TEXT.__rodata), descriptor length 485 B, sha256 216de85e30e619be
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package experiments.heterodyne;
+
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.experiments.heterodyne";
+option java_outer_classname = "ExperimentIdsProto";
+option objc_class_prefix = "EXH";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+message ExperimentIds {
+  optional bytes clear_blob = 1 [(unresolved_option_40075780) = 2301];
+  optional string clear_blob_js = 4 [(unresolved_option_40075780) = 2301];
+  repeated bytes encrypted_blob = 2 [(unresolved_option_40075780) = 2301];
+  optional bool users_match = 3 [(unresolved_option_40075780) = 2301];
+}

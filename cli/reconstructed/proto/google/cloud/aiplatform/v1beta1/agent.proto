@@ -1,0 +1,301 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fa3d33 (va 0x103fa3d33, __TEXT.__rodata), descriptor length 10839 B, sha256 cbb07302e9efbdc9
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/v1beta1/encryption_spec.proto";
+import "google/cloud/automl/common/proto_field_options.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "learning/genai/api/interactions/proto/environment.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "AgentProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+enum AgentMemoryRevisionView {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  AGENT_MEMORY_REVISION_VIEW_UNSPECIFIED = 0;
+  AGENT_MEMORY_REVISION_VIEW_BASIC = 1;
+  AGENT_MEMORY_REVISION_VIEW_CONTENT_DIFF = 2;
+}
+
+enum AgentMemoryView {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  AGENT_MEMORY_VIEW_UNSPECIFIED = 0;
+  AGENT_MEMORY_VIEW_BASIC = 1;
+  AGENT_MEMORY_VIEW_FULL = 2;
+}
+
+message Agent {
+  option (unresolved_option_1053) = "\n\037aiplatform.googleapis.com/Agent\0226projects/{project}/locations/{location}/agents/{agent}*\006agents2\005agent";
+  option (unresolved_option_143069646) = "\022\026internal,ui,v1beta1,v1";
+  reserved 15, 8;
+  reserved "agent_type";
+  oneof environment {
+    protobuf.Value base_environment = 10 [json_name = "base_environment", (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  }
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_135496935) = "\022\010RESOURCE", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string id = 2 [(unresolved_option_1052) = "\005", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022@len($)<=63 ?: [FIELD_INVALID] id can have at most 63 characters.\022\367\001matches($, `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$|^$`) ?: [FIELD_INVALID] id can only contain lowercase letters, digits and hyphens. The first character is a letter, the last character must be a letter or number and there can be at most 63 characters.", (unresolved_option_158361448) = "\"\005AUDIT"];
+  protobuf.Timestamp created = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp updated = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string object = 13 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string effective_identity = 14 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  Persona persona = 16 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  AgentIdentity agent_identity = 17 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 999];
+  Principal owner = 18 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  AgentMemoryConfig memory_config = 21 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  AgentStatus status = 19 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string base_agent = 11 [json_name = "base_agent", (unresolved_option_1052) = "\002\005", (unresolved_option_40075780) = 1100];
+  map<string, string> metadata = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string description = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string system_instruction = 5 [json_name = "system_instruction", (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated AgentTool tools = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  AllowedTeammates allowed_teammates = 22 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  ObservabilityConfig observability_config = 23 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  EncryptionSpec encryption_spec = 24 [(unresolved_option_1052) = "\001\005", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_337978583) = 1];
+  string ai_application = 25 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  ModelConfig model_config = 26 [(unresolved_option_1052) = "\001"];
+
+  message ModelConfig {
+    string model = 1 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n(aiplatform.googleapis.com/PublisherModel", (unresolved_option_40075780) = 999];
+    float temperature = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  }
+}
+
+message ObservabilityConfig {
+  bool observability_enabled = 1 [(unresolved_option_1052) = "\001", (unresolved_option_158361448) = "\"\005AUDIT\200\001\001"];
+  bool sensitive_logging_enabled = 2 [(unresolved_option_1052) = "\001", (unresolved_option_158361448) = "\"\005AUDIT\200\001\001"];
+  string artifact_gcs_bucket = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1116, (unresolved_option_158361448) = "\"\005AUDIT\200\001\001"];
+}
+
+message AllowedTeammates {
+  repeated Teammate teammates = 1 [(unresolved_option_1052) = "\001"];
+}
+
+message Teammate {
+  string email = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1102];
+  string gaia_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  ExpansionMode expansion_mode = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum ExpansionMode {
+    EXPANSION_MODE_UNSPECIFIED = 0;
+    INFER = 1;
+    EXPANDED = 2;
+    NON_EXPANDED = 3;
+  }
+}
+
+message AgentTool {
+  string type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]"];
+  string name = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string url = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  map<string, string> headers = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message AgentMemoryConfig {
+  bool disable_memory = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+}
+
+message Persona {
+  string display_name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string role = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string avatar_url = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string personality = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message AgentIdentity {
+  string gaia_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string email = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1102];
+  Tenant tenant = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message Tenant {
+  Type type = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    WORKSPACE_CUSTOMER = 1;
+  }
+}
+
+message Principal {
+  Type type = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    USER = 1;
+  }
+}
+
+message AgentStatus {
+  State state = 1 [(unresolved_option_1052) = "\001"];
+  SuspensionReason suspension_reason = 2 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp delete_time = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    ACTIVE = 1;
+    SUSPENDED = 2;
+    ARCHIVED = 3;
+    DELETED = 4;
+    PROVISIONING = 5;
+  }
+
+  message SuspensionReason {
+    Reason reason = 1 [(unresolved_option_1052) = "\003"];
+    protobuf.Timestamp suspension_time = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+
+    enum Reason {
+      REASON_UNSPECIFIED = 0;
+      ABUSE = 1;
+      ADMIN = 2;
+      USER_INITIATED = 3;
+    }
+  }
+}
+
+message AgentMemory {
+  option (unresolved_option_1053) = "\n%aiplatform.googleapis.com/AgentMemory\022Hprojects/{project}/locations/{location}/agents/{agent}/memories/{memory}*\ragentMemories2\013agentMemory";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_188057776) = 1];
+  string category = 2 [(unresolved_option_1052) = "\002\005", (unresolved_option_40075780) = 1900];
+  string path = 3 [(unresolved_option_1052) = "\002\005", (unresolved_option_40075780) = 1900];
+  string title = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string summary = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string memory_type = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  AgentMemoryContent content = 7 [(unresolved_option_1052) = "\001"];
+  protobuf.Timestamp create_time = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp update_time = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string etag = 10 [(unresolved_option_40075780) = 1000];
+  protobuf.Timestamp delete_time = 11 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp purge_time = 12 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  AgentMemoryProvenance provenance = 13 [(unresolved_option_1052) = "\003"];
+  AgentMemoryObservedProvenance observed_provenance = 14 [(unresolved_option_1052) = "\003"];
+}
+
+message AgentMemoryProvenance {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  int32 schema_version = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  IdentityAttribution identity_attribution = 2 [(unresolved_option_1052) = "\003"];
+  repeated Source sources = 3 [(unresolved_option_1052) = "\003"];
+  int32 sources_elided = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  ExecutionContext execution_context = 5 [(unresolved_option_1052) = "\003"];
+  repeated string tags = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp assert_time = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  TrustClass trust_class = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+
+  enum TrustClass {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    TRUST_CLASS_UNSPECIFIED = 0;
+    TRUSTED_SYSTEM = 1;
+    VERIFIED_USER_INPUT = 2;
+    INTERNAL_TOOL_OUTPUT = 3;
+    UNTRUSTED_EXTERNAL = 4;
+  }
+
+  message IdentityAttribution {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    string agent_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+    string invoker_id = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+    string principal = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1112];
+    string task_id = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+    string session_id = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  }
+
+  message Source {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    oneof source {
+      string uri = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+      MemoryEntrySource entry = 2 [(unresolved_option_1052) = "\003"];
+    }
+    TrustClass trust_class = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+    string footnote_key = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  }
+
+  message MemoryEntrySource {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    string memory = 1 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n%aiplatform.googleapis.com/AgentMemory", (unresolved_option_40075780) = 1100];
+    string path = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+    string etag = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  }
+
+  message ExecutionContext {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    map<string, string> attributes = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  }
+}
+
+message AgentMemoryObservedProvenance {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Principal caller = 1 [(unresolved_option_1052) = "\003"];
+  Principal end_user = 2 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp record_time = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  Operation operation = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  string last_revision = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  string current_revision = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+
+  enum Operation {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    OPERATION_UNSPECIFIED = 0;
+    CREATE = 1;
+    UPDATE = 2;
+    REMOVE = 3;
+  }
+
+  message Principal {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    string name = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1112];
+  }
+}
+
+message AgentMemoryRevision {
+  option (unresolved_option_1053) = "\n-aiplatform.googleapis.com/AgentMemoryRevision\022]projects/{project}/locations/{location}/agents/{agent}/memories/{memory}/revisions/{revision}*\024agentMemoryRevisions2\023agentMemoryRevision";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100];
+  protobuf.Timestamp create_time = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  AgentMemoryProvenance provenance = 3 [(unresolved_option_1052) = "\003"];
+  AgentMemoryObservedProvenance observed_provenance = 4 [(unresolved_option_1052) = "\003"];
+  AgentMemoryContentDiff content_diff = 5 [(unresolved_option_1052) = "\003"];
+}
+
+message AgentMemoryContentDiff {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  State state = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  repeated string hunks = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  bool truncated = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  bool coarse = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+
+  enum State {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    STATE_UNSPECIFIED = 0;
+    COMPUTED = 1;
+    REVISION_NOT_KEPT = 2;
+    TOO_LARGE = 3;
+    NOT_TEXT = 4;
+  }
+}
+
+message AgentMemoryContent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof content {
+    string text = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+  string mime_type = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}

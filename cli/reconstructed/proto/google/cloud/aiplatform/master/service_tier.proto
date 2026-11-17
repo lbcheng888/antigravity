@@ -1,0 +1,25 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d30752 (va 0x103d30752, __TEXT.__rodata), descriptor length 437 B, sha256 46c480c703a13c7e
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "google/api/inclusion.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "ServiceTierProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+option (unresolved_option_525000017) = "\n\003all";
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+enum ServiceTier {
+  SERVICE_TIER_UNSPECIFIED = 0;
+  SERVICE_TIER_STANDARD = 1;
+  SERVICE_TIER_FLEX = 2;
+  SERVICE_TIER_PRIORITY = 3;
+}

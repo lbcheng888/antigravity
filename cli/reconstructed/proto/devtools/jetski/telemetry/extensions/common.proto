@@ -1,0 +1,24 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d30abc (va 0x103d30abc, __TEXT.__rodata), descriptor length 438 B, sha256 99cd6a6fc77e31bd
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "CommonOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message ExtraMetadata {
+  string key = 1 [(unresolved_option_40075780) = 2800];
+  string value = 2 [(unresolved_option_40075780) = 2800];
+  int64 int_value = 3 [(unresolved_option_40075780) = 2801];
+}
+
+export message SensitiveExtraMetadata {
+  string key = 1 [(unresolved_option_40075780) = 2800];
+  string value = 2 [(unresolved_option_40075780) = 1900];
+  int64 int_value = 3 [(unresolved_option_40075780) = 2801];
+}

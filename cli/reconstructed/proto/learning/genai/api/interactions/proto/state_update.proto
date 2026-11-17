@@ -1,0 +1,52 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d608c4 (va 0x103d608c4, __TEXT.__rodata), descriptor length 1043 B, sha256 19b56e808d9f0743
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "google/protobuf/timestamp.proto";
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+option features.utf8_validation = NONE;
+
+enum StopReason {
+  STOP_REASON_UNSPECIFIED = 0;
+  STOP_REASON_MAX_MODEL_CALLS_EXCEEDED = 1;
+  STOP_REASON_MAX_TOOL_CALLS_EXCEEDED = 2;
+  STOP_REASON_MAX_INPUT_TOKENS_EXCEEDED = 3;
+  STOP_REASON_MAX_OUTPUT_TOKENS_EXCEEDED = 4;
+  STOP_REASON_MAX_TOTAL_TOKENS_EXCEEDED = 5;
+  STOP_REASON_QUOTA_EXHAUSTED = 6;
+}
+
+message StateUpdate {
+  string parent_interaction_id = 7;
+  State state = 3;
+  string error = 4;
+  StopReason reason = 5;
+  ExecutionStatus execution_status = 6;
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_RUNNING = 1;
+    STATE_WAITING_FOR_TASKS = 2;
+    STATE_FULLY_IDLE = 3;
+    STATE_CANCELLED = 4;
+    STATE_WAITING_FOR_SUBAGENTS = 5;
+  }
+}
+
+message ExecutionStatus {
+  oneof status {
+    ModelRetryStatus model_retry = 1;
+  }
+}
+
+message ModelRetryStatus {
+  int32 attempt = 1;
+  int32 max_attempts = 2;
+  google.protobuf.Timestamp retry_at = 3;
+}

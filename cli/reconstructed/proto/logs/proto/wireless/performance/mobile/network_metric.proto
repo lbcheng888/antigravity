@@ -1,0 +1,172 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ebb374 (va 0x103ebb374, __TEXT.__rodata), descriptor length 5461 B, sha256 7965b678d3930959
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "analytics/config/protoverifier/proto/rules.proto";
+import "google/api/inclusion.proto";
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "logs/proto/wireless/performance/mobile/extension_metric.proto";
+import "logs/proto/wireless/performance/mobile/process_stats.proto";
+import "logs/proto/wireless/performance/mobile/sampling.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "storage/googlesql/public/proto/type_annotation.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\006legacy";
+option (unresolved_option_5) = 2;
+
+enum PeerDistance {
+  PEER_DISTANCE_UNKNOWN = 0;
+  PEER_DISTANCE_IN_PROCESS = 1;
+  PEER_DISTANCE_INTER_PROCESS = 2;
+}
+
+enum RequestNegotiatedProtocol {
+  REQUEST_NEGOTIATED_PROTOCOL_UNKNOWN = 0;
+  REQUEST_NEGOTIATED_PROTOCOL_HTTP11 = 1;
+  REQUEST_NEGOTIATED_PROTOCOL_SPDY2 = 2;
+  REQUEST_NEGOTIATED_PROTOCOL_SPDY3 = 3;
+  REQUEST_NEGOTIATED_PROTOCOL_SPDY31 = 4;
+  REQUEST_NEGOTIATED_PROTOCOL_SPDY4 = 5;
+  REQUEST_NEGOTIATED_PROTOCOL_QUIC1_SPDY3 = 6;
+  REQUEST_NEGOTIATED_PROTOCOL_HTTP2_QUIC43 = 7 [deprecated = true];
+  REQUEST_NEGOTIATED_PROTOCOL_HTTP09 = 8;
+  REQUEST_NEGOTIATED_PROTOCOL_HTTP10 = 9;
+  REQUEST_NEGOTIATED_PROTOCOL_HTTP2_QUIC = 10;
+  REQUEST_NEGOTIATED_PROTOCOL_H3 = 11;
+}
+
+enum RequestStatus {
+  REQUEST_STATUS_UNSPECIFIED = 0;
+  SUCCEEDED = 1;
+  FAILED = 2;
+  CANCELED = 3;
+}
+
+enum RequestFailedReason {
+  REQUEST_FAILED_REASON_UNSPECIFIED = 0;
+  LISTENER_EXCEPTION_THROWN = 1;
+  HOSTNAME_NOT_RESOLVED = 2;
+  INTERNET_DISCONNECTED = 3;
+  NETWORK_CHANGED = 4;
+  TIMED_OUT = 5;
+  CONNECTION_CLOSED = 6;
+  CONNECTION_TIMED_OUT = 7;
+  CONNECTION_REFUSED = 8;
+  CONNECTION_RESET = 9;
+  ADDRESS_UNREACHABLE = 10;
+  QUIC_PROTOCOL_FAILED = 11;
+  OTHER = 12;
+}
+
+enum HttpMethod {
+  UNKNOWN_METHOD = 0;
+  GET = 1;
+  PUT = 2;
+  DELETE = 3;
+  POST = 4;
+  OPTIONS = 5;
+  HEAD = 6;
+  PATCH = 7;
+}
+
+message NetworkUsageMetric {
+  repeated NetworkEventUsage network_event_usage = 1;
+  optional AndroidProcessStats process_stats = 2 [deprecated = true];
+  repeated ServerNetworkEventUsage server_network_event_usage = 3;
+}
+
+message NetworkEventUsage {
+  option (unresolved_option_49659010) = 0;
+  reserved 23;
+  optional string content_type = 1 [(unresolved_option_479186792) = "\010\001"];
+  optional string request_path = 2 [(unresolved_option_28140453) = "J\025^(http|https)://.+?.*", (unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_479186792) = "\010\001"];
+  optional string constant_rpc_path = 25 [(unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_479186792) = "\010\001"];
+  optional int32 time_to_response_data_finish_ms = 3;
+  optional int32 time_to_response_header_ms = 4;
+  optional int32 http_status_code = 5;
+  optional uint32 response_size_bytes = 6;
+  optional uint32 request_size_bytes = 7;
+  optional RequestNegotiatedProtocol request_negotiated_protocol = 8;
+  repeated SubRequestData sub_request = 9;
+  optional AndroidProcessStats process_stats = 10;
+  optional NetworkingStack networking_stack = 24;
+  optional NetworkConnectionInfo network_connection_info = 11;
+  optional PeerDistance server_distance = 27;
+  optional MetricExtension metric_extension = 12;
+  optional int64 start_time_ms = 13;
+  optional RequestStatus request_status = 14;
+  optional RequestFailedReason request_failed_reason = 15;
+  optional int32 quic_detailed_error_code = 19;
+  optional int32 retry_count = 16;
+  optional string rpc_path = 17 [(unresolved_option_28140453) = "J\025^(http|https)://.+?.*", (unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_40223876) = "\010\n"];
+  repeated fixed64 hashed_rpc_path = 21 [packed = true];
+  optional HttpMethod http_method = 18;
+  optional string domain_path = 20 [(unresolved_option_28140453) = "J\031^(http|https)://.+(/|?).*", (unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_479186792) = "\010\001"];
+  optional RpcStats rpc_stats = 22;
+  optional CacheStats cache_stats = 26;
+  oneof sampling_rate {
+    int64 event_sample_rate_permille = 28;
+    SamplingParameters.Rate event_sampling_rate = 29;
+  }
+
+  enum NetworkingStack {
+    UNKNOWN = 0;
+    CRONET = 1;
+  }
+}
+
+message ServerNetworkEventUsage {
+  optional string rpc_path = 1 [(unresolved_option_28140453) = "J\025^(http|https)://.+?.*", (unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_40223876) = "\010\n"];
+  optional string constant_rpc_path = 2 [(unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_479186792) = "\010\001"];
+  repeated fixed64 hashed_rpc_path = 3 [packed = true];
+  optional int32 status_code = 4;
+  optional uint32 request_size_bytes = 5;
+  optional uint32 response_size_bytes = 6;
+  optional uint32 latency_ms = 7;
+}
+
+message SubRequestData {
+  optional string request_path = 1 [(unresolved_option_28140453) = "J\025^(http|https)://.+?.*", (unresolved_option_40075780) = 9900, (unresolved_option_40221563) = 3, (unresolved_option_479186792) = "\010\001"];
+}
+
+message NetworkConnectionInfo {
+  optional NetworkType network_type = 1 [default = NONE];
+
+  enum NetworkType {
+    NONE = -1;
+    MOBILE = 0;
+    WIFI = 1;
+    MOBILE_MMS = 2;
+    MOBILE_SUPL = 3;
+    MOBILE_DUN = 4;
+    MOBILE_HIPRI = 5;
+    WIMAX = 6;
+    BLUETOOTH = 7;
+    DUMMY = 8;
+    ETHERNET = 9;
+    MOBILE_FOTA = 10;
+    MOBILE_IMS = 11;
+    MOBILE_CBS = 12;
+    WIFI_P2P = 13;
+    MOBILE_IA = 14;
+    MOBILE_EMERGENCY = 15;
+    PROXY = 16;
+    VPN = 17;
+  }
+}
+
+message RpcStats {
+  optional int32 rpc_status_code = 1;
+}
+
+message CacheStats {
+  optional int32 lookup_count = 1;
+  optional int32 hit_count = 2;
+}

@@ -1,0 +1,40 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d65931 (va 0x103d65931, __TEXT.__rodata), descriptor length 1120 B, sha256 8e519e1a4fd1f138
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "google/api/field_behavior.proto";
+import "google/api/versioning.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "OperationProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+
+message GenericOperationMetadata {
+  repeated rpc.Status partial_failures = 1 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp create_time = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp update_time = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  bool cancellable = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\014ui, internal"];
+  State state = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\014ui, internal"];
+  repeated string works_on = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_143069646) = "\022\014ui, internal"];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    RUNNING = 1;
+    CANCELLING = 2;
+    DONE = 3;
+  }
+}
+
+message DeleteOperationMetadata {
+  GenericOperationMetadata generic_metadata = 1;
+}

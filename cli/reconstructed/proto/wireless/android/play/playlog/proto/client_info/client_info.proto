@@ -1,0 +1,140 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ed9d12 (va 0x103ed9d12, __TEXT.__rodata), descriptor length 6044 B, sha256 34ad8be1c72efb8a
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "net/proto2/bridge/proto/message_set.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "wireless/android/play/playlog/proto/client_info/android.proto";
+import "wireless/android/play/playlog/proto/client_info/battlestar.proto";
+import "wireless/android/play/playlog/proto/client_info/birdsong.proto";
+import "wireless/android/play/playlog/proto/client_info/browser_info.proto";
+import "wireless/android/play/playlog/proto/client_info/desktop.proto";
+import "wireless/android/play/playlog/proto/client_info/desktop_services.proto";
+import "wireless/android/play/playlog/proto/client_info/drive_desktop.proto";
+import "wireless/android/play/playlog/proto/client_info/g1_desktop.proto";
+import "wireless/android/play/playlog/proto/client_info/google_home.proto";
+import "wireless/android/play/playlog/proto/client_info/ios.proto";
+import "wireless/android/play/playlog/proto/client_info/js.proto";
+import "wireless/android/play/playlog/proto/client_info/kaios.proto";
+import "wireless/android/play/playlog/proto/client_info/mac.proto";
+import "wireless/android/play/playlog/proto/client_info/nearby_desktop.proto";
+import "wireless/android/play/playlog/proto/client_info/nestcam_photon.proto";
+import "wireless/android/play/playlog/proto/client_info/pancetta.proto";
+import "wireless/android/play/playlog/proto/client_info/play_ce.proto";
+import "wireless/android/play/playlog/proto/client_info/portable_phenotype_library.proto";
+import "wireless/android/play/playlog/proto/client_info/sparklight.proto";
+import "wireless/android/play/playlog/proto/client_info/vr.proto";
+import "wireless/android/play/playlog/proto/client_info/wga.proto";
+import "wireless/android/play/playlog/proto/client_info/windows.proto";
+import "wireless/android/play/playlog/proto/client_info/yeti.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "ClientInfoProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message ClientInfo {
+  option (unresolved_option_10) = "OPAQUE_V0";
+  reserved 21;
+  optional ClientType client_type = 1 [(unresolved_option_40075780) = 999];
+  optional string remote_host = 6 [(unresolved_option_40075780) = 1301];
+  optional string remote_host6 = 7 [(unresolved_option_40075780) = 1301];
+  optional AndroidClientInfo android_client_info = 2 [(unresolved_option_17702) = 1, (unresolved_option_40075780) = 999];
+  optional BattlestarClientInfo battlestar_client_info = 22 [(unresolved_option_40075780) = 999];
+  optional BirdsongClientInfo birdsong_client_info = 14 [(unresolved_option_40075780) = 999];
+  optional DesktopClientInfo desktop_client_info = 3 [(unresolved_option_40075780) = 999];
+  optional DesktopServicesClientInfo desktop_services_client_info = 28 [(unresolved_option_40075780) = 999];
+  optional DriveDesktopClientInfo drive_desktop_client_info = 24 [(unresolved_option_40075780) = 999];
+  optional G1DesktopClientInfo g1_desktop_client_info = 25 [(unresolved_option_40075780) = 999];
+  optional GoogleHomeClientInfo google_home_client_info = 16 [(unresolved_option_40075780) = 999];
+  optional IosClientInfo ios_client_info = 4 [(unresolved_option_17702) = 1, (unresolved_option_40075780) = 999];
+  optional JsClientInfo js_client_info = 11 [(unresolved_option_40075780) = 999];
+  optional KaiosClientInfo kaios_client_info = 20 [(unresolved_option_40075780) = 999];
+  optional MacClientInfo mac_client_info = 13 [(unresolved_option_40075780) = 999];
+  optional NearbyDesktopClientInfo nearby_desktop_client_info = 27 [(unresolved_option_40075780) = 999];
+  optional NestcamPhotonClientInfo nestcam_photon_client_info = 34 [(unresolved_option_40075780) = 999];
+  optional PancettaClientInfo pancetta_client_info = 10 [(unresolved_option_40075780) = 999];
+  optional PlayCeClientInfo play_ce_client_info = 5 [(unresolved_option_40075780) = 999];
+  optional PortablePhenotypeLibraryClientInfo portable_phenotype_library_client_info = 23 [(unresolved_option_40075780) = 999];
+  optional SparklightClientInfo sparklight_client_info = 18 [(unresolved_option_40075780) = 999];
+  optional VrClientInfo vr_client_info = 8 [(unresolved_option_40075780) = 999];
+  optional WgaClientInfo wga_client_info = 29 [(unresolved_option_40075780) = 999];
+  optional WindowsClientInfo windows_client_info = 26 [(unresolved_option_40075780) = 999];
+  optional YetiClientInfo yeti_client_info = 15 [(unresolved_option_40075780) = 999];
+  optional BrowserInfo browser_info = 9 [(unresolved_option_40075780) = 999];
+  optional int64 heterodyne_config_version = 12 [(unresolved_option_40075780) = 1500];
+
+  enum ClientType {
+    UNKNOWN = 0;
+    JS = 1;
+    DESKTOP = 2;
+    IOS = 3;
+    IOS_V2 = 10;
+    ANDROID = 4;
+    PLAY_CE = 5;
+    PYTHON = 6;
+    VR = 7;
+    PANCETTA = 8;
+    DRIVE_FS = 9;
+    YETI = 11;
+    MAC = 12;
+    GOOGLE_HOME = 13;
+    BIRDSONG = 14;
+    IOS_FIREBASE = 15;
+    GO = 16;
+    FUCHSIA = 17;
+    SPARKLIGHT = 18;
+    CPLUSPLUS = 19;
+    KAIOS = 20;
+    MUSK = 21;
+    COMPUTE_IMAGE_TOOLS = 22;
+    ANDROID_FIREBASE = 23;
+    LOONIX = 24 [deprecated = true];
+    C9 = 25;
+    BATTLESTAR = 26;
+    PORTABLE_PHENOTYPE_LIBRARY = 27;
+    WINDOWS = 28;
+    CLOUD_WORKSTATIONS_CONNECTOR = 29;
+    FITBIT_DARKHORSE = 30 [deprecated = true];
+    FITBIT_PYTHON = 31;
+    NEARBY = 32;
+    CHROMEOS_BUILD_PYTHON = 33;
+    DOVETAIL_LOGWRITER = 34;
+    NEARBY_CPP = 35;
+    CELLO = 36;
+    NESTCAM_PHOTON = 37;
+    DESKTOP_SERVICES = 38;
+    CHROME_ENTERPRISE_COMPANION = 39;
+    APPSHEET_CLIENT = 40;
+    STARGATE = 41;
+    WGA = 42;
+    VERTEX_DEV_EXPRESS = 43;
+    JETSKI = 44;
+    XPK = 45;
+    COLAB_VSCODE = 46;
+    CHROME_DEVTOOLS_MCP_JS = 47;
+    CLUSTER_TOOLKIT = 48;
+    MEDIAPIPE = 49;
+    CHROME_MODERN_WEB_GUIDANCE_JS = 50;
+    CLUSTER_HEALTH_SCANNER = 51;
+    BIGQUERY_JDBC_DRIVER = 52;
+    BIGQUERY_ODBC_DRIVER = 53;
+  }
+
+  extend proto2.bridge.MessageSet {
+    optional ClientInfo message_set_extension = 66321687;
+  }
+}

@@ -1,0 +1,532 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x410d6fa (va 0x10410d6fa, __TEXT.__rodata), descriptor length 23771 B, sha256 aaf26ccfcac03cf5
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/v1beta1/api_auth.proto";
+import "google/cloud/aiplatform/v1beta1/auth.proto";
+import "google/cloud/aiplatform/v1beta1/media_metadata.proto";
+import "google/cloud/aiplatform/v1beta1/openapi.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/type/interval.proto";
+import "google/type/latlng.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "security/credentials/proto/end_user_credentials.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "ToolProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+option (unresolved_option_525000017) = "\n\003all";
+
+enum ToolType {
+  TOOL_TYPE_UNSPECIFIED = 0;
+  CUSTOM = 1 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  GOOGLE_SEARCH_WEB = 2;
+  GOOGLE_SEARCH_IMAGE = 7;
+  URL_CONTEXT = 3;
+  CODE_EXECUTION = 4 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  CODE_EXECUTION_BASH = 6 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  BASH = 5 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  GOOGLE_MAPS = 8;
+  TOOL_RETRIEVER = 9 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  MEDIA_PROCESSING = 10;
+}
+
+message Tool {
+  option (unresolved_option_127878962) = "\022\021\n\ttool_type\022\004true";
+  reserved 8, 9;
+  repeated FunctionDeclaration function_declarations = 1 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\022Rlen($)<=512 ?: [FIELD_INVALID] At most 512 function declarations can be specified.\"\ttool_type"];
+  Retrieval retrieval = 2 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type", (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1"];
+  GoogleSearch google_search = 7 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type"];
+  ImageSearch image_search = 14 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_127878962) = "\"\ttool_type"];
+  GoogleSearchRetrieval google_search_retrieval = 3 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type", (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1"];
+  GoogleMaps google_maps = 5 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type"];
+  EnterpriseWebSearch enterprise_web_search = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_127878962) = "\"\ttool_type"];
+  ParallelAiSearch parallel_ai_search = 13 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type"];
+  ExaAiSearch exa_ai_search = 15 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type"];
+  CodeExecution code_execution = 4 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type", (unresolved_option_143069646) = "\022\026v1beta1,internal,v1,ui"];
+  UrlContext url_context = 10 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type"];
+  ComputerUse computer_use = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\"\ttool_type"];
+  Bash bash = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\036GOOGLE_INTERNAL, BASH_TOOL_EAP", (unresolved_option_127878962) = "\"\ttool_type"];
+
+  enum PhishBlockThreshold {
+    PHISH_BLOCK_THRESHOLD_UNSPECIFIED = 0;
+    BLOCK_LOW_AND_ABOVE = 30;
+    BLOCK_MEDIUM_AND_ABOVE = 40;
+    BLOCK_HIGH_AND_ABOVE = 50;
+    BLOCK_HIGHER_AND_ABOVE = 55;
+    BLOCK_VERY_HIGH_AND_ABOVE = 60;
+    BLOCK_ONLY_EXTREMELY_HIGH = 100;
+  }
+
+  message GoogleSearch {
+    type.Interval time_range_filter = 1 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\037VERTEX_GROUNDING_TRUSTED_TESTER", (unresolved_option_127878962) = "\022chas($.start_time) and has($.end_time) ?: [FIELD_INVALID] Both start time and end time must be given\022i$.start_time.nanos == 0 and $.end_time.nanos == 0 ?: [FIELD_INVALID] Granularity of nano is not supported\022\204\001$.end_time.seconds > $.start_time.seconds + 86400 ?: [FIELD_INVALID] Invalid time range: end_time must be 24 hours after start_time."];
+    EnhancedContent enhanced_content = 2 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022&YOUTUBE_VIDEO_PREVIEW, GOOGLE_INTERNAL"];
+    repeated string exclude_domains = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    optional PhishBlockThreshold blocking_confidence = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    repeated string included_domains = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\037VERTEX_GROUNDING_TRUSTED_TESTER"];
+    SearchTypes search_types = 6 [(unresolved_option_1052) = "\001"];
+    ExcludedDomainsSource excluded_domains_source = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\0222STATEFUL_DOMAIN_BLOCKLIST_PREVIEW, GOOGLE_INTERNAL"];
+
+    message WebSearch {
+    }
+
+    message ImageSearch {
+    }
+
+    message SearchTypes {
+      WebSearch web_search = 1 [(unresolved_option_1052) = "\001"];
+      ImageSearch image_search = 2 [(unresolved_option_1052) = "\001"];
+    }
+  }
+
+  message ParallelAiSearch {
+    string api_key = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2602];
+    bool enable_data_retention = 2 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    bool enable_zero_data_retention = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    protobuf.Struct custom_configs = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+
+  message ExaAiSearch {
+    string api_key = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2602];
+    protobuf.Struct custom_configs = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+
+  message ImageSearch {
+  }
+
+  message CodeExecution {
+    repeated ExecutableCode.Language languages = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\036GOOGLE_INTERNAL, BASH_TOOL_EAP", (unresolved_option_143069646) = "\022\023v1,v1beta1,internal"];
+  }
+
+  message ComputerUse {
+    Environment environment = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+    repeated string excluded_predefined_functions = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    bool enable_prompt_injection_detection = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    bool enable_strict_bad_url_check = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+    repeated SafetyPolicy disabled_safety_policies = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+    enum Environment {
+      ENVIRONMENT_UNSPECIFIED = 0;
+      ENVIRONMENT_BROWSER = 1;
+      ENVIRONMENT_MOBILE = 2;
+      ENVIRONMENT_DESKTOP = 3;
+    }
+
+    enum SafetyPolicy {
+      SAFETY_POLICY_UNSPECIFIED = 0;
+      FINANCIAL_TRANSACTIONS = 1;
+      SENSITIVE_DATA_MODIFICATION = 2;
+      COMMUNICATION_TOOL = 3;
+      ACCOUNT_CREATION = 4;
+      DATA_MODIFICATION = 5;
+      USER_CONSENT_MANAGEMENT = 6;
+      LEGAL_TERMS_AND_AGREEMENTS = 7;
+    }
+  }
+
+  message Bash {
+  }
+}
+
+message UrlContext {
+}
+
+message EnhancedContent {
+  reserved 1;
+  ImageSearch image_search = 2 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  YoutubeSearch youtube_search = 3 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022&YOUTUBE_VIDEO_PREVIEW, GOOGLE_INTERNAL"];
+
+  message ImageSearch {
+    int32 max_result_count = 1 [(unresolved_option_40075780) = 999];
+  }
+
+  message YoutubeSearch {
+    option (unresolved_option_72295727) = "\022&YOUTUBE_VIDEO_PREVIEW, GOOGLE_INTERNAL";
+  }
+}
+
+message ToolUseExample {
+  oneof Target {
+    ExtensionOperation extension_operation = 10;
+    string function_name = 11;
+  }
+  string display_name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022>isValidDisplayNameLength($) ?: [DISPLAY_NAME_INVALID_TOO_LONG]"];
+  string query = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1901, (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]"];
+  protobuf.Struct request_params = 3;
+  protobuf.Struct response_params = 4;
+  string response_summary = 5 [(unresolved_option_40075780) = 1900];
+
+  message ExtensionOperation {
+    string extension = 1 [(unresolved_option_1055) = "\n#aiplatform.googleapis.com/Extension", (unresolved_option_40075780) = 1100];
+    string operation_id = 2 [(unresolved_option_1052) = "\002"];
+  }
+}
+
+message FunctionDeclaration {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022\373\001matches($, `^[a-zA-Z_][a-zA-Z0-9_\\-\\.:]{0,127}$`)?: [FIELD_INVALID] Invalid function name. Must start with a letter or an underscore. Must be a-z, A-Z, 0-9, or contain underscores (_), dots (.), colons (:), or dashes (-), with a maximum length of 128."];
+  string description = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022BisValidGenericStringLength($) ?: [GENERIC_STRING_INVALID_TOO_LONG]"];
+  Schema parameters = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Value parameters_json_schema = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Vnot has($parameters) ?: parameters_json_schema must not be set when parameters is set."];
+  Schema response = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Value response_json_schema = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Pnot has($response) ?: response_json_schema must not be set when response is set."];
+  optional Behavior behavior = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool defer_loading = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string short_description = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_127878962) = "\022Xempty($) or $defer_loading ?: short_description can only be set if defer_loading is true"];
+
+  enum Behavior {
+    UNSPECIFIED = 0;
+    BLOCKING = 1;
+    NON_BLOCKING = 2;
+  }
+}
+
+message FunctionRemoval {
+  option (unresolved_option_72295727) = "\022\030GOOGLE_INTERNAL,MCDI_EAP";
+  option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message FunctionCall {
+  string id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Struct args = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated PartialArg partial_args = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\023internal,v1,v1beta1"];
+  bool will_continue = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\023internal,v1,v1beta1"];
+}
+
+message PartialArg {
+  oneof delta {
+    protobuf.NullValue null_value = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    double number_value = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    string string_value = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    bool bool_value = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+  string json_path = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]"];
+  bool will_continue = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message FunctionResponsePart {
+  oneof data {
+    FunctionResponseBlob inline_data = 1;
+    FunctionResponseFileData file_data = 2;
+    FunctionResponseRetrievalResult retrieval_result = 3 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  }
+  oneof metadata {
+    FunctionResponseVideoMetadata video_metadata = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+    DocumentMediaMetadata document_metadata = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+    SpreadsheetMetadata spreadsheet_metadata = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+    AudioMetadata audio_metadata = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+  }
+  FunctionResponseMediaResolution media_resolution = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+  MediaProcessing media_processing = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+
+  enum MediaProcessing {
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+    MEDIA_PROCESSING_UNSPECIFIED = 0;
+    STATIC = 1;
+    AGENTIC = 2;
+    AUTO = 3 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  }
+}
+
+message FunctionResponseMediaResolution {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  oneof value {
+    Level level = 1 [(unresolved_option_40075780) = 999];
+    int32 num_tokens = 2 [(unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\037MEDIA_RESOLUTION_TRUSTED_TESTER"];
+  }
+
+  enum Level {
+    MEDIA_RESOLUTION_UNSPECIFIED = 0;
+    MEDIA_RESOLUTION_LOW = 1;
+    MEDIA_RESOLUTION_MEDIUM = 2;
+    MEDIA_RESOLUTION_HIGH = 3;
+    MEDIA_RESOLUTION_ULTRA_HIGH = 4;
+  }
+}
+
+message FunctionResponseVideoMetadata {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  protobuf.Duration start_offset = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Duration end_offset = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022UisValidDuration($) and toMicros($) > 0 ?: [FIELD_INVALID] end_offset must be positive\022\177not has($start_offset) or toMicros($) > toMicros($start_offset) ?: [FIELD_INVALID] end_offset must be greater than start_offset"];
+  double fps = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated ContentLayer content_layers = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum ContentLayer {
+    CONTENT_LAYER_UNSPECIFIED = 0;
+    FRAMES = 1;
+    AUDIO = 2;
+    TRANSCRIPT = 3;
+  }
+}
+
+message FunctionResponseBlob {
+  reserved 3;
+  string mime_type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  bytes data = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string display_name = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\026internal,ui,v1,v1beta1"];
+}
+
+message FunctionResponseFileData {
+  string mime_type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string file_uri = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string display_name = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\026internal,ui,v1,v1beta1"];
+}
+
+message FunctionResponseRetrievalResult {
+  string uri = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string title = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string content = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string display_content = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string query = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  map<string, string> annotations = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message FunctionResponse {
+  string id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]"];
+  protobuf.Struct response = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  repeated FunctionResponsePart parts = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\023internal,v1beta1,v1"];
+  optional Scheduling scheduling = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum Scheduling {
+    SCHEDULING_UNSPECIFIED = 0;
+    SILENT = 1;
+    WHEN_IDLE = 2;
+    INTERRUPT = 3;
+  }
+}
+
+message ExecutableCode {
+  option (unresolved_option_143069646) = "\022\026v1beta1,internal,v1,ui";
+  Language language = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string code = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  optional string id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum Language {
+    LANGUAGE_UNSPECIFIED = 0;
+    PYTHON = 1;
+    BASH = 2 [(unresolved_option_72295727) = "\022\036GOOGLE_INTERNAL, BASH_TOOL_EAP", (unresolved_option_143069646) = "\022\023v1,v1beta1,internal"];
+  }
+}
+
+message CodeExecutionResult {
+  option (unresolved_option_143069646) = "\022\026v1beta1,internal,v1,ui";
+  Outcome outcome = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string output = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional string id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum Outcome {
+    OUTCOME_UNSPECIFIED = 0;
+    OUTCOME_OK = 1;
+    OUTCOME_FAILED = 2;
+    OUTCOME_DEADLINE_EXCEEDED = 3;
+  }
+}
+
+message Retrieval {
+  option (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1";
+  oneof source {
+    VertexAISearch vertex_ai_search = 2;
+    VertexRagStore vertex_rag_store = 4 [(unresolved_option_40075780) = 1901];
+    ExternalApi external_api = 5 [(unresolved_option_40075780) = 1901];
+  }
+  bool disable_attribution = 3 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string name = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_127878962) = "\022)empty($) or matches($, `[a-z][a-z0-9_]*`)"];
+}
+
+message VertexRagStore {
+  repeated string rag_corpora = 1 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n#aiplatform.googleapis.com/RagCorpus", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022?len($) <= 1 ?: [FIELD_INVALID] only one corpus can be specified\032\240\001matches($, `^projects/[a-z0-9][a-z0-9-]*/locations/[a-z0-9][a-z0-9-]*/ragCorpora/[a-z0-9][a-z0-9-]*$`)?: [FIELD_INVALID] Invalid Vertex RAG Corpus resource name", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  repeated RagResource rag_resources = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022?len($) <= 1 ?: [FIELD_INVALID] only one corpus can be specified"];
+  optional int32 similarity_top_k = 2 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\022C$ > 0 ?: [FIELD_INVALID] similarity_top_k must be a positive number"];
+  optional double vector_distance_threshold = 3 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  Ranking ranking = 5 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_72295727) = "\022\016VERTEX_RAG_EXP", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  RagRetrievalConfig rag_retrieval_config = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  bool store_context = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+
+  message RagResource {
+    string rag_corpus = 1 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n#aiplatform.googleapis.com/RagCorpus", (unresolved_option_40075780) = 1100];
+    repeated string rag_file_ids = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  }
+
+  message Ranking {
+    option (unresolved_option_72295727) = "\022\016VERTEX_RAG_EXP";
+    option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+    optional float alpha = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  }
+}
+
+message VertexAISearch {
+  option (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1";
+  string datastore = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022iif(empty($engine), not empty($), empty($)) ?: [FIELD_INVALID] datastore and engine are mutually exclusive\022\311\001(empty($) or matches($, `^projects/[a-z0-9-]*/locations/[a-z0-9][a-z0-9-]*/collections/[a-z0-9][a-z0-9-_]*/dataStores/[a-z0-9][a-z0-9-_]*$`))?: [FIELD_INVALID] Invalid Vertex AI datastore resource name"];
+  string engine = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022\303\001(empty($) or matches($, `^projects/[a-z0-9-]*/locations/[a-z0-9][a-z0-9-]*/collections/[a-z0-9][a-z0-9-_]*/engines/[a-z0-9][a-z0-9-_]*$`))?: [FIELD_INVALID] Invalid Vertex AI engine resource name"];
+  int32 max_results = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_127878962) = "\022F$ >= 0 ?: [FIELD_INVALID] max_return_results must be a positive number\022N$ <= 10 ?: [FIELD_INVALID] max_return_results must be less than or equal to 10"];
+  string filter = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  repeated DataStoreSpec data_store_specs = 5 [(unresolved_option_127878962) = "\022_empty($) or not empty($engine) ?: [FIELD_INVALID] data_store_specs can only be used with engine"];
+
+  message DataStoreSpec {
+    string data_store = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022\273\001matches($, `^projects/[a-z0-9-]*/locations/[a-z0-9][a-z0-9-]*/collections/[a-z0-9][a-z0-9-_]*/dataStores/[a-z0-9][a-z0-9-_]*$`)?: [FIELD_INVALID] Invalid Vertex AI datastore resource name"];
+    string filter = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  }
+}
+
+message ExternalApi {
+  oneof params {
+    SimpleSearchParams simple_search_params = 4 [(unresolved_option_40075780) = 1901];
+    ElasticSearchParams elastic_search_params = 5 [(unresolved_option_40075780) = 1901];
+  }
+  ApiSpec api_spec = 1 [(unresolved_option_40075780) = 1901];
+  string endpoint = 2 [(unresolved_option_40075780) = 1901];
+  ApiAuth api_auth = 3 [deprecated = true, (unresolved_option_40075780) = 1901];
+  AuthConfig auth_config = 7 [(unresolved_option_40075780) = 1901];
+
+  enum ApiSpec {
+    API_SPEC_UNSPECIFIED = 0;
+    SIMPLE_SEARCH = 1;
+    ELASTIC_SEARCH = 2;
+  }
+
+  message SimpleSearchParams {
+  }
+
+  message ElasticSearchParams {
+    string index = 1 [(unresolved_option_40075780) = 1901];
+    string search_template = 2 [(unresolved_option_40075780) = 1901];
+    int32 num_hits = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_127878962) = "\022<$ >= 0 ?: [FIELD_INVALID] num_hits must be a positive number\022D$ <= 20 ?: [FIELD_INVALID] num_hits must be less than or equal to 20"];
+  }
+}
+
+message GoogleSearchRetrieval {
+  option (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1";
+  bool disable_attribution = 1 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\037VERTEX_GROUNDING_TRUSTED_TESTER"];
+  DynamicRetrievalConfig dynamic_retrieval_config = 2;
+  type.Interval time_range_filter = 3 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\037VERTEX_GROUNDING_TRUSTED_TESTER", (unresolved_option_127878962) = "\022chas($.start_time) and has($.end_time) ?: [FIELD_INVALID] Both start time and end time must be given\022i$.start_time.nanos == 0 and $.end_time.nanos == 0 ?: [FIELD_INVALID] Granularity of nano is not supported\022\204\001$.end_time.seconds > $.start_time.seconds + 86400 ?: [FIELD_INVALID] Invalid time range: end_time must be 24 hours after start_time."];
+}
+
+message GoogleMaps {
+  reserved 1, 2;
+  bool enable_widget = 3 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+  GroundingTypes grounding_types = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+
+  message StreetviewImagery {
+  }
+
+  message Places {
+  }
+
+  message Routing {
+  }
+
+  message GroundingTypes {
+    StreetviewImagery streetview_imagery = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022#GROUNDING_WITH_MAPS_IMAGERY_PREVIEW", (unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+    Places places = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+    Routing routing = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+  }
+}
+
+message EnterpriseWebSearch {
+  repeated string exclude_domains = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional Tool.PhishBlockThreshold blocking_confidence = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional ExcludedDomainsSource excluded_domains_source = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\0222STATEFUL_DOMAIN_BLOCKLIST_PREVIEW, GOOGLE_INTERNAL"];
+}
+
+message ExcludedDomainsSource {
+  string uri = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\022\236\001matches($, `^gs://[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]/.+\\.txt$`) ?: [FIELD_INVALID] Invalid Cloud Storage URI format. Expected format: gs://my-bucket/my-file.txt"];
+}
+
+message DynamicRetrievalConfig {
+  Mode mode = 1 [(unresolved_option_40075780) = 12012];
+  optional float dynamic_threshold = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012, (unresolved_option_127878962) = "\022=$ >= 0 ?: [FIELD_INVALID] threshold must be a positive number\022C$ <= 1 ?: [FIELD_INVALID] threshold must be less than or equal to 1"];
+
+  enum Mode {
+    MODE_UNSPECIFIED = 0;
+    MODE_DYNAMIC = 1;
+  }
+}
+
+message ToolConfig {
+  FunctionCallingConfig function_calling_config = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  RetrievalConfig retrieval_config = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  int32 tool_turn_limit = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  bool include_server_side_tool_invocations = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message FunctionCallingConfig {
+  Mode mode = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated string allowed_function_names = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated AllowedFunctionNames parallel_function_call_config = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\013FC_PARALLEL", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  bool stream_function_call_arguments = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_143069646) = "\022\023v1beta1,internal,v1"];
+
+  enum Mode {
+    MODE_UNSPECIFIED = 0;
+    AUTO = 1;
+    ANY = 2;
+    NONE = 3;
+    COMPOSITIONAL = 4 [(unresolved_option_72295727) = "\022\017CFC_CLIENT_SIDE", (unresolved_option_143069646) = "\022\021internal, v1beta1"];
+    VALIDATED = 5 [(unresolved_option_143069646) = "\022\023internal,v1beta1,v1"];
+  }
+
+  message AllowedFunctionNames {
+    option (unresolved_option_72295727) = "\022\013FC_PARALLEL";
+    option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+    repeated string names = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022&len($) > 0 ?: [REQUIRED_FIELD_MISSING]"];
+    bool is_optional = 2;
+  }
+}
+
+message RetrievalConfig {
+  optional type.LatLng lat_lng = 1 [(unresolved_option_40075780) = 1700];
+  optional string language_code = 2 [(unresolved_option_40075780) = 1901];
+  optional string time_zone = 3 [(unresolved_option_40075780) = 1700, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message RagRetrievalConfig {
+  int32 top_k = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  HybridSearch hybrid_search = 2 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  Filter filter = 3 [(unresolved_option_1052) = "\001"];
+  Ranking ranking = 4 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+
+  message HybridSearch {
+    option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+    optional float alpha = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  }
+
+  message Filter {
+    oneof vector_db_threshold {
+      double vector_distance_threshold = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+      double vector_similarity_threshold = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+    }
+    string metadata_filter = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  }
+
+  message Ranking {
+    option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+    oneof ranking_config {
+      RankService rank_service = 1 [(unresolved_option_1052) = "\001"];
+      LlmRanker llm_ranker = 3 [(unresolved_option_1052) = "\001"];
+    }
+    optional int32 rank_count = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+
+    message RankService {
+      optional string model_name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+    }
+
+    message LlmRanker {
+      optional string model_name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+    }
+  }
+}

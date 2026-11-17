@@ -1,0 +1,33 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d219db (va 0x103d219db, __TEXT.__rodata), descriptor length 299 B, sha256 6d3b80d425670bd4
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package net_base.qos;
+
+import "google/api/inclusion.proto";
+
+option java_package = "com.google.net.base";
+option cc_enable_arenas = true;
+option (unresolved_option_525000017) = "\n\003all";
+option (unresolved_option_5) = 2;
+
+enum TrafficClass {
+  BE1 = 0;
+  AF1 = 1;
+  AF2 = 2;
+  AF3 = 3;
+  AF4 = 4;
+  NC1 = 5;
+  NC0 = 6;
+  BE0 = 7;
+  LLQ = 8;
+  LLQ1 = 9;
+  LLQ2 = 10;
+  LLQ3 = 11;
+}
+
+message TrafficClassValue {
+  optional TrafficClass value = 1;
+}

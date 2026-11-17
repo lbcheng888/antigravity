@@ -1,0 +1,66 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dcd489 (va 0x103dcd489, __TEXT.__rodata), descriptor length 2501 B, sha256 8e0a9dd4e26ef28a
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package frameworks.client.logging.proto;
+
+import "frameworks/client/logging/proto/client_event_metadata.proto";
+import "frameworks/client/logging/proto/client_event_trace.proto";
+import "frameworks/client/logging/proto/parameter.proto";
+import "logs/java/logrecord.proto";
+import "logs/proto/wireless/performance/mobile/desktop/extension_metric.proto";
+import "logs/proto/wireless/performance/mobile/extension_metric.proto";
+import "logs/proto/wireless/performance/mobile/ios/extension_metric.proto";
+import "logs/proto/wireless/performance/mobile/ios/nserror.proto";
+import "privacy/pattributes/annotations/proto_field.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import option "third_party/protobuf/cpp_features.proto";
+
+option java_package = "com.google.frameworks.client.logging.proto";
+option java_outer_classname = "ClientLogEventOuterClass";
+option objc_class_prefix = "CLI";
+option features.utf8_validation = NONE;
+option features.(unresolved_option_1000) = "\020\003";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+export message ClientLogEvent {
+  reserved 1, 4 to 6;
+  LoggingType logging_type = 12 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  int64 count = 13 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  logs.proto.wireless.performance.mobile.MetricExtension metric_extension = 14;
+  logs.proto.wireless.performance.mobile.ios.MetricExtension ios_metric_extension = 15;
+  logs.proto.wireless.performance.mobile.desktop.MetricExtension desktop_metric_extension = 18;
+  ClientEventMetadata metadata = 2 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  LogRecordProto log_record = 3 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  ClientEventTrace trace = 7 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  bytes custom_data = 8 [(unresolved_option_535801427) = "\212\n\004\270\303\002\001"];
+  repeated Parameter allowed_parameters = 9 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  SafeFormatArguments safe_format_arguments = 16 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  string component_id = 10 [(unresolved_option_535801427) = "\212\n\004\270\303\002\001"];
+  double sampling_rate = 11 [(unresolved_option_535801427) = "\212\n\004\270\303\002\001"];
+  repeated int64 active_cui_ids = 17 [features.repeated_field_encoding = PACKED, (unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+
+  enum LoggingType {
+    option features.enum_type = CLOSED;
+    option features.(unresolved_option_1000) = "\030\000";
+    UNKNOWN = 0;
+    ORIGIN = 1;
+    COUNT = 2;
+  }
+
+  message SafeFormatArgumentValue {
+    oneof argument_value {
+      string string_value = 1;
+      logs.proto.wireless.performance.mobile.ios.NSError ns_error = 2;
+    }
+  }
+
+  message SafeFormatArguments {
+    repeated int32 index = 1;
+    repeated string value = 2 [deprecated = true];
+    repeated SafeFormatArgumentValue argument_value = 3;
+  }
+}

@@ -1,0 +1,901 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x4168fac (va 0x104168fac, __TEXT.__rodata), descriptor length 31437 B, sha256 2228b9ca77206e7b
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.cloud.code.v1internal;
+
+import public "google/internal/cloud/code/v1internal/metrics.proto";
+import public "google/internal/cloud/code/v1internal/onboarding.proto";
+import "apps/framework/data/service_annotations.proto";
+import "google/api/annotations.proto";
+import "google/api/auditing.proto";
+import "google/api/field_behavior.proto";
+import "google/api/field_info.proto";
+import "google/api/policy.proto";
+import "google/cloud/aiplatform/master/tool.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "logs/proto/learning/smartchoices/feedback_id.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.internal.cloud.code.v1internal";
+option java_outer_classname = "CloudCodeProto";
+option java_multiple_files = true;
+option (unresolved_option_52) = 1;
+
+enum RagStatus {
+  RAG_STATUS_UNSPECIFIED = 0;
+  RAG_DISABLED = 1;
+  RAG_FOUND = 2;
+  RAG_NOT_FOUND = 3;
+  RAG_ERROR = 4;
+}
+
+enum CCRagStatus {
+  CC_RAG_STATUS_UNSPECIFIED = 0;
+  CC_RAG_STATUS_REPOSITORIES_FOUND = 1;
+  CC_RAG_STATUS_NOT_FOUND = 2;
+  CC_RAG_STATUS_NO_REPOSITORIES = 3;
+}
+
+enum FinishReason {
+  FINISH_REASON_UNSPECIFIED = 0;
+  FINISH_REASON_STOP = 1;
+  FINISH_REASON_RECITATION = 2;
+  FINISH_REASON_PROHIBITED_CONTENT = 3;
+}
+
+enum SandboxType {
+  SANDBOX_TYPE_UNSPECIFIED = 0;
+  WORKSTATION = 1;
+  CLOUD_RUN = 2;
+}
+
+message GetCodeAssistGlobalUserSettingRequest {
+  optional string cloudaicompanion_project = 1 [(unresolved_option_40075780) = 1111];
+  optional bool use_read_api = 2 [(unresolved_option_40075780) = 999];
+}
+
+message SetCodeAssistGlobalUserSettingRequest {
+  optional string cloudaicompanion_project = 1 [(unresolved_option_40075780) = 1111];
+  optional bool free_tier_data_collection_optin = 2;
+}
+
+message CodeAssistGlobalUserSettingResponse {
+  optional string cloudaicompanion_project = 1 [(unresolved_option_40075780) = 1111];
+  bool free_tier_data_collection_optin = 2;
+}
+
+message OnboardUserOperationMetadata {
+}
+
+message OnboardUserBackgroundTasksRequest {
+  oneof resource {
+    int64 project_number = 1 [(unresolved_option_40075780) = 1805];
+    longrunning.GetOperationRequest operation = 2;
+  }
+  string tier_id = 3 [(unresolved_option_40075780) = 999];
+  bool is_antigravity_user = 4 [(unresolved_option_40075780) = 999];
+}
+
+message ListCloudAICompanionProjectsRequest {
+  string page_token = 1 [(unresolved_option_1052) = "\001", (unresolved_option_112199341) = "\022\005AUDIT"];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_112199341) = "\022\005AUDIT"];
+  string filter = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_112199341) = "\022\005AUDIT"];
+}
+
+message ListCloudAICompanionProjectsResponse {
+  repeated Project projects = 1 [(unresolved_option_112199341) = "\022\nAUDIT_SIZE"];
+  string next_page_token = 2 [(unresolved_option_112199341) = "\022\005AUDIT"];
+}
+
+message GenerateCodeRequest {
+  string project = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  IDEContext ide_context = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ClientMetadata metadata = 4 [(unresolved_option_1052) = "\001"];
+  bool enable_prompt_enhancement = 5 [(unresolved_option_40075780) = 999];
+  optional string tier_id = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message GenerateCodeResponse {
+  repeated Suggestion suggestions = 1;
+  ServerProcessingDetails processing_details = 2;
+  FileUsage file_usage = 3;
+}
+
+message CompleteCodeRequest {
+  string project = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  IDEContext ide_context = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ClientMetadata metadata = 4 [(unresolved_option_1052) = "\001"];
+  bool enable_prompt_enhancement = 5 [(unresolved_option_40075780) = 999];
+  UserContext user_context = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional string tier_id = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message CompleteCodeResponse {
+  repeated Suggestion suggestions = 1;
+  ServerProcessingDetails processing_details = 2;
+}
+
+message FetchCodeCustomizationStateRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1111, (unresolved_option_158361448) = "\032\010RESOURCE"];
+}
+
+message FetchCodeCustomizationStateResponse {
+  State state = 1 [(unresolved_option_1052) = "\003"];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    DISABLED = 1;
+    ENABLED = 2;
+  }
+}
+
+message SearchSnippetsRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1111, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string query = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1901];
+  string request_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_291403980) = "\010\001"];
+}
+
+message SearchSnippetsResponse {
+  repeated Snippet snippets = 1;
+}
+
+message Snippet {
+  string content = 1 [(unresolved_option_40075780) = 1900];
+  double distance = 2 [(unresolved_option_40075780) = 999];
+  string repo_uri = 3 [(unresolved_option_40075780) = 1900];
+  string file_path = 4 [(unresolved_option_40075780) = 1900];
+}
+
+message TransformCodeRequest {
+  string project = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  IDEContext ide_context = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string user_prompt = 4 [(unresolved_option_40075780) = 1900];
+  Command command = 5;
+  ClientMetadata metadata = 6 [(unresolved_option_1052) = "\001"];
+  bool enable_prompt_enhancement = 7 [(unresolved_option_40075780) = 999];
+  optional string tier_id = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum Command {
+    COMMAND_UNSPECIFIED = 0;
+    NO_COMMAND = 1;
+    GENERATE = 2;
+    EDIT = 3;
+    GENERATE_UNIT_TESTS = 4;
+    GENERATE_DB_CODE = 5 [deprecated = true];
+    MIGRATE_DB_CODE = 6 [deprecated = true];
+    FINISH_CHANGES = 7;
+    OUTLINES = 8;
+  }
+}
+
+message TransformCodeResponse {
+  WorkspaceChange workspace_change = 1 [deprecated = true];
+  IntentMetadata detected_intent = 2;
+  repeated WorkspaceChange workspace_changes = 3;
+  ServerProcessingDetails processing_details = 4;
+  FileUsage file_usage = 5;
+}
+
+message GenerateChatRequest {
+  string project = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string user_message = 3 [(unresolved_option_40075780) = 1900];
+  repeated ChatMessage history = 4 [(unresolved_option_1052) = "\001"];
+  IDEContext ide_context = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ClientMetadata metadata = 6 [(unresolved_option_1052) = "\001"];
+  bool enable_prompt_enhancement = 7 [(unresolved_option_40075780) = 999];
+  YieldInfo yield_info = 8;
+  YieldedUserInput yielded_user_input = 9 [(unresolved_option_40075780) = 1900];
+  optional RetryDetails retry_details = 10 [(unresolved_option_40075780) = 999];
+  repeated google.cloud.aiplatform.master.FunctionDeclaration function_declarations = 11 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "0\001"];
+  optional bool include_thinking_summaries = 12;
+  optional string tier_id = 13 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional string model_config_id = 14 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional string user_prompt_id = 15 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  message YieldedUserInput {
+    oneof user_input {
+      bool consented = 1;
+    }
+  }
+}
+
+message GenerateChatResponse {
+  reserved 5;
+  string markdown = 1 [(unresolved_option_40075780) = 1900];
+  repeated Citation citations = 2;
+  ServerProcessingDetails processing_details = 3;
+  IntentMetadata detected_intent = 4;
+  optional int64 remaining_fca_quota = 6 [deprecated = true];
+  repeated PromptCitation prompt_citations = 7;
+  FileUsage file_usage = 8;
+  AgentProcessingDetails agent_processing_details = 9;
+  YieldInfo yield_info = 10;
+  bool blocked = 11;
+  optional WorkspaceChange workspace_change = 12;
+  string moa_info = 13 [deprecated = true];
+  repeated MoaWorkerInfo moa_worker_info = 14 [deprecated = true];
+  string disclaimer = 15;
+  FinishReason finish_reason = 16;
+  repeated string suggested_prompts = 17 [(unresolved_option_40075780) = 1900];
+  repeated google.cloud.aiplatform.master.FunctionCall function_calls = 19 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "0\001"];
+  TextType text_type = 18;
+  UsageMetadata usage_metadata = 20;
+
+  enum TextType {
+    UNSPECIFIED = 0;
+    RESPONSE = 1;
+    SUMMARY = 2;
+  }
+}
+
+message UsageMetadata {
+  int64 prompt_token_count = 1;
+  int64 candidates_token_count = 2;
+  int64 total_token_count = 3;
+  int64 tool_use_prompt_token_count = 4;
+  int64 thoughts_token_count = 5;
+  int64 cached_content_token_count = 6;
+}
+
+message InternalAtomicAgenticChatRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string user_message = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated AgenticChatMessage history = 4 [(unresolved_option_1052) = "\001"];
+  IDEContext ide_context = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ClientMetadata metadata = 6 [(unresolved_option_1052) = "\001"];
+  bool enable_prompt_enhancement = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated ToolDefinition tool_definitions = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message InternalAtomicAgenticChatResponse {
+  string markdown = 1 [(unresolved_option_40075780) = 1900];
+  AgenticChatMessage response = 2 [(unresolved_option_1052) = "\001"];
+  bool done = 3;
+}
+
+message AgenticChatMessage {
+  optional EntityType author = 1;
+  string text = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated ToolRequest tool_requests = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ToolResult tool_result = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum EntityType {
+    UNKNOWN = 0;
+    USER = 1;
+    SYSTEM = 2;
+    TOOL_USE = 3;
+  }
+}
+
+message ToolDefinition {
+  string server = 1 [(unresolved_option_1052) = "\002"];
+  string name = 2 [(unresolved_option_1052) = "\002"];
+  string description = 3 [(unresolved_option_1052) = "\002"];
+  protobuf.Struct input_schema = 4 [(unresolved_option_1052) = "\002"];
+  ToolAnnotations annotations = 5 [(unresolved_option_1052) = "\001"];
+}
+
+message ToolAnnotations {
+  string title = 1 [(unresolved_option_1052) = "\001"];
+  bool read_only_hint = 2 [(unresolved_option_1052) = "\001"];
+  bool destructive_hint = 3 [(unresolved_option_1052) = "\001"];
+  bool idempotent_hint = 4 [(unresolved_option_1052) = "\001"];
+  bool open_world_hint = 5 [(unresolved_option_1052) = "\001"];
+}
+
+message ToolRequest {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  protobuf.Struct tool_call_json = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message ToolResult {
+  bool is_error = 1 [(unresolved_option_1052) = "\002"];
+  protobuf.Struct content = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message MigrateDatabaseCodeRequest {
+  option deprecated = true;
+  string project = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  IDEContext ide_context = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ClientMetadata metadata = 4 [(unresolved_option_1052) = "\001"];
+}
+
+message MigrateDatabaseCodeResponse {
+  option deprecated = true;
+  repeated WorkspaceChange workspace_changes = 1;
+}
+
+message ListExperimentsRequest {
+  string project = 1 [(unresolved_option_40075780) = 1100];
+  ClientMetadata metadata = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message ListExperimentsResponse {
+  repeated int32 experiment_ids = 1;
+  repeated Flag flags = 2;
+  repeated FilteredFlag filtered_flags = 3 [(unresolved_option_40075780) = 999];
+  string debug_string = 4;
+
+  message Flag {
+    reserved 8;
+    string name = 1;
+    oneof value {
+      bool bool_value = 2;
+      double float_value = 3;
+      int64 int_value = 4;
+      string string_value = 5;
+      Int32List int32_list_value = 6;
+      StringList string_list_value = 7;
+    }
+    optional int32 flag_id = 9;
+
+    message Int32List {
+      repeated int32 values = 1;
+    }
+
+    message StringList {
+      repeated string values = 1;
+    }
+  }
+
+  message FilteredFlag {
+    string name = 1 [(unresolved_option_40075780) = 999];
+    string reason = 2;
+  }
+}
+
+message IDEContext {
+  File current_file = 1;
+  repeated File other_files = 2;
+  repeated Rule rules = 3;
+  WorkspaceStructure workspace_structure = 4 [(unresolved_option_1052) = "\001"];
+  repeated string remote_repositories = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  EditableRegion editable_region = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated RecentUserAction recent_user_actions = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message WorkspaceStructure {
+  string workspace = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string root_dir_path = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string modules = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message EditableRegion {
+  int32 first_line = 1 [(unresolved_option_1052) = "\002"];
+  int32 last_line = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message RecentUserAction {
+  string file_path = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string diff = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message UserContext {
+  reserved 4;
+  repeated PreviousSuggestion previous_suggestions = 1;
+  float user_acceptance_rate = 2;
+  repeated RecentChange recent_changes = 3;
+  int64 current_time_millis = 5;
+  int32 previous_suggestion_count = 6 [(unresolved_option_1052) = "\001"];
+
+  message PreviousSuggestion {
+    float model_score = 1;
+    float classifier_score = 2;
+    float acceptance_fraction = 3;
+    int32 suggestion_length = 4;
+    int64 suggestion_shown_time_millis = 5;
+    int64 suggestion_resolved_time_millis = 6;
+  }
+
+  message RecentChange {
+    int64 change_time_millis = 1;
+  }
+}
+
+message Rule {
+  string instruction = 1;
+}
+
+message Range {
+  int64 start = 1;
+  int64 end = 2;
+}
+
+message FileSegment {
+  string content = 1 [(unresolved_option_40075780) = 1900];
+  bool is_selected = 2 [(unresolved_option_40075780) = 999];
+}
+
+message File {
+  string file_path = 1 [(unresolved_option_40075780) = 1900];
+  string code_language = 2 [(unresolved_option_40075780) = 999];
+  string content = 3 [deprecated = true, (unresolved_option_40075780) = 1900];
+  Range selection = 4 [deprecated = true, (unresolved_option_40075780) = 999];
+  repeated FileSegment segments = 5 [(unresolved_option_40075780) = 1900];
+  optional Reason included_reason = 6;
+  repeated EditType last_edit = 7 [(unresolved_option_40075780) = 999];
+  Repository repository = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ScmSystem scm_system = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bytes binary_content = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum Reason {
+    UNKNOWN = 0;
+    CURRENTLY_OPEN = 1;
+    RECENTLY_OPENED = 2;
+    RECENTLY_EDITED = 3;
+    COLOCATED = 4;
+    RELATED_FILE = 5;
+    USER_SELECTED = 6;
+    RAG_R = 7;
+    IS_DOC_FILE = 8;
+    IS_TEST_FILE = 9;
+    CHAT_SUGGESTED_EDIT = 10;
+    CHAT_FILE_REFERENCED = 11;
+    WORKSPACE_BM25_SEARCH = 12;
+  }
+
+  enum EditType {
+    UNSPECIFIED = 0;
+    NONE = 1;
+    PASTE = 2;
+    UNDO = 3;
+    REDO = 4;
+    COMPLETION = 5;
+    DELETE = 6;
+    ADD = 7;
+    UNKNOWN_EDIT = 8;
+    INTELLISENSE = 9;
+  }
+}
+
+message FileUsage {
+  repeated string included_files = 1;
+  repeated string partially_included_files = 2;
+  repeated string excluded_files = 3;
+  repeated string unsupported_files = 4;
+}
+
+message Citation {
+  int64 start_index = 1;
+  int64 end_index = 2;
+  string license = 3 [(unresolved_option_40075780) = 999];
+  string uri = 4 [(unresolved_option_40075780) = 999];
+}
+
+message PromptCitation {
+  int64 start_index = 1;
+  int64 end_index = 2;
+  optional string repository_uri = 3;
+  string filepath = 4;
+  optional string file_uri = 5;
+}
+
+message Int64Value {
+  optional int64 value = 1;
+}
+
+message Suggestion {
+  string content = 1 [(unresolved_option_40075780) = 1900];
+  repeated Citation citations = 2;
+  float score = 3 [(unresolved_option_40075780) = 999];
+  float classifier_score = 6 [(unresolved_option_40075780) = 999];
+  repeated PromptCitation prompt_citations = 4;
+  optional SuggestionTelemetry telemetry = 5;
+  smartchoices.FeedbackId feedback_id = 7;
+
+  message SuggestionTelemetry {
+    optional Int64Value comment_lines = 1;
+  }
+}
+
+message WorkspaceChange {
+  repeated FileChange files = 1;
+
+  message FileChange {
+    string file_path = 1 [(unresolved_option_40075780) = 1900];
+    Range range = 2 [deprecated = true];
+    string new_text = 3 [(unresolved_option_40075780) = 1900];
+    repeated Citation citations = 4;
+    repeated PromptCitation prompt_citations = 5;
+    optional FileChangeTelemetry telemetry = 6;
+    int64 code_block_index = 7;
+    string language = 8;
+    repeated int64 failed_diff_hunks = 9 [(unresolved_option_1052) = "\001"];
+
+    message FileChangeTelemetry {
+      optional Int64Value comment_lines = 1;
+    }
+  }
+}
+
+message IntentMetadata {
+  string label = 1 [(unresolved_option_40075780) = 999];
+}
+
+message ChatMessage {
+  optional EntityType author = 1;
+  optional string content = 2 [(unresolved_option_40075780) = 1900];
+  optional WorkspaceChange workspace_change = 3;
+  optional google.cloud.aiplatform.master.FunctionCall function_call = 4 [(unresolved_option_127878962) = "0\001"];
+  optional google.cloud.aiplatform.master.FunctionResponse function_response = 5 [(unresolved_option_127878962) = "0\001"];
+  optional Blob blob = 6;
+
+  enum EntityType {
+    UNKNOWN = 0;
+    USER = 1;
+    SYSTEM = 2;
+  }
+
+  message Blob {
+    string mime_type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+    bytes data = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  }
+}
+
+message RetryDetails {
+  RetryReason reason = 1 [(unresolved_option_1052) = "\002"];
+  int32 attempt = 2 [(unresolved_option_1052) = "\002"];
+
+  enum RetryReason {
+    RETRY_REASON_UNSPECIFIED = 0;
+    RETRY_REASON_REGENERATE = 1;
+    RETRY_REASON_EDIT = 2;
+  }
+}
+
+message ModelConfig {
+  string id = 1;
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string description_text = 3 [(unresolved_option_40075780) = 999];
+  string vertex_model_id = 4 [(unresolved_option_40075780) = 999];
+}
+
+message ServerProcessingDetails {
+  reserved 3;
+  string atlas_experience_hash = 1 [json_name = "exp", (unresolved_option_40075780) = 999];
+  RagStatus rag_status = 2 [json_name = "r", (unresolved_option_40075780) = 999];
+  CompletionMethod completion_method = 4 [json_name = "cm", (unresolved_option_40075780) = 999];
+  string chat_client_id_hash = 5 [json_name = "cid", (unresolved_option_40075780) = 999];
+  string experiment_debug_string_fingerprint = 6 [json_name = "eds", (unresolved_option_40075780) = 999];
+  optional string rag_error = 7 [json_name = "re", (unresolved_option_40075780) = 999];
+  string model_uri = 8 [json_name = "mu", (unresolved_option_40075780) = 999];
+  optional string trace_id = 9 [json_name = "tid", (unresolved_option_40075780) = 999];
+  map<string, string> metric_metadata = 10 [json_name = "md", (unresolved_option_40075780) = 9902];
+  optional int32 continuation_call_count = 11 [(unresolved_option_40075780) = 999];
+  ModelConfig model_config = 12 [(unresolved_option_40075780) = 999];
+
+  enum CompletionMethod {
+    UNSPECIFIED = 0;
+    GENERATION = 2;
+    COMPLETION = 3;
+    TRANSFORMATION = 4;
+    CHAT = 5;
+    UNIT_TEST_GENERATION = 6;
+    DATABASE_MIGRATION = 7;
+  }
+}
+
+message RecordSmartchoicesFeedbackRequest {
+  smartchoices.FeedbackId feedback_id = 1 [(unresolved_option_1052) = "\002"];
+  oneof feedback {
+    ShowCompletionFeedback show_completion_feedback = 2;
+  }
+
+  message ShowCompletionFeedback {
+    int32 shown_chars = 1 [(unresolved_option_1052) = "\002"];
+    int32 accepted_chars = 2 [(unresolved_option_1052) = "\002"];
+  }
+}
+
+message RecordSmartchoicesFeedbackResponse {
+}
+
+message ListAgentsRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+}
+
+message ListAgentsResponse {
+  repeated Agent agents = 1;
+}
+
+message Agent {
+  string agent_id = 3 [(unresolved_option_40075780) = 999];
+  string handle = 1 [(unresolved_option_40075780) = 999];
+  DisplayProperties display_properties = 2;
+  AgentType agent_type = 4 [(unresolved_option_40075780) = 999];
+
+  enum AgentType {
+    UNSPECIFIED = 0;
+    TOOL_AGENT = 1;
+    AGENT = 2;
+  }
+
+  message DisplayProperties {
+    string display_name = 1 [(unresolved_option_40075780) = 999];
+    string logo_uri = 2 [(unresolved_option_40075780) = 999];
+    string display_description = 3 [(unresolved_option_40075780) = 999];
+    repeated string suggested_prompts = 4 [(unresolved_option_40075780) = 999];
+    string help_message = 5 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message ListRemoteRepositoriesRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string page_token = 2 [(unresolved_option_1052) = "\001", (unresolved_option_112199341) = "\022\005AUDIT"];
+  int32 page_size = 3 [(unresolved_option_1052) = "\001", (unresolved_option_112199341) = "\022\005AUDIT"];
+}
+
+message ListRemoteRepositoriesResponse {
+  repeated Repository repositories = 1 [(unresolved_option_40075780) = 1900];
+  repeated ScmSystem scm_systems = 2;
+  string next_page_token = 3 [(unresolved_option_112199341) = "\022\005AUDIT"];
+  optional CCRagStatus rag_status = 4;
+}
+
+message ListModelConfigsRequest {
+  ClientMetadata metadata = 1 [(unresolved_option_1052) = "\001"];
+  Domain domain = 2 [(unresolved_option_1052) = "\002"];
+
+  enum Domain {
+    DOMAIN_UNSPECIFIED = 0;
+    DOMAIN_STREAMING_CHAT = 1;
+  }
+}
+
+message ListModelConfigsResponse {
+  repeated ModelConfig allowed_model_configs = 1;
+  ModelConfig default_agent_model_config = 2 [(unresolved_option_40075780) = 999];
+}
+
+message ScmSystem {
+  string id = 1;
+  string display_name = 2 [(unresolved_option_40075780) = 1900];
+  string logo_uri = 3;
+}
+
+message Repository {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string display_name = 2 [(unresolved_option_40075780) = 1900];
+  string display_path = 3 [(unresolved_option_40075780) = 1900];
+  string scm_id = 4 [(unresolved_option_40075780) = 1100];
+  string repository_uri = 5 [(unresolved_option_40075780) = 1900];
+}
+
+message AgentProcessingDetails {
+  string agent_id = 1;
+  repeated AgentInitiatedRPC rpcs = 2;
+}
+
+message YieldInfo {
+  AgentInitiatedRPC rpc = 1;
+  repeated Step remaining_steps = 2;
+  YieldType yield_type = 3;
+  repeated StepResponse completed_step_responses = 4;
+  string button_text = 5;
+
+  enum YieldType {
+    YIELD_TYPE_UNSPECIFIED = 0;
+    MUTATING_OPERATION = 1;
+    LOCAL_AGENT = 2;
+  }
+
+  message Step {
+    string tool = 1;
+    string prompt = 2 [(unresolved_option_40075780) = 1900];
+  }
+
+  message StepResponse {
+    Step step = 1;
+    string response = 2;
+  }
+}
+
+message AgentInitiatedRPC {
+  string extension_id = 1;
+  string base_uri = 2 [(unresolved_option_40075780) = 999];
+  string operation_id = 3;
+  string operation_summary = 4;
+  repeated Param params = 5;
+  int32 elapsed_ms = 6;
+  int32 http_status = 7;
+
+  message Param {
+    string key = 1;
+    string value = 2;
+  }
+}
+
+message MoaWorkerInfo {
+  option deprecated = true;
+  string worker_id = 1 [deprecated = true, (unresolved_option_40075780) = 1100];
+  WorkerToClientPubSub worker_to_client_pubsub = 2 [deprecated = true];
+  ClientToWorkerPubSub client_to_worker_pubsub = 3 [deprecated = true];
+  BucketConfig bucket_config = 4 [deprecated = true];
+  CreateWorker create_worker = 5;
+  DeleteWorker delete_worker = 6;
+
+  message WorkerToClientPubSub {
+    string topic_id = 1 [(unresolved_option_40075780) = 1119];
+    string subscription_id = 2 [(unresolved_option_40075780) = 1119];
+  }
+
+  message ClientToWorkerPubSub {
+    string topic_id = 1 [(unresolved_option_40075780) = 1119];
+    string subscription_id = 2 [(unresolved_option_40075780) = 1119];
+  }
+
+  message BucketConfig {
+    string bucket_name = 1 [(unresolved_option_40075780) = 1119];
+  }
+
+  message CreateWorker {
+    string worker_id = 1 [(unresolved_option_40075780) = 1100];
+    WorkerToClientPubSub worker_to_client_pubsub = 2;
+    ClientToWorkerPubSub client_to_worker_pubsub = 3;
+    BucketConfig bucket_config = 4;
+  }
+
+  message DeleteWorker {
+    string worker_id = 1 [(unresolved_option_40075780) = 1100];
+  }
+}
+
+message ListAllSandboxesRequest {
+  int32 page_size = 1 [(unresolved_option_1052) = "\001", (unresolved_option_112199341) = "\022\005AUDIT"];
+  string page_token = 2 [(unresolved_option_1052) = "\001", (unresolved_option_112199341) = "\022\005AUDIT"];
+}
+
+message Sandbox {
+  string sandbox_id = 1;
+  string resource = 2 [(unresolved_option_40075780) = 1100];
+  string endpoint = 3 [(unresolved_option_40075780) = 1300];
+  int32 port = 4 [(unresolved_option_40075780) = 1300];
+  SandboxType sandbox_type = 5;
+}
+
+service CloudCode {
+  rpc GenerateCode(GenerateCodeRequest) returns (GenerateCodeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\030/v1internal:generateCode";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+  }
+  rpc CompleteCode(CompleteCodeRequest) returns (CompleteCodeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\030/v1internal:completeCode";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+  }
+  rpc TransformCode(TransformCodeRequest) returns (TransformCodeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\031/v1internal:transformCode";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+  }
+  rpc SearchSnippets(SearchSnippetsRequest) returns (SearchSnippetsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\032/v1internal:searchSnippets";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4008000000000000;
+  }
+  rpc FetchCodeCustomizationState(FetchCodeCustomizationStateRequest) returns (FetchCodeCustomizationStateResponse) {
+    option (unresolved_option_72295728) = ":\001*\"'/v1internal:fetchCodeCustomizationState";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4008000000000000;
+  }
+  rpc GenerateChat(GenerateChatRequest) returns (GenerateChatResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\030/v1internal:generateChat";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4066800000000000;
+  }
+  rpc StreamGenerateChat(GenerateChatRequest) returns (stream GenerateChatResponse) {
+    option (unresolved_option_72295728) = ":\001*\200\001\001\"\036/v1internal:streamGenerateChat";
+    option (unresolved_option_140442103) = 3;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc InternalAtomicAgenticChat(InternalAtomicAgenticChatRequest) returns (InternalAtomicAgenticChatResponse) {
+    option (unresolved_option_72295728) = ":\001*\"%/v1internal:internalAtomicAgenticChat";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4066800000000000;
+  }
+  rpc MigrateDatabaseCode(MigrateDatabaseCodeRequest) returns (MigrateDatabaseCodeResponse) {
+    option deprecated = true;
+    option (unresolved_option_72295728) = ":\001*\"\037/v1internal:migrateDatabaseCode";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+  }
+  rpc ListExperiments(ListExperimentsRequest) returns (ListExperimentsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\033/v1internal:listExperiments";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022!\n\025metadata.duet_project\032\010RESOURCE:\013SKIP_VPC_SC";
+  }
+  rpc LoadCodeAssist(LoadCodeAssistRequest) returns (LoadCodeAssistResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\032/v1internal:loadCodeAssist";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_161893301) = "\022$\n\030cloudaicompanion_project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListCloudAICompanionProjects(ListCloudAICompanionProjectsRequest) returns (ListCloudAICompanionProjectsResponse) {
+    option (unresolved_option_72295728) = "\022(/v1internal:listCloudAICompanionProjects";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (unresolved_option_72295728) = "\022\026/v1internal:listAgents";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListRemoteRepositories(ListRemoteRepositoriesRequest) returns (ListRemoteRepositoriesResponse) {
+    option (unresolved_option_72295728) = "\022\"/v1internal:listRemoteRepositories";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListModelConfigs(ListModelConfigsRequest) returns (ListModelConfigsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\034/v1internal:listModelConfigs";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022!\n\025metadata.duet_project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc OnboardUser(OnboardUserRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1049) = "\n\023OnboardUserResponse\022\034OnboardUserOperationMetadata";
+    option (unresolved_option_72295728) = ":\001*\"\027/v1internal:onboardUser";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_161893301) = "\022$\n\030cloudaicompanion_project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc OnboardUserBackgroundTasks(OnboardUserBackgroundTasksRequest) returns (protobuf.Empty) {
+    option (unresolved_option_72295728) = ":\001*\"&/v1internal:onboardUserBackgroundTasks";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_8) = 0x406e000000000000;
+  }
+  rpc RecordSmartchoicesFeedback(RecordSmartchoicesFeedbackRequest) returns (RecordSmartchoicesFeedbackResponse) {
+    option (unresolved_option_72295728) = ":\001*\"&/v1internal:recordSmartchoicesFeedback";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_8) = 0x402e000000000000;
+  }
+  rpc RecordCodeAssistMetrics(RecordCodeAssistMetricsRequest) returns (protobuf.Empty) {
+    option (unresolved_option_72295728) = ":\001*\"#/v1internal:recordCodeAssistMetrics";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc RecordClientEvent(RecordClientEventRequest) returns (protobuf.Empty) {
+    option (unresolved_option_72295728) = ":\001*\"\035/v1internal:recordClientEvent";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc GetCodeAssistGlobalUserSetting(GetCodeAssistGlobalUserSettingRequest) returns (CodeAssistGlobalUserSettingResponse) {
+    option (unresolved_option_72295728) = "\022*/v1internal:getCodeAssistGlobalUserSetting";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022$\n\030cloudaicompanion_project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc SetCodeAssistGlobalUserSetting(SetCodeAssistGlobalUserSettingRequest) returns (CodeAssistGlobalUserSettingResponse) {
+    option (unresolved_option_72295728) = ":\001*\"*/v1internal:setCodeAssistGlobalUserSetting";
+    option (unresolved_option_140442103) = 2;
+    option (unresolved_option_161893301) = "\022$\n\030cloudaicompanion_project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc FetchAdminControls(FetchAdminControlsRequest) returns (FetchAdminControlsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\036/v1internal:fetchAdminControls";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+}

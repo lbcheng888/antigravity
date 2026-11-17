@@ -1,0 +1,149 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f111a2 (va 0x103f111a2, __TEXT.__rodata), descriptor length 6878 B, sha256 4a1a88d647cd85a9
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.cloud.code.v1internal;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/internal/cloud/code/v1internal/entitlement.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+
+option java_package = "com.google.internal.cloud.code.v1internal";
+option java_outer_classname = "ModelConfigsProto";
+option java_multiple_files = true;
+
+message FetchAvailableModelsRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  Entitlement entitlement = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string location = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1700];
+}
+
+message QuotaInfo {
+  float remaining_fraction = 1;
+  protobuf.Timestamp reset_time = 2;
+}
+
+message BeyondModelInfo {
+  string model_id = 1;
+  string quota_bucket_team = 2;
+  string quota_bucket_name = 3;
+}
+
+message ModelDetails {
+  string display_name = 1 [(unresolved_option_40075780) = 999];
+  bool supports_images = 2;
+  bool supports_thinking = 3;
+  int32 thinking_budget = 4;
+  int32 min_thinking_budget = 5;
+  bool recommended = 6 [deprecated = true];
+  int32 max_tokens = 7;
+  int32 max_output_tokens = 8;
+  string tokenizer_type = 9 [deprecated = true];
+  QuotaInfo quota_info = 10;
+  string beta_warning_message = 11 [(unresolved_option_40075780) = 999];
+  bool beta = 12;
+  bool disabled = 13;
+  string description = 14 [(unresolved_option_40075780) = 999];
+  exa.codeium_common_pb.Model model = 15;
+  exa.codeium_common_pb.APIProvider api_provider = 16;
+  exa.codeium_common_pb.ModelProvider model_provider = 17;
+  bool supports_cumulative_context = 18;
+  bool tab_jump_print_line_range = 19;
+  bool supports_estimate_token_counter = 20;
+  bool is_internal = 21;
+  bool add_cursor_to_find_replace_target = 22;
+  exa.codeium_common_pb.PromptTemplaterType prompt_templater_type = 23;
+  exa.codeium_common_pb.ToolFormatterType tool_formatter_type = 24;
+  bool supports_raw_thinking = 25 [deprecated = true];
+  bool supports_video = 26;
+  bool supports_pdf = 27;
+  bool requires_lead_in_generation = 28;
+  string tag_title = 29 [(unresolved_option_40075780) = 999];
+  string tag_description = 30 [(unresolved_option_40075780) = 999];
+  bool requires_no_xml_tool_examples = 31;
+  map<string, bool> supported_mime_types = 32;
+  bool requires_image_output_outside_function_responses = 33;
+  bool preview = 34;
+  int32 thinking_level = 35;
+  string tool_response_key = 36;
+  ModelExperiments model_experiments = 37;
+  bool supports_thought_circulation = 38;
+  string vertex_model_id = 39;
+  bool supports_deferred_tool_loading = 40;
+  string model_url = 41;
+  bool supports_adaptive_thinking = 42;
+  repeated string ignore_experiment_names = 43;
+  BeyondModelInfo beyond_model_info = 44;
+  bool supports_model_info_override = 45;
+  repeated string model_experiment_ids = 46;
+}
+
+message ModelSort {
+  string display_name = 1 [(unresolved_option_40075780) = 999];
+  repeated ModelGroup groups = 2;
+}
+
+message ModelGroup {
+  string display_name = 1 [(unresolved_option_40075780) = 999];
+  repeated string model_ids = 2 [(unresolved_option_40075780) = 999];
+}
+
+message DeprecatedModelReroutingInfo {
+  string new_model_id = 1;
+  exa.codeium_common_pb.Model old_model_enum = 2;
+  exa.codeium_common_pb.Model new_model_enum = 3;
+}
+
+message ExperimentValue {
+  oneof value {
+    bool bool_value = 1;
+    double float_value = 2;
+    int64 int_value = 3;
+    string string_value = 4;
+  }
+}
+
+message ModelExperiments {
+  map<string, ExperimentValue> experiments = 1;
+}
+
+message TieredModelConfig {
+  repeated string flash_lite = 1 [(unresolved_option_40075780) = 999];
+  repeated string flash = 2 [(unresolved_option_40075780) = 999];
+  repeated string pro = 3 [(unresolved_option_40075780) = 999];
+}
+
+message SupportedThinkingLevel {
+  string thinking_suffix = 1 [(unresolved_option_40075780) = 999];
+  string thinking_display_name = 2 [(unresolved_option_40075780) = 999];
+}
+
+message ModelVariantList {
+  string display_name = 1 [(unresolved_option_40075780) = 999];
+  repeated SupportedThinkingLevel supported_thinking_levels = 2;
+}
+
+message FetchAvailableModelsResponse {
+  map<string, ModelDetails> models = 1;
+  string default_agent_model_id = 2 [deprecated = true, (unresolved_option_40075780) = 999];
+  repeated ModelSort agent_model_sorts = 3;
+  repeated string command_model_ids = 4 [deprecated = true, (unresolved_option_40075780) = 999];
+  repeated string tab_model_ids = 5 [(unresolved_option_40075780) = 999];
+  repeated string image_generation_model_ids = 6 [(unresolved_option_40075780) = 999];
+  repeated string mquery_model_ids = 7 [deprecated = true, (unresolved_option_40075780) = 999];
+  repeated string web_search_model_ids = 8 [(unresolved_option_40075780) = 999];
+  repeated string commit_message_model_ids = 10 [(unresolved_option_40075780) = 999];
+  map<string, DeprecatedModelReroutingInfo> deprecated_model_ids = 9;
+  repeated string audio_transcription_model_ids = 11 [(unresolved_option_40075780) = 999];
+  repeated ModelSort battle_mode_model_sorts = 12 [(unresolved_option_40075780) = 999];
+  TieredModelConfig tiered_model_ids = 14;
+  repeated int32 experiment_ids = 13 [(unresolved_option_40075780) = 2301];
+  map<string, ModelExperiments> shared_model_experiments = 15;
+  map<string, ModelVariantList> grouped_models = 16;
+}

@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3a786 (va 0x103d3a786, __TEXT.__rodata), descriptor length 537 B, sha256 1b85d1bc4add90b0
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package datapol.mapping;
+
+import "storage/datapol/annotations/mapping/sensitivity_levels.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.protos.datapol.mapping";
+option (unresolved_option_5) = 2;
+
+message SemanticTypeSensitivity {
+  SemanticType semantic_type = 1;
+  Sensitivity sensitivity = 2;
+}
+
+message SemanticTypeSensitivityList {
+  repeated SemanticTypeSensitivity type_sensitivities = 1;
+}

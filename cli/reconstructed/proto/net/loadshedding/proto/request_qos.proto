@@ -1,0 +1,32 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3b007 (va 0x103d3b007, __TEXT.__rodata), descriptor length 550 B, sha256 fc79f970ae1943aa
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package net.loadshedding;
+
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.net.loadshedding.proto1api";
+option java_outer_classname = "QoS";
+option objc_class_prefix = "LOADS";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.net.loadshedding";
+
+message RequestQoS {
+  optional Criticality criticality = 1 [default = CRITICAL];
+
+  enum Criticality {
+    CRITICAL_PLUS = 3;
+    CRITICAL = 2;
+    SHEDDABLE_PLUS = 1;
+    SHEDDABLE = 0;
+  }
+}
+
+extend proto2.EnumValueOptions {
+  optional RequestQoS.Criticality mapped_criticality = 102556457 [default = CRITICAL];
+}

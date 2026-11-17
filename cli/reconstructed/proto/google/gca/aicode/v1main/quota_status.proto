@@ -1,0 +1,57 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d7ca87 (va 0x103d7ca87, __TEXT.__rodata), descriptor length 1402 B, sha256 34879748c60e0e6c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.gca.aicode.v1main;
+
+import "google/api/versioning.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.gca.aicode.v1main";
+option java_outer_classname = "QuotaStatusProto";
+option java_multiple_files = true;
+
+message QuotaSummary {
+  option (unresolved_option_143069646) = "\022\007v1alpha";
+  string description = 1 [(unresolved_option_40075780) = 999];
+  repeated Group groups = 2;
+
+  message Group {
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    string display_name = 1 [(unresolved_option_40075780) = 999];
+    string description = 2 [(unresolved_option_40075780) = 999];
+    repeated Bucket buckets = 3;
+  }
+
+  message Bucket {
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    string bucket_id = 1 [(unresolved_option_40075780) = 999];
+    string display_name = 2 [(unresolved_option_40075780) = 999];
+    string description = 3 [(unresolved_option_40075780) = 999];
+    string refresh_window_label = 4 [(unresolved_option_40075780) = 999];
+    float remaining_fraction = 5;
+    bool disabled = 6;
+    protobuf.Timestamp reset_time = 7;
+  }
+}
+
+message Credit {
+  option (unresolved_option_143069646) = "\022\007v1alpha";
+  CreditType credit_type = 1;
+  int64 credit_amount = 2;
+  int64 minimum_usable_credit_amount = 3;
+
+  enum CreditType {
+    CREDIT_TYPE_UNSPECIFIED = 0;
+    GOOGLE_ONE_AI = 1;
+  }
+}
+
+message CreditUsageMetadata {
+  option (unresolved_option_143069646) = "\022\007v1alpha";
+  repeated Credit consumed_credits = 1;
+  repeated Credit remaining_credits = 2;
+}

@@ -1,0 +1,18 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d243fc (va 0x103d243fc, __TEXT.__rodata), descriptor length 317 B, sha256 abe9959d177bc5fb
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc.context;
+
+option java_package = "com.google.rpc.context";
+option java_outer_classname = "ApiaryMigrationContextProto";
+option java_multiple_files = true;
+option objc_class_prefix = "RPC";
+
+message ApiaryMigrationContext {
+  string apiary_method_name = 1;
+  string original_text_content = 2 [ctype = CORD];
+  string oauth_access_token = 3;
+}

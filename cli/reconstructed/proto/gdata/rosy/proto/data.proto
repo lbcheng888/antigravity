@@ -1,0 +1,149 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e66dd1 (va 0x103e66dd1, __TEXT.__rodata), descriptor length 4264 B, sha256 6b8e22a2e02e5029
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package gdata;
+
+import "google/api/inclusion.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option objc_class_prefix = "GDATA";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\003all";
+option (unresolved_option_5) = 1;
+option (unresolved_option_26) = 1;
+option (unresolved_option_48) = 0;
+
+message Media {
+  optional string content_type = 1;
+  optional uint64 timestamp = 2;
+  optional string token = 3;
+  optional int64 length = 4;
+  optional string filename = 5 [(unresolved_option_40075780) = 1900];
+  optional ReferenceType reference_type = 6;
+  optional string path = 7;
+  optional bytes blob_ref = 8 [deprecated = true];
+  optional bytes inline = 9;
+  optional bytes media_id = 10;
+  optional string hash = 11 [deprecated = true];
+  optional string algorithm = 12 [deprecated = true];
+  repeated CompositeMedia composite_media = 13;
+  optional bytes bigstore_object_ref = 14 [deprecated = true];
+  optional ObjectId object_id = 15;
+  optional Blobstore2Info blobstore2_info = 16;
+  optional DiffVersionResponse diff_version_response = 17;
+  optional DiffChecksumsResponse diff_checksums_response = 18;
+  optional DiffDownloadResponse diff_download_response = 19;
+  optional DiffUploadRequest diff_upload_request = 20;
+  optional DiffUploadResponse diff_upload_response = 21;
+  optional ContentTypeInfo content_type_info = 22;
+  optional DownloadParameters download_parameters = 23;
+  optional fixed32 crc32c_hash = 24 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "8\001"];
+  optional bytes md5_hash = 25 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "8\001"];
+  optional bytes sha1_hash = 26 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "8\001"];
+  optional bytes sha256_hash = 30 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "8\001"];
+  optional bytes sha512_hash = 31 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "8\001"];
+  optional bool is_potential_retry = 27 [default = true];
+  optional bytes cosmo_binary_reference = 28;
+  optional bool hash_verified = 29;
+
+  enum ReferenceType {
+    PATH = 1;
+    BLOB_REF = 2;
+    INLINE = 3;
+    GET_MEDIA = 4;
+    COMPOSITE_MEDIA = 5;
+    BIGSTORE_REF = 6;
+    DIFF_VERSION_RESPONSE = 7;
+    DIFF_CHECKSUMS_RESPONSE = 8;
+    DIFF_DOWNLOAD_RESPONSE = 9;
+    DIFF_UPLOAD_REQUEST = 10;
+    DIFF_UPLOAD_RESPONSE = 11;
+    COSMO_BINARY_REFERENCE = 12;
+    ARBITRARY_BYTES = 13;
+  }
+}
+
+message DownloadParameters {
+  reserved 3;
+  optional bool allow_gzip_compression = 1;
+  optional bool ignore_range = 2;
+}
+
+message CompositeMedia {
+  optional int64 length = 1;
+  optional ReferenceType reference_type = 2;
+  optional string path = 3;
+  optional bytes blob_ref = 4 [deprecated = true];
+  optional bytes inline = 5;
+  optional ObjectId object_id = 6;
+  optional Blobstore2Info blobstore2_info = 7;
+  optional bytes cosmo_binary_reference = 8;
+  optional fixed32 crc32c_hash = 9;
+  optional bytes md5_hash = 10;
+  optional bytes sha1_hash = 11;
+
+  enum ReferenceType {
+    PATH = 1;
+    BLOB_REF = 2;
+    INLINE = 3;
+    BIGSTORE_REF = 4;
+    COSMO_BINARY_REFERENCE = 5;
+  }
+}
+
+message Blobstore2Info {
+  required string blob_id = 1;
+  optional int64 blob_generation = 5;
+  optional string read_token = 2;
+  optional bytes upload_metadata_container = 3 [ctype = CORD];
+  optional bytes download_read_handle = 4 [ctype = CORD];
+  optional bytes download_external_read_token = 6 [ctype = CORD];
+  optional bytes upload_fragment_list_creation_info = 7 [ctype = CORD];
+}
+
+message ObjectId {
+  required string bucket_name = 1;
+  required string object_name = 2 [(unresolved_option_40075780) = 1900];
+  optional int64 generation = 7;
+}
+
+message DiffVersionResponse {
+  required string object_version = 1;
+  required int64 object_size_bytes = 2;
+}
+
+message DiffChecksumsResponse {
+  required string object_version = 1;
+  required int64 object_size_bytes = 2;
+  required int64 chunk_size_bytes = 3;
+  optional CompositeMedia checksums_location = 4;
+  optional CompositeMedia object_location = 5;
+}
+
+message DiffDownloadResponse {
+  required CompositeMedia object_location = 1;
+}
+
+message DiffUploadRequest {
+  optional string object_version = 1;
+  optional CompositeMedia object_info = 2;
+  optional CompositeMedia checksums_info = 3;
+}
+
+message DiffUploadResponse {
+  optional string object_version = 1;
+  optional CompositeMedia original_object = 2;
+}
+
+message ContentTypeInfo {
+  optional string best_guess = 1 [(unresolved_option_40075780) = 1900];
+  optional string from_header = 2 [(unresolved_option_40075780) = 1900];
+  optional string from_file_name = 3;
+  optional string from_url_path = 4 [(unresolved_option_40075780) = 1900];
+  optional string from_bytes = 5;
+  optional string from_fusion_id = 6;
+  optional bytes fusion_id_detection_metadata = 7;
+}

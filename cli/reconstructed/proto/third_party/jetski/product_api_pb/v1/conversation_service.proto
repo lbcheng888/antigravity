@@ -1,0 +1,73 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3db914d (va 0x103db914d, __TEXT.__rodata), descriptor length 2173 B, sha256 4bd0780e325560ed
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package jetski.product.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "third_party/jetski/product_api_pb/v1/content.proto";
+import "third_party/jetski/product_api_pb/v1/conversation.proto";
+
+message CreateConversationRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\001"];
+  string environment_id = 2 [(unresolved_option_1052) = "\001"];
+  string title = 3 [(unresolved_option_1052) = "\001"];
+  repeated string tags = 4 [(unresolved_option_1052) = "\001"];
+  string model = 5 [(unresolved_option_1052) = "\001"];
+  repeated Content prompt = 6 [(unresolved_option_1052) = "\001"];
+}
+
+message CreateConversationResponse {
+  Conversation conversation = 1;
+}
+
+message ListConversationsRequest {
+  int32 page_size = 1 [(unresolved_option_1052) = "\001"];
+  string page_token = 2 [(unresolved_option_1052) = "\001"];
+  string project_id = 3 [(unresolved_option_1052) = "\001"];
+  optional string parent_conversation_id = 4 [(unresolved_option_1052) = "\001"];
+  repeated string tags = 5 [(unresolved_option_1052) = "\001"];
+  bool include_archived = 6 [(unresolved_option_1052) = "\001"];
+}
+
+message ListConversationsResponse {
+  repeated Conversation conversations = 1;
+  string next_page_token = 2;
+}
+
+message GetConversationRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message UpdateConversationRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002"];
+  ConversationAnnotations annotations = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message DeleteConversationRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message DeleteConversationResponse {
+}
+
+service ConversationService {
+  rpc CreateConversation(CreateConversationRequest) returns (CreateConversationResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\021/v1/conversations";
+  }
+  rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse) {
+    option (unresolved_option_72295728) = "\022\021/v1/conversations";
+  }
+  rpc GetConversation(GetConversationRequest) returns (Conversation) {
+    option (unresolved_option_72295728) = "\022#/v1/conversations/{conversation_id}";
+  }
+  rpc UpdateConversation(UpdateConversationRequest) returns (Conversation) {
+    option (unresolved_option_72295728) = ":\013annotations2#/v1/conversations/{conversation_id}";
+  }
+  rpc DeleteConversation(DeleteConversationRequest) returns (DeleteConversationResponse) {
+    option (unresolved_option_72295728) = "*#/v1/conversations/{conversation_id}";
+  }
+}

@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d38277 (va 0x103d38277, __TEXT.__rodata), descriptor length 517 B, sha256 0f769fdfd9436c76
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "logs/proto/wireless/performance/mobile/cui_metric.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_multiple_files = true;
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+message CuiMetadata {
+  optional int32 cui_id = 1;
+  optional CuiMetric.Status status = 2;
+  optional CuiMetric.IncompleteReason incomplete_reason = 3;
+}

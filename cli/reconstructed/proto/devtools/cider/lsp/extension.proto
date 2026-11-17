@@ -1,0 +1,70 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d78f43 (va 0x103d78f43, __TEXT.__rodata), descriptor length 1371 B, sha256 28ee55783f4f81ea
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package editorservices;
+
+import "devtools/cider/lsp/common.proto";
+import "google/protobuf/any.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+
+option java_package = "com.google.devtools.cider.editorservices";
+option java_multiple_files = true;
+option features.field_presence = IMPLICIT;
+option (unresolved_option_17702) = "editorservices.proto";
+option (unresolved_option_12) = "editorservices.proto";
+
+message WorldSnapshot {
+  uint64 source_snapshot = 1;
+  uint64 build_snapshot = 2;
+  string shelf_snapshot = 3;
+}
+
+message Activity {
+  string activity_type = 1;
+  int32 count = 2;
+  int64 walltime_usec = 3;
+  int64 total_duration_usec = 4;
+  int64 total_bytes = 5;
+}
+
+message Experiments {
+  repeated string experiments = 1;
+}
+
+message CiderLSPCommand {
+  string citc_workspace_id = 1;
+  string workspace_path = 2;
+  string uri = 3;
+  string command = 4;
+  google.protobuf.Any arg = 5;
+}
+
+message LiteralCommandArg {
+  string json = 1;
+}
+
+message BlazeTarget {
+  string name = 1;
+  string rule_kind = 2;
+  string generator_function = 8;
+  Range range = 3;
+  bool is_runnable = 4;
+  bool is_testable = 5;
+  repeated string sources = 6;
+  repeated string deps = 7;
+  repeated string tags = 9;
+  TestSize test_size = 10;
+  bool testonly = 11;
+  repeated string data = 12;
+
+  enum TestSize {
+    UNKNOWN_TEST_SIZE = 0;
+    SMALL_TEST = 1;
+    MEDIUM_TEST = 2;
+    LARGE_TEST = 3;
+    ENORMOUS_TEST = 4;
+  }
+}

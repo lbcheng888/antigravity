@@ -1,0 +1,39 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d49bdc (va 0x103d49bdc, __TEXT.__rodata), descriptor length 742 B, sha256 a3e68342f4efc03c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.protobuf;
+
+option java_package = "com.google.protobuf";
+option java_outer_classname = "StructProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/protobuf/types/known/structpb";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GPB";
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option (unresolved_option_28) = 0;
+
+enum NullValue {
+  NULL_VALUE = 0;
+}
+
+message Struct {
+  map<string, Value> fields = 1;
+}
+
+message Value {
+  oneof kind {
+    NullValue null_value = 1;
+    double number_value = 2;
+    string string_value = 3;
+    bool bool_value = 4;
+    Struct struct_value = 5;
+    ListValue list_value = 6;
+  }
+}
+
+message ListValue {
+  repeated Value values = 1;
+}

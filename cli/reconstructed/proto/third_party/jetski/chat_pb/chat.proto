@@ -1,0 +1,368 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fbf8a3 (va 0x103fbf8a3, __TEXT.__rodata), descriptor length 11781 B, sha256 0497cd0d77957c6b
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.chat_pb;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "learning/genai/api/interactions/proto/content.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/cortex_pb/model_native_tool_type.proto";
+import "third_party/jetski/diff_action_pb/diff_action.proto";
+
+option java_package = "com.google.thirdparty.jetski.chat";
+option java_multiple_files = true;
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+enum ChatFeedbackType {
+  FEEDBACK_TYPE_UNSPECIFIED = 0;
+  FEEDBACK_TYPE_ACCEPT = 1;
+  FEEDBACK_TYPE_REJECT = 2;
+  FEEDBACK_TYPE_COPIED = 3;
+  FEEDBACK_TYPE_ACCEPT_DIFF = 4;
+  FEEDBACK_TYPE_REJECT_DIFF = 5;
+  FEEDBACK_TYPE_APPLY_DIFF = 6;
+  FEEDBACK_TYPE_INSERT_AT_CURSOR = 7;
+}
+
+enum ChatIntentType {
+  reserved 2, 3, 4, 5, 7, 8, 10, 11;
+  CHAT_INTENT_UNSPECIFIED = 0;
+  CHAT_INTENT_GENERIC = 1;
+  CHAT_INTENT_CODE_BLOCK_REFACTOR = 6;
+  CHAT_INTENT_GENERATE_CODE = 9;
+  CHAT_INTENT_FAST_APPLY = 12;
+}
+
+enum CacheControlType {
+  CACHE_CONTROL_TYPE_UNSPECIFIED = 0;
+  CACHE_CONTROL_TYPE_EPHEMERAL = 1;
+}
+
+message CodeBlockInfo {
+  string raw_source = 1 [(unresolved_option_40075780) = 1900];
+  int32 start_line = 2 [(unresolved_option_40075780) = 2800];
+  int32 start_col = 3 [(unresolved_option_40075780) = 2800];
+  int32 end_line = 4 [(unresolved_option_40075780) = 2800];
+  int32 end_col = 5 [(unresolved_option_40075780) = 2800];
+}
+
+message ChatMetrics {
+  uint64 response_stream_latency_ms = 1 [(unresolved_option_40075780) = 2801];
+  uint64 refresh_context_latency_ms = 2 [(unresolved_option_40075780) = 2801];
+  uint64 should_get_local_context_for_chat_latency_ms = 3 [(unresolved_option_40075780) = 2801];
+  bool should_get_local_context_for_chat = 4 [(unresolved_option_40075780) = 2800];
+  uint64 compute_change_events_latency_ms = 5 [(unresolved_option_40075780) = 2801];
+  uint64 context_to_chat_prompt_latency_ms = 6 [(unresolved_option_40075780) = 2801];
+  int32 num_prompt_tokens = 7 [(unresolved_option_40075780) = 2801];
+  int32 num_system_prompt_tokens = 8 [(unresolved_option_40075780) = 2801];
+  uint64 num_input_tokens = 16 [(unresolved_option_40075780) = 2801];
+  google.protobuf.Timestamp start_timestamp = 9 [(unresolved_option_40075780) = 2100];
+  google.protobuf.Timestamp end_timestamp = 10 [(unresolved_option_40075780) = 2100];
+  string active_document_absolute_path = 11 [(unresolved_option_40075780) = 1900];
+  codeium_common_pb.CodeContextItem last_active_code_context_item = 12;
+  uint64 num_indexed_files = 13 [(unresolved_option_40075780) = 2801];
+  uint64 num_indexed_code_context_items = 14 [(unresolved_option_40075780) = 2801];
+  codeium_common_pb.Model model = 15 [(unresolved_option_40075780) = 2800];
+}
+
+message IntentGeneric {
+  string text = 1 [(unresolved_option_40075780) = 1900];
+  repeated codeium_common_pb.TextOrScopeItem items = 2;
+}
+
+message IntentCodeBlockRefactor {
+  CodeBlockInfo code_block_info = 1;
+  codeium_common_pb.Language language = 2 [(unresolved_option_40075780) = 2800];
+  string file_path_migrate_me_to_uri = 3 [deprecated = true, (unresolved_option_40075780) = 1900];
+  string uri = 5 [(unresolved_option_40075780) = 1900];
+  string refactor_description = 4 [(unresolved_option_40075780) = 1900];
+}
+
+message IntentGenerateCode {
+  string instruction = 1 [(unresolved_option_40075780) = 1900];
+  codeium_common_pb.Language language = 2 [(unresolved_option_40075780) = 2800];
+  string file_path_migrate_me_to_uri = 3 [deprecated = true, (unresolved_option_40075780) = 1900];
+  string uri = 5 [(unresolved_option_40075780) = 1900];
+  int32 line_number = 4 [(unresolved_option_40075780) = 2800];
+}
+
+message IntentFastApply {
+  string diff_outline = 1 [(unresolved_option_40075780) = 1900];
+  codeium_common_pb.Language language = 2 [(unresolved_option_40075780) = 2800];
+  CodeBlockInfo old_code = 3;
+}
+
+message ChatMessageIntent {
+  reserved 2, 3, 4, 5, 7, 8, 10, 11;
+  oneof intent {
+    IntentGeneric generic = 1;
+    IntentCodeBlockRefactor code_block_refactor = 6;
+    IntentGenerateCode generate_code = 9;
+    IntentFastApply fast_apply = 13;
+  }
+  uint32 num_tokens = 12 [(unresolved_option_40075780) = 2801];
+}
+
+message ChatMessageActionSearch {
+}
+
+message ChatMessageActionEdit {
+  string file_path_migrate_me_to_uri = 1 [deprecated = true, (unresolved_option_40075780) = 1900];
+  string uri = 6 [(unresolved_option_40075780) = 1900];
+  diff_action_pb.DiffBlock diff = 2;
+  codeium_common_pb.Language language = 3 [(unresolved_option_40075780) = 2800];
+  string text_pre = 4 [(unresolved_option_40075780) = 1900];
+  string text_post = 5 [(unresolved_option_40075780) = 1900];
+}
+
+message ChatMessageActionGeneric {
+  string text = 1 [(unresolved_option_40075780) = 1900];
+  string display_text = 2 [(unresolved_option_40075780) = 1900];
+}
+
+message ChatMessageStatusContextRelevancy {
+  bool is_loading = 1 [(unresolved_option_40075780) = 2800];
+  bool is_relevant = 2 [(unresolved_option_40075780) = 2800];
+  repeated string query_suggestions = 3 [(unresolved_option_40075780) = 1900];
+}
+
+message ChatMessageStatus {
+  oneof status {
+    ChatMessageStatusContextRelevancy context_relevancy = 1;
+  }
+}
+
+message ChatMessageError {
+  string text = 1 [(unresolved_option_40075780) = 9901];
+}
+
+message ChatMessageAction {
+  oneof action {
+    ChatMessageActionGeneric generic = 1;
+    ChatMessageActionEdit edit = 3;
+    ChatMessageActionSearch search = 5;
+  }
+  uint32 num_tokens = 2 [(unresolved_option_40075780) = 2801];
+  repeated codeium_common_pb.CodeContextItem context_items = 4;
+  ChatIntentType latest_intent = 6 [(unresolved_option_40075780) = 2800];
+  ChatMetrics generation_stats = 7;
+  repeated codeium_common_pb.KnowledgeBaseItemWithMetadata knowledge_base_items = 8;
+}
+
+message ChatMessage {
+  string message_id = 1 [(unresolved_option_40075780) = 2300];
+  codeium_common_pb.ChatMessageSource source = 2 [(unresolved_option_40075780) = 2800];
+  google.protobuf.Timestamp timestamp = 3 [(unresolved_option_40075780) = 2100];
+  string conversation_id = 4 [(unresolved_option_40075780) = 2300];
+  oneof content {
+    ChatMessageIntent intent = 5;
+    ChatMessageAction action = 6;
+    ChatMessageError error = 7;
+    ChatMessageStatus status = 8;
+  }
+  bool in_progress = 9 [(unresolved_option_40075780) = 2800];
+  GetChatMessageRequest request = 10;
+  bool redact = 11 [(unresolved_option_40075780) = 2800];
+}
+
+message Conversation {
+  repeated ChatMessage messages = 1;
+}
+
+message ChatMessagePrompt {
+  reserved 15, 16, 23;
+  reserved "output_id", "thinking_id";
+  string message_id = 1 [(unresolved_option_40075780) = 2300];
+  codeium_common_pb.ChatMessageSource source = 2 [(unresolved_option_40075780) = 2800];
+  string prompt = 3 [(unresolved_option_40075780) = 1900];
+  genai.Struct prompt_struct = 25 [(unresolved_option_40075780) = 1900];
+  uint32 num_tokens = 4 [(unresolved_option_40075780) = 2801];
+  bool safe_for_code_telemetry = 5 [deprecated = true, (unresolved_option_40075780) = 2800];
+  repeated codeium_common_pb.ChatToolCall tool_calls = 6;
+  string tool_call_id = 7 [(unresolved_option_40075780) = 2300];
+  PromptCacheOptions prompt_cache_options = 8;
+  bool tool_result_is_error = 9 [(unresolved_option_40075780) = 2800];
+  repeated codeium_common_pb.ImageData images = 10 [deprecated = true];
+  repeated codeium_common_pb.Media media = 19;
+  string thinking = 11 [(unresolved_option_40075780) = 1900];
+  string raw_thinking = 17 [(unresolved_option_40075780) = 1900];
+  string signature = 12 [deprecated = true, (unresolved_option_40075780) = 1900];
+  bytes thinking_signature = 20 [(unresolved_option_40075780) = 1900];
+  bool thinking_redacted = 13 [(unresolved_option_40075780) = 2800];
+  repeated codeium_common_pb.PromptAnnotationRange prompt_annotation_ranges = 14;
+  int32 step_idx = 18 [(unresolved_option_40075780) = 2300];
+  repeated int32 merged_step_idxs = 26 [(unresolved_option_40075780) = 2300];
+  string provider_assigned_message_id = 21 [(unresolved_option_40075780) = 2300];
+  repeated google.protobuf.Any side_channels = 22 [(unresolved_option_40075780) = 1900];
+  repeated google.protobuf.Any passback_context = 24 [(unresolved_option_40075780) = 1900];
+  bool telemetry_redacted = 27 [(unresolved_option_40075780) = 2800];
+}
+
+message ChatMessagePrompts {
+  repeated ChatMessagePrompt prompts = 1;
+}
+
+message PromptCacheOptions {
+  CacheControlType type = 1 [(unresolved_option_40075780) = 2800];
+}
+
+message ChatToolDefinition {
+  string name = 1 [(unresolved_option_40075780) = 2800];
+  string description = 2 [(unresolved_option_40075780) = 1900];
+  string json_schema_string = 3 [(unresolved_option_40075780) = 1900];
+  bool strict = 4 [(unresolved_option_40075780) = 2800];
+  repeated string attribution_field_names = 5 [(unresolved_option_40075780) = 2800];
+  string server_name = 6 [(unresolved_option_40075780) = 1900];
+  string original_name = 7 [(unresolved_option_40075780) = 2800];
+  cortex_pb.ModelNativeToolType model_native_tool_type = 8 [(unresolved_option_40075780) = 2800];
+  string response_json_schema_string = 9 [(unresolved_option_40075780) = 1900];
+}
+
+message ChatToolChoice {
+  oneof choice {
+    string option_name = 1 [(unresolved_option_40075780) = 2800];
+    string tool_name = 2 [(unresolved_option_40075780) = 2800];
+  }
+}
+
+message ChatMentionsSearchRequest {
+  string query = 1;
+  repeated codeium_common_pb.CodeContextType allowed_types = 2;
+  bool include_repo_info = 3;
+}
+
+message ChatMentionsSearchResponse {
+  repeated codeium_common_pb.CodeContextItem cci_items = 1;
+  repeated codeium_common_pb.GitRepoInfo repo_infos = 2;
+}
+
+message GetChatMessageRequest {
+  reserved 2;
+  reserved "prompt";
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated ChatMessage chat_messages = 3;
+  codeium_common_pb.Document active_document = 5;
+  repeated string open_document_uris = 12 [(unresolved_option_40075780) = 1900];
+  repeated string workspace_uris = 13 [(unresolved_option_40075780) = 1900];
+  string active_selection = 11 [(unresolved_option_40075780) = 1900];
+  codeium_common_pb.ContextInclusionType context_inclusion_type = 8 [(unresolved_option_40075780) = 2800];
+  codeium_common_pb.Model chat_model = 9 [(unresolved_option_40075780) = 2800];
+  string system_prompt_override = 10 [(unresolved_option_40075780) = 1900];
+  string chat_model_name = 14 [(unresolved_option_40075780) = 2800];
+  EnterpriseExternalModelConfig enterprise_chat_model_config = 15;
+  codeium_common_pb.ExperimentConfig experiment_config = 4 [deprecated = true];
+  repeated string open_document_paths_migrate_me_to_uris = 6 [deprecated = true, (unresolved_option_40075780) = 1900];
+  repeated string workspace_paths_migrate_me_to_uris = 7 [deprecated = true, (unresolved_option_40075780) = 1900];
+
+  message EnterpriseExternalModelConfig {
+    int32 max_output_tokens = 2 [(unresolved_option_40075780) = 2800];
+    int32 max_input_tokens = 3 [(unresolved_option_40075780) = 2800];
+  }
+}
+
+message ChatExperimentStatus {
+  codeium_common_pb.ExperimentKey experiment_key = 1;
+  bool enabled = 2;
+}
+
+message FormattedChatMessage {
+  codeium_common_pb.ChatMessageSource role = 1;
+  string header = 2;
+  string content = 3;
+  string footer = 4;
+}
+
+message IndexMap {
+  map<int32, IndexList> index_map = 1;
+
+  message IndexList {
+    repeated int32 indices = 1;
+  }
+}
+
+message ChatMessageRollout {
+  string system_prompt = 1;
+  repeated ChatToolDefinition tools = 2;
+  ChatToolChoice tool_choice = 3;
+  repeated ChatMessagePrompt input_chat_messages = 4;
+  repeated ChatMessagePrompt output_chat_messages = 5;
+  IndexMap trajectory_to_chat_message_index_map = 6;
+}
+
+message XboxInferenceToolRequest {
+  reserved 1;
+  reserved "type";
+  string model_name = 3;
+  string model_enum = 4;
+  Example gemini_example = 2;
+}
+
+message Example {
+  repeated Message messages = 1;
+}
+
+message Message {
+  string role = 1;
+  repeated Chunk chunks = 2;
+}
+
+message Chunk {
+  oneof value {
+    string text = 3;
+    Image image = 4;
+  }
+  Trainable trainable = 10;
+
+  enum Trainable {
+    UNKNOWN_TRAINABLE = 0;
+    FORMATTER_DEFINED = 1;
+    ALWAYS = 2;
+    NEVER = 3;
+  }
+}
+
+message Image {
+  FileData value = 5;
+  int32 height_px = 3;
+  int32 width_px = 4;
+}
+
+message FileData {
+  bytes content = 3 [ctype = CORD];
+  string mime_type = 2;
+}
+
+message RpcRequest {
+  oneof request {
+    RunToolRequest run_tool_request = 1;
+  }
+  string id = 3;
+}
+
+message RpcResponse {
+  oneof response {
+    RunToolResponse run_tool_response = 1;
+  }
+  string request_id = 2;
+}
+
+message RunToolRequest {
+  string name = 1;
+  string operation_id = 2;
+  string parameters = 3;
+}
+
+message RunToolResponse {
+  string response = 1;
+  Status status = 2;
+
+  message Status {
+    int32 code = 1;
+    string status_message = 2;
+  }
+}

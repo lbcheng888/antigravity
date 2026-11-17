@@ -1,0 +1,52 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dc6d27 (va 0x103dc6d27, __TEXT.__rodata), descriptor length 2338 B, sha256 5786bbae51cb872c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package gemini_coder.agentexecutor;
+
+import "third_party/gemini_coder/proto/trajectory.proto";
+import "third_party/jetski/context_module_pb/context_module.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/language_server_pb/language_server.proto";
+
+option java_package = "com.google.geminicoder.agentexecutor";
+option java_multiple_files = true;
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message Input {
+  reserved 1, 3, 7, 8, 11, 12, 14, 16;
+  reserved "acknowledge_code_edit", "acknowledge_code_action_step", "resolve_outstanding_steps", "subtrajectory_update";
+  oneof kind {
+    SendUserMessage send_user_message = 10;
+    exa.language_server_pb.CancelCascadeInvocationRequest cancel_invocation = 5;
+    exa.language_server_pb.CancelCascadeStepsRequest cancel_steps = 6;
+    exa.language_server_pb.RevertToCascadeStepRequest revert_to_step = 2;
+    exa.language_server_pb.HandleCascadeUserInteractionRequest user_interaction = 9;
+    AppendTrajectorySuffixRequest append_trajectory_suffix = 17;
+    RawSteps raw_steps = 4;
+    exa.language_server_pb.SkipBrowserSubagentRequest skip_browser_subagent = 13 [deprecated = true];
+    exa.language_server_pb.SendStepsToBackgroundRequest send_steps_to_background = 15 [deprecated = true];
+  }
+}
+
+message SendUserMessage {
+  exa.language_server_pb.SendUserCascadeMessageRequest request = 1;
+  exa.context_module_pb.ContextModuleResult active_user_state = 2;
+  exa.cortex_pb.AgentConfigResolution agent_config_resolution = 3;
+}
+
+message RawSteps {
+  repeated Step steps = 1;
+  exa.cortex_pb.CortexStepPlannerResponse planner_response = 2;
+  exa.cortex_pb.CascadeConfig override_config = 3;
+  exa.cortex_pb.AgentConfigResolution agent_config_resolution = 4;
+}
+
+message AppendTrajectorySuffixRequest {
+  int32 expected_num_steps = 1;
+  repeated Step steps = 2;
+  repeated exa.cortex_pb.CortexStepGeneratorMetadata generator_metadatas = 3;
+  repeated exa.cortex_pb.ExecutorMetadata executor_metadatas = 4;
+}

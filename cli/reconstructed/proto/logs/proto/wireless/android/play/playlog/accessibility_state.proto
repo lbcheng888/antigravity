@@ -1,0 +1,33 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d6c19a (va 0x103d6c19a, __TEXT.__rodata), descriptor length 1214 B, sha256 4c9dd0c950f49bd3
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.common.logging";
+option java_outer_classname = "AccessibilityStateProto";
+option objc_class_prefix = "CADP";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+option (unresolved_option_5) = 2;
+
+message AccessibilityState {
+  optional OnOff talkback_enabled = 1;
+  optional OnOff brailleback_enabled = 2;
+  optional OnOff switchaccess_enabled = 3;
+  optional OnOff justspeak_enabled = 4;
+  optional OnOff large_text_enabled = 5;
+  optional OnOff magnification_enabled = 6;
+  optional OnOff high_contrast_text_enabled = 7;
+
+  enum OnOff {
+    UNKNOWN = 0;
+    ON = 1;
+    OFF = 2;
+  }
+}

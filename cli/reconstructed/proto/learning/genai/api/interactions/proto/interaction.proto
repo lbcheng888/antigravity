@@ -1,0 +1,131 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e518e2 (va 0x103e518e2, __TEXT.__rodata), descriptor length 4114 B, sha256 92b441d6e2863a83
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+import "learning/genai/api/interactions/proto/agents.proto";
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/interactions/proto/environment.proto";
+import "learning/genai/api/interactions/proto/error.proto";
+import "learning/genai/api/interactions/proto/models.proto";
+import "learning/genai/api/interactions/proto/response_format.proto";
+import "learning/genai/api/interactions/proto/safety_settings.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+import "learning/genai/api/interactions/proto/tools.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+enum ResponseModality {
+  RESPONSE_MODALITY_UNSPECIFIED = 0;
+  TEXT = 1;
+  IMAGE = 2;
+  AUDIO = 3;
+  VIDEO = 4;
+  DOCUMENT = 5;
+}
+
+enum ServiceTier {
+  SERVICE_TIER_UNSPECIFIED = 0;
+  SERVICE_TIER_FLEX = 1;
+  SERVICE_TIER_STANDARD = 2;
+  SERVICE_TIER_PRIORITY = 3;
+}
+
+message Interaction {
+  option (unresolved_option_535801962) = "\n\006object\022\013interaction";
+  string id = 2;
+  Status status = 3;
+  string created = 43;
+  string updated = 44;
+  string role = 38;
+  repeated Content outputs = 7;
+  string system_instruction = 9;
+  repeated Tool tools = 10;
+  oneof input {
+    option (unresolved_option_525000029) = 1;
+    ContentList content_list = 11 [(unresolved_option_525000216) = "unused", (unresolved_option_525000218) = "__content_list_hidden_discriminator__"];
+    string string_content = 12;
+    TurnList turn_list = 37 [(unresolved_option_525000215) = "role"];
+    StepList step_list = 53 [(unresolved_option_525000215) = "type"];
+    Content content = 40;
+  }
+  Usage usage = 16;
+  repeated ResponseModality response_modalities = 29;
+  oneof response_format_config {
+    option (unresolved_option_525000029) = 1;
+    option (unresolved_option_525000032) = "response_format";
+    ResponseFormatList response_format_list = 56;
+    ResponseFormat response_format_singleton = 57 [(unresolved_option_525000215) = "type"];
+  }
+  string response_mime_type = 35;
+  string previous_interaction_id = 34;
+  oneof request_type {
+    option (unresolved_option_525000030) = 1;
+    ModelInteraction model_interaction = 41 [(unresolved_option_525000215) = "model"];
+    AgentInteraction agent_interaction = 42 [(unresolved_option_525000215) = "agent"];
+  }
+  oneof environment {
+    option (unresolved_option_525000029) = 1;
+    string env_id = 55;
+    EnvironmentConfig remote_environment = 54 [(unresolved_option_525000216) = "remote", (unresolved_option_525000218) = "type"];
+  }
+  string environment_id = 47;
+  ServiceTier service_tier = 48;
+  repeated Step steps = 51;
+  repeated SafetySetting safety_settings = 58;
+  map<string, string> labels = 59;
+  repeated Error errors = 62;
+  bytes continuation_token = 66;
+
+  enum Status {
+    UNSPECIFIED = 0;
+    IN_PROGRESS = 2;
+    REQUIRES_ACTION = 5;
+    COMPLETED = 3;
+    FAILED = 4;
+    CANCELLED = 10;
+    INCOMPLETE = 11;
+    BUDGET_EXCEEDED = 12;
+    REQUIRES_CONTINUATION = 17;
+  }
+
+  message Usage {
+    int32 total_input_tokens = 7;
+    int32 initial_input_tokens = 24;
+    repeated ModalityTokens input_tokens_by_modality = 8;
+    int32 total_cached_tokens = 9;
+    repeated ModalityTokens cached_tokens_by_modality = 10;
+    int32 total_output_tokens = 11;
+    repeated ModalityTokens output_tokens_by_modality = 12;
+    int32 total_tool_use_tokens = 13;
+    repeated ModalityTokens tool_use_tokens_by_modality = 14;
+    int32 total_thought_tokens = 16;
+    int32 total_tokens = 6;
+    repeated GroundingToolCount grounding_tool_count = 17;
+
+    message ModalityTokens {
+      ResponseModality modality = 1;
+      int32 tokens = 2;
+    }
+
+    message GroundingToolCount {
+      Type type = 1;
+      int32 count = 2;
+
+      enum Type {
+        TYPE_UNSPECIFIED = 0;
+        GOOGLE_SEARCH = 1;
+        GOOGLE_MAPS = 2;
+      }
+    }
+  }
+}
+
+message InteractionMetadata {
+  string id = 1;
+  Interaction.Status status = 2;
+  string created = 3;
+  string updated = 4;
+}

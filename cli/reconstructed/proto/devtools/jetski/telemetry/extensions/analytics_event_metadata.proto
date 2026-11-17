@@ -1,0 +1,29 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4eccc (va 0x103d4eccc, __TEXT.__rodata), descriptor length 804 B, sha256 7958c690ab455dca
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "devtools/jetski/telemetry/extensions/common.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "AnalyticsEventMetadataOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+message Experiment {
+  option features.(unresolved_option_1001) = "(\002";
+  string key = 1 [(unresolved_option_40075780) = 2800];
+  bool enabled = 2 [(unresolved_option_40075780) = 2800];
+}
+
+export message AnalyticsEventMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  string event_type = 1 [(unresolved_option_40075780) = 2800];
+  repeated ExtraMetadata extra = 2;
+  repeated Experiment experiments = 3;
+  exa.codeium_common_pb.RuntimeEnvironment runtime_environment = 4;
+}

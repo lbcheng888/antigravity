@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d36afd (va 0x103d36afd, __TEXT.__rodata), descriptor length 491 B, sha256 364b019df3f2c5de
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package util.error;
+
+option java_package = "com.google.net.util.error";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GERR";
+option (unresolved_option_2) = 2;
+option (unresolved_option_5) = 2;
+option (unresolved_option_26) = 1;
+
+enum Code {
+  option features.enum_type = CLOSED;
+  OK = 0;
+  CANCELLED = 1;
+  UNKNOWN = 2;
+  INVALID_ARGUMENT = 3;
+  DEADLINE_EXCEEDED = 4;
+  NOT_FOUND = 5;
+  ALREADY_EXISTS = 6;
+  PERMISSION_DENIED = 7;
+  UNAUTHENTICATED = 16;
+  RESOURCE_EXHAUSTED = 8;
+  FAILED_PRECONDITION = 9;
+  ABORTED = 10;
+  OUT_OF_RANGE = 11;
+  UNIMPLEMENTED = 12;
+  INTERNAL = 13;
+  UNAVAILABLE = 14;
+  DATA_LOSS = 15;
+  DO_NOT_USE_RESERVED_FOR_FUTURE_EXPANSION_USE_DEFAULT_IN_SWITCH_INSTEAD_ = 20;
+}

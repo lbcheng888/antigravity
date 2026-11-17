@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3437d (va 0x103d3437d, __TEXT.__rodata), descriptor length 470 B, sha256 ef3e41e9a544f699
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package smart_home_mesh.platform;
+
+import "google/api/inclusion.proto";
+
+option (unresolved_option_525000017) = "\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+enum OsType {
+  OS_TYPE_UNKNOWN = 0;
+  OS_TYPE_ANDROID = 3;
+  OS_TYPE_ANDROID_TV = 5;
+  OS_TYPE_CAST_OS = 1;
+  OS_TYPE_FUCHSIA = 2;
+  OS_TYPE_NEST_LINUX = 6;
+  OS_TYPE_PARTNER_LINUX = 4;
+  OS_TYPE_IOS = 7;
+}

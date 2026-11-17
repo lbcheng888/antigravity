@@ -1,0 +1,464 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x4022740 (va 0x104022740, __TEXT.__rodata), descriptor length 15483 B, sha256 21553451298d3a2b
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/v1beta1/environment.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "learning/genai/api/interactions/proto/environment.proto";
+import "learning/genai/api/interactions/proto/response_format.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+import "learning/genai/api/interactions/proto/tools.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "TaskProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+enum Priority {
+  PRIORITY_UNSPECIFIED = 0;
+  PRIORITY_REALTIME = 1;
+  PRIORITY_DEFERRED = 2;
+}
+
+message Task {
+  option (unresolved_option_1053) = "\n\036aiplatform.googleapis.com/Task\022Cprojects/{project}/locations/{location}/agents/{agent}/tasks/{task}\0224projects/{project}/locations/{location}/tasks/{task}*\005tasks2\004task";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string title = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string summary = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string assigned_agent = 4 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string assigned_agent_identity = 22 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string parent_task_id = 11 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string root_task_id = 14 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  TaskSpec spec = 5 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  Status status = 6 [(unresolved_option_1052) = "\003"];
+  TaskOutcome outcome = 7 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  protobuf.Timestamp create_time = 8 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp update_time = 9 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp status_update_time = 21 [(unresolved_option_1052) = "\003"];
+  map<string, string> labels = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  StatusDetail status_detail = 13 [(unresolved_option_1052) = "\003"];
+  ScheduleState schedule_state = 15 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp next_run_time = 16 [(unresolved_option_1052) = "\003"];
+  int64 run_count = 17 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  repeated Goal goals = 18 [(unresolved_option_1052) = "\003", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+  BudgetConsumptionDetail budget_consumption_detail = 19 [(unresolved_option_1052) = "\003", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    IDLE = 1;
+    WORKING = 2;
+    REQUIRES_ACTION = 3;
+    COMPLETED = 4;
+    FAILED = 5;
+    CANCELLED = 6;
+    QUEUED = 7;
+    SUSPENDED = 8;
+    SUSPENDING = 9;
+  }
+
+  enum ScheduleState {
+    SCHEDULE_STATE_UNSPECIFIED = 0;
+    SCHEDULE_ACTIVE = 1;
+    SCHEDULE_PAUSED = 2;
+    SCHEDULE_FINISHED = 3;
+  }
+
+  message StatusDetail {
+    StatusReason reason = 1 [(unresolved_option_40075780) = 999];
+    string detail = 2 [(unresolved_option_40075780) = 2800];
+
+    enum StatusReason {
+      STATUS_REASON_UNSPECIFIED = 0;
+      QUOTA_EXHAUSTED = 1;
+      SPEND_CAP_REACHED = 2;
+      LICENSE_REQUIRED = 3;
+      ADMIN_SUSPENDED = 4;
+      PARENT_SUSPENDED = 5;
+      DEFERRED = 6;
+      CREDENTIALS_EXPIRED = 7;
+      BUDGET_EXHAUSTED = 8;
+    }
+  }
+}
+
+message TaskSpec {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  reserved 1;
+  repeated genai.Step inputs = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string system_instruction = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  genai.ResponseFormat expected_output = 9 [(unresolved_option_1052) = "\001"];
+  repeated Verifier verifiers = 10 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  ContextScope scope = 2 [(unresolved_option_1052) = "\001"];
+  TaskTrigger schedule = 3 [(unresolved_option_1052) = "\001"];
+  Priority priority = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  Budget budget = 5 [(unresolved_option_1052) = "\001"];
+  BrowserUse browser_use = 14 [(unresolved_option_1052) = "\001"];
+  int32 max_retries = 6 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  bool delta_streaming = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  InteractionMode interaction_mode = 12 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  HitlConfig hitl_config = 24 [(unresolved_option_1052) = "\001\005"];
+  ModelConfig model_config = 15 [(unresolved_option_1052) = "\001"];
+  LiveConfig live_config = 17 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  SubtaskConfig subtask_config = 18 [(unresolved_option_1052) = "\001"];
+
+  enum InteractionMode {
+    option deprecated = true;
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    INTERACTION_MODE_UNSPECIFIED = 0;
+    LIVE = 1;
+  }
+
+  message HitlConfig {
+    ApprovalMode approval_mode = 1 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 1906];
+    bool auto_approve_allowed_tools = 2 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 1906];
+
+    enum ApprovalMode {
+      APPROVAL_MODE_UNSPECIFIED = 0;
+      APPROVAL_MODE_ASK = 1;
+      APPROVAL_MODE_AUTO = 2;
+    }
+  }
+
+  message ModelConfig {
+    string model = 1 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n(aiplatform.googleapis.com/PublisherModel", (unresolved_option_40075780) = 999];
+    float temperature = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    string effort_level = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    int32 max_output_tokens = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    ModelSelectionMode model_selection_mode = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    enum ModelSelectionMode {
+      MODEL_SELECTION_MODE_UNSPECIFIED = 0;
+      AUTO = 1;
+      USER_SELECTED = 2;
+    }
+  }
+
+  message LiveConfig {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    ModelConfig model_config = 1 [(unresolved_option_1052) = "\001"];
+    string system_instruction = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    string voice_name = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    Verbosity verbosity = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    bool video_input = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    NarrationDetail narration_detail = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+    enum Verbosity {
+      option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+      VERBOSITY_UNSPECIFIED = 0;
+      VERBOSE = 10;
+      DEBUG = 20;
+    }
+
+    enum NarrationDetail {
+      option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+      NARRATION_DETAIL_UNSPECIFIED = 0;
+      NONE = 10;
+      MINIMAL = 20;
+      STANDARD = 30;
+      DETAILED = 40;
+    }
+  }
+
+  message SubtaskConfig {
+    optional int32 max_depth = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    optional bool allow_browser_use = 2 [(unresolved_option_1052) = "\001"];
+  }
+}
+
+message Verifier {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof kind {
+    AutoVerification auto_verification = 7;
+    NlCriteria nl_criteria = 2;
+    CommandCheck command_check = 3 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+    HumanVerification human_check = 4 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  }
+  string name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bool required = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  State state = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum State {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    STATE_UNSPECIFIED = 0;
+    PENDING = 1;
+    RUNNING = 2;
+    PASSED = 3;
+    FAILED = 4;
+    REMOVED = 5;
+  }
+}
+
+message NlCriteria {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string criteria = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message CommandCheck {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string command = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string expected_output = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message HumanVerification {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string question = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message AutoVerification {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message Goal {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string display_name = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string spec = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  State state = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  repeated Verifier verifiers = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum State {
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    STATE_UNSPECIFIED = 0;
+    ACTIVE = 1;
+    SUCCEEDED = 2;
+    FAILED = 3;
+    DROPPED = 4;
+  }
+}
+
+message ContextScope {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof environment_config {
+    genai.EnvironmentConfig environment = 1 [(unresolved_option_1052) = "\001"];
+    genai.LocalEnvironmentConfig local_environment = 4 [(unresolved_option_1052) = "\001"];
+    StandaloneEnvironmentConfig standalone_environment = 9 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL"];
+    NoEnvironmentConfig no_environment = 10 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+    HybridEnvironment hybrid_environment = 15 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL"];
+  }
+  oneof tool_scope {
+    ToolRefs allowed_tools = 6;
+    ToolRefs excluded_tools = 5;
+  }
+  repeated genai.Tool tools = 2 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  TaskMemoryConfig memory_config = 3 [(unresolved_option_1052) = "\001"];
+  DataConnectorConfig data_connector_config = 7 [(unresolved_option_1052) = "\001"];
+  ExternalMount external_mount = 11 [(unresolved_option_1052) = "\001"];
+  ExternalBrowser external_browser = 14 [(unresolved_option_1052) = "\001"];
+  repeated SkillOverrideConfig skill_overrides = 12 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  map<string, SkillConfig> skill_configs = 17 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 12004, (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL"];
+  CollaborativeProjectConfig collaborative_project = 13 [(unresolved_option_1052) = "\001"];
+
+  message SkillConfig {
+    map<string, string> values = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12004];
+  }
+}
+
+message ExternalMount {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string source_path = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12004];
+  string mount_path = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12004];
+}
+
+message ExternalBrowser {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message HybridEnvironment {
+  option (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated Environment environments = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message SkillOverrideConfig {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated string target_skill_ids = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  string override_skill_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+}
+
+message CollaborativeProjectConfig {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string collaborative_project = 1 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n.aiplatform.googleapis.com/CollaborativeProject", (unresolved_option_40075780) = 1100];
+}
+
+message StandaloneEnvironmentConfig {
+  option (unresolved_option_72295727) = "\022,TASK_TRUSTED_TESTER,TASK_EAP,GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string environment = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n%aiplatform.googleapis.com/Environment", (unresolved_option_40075780) = 1119];
+}
+
+message NoEnvironmentConfig {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message DataConnectorConfig {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string engine_resource_name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1119];
+  map<string, string> data_connectors = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1119];
+}
+
+message ToolRefs {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated string tool_names = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+  repeated string methods = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+  repeated ResourceRef resources = 3 [(unresolved_option_1052) = "\001"];
+  CliToolScope cli_tool_scope = 4 [(unresolved_option_1052) = "\001"];
+
+  message CliToolScope {
+    repeated string cli_tools = 1 [(unresolved_option_1052) = "\001"];
+  }
+}
+
+message ResourceRef {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof target {
+    string resource = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+    bool self_created = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 0];
+  }
+  string resource_type = 1 [(unresolved_option_1052) = "\002"];
+  repeated string recipients = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message TaskMemoryConfig {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  KnowledgeCatalogConfig knowledge_catalog_config = 1 [(unresolved_option_1052) = "\001"];
+  bool disable_memory = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+}
+
+message KnowledgeCatalogConfig {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  bool knowledge_catalog_enabled = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  repeated string enabled_connectors = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  string project_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1111];
+}
+
+message TaskTrigger {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  reserved 2;
+  oneof trigger {
+    OneOffSchedule one_off = 1;
+    RecurringSchedule recurring = 3;
+  }
+}
+
+message RecurringSchedule {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof schedule {
+    CronSchedule cron = 1;
+    EventSchedule event_source = 2;
+  }
+  protobuf.Timestamp start_time = 3 [(unresolved_option_1052) = "\001"];
+  protobuf.Timestamp end_time = 4 [(unresolved_option_1052) = "\001"];
+  optional int64 max_run_count = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  OverlapPolicy overlap_policy = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+
+  enum OverlapPolicy {
+    OVERLAP_POLICY_UNSPECIFIED = 0;
+    SKIP = 1;
+    ALLOW_CONCURRENT = 2;
+    QUEUE = 3;
+  }
+}
+
+message CronSchedule {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string expression = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string time_zone = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message EventSchedule {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string event_source = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message OneOffSchedule {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof when {
+    protobuf.Timestamp run_at = 1;
+    protobuf.Duration delay = 2;
+  }
+}
+
+message Budget {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  int64 max_total_tokens = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  int64 max_tool_calls = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  protobuf.Duration max_wallclock = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message BudgetConsumptionDetail {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Consumption token_consumption = 1 [(unresolved_option_1052) = "\003"];
+  Consumption tool_call_consumption = 2 [(unresolved_option_1052) = "\003"];
+  repeated Attribution attributions = 3 [(unresolved_option_1052) = "\003"];
+
+  message Consumption {
+    int64 limit = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+    int64 spent = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  }
+
+  message Attribution {
+    oneof consumer {
+      Root root = 1 [(unresolved_option_1052) = "\003"];
+      SubTask sub_task = 2 [(unresolved_option_1052) = "\003"];
+    }
+    Spend spent = 3 [(unresolved_option_1052) = "\003"];
+
+    message Root {
+    }
+
+    message SubTask {
+      string task = 1 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+    }
+
+    message Spend {
+      int64 token_count = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+      int64 tool_call_count = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+    }
+  }
+}
+
+message BrowserUse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message TaskOutcome {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Result result = 1;
+  repeated VerifierResult verifier_results = 2;
+  rpc.Status status = 3;
+
+  enum Result {
+    RESULT_UNSPECIFIED = 0;
+    SUCCEEDED = 1;
+    FAILED = 2;
+    CANCELLED = 3;
+    UNVERIFIED = 4;
+  }
+
+  message VerifierResult {
+    string name = 1 [(unresolved_option_40075780) = 1900];
+    bool passed = 2 [(unresolved_option_40075780) = 999];
+    string detail = 3 [(unresolved_option_40075780) = 1900];
+  }
+}

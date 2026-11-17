@@ -1,0 +1,55 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d8c8c7 (va 0x103d8c8c7, __TEXT.__rodata), descriptor length 1622 B, sha256 1176df2d7bb48bda
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package apiserving;
+
+import "blobstore2/public/request_class.proto";
+import "gdata/rosy/proto/data.proto";
+import "google/api/inclusion.proto";
+import "net/base/qos.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.protos.apiserving.proto1api";
+option (unresolved_option_525000017) = "\n\003all";
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.protos.apiserving";
+option (unresolved_option_48) = 0;
+
+message MediaRequestInfo {
+  required string request_id = 1 [(unresolved_option_40075780) = 2300];
+  optional NotificationType notification_type = 2;
+  optional int64 current_bytes = 3;
+  optional int64 total_bytes = 4;
+  optional bool total_bytes_is_estimated = 5;
+  optional string custom_data = 6;
+  optional string diff_object_version = 7;
+  optional int32 final_status = 8;
+  optional bytes request_received_params_serving_info = 9 [ctype = CORD, (unresolved_option_40075780) = 1700];
+  optional bytes physical_headers = 10 [ctype = CORD, (unresolved_option_40075780) = 9900];
+
+  enum NotificationType {
+    START = 1;
+    PROGRESS = 2;
+    END = 3;
+    RESPONSE_SENT = 4;
+    ERROR = 5;
+  }
+}
+
+message MediaResponseInfo {
+  optional string dynamic_dropzone = 1;
+  optional string custom_data = 2;
+  optional bytes dynamic_drop_target = 3 [ctype = CORD];
+  optional bytes data_storage_transform = 4 [ctype = CORD];
+  optional net_base.qos.TrafficClass traffic_class_field = 5;
+  optional gdata.Media media_for_diff = 6;
+  optional bool verify_hash_from_header = 7;
+  optional blobstore2.RequestClass request_class = 8;
+  optional bytes scotty_customer_log = 9 [ctype = CORD];
+  optional int64 scotty_agent_user_id = 10;
+  optional int32 original_object_blob_mint_index = 11;
+  optional int32 destination_blob_mint_index = 12;
+}

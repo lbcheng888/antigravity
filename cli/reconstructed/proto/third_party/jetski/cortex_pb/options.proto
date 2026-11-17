@@ -1,0 +1,16 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d0f5d2 (va 0x103d0f5d2, __TEXT.__rodata), descriptor length 201 B, sha256 b979535711106e15
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.cortex_pb;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.exafunction.codeium.cortex";
+option java_multiple_files = true;
+
+extend proto2.FieldOptions {
+  bool internal_only = 535815292;
+}

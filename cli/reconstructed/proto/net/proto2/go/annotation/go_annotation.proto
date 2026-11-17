@@ -1,0 +1,20 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d1999a (va 0x103d1999a, __TEXT.__rodata), descriptor length 251 B, sha256 e6eedf3273ad443b
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package go_annotation;
+
+import "net/proto2/proto/descriptor.proto";
+
+option cc_enable_arenas = true;
+option (unresolved_option_26) = 1;
+
+extend proto2.FileOptions {
+  optional bool track_message_field_use = 288987817;
+}
+
+extend proto2.MessageOptions {
+  optional bool track_field_use = 37383685;
+}

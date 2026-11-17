@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d334ec (va 0x103d334ec, __TEXT.__rodata), descriptor length 464 B, sha256 f3b16e235c2d1b49
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "StateInitializationDataOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message StateInitializationData {
+  option features.(unresolved_option_1001) = "(\002";
+  exa.cortex_pb.StateInitializationData state_initialization_data = 1;
+}

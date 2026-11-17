@@ -1,0 +1,29 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e1a463 (va 0x103e1a463, __TEXT.__rodata), descriptor length 3482 B, sha256 9a1c1fb26e6f1574
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package thinmint;
+
+import "google/api/inclusion.proto";
+import "third_party/boundary_proxy/proto_compare/annotation.proto";
+
+option java_package = "com.google.protos.thinmint";
+option (unresolved_option_525000017) = "\n5package:cloud/commerce/businessenablement/internal/v1\n*package:cloud/control2/integration/hub/api\n!package:corp/marketing/cms/server\n\032package:google/apps/search\n\037package:google/cloud/aiplatform\n(package:google/cloud/bigquery/connection\n package:google/cloud/bigquery/v2\n/package:google/cloud/commercebusinessenablement\n2package:google/cloud/commercebusinessenablement/v1\n package:google/cloud/marketplace\n#package:google/cloudresourcemanager\n-package:google/corp/actionableevalreportdepot\n!package:google/corp/ads/legoml/ui\n$package:google/corp/android/winscope\n1package:google/corp/devtools/intellij/services/v1\n=package:google/corp/enterprise/support/coredse/supportwidgets\n.package:google/corp/knowledgeengine/hostedeval\n3package:google/corp/learning/tunelabstudio/frontend\n$package:google/corp/marketing/cms/v1\n\036package:google/corp/ml/autotfx\n3package:google/corp/security/authorization/approval\n\037package:google/corp/tag/nirvana\n#package:google/corp/unipipe/v1alpha\n&package:google/corp/youtube/genai/eval\n2package:google/internal/ads/panelsfootprintsaccess\n@package:google/internal/alkali/applications/ar4tramscurationtool\n<package:google/internal/alkali/applications/baselayerconsole\n<package:google/internal/alkali/applications/harkdatastoreapi\n9package:google/internal/alkali/applications/mapvisualizer\n3package:google/internal/alkali/applications/playhub\n<package:google/internal/alkali/applications/salesimplementer\n1package:google/internal/alkali/applications/swyft\n1package:google/internal/alkali/applications/ytsim\n6package:google/internal/android/pixel/testing/monterey\n)package:google/internal/apps/genai/server\n+package:google/internal/assistant/proactive\n package:google/internal/calendar\n$package:google/internal/calendarsync\n#package:google/internal/car/simrack\n&package:google/internal/car/simulation\n+package:google/internal/cloud/compute/disks\n*package:google/internal/cloud/vmwareengine\n-package:google/internal/contactcenter/session\n,package:google/internal/earthengine/datamaps\n)package:google/internal/gdm/data/guardian\n/package:google/internal/intelligence/dbw/server\n7package:google/internal/security/authorization/approval\n.package:google/internal/websitetools/apimirror\n\032package:google/longrunning\n\023package:google/mail\n!package:google/research/brainmaps\n!package:google/streetview/publish\n<package:java/com/google/cloud/commerce/bizen/bizenapi/server\nJpackage:java/com/google/devtools/intellij/boq/servers/services/oneplatform\n<package:pipeline/data_processing/refinery/boq/unipipe_server\n$package:google/internal/bardemulator\n-package:google/internal/boq/codelab/mingxinou\n/package:google/internal/cloud/titanexampletools\n2package:google/internal/developerexperience/webide\n!package:google/internal/groupbard\n%package:google/internal/robinfrontend\nNpackage:java/com/google/firebase/console/testing/services/cloudresourcemanager\nBpackage:third_party/java/cel/tools/src/test/java/dev/cel/tools/mcp";
+option (unresolved_option_2) = 2;
+option (unresolved_option_5) = 1;
+option (unresolved_option_26) = 1;
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message ThinMint {
+  repeated bytes signature_and_message = 1 [(unresolved_option_484519953) = 2];
+  optional bytes one_hop_message = 2 [(unresolved_option_484519953) = 2];
+  optional bytes chained_verification_key = 3;
+  repeated bytes darklaunch_signatures = 4 [(unresolved_option_482813086) = 6, (unresolved_option_484519953) = 2];
+
+  message DarklaunchSignature {
+    optional bytes signature_only = 1;
+    optional bytes carabiner = 2;
+  }
+}

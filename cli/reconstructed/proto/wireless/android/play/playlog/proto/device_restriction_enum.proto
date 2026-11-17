@@ -1,0 +1,26 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d372ac (va 0x103d372ac, __TEXT.__rodata), descriptor length 498 B, sha256 f80257e746fc94f6
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "DeviceRestrictionProto";
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_525000017) = "\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+option (unresolved_option_5) = 2;
+
+message DeviceRestriction {
+
+  enum Id {
+    NO_RESTRICTION = 0;
+    SIDEWINDER_DEVICE = 1;
+    LATCHSKY_DEVICE = 2;
+  }
+}

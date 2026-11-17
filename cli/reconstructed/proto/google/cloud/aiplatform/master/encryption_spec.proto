@@ -1,0 +1,25 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3f10c (va 0x103d3f10c, __TEXT.__rodata), descriptor length 608 B, sha256 ab408894d2e05e28
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "cloud/security/kms/boq/keytracking/proto/key_tracking_annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/versioning.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "EncryptionSpecProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+
+message EncryptionSpec {
+  option (unresolved_option_143069646) = "\022\037ui,v1,v1alpha1,v1beta1,internal";
+  string kms_key_name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT\200\001\001", (unresolved_option_535801341) = 1];
+}

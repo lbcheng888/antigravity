@@ -1,0 +1,60 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d7d57f (va 0x103d7d57f, __TEXT.__rodata), descriptor length 1425 B, sha256 efcfad195da25822
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package devrel.primes.protos;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.devrel.primes.protos";
+option java_outer_classname = "AnonymizationProto";
+option java_multiple_files = true;
+option features.enum_type = CLOSED;
+option features.utf8_validation = NONE;
+
+enum AnonymizationMethod {
+  ANONYMIZATION_METHOD_UNKNOWN = 0;
+  K_ANON = 1;
+}
+
+enum AnonymizedMessageSource {
+  ANONYMIZED_MESSAGE_SOURCE_UNKNOWN = 0;
+  UNHANDLED_EXCEPTION_IOS = 1;
+  UNHANDLED_EXCEPTION_ANDROID = 2;
+  ABORT_MESSAGE_IOS = 3;
+  ABORT_MESSAGE_ANDROID = 4;
+  THREAD_NAME_IOS = 5;
+  THREAD_NAME_ANDROID = 6;
+}
+
+enum PseudonymizationStrategy {
+  PSEUDONYMIZATION_STRATEGY_UNKNOWN = 0;
+  PSEUDONYMIZATION_STRATEGY_SHA_1_FIRST_BYTE = 1;
+}
+
+message AnonymizedMessage {
+  AnonymizedMessageSource source = 1;
+  string message = 2 [(unresolved_option_40075780) = 9901];
+}
+
+message AnonymizableMessage {
+  AnonymizationMethod method = 1;
+  AnonymizedMessageSource source = 2;
+  string message = 3 [(unresolved_option_40075780) = 9901];
+}
+
+message PseudonymousIdentifier {
+  PseudonymizationStrategy strategy = 1;
+  bytes identifier = 2 [(unresolved_option_40075780) = 1000];
+}
+
+message AnonymizedMessageRequest {
+  repeated AnonymizableMessage anonymizable_messages = 1;
+  PseudonymousIdentifier pseudonymous_identifier = 2;
+}
+
+message AnonymizedMessageConfig {
+  repeated AnonymizedMessage anonymized_messages = 1;
+}

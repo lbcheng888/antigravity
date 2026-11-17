@@ -1,0 +1,154 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e20483 (va 0x103e20483, __TEXT.__rodata), descriptor length 3554 B, sha256 d8fe09dbf5477cdd
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+import "google/protobuf/duration.proto";
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+enum ToolChoiceType {
+  TOOL_CHOICE_TYPE_UNSPECIFIED = 0;
+  AUTO = 1;
+  ANY = 2;
+  NONE = 3;
+  VALIDATED = 4;
+}
+
+message Tool {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    Function function = 1;
+    CodeExecution code_execution = 2;
+    UrlContext url_context = 4;
+    ComputerUse computer_use = 5;
+    McpServer mcp_server = 6;
+    GoogleSearch google_search = 3;
+    FileSearch file_search = 7;
+    GoogleMaps google_maps = 8;
+    FilesystemTool filesystem = 10;
+    BashTool bash = 11;
+    ToolSearch tool_search = 28;
+    ManageTaskTool manage_task = 29;
+    ScheduleTool schedule = 30;
+  }
+}
+
+message ToolSearch {
+
+  enum ExecutionMode {
+    EXECUTION_MODE_UNSPECIFIED = 0;
+    SERVER = 1;
+    CLIENT = 2;
+  }
+}
+
+message CodeExecution {
+}
+
+message UrlContext {
+}
+
+message McpServer {
+  string name = 2;
+  oneof transport {
+    string url = 5;
+    StdioTransport stdio = 10;
+    HttpTransport http = 11;
+  }
+  map<string, string> headers = 6;
+  repeated AllowedTools allowed_tools = 4;
+  google.protobuf.Duration timeout = 13;
+
+  message StdioTransport {
+    string command = 1;
+    repeated string args = 2;
+    map<string, string> env = 3;
+  }
+
+  message HttpTransport {
+    string url = 1;
+    map<string, string> headers = 2;
+    AuthProviderType auth_provider_type = 3;
+
+    enum AuthProviderType {
+      AUTH_PROVIDER_TYPE_UNSPECIFIED = 0;
+      AUTH_PROVIDER_TYPE_GOOGLE_CREDENTIALS = 1;
+    }
+  }
+}
+
+message FileSearch {
+  repeated string file_search_store_names = 1;
+  int32 top_k = 3;
+  string metadata_filter = 4;
+}
+
+message ComputerUse {
+  Environment environment = 2;
+  repeated string excluded_predefined_functions = 3;
+  bool enable_prompt_injection_detection = 4;
+  repeated SafetyPolicy disabled_safety_policies = 5;
+
+  enum Environment {
+    ENVIRONMENT_UNSPECIFIED = 0;
+    BROWSER = 1;
+    MOBILE = 2;
+    DESKTOP = 3;
+  }
+
+  enum SafetyPolicy {
+    SAFETY_POLICY_UNSPECIFIED = 0;
+    FINANCIAL_TRANSACTIONS = 1;
+    SENSITIVE_DATA_MODIFICATION = 2;
+    COMMUNICATION_TOOL = 3;
+    ACCOUNT_CREATION = 4;
+    DATA_MODIFICATION = 5;
+    USER_CONSENT_MANAGEMENT = 6;
+    LEGAL_TERMS_AND_AGREEMENTS = 7;
+  }
+}
+
+message ToolChoiceConfig {
+  AllowedTools allowed_tools = 1;
+}
+
+message AllowedTools {
+  ToolChoiceType mode = 1;
+  repeated string tools = 2;
+}
+
+message GoogleMaps {
+  bool enable_widget = 1;
+  double latitude = 2;
+  double longitude = 3;
+}
+
+message FilesystemTool {
+  repeated Operation supported_operations = 1;
+
+  enum Operation {
+    OPERATION_UNSPECIFIED = 0;
+    FILE_READ = 1;
+    FILE_WRITE = 2;
+    FILE_EDIT = 3;
+    FILE_FIND = 4;
+    DIRECTORY_LIST = 5;
+    FILE_GREP = 6;
+  }
+}
+
+message BashTool {
+  int32 max_timeout_ms = 1;
+  bool enable_daemon_commands = 2;
+  bool enable_sandbox = 3;
+}
+
+message ManageTaskTool {
+}
+
+message ScheduleTool {
+}

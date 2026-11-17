@@ -1,0 +1,240 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fc5529 (va 0x103fc5529, __TEXT.__rodata), descriptor length 12204 B, sha256 1cddaa4f5dfd1f7d
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/v1beta1/agent.proto";
+import "google/cloud/aiplatform/v1beta1/operation.proto";
+import "google/cloud/automl/common/proto_field_options.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/field_mask.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "AgentServiceProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+message CreateAgentRequest {
+  option (unresolved_option_331491176) = 1;
+  reserved 3;
+  reserved "idp_nonce";
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022TisValidResourceName($, `Location`)?: [FIELD_INVALID] Invalid Location resource name.", (unresolved_option_188057776) = 1];
+  Agent agent = 2 [(unresolved_option_1052) = "\002", (unresolved_option_127878962) = "\n true ?: [REQUIRED_FIELD_MISSING]", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_337978583) = 2];
+}
+
+message CreateAgentOperationMetadata {
+  option (unresolved_option_143069646) = "\022\026internal,ui,v1beta1,v1";
+  GenericOperationMetadata generic_metadata = 1;
+}
+
+message GetAgentRequest {
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022OisValidResourceName($, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.", (unresolved_option_188057776) = 1];
+}
+
+message ListAgentsRequest {
+  option (unresolved_option_331491176) = 1;
+  reserved 4, 6;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022UisValidResourceName($, `Location`) ?: [FIELD_INVALID] Invalid Location resource name.", (unresolved_option_188057776) = 1];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\0229$>=0 ?: [FIELD_INVALID] Page size should be non-negative.", (unresolved_option_158361448) = "\"\005AUDIT"];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string filter = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string order_by = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message ListAgentsResponse {
+  repeated Agent agents = 1 [(unresolved_option_158361448) = "\"\nAUDIT_SIZE"];
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message SearchAgentsRequest {
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022UisValidResourceName($, `Location`) ?: [FIELD_INVALID] Invalid Location resource name.", (unresolved_option_188057776) = 1];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\0229$>=0 ?: [FIELD_INVALID] Page size should be non-negative.", (unresolved_option_158361448) = "\"\005AUDIT"];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string filter = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string order_by = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message SearchAgentsResponse {
+  repeated Agent agents = 1 [(unresolved_option_158361448) = "\"\nAUDIT_SIZE"];
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message UpdateAgentRequest {
+  option (unresolved_option_331491176) = 1;
+  Agent agent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_127878962) = "\022Nnot empty($.name) ?: [REQUIRED_FIELD_MISSING] Agent resource name is required.\022TisValidResourceName($.name, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.\n true ?: [REQUIRED_FIELD_MISSING]", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  protobuf.FieldMask update_mask = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message UpdateAgentOperationMetadata {
+  option (unresolved_option_143069646) = "\022\026internal,ui,v1beta1,v1";
+  GenericOperationMetadata generic_metadata = 1;
+}
+
+message DeleteAgentRequest {
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022OisValidResourceName($, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.", (unresolved_option_188057776) = 1];
+  bool force = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message ListAgentMemoriesRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022OisValidResourceName($, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.", (unresolved_option_188057776) = 1];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\0229$>=0 ?: [FIELD_INVALID] Page size should be non-negative.", (unresolved_option_158361448) = "\"\005AUDIT"];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool show_deleted = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string filter = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_127878962) = "\022\232\001empty($) or matches($, `(?i)^\\s*category\\s*(=|!=)\\s*\"[^\"]*\"\\s*$`) ?: [FIELD_INVALID] Only a single predicate on `category` using `=` or `!=` is supported.", (unresolved_option_158361448) = "\"\005AUDIT"];
+  AgentMemoryView view = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\022l$ != AGENT_MEMORY_VIEW_FULL ?: [FIELD_INVALID] AGENT_MEMORY_VIEW_FULL is not supported in ListAgentMemories.", (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message ListAgentMemoriesResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated AgentMemory agent_memories = 1 [(unresolved_option_158361448) = "\"\nAUDIT_SIZE"];
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message GetAgentMemoryRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n%aiplatform.googleapis.com/AgentMemory", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022[isValidResourceName($, `AgentMemory`) ?: [FIELD_INVALID] Invalid AgentMemory resource name.", (unresolved_option_188057776) = 1];
+  AgentMemoryView view = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message CreateAgentMemoryRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022%aiplatform.googleapis.com/AgentMemory", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022[empty($) or isValidResourceName($, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.", (unresolved_option_188057776) = 1];
+  AgentMemory agent_memory = 2 [(unresolved_option_1052) = "\002", (unresolved_option_127878962) = "\022Lnot empty($.path) ?: [REQUIRED_FIELD_MISSING] agent_memory.path is required.\022Slen($.path)<=4096 ?: [FIELD_INVALID] agent_memory.path can have at most 4096 bytes.\022Tnot empty($.category) ?: [REQUIRED_FIELD_MISSING] agent_memory.category is required.\n true ?: [REQUIRED_FIELD_MISSING]", (unresolved_option_158361448) = "\"\014AUDIT_REDACT"];
+}
+
+message BatchCreateAgentMemoriesRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022%aiplatform.googleapis.com/AgentMemory", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022OisValidResourceName($, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.", (unresolved_option_188057776) = 1];
+  repeated CreateAgentMemoryRequest requests = 2 [(unresolved_option_1052) = "\002", (unresolved_option_127878962) = "\022>not empty($) ?: [REQUIRED_FIELD_MISSING] requests is required.\022Hlen($)<=100 ?: [FIELD_INVALID] requests can contain at most 100 entries."];
+}
+
+message BatchCreateAgentMemoriesResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated AgentMemory agent_memories = 1;
+}
+
+message UpdateAgentMemoryRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  AgentMemory agent_memory = 1 [(unresolved_option_1052) = "\002", (unresolved_option_127878962) = "\022Tnot empty($.name) ?: [REQUIRED_FIELD_MISSING] AgentMemory resource name is required.\022`isValidResourceName($.name, `AgentMemory`) ?: [FIELD_INVALID] Invalid AgentMemory resource name.\n true ?: [REQUIRED_FIELD_MISSING]", (unresolved_option_158361448) = "\"\014AUDIT_REDACT", (unresolved_option_188057776) = 1];
+  protobuf.FieldMask update_mask = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message DeleteAgentMemoryRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n%aiplatform.googleapis.com/AgentMemory", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022[isValidResourceName($, `AgentMemory`) ?: [FIELD_INVALID] Invalid AgentMemory resource name.", (unresolved_option_188057776) = 1];
+  string etag = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1000];
+}
+
+message UndeleteAgentMemoryRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n%aiplatform.googleapis.com/AgentMemory", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022[isValidResourceName($, `AgentMemory`) ?: [FIELD_INVALID] Invalid AgentMemory resource name.", (unresolved_option_188057776) = 1];
+  string etag = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1000];
+}
+
+message ResetAgentMemoriesRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022OisValidResourceName($, `Agent`) ?: [FIELD_INVALID] Invalid Agent resource name.", (unresolved_option_188057776) = 1];
+}
+
+message ResetAgentMemoriesResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  bool onboarding_started = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message ListAgentMemoryRevisionsRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022-aiplatform.googleapis.com/AgentMemoryRevision", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\022(not empty($) ?: [REQUIRED_FIELD_MISSING]\022[isValidResourceName($, `AgentMemory`) ?: [FIELD_INVALID] Invalid AgentMemory resource name.", (unresolved_option_188057776) = 1];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_127878962) = "\0229$>=0 ?: [FIELD_INVALID] Page size should be non-negative.", (unresolved_option_158361448) = "\"\005AUDIT"];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  AgentMemoryRevisionView view = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800, (unresolved_option_158361448) = "\"\005AUDIT"];
+  bool diff_ignores_yaml_frontmatter = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message ListAgentMemoryRevisionsResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated AgentMemoryRevision agent_memory_revisions = 1 [(unresolved_option_158361448) = "\"\nAUDIT_SIZE"];
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+service AgentService {
+  option (unresolved_option_143069646) = "\022\026internal,ui,v1beta1,v1";
+  rpc CreateAgent(CreateAgentRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1049) = "\n\005Agent\022\034CreateAgentOperationMetadata";
+    option (unresolved_option_1051) = "parent,agent";
+    option (unresolved_option_72295728) = ":\005agent\"//v1beta1/{parent=projects/*/locations/*}/agents";
+    option (unresolved_option_161893301) = "\022\246\001\n\006parent\022'aiplatform.googleapis.com/agents.create\032+RESOURCE,aiplatform.googleapis.com/Location\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001:\006parentR\037aiplatform.googleapis.com/Agent\032E\n\004name\032#aiplatform.googleapis.com/Operationj\030\n\nEVENT_TIME\032\nCLOCK_TIME\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION*\025\n\013method_type\022\006CREATE2\016AUTO_CLOUD_IAM:\027ENABLE_CAIS_INTEGRATION@\001";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc GetAgent(GetAgentRequest) returns (Agent) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "\022//v1beta1/{name=projects/*/locations/*/agents/*}";
+    option (unresolved_option_161893301) = "\022u\n\004name\022$aiplatform.googleapis.com/agents.get\032(RESOURCE,aiplatform.googleapis.com/Agent\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (unresolved_option_1051) = "parent";
+    option (unresolved_option_72295728) = "\022//v1beta1/{parent=projects/*/locations/*}/agents";
+    option (unresolved_option_161893301) = "\022{\n\006parent\022%aiplatform.googleapis.com/agents.list\032+RESOURCE,aiplatform.googleapis.com/Location\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc SearchAgents(SearchAgentsRequest) returns (SearchAgentsResponse) {
+    option (unresolved_option_1051) = "parent";
+    option (unresolved_option_72295728) = "\0226/v1beta1/{parent=projects/*/locations/*}/agents:search";
+    option (unresolved_option_161893301) = "\022}\n\006parent\022'aiplatform.googleapis.com/agents.search\032+RESOURCE,aiplatform.googleapis.com/Location\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc UpdateAgent(UpdateAgentRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1049) = "\n\005Agent\022\034UpdateAgentOperationMetadata";
+    option (unresolved_option_1051) = "agent,update_mask";
+    option (unresolved_option_72295728) = ":\005agent25/v1beta1/{agent.name=projects/*/locations/*/agents/*}";
+    option (unresolved_option_161893301) = "\022~\n\nagent.name\022'aiplatform.googleapis.com/agents.update\032(RESOURCE,aiplatform.googleapis.com/Agent\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\032E\n\004name\032#aiplatform.googleapis.com/Operationj\030\n\nEVENT_TIME\032\nCLOCK_TIME\"CCLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION,WRITE_ACTION*\025\n\013method_type\022\006UPDATE2\016AUTO_CLOUD_IAM:\027ENABLE_CAIS_INTEGRATION@\001";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DeleteAgent(DeleteAgentRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1049) = "\n\025google.protobuf.Empty\022\027DeleteOperationMetadata";
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "*//v1beta1/{name=projects/*/locations/*/agents/*}";
+    option (unresolved_option_161893301) = "\022\222\001\n\004name\022'aiplatform.googleapis.com/agents.delete\032(RESOURCE,aiplatform.googleapis.com/Agent\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001j\030\n\nEVENT_TIME\032\nCLOCK_TIME\032E\n\004name\032#aiplatform.googleapis.com/Operationj\030\n\nEVENT_TIME\032\nCLOCK_TIME\";CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION,WRITE_ACTION*\025\n\013method_type\022\006DELETE2\016AUTO_CLOUD_IAM:\027ENABLE_CAIS_INTEGRATION@\001";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+}

@@ -1,0 +1,59 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dddb4e (va 0x103dddb4e, __TEXT.__rodata), descriptor length 2682 B, sha256 cfa62c92c355b28b
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "learning/genai/api/interactions/proto/events.proto";
+import "learning/genai/api/interactions/proto/hooks.proto";
+import "learning/genai/api/interactions/proto/interaction.proto";
+import "learning/genai/api/interactions/proto/media_stream_steps.proto";
+import "learning/genai/api/interactions/proto/sse_events.proto";
+import "learning/genai/api/interactions/proto/state_update.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+option features.utf8_validation = NONE;
+
+message ExternalClientEvent {
+  oneof event_type {
+    option (unresolved_option_525000030) = 1;
+    CreateInteractionEvent create_interaction = 1 [(unresolved_option_525000216) = "interaction.create"];
+    ReconnectInteractionEvent reconnect_interaction = 2 [(unresolved_option_525000216) = "interaction.connect"];
+    CompleteInteractionEvent complete_interaction = 4 [(unresolved_option_525000216) = "interaction.complete"];
+    CancelInteractionEvent cancel_interaction = 5 [(unresolved_option_525000216) = "interaction.cancel"];
+    DisconnectEvent disconnect = 9 [(unresolved_option_525000216) = "interaction.disconnect"];
+    InputEvent input = 11 [(unresolved_option_525000216) = "input"];
+    MediaStreamAppend media_stream_append = 12;
+    CallHookResponse call_hook_response = 14;
+    FunctionResultEvent function_result = 15 [(unresolved_option_525000216) = "function_result"];
+    ElicitationResultEvent elicitation_result = 16 [(unresolved_option_525000216) = "elicitation_result"];
+  }
+}
+
+message ExternalServerEvent {
+  oneof event_type {
+    option (unresolved_option_525000030) = 1;
+    InteractionCreatedEvent interaction_created = 1 [(unresolved_option_525000216) = "interaction.created"];
+    InteractionReconnectedEvent interaction_reconnected = 2 [(unresolved_option_525000216) = "interaction.connected"];
+    InteractionCompletedEvent interaction_completed = 4 [(unresolved_option_525000216) = "interaction.completed"];
+    StepStart step_start = 5 [(unresolved_option_525000216) = "step.start"];
+    StepDelta step_delta = 6 [(unresolved_option_525000216) = "step.delta"];
+    StepStop step_stop = 7 [(unresolved_option_525000216) = "step.stop"];
+    ErrorEvent error = 8 [(unresolved_option_525000216) = "error"];
+    StateUpdate state_update = 9;
+    Interaction.Usage usage_update = 10;
+    FunctionInvocation function_invocation = 11;
+    CallHookRequest call_hook_request = 12;
+    InteractionCancelledEvent interaction_cancelled = 13 [(unresolved_option_525000216) = "interaction.cancelled"];
+  }
+  Interaction.Usage usage = 50;
+  string sub_interaction_id = 51;
+}
+
+message InteractionCancelledEvent {
+  Interaction.Usage usage = 1;
+}

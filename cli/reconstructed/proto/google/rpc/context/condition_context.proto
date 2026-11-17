@@ -1,0 +1,31 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d37692 (va 0x103d37692, __TEXT.__rodata), descriptor length 503 B, sha256 f40be97410ac1a69
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc.context;
+
+import "google/api/visibility.proto";
+
+option java_package = "com.google.rpc.context";
+option java_outer_classname = "ConditionContextProto";
+option java_multiple_files = true;
+option objc_class_prefix = "RPC";
+
+message Match {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  repeated string entity_tags = 1;
+  bool exists = 2;
+}
+
+message ConditionRequestContext {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  Match if_match = 1;
+  Match if_none_match = 2;
+}
+
+message ConditionResponseContext {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  string entity_tag = 1;
+}

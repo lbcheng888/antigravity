@@ -1,0 +1,185 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f16265 (va 0x103f16265, __TEXT.__rodata), descriptor length 6909 B, sha256 b6ede1c6335f2ab2
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.cloud.code.v1internal;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/internal/cloud/code/v1internal/onboarding.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.internal.cloud.code.v1internal";
+option java_outer_classname = "MetricsProto";
+option java_multiple_files = true;
+
+enum ActionStatus {
+  ACTION_STATUS_UNSPECIFIED = 0;
+  ACTION_STATUS_NO_ERROR = 1;
+  ACTION_STATUS_ERROR_UNKNOWN = 2;
+  ACTION_STATUS_CANCELLED = 3;
+  ACTION_STATUS_EMPTY = 4;
+}
+
+message RecordCodeAssistMetricsRequest {
+  string project = 1 [(unresolved_option_40075780) = 1111, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  ClientMetadata metadata = 3 [(unresolved_option_1052) = "\001"];
+  repeated CodeAssistMetric metrics = 4;
+}
+
+message RecordClientEventRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1111, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  ClientMetadata.IdeType ide_type = 2 [(unresolved_option_1052) = "\002"];
+  CodeAssistMetric metric = 3 [(unresolved_option_1052) = "\002"];
+}
+
+message CodeAssistMetric {
+  protobuf.Timestamp timestamp = 1 [(unresolved_option_40075780) = 2100];
+  oneof event {
+    InlineCompletionAccepted inline_completion_accepted = 2;
+    InlineCompletionOffered inline_completion_offered = 3;
+    ConversationOffered conversation_offered = 4;
+    GenerateCodeUI generate_code_ui = 5;
+    ConversationExplainUI conversation_explain_ui = 6;
+    ConversationGenerateTestUI conversation_generate_test_ui = 7;
+    ConversationInteraction conversation_interaction = 8;
+    AiCharactersReports ai_characters_reports = 9;
+  }
+  map<string, string> metric_metadata = 10 [json_name = "md", (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 9902];
+}
+
+message InlineCompletionAccepted {
+  string trace_id = 1 [(unresolved_option_40075780) = 2300];
+  float score = 2 [(unresolved_option_40075780) = 999];
+  int64 response_size = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  int64 response_lines = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  string language = 5 [(unresolved_option_40075780) = 999];
+  CompletionMethod completion_method = 6 [(unresolved_option_40075780) = 999];
+  optional int64 partial_accepted_characters = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  optional int64 partial_accepted_lines = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  optional int64 accepted_comment_lines = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  ActionStatus status = 9 [(unresolved_option_40075780) = 999];
+  int64 response_accepted_index = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12008];
+
+  enum CompletionMethod {
+    UNKNOWN = 0;
+    GENERATE_CODE = 1;
+    COMPLETE_CODE = 2;
+    TRANSFORM_CODE = 3;
+    AUTOMATIC_GENERATION = 4;
+  }
+}
+
+message InlineCompletionOffered {
+  string trace_id = 1 [(unresolved_option_40075780) = 2300];
+  int64 result_count = 2 [(unresolved_option_40075780) = 999];
+  string language = 3 [(unresolved_option_40075780) = 999];
+  CompletionMode completion_mode = 4 [(unresolved_option_40075780) = 999];
+  protobuf.Duration display_length = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12025];
+  ActionStatus status = 6 [(unresolved_option_40075780) = 999];
+  CompletionMethod completion_method = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12008];
+  protobuf.Duration response_latency = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12025];
+  int64 response_received_index = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12008];
+
+  enum CompletionMode {
+    UNKNOWN = 0;
+    LANGUAGE_CLIENT = 1;
+    TYPEOVER = 2;
+    TYPEOVER_NEWLINE = 3;
+    TRANSFORM_CODE = 4;
+  }
+
+  enum CompletionMethod {
+    COMPLETION_METHOD_UNKNOWN = 0;
+    COMPLETION_METHOD_GENERATE_CODE = 1;
+    COMPLETION_METHOD_COMPLETE_CODE = 2;
+    COMPLETION_METHOD_TRANSFORM_CODE = 3;
+    COMPLETION_METHOD_AUTOMATIC_GENERATION = 4;
+  }
+}
+
+message ConversationOffered {
+  int64 citation_count = 1 [(unresolved_option_40075780) = 999];
+  bool included_code = 2 [(unresolved_option_40075780) = 999];
+  ActionStatus status = 3 [(unresolved_option_40075780) = 999];
+  string trace_id = 4 [(unresolved_option_40075780) = 2300];
+  StreamingLatency streaming_latency = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool is_agentic = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  InitiationMethod initiation_method = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12008];
+  string trajectory_id = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  optional string language = 9 [(unresolved_option_40075780) = 999];
+
+  enum InitiationMethod {
+    INITIATION_METHOD_UNSPECIFIED = 0;
+    TAB = 1;
+    COMMAND = 2;
+    AGENT = 3;
+  }
+
+  message StreamingLatency {
+    optional protobuf.Duration first_message_latency = 1 [(unresolved_option_40075780) = 12025];
+    optional protobuf.Duration total_latency = 2 [(unresolved_option_40075780) = 12025];
+  }
+}
+
+message ConversationInteraction {
+  string trace_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  ActionStatus status = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  Interaction interaction = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12008];
+  optional int64 accepted_lines = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  optional int64 removed_lines = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 13100];
+  optional string language = 5 [(unresolved_option_40075780) = 999];
+  bool is_agentic = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  ConversationOffered.InitiationMethod initiation_method = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12008];
+
+  enum Interaction {
+    UNKNOWN = 0;
+    THUMBSUP = 1;
+    THUMBSDOWN = 2;
+    COPY = 3;
+    INSERT = 4;
+    ACCEPT_CODE_BLOCK = 5;
+    ACCEPT_ALL = 6;
+    ACCEPT_FILE = 7;
+    DIFF = 8;
+    ACCEPT_RANGE = 9;
+  }
+}
+
+message GenerateCodeUI {
+}
+
+message ConversationExplainUI {
+}
+
+message ConversationGenerateTestUI {
+}
+
+message AiCharactersReports {
+  repeated AiCharactersReport reports = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+}
+
+message AiCharactersReport {
+  string language = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  EditType edit_type = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  int64 total_chars = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 13100];
+  int64 whitespace_chars = 4 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 13100];
+  int64 time_interval_index = 5 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+
+  enum EditType {
+    EDIT_TYPE_UNSPECIFIED = 0;
+    USER_ADD = 1;
+    PASTE = 2;
+    DELETE = 3;
+    OTHER = 4;
+    AI_COMPLETION = 5;
+    AI_COMPLETION_PARTIAL = 6;
+    AI_GENERATION = 7;
+    AI_GENERATION_PARTIAL = 8;
+  }
+}

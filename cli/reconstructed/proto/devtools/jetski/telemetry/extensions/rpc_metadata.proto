@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2ae46 (va 0x103d2ae46, __TEXT.__rodata), descriptor length 387 B, sha256 a4fb95c3f9096c30
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "google/rpc/code.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "RpcMetadataOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message RpcMetadata {
+  string rpc_name = 1 [(unresolved_option_40075780) = 2800];
+  google.rpc.Code status_code = 2 [(unresolved_option_40075780) = 2800];
+  int64 latency_ms = 3 [(unresolved_option_40075780) = 2801];
+}

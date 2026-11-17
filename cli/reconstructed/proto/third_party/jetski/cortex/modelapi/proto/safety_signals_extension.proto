@@ -1,0 +1,16 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2d307 (va 0x103d2d307, __TEXT.__rodata), descriptor length 404 B, sha256 5c8c97c75ac31caf
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package exa.cortex_pb;
+
+import "google/internal/cloud/code/v1internal/prediction_service.proto";
+import "third_party/jetski/cortex_pb/custom_extensions.proto";
+
+option java_package = "com.google.exa.cortex";
+
+extend CustomExtensions {
+  google.internal.cloud.code.v1internal.GenerateContentResponse.Metadata.SafetySignals safety_signals = 113;
+}

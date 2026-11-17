@@ -1,0 +1,58 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d750d9 (va 0x103d750d9, __TEXT.__rodata), descriptor length 1303 B, sha256 f35f6ed05e91e9ac
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package protoverifier;
+
+import "net/proto2/proto/descriptor.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.analytics.config.protoverifier.proto";
+option java_outer_classname = "RulesProto";
+option java_multiple_files = true;
+option (unresolved_option_71304954) = "latest";
+
+message Rules {
+  reserved 10;
+  optional bool must_be_set = 1 [default = false];
+  optional int64 min_int = 2;
+  optional float min_float = 3;
+  optional double min_double = 4;
+  optional int64 max_int = 5;
+  optional float max_float = 6;
+  optional double max_double = 7;
+  optional string match_regex = 8;
+  optional string not_match_regex = 9;
+  optional int32 min_string_length = 11;
+  optional int32 max_string_length = 12;
+  optional int32 min_repeated_length = 13;
+  optional int32 max_repeated_length = 14;
+  optional bool language_code = 15 [default = false];
+  optional bool region_code = 16 [default = false];
+  optional bool time_zone_id = 17 [default = false];
+}
+
+message MutationRules {
+  optional Mutability mutability = 1 [default = MUTABLE];
+
+  enum Mutability {
+    UNKNOWN = 0;
+    MUTABLE = 1;
+    IMMUTABLE = 2;
+  }
+}
+
+message OneOfRules {
+  optional bool must_be_set = 1 [default = false];
+}
+
+extend proto2.FieldOptions {
+  optional Rules rules = 28140453;
+  optional MutationRules mutation_rules = 28140454;
+}
+
+extend proto2.OneofOptions {
+  optional OneOfRules one_of_rules = 6487971;
+}

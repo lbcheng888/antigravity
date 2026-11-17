@@ -1,0 +1,134 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ede447 (va 0x103ede447, __TEXT.__rodata), descriptor length 6148 B, sha256 8e0c84ea17c2b0c2
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package assistant.api.core_types;
+
+import "assistant/api/annotations/version_annotations.proto";
+import "frameworks/protobuf/protoui/protoui.proto";
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.assistant.api.proto.proto1api";
+option java_outer_classname = "DeviceProto";
+option cc_enable_arenas = true;
+option objc_class_prefix = "ASTCT";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127176) = 1;
+option (unresolved_option_525000017) = "\n%package:assistant/boq/frontend/server\n&package:assistant/boq/proactive/server\n.package:frameworks/debug/settings/proto/public\n!package:google/assistant/embedded\n-package:google/corp/actionableevalreportdepot\n\037package:google/corp/tag/nirvana\n6package:google/internal/alkali/applications/bluepencil\n-package:google/internal/assistant/frontend/v1\n?package:google/internal/assistant/frontend/v1/cloud_arbitration\nGpackage:google/internal/assistant/frontend/v1/cloud_lookup/voz_frontend\nApackage:google/internal/assistant/frontend/v1/cloud_orchestration\n5package:google/internal/assistant/frontend/v1/penguin\n7package:google/internal/assistant/frontend/v1/summarize\n+package:google/internal/assistant/proactive\n2package:google/internal/assistant/reminders/bridge\n4package:google/internal/assistant/tv/autocomplete/v1\n9package:google/internal/assistant/voice/growth/chalkboard\n%package:google/internal/assistantcart\n$package:google/internal/bardemulator\n+package:google/internal/boq/codelab/redhood\n package:google/internal/discover\n'package:google/internal/education/bloom\nFpackage:google/internal/financeplatform/frontend/v1/frontendpayservice\nGpackage:google/internal/financeplatform/frontend/v1/usersettingsservice\n/package:google/internal/firebase/logging/legacy\n\036package:google/internal/geller\n\"package:google/internal/gemini/web\n\"package:google/internal/home/foyer\n#package:google/internal/labs/action\n%package:google/internal/robinfrontend\nApackage:google/internal/search/gsa/dictionary/dictionaryextension\nDpackage:google/internal/search/gsa/dictionary/dictionaryextension/v1\n-package:google/internal/search/speechs3proto2\n)package:google/internal/zerostateproxy/v1\n<package:home/intelligence/prototypes/wilderness/bwindi/proto\n@package:home/intelligence/prototypes/wilderness/monteverde/proto\n5package:home/intelligence/prototypes/wilderness/proto\n<package:home/intelligence/prototypes/wilderness/sagano/proto\n'package:home/intelligence/service/proto\n8package:java/com/google/finance/platform/frontend/server\nGpackage:java/com/google/frameworks/debug/settings/frontend/publicserver\nFpackage:java/com/google/home/intelligence/prototypes/wilderness/server\n8package:java/com/google/home/intelligence/service/server\n;package:java/com/google/ux/constellation/voyager/boq/server\n&package:ux/constellation/voyager/proto\n!package:google/assistant/embedded\n6package:google/internal/alkali/applications/bluepencil\n+package:google/internal/assistant/proactive\n2package:google/internal/assistant/reminders/bridge\n%package:google/internal/assistantcart\n+package:google/internal/boq/codelab/redhood\n'package:google/internal/education/bloom\n/package:google/internal/firebase/logging/legacy\n\036package:google/internal/geller\n\"package:google/internal/home/foyer\n#package:google/internal/labs/action\n%package:google/internal/robinfrontend\nApackage:google/internal/search/gsa/dictionary/dictionaryextension\nDpackage:google/internal/search/gsa/dictionary/dictionaryextension/v1\n-package:google/internal/search/speechs3proto2";
+option (unresolved_option_2) = 2;
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.assistant.api.proto";
+
+message CastDevice {
+  option (unresolved_option_134096400) = 1;
+  optional CastDeviceType cast_device_type = 1;
+  optional string human_friendly_name = 2 [(unresolved_option_40075780) = 2400];
+  optional string device_id = 3 [(unresolved_option_40075780) = 1100];
+
+  enum CastDeviceType {
+    UNKNOWN = 0;
+    CHROMECAST = 1;
+    AUDIOCAST = 2;
+    CHIRP = 3;
+  }
+}
+
+message DeviceId {
+  option (unresolved_option_134096400) = 1;
+  optional string device_type = 3 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional string canonical_device_id = 13 [(unresolved_option_40075780) = 1100];
+  optional string client_instance_id = 2 [(unresolved_option_40075780) = 1100];
+  optional string agsa_client_instance_id = 8 [(unresolved_option_40075780) = 1100];
+  optional string cast_device_id = 1 [(unresolved_option_40075780) = 1100];
+  optional string allo_device_id = 4 [(unresolved_option_40075780) = 1100];
+  optional string multi_hotword_arbitration_device_id = 5 [(unresolved_option_40075780) = 1100];
+  optional DeviceConfig device_config = 6;
+  optional string quartz_device_id = 7 [(unresolved_option_40075780) = 1100];
+  optional string libassistant_device_id = 9 [(unresolved_option_40075780) = 1100];
+  optional string opa_ios_device_id = 10 [(unresolved_option_40075780) = 1100];
+  optional string home_graph_device_id = 11 [(unresolved_option_40075780) = 1100];
+  optional string connected_dock_id = 12 [(unresolved_option_40075780) = 1100];
+}
+
+message DeviceConfig {
+  reserved 3, 4;
+  optional string device_id = 1 [(unresolved_option_40075780) = 1100];
+  optional string agent_id = 2 [(unresolved_option_40075780) = 1805];
+}
+
+message SurfaceType {
+  option (unresolved_option_134096400) = 1;
+  optional Type type = 1;
+
+  enum Type {
+    UNKNOWN = 0;
+    ANDROID_ALLO = 14;
+    ANDROID_AUTO = 4 [deprecated = true, (unresolved_option_388265573) = "\n\031(Deprecated) ANDROID_AUTO"];
+    ANDROID_THINGS_CUBE = 47;
+    ANDROID_THINGS_JASPER = 33;
+    ANDROID_TV = 5;
+    ANDROID_TV_KIDS = 45;
+    ANDROID_WEAR = 2;
+    AR_GLASSES = 57;
+    ASSISTANT_SDK = 28;
+    AUDIOWEAR = 13;
+    BUBBLE_CHARACTERS_IOS = 58;
+    CAPABILITY_BASED_SURFACE = 29;
+    CHROMECAST_ASSISTANT = 27;
+    CHROMECAST_MANHATTAN = 42;
+    CHROMECAST_SEARCH = 18;
+    CLOUD_DEVICE = 54;
+    COMPANION_SCREEN = 31;
+    DYNAMITE_WEB = 25;
+    ENSEMBLE = 3;
+    EYESFREE_AGSA = 7;
+    EYESFREE_GMM = 8;
+    GBOARD = 24;
+    GLASS = 9;
+    GOOGLE_HOME = 6;
+    GOOGLE_HOME_APP = 60;
+    THIRD_PARTY_PARTNER_APP = 61;
+    HANGOUTS_CHATBOT = 19;
+    IOS_ALLO = 15;
+    IOS_GSA = 10;
+    IOS_WEAR = 11;
+    LIBASSISTANT = 35;
+    LINE_CHATBOT = 20;
+    MATTER = 59;
+    MULTIMODAL_AGSA = 1;
+    NON_ASSISTANT_SURFACE = 41;
+    OPA_AGSA = 12;
+    OPA_AGSA_CHROME_OS = 26 [deprecated = true, (unresolved_option_388265573) = "\n\037(Deprecated) OPA_AGSA_CHROME_OS"];
+    OPA_ANDROID_AUTO = 17;
+    OPA_ANDROID_LITE = 34;
+    OPA_ANDROID_SCREENLESS = 23;
+    OPA_ANDROID_SMART_DISPLAY = 56;
+    OPA_ANDROID_TABLET = 40;
+    OPA_CROS = 46;
+    OPA_GACS = 51;
+    OPA_IOS = 16;
+    OPA_IOS_SCREENLESS = 30;
+    OPA_KAIOS = 38;
+    OPA_MOBILE_WEB = 53;
+    RTOS_PHONE = 55;
+    SMS_CHATBOT = 21;
+    TELEGRAM_CHATBOT = 22;
+    TELEPHONE_ASSISTANT = 49;
+    VERILY_ONDUO = 32;
+    YOUTUBE_APP = 36;
+    AGSA_BISTO_FOR_EVAL = 37;
+    COGSWORTH_FOR_EVAL = 39;
+    LOCKHART_MIC_FOR_EVAL = 48;
+    OPA_ANDROID_AUTO_EMBEDDED_FAKE = 50 [deprecated = true, (unresolved_option_388265573) = "\n+(Deprecated) OPA_ANDROID_AUTO_EMBEDDED_FAKE"];
+    SPARK = 43;
+    WALLE = 52;
+    UNIT_TESTING = 44;
+    ANDROID_SMART_DISPLAY_COSMOS = 62;
+  }
+}

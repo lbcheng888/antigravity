@@ -1,0 +1,20 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: gzip @ file offset 0xab28395 (va 0x10ab28395, __DATA.__noptrdata), descriptor length 109 B, sha256 1fee1aaeecc92024
+// boundary: syntax_end
+
+syntax = "proto3";
+
+package cockroach.errorspb;
+
+option go_package = "errorspb";
+option (unresolved_option_63001) = 0;
+option (unresolved_option_63017) = 1;
+option (unresolved_option_63018) = 1;
+option (unresolved_option_63019) = 1;
+option (unresolved_option_63020) = 1;
+option (unresolved_option_63026) = 0;
+option (unresolved_option_63034) = 0;
+option (unresolved_option_63035) = 0;
+
+message TestError {
+}

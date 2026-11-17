@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d34ae0 (va 0x103d34ae0, __TEXT.__rodata), descriptor length 477 B, sha256 a8cae5e16c1755f2
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc.context;
+
+import "java/com/google/apps/jspb/jspb_disable_randomization.proto";
+
+option java_package = "com.google.rpc.context";
+option java_outer_classname = "HttpHeaderContextProto";
+option java_multiple_files = true;
+option objc_class_prefix = "RPC";
+
+message HttpHeaderContext {
+  option (unresolved_option_448127181) = 1;
+  map<string, string> headers = 1;
+  string request_path = 2;
+  int32 response_code = 3;
+  string request_firstline = 4;
+}

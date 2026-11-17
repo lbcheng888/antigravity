@@ -1,0 +1,25 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d26a49 (va 0x103d26a49, __TEXT.__rodata), descriptor length 341 B, sha256 56d16d5f57d95020
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+option features.utf8_validation = NONE;
+
+message MediaStreamAppend {
+  oneof event_type {
+    option (unresolved_option_525000030) = 1;
+    AudioStreamAppend audio = 2 [(unresolved_option_525000216) = "input.audio.append"];
+  }
+}
+
+message AudioStreamAppend {
+  bytes data = 1;
+  string stream_id = 2;
+}

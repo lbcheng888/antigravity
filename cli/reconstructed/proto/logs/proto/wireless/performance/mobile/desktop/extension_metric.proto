@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3a99f (va 0x103d3a99f, __TEXT.__rodata), descriptor length 545 B, sha256 0b4e84f535d31fd8
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package logs.proto.wireless.performance.mobile.desktop;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "ExtensionMetric";
+option (unresolved_option_71304954) = "latest";
+
+export message MetricExtension {
+  option features.(unresolved_option_1001) = "(\002";
+  extensions 1 [(unresolved_option_1) = "\n,desktop_test_only_logsite_metadata_extension\022Glogs.proto.wireless.performance.mobile.TestOnlyLogsiteMetadataExtension"];
+  extensions 2 [(unresolved_option_1) = "\n\035desktop_antigravity_extension\022Clogs.proto.wireless.performance.mobile.desktop.AntigravityExtension"];
+}

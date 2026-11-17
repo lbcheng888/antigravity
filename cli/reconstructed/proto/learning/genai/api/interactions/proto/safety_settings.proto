@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d47402 (va 0x103d47402, __TEXT.__rodata), descriptor length 714 B, sha256 1f0a3eb916891412
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+enum HarmCategory {
+  HARM_CATEGORY_UNSPECIFIED = 0;
+  HARM_CATEGORY_HATE_SPEECH = 1;
+  HARM_CATEGORY_DANGEROUS_CONTENT = 2;
+  HARM_CATEGORY_HARASSMENT = 3;
+  HARM_CATEGORY_SEXUALLY_EXPLICIT = 4;
+  HARM_CATEGORY_JAILBREAK = 10;
+}
+
+message SafetySetting {
+  HarmCategory type = 1;
+  HarmBlockThreshold threshold = 2;
+  HarmBlockMethod method = 4;
+
+  enum HarmBlockThreshold {
+    HARM_BLOCK_THRESHOLD_UNSPECIFIED = 0;
+    BLOCK_LOW_AND_ABOVE = 1;
+    BLOCK_MEDIUM_AND_ABOVE = 2;
+    BLOCK_ONLY_HIGH = 3;
+    OFF = 5;
+  }
+
+  enum HarmBlockMethod {
+    HARM_BLOCK_METHOD_UNSPECIFIED = 0;
+    SEVERITY = 1;
+    PROBABILITY = 2;
+  }
+}

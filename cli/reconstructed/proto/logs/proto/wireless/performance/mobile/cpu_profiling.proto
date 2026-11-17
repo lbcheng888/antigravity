@@ -1,0 +1,39 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d610f1 (va 0x103d610f1, __TEXT.__rodata), descriptor length 1050 B, sha256 288fc4f9d38742da
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/api/inclusion.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\006legacy";
+option (unresolved_option_5) = 2;
+
+message DeviceMetadata {
+  optional DeviceState before_state = 1;
+  optional DeviceState after_state = 2;
+  optional float battery_drop_percent = 3;
+}
+
+message DeviceState {
+  optional bool screen_on = 1;
+  optional bool charging = 2;
+  optional bool wifi_on = 3;
+  optional bool bluetooth_on = 4;
+}
+
+message CpuProfilingMetric {
+  optional bytes trace_blob = 1 [(unresolved_option_40075780) = 9900];
+  optional DeviceMetadata device_metadata = 2;
+  optional double samples_per_epoch = 3;
+  optional int32 sample_duration_scheduled = 4;
+  optional int32 sample_duration_actual = 5;
+  optional int32 sample_frequency = 6;
+  optional int32 sample_buffer_size = 7;
+}

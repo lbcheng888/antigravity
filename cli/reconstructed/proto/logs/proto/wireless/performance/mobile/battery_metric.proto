@@ -1,0 +1,166 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f206a8 (va 0x103f206a8, __TEXT.__rodata), descriptor length 7181 B, sha256 f7ebb9796f78cab1
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/api/inclusion.proto";
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "logs/proto/wireless/performance/mobile/extension_metric.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\006legacy";
+option (unresolved_option_5) = 2;
+
+message BatteryUsageMetric {
+  optional BatteryStatsDiff battery_stats_diff = 1;
+}
+
+message BatteryStatsDiff {
+  optional SampleInfo start_info = 1;
+  optional fixed64 start_hashed_custom_event_name = 8;
+  optional string start_custom_event_name = 9;
+  optional string start_constant_event_name = 10 [(unresolved_option_479186792) = "\010\001"];
+  optional MetricExtension start_metric_extension = 11;
+  optional SampleInfo end_info = 2;
+  optional int64 duration_ms = 3;
+  repeated WakelockStats wakelock_stats = 4 [deprecated = true];
+  repeated SyncStats sync_stats = 5 [deprecated = true];
+  optional UidHealthProto uid_health_proto_diff = 6;
+  optional int64 elaped_realtime_ms = 7 [(unresolved_option_40075780) = 2100];
+  optional int64 charge_counter_diff_uah = 12;
+
+  enum SampleInfo {
+    UNKNOWN = 0;
+    FOREGROUND_TO_BACKGROUND = 1;
+    BACKGROUND_TO_FOREGROUND = 2;
+    FOREGROUND_SERVICE_START = 3;
+    FOREGROUND_SERVICE_STOP = 4;
+    CUSTOM_MEASURE_START = 5;
+    CUSTOM_MEASURE_STOP = 6;
+  }
+}
+
+message UidHealthProto {
+  optional int64 realtime_battery_ms = 1 [(unresolved_option_40075780) = 2100];
+  optional int64 uptime_battery_ms = 2;
+  optional int64 realtime_screen_off_battery_ms = 3 [(unresolved_option_40075780) = 2100];
+  optional int64 uptime_screen_off_battery_ms = 4;
+  repeated Timer wakelocks_full = 5;
+  repeated Timer wakelocks_partial = 6;
+  repeated Timer wakelocks_window = 7;
+  repeated Timer wakelocks_draw = 8;
+  repeated Timer syncs = 9;
+  repeated Timer jobs = 10;
+  optional Timer gps_sensor = 11;
+  repeated Timer sensors = 12;
+  repeated PidHealthProto stats_pids = 13;
+  repeated ProcessHealthProto stats_processes = 14;
+  repeated PackageHealthProto stats_packages = 15;
+  optional int64 wifi_idle_ms = 16;
+  optional int64 wifi_rx_ms = 17;
+  optional int64 wifi_tx_ms = 18;
+  optional int64 wifi_power_mams = 19;
+  optional int64 bluetooth_idle_ms = 20;
+  optional int64 bluetooth_rx_ms = 21;
+  optional int64 bluetooth_tx_ms = 22;
+  optional int64 bluetooth_power_mams = 23;
+  optional int64 mobile_idle_ms = 24;
+  optional int64 mobile_rx_ms = 25;
+  optional int64 mobile_tx_ms = 26;
+  optional int64 mobile_power_mams = 27;
+  optional int64 wifi_running_ms = 28;
+  optional int64 wifi_full_lock_ms = 29;
+  optional Timer wifi_scan = 30;
+  optional int64 wifi_multicast_ms = 31;
+  optional Timer audio = 32 [(unresolved_option_40075780) = 999];
+  optional Timer video = 33 [(unresolved_option_40075780) = 999];
+  optional Timer flashlight = 34;
+  optional Timer camera = 35;
+  optional Timer foreground_activity = 36;
+  optional Timer bluetooth_scan = 37;
+  optional Timer process_state_top_ms = 38;
+  optional Timer process_state_foreground_service_ms = 39;
+  optional Timer process_state_top_sleeping_ms = 40;
+  optional Timer process_state_foreground_ms = 41;
+  optional Timer process_state_background_ms = 42;
+  optional Timer process_state_cached_ms = 43;
+  optional Timer vibrator = 44;
+  optional int64 other_user_activity_count = 45;
+  optional int64 button_user_activity_count = 46;
+  optional int64 touch_user_activity_count = 47;
+  optional int64 mobile_rx_bytes = 48;
+  optional int64 mobile_tx_bytes = 49;
+  optional int64 wifi_rx_bytes = 50;
+  optional int64 wifi_tx_bytes = 51;
+  optional int64 bluetooth_rx_bytes = 52;
+  optional int64 bluetooth_tx_bytes = 53;
+  optional int64 mobile_rx_packets = 54;
+  optional int64 mobile_tx_packets = 55;
+  optional int64 wifi_rx_packets = 56;
+  optional int64 wifi_tx_packets = 57;
+  optional int64 bluetooth_rx_packets = 58;
+  optional int64 bluetooth_tx_packets = 59;
+  optional Timer mobile_radio_active = 61;
+  optional int64 user_cpu_time_ms = 62;
+  optional int64 system_cpu_time_ms = 63;
+  optional int64 cpu_power_mams = 64;
+}
+
+message PidHealthProto {
+}
+
+message ProcessHealthProto {
+  optional int64 user_time_ms = 1;
+  optional int64 system_time_ms = 2;
+  optional int64 starts_count = 3;
+  optional int64 crashes_count = 4;
+  optional int64 anr_count = 5;
+  optional int64 foreground_ms = 6;
+  optional HashedString name = 7 [(unresolved_option_40075780) = 999];
+}
+
+message PackageHealthProto {
+  repeated ServiceHealthProto stats_services = 1;
+  repeated Counter wakeup_alarms_count = 2;
+  optional HashedString name = 3 [(unresolved_option_40075780) = 999];
+}
+
+message ServiceHealthProto {
+  optional int32 start_service_count = 1;
+  optional int32 launch_count = 2;
+  optional HashedString name = 3 [(unresolved_option_40075780) = 999];
+}
+
+message Timer {
+  optional int32 count = 1;
+  optional int64 duration_ms = 2;
+  optional HashedString name = 3 [(unresolved_option_40075780) = 999];
+}
+
+message Counter {
+  optional int32 count = 1;
+  optional HashedString name = 2 [(unresolved_option_40075780) = 999];
+}
+
+message HashedString {
+  optional fixed64 hash = 1;
+  optional string unhashed_name = 2 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+}
+
+message WakelockStats {
+  optional HashedString name = 1 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional int32 count = 2 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional int64 duration_ms = 3 [deprecated = true, (unresolved_option_40075780) = 999];
+}
+
+message SyncStats {
+  optional HashedString name = 1 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional int32 count = 2 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional int64 duration_ms = 3 [deprecated = true, (unresolved_option_40075780) = 999];
+}

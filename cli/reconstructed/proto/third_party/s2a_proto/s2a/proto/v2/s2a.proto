@@ -1,0 +1,227 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f1476d (va 0x103f1476d, __TEXT.__rodata), descriptor length 6904 B, sha256 9710d2c5f7ba9e99
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package s2a.proto.v2;
+
+import "third_party/golang/protobuf/v2/src/google/protobuf/go_features.proto";
+import "third_party/s2a_proto/s2a/proto/v2/common.proto";
+import "third_party/s2a_proto/s2a/proto/v2/s2a_context.proto";
+
+option java_package = "com.google.s2a.proto.v2";
+option java_outer_classname = "S2AProto";
+option java_multiple_files = true;
+option features.field_presence = IMPLICIT;
+option features.(unresolved_option_1002) = "\020\002";
+
+enum SignatureAlgorithm {
+  S2A_SSL_SIGN_UNSPECIFIED = 0;
+  S2A_SSL_SIGN_RSA_PKCS1_SHA256 = 1;
+  S2A_SSL_SIGN_RSA_PKCS1_SHA384 = 2;
+  S2A_SSL_SIGN_RSA_PKCS1_SHA512 = 3;
+  S2A_SSL_SIGN_ECDSA_SECP256R1_SHA256 = 4;
+  S2A_SSL_SIGN_ECDSA_SECP384R1_SHA384 = 5;
+  S2A_SSL_SIGN_ECDSA_SECP521R1_SHA512 = 6;
+  S2A_SSL_SIGN_RSA_PSS_RSAE_SHA256 = 7;
+  S2A_SSL_SIGN_RSA_PSS_RSAE_SHA384 = 8;
+  S2A_SSL_SIGN_RSA_PSS_RSAE_SHA512 = 9;
+  S2A_SSL_SIGN_ED25519 = 10;
+  S2A_SSL_SIGN_RSA_PKCS1_SHA1 = 11;
+  S2A_SSL_SIGN_RSA_PKCS1_MD5_SHA1 = 12;
+  S2A_SSL_SIGN_ECDSA_SHA1 = 13;
+}
+
+message AlpnPolicy {
+  bool enable_alpn_negotiation = 1;
+  repeated AlpnProtocol alpn_protocols = 2;
+}
+
+message AuthenticationMechanism {
+  reserved 1;
+  Identity identity = 3;
+  oneof mechanism_oneof {
+    string token = 2;
+  }
+}
+
+message Status {
+  uint32 code = 1;
+  string details = 2;
+}
+
+message GetTlsConfigurationReq {
+  ConnectionSide connection_side = 1;
+  string sni = 2;
+  bytes client_hello = 3;
+  TLSVersion tls_version = 4;
+  bytes random = 5;
+  bytes session_id = 6;
+  bytes cipher_suites = 7;
+  bytes compression_methods = 8;
+  bytes tls_extensions = 9;
+}
+
+message GetTlsConfigurationResp {
+  oneof tls_configuration {
+    ClientTlsConfiguration client_tls_configuration = 1;
+    ServerTlsConfiguration server_tls_configuration = 2;
+  }
+
+  message ClientTlsConfiguration {
+    reserved 4, 5;
+    repeated string certificate_chain = 1;
+    TLSVersion min_tls_version = 2;
+    TLSVersion max_tls_version = 3;
+    repeated Ciphersuite ciphersuites = 6;
+    AlpnPolicy alpn_policy = 7;
+    string sni = 8;
+  }
+
+  message ServerTlsConfiguration {
+    reserved 4, 5;
+    repeated string certificate_chain = 1;
+    TLSVersion min_tls_version = 2;
+    TLSVersion max_tls_version = 3;
+    repeated Ciphersuite ciphersuites = 10;
+    bool tls_resumption_enabled = 6;
+    RequestClientCertificate request_client_certificate = 7;
+    uint32 max_overhead_of_ticket_aead = 9;
+    AlpnPolicy alpn_policy = 11;
+
+    enum RequestClientCertificate {
+      UNSPECIFIED = 0;
+      DONT_REQUEST_CLIENT_CERTIFICATE = 1;
+      REQUEST_CLIENT_CERTIFICATE_BUT_DONT_VERIFY = 2;
+      REQUEST_CLIENT_CERTIFICATE_AND_VERIFY = 3;
+      REQUEST_AND_REQUIRE_CLIENT_CERTIFICATE_BUT_DONT_VERIFY = 4;
+      REQUEST_AND_REQUIRE_CLIENT_CERTIFICATE_AND_VERIFY = 5;
+    }
+  }
+}
+
+message OffloadPrivateKeyOperationReq {
+  reserved 3;
+  PrivateKeyOperation operation = 1;
+  SignatureAlgorithm signature_algorithm = 2;
+  oneof in_bytes {
+    bytes raw_bytes = 4;
+    bytes sha256_digest = 5;
+    bytes sha384_digest = 6;
+    bytes sha512_digest = 7;
+  }
+
+  enum PrivateKeyOperation {
+    UNSPECIFIED = 0;
+    SIGN = 1;
+    DECRYPT = 2;
+  }
+}
+
+message OffloadPrivateKeyOperationResp {
+  bytes out_bytes = 1;
+}
+
+message OffloadResumptionKeyOperationReq {
+  ResumptionKeyOperation operation = 1;
+  bytes in_bytes = 2;
+
+  enum ResumptionKeyOperation {
+    UNSPECIFIED = 0;
+    ENCRYPT = 1;
+    DECRYPT = 2;
+  }
+}
+
+message OffloadResumptionKeyOperationResp {
+  bytes out_bytes = 1;
+}
+
+message ValidatePeerCertificateChainReq {
+  VerificationMode mode = 1;
+  oneof peer_oneof {
+    ClientPeer client_peer = 2;
+    ServerPeer server_peer = 3;
+  }
+
+  enum VerificationMode {
+    UNSPECIFIED = 0;
+    SPIFFE = 1;
+    CONNECT_TO_GOOGLE = 2;
+    INSECURE = 3;
+    VERIFY_SELF_SIGNED = 4;
+    TPC_PARTNER_SPACE = 5;
+    ENROLLZ_CERTIFICATE = 6;
+    CONNECT_FROM_GOOGLE = 7;
+  }
+
+  message ClientPeer {
+    repeated bytes certificate_chain = 1;
+  }
+
+  message ServerPeer {
+    repeated bytes certificate_chain = 1;
+    string server_hostname = 2;
+    bytes serialized_unrestricted_client_policy = 3;
+    string raw_target_name = 4;
+  }
+}
+
+message ValidatePeerCertificateChainResp {
+  ValidationResult validation_result = 1;
+  string validation_details = 2;
+  S2AContext context = 3;
+  ValidationFailureReason validation_failure_reason = 4;
+
+  enum ValidationResult {
+    UNSPECIFIED = 0;
+    SUCCESS = 1;
+    FAILURE = 2;
+  }
+
+  enum ValidationFailureReason {
+    UNKNOWN_ERROR = 0;
+    VALIDATION_FAILURE = 1;
+    VALIDATION_NOT_PERFORMED = 2;
+    CERT_CHAIN_LENGTH_LIMIT_EXCEEDED = 3;
+    UNSUPPORTED_KEY_ALGORITHM = 4;
+    INVALID_RSA_KEY_SIZE = 5;
+    UNSUPPORTED_ELLIPTIC_CURVE_KEY = 6;
+    PKI_TOO_LARGE = 7;
+    VALIDATION_TIMED_OUT = 8;
+    VALIDATION_SEARCH_LIMIT_EXCEEDED = 9;
+    CLIENT_CERT_CHAIN_PARSE_FAILURE = 10;
+    MAX_NAME_CONSTRAINTS_EXCEEDED = 11;
+    CLIENT_CERT_CHAIN_INVALID_EKU = 12;
+    CONFIGURATION_RESOLVER_RESOLUTION_FAILURE = 13;
+  }
+}
+
+message SessionReq {
+  reserved 1;
+  Identity local_identity = 7;
+  repeated AuthenticationMechanism authentication_mechanisms = 2;
+  oneof req_oneof {
+    GetTlsConfigurationReq get_tls_configuration_req = 3;
+    OffloadPrivateKeyOperationReq offload_private_key_operation_req = 4;
+    OffloadResumptionKeyOperationReq offload_resumption_key_operation_req = 5;
+    ValidatePeerCertificateChainReq validate_peer_certificate_chain_req = 6;
+  }
+}
+
+message SessionResp {
+  Status status = 1;
+  oneof resp_oneof {
+    GetTlsConfigurationResp get_tls_configuration_resp = 2;
+    OffloadPrivateKeyOperationResp offload_private_key_operation_resp = 3;
+    OffloadResumptionKeyOperationResp offload_resumption_key_operation_resp = 4;
+    ValidatePeerCertificateChainResp validate_peer_certificate_chain_resp = 5;
+  }
+}
+
+service S2AService {
+  rpc SetUpSession(stream SessionReq) returns (stream SessionResp) {
+    option (unresolved_option_14) = 0;
+  }
+}

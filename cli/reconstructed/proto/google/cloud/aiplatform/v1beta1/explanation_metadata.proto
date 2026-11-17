@@ -1,0 +1,112 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e67e79 (va 0x103e67e79, __TEXT.__rodata), descriptor length 4268 B, sha256 04f5f94244cf09d1
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/versioning.proto";
+import "google/protobuf/struct.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "ExplanationMetadataProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+message ExplanationMetadata {
+  map<string, InputMetadata> inputs = 1 [(unresolved_option_1052) = "\002", (unresolved_option_158361448) = "\"\005AUDIT"];
+  map<string, OutputMetadata> outputs = 2 [(unresolved_option_1052) = "\002", (unresolved_option_158361448) = "\"\005AUDIT"];
+  string feature_attributions_schema_uri = 3 [(unresolved_option_158361448) = "\"\005AUDIT"];
+  string latent_space_source = 5 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+
+  message InputMetadata {
+    repeated protobuf.Value input_baselines = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    string input_tensor_name = 2 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    Encoding encoding = 3 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    string modality = 4 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    FeatureValueDomain feature_value_domain = 5 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    string indices_tensor_name = 6 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    string dense_shape_tensor_name = 7 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    repeated string index_feature_mapping = 8 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    string encoded_tensor_name = 9 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    repeated protobuf.Value encoded_baselines = 10 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    Visualization visualization = 11 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    string group_name = 12 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+
+    enum Encoding {
+      option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+      ENCODING_UNSPECIFIED = 0;
+      IDENTITY = 1;
+      BAG_OF_FEATURES = 2;
+      BAG_OF_FEATURES_SPARSE = 3;
+      INDICATOR = 4;
+      COMBINED_EMBEDDING = 5;
+      CONCAT_EMBEDDING = 6;
+    }
+
+    message FeatureValueDomain {
+      option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+      float min_value = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      float max_value = 2 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      float original_mean = 3 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      float original_stddev = 4 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    }
+
+    message Visualization {
+      option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+      Type type = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      Polarity polarity = 2 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      ColorMap color_map = 3 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      float clip_percent_upperbound = 4 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      float clip_percent_lowerbound = 5 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      OverlayType overlay_type = 6 [(unresolved_option_158361448) = "\"\005AUDIT"];
+
+      enum Type {
+        TYPE_UNSPECIFIED = 0;
+        PIXELS = 1;
+        OUTLINES = 2;
+      }
+
+      enum Polarity {
+        POLARITY_UNSPECIFIED = 0;
+        POSITIVE = 1;
+        NEGATIVE = 2;
+        BOTH = 3;
+      }
+
+      enum ColorMap {
+        COLOR_MAP_UNSPECIFIED = 0;
+        PINK_GREEN = 1;
+        VIRIDIS = 2;
+        RED = 3;
+        GREEN = 4;
+        RED_GREEN = 6;
+        PINK_WHITE_GREEN = 5;
+      }
+
+      enum OverlayType {
+        OVERLAY_TYPE_UNSPECIFIED = 0;
+        NONE = 1;
+        ORIGINAL = 2;
+        GRAYSCALE = 3;
+        MASK_BLACK = 4;
+      }
+    }
+  }
+
+  message OutputMetadata {
+    oneof display_name_mapping {
+      protobuf.Value index_display_name_mapping = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+      string display_name_mapping_key = 2 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    }
+    string output_tensor_name = 3 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+
+  message EmbeddingMetadata {
+  }
+}

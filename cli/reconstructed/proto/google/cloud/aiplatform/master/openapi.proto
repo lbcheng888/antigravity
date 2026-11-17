@@ -1,0 +1,65 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ddbbfd (va 0x103ddbbfd, __TEXT.__rodata), descriptor length 2660 B, sha256 f27644585012d651
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/visibility.proto";
+import "google/protobuf/struct.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "OpenApiProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+option (unresolved_option_525000017) = "\n\003all";
+
+enum Type {
+  TYPE_UNSPECIFIED = 0;
+  STRING = 1;
+  NUMBER = 2;
+  INTEGER = 3;
+  BOOLEAN = 4;
+  ARRAY = 5;
+  OBJECT = 6;
+  NULL = 7;
+}
+
+message Schema {
+  Type type = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string format = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string title = 24 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string description = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bool nullable = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Value default = 23 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  Schema items = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated Schema prefix_items = 30 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  int64 min_items = 21 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 max_items = 22 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string enum = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  map<string, Schema> properties = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string property_ordering = 25 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string required = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 min_properties = 14 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 max_properties = 15 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  double minimum = 16 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  double maximum = 17 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 min_length = 18 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 max_length = 19 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string pattern = 20 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Value example = 4 [(unresolved_option_1052) = "\001"];
+  repeated Schema one_of = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022&GOOGLE_INTERNAL, ONE_OF_TRUSTED_TESTER"];
+  repeated Schema any_of = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated Schema all_of = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  Schema not = 13 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  protobuf.Value additional_properties = 26 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  Schema additional_properties_schema = 29 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string ref = 27 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  map<string, Schema> defs = 28 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}

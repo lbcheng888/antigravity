@@ -1,16 +1,16 @@
 {
   "binary_path": "/Users/mac/.local/bin/agy",
-  "version": "1.5.9",
-  "size_bytes": 223424816,
-  "sha256": "fad3628ad91fe8613a72f074a1c5fde7cd816517788a5b9be96703f7d256741a",
+  "version": "1.5.10",
+  "size_bytes": 224809248,
+  "sha256": "780ee763a9938a37b45c7f9d6ae31747d7c574358fd10c64d3a1cdc36faf2798",
   "format": "Mach-O 64-bit executable arm64",
   "go_buildinfo": {
-    "offset": 178065424,
+    "offset": 179408912,
     "raw_strings": [
-      "ego1.28-20261102-RC00 cl/1012564305 +298f53e483 X:fieldtrack,boringcrypto,simd,nogolistexportnewformat",
+      "ego1.28-20261102-RC01 cl/1012564305 +298f53e483 X:fieldtrack,boringcrypto,simd,nogolistexportnewformat",
       " Go fipsinfo "
     ],
-    "go_version": "ego1.28-20261102-RC00 cl/1012564305 +298f53e483 X:fieldtrack,boringcrypto,simd,nogolistexportnewformat",
+    "go_version": "ego1.28-20261102-RC01 cl/1012564305 +298f53e483 X:fieldtrack,boringcrypto,simd,nogolistexportnewformat",
     "build_flags": " Go fipsinfo "
   },
   "linked_libraries": [

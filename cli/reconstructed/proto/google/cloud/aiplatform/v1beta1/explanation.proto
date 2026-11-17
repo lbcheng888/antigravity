@@ -1,0 +1,187 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3efd785 (va 0x103efd785, __TEXT.__rodata), descriptor length 6602 B, sha256 cfd4f6b8d55a0443
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/v1beta1/explanation_metadata.proto";
+import "google/cloud/aiplatform/v1beta1/io.proto";
+import "google/protobuf/struct.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "ExplanationProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+message Explanation {
+  repeated Attribution attributions = 1 [(unresolved_option_1052) = "\003"];
+  repeated Neighbor neighbors = 2 [(unresolved_option_1052) = "\003", (unresolved_option_143069646) = "\022\037v1beta1,ui,internal,v1alpha1,v1"];
+}
+
+message ModelExplanation {
+  repeated Attribution mean_attributions = 1 [(unresolved_option_1052) = "\003", (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message Attribution {
+  double baseline_output_value = 1 [(unresolved_option_1052) = "\003"];
+  double instance_output_value = 2 [(unresolved_option_1052) = "\003"];
+  protobuf.Value feature_attributions = 3 [(unresolved_option_1052) = "\003"];
+  repeated int32 output_index = 4 [(unresolved_option_1052) = "\003"];
+  string output_display_name = 5 [(unresolved_option_1052) = "\003"];
+  double approximation_error = 6 [(unresolved_option_1052) = "\003"];
+  string output_name = 7 [(unresolved_option_1052) = "\003"];
+}
+
+message Neighbor {
+  option (unresolved_option_143069646) = "\022\037v1beta1,ui,internal,v1alpha1,v1";
+  string neighbor_id = 1 [(unresolved_option_1052) = "\003"];
+  double neighbor_distance = 2 [(unresolved_option_1052) = "\003"];
+}
+
+message ExplanationSpec {
+  ExplanationParameters parameters = 1 [(unresolved_option_1052) = "\002", (unresolved_option_158361448) = "\"\005AUDIT"];
+  ExplanationMetadata metadata = 2 [(unresolved_option_1052) = "\001", (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message ExplanationParameters {
+  oneof method {
+    SampledShapleyAttribution sampled_shapley_attribution = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    IntegratedGradientsAttribution integrated_gradients_attribution = 2 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    XraiAttribution xrai_attribution = 3 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+    Examples examples = 7 [(unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\037v1alpha1,v1beta1,ui,internal,v1", (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  int32 top_k = 4 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+  protobuf.ListValue output_indices = 5 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message SampledShapleyAttribution {
+  int32 path_count = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message IntegratedGradientsAttribution {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  int32 step_count = 1 [(unresolved_option_1052) = "\002"];
+  SmoothGradConfig smooth_grad_config = 2;
+  BlurBaselineConfig blur_baseline_config = 3;
+}
+
+message XraiAttribution {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  int32 step_count = 1 [(unresolved_option_1052) = "\002"];
+  SmoothGradConfig smooth_grad_config = 2;
+  BlurBaselineConfig blur_baseline_config = 3;
+}
+
+message SmoothGradConfig {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  oneof GradientNoiseSigma {
+    float noise_sigma = 1;
+    FeatureNoiseSigma feature_noise_sigma = 2;
+  }
+  int32 noisy_sample_count = 3;
+}
+
+message FeatureNoiseSigma {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  repeated NoiseSigmaForFeature noise_sigma = 1;
+
+  message NoiseSigmaForFeature {
+    string name = 1;
+    float sigma = 2;
+  }
+}
+
+message BlurBaselineConfig {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  float max_blur_sigma = 1;
+}
+
+message Examples {
+  option (unresolved_option_143069646) = "\022\037v1alpha1,v1beta1,ui,internal,v1";
+  oneof source {
+    ExampleGcsSource example_gcs_source = 5 [(unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  oneof config {
+    protobuf.Value nearest_neighbor_search_config = 2 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    Presets presets = 4 [(unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  GcsSource gcs_source = 1 [(unresolved_option_143069646) = "\022\023v1beta1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+  int32 neighbor_count = 3 [(unresolved_option_158361448) = "\"\005AUDIT"];
+
+  message ExampleGcsSource {
+    DataFormat data_format = 1 [(unresolved_option_40075780) = 1900];
+    GcsSource gcs_source = 2 [(unresolved_option_158361448) = "\"\005AUDIT"];
+
+    enum DataFormat {
+      DATA_FORMAT_UNSPECIFIED = 0;
+      JSONL = 1;
+    }
+  }
+}
+
+message Presets {
+  optional Query query = 1;
+  Modality modality = 2;
+
+  enum Query {
+    PRECISE = 0;
+    FAST = 1;
+  }
+
+  enum Modality {
+    MODALITY_UNSPECIFIED = 0;
+    IMAGE = 1;
+    TEXT = 2;
+    TABULAR = 3;
+  }
+}
+
+message ExplanationSpecOverride {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  ExplanationParameters parameters = 1;
+  ExplanationMetadataOverride metadata = 2;
+  ExamplesOverride examples_override = 3 [(unresolved_option_143069646) = "\022\037v1beta1,ui,internal,v1alpha1,v1"];
+}
+
+message ExplanationMetadataOverride {
+  option (unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal";
+  map<string, InputMetadataOverride> inputs = 1 [(unresolved_option_1052) = "\002", (unresolved_option_158361448) = "\"\005AUDIT"];
+
+  message InputMetadataOverride {
+    repeated protobuf.Value input_baselines = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    ExplanationMetadata.InputMetadata.Visualization visualization = 2 [(unresolved_option_72295727) = "\022\rUNIMPLEMENTED", (unresolved_option_158361448) = "\"\005AUDIT"];
+    string group_name = 3 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\023v1beta1,ui,internal", (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+}
+
+message ExamplesOverride {
+  option (unresolved_option_143069646) = "\022\037v1beta1,ui,internal,v1alpha1,v1";
+  int32 neighbor_count = 1;
+  int32 crowding_count = 2;
+  repeated ExamplesRestrictionsNamespace restrictions = 3;
+  bool return_embeddings = 4;
+  DataFormat data_format = 5 [(unresolved_option_158361448) = "\"\005AUDIT"];
+
+  enum DataFormat {
+    DATA_FORMAT_UNSPECIFIED = 0;
+    INSTANCES = 1;
+    EMBEDDINGS = 2;
+  }
+}
+
+message ExamplesRestrictionsNamespace {
+  option (unresolved_option_143069646) = "\022\037v1beta1,ui,internal,v1alpha1,v1";
+  string namespace_name = 1;
+  repeated string allow = 2;
+  repeated string deny = 3;
+}

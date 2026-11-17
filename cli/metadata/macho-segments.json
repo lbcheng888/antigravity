@@ -19,272 +19,272 @@
       "segname": "__TEXT",
       "vmaddr": "0x100000000",
       "vmaddr_int": 4294967296,
-      "vmsize": 151912448,
+      "vmsize": 153124864,
       "fileoff": 0,
-      "filesize": 151912448,
+      "filesize": 153124864,
       "sections": [
         {
           "sectname": "__text",
           "segname": "__TEXT",
           "vmaddr": "0x1000011c0",
-          "size": 60243280,
+          "size": 60722248,
           "fileoff": 4544
         },
         {
           "sectname": "__stubs",
           "segname": "__TEXT",
-          "vmaddr": "0x103974f10",
+          "vmaddr": "0x1039e9e08",
           "size": 6168,
-          "fileoff": 60247824
+          "fileoff": 60726792
         },
         {
           "sectname": "__stub_helper",
           "segname": "__TEXT",
-          "vmaddr": "0x103976728",
+          "vmaddr": "0x1039eb620",
           "size": 6024,
-          "fileoff": 60253992
+          "fileoff": 60732960
         },
         {
           "sectname": "__rodata",
           "segname": "__TEXT",
-          "vmaddr": "0x103977ec0",
-          "size": 14425785,
-          "fileoff": 60260032
+          "vmaddr": "0x1039ecdc0",
+          "size": 14500153,
+          "fileoff": 60739008
         },
         {
           "sectname": "__lrodata_gopcln",
           "segname": "__TEXT",
-          "vmaddr": "0x104739d80",
-          "size": 76039318,
-          "fileoff": 74685824
+          "vmaddr": "0x1047c0f00",
+          "size": 76693482,
+          "fileoff": 75239168
         },
         {
           "sectname": "__cstring",
           "segname": "__TEXT",
-          "vmaddr": "0x108fbe218",
-          "size": 173235,
-          "fileoff": 150725144
+          "vmaddr": "0x1090e4eec",
+          "size": 173339,
+          "fileoff": 151932652
         },
         {
           "sectname": "__const",
           "segname": "__TEXT",
-          "vmaddr": "0x108fe8700",
-          "size": 718528,
-          "fileoff": 150898432
+          "vmaddr": "0x10910f440",
+          "size": 719232,
+          "fileoff": 152106048
         },
         {
           "sectname": "__objc_methname",
           "segname": "__TEXT",
-          "vmaddr": "0x109097dc0",
+          "vmaddr": "0x1091bedc0",
           "size": 78,
-          "fileoff": 151616960
+          "fileoff": 152825280
         },
         {
           "sectname": "__literals",
           "segname": "__TEXT",
-          "vmaddr": "0x109097e10",
-          "size": 5468,
-          "fileoff": 151617040
+          "vmaddr": "0x1091bee10",
+          "size": 5516,
+          "fileoff": 152825360
         },
         {
           "sectname": "__gcc_except_tab",
           "segname": "__TEXT",
-          "vmaddr": "0x10909936c",
-          "size": 178004,
-          "fileoff": 151622508
+          "vmaddr": "0x1091c039c",
+          "size": 176700,
+          "fileoff": 152830876
         },
         {
           "sectname": "__ustring",
           "segname": "__TEXT",
-          "vmaddr": "0x1090c4ac0",
+          "vmaddr": "0x1091eb5d8",
           "size": 3098,
-          "fileoff": 151800512
+          "fileoff": 153007576
         },
         {
           "sectname": "__unwind_info",
           "segname": "__TEXT",
-          "vmaddr": "0x1090c56dc",
-          "size": 96624,
-          "fileoff": 151803612
+          "vmaddr": "0x1091ec1f4",
+          "size": 96744,
+          "fileoff": 153010676
         },
         {
           "sectname": "__eh_frame",
           "segname": "__TEXT",
-          "vmaddr": "0x1090dd050",
+          "vmaddr": "0x109203be0",
           "size": 1344,
-          "fileoff": 151900240
+          "fileoff": 153107424
         }
       ]
     },
     {
       "segname": "__DATA_CONST",
-      "vmaddr": "0x1090e0000",
-      "vmaddr_int": 4446879744,
-      "vmsize": 26148864,
-      "fileoff": 151912448,
-      "filesize": 26148864,
+      "vmaddr": "0x109208000",
+      "vmaddr_int": 4448092160,
+      "vmsize": 26279936,
+      "fileoff": 153124864,
+      "filesize": 26279936,
       "sections": [
         {
           "sectname": "__got",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x1090e0000",
+          "vmaddr": "0x109208000",
           "size": 512,
-          "fileoff": 151912448
+          "fileoff": 153124864
         },
         {
           "sectname": "__const",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x1090e0200",
-          "size": 138424,
-          "fileoff": 151912960
+          "vmaddr": "0x109208200",
+          "size": 138536,
+          "fileoff": 153125376
         },
         {
           "sectname": "__rodata",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x109101ec0",
-          "size": 5212248,
-          "fileoff": 152051392
+          "vmaddr": "0x109229f40",
+          "size": 5226520,
+          "fileoff": 153263936
         },
         {
           "sectname": "__go_type",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x1095fa720",
-          "size": 20732424,
-          "fileoff": 157263648
+          "vmaddr": "0x109725f60",
+          "size": 20851624,
+          "fileoff": 158490464
         },
         {
           "sectname": "__go_func",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x10a9c0128",
-          "size": 48128,
-          "fileoff": 177996072
+          "vmaddr": "0x10ab08b08",
+          "size": 48216,
+          "fileoff": 179342088
         },
         {
           "sectname": "__mod_init_func",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x10a9cbd28",
+          "vmaddr": "0x10ab14760",
           "size": 720,
-          "fileoff": 178044200
+          "fileoff": 179390304
         },
         {
           "sectname": "__cfstring",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x10a9cbff8",
+          "vmaddr": "0x10ab14a30",
           "size": 32,
-          "fileoff": 178044920
+          "fileoff": 179391024
         },
         {
           "sectname": "__objc_imageinfo",
           "segname": "__DATA_CONST",
-          "vmaddr": "0x10a9cc018",
+          "vmaddr": "0x10ab14a50",
           "size": 8,
-          "fileoff": 178044952
+          "fileoff": 179391056
         }
       ]
     },
     {
       "segname": "__DATA",
-      "vmaddr": "0x10a9d0000",
-      "vmaddr_int": 4473028608,
-      "vmsize": 80166912,
-      "fileoff": 178061312,
-      "filesize": 43810816,
+      "vmaddr": "0x10ab18000",
+      "vmaddr_int": 4474372096,
+      "vmsize": 80183296,
+      "fileoff": 179404800,
+      "filesize": 43843584,
       "sections": [
         {
           "sectname": "__la_symbol_ptr",
           "segname": "__DATA",
-          "vmaddr": "0x10a9d0000",
+          "vmaddr": "0x10ab18000",
           "size": 4112,
-          "fileoff": 178061312
+          "fileoff": 179404800
         },
         {
           "sectname": "__go_buildinfo",
           "segname": "__DATA",
-          "vmaddr": "0x10a9d1010",
+          "vmaddr": "0x10ab19010",
           "size": 144,
-          "fileoff": 178065424
+          "fileoff": 179408912
         },
         {
           "sectname": "__go_fipsinfo",
           "segname": "__DATA",
-          "vmaddr": "0x10a9d10a0",
+          "vmaddr": "0x10ab190a0",
           "size": 120,
-          "fileoff": 178065568
+          "fileoff": 179409056
         },
         {
           "sectname": "__go_module",
           "segname": "__DATA",
-          "vmaddr": "0x10a9d1120",
+          "vmaddr": "0x10ab19120",
           "size": 568,
-          "fileoff": 178065696
+          "fileoff": 179409184
         },
         {
           "sectname": "__noptrdata",
           "segname": "__DATA",
-          "vmaddr": "0x10a9d1360",
-          "size": 42635617,
-          "fileoff": 178066272
+          "vmaddr": "0x10ab19360",
+          "size": 42652673,
+          "fileoff": 179409760
         },
         {
           "sectname": "__data",
           "segname": "__DATA",
-          "vmaddr": "0x10d27a500",
-          "size": 1158784,
-          "fileoff": 220701952
+          "vmaddr": "0x10d3c6780",
+          "size": 1171008,
+          "fileoff": 222062464
         },
         {
           "sectname": "__objc_classrefs",
           "segname": "__DATA",
-          "vmaddr": "0x10d395380",
+          "vmaddr": "0x10d4e45c0",
           "size": 8,
-          "fileoff": 221860736
+          "fileoff": 223233472
         },
         {
           "sectname": "__objc_selrefs",
           "segname": "__DATA",
-          "vmaddr": "0x10d395388",
+          "vmaddr": "0x10d4e45c8",
           "size": 16,
-          "fileoff": 221860744
+          "fileoff": 223233480
         },
         {
           "sectname": "__thread_vars",
           "segname": "__DATA",
-          "vmaddr": "0x10d395398",
+          "vmaddr": "0x10d4e45d8",
           "size": 408,
-          "fileoff": 221860760
+          "fileoff": 223233496
         },
         {
           "sectname": "__thread_data",
           "segname": "__DATA",
-          "vmaddr": "0x10d395540",
+          "vmaddr": "0x10d4e4780",
           "size": 72,
-          "fileoff": 221861184
+          "fileoff": 223233920
         },
         {
           "sectname": "__thread_bss",
           "segname": "__DATA",
-          "vmaddr": "0x10d3955a0",
+          "vmaddr": "0x10d4e47e0",
           "size": 145,
           "fileoff": 0
         },
         {
           "sectname": "__bss",
           "segname": "__DATA",
-          "vmaddr": "0x10d395640",
-          "size": 398968,
+          "vmaddr": "0x10d4e4880",
+          "size": 401976,
           "fileoff": 0
         },
         {
           "sectname": "__noptrbss",
           "segname": "__DATA",
-          "vmaddr": "0x10d3f6cc0",
-          "size": 35879808,
+          "vmaddr": "0x10d546ac0",
+          "size": 35879776,
           "fileoff": 0
         },
         {
           "sectname": "__common",
           "segname": "__DATA",
-          "vmaddr": "0x10f62e840",
+          "vmaddr": "0x10f77e640",
           "size": 72064,
           "fileoff": 0
         }
@@ -292,11 +292,11 @@
     },
     {
       "segname": "__LINKEDIT",
-      "vmaddr": "0x10f644000",
-      "vmaddr_int": 4553195520,
-      "vmsize": 1556480,
-      "fileoff": 221872128,
-      "filesize": 1552688,
+      "vmaddr": "0x10f790000",
+      "vmaddr_int": 4554555392,
+      "vmsize": 1572864,
+      "fileoff": 223248384,
+      "filesize": 1560864,
       "sections": []
     }
   ]

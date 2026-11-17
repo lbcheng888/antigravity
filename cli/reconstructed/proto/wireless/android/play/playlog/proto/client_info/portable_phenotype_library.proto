@@ -1,0 +1,39 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d96de5 (va 0x103d96de5, __TEXT.__rodata), descriptor length 1764 B, sha256 209c29d59f7f2178
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "wireless/android/play/playlog/proto/client_info/battlestar.proto";
+import "wireless/android/play/playlog/proto/client_info/desktop_services.proto";
+import "wireless/android/play/playlog/proto/client_info/drive_desktop.proto";
+import "wireless/android/play/playlog/proto/client_info/g1_desktop.proto";
+import "wireless/android/play/playlog/proto/client_info/nearby.proto";
+import "wireless/android/play/playlog/proto/client_info/windows.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "PortablePhenotypeLibraryProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message PortablePhenotypeLibraryClientInfo {
+  oneof client_info {
+    BattlestarClientInfo battlestar_client_info = 1 [(unresolved_option_40075780) = 999];
+    DriveDesktopClientInfo drive_desktop_client_info = 2 [(unresolved_option_40075780) = 999];
+    G1DesktopClientInfo g1_desktop_client_info = 3 [(unresolved_option_40075780) = 999];
+    NearbyClientInfo nearby_client_info = 4 [(unresolved_option_40075780) = 999];
+    WindowsClientInfo windows_client_info = 5 [(unresolved_option_40075780) = 999];
+    DesktopServicesClientInfo desktop_services_client_info = 6 [(unresolved_option_40075780) = 999];
+  }
+}

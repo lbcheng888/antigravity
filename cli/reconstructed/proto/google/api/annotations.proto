@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d209c1 (va 0x103d209c1, __TEXT.__rodata), descriptor length 291 B, sha256 8bdb0ed345a9ce91
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api;
+
+import "google/api/http.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.api";
+option java_outer_classname = "AnnotationsProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/annotations;annotations";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GAPI";
+
+extend proto2.MethodOptions {
+  HttpRule http = 72295728;
+}

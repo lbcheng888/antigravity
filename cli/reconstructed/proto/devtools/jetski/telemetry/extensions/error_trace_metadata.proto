@@ -1,0 +1,17 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d29c6d (va 0x103d29c6d, __TEXT.__rodata), descriptor length 376 B, sha256 6b9d2d4bdd62d3e1
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+
+option java_outer_classname = "ErrorTraceMetadataOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message ErrorTraceMetadata {
+  exa.codeium_common_pb.ErrorTrace error_trace = 1;
+}

@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d71e42 (va 0x103d71e42, __TEXT.__rodata), descriptor length 1286 B, sha256 73bfdb29f3235464
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/api_server_pb/api_server.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "FeedbackMetadataOuterClass";
+option features.field_presence = IMPLICIT;
+option (unresolved_option_71304954) = "latest";
+
+export message FeedbackMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  string completion_id = 1 [(unresolved_option_40075780) = 2300];
+  string prompt_id = 2 [(unresolved_option_40075780) = 2300];
+  exa.codeium_common_pb.CompletionSource source = 3 [(unresolved_option_40075780) = 2800];
+  exa.api_server_pb.FeedbackType feedback = 4 [(unresolved_option_40075780) = 2800];
+  exa.api_server_pb.FeedbackExtraInfo extra_info = 5 [(unresolved_option_40075780) = 2800];
+  int32 latency_ms = 6 [(unresolved_option_40075780) = 2801];
+  int32 network_latency_ms = 7 [(unresolved_option_40075780) = 2801];
+  int32 debounce_latency_ms = 8 [(unresolved_option_40075780) = 2801];
+  int32 client_latency_ms = 9 [(unresolved_option_40075780) = 2801];
+  int32 feedback_delay_ms = 10 [(unresolved_option_40075780) = 2801];
+  exa.codeium_common_pb.ProviderSource provider_source = 11 [(unresolved_option_40075780) = 2800];
+  int32 view_columns_open = 12 [(unresolved_option_40075780) = 2801];
+  bool has_active_vim_extension = 13 [(unresolved_option_40075780) = 2800];
+  string ide_version = 14 [(unresolved_option_40075780) = 1500];
+  string ide_name = 15 [(unresolved_option_40075780) = 1500];
+  string os = 16 [(unresolved_option_40075780) = 1500];
+}

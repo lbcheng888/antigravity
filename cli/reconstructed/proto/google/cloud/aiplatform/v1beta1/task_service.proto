@@ -1,0 +1,498 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x409c94e (va 0x10409c94e, __TEXT.__rodata), descriptor length 19478 B, sha256 a4f774adf5c3066c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "cloud/ai/platform/dataplane/cardolan/proto/compliance_annotation.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/httpbody.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/v1beta1/operation.proto";
+import "google/cloud/aiplatform/v1beta1/task.proto";
+import "google/cloud/aiplatform/v1beta1/task_events.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "TaskServiceProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+message DeleteTaskOperationMetadata {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  GenericOperationMetadata generic_metadata = 1;
+}
+
+message CancelTaskOperationMetadata {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  GenericOperationMetadata generic_metadata = 1;
+}
+
+message SuspendTaskOperationMetadata {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  GenericOperationMetadata generic_metadata = 1;
+}
+
+message CreateTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Agent", (unresolved_option_40075780) = 1100];
+  Task task = 2 [(unresolved_option_1052) = "\002"];
+  string unique_creation_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  UserContext user_context = 4 [(unresolved_option_1052) = "\001"];
+}
+
+message GetTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+}
+
+message ListTasksRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Location", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string filter = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string order_by = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+}
+
+message ListTasksResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated Task tasks = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message UpdateTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  Task task = 1 [(unresolved_option_1052) = "\002"];
+  protobuf.FieldMask update_mask = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message SuspendTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  Task.StatusDetail status_detail = 2 [(unresolved_option_1052) = "\001"];
+  optional bool operate_on_self = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ResumeTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  Budget additional_budget = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message SteerTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  oneof action {
+    genai.Step input = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    TriggerNow trigger_now = 5 [(unresolved_option_1052) = "\001"];
+  }
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string event_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022Ilen($) <= 128 ?: [FIELD_INVALID] event_id must be at most 128 characters."];
+  UserContext user_context = 4 [(unresolved_option_1052) = "\001"];
+
+  message TriggerNow {
+  }
+}
+
+message SteerTaskResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Task task = 1;
+  string event_id = 2 [(unresolved_option_40075780) = 1100];
+}
+
+message CancelTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  bool operate_on_self = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message DeleteTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  bool operate_on_self = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message StreamTaskRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  int64 next_step_seq_num = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool snapshot = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string continuation_token = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message ListTaskEventsRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListTaskEventsResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated TaskServerEvent events = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+  string assigned_agent_identity = 3 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message TaskArtifactFile {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string path = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  Type type = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string mime_type = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  int64 size_bytes = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp update_time = 5 [(unresolved_option_1052) = "\003"];
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    FILE = 1;
+    DIRECTORY = 2;
+  }
+}
+
+message ListTaskArtifactsRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string path = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Glen($) <= 1024 ?: [FIELD_INVALID] path must be at most 1024 characters.\022[not matches($, `(.*/)?\\.\\.(/.*)?`) ?: [FIELD_INVALID] path must not contain a '..' segment."];
+  bool recursive = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  int32 page_size = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListTaskArtifactsResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated TaskArtifactFile artifacts = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message UploadTaskArtifactRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string path = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Glen($) <= 1024 ?: [FIELD_INVALID] path must be at most 1024 characters.\022[not matches($, `(.*/)?\\.\\.(/.*)?`) ?: [FIELD_INVALID] path must not contain a '..' segment."];
+  api.HttpBody http_body = 3 [(unresolved_option_1052) = "\002"];
+}
+
+message DownloadTaskArtifactRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string path = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Glen($) <= 1024 ?: [FIELD_INVALID] path must be at most 1024 characters.\022[not matches($, `(.*/)?\\.\\.(/.*)?`) ?: [FIELD_INVALID] path must not contain a '..' segment."];
+  TaskArtifactProcessingConfig processing_config = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message TaskArtifactProcessingConfig {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string output_mime_type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+}
+
+message DeleteTaskArtifactRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string path = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Glen($) <= 1024 ?: [FIELD_INVALID] path must be at most 1024 characters.\022bmatches($, `/workspace/userdata/.+`) ?: [FIELD_INVALID] path must be under '/workspace/userdata/'.\022[not matches($, `(.*/)?\\.\\.(/.*)?`) ?: [FIELD_INVALID] path must not contain a '..' segment."];
+  bool allow_missing = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message DeleteTaskArtifactResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message FetchEnvironmentIceConfigRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+}
+
+message FetchEnvironmentIceConfigResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated IceServer ice_servers = 1;
+}
+
+message IceServer {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated string uris = 1 [(unresolved_option_40075780) = 1300];
+  string username = 2 [(unresolved_option_40075780) = 2600];
+  string credential = 3 [(unresolved_option_40075780) = 2600];
+}
+
+message IceCandidate {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string candidate = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1300];
+  string sdp_mid = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional int32 sdp_m_line_index = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message SendEnvironmentSdpOfferRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string sdp_offer = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1300];
+  string offer_type = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message SendEnvironmentSdpOfferResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string connection_id = 1 [(unresolved_option_40075780) = 2300];
+  string sdp_answer = 2 [(unresolved_option_40075780) = 1300];
+  string answer_type = 3 [(unresolved_option_40075780) = 999];
+  repeated IceCandidate environment_ice_candidates = 4;
+}
+
+message SendEnvironmentIceCandidatesRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string connection_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  repeated IceCandidate candidates = 3 [(unresolved_option_1052) = "\002"];
+}
+
+message SendEnvironmentIceCandidatesResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message AcquireEnvironmentControlRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string connection_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message ReleaseEnvironmentControlRequest {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aiplatform.googleapis.com/Task", (unresolved_option_40075780) = 1100];
+  string connection_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message EnvironmentControl {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Holder holder = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum Holder {
+    HOLDER_UNSPECIFIED = 0;
+    AGENT = 1;
+    USER = 2;
+  }
+}
+
+service TaskService {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  rpc CreateTaskBidiStream(stream TaskClientEventBatch) returns (stream TaskServerEventBatch) {
+    option (unresolved_option_72295728) = ":\001*\"D/ws/google.cloud.aiplatform.v1beta1.TaskService/CreateTaskBidiStream";
+    option (unresolved_option_161893301) = "\022\340\001\n\022create_task.parent\022&aiplatform.googleapis.com/tasks.create\032(RESOURCE,aiplatform.googleapis.com/Agent\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001:\022create_task.parentR\036aiplatform.googleapis.com/Task\222\001$has(request.body.create_task.parent)\022\215\001\n\023subscribe_task.task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task0\001\222\001%has(request.body.subscribe_task.task)\"1CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT_EXEMPT2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_13) = 2;
+    option (unresolved_option_24) = 10485760;
+    option (unresolved_option_25) = 10485760;
+    option (unresolved_option_28) = 2;
+  }
+  rpc StreamTask(StreamTaskRequest) returns (stream TaskServerEventBatch) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "\022>/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}:stream";
+    option (unresolved_option_161893301) = "\022s\n\004name\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"1CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT_EXEMPT2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_13) = 2;
+  }
+  rpc ListTaskEvents(ListTaskEventsRequest) returns (ListTaskEventsResponse) {
+    option (unresolved_option_1051) = "task";
+    option (unresolved_option_72295728) = "\022B/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:listEvents";
+    option (unresolved_option_161893301) = "\022s\n\004task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc CreateTask(CreateTaskRequest) returns (Task) {
+    option (unresolved_option_1051) = "parent,task";
+    option (unresolved_option_72295728) = ":\004task\"7/v1beta1/{parent=projects/*/locations/*/agents/*}/tasks";
+    option (unresolved_option_161893301) = "\022\241\001\n\006parent\022&aiplatform.googleapis.com/tasks.create\032(RESOURCE,aiplatform.googleapis.com/Agent\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001:\006parentR\036aiplatform.googleapis.com/Task\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION*\025\n\013method_type\022\006CREATE2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc GetTask(GetTaskRequest) returns (Task) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "Z9\0227/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}\022./v1beta1/{name=projects/*/locations/*/tasks/*}";
+    option (unresolved_option_161893301) = "\022s\n\004name\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ListTasks(ListTasksRequest) returns (ListTasksResponse) {
+    option (unresolved_option_1051) = "parent";
+    option (unresolved_option_72295728) = "Z9\0227/v1beta1/{parent=projects/*/locations/*/agents/*}/tasks\022./v1beta1/{parent=projects/*/locations/*}/tasks";
+    option (unresolved_option_161893301) = "\022\207\002\n\006parent\022\220\001aiplatform.googleapis.com/Location: aiplatform.googleapis.com/agents.list, aiplatform.googleapis.com/Agent: aiplatform.googleapis.com/tasks.list\032KRESOURCE,aiplatform.googleapis.com/Location,aiplatform.googleapis.com/Agent\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc UpdateTask(UpdateTaskRequest) returns (Task) {
+    option (unresolved_option_1051) = "task,update_mask";
+    option (unresolved_option_72295728) = ":\004task2</v1beta1/{task.name=projects/*/locations/*/agents/*/tasks/*}";
+    option (unresolved_option_161893301) = "\022{\n\ttask.name\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"CCLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc SuspendTask(SuspendTaskRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1049) = "\n\004Task\022\034SuspendTaskOperationMetadata";
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = ":\001*\"?/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}:suspend";
+    option (unresolved_option_161893301) = "\022v\n\004name\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ResumeTask(ResumeTaskRequest) returns (Task) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = ":\001*\">/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}:resume";
+    option (unresolved_option_161893301) = "\022v\n\004name\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc SteerTask(SteerTaskRequest) returns (SteerTaskResponse) {
+    option (unresolved_option_1051) = "name,input";
+    option (unresolved_option_1051) = "name,trigger_now";
+    option (unresolved_option_72295728) = ":\001*\"=/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}:steer";
+    option (unresolved_option_161893301) = "\022u\n\004name\022%aiplatform.googleapis.com/tasks.steer\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc CancelTask(CancelTaskRequest) returns (Task) {
+    option deprecated = true;
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = ":\001*\">/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}:cancel";
+    option (unresolved_option_161893301) = "\022v\n\004name\022&aiplatform.googleapis.com/tasks.cancel\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DeleteTask(DeleteTaskRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1049) = "\n\025google.protobuf.Empty\022\033DeleteTaskOperationMetadata";
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "*7/v1beta1/{name=projects/*/locations/*/agents/*/tasks/*}";
+    option (unresolved_option_161893301) = "\022v\n\004name\022&aiplatform.googleapis.com/tasks.delete\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\";CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ListTaskArtifacts(ListTaskArtifactsRequest) returns (ListTaskArtifactsResponse) {
+    option (unresolved_option_1051) = "task";
+    option (unresolved_option_72295728) = "\022E/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:listArtifacts";
+    option (unresolved_option_161893301) = "\022s\n\004task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc UploadTaskArtifact(stream UploadTaskArtifactRequest) returns (TaskArtifactFile) {
+    option deprecated = true;
+    option (unresolved_option_72295728) = ":\thttp_body\"F/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:uploadArtifact";
+    option (unresolved_option_161893301) = "\022v\n\004task\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x4082c00000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DownloadTaskArtifact(DownloadTaskArtifactRequest) returns (stream api.HttpBody) {
+    option deprecated = true;
+    option (unresolved_option_1051) = "task,path";
+    option (unresolved_option_72295728) = "\022H/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:downloadArtifact";
+    option (unresolved_option_161893301) = "\022s\n\004task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x4082c00000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DeleteTaskArtifact(DeleteTaskArtifactRequest) returns (DeleteTaskArtifactResponse) {
+    option (unresolved_option_1051) = "task,path";
+    option (unresolved_option_72295728) = ":\001*\"F/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:deleteArtifact";
+    option (unresolved_option_161893301) = "\022v\n\004task\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001\"/CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc FetchEnvironmentIceConfig(FetchEnvironmentIceConfigRequest) returns (FetchEnvironmentIceConfigResponse) {
+    option (unresolved_option_1051) = "task";
+    option (unresolved_option_72295728) = ":\001*\"Q/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:fetchEnvironmentIceConfig";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022~\n\004task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x403e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc SendEnvironmentSdpOffer(SendEnvironmentSdpOfferRequest) returns (SendEnvironmentSdpOfferResponse) {
+    option (unresolved_option_1051) = "task,sdp_offer";
+    option (unresolved_option_72295728) = ":\001*\"O/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:sendEnvironmentSdpOffer";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022~\n\004task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x403e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc SendEnvironmentIceCandidates(SendEnvironmentIceCandidatesRequest) returns (SendEnvironmentIceCandidatesResponse) {
+    option (unresolved_option_1051) = "task,connection_id,candidates";
+    option (unresolved_option_72295728) = ":\001*\"T/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:sendEnvironmentIceCandidates";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022~\n\004task\022#aiplatform.googleapis.com/tasks.get\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x403e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc AcquireEnvironmentControl(AcquireEnvironmentControlRequest) returns (EnvironmentControl) {
+    option (unresolved_option_1051) = "task,connection_id";
+    option (unresolved_option_72295728) = ":\001*\"Q/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:acquireEnvironmentControl";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022\202\001\n\004task\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\nDATA_WRITE\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x403e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ReleaseEnvironmentControl(ReleaseEnvironmentControlRequest) returns (EnvironmentControl) {
+    option (unresolved_option_1051) = "task,connection_id";
+    option (unresolved_option_72295728) = ":\001*\"Q/v1beta1/{task=projects/*/locations/*/agents/*/tasks/*}:releaseEnvironmentControl";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022\202\001\n\004task\022&aiplatform.googleapis.com/tasks.update\032'RESOURCE,aiplatform.googleapis.com/Task\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\nDATA_WRITE\"7CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_525000163) = "\001\002";
+    option (unresolved_option_8) = 0x403e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+}

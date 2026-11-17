@@ -1,0 +1,337 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f7a0ed (va 0x103f7a0ed, __TEXT.__rodata), descriptor length 9632 B, sha256 d69cae7cca87aadc
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/interactions/proto/error.proto";
+import "learning/genai/api/interactions/proto/interaction.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+message InteractionStatusUpdate {
+  string interaction_id = 1;
+  Interaction.Status status = 2;
+  bytes continuation_token = 3;
+  Interaction.Usage usage = 5;
+}
+
+message ContentStart {
+  int32 index = 1;
+  Content content = 4;
+}
+
+message TextDelta {
+  string text = 1;
+}
+
+message TextAnnotationDelta {
+  repeated TextContent.Annotation annotations = 1;
+}
+
+message ImageDelta {
+  ImageContent.MimeType mime_type = 1;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 3;
+  }
+  MediaResolution resolution = 5;
+}
+
+message AudioDelta {
+  AudioContent.MimeType mime_type = 1;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 3;
+  }
+  int32 rate = 4;
+  int32 sample_rate = 6;
+  int32 channels = 5;
+}
+
+message VideoDelta {
+  VideoContent.MimeType mime_type = 1;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 3;
+  }
+  MediaResolution resolution = 5;
+}
+
+message DocumentDelta {
+  DocumentContent.MimeType mime_type = 1;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 3;
+  }
+}
+
+message ThoughtSummaryDelta {
+  Content content = 1 [(unresolved_option_525000220) = "text", (unresolved_option_525000220) = "image"];
+}
+
+message RawThoughtDelta {
+  Content content = 1 [(unresolved_option_525000220) = "text", (unresolved_option_525000220) = "image"];
+}
+
+message ThoughtSignatureDelta {
+  bytes signature = 1;
+}
+
+message FunctionCallDelta {
+  string name = 1;
+  Struct arguments = 2;
+}
+
+message CodeExecutionCallDelta {
+  CodeExecutionCallContent.CodeExecutionCallArguments arguments = 1;
+}
+
+message UrlContextCallDelta {
+  UrlContextCallContent.UrlContextCallArguments arguments = 1;
+}
+
+message GoogleSearchCallDelta {
+  GoogleSearchCallContent.GoogleSearchCallArguments arguments = 1;
+}
+
+message McpServerToolCallDelta {
+  string name = 1;
+  string server_name = 2;
+  Struct arguments = 3;
+}
+
+message FileSearchCallDelta {
+}
+
+message GoogleMapsCallDelta {
+  GoogleMapsCallContent.GoogleMapsCallArguments arguments = 1;
+}
+
+message ProcessingCallDelta {
+}
+
+message ProcessingResultDelta {
+}
+
+message ToolCallDelta {
+  string id = 1;
+  bytes signature = 8;
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    FunctionCallDelta function_call = 2;
+    CodeExecutionCallDelta code_execution_call = 3;
+    UrlContextCallDelta url_context_call = 4;
+    GoogleSearchCallDelta google_search_call = 5;
+    McpServerToolCallDelta mcp_server_tool_call = 6;
+    FileSearchCallDelta file_search_call = 7;
+    GoogleMapsCallDelta google_maps_call = 9;
+  }
+}
+
+message FunctionResultDelta {
+  string name = 1;
+  bool is_error = 2;
+  Value result = 7 [(unresolved_option_525000220) = "text", (unresolved_option_525000220) = "image"];
+}
+
+message CodeExecutionResultDelta {
+  string result = 1;
+  bool is_error = 2;
+}
+
+message UrlContextResultDelta {
+  repeated UrlContextResultContent.UrlContextResult result = 2;
+  bool is_error = 3;
+}
+
+message GoogleSearchResultDelta {
+  repeated GoogleSearchResultContent.GoogleSearchResult result = 2;
+  bool is_error = 3;
+}
+
+message McpServerToolResultDelta {
+  string name = 1;
+  string server_name = 2;
+  Value result = 7 [(unresolved_option_525000220) = "text", (unresolved_option_525000220) = "image"];
+}
+
+message FileSearchResultDelta {
+  repeated FileSearchResultContent.FileSearchResult result = 1;
+}
+
+message GoogleMapsResultDelta {
+  repeated GoogleMapsResultContent.GoogleMapsResult result = 1;
+}
+
+message ToolResultDelta {
+  string call_id = 8;
+  bytes signature = 9;
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    FunctionResultDelta function_result = 2;
+    CodeExecutionResultDelta code_execution_result = 3;
+    UrlContextResultDelta url_context_result = 4;
+    GoogleSearchResultDelta google_search_result = 5;
+    McpServerToolResultDelta mcp_server_tool_result = 6;
+    FileSearchResultDelta file_search_result = 7;
+    GoogleMapsResultDelta google_maps_result = 10;
+  }
+}
+
+message ContentDeltaData {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    TextDelta text = 1;
+    ImageDelta image = 2;
+    AudioDelta audio = 3;
+    DocumentDelta document = 4;
+    VideoDelta video = 5;
+    ThoughtSummaryDelta thought_summary = 6;
+    ThoughtSignatureDelta thought_signature = 7;
+    ToolCallDelta tool_call = 8;
+    ToolResultDelta tool_result = 9;
+    TextAnnotationDelta text_annotation = 10;
+  }
+}
+
+message ContentDelta {
+  int32 index = 1;
+  ContentDeltaData delta = 16;
+}
+
+message ContentStop {
+  int32 index = 1;
+}
+
+message InteractionStartEvent {
+  Interaction interaction = 2;
+}
+
+message InteractionCompleteEvent {
+  Interaction interaction = 2;
+}
+
+message InteractionCreatedSseEvent {
+  Interaction interaction = 1;
+}
+
+message InteractionCompletedSseEvent {
+  Interaction interaction = 1;
+}
+
+message ErrorEvent {
+  Error error = 2;
+}
+
+message StepStart {
+  int32 index = 1;
+  Step step = 2;
+}
+
+message StepDelta {
+  int32 index = 1;
+  StepDeltaData delta = 2;
+}
+
+message ServerToolCallDelta {
+  bytes signature = 1;
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    CodeExecutionCallDelta code_execution_call = 2;
+    UrlContextCallDelta url_context_call = 3;
+    GoogleSearchCallDelta google_search_call = 4;
+    McpServerToolCallDelta mcp_server_tool_call = 5;
+    FileSearchCallDelta file_search_call = 6;
+    GoogleMapsCallDelta google_maps_call = 7;
+    ProcessingCallDelta processing_call = 10;
+  }
+}
+
+message ServerToolResultDelta {
+  bytes signature = 1;
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    CodeExecutionResultDelta code_execution_result = 2;
+    UrlContextResultDelta url_context_result = 3;
+    GoogleSearchResultDelta google_search_result = 4;
+    McpServerToolResultDelta mcp_server_tool_result = 5;
+    FileSearchResultDelta file_search_result = 6;
+    GoogleMapsResultDelta google_maps_result = 7;
+    ProcessingResultDelta processing_result = 10;
+  }
+}
+
+message StepDeltaData {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    TextDelta text = 1;
+    ImageDelta image = 2;
+    AudioDelta audio = 3;
+    DocumentDelta document = 4;
+    VideoDelta video = 5;
+    ThoughtSummaryDelta thought_summary = 6;
+    RawThoughtDelta raw_thought = 17;
+    ThoughtSignatureDelta thought_signature = 7;
+    TextAnnotationDelta text_annotation_delta = 10;
+    ArgumentsDelta arguments_delta = 11;
+    ServerToolCallDelta server_tool_call = 12;
+    ServerToolResultDelta server_tool_result = 13;
+    FunctionResultDelta function_result = 14;
+  }
+}
+
+message ArgumentsDelta {
+  string arguments = 2;
+}
+
+message TranscriptionDelta {
+  string text = 1;
+  TranscriptionType transcription_type = 2;
+  VoiceActivity voice_activity = 3;
+
+  enum TranscriptionType {
+    TRANSCRIPTION_TYPE_UNSPECIFIED = 0;
+    FINAL = 1;
+    INTERIM = 2;
+    SPECULATIVE = 3;
+  }
+}
+
+message VoiceActivity {
+  Type type = 1;
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    SPEECH_STARTED = 1;
+    SPEECH_ENDED = 2;
+  }
+}
+
+message StepStop {
+  int32 index = 1;
+  Interaction.Usage usage = 2;
+  Interaction.Usage step_usage = 3;
+}
+
+message InteractionStreamingEvent {
+  oneof event_type {
+    option (unresolved_option_525000030) = 1;
+    InteractionStartEvent interaction_start_event = 14 [(unresolved_option_525000216) = "interaction.start"];
+    InteractionCompleteEvent interaction_complete_event = 15 [(unresolved_option_525000216) = "interaction.complete"];
+    InteractionCreatedSseEvent interaction_created_event = 19 [(unresolved_option_525000216) = "interaction.created"];
+    InteractionCompletedSseEvent interaction_completed_event = 20 [(unresolved_option_525000216) = "interaction.completed"];
+    InteractionStatusUpdate interaction_status_update = 4 [(unresolved_option_525000216) = "interaction.status_update"];
+    ContentStart content_start = 10 [(unresolved_option_525000216) = "content.start"];
+    ContentDelta content_delta = 11 [(unresolved_option_525000216) = "content.delta"];
+    ContentStop content_stop = 12 [(unresolved_option_525000216) = "content.stop"];
+    ErrorEvent error_event = 9 [(unresolved_option_525000216) = "error"];
+    StepStart step_start = 16 [(unresolved_option_525000216) = "step.start"];
+    StepDelta step_delta = 17 [(unresolved_option_525000216) = "step.delta"];
+    StepStop step_stop = 18 [(unresolved_option_525000216) = "step.stop"];
+  }
+  string event_id = 13;
+}

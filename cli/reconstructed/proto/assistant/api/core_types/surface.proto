@@ -1,0 +1,92 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e01011 (va 0x103e01011, __TEXT.__rodata), descriptor length 3175 B, sha256 7287ec18d06a96d0
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package assistant.api.core_types;
+
+import "google/api/inclusion.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+
+option java_package = "com.google.assistant.api.proto";
+option cc_enable_arenas = true;
+option objc_class_prefix = "ASTCT";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_525000017) = "\n%package:assistant/boq/frontend/server\n&package:assistant/boq/proactive/server\n.package:frameworks/debug/settings/proto/public\n\026package:google/actions\n!package:google/assistant/embedded\n-package:google/corp/actionableevalreportdepot\n\037package:google/corp/tag/nirvana\n6package:google/internal/alkali/applications/bluepencil\n-package:google/internal/assistant/frontend/v1\n?package:google/internal/assistant/frontend/v1/cloud_arbitration\nGpackage:google/internal/assistant/frontend/v1/cloud_lookup/voz_frontend\nApackage:google/internal/assistant/frontend/v1/cloud_orchestration\n5package:google/internal/assistant/frontend/v1/penguin\n7package:google/internal/assistant/frontend/v1/summarize\n+package:google/internal/assistant/proactive\n4package:google/internal/assistant/tv/autocomplete/v1\n9package:google/internal/assistant/voice/growth/chalkboard\n package:google/internal/discover\n'package:google/internal/education/bloom\nFpackage:google/internal/financeplatform/frontend/v1/frontendpayservice\nGpackage:google/internal/financeplatform/frontend/v1/usersettingsservice\n/package:google/internal/firebase/logging/legacy\n\036package:google/internal/geller\n#package:google/internal/labs/action\n\035package:google/internal/memex\n package:google/internal/memex/v1\n%package:google/internal/robinfrontend\nApackage:google/internal/search/gsa/dictionary/dictionaryextension\nDpackage:google/internal/search/gsa/dictionary/dictionaryextension/v1\n)package:google/internal/zerostateproxy/v1\n'package:home/intelligence/service/proto\n8package:java/com/google/finance/platform/frontend/server\nGpackage:java/com/google/frameworks/debug/settings/frontend/publicserver\n8package:java/com/google/home/intelligence/service/server";
+option (unresolved_option_2) = 2;
+option (unresolved_option_5) = 2;
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message Surface {
+  Type type = 1;
+
+  enum Type {
+    option features.enum_type = CLOSED;
+    UNKNOWN_TYPE = 0;
+    ACCL = 13;
+    AGSA = 12;
+    ANDROID = 8;
+    ANDROID_AUTO = 16;
+    ANDROID_LITE = 17;
+    ANDROID_PHONE = 18;
+    ANDROID_SCREENLESS = 19;
+    ANDROID_SMART_DISPLAY = 20;
+    ANDROID_SMART_DISPLAY_COSMOS = 64;
+    ANDROID_TABLET = 21;
+    ANDROID_THINGS = 22;
+    ANDROID_THINGS_CUBE = 23;
+    ANDROID_THINGS_JASPER = 24;
+    ANDROID_TV = 25;
+    ANDROID_WEAR = 26;
+    ASSISTANT_KIT = 15;
+    ASSISTANT_SDK = 27;
+    AUTO = 7;
+    CAST_OS = 11;
+    CHROME_OS = 29;
+    CHROMECAST_MANHATTAN = 28;
+    CLOUD_DEVICE = 30;
+    CROS = 31;
+    FITBIT_OS_WATCH = 50;
+    FITBIT_OS_WATCH_ANDROID = 51;
+    FITBIT_OS_WATCH_IOS = 52;
+    GOOGLE_HOME = 32;
+    GOOGLE_HOME_APP = 63;
+    HEADPHONE = 43;
+    HEADPHONE_ANDROID = 47;
+    HEADPHONE_ANDROID_SCREENLESS = 59;
+    HEADPHONE_IOS = 48;
+    IOPA = 33;
+    IOS = 9;
+    IOS_SCREENLESS = 34;
+    IPAD = 40;
+    IPHONE = 41;
+    KAI_OS = 10;
+    KAI_OS_AMA = 35;
+    LIBASSISTANT = 14;
+    MATTER = 61;
+    PHONE = 1;
+    PIXEL = 37;
+    PIXEL5 = 38;
+    PIXEL6 = 39;
+    PIXEL7 = 42;
+    PIXEL8 = 58;
+    PIXEL9 = 62;
+    PIXEL_BUDS = 49;
+    PIXEL_BUDS_SCREENLESS = 60;
+    PIXEL_TABLET = 55;
+    PIXEL_TABLET_HUB_MODE = 56;
+    PIXEL_TABLET_PERSONAL_MODE = 57;
+    PIXEL_WATCH = 54;
+    SCREENLESS = 6;
+    SMART_DISPLAY = 5;
+    SPEAKER = 3;
+    TABLET = 2;
+    TELEPHONE = 36;
+    THING = 4;
+    THIRD_PARTY_PARTNER_APP = 65;
+    WATCH = 44;
+    WEAR_OS = 45;
+    WEAR_OS_WATCH = 53;
+  }
+}

@@ -1,0 +1,33 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d549cb (va 0x103d549cb, __TEXT.__rodata), descriptor length 896 B, sha256 1c078dff80495a60
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "AndroidDeviceTypeProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message AndroidDeviceType {
+  optional bool is_watch = 1;
+  optional bool is_automotive = 2;
+  optional bool is_chrome_os = 3;
+  optional bool is_android_tv = 4;
+  optional bool is_bstar = 5;
+  optional bool is_android_xr = 6;
+  optional bool is_android_xr_peripheral = 7;
+  optional bool is_desktop = 8;
+}

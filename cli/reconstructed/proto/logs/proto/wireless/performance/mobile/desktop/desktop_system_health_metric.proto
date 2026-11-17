@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d85489 (va 0x103d85489, __TEXT.__rodata), descriptor length 1523 B, sha256 8be7bccfac40b6c2
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package logs.proto.wireless.performance.mobile.desktop;
+
+import "logs/proto/wireless/performance/mobile/cui_metric.proto";
+import "logs/proto/wireless/performance/mobile/desktop/extension_metric.proto";
+import "logs/proto/wireless/performance/mobile/desktop/trace_record.proto";
+import "logs/proto/wireless/performance/mobile/sampling.proto";
+import "logs/proto/wireless/performance/mobile/system_health_metric.proto";
+import "logs/proto/wireless/performance/mobile/tracing.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import option "third_party/protobuf/cpp_features.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile.desktop";
+option java_outer_classname = "DesktopSystemHealthMetricOuterClass";
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+export message DesktopSystemHealthMetric {
+  ApplicationInfo application_info = 1;
+  SamplingParameters sampling_parameters = 2;
+  CuiMetric cui_metric = 3;
+  MetricExtension metric_extension = 4;
+  ClientErrorLoggingMetric client_error_logging_metric = 5;
+  Trace trace = 6;
+  TraceRecord trace_record = 7;
+}
+
+message ApplicationInfo {
+  string mobilespec_id = 1 [features.(unresolved_option_1000) = "\020\003"];
+}

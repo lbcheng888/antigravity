@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x9124cdc (va 0x109124cdc, __TEXT.__const), descriptor length 258 B, sha256 7956ced7608cc0ff
+// boundary: edition_end
+
+edition = "2024";
+
+package util;
+
+import "net/proto2/bridge/proto/message_set.proto";
+
+message StackTrace {
+  repeated uint64 addresses = 1;
+}
+
+message StackTraces {
+  repeated StackTrace traces = 1;
+
+  extend proto2.bridge.MessageSet {
+    StackTraces message_set_extension = 181005703;
+  }
+}

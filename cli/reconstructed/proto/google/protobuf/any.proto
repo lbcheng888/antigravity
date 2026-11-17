@@ -1,0 +1,20 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d17b2a (va 0x103d17b2a, __TEXT.__rodata), descriptor length 239 B, sha256 8cecc69c704f1029
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.protobuf;
+
+option java_package = "com.google.protobuf";
+option java_outer_classname = "AnyProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/protobuf/types/known/anypb";
+option objc_class_prefix = "GPB";
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option (unresolved_option_28) = 0;
+
+message Any {
+  string type_url = 1 [ctype = STRING_PIECE];
+  bytes value = 2 [ctype = CORD];
+}

@@ -1,0 +1,124 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3de24f9 (va 0x103de24f9, __TEXT.__rodata), descriptor length 2702 B, sha256 2e4b8b6f13259f5f
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package gemini_coder;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/gemini_coder/proto/trajectory.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/reactive_component_pb/reactive_component.proto";
+
+option java_package = "com.google.geminicoder";
+option java_multiple_files = true;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message ToAgent {
+  oneof kind {
+    InitRequest init = 1;
+    AddStepsRequest add_steps = 2;
+    ExecuteRequest execute = 3;
+    CancelExecutionRequest cancel_execution = 4;
+    CancelStepsRequest cancel_steps = 5;
+    RevertRequest revert = 6;
+    ClientResponse client_response = 7;
+  }
+}
+
+message FromAgent {
+  oneof kind {
+    InitResponse init = 1;
+    AddStepsResponse add_steps = 2;
+    ExecuteResponse execute = 3;
+    CancelExecutionResponse cancel_execution = 4;
+    CancelStepsResponse cancel_steps = 5;
+    RevertResponse revert = 6;
+    ClientRequest client_request = 7;
+    ReactiveStateUpdate reactive_state_update = 8;
+  }
+}
+
+message InitRequest {
+  ConversationKey key = 1;
+  bool create_if_missing = 2;
+}
+
+message InitResponse {
+}
+
+message ConversationKey {
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+}
+
+message AddStepsRequest {
+  repeated Step steps = 1;
+}
+
+message AddStepsResponse {
+  bool executing = 1;
+}
+
+message ExecuteRequest {
+  exa.cortex_pb.CascadeConfig cascade_config = 1;
+}
+
+message ExecuteResponse {
+}
+
+message CancelExecutionRequest {
+}
+
+message CancelExecutionResponse {
+}
+
+message CancelStepsRequest {
+  repeated uint32 indices = 1;
+}
+
+message CancelStepsResponse {
+}
+
+message RevertRequest {
+  uint32 index = 1;
+  exa.cortex_pb.CascadeConfig cascade_config = 2;
+}
+
+message RevertResponse {
+  uint32 index = 1;
+  string error = 2 [(unresolved_option_40075780) = 999];
+}
+
+message ClientRequest {
+  int32 id = 1;
+  oneof kind {
+    UserInteractionRequest user_interaction = 2;
+    ExecuteCommandRequest execute_command = 3;
+  }
+}
+
+message ClientResponse {
+  int32 id = 1;
+  oneof kind {
+    UserInteractionResponse user_interaction = 2;
+    ExecuteCommandResponse execute_command = 3;
+  }
+}
+
+message UserInteractionRequest {
+}
+
+message UserInteractionResponse {
+}
+
+message ExecuteCommandRequest {
+}
+
+message ExecuteCommandResponse {
+}
+
+message ReactiveStateUpdate {
+  exa.reactive_component_pb.MessageDiff diff = 1;
+}

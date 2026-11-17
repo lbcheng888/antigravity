@@ -1,0 +1,14 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d19b90 (va 0x103d19b90, __TEXT.__rodata), descriptor length 251 B, sha256 f44895e5be70f281
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package cider.annotations;
+
+import "net/proto2/proto/descriptor.proto";
+
+extend proto2.FieldOptions {
+  bool has_source_code = 535801200;
+  bool has_sensitive_content = 535801521;
+}

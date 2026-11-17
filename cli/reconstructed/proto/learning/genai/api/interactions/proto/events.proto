@@ -1,0 +1,212 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f17d62 (va 0x103f17d62, __TEXT.__rodata), descriptor length 6928 B, sha256 58e569781ee2b5f7
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "google/rpc/status.proto";
+import "learning/genai/api/interactions/proto/agents.proto";
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/interactions/proto/elicitation.proto";
+import "learning/genai/api/interactions/proto/environment.proto";
+import "learning/genai/api/interactions/proto/hooks.proto";
+import "learning/genai/api/interactions/proto/interaction.proto";
+import "learning/genai/api/interactions/proto/media_stream_steps.proto";
+import "learning/genai/api/interactions/proto/models.proto";
+import "learning/genai/api/interactions/proto/remote_environment.proto";
+import "learning/genai/api/interactions/proto/response_format.proto";
+import "learning/genai/api/interactions/proto/sse_events.proto";
+import "learning/genai/api/interactions/proto/state_update.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+import "learning/genai/api/interactions/proto/tools.proto";
+import "learning/genai/api/interactions/proto/user_steps.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+option features.utf8_validation = NONE;
+
+enum InputDeliveryMode {
+  INPUT_DELIVERY_MODE_UNSPECIFIED = 0;
+  QUEUE = 1;
+  IMMEDIATE = 2;
+  SILENT = 3;
+  BLOCKING = 4;
+}
+
+message ClientEventBatch {
+  oneof connect_request {
+    CreateInteractionEvent create_interaction = 7;
+    ReconnectInteractionEvent reconnect_interaction = 8;
+  }
+  repeated ClientEvent events = 1;
+  oneof end_request {
+    CompleteInteractionEvent complete_interaction = 5;
+    CancelInteractionEvent cancel_interaction = 6;
+    DisconnectEvent disconnect = 9;
+  }
+  int64 ack_output_seq_num = 2;
+}
+
+message ClientEvent {
+  oneof event_type {
+    Payload payload = 3;
+  }
+  int64 seq_num = 10;
+  int64 timestamp_micros = 11;
+}
+
+message ServerEventBatch {
+  oneof connect_reply {
+    InteractionCreatedEvent interaction_created = 7;
+    InteractionReconnectedEvent interaction_reconnected = 8;
+  }
+  repeated ServerEvent events = 1;
+  oneof end_signal {
+    InteractionCompletedEvent interaction_completed = 6;
+  }
+  int64 ack_input_seq_num = 2;
+}
+
+message FunctionInvocation {
+  string call_id = 1;
+  string name = 2;
+  Struct arguments = 3;
+}
+
+message FunctionResultEvent {
+  string call_id = 1;
+  string name = 2;
+  bool is_error = 3;
+  Value result = 4;
+}
+
+message ElicitationResultEvent {
+  string elicitation_id = 1;
+  oneof result {
+    ContentList user_input = 2;
+    UserTimeout user_timeout = 3;
+    ConfirmationResponse confirmation = 4;
+    MultipleChoiceResponse multiple_choice = 5;
+  }
+}
+
+message SkillDeclaration {
+  string name = 1;
+  string description = 2;
+}
+
+message SlashCommandDeclaration {
+  string name = 1;
+  string description = 2;
+}
+
+message CapabilitiesUpdate {
+  repeated SkillDeclaration available_skills = 1;
+  repeated SkillDeclaration added_skills = 2;
+  repeated string removed_skill_names = 3;
+  repeated SlashCommandDeclaration available_slash_commands = 4;
+}
+
+message ServerEvent {
+  oneof event_type {
+    option (unresolved_option_525000030) = 1;
+    Payload payload = 3;
+  }
+  int64 seq_num = 10;
+  int64 timestamp_micros = 11;
+  Interaction.Usage usage = 12;
+}
+
+message CreateInteractionEvent {
+  extensions 1000 to max;
+  string interaction_id = 22;
+  oneof config {
+    option (unresolved_option_525000030) = 1;
+    ModelInteraction model_interaction = 3 [(unresolved_option_525000215) = "model"];
+    AgentInteraction agent_interaction = 4 [(unresolved_option_525000215) = "agent"];
+  }
+  string system_instruction = 5;
+  repeated Content developer_instructions = 20;
+  AppendedDeveloperInstructions appended_developer_instructions = 21;
+  string previous_interaction_id = 15;
+  repeated Step inputs = 6 [json_name = "input", (unresolved_option_525000221) = "inputs.user_input.content_list.contents.text.text", (unresolved_option_525000221) = "inputs.user_input.content_list.contents", (unresolved_option_525000221) = "inputs.user_input.content_list.contents[0]"];
+  repeated Tool tools = 7;
+  oneof environment {
+    option (unresolved_option_525000029) = 1;
+    string env_id = 8;
+    EnvironmentConfig remote_environment = 9 [(unresolved_option_525000216) = "remote", (unresolved_option_525000218) = "type"];
+  }
+  repeated ResponseModality response_modalities = 10;
+  repeated ResponseFormat response_format = 12 [(unresolved_option_525000221) = "response_format[0]"];
+  bool store = 50;
+  bool background = 51;
+  ServiceTier service_tier = 13;
+}
+
+message InteractionCreatedEvent {
+  string interaction_id = 1;
+  repeated SkillDeclaration available_skills = 2;
+  repeated SlashCommandDeclaration available_slash_commands = 3;
+}
+
+message ReconnectInteractionEvent {
+  string interaction_id = 1 [json_name = "id"];
+  int64 next_output_seq_num = 2;
+  bool background = 3;
+}
+
+message InteractionReconnectedEvent {
+  int64 next_input_seq_num = 1;
+}
+
+message CompleteInteractionEvent {
+}
+
+message CancelInteractionEvent {
+}
+
+message DisconnectEvent {
+}
+
+message InteractionCompletedEvent {
+  extensions 1000 to max;
+  google.rpc.Status status = 1;
+  string created = 2;
+  string updated = 3;
+}
+
+message Payload {
+  extensions 1000 to max;
+  string sub_interaction_id = 6;
+  oneof event_type {
+    option (unresolved_option_525000030) = 1;
+    StepStart step_start = 1 [(unresolved_option_525000216) = "step.start"];
+    StepDelta step_delta = 2 [(unresolved_option_525000216) = "step.delta"];
+    StepStop step_stop = 3 [(unresolved_option_525000216) = "step.stop"];
+    MediaStreamAppend media_stream_append = 202;
+    InputEvent input = 207 [(unresolved_option_525000216) = "input"];
+    StateUpdate state_update = 13;
+    Interaction.Usage usage_update = 30;
+    FunctionInvocation function_invocation = 14;
+    CallHookRequest call_hook_request = 15;
+    FilesystemRequest filesystem_request = 31;
+    CommandExecutionRequest command_execution_request = 32;
+    CapabilitiesUpdate capabilities_update = 17;
+    HookRequest hook_request = 36;
+    CallHookResponse call_hook_response = 16;
+    FilesystemResponse filesystem_response = 33;
+    CommandExecutionResponse command_execution_response = 34;
+    HookResponse hook_response = 37;
+    FunctionResultEvent function_result = 18 [(unresolved_option_525000216) = "function_result"];
+    ElicitationResultEvent elicitation_result = 19 [(unresolved_option_525000216) = "elicitation_result"];
+  }
+}
+
+message InputEvent {
+  repeated Content content = 1;
+  repeated UserInputContent input_content = 6;
+  InputDeliveryMode mode = 3;
+}

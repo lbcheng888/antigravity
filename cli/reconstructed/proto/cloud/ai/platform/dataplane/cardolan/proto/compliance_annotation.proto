@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d398e6 (va 0x103d398e6, __TEXT.__rodata), descriptor length 531 B, sha256 9d9db42194fad90b
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package cloud_aiplatform.dataplane.cardolan;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.cloud.ai.platform.dataplane.cardolan.proto";
+option java_outer_classname = "ComplianceAnnotationProto";
+
+enum ComplianceCheckType {
+  COMPLIANCE_CHECK_UNSPECIFIED = 0;
+  COMPLIANCE_CHECK_BLOCK_ITAR_PROJECT = 1;
+  COMPLIANCE_CHECK_BLOCK_IL5_PROJECT = 2;
+}
+
+extend proto2.MethodOptions {
+  repeated ComplianceCheckType required_compliance_checks = 525000163;
+}

@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3749e (va 0x103d3749e, __TEXT.__rodata), descriptor length 500 B, sha256 5ff5f43d8d82f8da
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package datapol;
+
+option java_package = "com.google.protos.datapol";
+option java_outer_classname = "RetentionAnnotations";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GCDP";
+option (unresolved_option_2) = 2;
+option (unresolved_option_5) = 2;
+option (unresolved_option_26) = 1;
+
+enum RetentionTag {
+  RT_DEFAULT = 0;
+  RT_OBSOLETE = 1;
+  RT_WEEK = 10;
+  RT_MONTH = 20;
+  RT_5_WEEKS = 21;
+  RT_QUARTER = 30;
+  RT_HALF_A_YEAR = 40;
+  RT_YEAR = 50;
+  RT_16_MONTHS = 58;
+  RT_YEAR_AND_A_HALF = 60;
+  RT_2_YEARS = 70;
+  RT_3_YEARS = 80;
+  RT_ARCHIVAL = 1000;
+}
+
+message RetentionSpec {
+  optional RetentionTag desired_retention = 1 [default = RT_DEFAULT];
+  optional string context = 2 [default = "*"];
+}

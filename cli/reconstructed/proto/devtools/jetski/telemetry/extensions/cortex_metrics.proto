@@ -1,0 +1,69 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ddf049 (va 0x103ddf049, __TEXT.__rodata), descriptor length 2691 B, sha256 b2dd275979742161
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "CortexMetricsOuterClass";
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+
+export message CortexMetrics {
+  string ide = 1 [(unresolved_option_40075780) = 1500];
+  string ide_version = 2 [(unresolved_option_40075780) = 1500];
+  string os = 3 [(unresolved_option_40075780) = 1500];
+  string os_name = 4 [(unresolved_option_40075780) = 1500];
+  string execution_id = 5 [(unresolved_option_40075780) = 2300];
+  string cascade_id = 6 [(unresolved_option_40075780) = 2300];
+  string trajectory_type = 7 [(unresolved_option_40075780) = 2800];
+  string trajectory_source = 8 [(unresolved_option_40075780) = 2800];
+  string trajectory_id = 9 [(unresolved_option_40075780) = 2300];
+  int32 start_step_index = 10 [(unresolved_option_40075780) = 2800];
+  int32 end_step_index = 11 [(unresolved_option_40075780) = 2800];
+  int32 start_generator_metadata_index = 12 [(unresolved_option_40075780) = 2800];
+  int32 end_generator_metadata_index = 13 [(unresolved_option_40075780) = 2800];
+  repeated MetricsRecord metrics = 14;
+  google.protobuf.Timestamp timestamp = 15 [(unresolved_option_40075780) = 2100];
+  string model = 16 [(unresolved_option_40075780) = 2800];
+  repeated int32 mendel_experiment_ids = 17 [(unresolved_option_40075780) = 2301];
+  string response_model = 18 [(unresolved_option_40075780) = 2800];
+  string model_name = 19 [(unresolved_option_40075780) = 2800];
+  repeated CoreMetricRecord core_metrics = 20;
+}
+
+export message CoreMetricRecord {
+  string provider = 1 [(unresolved_option_40075780) = 2800];
+  string name = 2 [(unresolved_option_40075780) = 9903];
+  double numerator = 3 [(unresolved_option_40075780) = 9904];
+  double denominator = 4 [(unresolved_option_40075780) = 9904];
+  map<string, string> dimensions = 5 [(unresolved_option_40075780) = 9902, (unresolved_option_40093572) = "\022\004\n\002\360\025\032\004\n\002\360\025"];
+  map<string, string> details = 6 [(unresolved_option_40075780) = 9902, (unresolved_option_40093572) = "\022\004\n\002\360\025\032\004\n\002\354\016"];
+}
+
+message MetricsRecord {
+  reserved 8;
+  string name = 1 [(unresolved_option_40075780) = 9903];
+  float value = 2 [(unresolved_option_40075780) = 9904];
+  map<string, string> details = 3 [(unresolved_option_40075780) = 9902, (unresolved_option_40093572) = "\022\004\n\002\360\025\032\004\n\002\354\016"];
+  MetricsMetadata metadata = 9;
+  string error = 6 [(unresolved_option_40075780) = 9901];
+  string trajectory_id = 7 [(unresolved_option_40075780) = 2300];
+  bool lower_better = 4 [deprecated = true, (unresolved_option_40075780) = 2800];
+  bool is_bool = 5 [deprecated = true, (unresolved_option_40075780) = 2800];
+}
+
+message MetricsMetadata {
+  reserved 5;
+  int32 version = 1 [(unresolved_option_40075780) = 2800];
+  string description = 2 [(unresolved_option_40075780) = 2800];
+  string better_direction = 3 [(unresolved_option_40075780) = 2800];
+  bool is_bool = 4 [(unresolved_option_40075780) = 2800];
+  bool uses_null_default_value = 8 [(unresolved_option_40075780) = 2800];
+  float null_default_value = 6 [(unresolved_option_40075780) = 2800];
+  string scope = 7 [(unresolved_option_40075780) = 2800];
+}

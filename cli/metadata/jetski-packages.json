@@ -1,23 +1,23 @@
 {
   "header": {
-    "offset": 74685824,
+    "offset": 75239168,
     "magic": "0xfffffff1",
     "min_lc": 4,
     "ptr_size": 8,
-    "nfunc": 188461,
-    "nfiles": 7182
+    "nfunc": 189648,
+    "nfiles": 7237
   },
-  "total_go_files": 7182,
-  "jetski_file_count": 2334,
-  "cli_file_count": 644,
-  "jetski_func_count": 71955,
-  "package_count": 479,
+  "total_go_files": 7237,
+  "jetski_file_count": 2390,
+  "cli_file_count": 668,
+  "jetski_func_count": 73099,
+  "package_count": 495,
   "packages": [
     {
       "package": "google3/third_party/jetski/cli/model/model",
-      "func_count": 2605,
-      "file_count": 130,
-      "code_bytes": 1901600,
+      "func_count": 2621,
+      "file_count": 132,
+      "code_bytes": 1915968,
       "files": [
         "third_party/jetski/cli/model/agent_state.go",
         "third_party/jetski/cli/model/agents.go",
@@ -90,6 +90,8 @@
         "third_party/jetski/cli/model/mcp_panel.go",
         "third_party/jetski/cli/model/model_selector.go",
         "third_party/jetski/cli/model/model_selector_context_window.go",
+        "third_party/jetski/cli/model/model_selector_effort_gauge.go",
+        "third_party/jetski/cli/model/model_selector_variant.go",
         "third_party/jetski/cli/model/mouse.go",
         "third_party/jetski/cli/model/nux_card.go",
         "third_party/jetski/cli/model/paste_burst.go",
@@ -163,9 +165,9 @@
     },
     {
       "package": "google3/third_party/golang/connectrpc_com/connect/v/v1/connect",
-      "func_count": 8167,
+      "func_count": 8179,
       "file_count": 5,
-      "code_bytes": 1708384,
+      "code_bytes": 1712368,
       "files": [
         "third_party/golang/connectrpc_com/connect/v/v1/client.go",
         "third_party/golang/connectrpc_com/connect/v/v1/client_stream.go",
@@ -186,9 +188,9 @@
     },
     {
       "package": "google3/third_party/jetski/language_server_pb/language_server_go_proto",
-      "func_count": 7548,
+      "func_count": 7562,
       "file_count": 1,
-      "code_bytes": 1089584,
+      "code_bytes": 1092032,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/language_server_pb/language_server.pb.go"
       ],
@@ -205,9 +207,9 @@
     },
     {
       "package": "google3/third_party/jetski/language_server_pb/language_server_go_grpc",
-      "func_count": 2244,
+      "func_count": 2250,
       "file_count": 1,
-      "code_bytes": 823664,
+      "code_bytes": 825872,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/language_server_pb/language_server_grpc.pb.go"
       ],
@@ -224,9 +226,9 @@
     },
     {
       "package": "google3/third_party/jetski/language_server/language_server",
-      "func_count": 1422,
-      "file_count": 113,
-      "code_bytes": 753536,
+      "func_count": 1442,
+      "file_count": 114,
+      "code_bytes": 767200,
       "files": [
         "third_party/jetski/language_server/actuator_host.go",
         "third_party/jetski/language_server/attribution_handler_external.go",
@@ -239,6 +241,7 @@
         "third_party/jetski/language_server/context_provider_registry.go",
         "third_party/jetski/language_server/conversation_memory_monitor.go",
         "third_party/jetski/language_server/corp_sso_external.go",
+        "third_party/jetski/language_server/crash_report_handler.go",
         "third_party/jetski/language_server/eval_browser_host.go",
         "third_party/jetski/language_server/helpers.go",
         "third_party/jetski/language_server/host_bridge.go",
@@ -346,7 +349,7 @@
         "map.init.0",
         "map.init.1",
         "shouldRegisterEvalBrowserHost",
-        "selectActuatorProfile",
+        "selectActuatorProfileForBuild",
         "ActuatorHostProfile.build",
         "(*actuatorHost).closeOnInitErr",
         "(*turnAttributionTracker).OnTurnActive",
@@ -355,9 +358,9 @@
     },
     {
       "package": "google3/third_party/jetski/cli/store/store",
-      "func_count": 1278,
+      "func_count": 1284,
       "file_count": 92,
-      "code_bytes": 648832,
+      "code_bytes": 648304,
       "files": [
         "third_party/jetski/cli/store/admin_controls_manager.go",
         "third_party/jetski/cli/store/agents_manager.go",
@@ -465,9 +468,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex_pb/cortex_go_proto",
-      "func_count": 6145,
+      "func_count": 6160,
       "file_count": 1,
-      "code_bytes": 514608,
+      "code_bytes": 515776,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/cortex_pb/cortex.pb.go"
       ],
@@ -484,9 +487,9 @@
     },
     {
       "package": "google3/third_party/jetski/language_server/code_assist_client/codeassistclient",
-      "func_count": 967,
-      "file_count": 48,
-      "code_bytes": 410736,
+      "func_count": 987,
+      "file_count": 49,
+      "code_bytes": 424016,
       "files": [
         "third_party/jetski/language_server/code_assist_client/aicode.go",
         "third_party/jetski/language_server/code_assist_client/aicode_scope.go",
@@ -518,6 +521,7 @@
         "third_party/jetski/language_server/code_assist_client/keyring_detector_termux.go",
         "third_party/jetski/language_server/code_assist_client/keyring_detector_wsl.go",
         "third_party/jetski/language_server/code_assist_client/model_configs.go",
+        "third_party/jetski/language_server/code_assist_client/orchestrator_models.go",
         "third_party/jetski/language_server/code_assist_client/plugins.go",
         "third_party/jetski/language_server/code_assist_client/profiler_external.go",
         "third_party/jetski/language_server/code_assist_client/remote_agent.go",
@@ -550,9 +554,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/customizations/customizations",
-      "func_count": 747,
+      "func_count": 749,
       "file_count": 38,
-      "code_bytes": 366352,
+      "code_bytes": 368576,
       "files": [
         "third_party/jetski/cortex/customizations/agent_plugins_spec.go",
         "third_party/jetski/cortex/customizations/agents.go",
@@ -608,7 +612,7 @@
       "package": "google3/third_party/jetski/language_server/interceptor/mockdata/mockdata",
       "func_count": 564,
       "file_count": 22,
-      "code_bytes": 345648,
+      "code_bytes": 346832,
       "files": [
         "third_party/jetski/language_server/interceptor/mockdata/mock_artifacts.go",
         "third_party/jetski/language_server/interceptor/mockdata/mock_audio_transcription_rpcs.go",
@@ -646,9 +650,9 @@
     },
     {
       "package": "google3/third_party/jetski/cli/render/render",
-      "func_count": 342,
+      "func_count": 352,
       "file_count": 38,
-      "code_bytes": 333056,
+      "code_bytes": 343440,
       "files": [
         "third_party/jetski/cli/render/active_items.go",
         "third_party/jetski/cli/render/cci_links.go",
@@ -701,10 +705,60 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/vetting/vetting",
+      "func_count": 472,
+      "file_count": 32,
+      "code_bytes": 339504,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/vetting/autorun.go",
+        "third_party/jetski/cortex/policyguardian/vetting/autorun_preload.go",
+        "third_party/jetski/cortex/policyguardian/vetting/autorun_prompt.go",
+        "third_party/jetski/cortex/policyguardian/vetting/deletion_operands.go",
+        "third_party/jetski/cortex/policyguardian/vetting/deployment.go",
+        "third_party/jetski/cortex/policyguardian/vetting/depsdev.go",
+        "third_party/jetski/cortex/policyguardian/vetting/diagnostic_segment.go",
+        "third_party/jetski/cortex/policyguardian/vetting/gavs.go",
+        "third_party/jetski/cortex/policyguardian/vetting/helpers.go",
+        "third_party/jetski/cortex/policyguardian/vetting/irreversible_judge_prompt.go",
+        "third_party/jetski/cortex/policyguardian/vetting/llm.go",
+        "third_party/jetski/cortex/policyguardian/vetting/local_policy.go",
+        "third_party/jetski/cortex/policyguardian/vetting/navigation_suite.go",
+        "third_party/jetski/cortex/policyguardian/vetting/plugin.go",
+        "third_party/jetski/cortex/policyguardian/vetting/request_shape.go",
+        "third_party/jetski/cortex/policyguardian/vetting/retry.go",
+        "third_party/jetski/cortex/policyguardian/vetting/reversibility.go",
+        "third_party/jetski/cortex/policyguardian/vetting/safebrowsing.go",
+        "third_party/jetski/cortex/policyguardian/vetting/script_execution.go",
+        "third_party/jetski/cortex/policyguardian/vetting/shell.go",
+        "third_party/jetski/cortex/policyguardian/vetting/shell_routing.go",
+        "third_party/jetski/cortex/policyguardian/vetting/suite.go",
+        "third_party/jetski/cortex/policyguardian/vetting/types.go",
+        "third_party/jetski/cortex/policyguardian/vetting/url_data.go",
+        "third_party/jetski/cortex/policyguardian/vetting/user_turns.go",
+        "third_party/jetski/cortex/policyguardian/vetting/verdict.go",
+        "third_party/jetski/cortex/policyguardian/vetting/vet_content.go",
+        "third_party/jetski/cortex/policyguardian/vetting/vet_data_flow.go",
+        "third_party/jetski/cortex/policyguardian/vetting/vet_denied_repeat.go",
+        "third_party/jetski/cortex/policyguardian/vetting/vet_dependency.go",
+        "third_party/jetski/cortex/policyguardian/vetting/vet_destruction.go",
+        "third_party/jetski/cortex/policyguardian/vetting/vet_shell_change.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "map.init.1",
+        "map.init.2",
+        "map.init.3",
+        "map.init.4",
+        "map.init.5",
+        "map.init.6",
+        "map.init.7"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/codeium_common_pb/codeium_common_go_proto",
-      "func_count": 3596,
+      "func_count": 3607,
       "file_count": 1,
-      "code_bytes": 314800,
+      "code_bytes": 316544,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/codeium_common_pb/codeium_common.pb.go"
       ],
@@ -739,53 +793,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/policyguardian/vetting/vetting",
-      "func_count": 401,
-      "file_count": 29,
-      "code_bytes": 291792,
-      "files": [
-        "third_party/jetski/cortex/policyguardian/vetting/autorun.go",
-        "third_party/jetski/cortex/policyguardian/vetting/autorun_preload.go",
-        "third_party/jetski/cortex/policyguardian/vetting/autorun_prompt.go",
-        "third_party/jetski/cortex/policyguardian/vetting/deployment.go",
-        "third_party/jetski/cortex/policyguardian/vetting/depsdev.go",
-        "third_party/jetski/cortex/policyguardian/vetting/diagnostic_segment.go",
-        "third_party/jetski/cortex/policyguardian/vetting/gavs.go",
-        "third_party/jetski/cortex/policyguardian/vetting/helpers.go",
-        "third_party/jetski/cortex/policyguardian/vetting/irreversible_judge_prompt.go",
-        "third_party/jetski/cortex/policyguardian/vetting/llm.go",
-        "third_party/jetski/cortex/policyguardian/vetting/navigation_suite.go",
-        "third_party/jetski/cortex/policyguardian/vetting/plugin.go",
-        "third_party/jetski/cortex/policyguardian/vetting/request_shape.go",
-        "third_party/jetski/cortex/policyguardian/vetting/retry.go",
-        "third_party/jetski/cortex/policyguardian/vetting/reversibility.go",
-        "third_party/jetski/cortex/policyguardian/vetting/safebrowsing.go",
-        "third_party/jetski/cortex/policyguardian/vetting/script_execution.go",
-        "third_party/jetski/cortex/policyguardian/vetting/shell.go",
-        "third_party/jetski/cortex/policyguardian/vetting/suite.go",
-        "third_party/jetski/cortex/policyguardian/vetting/types.go",
-        "third_party/jetski/cortex/policyguardian/vetting/url_data.go",
-        "third_party/jetski/cortex/policyguardian/vetting/user_turns.go",
-        "third_party/jetski/cortex/policyguardian/vetting/verdict.go",
-        "third_party/jetski/cortex/policyguardian/vetting/vet_content.go",
-        "third_party/jetski/cortex/policyguardian/vetting/vet_data_flow.go",
-        "third_party/jetski/cortex/policyguardian/vetting/vet_denied_repeat.go",
-        "third_party/jetski/cortex/policyguardian/vetting/vet_dependency.go",
-        "third_party/jetski/cortex/policyguardian/vetting/vet_destruction.go",
-        "third_party/jetski/cortex/policyguardian/vetting/vet_shell_change.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "map.init.1",
-        "map.init.2",
-        "map.init.3",
-        "map.init.4",
-        "map.init.5",
-        "map.init.6",
-        "map.init.7"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/seat_management_pb/seat_management_go_proto",
       "func_count": 1833,
       "file_count": 1,
@@ -806,9 +813,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/cortex",
-      "func_count": 531,
+      "func_count": 528,
       "file_count": 15,
-      "code_bytes": 271200,
+      "code_bytes": 269440,
       "files": [
         "third_party/jetski/cortex/annotations_manager.go",
         "third_party/jetski/cortex/battlemode.go",
@@ -839,9 +846,9 @@
     },
     {
       "package": "google3/third_party/jetski/language_server/backend/cloudproxy/cloudproxy",
-      "func_count": 523,
-      "file_count": 27,
-      "code_bytes": 252736,
+      "func_count": 552,
+      "file_count": 28,
+      "code_bytes": 262816,
       "files": [
         "third_party/jetski/language_server/backend/cloudproxy/annotations.go",
         "third_party/jetski/language_server/backend/cloudproxy/cancel.go",
@@ -869,7 +876,8 @@
         "third_party/jetski/language_server/backend/cloudproxy/turn_diff.go",
         "third_party/jetski/language_server/backend/cloudproxy/turns.go",
         "third_party/jetski/language_server/backend/cloudproxy/user_data.go",
-        "third_party/jetski/language_server/backend/cloudproxy/vcs.go"
+        "third_party/jetski/language_server/backend/cloudproxy/vcs.go",
+        "third_party/jetski/language_server/backend/cloudproxy/watch.go"
       ],
       "sample_funcs": [
         "(*annotationsState).recordListing",
@@ -884,9 +892,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/utils/utils",
-      "func_count": 500,
-      "file_count": 41,
-      "code_bytes": 250112,
+      "func_count": 505,
+      "file_count": 40,
+      "code_bytes": 255792,
       "files": [
         "third_party/jetski/cortex/utils/agentapi_utils.go",
         "third_party/jetski/cortex/utils/chat_utils.go",
@@ -903,7 +911,6 @@
         "third_party/jetski/cortex/utils/g3_path_utils_external.go",
         "third_party/jetski/cortex/utils/interaction_utils.go",
         "third_party/jetski/cortex/utils/knowledge_base_item_cache.go",
-        "third_party/jetski/cortex/utils/loas2_creds.go",
         "third_party/jetski/cortex/utils/loop_detection.go",
         "third_party/jetski/cortex/utils/markdown_validation.go",
         "third_party/jetski/cortex/utils/message_delivery.go",
@@ -943,9 +950,9 @@
     },
     {
       "package": "google3/third_party/jetski/language_server_pb/language_server_go_proto_connect",
-      "func_count": 379,
+      "func_count": 380,
       "file_count": 1,
-      "code_bytes": 243856,
+      "code_bytes": 244496,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/language_server_pb/language_server_go_proto_connect/language_server.connect.go"
       ],
@@ -962,9 +969,9 @@
     },
     {
       "package": "google3/third_party/jetski/cli/backend/backend",
-      "func_count": 546,
-      "file_count": 30,
-      "code_bytes": 238864,
+      "func_count": 540,
+      "file_count": 31,
+      "code_bytes": 239968,
       "files": [
         "third_party/jetski/cli/backend/context_window.go",
         "third_party/jetski/cli/backend/conversation_files.go",
@@ -977,6 +984,7 @@
         "third_party/jetski/cli/backend/model_resolver.go",
         "third_party/jetski/cli/backend/model_resolver_custom.go",
         "third_party/jetski/cli/backend/model_slug.go",
+        "third_party/jetski/cli/backend/model_variant.go",
         "third_party/jetski/cli/backend/permissions_v2.go",
         "third_party/jetski/cli/backend/retry.go",
         "third_party/jetski/cli/backend/server.go",
@@ -999,56 +1007,46 @@
       ],
       "sample_funcs": [
         "map.init.0",
+        "map.init.1",
         "ParsePresetContextWindow",
         "ContextWindow.MaxTokenLimit",
         "ContextWindow.QuotaMultiplier",
         "(*ServerBackend).ReadConversationFile",
         "(*ServerBackend).ConversationFilesRoot",
-        "(*ServerBackend).SearchConversationFiles",
-        "(*ServerBackend).startConversationSearchIndex"
+        "(*ServerBackend).SearchConversationFiles"
       ]
     },
     {
-      "package": "google3/third_party/jetski/cli/acp/acp",
-      "func_count": 515,
-      "file_count": 18,
-      "code_bytes": 229632,
+      "package": "google3/third_party/jetski/cortex/policyguardian/provenance/toolclassify/toolclassify",
+      "func_count": 171,
+      "file_count": 8,
+      "code_bytes": 204704,
       "files": [
-        "third_party/jetski/cli/acp/cli_helpers.go",
-        "third_party/jetski/cli/acp/client_info.go",
-        "third_party/jetski/cli/acp/elicitation.go",
-        "third_party/jetski/cli/acp/front.go",
-        "third_party/jetski/cli/acp/integrations.go",
-        "third_party/jetski/cli/acp/jsonrpc.go",
-        "third_party/jetski/cli/acp/launcher.go",
-        "third_party/jetski/cli/acp/login.go",
-        "third_party/jetski/cli/acp/mcpnames.go",
-        "third_party/jetski/cli/acp/model_options.go",
-        "third_party/jetski/cli/acp/modes.go",
-        "third_party/jetski/cli/acp/options.go",
-        "third_party/jetski/cli/acp/prompt_content.go",
-        "third_party/jetski/cli/acp/promptturn.go",
-        "third_party/jetski/cli/acp/server.go",
-        "third_party/jetski/cli/acp/sessionstate.go",
-        "third_party/jetski/cli/acp/telemetry.go",
-        "third_party/jetski/cli/acp/turn_cancel.go"
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/dataflow.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/dataflow_handlers.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/firewall.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/handlers.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/manifest.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/mcp_classifier.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/shell_interceptor.go",
+        "third_party/jetski/cortex/policyguardian/provenance/toolclassify/types.go"
       ],
       "sample_funcs": [
-        "resolveLogDir",
-        "redirectOutputForACP",
-        "(*writerSink).Enabled",
-        "(*writerSink).Emit",
-        "ParseClientInfo",
-        "sanitizeSurfaceSegment",
-        "ClientInfo.SurfaceSegments",
-        "(*ClientElicitationCapabilities).supportsForm"
+        "map.init.0",
+        "map.init.1",
+        "map.init.2",
+        "map.init.3",
+        "map.init.4",
+        "map.init.5",
+        "map.init.6",
+        "map.init.7"
       ]
     },
     {
       "package": "google3/third_party/jetski/cortex/ext/plugins/computer/computer",
       "func_count": 266,
       "file_count": 26,
-      "code_bytes": 197408,
+      "code_bytes": 199424,
       "files": [
         "third_party/jetski/cortex/ext/plugins/computer/actions.go",
         "third_party/jetski/cortex/ext/plugins/computer/apps.go",
@@ -1092,16 +1090,16 @@
       "package": "slices",
       "func_count": 204,
       "file_count": 3,
-      "code_bytes": 177440,
+      "code_bytes": 179152,
       "files": [
         "third_party/go/gc/src/slices/iter.go",
         "third_party/go/gc/src/slices/slices.go",
         "third_party/go/gc/src/slices/zsortanyfunc.go"
       ],
       "sample_funcs": [
-        "stableCmpFunc[go.shape.struct { Name string; StorageKey string; Host string; Path string; Config google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy.AuthConfig; Delivery string; Env map[string]string; ImplicitAllow bool; CLIs []string; Identity *google3/third_party/jetski/project_pb/netbox_config_go_proto.IdentityProbeConfig; Optional bool }]",
-        "symMergeCmpFunc[go.shape.struct { Name string; StorageKey string; Host string; Path string; Config google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy.AuthConfig; Delivery string; Env map[string]string; ImplicitAllow bool; CLIs []string; Identity *google3/third_party/jetski/project_pb/netbox_config_go_proto.IdentityProbeConfig; Optional bool }]",
-        "rotateCmpFunc[go.shape.struct { Name string; StorageKey string; Host string; Path string; Config google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy.AuthConfig; Delivery string; Env map[string]string; ImplicitAllow bool; CLIs []string; Identity *google3/third_party/jetski/project_pb/netbox_config_go_proto.IdentityProbeConfig; Optional bool }]",
+        "stableCmpFunc[go.shape.struct { Name string; StorageKey string; Host string; Path string; Config google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy.AuthConfig; Delivery string; Env map[string]string; ImplicitAllow bool; CLIs []string; Identity *google3/third_party/jetski/project_pb/netbox_config_go_proto.IdentityProbeConfig; Optional bool; BasicUser string }]",
+        "symMergeCmpFunc[go.shape.struct { Name string; StorageKey string; Host string; Path string; Config google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy.AuthConfig; Delivery string; Env map[string]string; ImplicitAllow bool; CLIs []string; Identity *google3/third_party/jetski/project_pb/netbox_config_go_proto.IdentityProbeConfig; Optional bool; BasicUser string }]",
+        "rotateCmpFunc[go.shape.struct { Name string; StorageKey string; Host string; Path string; Config google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy.AuthConfig; Delivery string; Env map[string]string; ImplicitAllow bool; CLIs []string; Identity *google3/third_party/jetski/project_pb/netbox_config_go_proto.IdentityProbeConfig; Optional bool; BasicUser string }]",
         "pdqsortCmpFunc[go.shape.struct { PluginID string; MendelFlag string; SkillName string; Commands []google3/third_party/jetski/cortex/shared/shared.CommandMapping; IsEnabled func(context.Context, []uint8) bool }]",
         "partitionCmpFunc[go.shape.struct { PluginID string; MendelFlag string; SkillName string; Commands []google3/third_party/jetski/cortex/shared/shared.CommandMapping; IsEnabled func(context.Context, []uint8) bool }]",
         "partitionEqualCmpFunc[go.shape.struct { PluginID string; MendelFlag string; SkillName string; Commands []google3/third_party/jetski/cortex/shared/shared.CommandMapping; IsEnabled func(context.Context, []uint8) bool }]",
@@ -1137,10 +1135,43 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/policyguardian",
+      "func_count": 174,
+      "file_count": 15,
+      "code_bytes": 174000,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/cli_profile.go",
+        "third_party/jetski/cortex/policyguardian/config.go",
+        "third_party/jetski/cortex/policyguardian/deployments.go",
+        "third_party/jetski/cortex/policyguardian/env_state_updates.go",
+        "third_party/jetski/cortex/policyguardian/guardian.go",
+        "third_party/jetski/cortex/policyguardian/hooks.go",
+        "third_party/jetski/cortex/policyguardian/loopback.go",
+        "third_party/jetski/cortex/policyguardian/manager.go",
+        "third_party/jetski/cortex/policyguardian/native_hooks.go",
+        "third_party/jetski/cortex/policyguardian/projection.go",
+        "third_party/jetski/cortex/policyguardian/prompt.go",
+        "third_party/jetski/cortex/policyguardian/provenance_record.go",
+        "third_party/jetski/cortex/policyguardian/rewriter.go",
+        "third_party/jetski/cortex/policyguardian/state.go",
+        "third_party/jetski/cortex/policyguardian/tool_decls.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "map.init.1",
+        "map.init.2",
+        "map.init.3",
+        "map.init.4",
+        "map.init.5",
+        "map.init.6",
+        "map.init.7"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cli/plugins/plugins",
       "func_count": 206,
       "file_count": 20,
-      "code_bytes": 171664,
+      "code_bytes": 172096,
       "files": [
         "third_party/jetski/cli/plugins/color.go",
         "third_party/jetski/cli/plugins/color_other.go",
@@ -1178,7 +1209,7 @@
       "package": "google3/third_party/jetski/cortex/handlers/handlers",
       "func_count": 225,
       "file_count": 27,
-      "code_bytes": 169568,
+      "code_bytes": 169184,
       "files": [
         "third_party/jetski/cortex/handlers/ask_permission_subhandler.go",
         "third_party/jetski/cortex/handlers/ask_question_handler.go",
@@ -1247,37 +1278,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/policyguardian/policyguardian",
-      "func_count": 140,
-      "file_count": 13,
-      "code_bytes": 146320,
-      "files": [
-        "third_party/jetski/cortex/policyguardian/cli_profile.go",
-        "third_party/jetski/cortex/policyguardian/config.go",
-        "third_party/jetski/cortex/policyguardian/deployments.go",
-        "third_party/jetski/cortex/policyguardian/env_state_updates.go",
-        "third_party/jetski/cortex/policyguardian/guardian.go",
-        "third_party/jetski/cortex/policyguardian/hooks.go",
-        "third_party/jetski/cortex/policyguardian/loopback.go",
-        "third_party/jetski/cortex/policyguardian/manager.go",
-        "third_party/jetski/cortex/policyguardian/native_hooks.go",
-        "third_party/jetski/cortex/policyguardian/prompt.go",
-        "third_party/jetski/cortex/policyguardian/rewriter.go",
-        "third_party/jetski/cortex/policyguardian/state.go",
-        "third_party/jetski/cortex/policyguardian/tool_decls.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "map.init.1",
-        "map.init.2",
-        "map.init.3",
-        "map.init.4",
-        "map.init.5",
-        "map.init.6",
-        "map.init.7"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/extension_server_pb/extension_server_go_proto",
       "func_count": 887,
       "file_count": 1,
@@ -1297,10 +1297,48 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/acp/server/server",
+      "func_count": 600,
+      "file_count": 20,
+      "code_bytes": 144000,
+      "files": [
+        "third_party/jetski/cli/acp/server/auth_handlers.go",
+        "third_party/jetski/cli/acp/server/boot.go",
+        "third_party/jetski/cli/acp/server/config_options.go",
+        "third_party/jetski/cli/acp/server/elicitation.go",
+        "third_party/jetski/cli/acp/server/integrations.go",
+        "third_party/jetski/cli/acp/server/launcher.go",
+        "third_party/jetski/cli/acp/server/modes.go",
+        "third_party/jetski/cli/acp/server/pathdistance.go",
+        "third_party/jetski/cli/acp/server/permissions.go",
+        "third_party/jetski/cli/acp/server/prompt.go",
+        "third_party/jetski/cli/acp/server/promptcontent.go",
+        "third_party/jetski/cli/acp/server/protocol.go",
+        "third_party/jetski/cli/acp/server/serve.go",
+        "third_party/jetski/cli/acp/server/server.go",
+        "third_party/jetski/cli/acp/server/session_handlers.go",
+        "third_party/jetski/cli/acp/server/settings.go",
+        "third_party/jetski/cli/acp/server/settingsprovider.go",
+        "third_party/jetski/cli/acp/server/telemetry.go",
+        "third_party/jetski/cli/acp/server/turn_cancel.go",
+        "third_party/jetski/cli/acp/server/updates.go"
+      ],
+      "sample_funcs": [
+        "(*Server).handleInitialize",
+        "(*Server).requireAuth",
+        "(*Server).tierMeta",
+        "(*Server).handleAuthenticate",
+        "(*Server).handleLogout",
+        "(*Server).cancelAllSessions",
+        "(*Server).ensureBackendWithOptions",
+        "(*Server).bootWithBootMuHeld"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/core/native_swarm/nativeswarm",
       "func_count": 191,
       "file_count": 17,
-      "code_bytes": 135632,
+      "code_bytes": 135456,
       "files": [
         "third_party/jetski/cortex/core/native_swarm/channel_action.go",
         "third_party/jetski/cortex/core/native_swarm/channels.go",
@@ -1333,9 +1371,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/command/sandboxproxy/sandboxproxy",
-      "func_count": 263,
+      "func_count": 266,
       "file_count": 16,
-      "code_bytes": 133040,
+      "code_bytes": 134800,
       "files": [
         "third_party/jetski/cortex/command/sandboxproxy/accounts.go",
         "third_party/jetski/cortex/command/sandboxproxy/auth.go",
@@ -1367,9 +1405,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/permissions/permissions",
-      "func_count": 124,
+      "func_count": 126,
       "file_count": 9,
-      "code_bytes": 129408,
+      "code_bytes": 133120,
       "files": [
         "third_party/jetski/cortex/permissions/battle_mode_permission_manager.go",
         "third_party/jetski/cortex/permissions/custom_owners.go",
@@ -1482,7 +1520,7 @@
       "package": "google3/third_party/jetski/language_server/conversationsearch/conversationsearch",
       "func_count": 189,
       "file_count": 4,
-      "code_bytes": 111888,
+      "code_bytes": 111824,
       "files": [
         "third_party/jetski/language_server/conversationsearch/extract_searchable_content.go",
         "third_party/jetski/language_server/conversationsearch/search.go",
@@ -1498,6 +1536,29 @@
         "lastModifiedTimeFromSummary",
         "extractedStepsUnchanged",
         "logOversizedStep"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/ext/plugins/browser/broker/agentbrowser",
+      "func_count": 181,
+      "file_count": 5,
+      "code_bytes": 108160,
+      "files": [
+        "third_party/jetski/cortex/ext/plugins/browser/broker/actuator.go",
+        "third_party/jetski/cortex/ext/plugins/browser/broker/agentbrowser.go",
+        "third_party/jetski/cortex/ext/plugins/browser/broker/backend_profile.go",
+        "third_party/jetski/cortex/ext/plugins/browser/broker/fence.go",
+        "third_party/jetski/cortex/ext/plugins/browser/broker/host.go"
+      ],
+      "sample_funcs": [
+        "NewBrowserActuatorBackend",
+        "(*BrowserActuatorBackend).Spec",
+        "validateBrowserHello",
+        "validateBrowserResult",
+        "checkActuatorFieldSize",
+        "(*BrowserActuatorBackend).Subscribe",
+        "(*BrowserActuatorBackend).registerLocked",
+        "(*BrowserActuatorBackend).release"
       ]
     },
     {
@@ -1532,33 +1593,10 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/ext/plugins/browser/broker/agentbrowser",
-      "func_count": 180,
-      "file_count": 5,
-      "code_bytes": 107104,
-      "files": [
-        "third_party/jetski/cortex/ext/plugins/browser/broker/actuator.go",
-        "third_party/jetski/cortex/ext/plugins/browser/broker/agentbrowser.go",
-        "third_party/jetski/cortex/ext/plugins/browser/broker/backend_profile.go",
-        "third_party/jetski/cortex/ext/plugins/browser/broker/fence.go",
-        "third_party/jetski/cortex/ext/plugins/browser/broker/host.go"
-      ],
-      "sample_funcs": [
-        "(*BrowserActuatorBackend).Spec",
-        "validateBrowserHello",
-        "validateBrowserResult",
-        "checkActuatorFieldSize",
-        "(*BrowserActuatorBackend).Subscribe",
-        "(*BrowserActuatorBackend).registerLocked",
-        "(*BrowserActuatorBackend).release",
-        "(*BrowserActuatorBackend).pump"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/sidecars/sidecars",
       "func_count": 172,
       "file_count": 11,
-      "code_bytes": 100000,
+      "code_bytes": 100016,
       "files": [
         "third_party/jetski/cortex/sidecars/capsule_ports.go",
         "third_party/jetski/cortex/sidecars/cgroup_other.go",
@@ -1587,7 +1625,7 @@
       "package": "google3/third_party/jetski/cortex/core/tools/runworkflow/runworkflow",
       "func_count": 188,
       "file_count": 8,
-      "code_bytes": 98992,
+      "code_bytes": 99120,
       "files": [
         "third_party/jetski/cortex/core/tools/runworkflow/run_workflow.go",
         "third_party/jetski/cortex/core/tools/runworkflow/run_workflow_agents.go",
@@ -1613,7 +1651,7 @@
       "package": "google3/third_party/jetski/language_server/voice/voice",
       "func_count": 140,
       "file_count": 6,
-      "code_bytes": 98320,
+      "code_bytes": 98176,
       "files": [
         "third_party/jetski/language_server/voice/browser.go",
         "third_party/jetski/language_server/voice/diag.go",
@@ -1667,6 +1705,38 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/swarm/tui/tui",
+      "func_count": 119,
+      "file_count": 14,
+      "code_bytes": 95424,
+      "files": [
+        "third_party/jetski/cli/swarm/tui/exec.go",
+        "third_party/jetski/cli/swarm/tui/feed.go",
+        "third_party/jetski/cli/swarm/tui/focus.go",
+        "third_party/jetski/cli/swarm/tui/header.go",
+        "third_party/jetski/cli/swarm/tui/images.go",
+        "third_party/jetski/cli/swarm/tui/message.go",
+        "third_party/jetski/cli/swarm/tui/open.go",
+        "third_party/jetski/cli/swarm/tui/pane.go",
+        "third_party/jetski/cli/swarm/tui/plan.go",
+        "third_party/jetski/cli/swarm/tui/post.go",
+        "third_party/jetski/cli/swarm/tui/roster.go",
+        "third_party/jetski/cli/swarm/tui/roster_cards.go",
+        "third_party/jetski/cli/swarm/tui/time.go",
+        "third_party/jetski/cli/swarm/tui/tui.go"
+      ],
+      "sample_funcs": [
+        "isTerminal",
+        "terminalOf",
+        "(*LiveBoardExec).SetAnimate",
+        "(*LiveBoardExec).SetStdin",
+        "(*LiveBoardExec).SetStdout",
+        "(*LiveBoardExec).SetStderr",
+        "(*LiveBoardExec).Run",
+        "(*LiveBoardExec).boardModel"
+      ]
+    },
+    {
       "package": "google3/google/internal/cloud/code/v1internal/v1internal_jetski_service_go_proto",
       "func_count": 679,
       "file_count": 1,
@@ -1687,9 +1757,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/trajectory/dbtrajectory/dbtrajectory",
-      "func_count": 254,
+      "func_count": 263,
       "file_count": 4,
-      "code_bytes": 84576,
+      "code_bytes": 87808,
       "files": [
         "third_party/jetski/cortex/trajectory/dbtrajectory/dbtrajectory.go",
         "third_party/jetski/cortex/trajectory/dbtrajectory/gen_metadata_cache.go",
@@ -1698,44 +1768,13 @@
       ],
       "sample_funcs": [
         "newOrLoad",
+        "loadFromStore",
+        "Load",
         "isMissingDatabaseError",
         "(*dbTrajectory).reportStoreError",
         "(*dbTrajectory).TrajectoryID",
         "(*dbTrajectory).CascadeID",
-        "(*dbTrajectory).TrajectoryType",
-        "(*dbTrajectory).Source",
-        "(*dbTrajectory).Metadata"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cli/swarm/tui/tui",
-      "func_count": 113,
-      "file_count": 13,
-      "code_bytes": 84528,
-      "files": [
-        "third_party/jetski/cli/swarm/tui/exec.go",
-        "third_party/jetski/cli/swarm/tui/feed.go",
-        "third_party/jetski/cli/swarm/tui/focus.go",
-        "third_party/jetski/cli/swarm/tui/header.go",
-        "third_party/jetski/cli/swarm/tui/images.go",
-        "third_party/jetski/cli/swarm/tui/message.go",
-        "third_party/jetski/cli/swarm/tui/open.go",
-        "third_party/jetski/cli/swarm/tui/pane.go",
-        "third_party/jetski/cli/swarm/tui/post.go",
-        "third_party/jetski/cli/swarm/tui/roster.go",
-        "third_party/jetski/cli/swarm/tui/roster_cards.go",
-        "third_party/jetski/cli/swarm/tui/time.go",
-        "third_party/jetski/cli/swarm/tui/tui.go"
-      ],
-      "sample_funcs": [
-        "isTerminal",
-        "terminalOf",
-        "(*LiveBoardExec).SetAnimate",
-        "(*LiveBoardExec).SetStdin",
-        "(*LiveBoardExec).SetStdout",
-        "(*LiveBoardExec).SetStderr",
-        "(*LiveBoardExec).Run",
-        "(*LiveBoardExec).boardModel"
+        "(*dbTrajectory).TrajectoryType"
       ]
     },
     {
@@ -1783,6 +1822,35 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/chatconverters/chatconverters",
+      "func_count": 186,
+      "file_count": 11,
+      "code_bytes": 83104,
+      "files": [
+        "third_party/jetski/cortex/chatconverters/ask_question_string_converter.go",
+        "third_party/jetski/cortex/chatconverters/checkpoint.go",
+        "third_party/jetski/cortex/chatconverters/directory_rules_string_converter.go",
+        "third_party/jetski/cortex/chatconverters/execute_notebook_cells_string_converter.go",
+        "third_party/jetski/cortex/chatconverters/interactions_struct_json.go",
+        "third_party/jetski/cortex/chatconverters/invoke_subagent_string_converter.go",
+        "third_party/jetski/cortex/chatconverters/step_string_converter_constructors.go",
+        "third_party/jetski/cortex/chatconverters/step_string_converters.go",
+        "third_party/jetski/cortex/chatconverters/step_summary_utils.go",
+        "third_party/jetski/cortex/chatconverters/trajectory_chat_converter.go",
+        "third_party/jetski/cortex/chatconverters/wait_string_converter.go"
+      ],
+      "sample_funcs": [
+        "NewAskQuestionStringConverter",
+        "(*AskQuestionStringConverter).GetPayloadCase",
+        "(*AskQuestionStringConverter).ToInputString",
+        "(*AskQuestionStringConverter).ToOutputString",
+        "(*TrajectoryChatConverter).checkpointStepToChatMessages",
+        "(*TrajectoryChatConverter).formatCheckpointStep",
+        "subagentSnapshotForPrompt",
+        "NewDirectoryRulesStringConverter"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cli/printmode/printmode",
       "func_count": 126,
       "file_count": 16,
@@ -1814,35 +1882,6 @@
         "WriteErrorMarker",
         "(*textEmitter).EmitError",
         "(*textEmitter).EmitFinal"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/chatconverters/chatconverters",
-      "func_count": 181,
-      "file_count": 11,
-      "code_bytes": 78704,
-      "files": [
-        "third_party/jetski/cortex/chatconverters/ask_question_string_converter.go",
-        "third_party/jetski/cortex/chatconverters/checkpoint.go",
-        "third_party/jetski/cortex/chatconverters/directory_rules_string_converter.go",
-        "third_party/jetski/cortex/chatconverters/execute_notebook_cells_string_converter.go",
-        "third_party/jetski/cortex/chatconverters/interactions_struct_json.go",
-        "third_party/jetski/cortex/chatconverters/invoke_subagent_string_converter.go",
-        "third_party/jetski/cortex/chatconverters/step_string_converter_constructors.go",
-        "third_party/jetski/cortex/chatconverters/step_string_converters.go",
-        "third_party/jetski/cortex/chatconverters/step_summary_utils.go",
-        "third_party/jetski/cortex/chatconverters/trajectory_chat_converter.go",
-        "third_party/jetski/cortex/chatconverters/wait_string_converter.go"
-      ],
-      "sample_funcs": [
-        "NewAskQuestionStringConverter",
-        "(*AskQuestionStringConverter).GetPayloadCase",
-        "(*AskQuestionStringConverter).ToInputString",
-        "(*AskQuestionStringConverter).ToOutputString",
-        "(*TrajectoryChatConverter).checkpointStepToChatMessages",
-        "(*TrajectoryChatConverter).formatCheckpointStep",
-        "subagentSnapshotForPrompt",
-        "NewDirectoryRulesStringConverter"
       ]
     },
     {
@@ -1887,35 +1926,6 @@
         "asciiFlowchart",
         "renderASCIINodeBox",
         "asciiFlowchartTD"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/enterprise/enterprise",
-      "func_count": 191,
-      "file_count": 11,
-      "code_bytes": 76160,
-      "files": [
-        "third_party/jetski/enterprise/agents.go",
-        "third_party/jetski/enterprise/auth.go",
-        "third_party/jetski/enterprise/backend_grpc.go",
-        "third_party/jetski/enterprise/config.go",
-        "third_party/jetski/enterprise/config_grpc.go",
-        "third_party/jetski/enterprise/environment.go",
-        "third_party/jetski/enterprise/harness.go",
-        "third_party/jetski/enterprise/naming.go",
-        "third_party/jetski/enterprise/op_router.go",
-        "third_party/jetski/enterprise/project.go",
-        "third_party/jetski/enterprise/session.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "(*ErrAgentNotProvisioned).Error",
-        "(*AgentClient).FindAgent",
-        "(*AgentClient).listAntigravityAgents",
-        "codeAssistTokenSource.Token",
-        "(*SobiHarness).syncProject",
-        "(*SobiHarness).findAgent",
-        "(*SobiHarness).agent"
       ]
     },
     {
@@ -1980,10 +1990,39 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/enterprise/enterprise",
+      "func_count": 185,
+      "file_count": 11,
+      "code_bytes": 74848,
+      "files": [
+        "third_party/jetski/enterprise/agents.go",
+        "third_party/jetski/enterprise/auth.go",
+        "third_party/jetski/enterprise/backend_grpc.go",
+        "third_party/jetski/enterprise/config.go",
+        "third_party/jetski/enterprise/config_grpc.go",
+        "third_party/jetski/enterprise/environment.go",
+        "third_party/jetski/enterprise/harness.go",
+        "third_party/jetski/enterprise/naming.go",
+        "third_party/jetski/enterprise/op_router.go",
+        "third_party/jetski/enterprise/project.go",
+        "third_party/jetski/enterprise/session.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "(*ErrAgentNotProvisioned).Error",
+        "(*AgentClient).FindAgent",
+        "(*AgentClient).listAntigravityAgents",
+        "codeAssistTokenSource.Token",
+        "(*SobiHarness).syncProject",
+        "(*SobiHarness).findAgent",
+        "(*SobiHarness).agent"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/mixins/mixins",
       "func_count": 286,
       "file_count": 16,
-      "code_bytes": 74400,
+      "code_bytes": 74176,
       "files": [
         "third_party/jetski/cortex/mixins/base_conversational_mixin.go",
         "third_party/jetski/cortex/mixins/browser_prompt_sections.go",
@@ -2075,6 +2114,56 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/ext/plugins/shared/stepcompactor/stepcompactor",
+      "func_count": 124,
+      "file_count": 4,
+      "code_bytes": 69872,
+      "files": [
+        "third_party/jetski/cortex/ext/plugins/shared/stepcompactor/agency.go",
+        "third_party/jetski/cortex/ext/plugins/shared/stepcompactor/compactor.go",
+        "third_party/jetski/cortex/ext/plugins/shared/stepcompactor/mediabudget.go",
+        "third_party/jetski/cortex/ext/plugins/shared/stepcompactor/wakeup.go"
+      ],
+      "sample_funcs": [
+        "parseAgencyToolStep",
+        "linesBetweenBody",
+        "splitResultLayout",
+        "resolveConfig",
+        "hasSandboxActivityInTrajectory",
+        "inferPerceptionToolName",
+        "maxInlineFramesOverrideSinceAnchor",
+        "stepHasPerceptionArgs"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/config/config",
+      "func_count": 94,
+      "file_count": 10,
+      "code_bytes": 69840,
+      "files": [
+        "third_party/jetski/cortex/config/agent_script.go",
+        "third_party/jetski/cortex/config/cascade_spec.go",
+        "third_party/jetski/cortex/config/defaults.go",
+        "third_party/jetski/cortex/config/experiment_map.go",
+        "third_party/jetski/cortex/config/experiments.go",
+        "third_party/jetski/cortex/config/ported_experiment_predicates.go",
+        "third_party/jetski/cortex/config/resolve.go",
+        "third_party/jetski/cortex/config/subagent_config.go",
+        "third_party/jetski/cortex/config/user_config_io.go",
+        "third_party/jetski/cortex/config/utils.go"
+      ],
+      "sample_funcs": [
+        "ParseAgentConfigFromURI",
+        "AgentScriptStaticConfig",
+        "ensureCustomizationDiscovery",
+        "yamlToJSON",
+        "validateYAMLNode",
+        "AgentConfigToCascadeConfig",
+        "WithoutRetiredTools",
+        "isRetiredBuiltinTool"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/language_server/completion_provider/completion_provider",
       "func_count": 151,
       "file_count": 10,
@@ -2100,6 +2189,41 @@
         "(*DocumentCacheState).LastRefreshTime",
         "(*DocumentCacheState).CheckAndUpdateRefreshStateForStart",
         "(*DocumentCacheState).UpdateRefreshStateForFinish"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/language_server/backend/local/local",
+      "func_count": 115,
+      "file_count": 17,
+      "code_bytes": 66704,
+      "files": [
+        "third_party/jetski/language_server/backend/local/agent_messages.go",
+        "third_party/jetski/language_server/backend/local/cascade.go",
+        "third_party/jetski/language_server/backend/local/code_action_diff.go",
+        "third_party/jetski/language_server/backend/local/command_plugin.go",
+        "third_party/jetski/language_server/backend/local/conversation_metadata.go",
+        "third_party/jetski/language_server/backend/local/files.go",
+        "third_party/jetski/language_server/backend/local/local.go",
+        "third_party/jetski/language_server/backend/local/navigator.go",
+        "third_party/jetski/language_server/backend/local/projects.go",
+        "third_party/jetski/language_server/backend/local/revert.go",
+        "third_party/jetski/language_server/backend/local/summaries.go",
+        "third_party/jetski/language_server/backend/local/triggers.go",
+        "third_party/jetski/language_server/backend/local/turn_diff.go",
+        "third_party/jetski/language_server/backend/local/user_data.go",
+        "third_party/jetski/language_server/backend/local/vcs.go",
+        "third_party/jetski/language_server/backend/local/vcs_hub.go",
+        "third_party/jetski/language_server/backend/local/vcs_telemetry.go"
+      ],
+      "sample_funcs": [
+        "(*Backend).DeleteAgentMessage",
+        "documentsToCmResult",
+        "(*Backend).editorStateToCmResult",
+        "(*Backend).StartCascade",
+        "baseConversationID",
+        "(*Backend).GetConversation",
+        "(*Backend).getAllSlashCommands",
+        "(*Backend).GetSlashCommands"
       ]
     },
     {
@@ -2145,7 +2269,7 @@
       "package": "google3/third_party/jetski/cortex/trajectory/decorators/decorators",
       "func_count": 774,
       "file_count": 10,
-      "code_bytes": 64784,
+      "code_bytes": 64720,
       "files": [
         "third_party/jetski/cortex/trajectory/decorators/accumulator.go",
         "third_party/jetski/cortex/trajectory/decorators/agent_state_updater.go",
@@ -2207,28 +2331,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cli/acp/acpauth/acpauth",
-      "func_count": 110,
-      "file_count": 4,
-      "code_bytes": 63136,
-      "files": [
-        "third_party/jetski/cli/acp/acpauth/config_resolution.go",
-        "third_party/jetski/cli/acp/acpauth/manager.go",
-        "third_party/jetski/cli/acp/acpauth/methods.go",
-        "third_party/jetski/cli/acp/acpauth/oauth_loopback.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "VertexConfig.IsConfigured",
-        "parseSettingsBytes",
-        "ResolveVertexConfig",
-        "(*GatewayConfig).Equal",
-        "ParseGatewayMeta",
-        "loadMDMAdminSettings",
-        "ResolveAdminGatewayDisposition"
-      ]
-    },
-    {
       "package": "google3/devtools/jetski/boq/api/proto/api_go_proto",
       "func_count": 419,
       "file_count": 1,
@@ -2251,7 +2353,7 @@
       "package": "google3/third_party/jetski/cortex/policyguardian/fastpath/fastpath",
       "func_count": 41,
       "file_count": 2,
-      "code_bytes": 62496,
+      "code_bytes": 62912,
       "files": [
         "third_party/jetski/cortex/policyguardian/fastpath/fastpath.go",
         "third_party/jetski/cortex/policyguardian/fastpath/rules.go"
@@ -2268,49 +2370,26 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/config/config",
-      "func_count": 83,
-      "file_count": 8,
-      "code_bytes": 62080,
+      "package": "google3/third_party/jetski/cli/acp/auth/auth",
+      "func_count": 111,
+      "file_count": 5,
+      "code_bytes": 62768,
       "files": [
-        "third_party/jetski/cortex/config/defaults.go",
-        "third_party/jetski/cortex/config/experiment_map.go",
-        "third_party/jetski/cortex/config/experiments.go",
-        "third_party/jetski/cortex/config/ported_experiment_predicates.go",
-        "third_party/jetski/cortex/config/resolve.go",
-        "third_party/jetski/cortex/config/subagent_config.go",
-        "third_party/jetski/cortex/config/user_config_io.go",
-        "third_party/jetski/cortex/config/utils.go"
+        "third_party/jetski/cli/acp/auth/clientsupport.go",
+        "third_party/jetski/cli/acp/auth/config_resolution.go",
+        "third_party/jetski/cli/acp/auth/manager.go",
+        "third_party/jetski/cli/acp/auth/methods.go",
+        "third_party/jetski/cli/acp/auth/oauth_loopback.go"
       ],
       "sample_funcs": [
-        "defaultConversationalCascadeConfig",
-        "AdjustConfigForGoogleWorkspace",
-        "defaultTrainEvalConversationalCascadeConfig",
-        "GetSystemOverrideConfig",
-        "GetRunCommandDynamicOverrideConfig",
-        "getCsPath",
-        "getDefaultGeneralModel",
-        "defaultGeneralModel"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/ext/plugins/shared/stepcompactor/stepcompactor",
-      "func_count": 118,
-      "file_count": 2,
-      "code_bytes": 60976,
-      "files": [
-        "third_party/jetski/cortex/ext/plugins/shared/stepcompactor/compactor.go",
-        "third_party/jetski/cortex/ext/plugins/shared/stepcompactor/wakeup.go"
-      ],
-      "sample_funcs": [
-        "linesBetweenBody",
-        "splitResultLayout",
-        "resolveConfig",
-        "hasSandboxActivityInTrajectory",
-        "inferPerceptionToolName",
-        "maxInlineFramesOverrideSinceAnchor",
-        "stepHasPerceptionArgs",
-        "(*resolvedConfig).summaryHeader"
+        "map.init.0",
+        "ClientSupportFrom",
+        "AdvertisedMethods",
+        "vertexConfig.IsConfigured",
+        "parseSettingsBytes",
+        "resolveVertexConfig",
+        "(*GatewayConfig).Equal",
+        "parseGatewayMeta"
       ]
     },
     {
@@ -2458,10 +2537,36 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/fs/workspace_manager/workspace_manager",
+      "func_count": 130,
+      "file_count": 8,
+      "code_bytes": 57328,
+      "files": [
+        "third_party/jetski/fs/workspace_manager/filepath.go",
+        "third_party/jetski/fs/workspace_manager/path_filters.go",
+        "third_party/jetski/fs/workspace_manager/traversal.go",
+        "third_party/jetski/fs/workspace_manager/workspace_client.go",
+        "third_party/jetski/fs/workspace_manager/workspace_file_listener.go",
+        "third_party/jetski/fs/workspace_manager/workspace_info.go",
+        "third_party/jetski/fs/workspace_manager/workspace_info_external.go",
+        "third_party/jetski/fs/workspace_manager/workspace_manager.go"
+      ],
+      "sample_funcs": [
+        "GetBestWorkspacePath",
+        "SafePathFromURI",
+        "isValidRepoRoot",
+        "ShouldIgnorePath",
+        "minimalFileInfoFromFileInfo",
+        "minimalFileInfo.Size",
+        "minimalFileInfo.ModTime",
+        "minimalFileInfo.IsDir"
+      ]
+    },
+    {
       "package": "google3/gdm/security/agi_control/agent_monitoring/jetski/jetski",
-      "func_count": 89,
+      "func_count": 95,
       "file_count": 9,
-      "code_bytes": 56256,
+      "code_bytes": 57168,
       "files": [
         "gdm/security/agi_control/agent_monitoring/jetski/monitoring.go",
         "gdm/security/agi_control/agent_monitoring/jetski/monitoring_external.go",
@@ -2485,69 +2590,10 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/language_server/backend/local/local",
-      "func_count": 90,
-      "file_count": 15,
-      "code_bytes": 56144,
-      "files": [
-        "third_party/jetski/language_server/backend/local/agent_messages.go",
-        "third_party/jetski/language_server/backend/local/cascade.go",
-        "third_party/jetski/language_server/backend/local/code_action_diff.go",
-        "third_party/jetski/language_server/backend/local/command_plugin.go",
-        "third_party/jetski/language_server/backend/local/conversation_metadata.go",
-        "third_party/jetski/language_server/backend/local/files.go",
-        "third_party/jetski/language_server/backend/local/local.go",
-        "third_party/jetski/language_server/backend/local/navigator.go",
-        "third_party/jetski/language_server/backend/local/projects.go",
-        "third_party/jetski/language_server/backend/local/revert.go",
-        "third_party/jetski/language_server/backend/local/summaries.go",
-        "third_party/jetski/language_server/backend/local/triggers.go",
-        "third_party/jetski/language_server/backend/local/turn_diff.go",
-        "third_party/jetski/language_server/backend/local/user_data.go",
-        "third_party/jetski/language_server/backend/local/vcs.go"
-      ],
-      "sample_funcs": [
-        "(*Backend).DeleteAgentMessage",
-        "documentsToCmResult",
-        "(*Backend).editorStateToCmResult",
-        "(*Backend).StartCascade",
-        "baseConversationID",
-        "(*Backend).GetConversation",
-        "(*Backend).getAllSlashCommands",
-        "(*Backend).GetSlashCommands"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/fs/workspace_manager/workspace_manager",
-      "func_count": 130,
-      "file_count": 8,
-      "code_bytes": 55952,
-      "files": [
-        "third_party/jetski/fs/workspace_manager/filepath.go",
-        "third_party/jetski/fs/workspace_manager/path_filters.go",
-        "third_party/jetski/fs/workspace_manager/traversal.go",
-        "third_party/jetski/fs/workspace_manager/workspace_client.go",
-        "third_party/jetski/fs/workspace_manager/workspace_file_listener.go",
-        "third_party/jetski/fs/workspace_manager/workspace_info.go",
-        "third_party/jetski/fs/workspace_manager/workspace_info_external.go",
-        "third_party/jetski/fs/workspace_manager/workspace_manager.go"
-      ],
-      "sample_funcs": [
-        "GetBestWorkspacePath",
-        "SafePathFromURI",
-        "isValidRepoRoot",
-        "ShouldIgnorePath",
-        "minimalFileInfoFromFileInfo",
-        "minimalFileInfo.Size",
-        "minimalFileInfo.ModTime",
-        "minimalFileInfo.IsDir"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/accumulator/accumulator",
       "func_count": 65,
       "file_count": 12,
-      "code_bytes": 55520,
+      "code_bytes": 55472,
       "files": [
         "third_party/jetski/cortex/accumulator/accumulator.go",
         "third_party/jetski/cortex/accumulator/background_task_accumulator.go",
@@ -2622,29 +2668,10 @@
       ]
     },
     {
-      "package": "google3/third_party/golang/k8s_io/apimachinery/v/v0_23/pkg/util/sets/sets",
-      "func_count": 288,
-      "file_count": 1,
-      "code_bytes": 52960,
-      "files": [
-        "third_party/golang/k8s_io/apimachinery/v/v0_23/pkg/util/sets/cherrypick_v26_set.go"
-      ],
-      "sample_funcs": [
-        "Set[go.shape.struct { google3/third_party/jetski/fs/fs.uri string }].Intersection",
-        "Set[go.shape.struct { google3/third_party/jetski/fs/fs.uri string }].SymmetricDifference",
-        "Set[go.shape.struct { google3/third_party/jetski/fs/fs.uri string }].Difference",
-        "Set[google3/third_party/jetski/fs/fs.Uri].Len",
-        "Set[google3/third_party/jetski/fs/fs.Uri].PopAny",
-        "Set[google3/third_party/jetski/fs/fs.Uri].UnsortedList",
-        "Set[google3/third_party/jetski/fs/fs.Uri].Equal",
-        "Set[google3/third_party/jetski/fs/fs.Uri].IsSuperset"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/core/components/config/config",
-      "func_count": 38,
+      "func_count": 37,
       "file_count": 10,
-      "code_bytes": 52880,
+      "code_bytes": 53232,
       "files": [
         "third_party/jetski/cortex/core/components/config/agent_config.go",
         "third_party/jetski/cortex/core/components/config/agent_config_invariants.go",
@@ -2669,10 +2696,29 @@
       ]
     },
     {
+      "package": "google3/third_party/golang/k8s_io/apimachinery/v/v0_23/pkg/util/sets/sets",
+      "func_count": 288,
+      "file_count": 1,
+      "code_bytes": 52960,
+      "files": [
+        "third_party/golang/k8s_io/apimachinery/v/v0_23/pkg/util/sets/cherrypick_v26_set.go"
+      ],
+      "sample_funcs": [
+        "Set[go.shape.struct { google3/third_party/jetski/fs/fs.uri string }].Intersection",
+        "Set[go.shape.struct { google3/third_party/jetski/fs/fs.uri string }].SymmetricDifference",
+        "Set[go.shape.struct { google3/third_party/jetski/fs/fs.uri string }].Difference",
+        "Set[google3/third_party/jetski/fs/fs.Uri].Len",
+        "Set[google3/third_party/jetski/fs/fs.Uri].PopAny",
+        "Set[google3/third_party/jetski/fs/fs.Uri].UnsortedList",
+        "Set[google3/third_party/jetski/fs/fs.Uri].Equal",
+        "Set[google3/third_party/jetski/fs/fs.Uri].IsSuperset"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/fs/fs",
-      "func_count": 201,
+      "func_count": 203,
       "file_count": 9,
-      "code_bytes": 52448,
+      "code_bytes": 52736,
       "files": [
         "third_party/jetski/fs/battle_mode_fs.go",
         "third_party/jetski/fs/capabilities.go",
@@ -2770,7 +2816,7 @@
       "package": "google3/third_party/jetski/cortex/autorun/autorun",
       "func_count": 83,
       "file_count": 3,
-      "code_bytes": 47616,
+      "code_bytes": 47696,
       "files": [
         "third_party/jetski/cortex/autorun/classifier.go",
         "third_party/jetski/cortex/autorun/fs_tools.go",
@@ -2785,6 +2831,64 @@
         "extractTrajectoryStats",
         "constructReadOnlyTools",
         "(*timeoutTool).Execute"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/core/tools/tools",
+      "func_count": 97,
+      "file_count": 11,
+      "code_bytes": 47376,
+      "files": [
+        "third_party/jetski/cortex/core/tools/ask_custom_permission.go",
+        "third_party/jetski/cortex/core/tools/call_mcp_tool.go",
+        "third_party/jetski/cortex/core/tools/list_resources.go",
+        "third_party/jetski/cortex/core/tools/mcp.go",
+        "third_party/jetski/cortex/core/tools/mcp_app_tool.go",
+        "third_party/jetski/cortex/core/tools/mcp_tool.go",
+        "third_party/jetski/cortex/core/tools/read_resource.go",
+        "third_party/jetski/cortex/core/tools/registry.go",
+        "third_party/jetski/cortex/core/tools/search_marketplace.go",
+        "third_party/jetski/cortex/core/tools/update_focus.go",
+        "third_party/jetski/cortex/core/tools/update_steps.go"
+      ],
+      "sample_funcs": [
+        "NewAskCustomPermissionTool",
+        "(*AskCustomPermissionTool).Name",
+        "(*AskCustomPermissionTool).Description",
+        "(*AskCustomPermissionTool).ParameterSchema",
+        "(*AskCustomPermissionTool).Execute",
+        "permissionRequester.RequestInteraction",
+        "(*CallMcpToolTool).Name",
+        "(*CallMcpToolTool).Description"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/language_server/vcsdriver/vcsdriver",
+      "func_count": 100,
+      "file_count": 11,
+      "code_bytes": 47280,
+      "files": [
+        "third_party/jetski/language_server/vcsdriver/action_error.go",
+        "third_party/jetski/language_server/vcsdriver/citc_external.go",
+        "third_party/jetski/language_server/vcsdriver/clstatus_external.go",
+        "third_party/jetski/language_server/vcsdriver/diffstats.go",
+        "third_party/jetski/language_server/vcsdriver/git.go",
+        "third_party/jetski/language_server/vcsdriver/git_pathspec.go",
+        "third_party/jetski/language_server/vcsdriver/git_push.go",
+        "third_party/jetski/language_server/vcsdriver/git_state.go",
+        "third_party/jetski/language_server/vcsdriver/git_usage.go",
+        "third_party/jetski/language_server/vcsdriver/git_watch.go",
+        "third_party/jetski/language_server/vcsdriver/workspacecls_external.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "(*ActionError).Error",
+        "(*ActionError).Unwrap",
+        "(*ActionError).TelemetryMetadata",
+        "classifyCLIFailure",
+        "IsGoogle3Workspace",
+        "FetchGerritChangeStatuses",
+        "(*statsGate).allow"
       ]
     },
     {
@@ -2808,35 +2912,6 @@
         "(*chatModelHeader).Model",
         "(*chatModelHeader).ResponseModel",
         "(*chatModelHeader).Tools"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/core/tools/tools",
-      "func_count": 96,
-      "file_count": 11,
-      "code_bytes": 46880,
-      "files": [
-        "third_party/jetski/cortex/core/tools/ask_custom_permission.go",
-        "third_party/jetski/cortex/core/tools/call_mcp_tool.go",
-        "third_party/jetski/cortex/core/tools/list_resources.go",
-        "third_party/jetski/cortex/core/tools/mcp.go",
-        "third_party/jetski/cortex/core/tools/mcp_app_tool.go",
-        "third_party/jetski/cortex/core/tools/mcp_tool.go",
-        "third_party/jetski/cortex/core/tools/read_resource.go",
-        "third_party/jetski/cortex/core/tools/registry.go",
-        "third_party/jetski/cortex/core/tools/search_marketplace.go",
-        "third_party/jetski/cortex/core/tools/update_focus.go",
-        "third_party/jetski/cortex/core/tools/update_steps.go"
-      ],
-      "sample_funcs": [
-        "NewAskCustomPermissionTool",
-        "(*AskCustomPermissionTool).Name",
-        "(*AskCustomPermissionTool).Description",
-        "(*AskCustomPermissionTool).ParameterSchema",
-        "(*AskCustomPermissionTool).Execute",
-        "permissionRequester.RequestInteraction",
-        "(*CallMcpToolTool).Name",
-        "(*CallMcpToolTool).Description"
       ]
     },
     {
@@ -2896,7 +2971,7 @@
       "package": "google3/third_party/jetski/cli/entrypoints/entrypoints",
       "func_count": 76,
       "file_count": 11,
-      "code_bytes": 45280,
+      "code_bytes": 45232,
       "files": [
         "third_party/jetski/cli/entrypoints/agents.go",
         "third_party/jetski/cli/entrypoints/common.go",
@@ -3163,6 +3238,25 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/acp/router/router",
+      "func_count": 61,
+      "file_count": 1,
+      "code_bytes": 38336,
+      "files": [
+        "third_party/jetski/cli/acp/router/router.go"
+      ],
+      "sample_funcs": [
+        "(*worker).isRetiring",
+        "(*worker).session",
+        "(*worker).servesSession",
+        "(*Router).Run",
+        "(*Router).Shutdown",
+        "idKey",
+        "isFrontID",
+        "sessionIDOf"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/utils/go_sed/go_sed",
       "func_count": 42,
       "file_count": 3,
@@ -3233,6 +3327,27 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/acp/session/session",
+      "func_count": 160,
+      "file_count": 3,
+      "code_bytes": 36976,
+      "files": [
+        "third_party/jetski/cli/acp/session/state.go",
+        "third_party/jetski/cli/acp/session/stream.go",
+        "third_party/jetski/cli/acp/session/turn.go"
+      ],
+      "sample_funcs": [
+        "usageFromModelUsageStats",
+        "(*State).CloseStream",
+        "(*State).Mode",
+        "(*State).SetMode",
+        "(*State).RecordStepSeen",
+        "(*State).SkipHistory",
+        "(*State).IsSkippedHistory",
+        "(*State).SetTurnOverlay"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cli/steps/steps",
       "func_count": 58,
       "file_count": 5,
@@ -3259,7 +3374,7 @@
       "package": "google3/third_party/jetski/cortex/artifacts/artifacts",
       "func_count": 76,
       "file_count": 6,
-      "code_bytes": 36560,
+      "code_bytes": 36624,
       "files": [
         "third_party/jetski/cortex/artifacts/artifacts_snapshots.go",
         "third_party/jetski/cortex/artifacts/artifacts_watcher.go",
@@ -3277,6 +3392,30 @@
         "(*OSWatcher).Close",
         "(*OSWatcher).Register",
         "(*OSWatcher).watchDirTree"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/proctorjudge",
+      "func_count": 51,
+      "file_count": 6,
+      "code_bytes": 36576,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/evaluator.go",
+        "third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/judge_context.go",
+        "third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/levers.go",
+        "third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/prompts.go",
+        "third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/proposal.go",
+        "third_party/jetski/cortex/policyguardian/sensitivity/proctorjudge/retry.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "(*LLMSemanticEvaluator).EvaluateProposal",
+        "(*LLMSemanticEvaluator).recordJudgeFailure",
+        "(*LLMSemanticEvaluator).JudgeFailureCount",
+        "repairEchoedObjectLines",
+        "(*LLMSemanticEvaluator).parseResponse",
+        "(*LLMSemanticEvaluator).IsDeltaAdversarial",
+        "(*LLMSemanticEvaluator).buildSystemPrompt"
       ]
     },
     {
@@ -3305,6 +3444,26 @@
         "webviewModelGuidance",
         "BrowserSlashCommandText",
         "BrowserAgentWithConfig"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/policyguardian/provenance/provenance",
+      "func_count": 72,
+      "file_count": 2,
+      "code_bytes": 36368,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/provenance/provenance.go",
+        "third_party/jetski/cortex/policyguardian/provenance/recorder.go"
+      ],
+      "sample_funcs": [
+        "New",
+        "(*Session).ID",
+        "(*Session).RecordUserIntent",
+        "(*Session).RecordObservation",
+        "(*Session).aliasLabels",
+        "(*Session).RecordWrite",
+        "(*Session).Graph",
+        "(*Session).Manifest"
       ]
     },
     {
@@ -3433,7 +3592,7 @@
       "package": "google3/third_party/jetski/cortex/rehydration/rehydration",
       "func_count": 182,
       "file_count": 5,
-      "code_bytes": 35760,
+      "code_bytes": 35776,
       "files": [
         "third_party/jetski/cortex/rehydration/native_payload_rehydration.go",
         "third_party/jetski/cortex/rehydration/payloadless_step_rehydration.go",
@@ -3476,7 +3635,7 @@
       "package": "google3/third_party/jetski/cli/live/live",
       "func_count": 115,
       "file_count": 5,
-      "code_bytes": 35248,
+      "code_bytes": 35312,
       "files": [
         "third_party/jetski/cli/live/live.go",
         "third_party/jetski/cli/live/prefs.go",
@@ -3499,7 +3658,7 @@
       "package": "google3/third_party/jetski/cortex/policyguardian/profiles/profiles",
       "func_count": 43,
       "file_count": 4,
-      "code_bytes": 34656,
+      "code_bytes": 34896,
       "files": [
         "third_party/jetski/cortex/policyguardian/profiles/engine.go",
         "third_party/jetski/cortex/policyguardian/profiles/profile.go",
@@ -3562,28 +3721,24 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/language_server/vcsdriver/vcsdriver",
-      "func_count": 63,
-      "file_count": 7,
-      "code_bytes": 34064,
+      "package": "google3/third_party/jetski/vcs/vcs",
+      "func_count": 58,
+      "file_count": 3,
+      "code_bytes": 33712,
       "files": [
-        "third_party/jetski/language_server/vcsdriver/action_error.go",
-        "third_party/jetski/language_server/vcsdriver/citc_external.go",
-        "third_party/jetski/language_server/vcsdriver/clstatus_external.go",
-        "third_party/jetski/language_server/vcsdriver/diffstats.go",
-        "third_party/jetski/language_server/vcsdriver/git.go",
-        "third_party/jetski/language_server/vcsdriver/git_push.go",
-        "third_party/jetski/language_server/vcsdriver/workspacecls_external.go"
+        "third_party/jetski/vcs/repo.go",
+        "third_party/jetski/vcs/repo_utils.go",
+        "third_party/jetski/vcs/vcs.go"
       ],
       "sample_funcs": [
-        "map.init.0",
-        "(*ActionError).Error",
-        "(*ActionError).Unwrap",
-        "(*ActionError).TelemetryMetadata",
-        "classifyCLIFailure",
-        "IsGoogle3Workspace",
-        "FetchGerritChangeStatuses",
-        "(*statsGate).allow"
+        "GetRepositoryForDir",
+        "(*VcsCache).GetRepositoryForDir",
+        "resolveRepositoryVcsAndRoot",
+        "(*VcsCache).discoverRepositoryForDir",
+        "(*Repository).GetVcs",
+        "(*Repository).GetRootDir",
+        "(*Repository).GetGitRepoInfo",
+        "(*Repository).GetHeadCommitHash"
       ]
     },
     {
@@ -3634,7 +3789,7 @@
       "package": "google3/third_party/jetski/cortex/implicit/implicit",
       "func_count": 88,
       "file_count": 5,
-      "code_bytes": 32752,
+      "code_bytes": 32592,
       "files": [
         "third_party/jetski/cortex/implicit/implicit_trajectory_manager.go",
         "third_party/jetski/cortex/implicit/implicit_trajectory_wrapper.go",
@@ -3696,7 +3851,7 @@
       "package": "google3/third_party/jetski/cortex/fork/fork",
       "func_count": 110,
       "file_count": 6,
-      "code_bytes": 32064,
+      "code_bytes": 32048,
       "files": [
         "third_party/jetski/cortex/fork/artifact_forker.go",
         "third_party/jetski/cortex/fork/fork.go",
@@ -3744,31 +3899,10 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/vcs/vcs",
-      "func_count": 52,
-      "file_count": 3,
-      "code_bytes": 30736,
-      "files": [
-        "third_party/jetski/vcs/repo.go",
-        "third_party/jetski/vcs/repo_utils.go",
-        "third_party/jetski/vcs/vcs.go"
-      ],
-      "sample_funcs": [
-        "GetRepositoryForDir",
-        "(*VcsCache).GetRepositoryForDir",
-        "(*VcsCache).discoverRepositoryForDir",
-        "(*Repository).GetVcs",
-        "(*Repository).GetRootDir",
-        "(*Repository).GetGitRepoInfo",
-        "(*Repository).GetHeadCommitHash",
-        "(*Repository).GetBranchName"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cli/onboarding/onboarding",
       "func_count": 37,
       "file_count": 5,
-      "code_bytes": 30528,
+      "code_bytes": 30560,
       "files": [
         "third_party/jetski/cli/onboarding/color_migration.go",
         "third_party/jetski/cli/onboarding/fit.go",
@@ -3881,6 +4015,26 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/provenance/tkg/tkg",
+      "func_count": 64,
+      "file_count": 2,
+      "code_bytes": 26912,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/provenance/tkg/budget.go",
+        "third_party/jetski/cortex/policyguardian/provenance/tkg/engine.go"
+      ],
+      "sample_funcs": [
+        "(*ReadBudgetTracker).RecordRead",
+        "(*ReadBudgetTracker).GetState",
+        "(*ReadBudgetTracker).Reset",
+        "(*BaseNode).ID",
+        "(*BaseNode).Kind",
+        "(*BaseNode).Timestamp",
+        "(*BaseNode).IntrinsicTaint",
+        "(*BaseNode).EffectiveTaint"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/extension_server_pb/extension_server_go_proto_connect",
       "func_count": 54,
       "file_count": 1,
@@ -3897,28 +4051,6 @@
         "(*extensionServerServiceClient).LogEvent",
         "(*extensionServerServiceClient).CheckTerminalShellSupport",
         "(*extensionServerServiceClient).ExecuteCommand"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/sdk/sdk",
-      "func_count": 41,
-      "file_count": 4,
-      "code_bytes": 25152,
-      "files": [
-        "third_party/jetski/cortex/sdk/agent_config.go",
-        "third_party/jetski/cortex/sdk/customization_mixin_wrapper.go",
-        "third_party/jetski/cortex/sdk/mcp_customization_client.go",
-        "third_party/jetski/cortex/sdk/sdk_hook_caller.go"
-      ],
-      "sample_funcs": [
-        "ParseAgentConfigFromURI",
-        "AgentScriptStaticConfig",
-        "ensureCustomizationDiscovery",
-        "buildCustomizationConfig",
-        "isRetiredBuiltinTool",
-        "withoutRetiredTools",
-        "ResolveCustomAgentSpec",
-        "AdjustCascadeConfigForSubagent"
       ]
     },
     {
@@ -3941,6 +4073,34 @@
         "(*ConversationService).DeleteConversation",
         "(*ConversationService).checkWritable",
         "(*ConversationService).readConversation"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/language_server/migrations/migrations",
+      "func_count": 58,
+      "file_count": 10,
+      "code_bytes": 24320,
+      "files": [
+        "third_party/jetski/language_server/migrations/adopt_bwg_installs_migration.go",
+        "third_party/jetski/language_server/migrations/builtin_sidecars_to_plugins_migration.go",
+        "third_party/jetski/language_server/migrations/gdrive_builtin_plugin_migration.go",
+        "third_party/jetski/language_server/migrations/grants_v2_migration.go",
+        "third_party/jetski/language_server/migrations/lin_plugin_migration.go",
+        "third_party/jetski/language_server/migrations/manager.go",
+        "third_party/jetski/language_server/migrations/migrations.go",
+        "third_party/jetski/language_server/migrations/plugin_enablement_migration.go",
+        "third_party/jetski/language_server/migrations/project_uris_migration.go",
+        "third_party/jetski/language_server/migrations/split_science_plugin_migration.go"
+      ],
+      "sample_funcs": [
+        "(*adoptBWGInstallsMigration).ID",
+        "(*adoptBWGInstallsMigration).Enabled",
+        "(*adoptBWGInstallsMigration).Run",
+        "(*BuiltinSidecarsToPluginsMigration).ID",
+        "(*BuiltinSidecarsToPluginsMigration).Enabled",
+        "(*BuiltinSidecarsToPluginsMigration).Run",
+        "(*BuiltinSidecarsToPluginsMigration).migrateConfig",
+        "(*BuiltinSidecarsToPluginsMigration).migrateDataDirs"
       ]
     },
     {
@@ -4033,33 +4193,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/language_server/migrations/migrations",
-      "func_count": 50,
-      "file_count": 9,
-      "code_bytes": 23424,
-      "files": [
-        "third_party/jetski/language_server/migrations/adopt_bwg_installs_migration.go",
-        "third_party/jetski/language_server/migrations/builtin_sidecars_to_plugins_migration.go",
-        "third_party/jetski/language_server/migrations/gdrive_builtin_plugin_migration.go",
-        "third_party/jetski/language_server/migrations/grants_v2_migration.go",
-        "third_party/jetski/language_server/migrations/lin_plugin_migration.go",
-        "third_party/jetski/language_server/migrations/manager.go",
-        "third_party/jetski/language_server/migrations/plugin_enablement_migration.go",
-        "third_party/jetski/language_server/migrations/project_uris_migration.go",
-        "third_party/jetski/language_server/migrations/split_science_plugin_migration.go"
-      ],
-      "sample_funcs": [
-        "(*adoptBWGInstallsMigration).ID",
-        "(*adoptBWGInstallsMigration).Enabled",
-        "(*adoptBWGInstallsMigration).Run",
-        "(*BuiltinSidecarsToPluginsMigration).ID",
-        "(*BuiltinSidecarsToPluginsMigration).Enabled",
-        "(*BuiltinSidecarsToPluginsMigration).Run",
-        "(*BuiltinSidecarsToPluginsMigration).migrateConfig",
-        "(*BuiltinSidecarsToPluginsMigration).migrateDataDirs"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/fs/local/local",
       "func_count": 124,
       "file_count": 7,
@@ -4133,7 +4266,7 @@
       "package": "google3/third_party/jetski/cortex/trajectory_store/trajectorystore",
       "func_count": 64,
       "file_count": 3,
-      "code_bytes": 21760,
+      "code_bytes": 21696,
       "files": [
         "third_party/jetski/cortex/trajectory_store/manager.go",
         "third_party/jetski/cortex/trajectory_store/proto_store.go",
@@ -4148,56 +4281,6 @@
         "(*Manager).Register",
         "(*Manager).GetStoreKind",
         "(*Manager).Exists"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/experiments/experiments",
-      "func_count": 80,
-      "file_count": 4,
-      "code_bytes": 21712,
-      "files": [
-        "third_party/jetski/experiments/feature_provider.go",
-        "third_party/jetski/experiments/feature_provider_mock.go",
-        "third_party/jetski/experiments/mendel_adapter.go",
-        "third_party/jetski/experiments/mendel_state_cache.go"
-      ],
-      "sample_funcs": [
-        "(*NoOpFeatureProvider).IsEnabled",
-        "(*NoOpFeatureProvider).GetBool",
-        "(*NoOpFeatureProvider).GetProto",
-        "(*NoOpFeatureProvider).GetString",
-        "(*NoOpFeatureProvider).GetInt",
-        "(*NoOpFeatureProvider).GetStringList",
-        "(*NoOpFeatureProvider).GetExperimentConfig",
-        "(*NoOpFeatureProvider).GetExperimentIDs"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/language_server/state_sync/statesync",
-      "func_count": 60,
-      "file_count": 10,
-      "code_bytes": 21712,
-      "files": [
-        "third_party/jetski/language_server/state_sync/agent_preferences.go",
-        "third_party/jetski/language_server/state_sync/browser_preferences.go",
-        "third_party/jetski/language_server/state_sync/client.go",
-        "third_party/jetski/language_server/state_sync/model_credits.go",
-        "third_party/jetski/language_server/state_sync/permission_grants.go",
-        "third_party/jetski/language_server/state_sync/serialization_utils.go",
-        "third_party/jetski/language_server/state_sync/settings_migration.go",
-        "third_party/jetski/language_server/state_sync/tab_preferences.go",
-        "third_party/jetski/language_server/state_sync/trajectory_summaries.go",
-        "third_party/jetski/language_server/state_sync/user_status.go"
-      ],
-      "sample_funcs": [
-        "(*UnifiedStateSyncClient).GetTerminalAutoExecutionPolicy",
-        "(*UnifiedStateSyncClient).GetTerminalAllowedCommands",
-        "(*UnifiedStateSyncClient).GetTerminalDeniedCommands",
-        "(*UnifiedStateSyncClient).ClearTerminalAllowedCommands",
-        "(*UnifiedStateSyncClient).ClearTerminalDeniedCommands",
-        "(*UnifiedStateSyncClient).GetSecureModeEnabled",
-        "(*UnifiedStateSyncClient).GetAllowAgentAccessNonWorkspaceFiles",
-        "(*UnifiedStateSyncClient).GetAllowCascadeAccessGitignoreFiles"
       ]
     },
     {
@@ -4277,6 +4360,28 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/experiments/experiments",
+      "func_count": 78,
+      "file_count": 4,
+      "code_bytes": 20784,
+      "files": [
+        "third_party/jetski/experiments/feature_provider.go",
+        "third_party/jetski/experiments/feature_provider_mock.go",
+        "third_party/jetski/experiments/mendel_adapter.go",
+        "third_party/jetski/experiments/mendel_state_cache.go"
+      ],
+      "sample_funcs": [
+        "(*NoOpFeatureProvider).IsEnabled",
+        "(*NoOpFeatureProvider).GetBool",
+        "(*NoOpFeatureProvider).GetProto",
+        "(*NoOpFeatureProvider).GetString",
+        "(*NoOpFeatureProvider).GetInt",
+        "(*NoOpFeatureProvider).GetStringList",
+        "(*NoOpFeatureProvider).GetExperimentConfig",
+        "(*NoOpFeatureProvider).GetExperimentIDs"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/stdiorpc/stdiorpc",
       "func_count": 53,
       "file_count": 2,
@@ -4345,6 +4450,46 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/model_api/backends/geminiapi/geminiapi",
+      "func_count": 39,
+      "file_count": 3,
+      "code_bytes": 20528,
+      "files": [
+        "third_party/jetski/model_api/backends/geminiapi/client.go",
+        "third_party/jetski/model_api/backends/geminiapi/vertex.go",
+        "third_party/jetski/model_api/backends/geminiapi/web.go"
+      ],
+      "sample_funcs": [
+        "httpHeader",
+        "NewModelAPIClient",
+        "(*Client).Generate",
+        "mergeModelInfoOverride",
+        "(*Client).getModelInfoFromKey",
+        "resolveWireModelName",
+        "(*Client).resolveModelInfoAndName",
+        "(*Client).ClassifyError"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/model_api/backends/components/genairequest/genairequest",
+      "func_count": 14,
+      "file_count": 1,
+      "code_bytes": 20448,
+      "files": [
+        "third_party/jetski/model_api/backends/components/genairequest/genairequest.go"
+      ],
+      "sample_funcs": [
+        "hashToSessionID",
+        "(*structConverter).fromStruct",
+        "(*structConverter).fromValue",
+        "(*structConverter).fromList",
+        "(*structConverter).fromContent",
+        "mediaToParts",
+        "BuildGenerateContentRequest",
+        "toGenaiThinkingLevel"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/remote_agent_proxy_pb/remote_agent_proxy_go_proto",
       "func_count": 212,
       "file_count": 1,
@@ -4361,25 +4506,6 @@
         "ModelTier.EnumDescriptor",
         "TriggerCategory.Enum",
         "TriggerCategory.String"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/model_api/backends/components/genairequest/genairequest",
-      "func_count": 13,
-      "file_count": 1,
-      "code_bytes": 20048,
-      "files": [
-        "third_party/jetski/model_api/backends/components/genairequest/genairequest.go"
-      ],
-      "sample_funcs": [
-        "hashToSessionID",
-        "(*structConverter).fromStruct",
-        "(*structConverter).fromValue",
-        "(*structConverter).fromList",
-        "(*structConverter).fromContent",
-        "mediaToParts",
-        "BuildGenerateContentRequest",
-        "toGenaiThinkingLevel"
       ]
     },
     {
@@ -4446,6 +4572,26 @@
         "(*Engine).evaluateLocked",
         "(*Engine).enqueue",
         "(*Engine).Flush"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/policyguardian/vetting/plugins/github/github",
+      "func_count": 29,
+      "file_count": 2,
+      "code_bytes": 19568,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/vetting/plugins/github/github.go",
+        "third_party/jetski/cortex/policyguardian/vetting/plugins/github/plugin.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "VetRepo",
+        "analyzeRepo",
+        "ParseRepoURL",
+        "isGitHubNonRepoAPIURL",
+        "isBareGitHubHost",
+        "extractRef",
+        "extractRefFromURL"
       ]
     },
     {
@@ -4528,28 +4674,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/chat_utils/tool_parsers/tool_parsers",
-      "func_count": 22,
-      "file_count": 4,
-      "code_bytes": 19280,
-      "files": [
-        "third_party/jetski/chat_utils/tool_parsers/hermes_tool_formatter.go",
-        "third_party/jetski/chat_utils/tool_parsers/tool_formatter_helpers.go",
-        "third_party/jetski/chat_utils/tool_parsers/tool_formatter_utils.go",
-        "third_party/jetski/chat_utils/tool_parsers/xml_tool_formatter.go"
-      ],
-      "sample_funcs": [
-        "NewHermesToolFormatter",
-        "(*HermesToolFormatter).FormatSystemPrompt",
-        "(*HermesToolFormatter).FormatChatMessages",
-        "hermesTagStringParseFunc",
-        "(*HermesToolFormatter).ExtractToolsStreaming",
-        "GetToolFormatter",
-        "newBaseTagToolFormatter",
-        "(*baseTagToolFormatter).extractToolsStreamingBase"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/hooks_pb/hooks_go_proto",
       "func_count": 224,
       "file_count": 1,
@@ -4613,26 +4737,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/policyguardian/vetting/plugins/github/github",
-      "func_count": 28,
-      "file_count": 2,
-      "code_bytes": 18704,
-      "files": [
-        "third_party/jetski/cortex/policyguardian/vetting/plugins/github/github.go",
-        "third_party/jetski/cortex/policyguardian/vetting/plugins/github/plugin.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "VetRepo",
-        "analyzeRepo",
-        "ParseRepoURL",
-        "isGitHubNonRepoAPIURL",
-        "extractRef",
-        "extractRefFromURL",
-        "getCurrentUsername"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/policyguardian/vetting/fstools/fstools",
       "func_count": 37,
       "file_count": 1,
@@ -4668,6 +4772,57 @@
         "FolderType.EnumDescriptor",
         "BackendType.Enum",
         "BackendType.String"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cli/swarm/swarm",
+      "func_count": 26,
+      "file_count": 3,
+      "code_bytes": 18336,
+      "files": [
+        "third_party/jetski/cli/swarm/board.go",
+        "third_party/jetski/cli/swarm/plan.go",
+        "third_party/jetski/cli/swarm/pulse.go"
+      ],
+      "sample_funcs": [
+        "Dir",
+        "LoadIn",
+        "noSuchChannel",
+        "members",
+        "Format",
+        "stateText",
+        "Clock",
+        "OneLine"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/deterministic_vetting_configs",
+      "func_count": 17,
+      "file_count": 12,
+      "code_bytes": 18176,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/create_file.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/delete_file.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/edit_file.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/file_delete.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/file_write.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/multi_replace_file_content.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/replace_file_content.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/shell_command.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/str_replace_editor.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/types.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/write_file.go",
+        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/write_to_file.go"
+      ],
+      "sample_funcs": [
+        "VetCreateFile",
+        "VetDeleteFile",
+        "VetEditFile",
+        "VetFileDelete",
+        "VetFileWrite",
+        "VetMultiReplaceFileContent",
+        "VetReplaceFileContent",
+        "VetShellCommand"
       ]
     },
     {
@@ -4707,6 +4862,28 @@
         "readLoop",
         "writeLoop",
         "writeFrame"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/sdk/sdk",
+      "func_count": 33,
+      "file_count": 4,
+      "code_bytes": 17536,
+      "files": [
+        "third_party/jetski/cortex/sdk/agent_config.go",
+        "third_party/jetski/cortex/sdk/customization_mixin_wrapper.go",
+        "third_party/jetski/cortex/sdk/mcp_customization_client.go",
+        "third_party/jetski/cortex/sdk/sdk_hook_caller.go"
+      ],
+      "sample_funcs": [
+        "buildCustomizationConfig",
+        "ResolveCustomAgentSpec",
+        "AdjustCascadeConfigForSubagent",
+        "adjustCustomAgentConfigForSubagent",
+        "(*CustomizationMixinWrapper).GetToolConverters",
+        "(*CustomizationMixinWrapper).GetStepHandlers",
+        "(*CustomizationMixinWrapper).TrajectoryToChatMessages",
+        "WrapMixinWithCustomization"
       ]
     },
     {
@@ -4849,6 +5026,25 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/sensitivity/sensitivity",
+      "func_count": 17,
+      "file_count": 1,
+      "code_bytes": 16992,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/sensitivity/sensitivity.go"
+      ],
+      "sample_funcs": [
+        "(*Tracker).LogOnly",
+        "(*Tracker).RestoreDenials",
+        "(*Tracker).Sensitivity",
+        "(*Tracker).triage",
+        "(*Tracker).Precheck",
+        "(*Tracker).precheck",
+        "(*Tracker).WouldCheck",
+        "(*Tracker).proposal"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/snapshot_recorder/snapshot_recorder",
       "func_count": 45,
       "file_count": 4,
@@ -4874,7 +5070,7 @@
       "package": "google3/third_party/jetski/cli/layout/layout",
       "func_count": 39,
       "file_count": 4,
-      "code_bytes": 16608,
+      "code_bytes": 16576,
       "files": [
         "third_party/jetski/cli/layout/detail_view.go",
         "third_party/jetski/cli/layout/layout.go",
@@ -4890,6 +5086,27 @@
         "(*DetailView).ScrollDown",
         "(*DetailView).ScrollUp",
         "(*DetailView).ScrollUpByOne"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cli/acp/acp",
+      "func_count": 31,
+      "file_count": 3,
+      "code_bytes": 16480,
+      "files": [
+        "third_party/jetski/cli/acp/cli_helpers.go",
+        "third_party/jetski/cli/acp/login.go",
+        "third_party/jetski/cli/acp/options.go"
+      ],
+      "sample_funcs": [
+        "redirectOutputForACP",
+        "(*writerSink).Enabled",
+        "(*writerSink).Emit",
+        "newBackendLoginFlow",
+        "runLoginCommand",
+        "runLogin",
+        "readAuthCode",
+        "checkSavedToken"
       ]
     },
     {
@@ -4913,9 +5130,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/core/tools_pb/tools_go_proto",
-      "func_count": 191,
+      "func_count": 192,
       "file_count": 1,
-      "code_bytes": 16176,
+      "code_bytes": 16208,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/cortex/core/tools_pb/tools.pb.go"
       ],
@@ -4952,9 +5169,9 @@
     },
     {
       "package": "google3/third_party/jetski/cortex/settings/settings",
-      "func_count": 15,
+      "func_count": 17,
       "file_count": 2,
-      "code_bytes": 15888,
+      "code_bytes": 16064,
       "files": [
         "third_party/jetski/cortex/settings/permission_grants_migration.go",
         "third_party/jetski/cortex/settings/settings_store.go"
@@ -4965,38 +5182,9 @@
         "MigrateGrantsToV2",
         "migrateAccessList",
         "conversationPresetOr",
-        "ApplySettingsToConfig",
-        "coverUnsandboxedWithCommandRules",
-        "terminateSetupScript"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/deterministic_vetting_configs",
-      "func_count": 16,
-      "file_count": 11,
-      "code_bytes": 15872,
-      "files": [
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/create_file.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/delete_file.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/edit_file.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/file_delete.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/file_write.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/multi_replace_file_content.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/replace_file_content.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/str_replace_editor.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/types.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/write_file.go",
-        "third_party/jetski/cortex/policyguardian/deterministic_vetting_configs/write_to_file.go"
-      ],
-      "sample_funcs": [
-        "VetCreateFile",
-        "VetDeleteFile",
-        "VetEditFile",
-        "VetFileDelete",
-        "VetFileWrite",
-        "VetMultiReplaceFileContent",
-        "VetReplaceFileContent",
-        "VetStrReplaceEditor"
+        "clientWorkspaceValidation",
+        "applySandboxedPresetFileAccess",
+        "ApplySettingsToConfig"
       ]
     },
     {
@@ -5176,7 +5364,7 @@
       "package": "google3/third_party/jetski/language_server/interceptor/interceptor",
       "func_count": 45,
       "file_count": 5,
-      "code_bytes": 14816,
+      "code_bytes": 14848,
       "files": [
         "third_party/jetski/language_server/interceptor/csrf_interceptor.go",
         "third_party/jetski/language_server/interceptor/host_client_identity_interceptor.go",
@@ -5199,7 +5387,7 @@
       "package": "google3/third_party/jetski/cortex/policyguardian/telemetry/telemetry",
       "func_count": 14,
       "file_count": 4,
-      "code_bytes": 14448,
+      "code_bytes": 14608,
       "files": [
         "third_party/jetski/cortex/policyguardian/telemetry/backend.go",
         "third_party/jetski/cortex/policyguardian/telemetry/llm.go",
@@ -5234,6 +5422,27 @@
         "(*CreateConversationRequest).GetProjectId",
         "(*CreateConversationRequest).GetEnvironmentId",
         "(*CreateConversationRequest).GetTitle"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/chat_utils/tool_parsers/tool_parsers",
+      "func_count": 16,
+      "file_count": 3,
+      "code_bytes": 13840,
+      "files": [
+        "third_party/jetski/chat_utils/tool_parsers/tool_formatter_helpers.go",
+        "third_party/jetski/chat_utils/tool_parsers/tool_formatter_utils.go",
+        "third_party/jetski/chat_utils/tool_parsers/xml_tool_formatter.go"
+      ],
+      "sample_funcs": [
+        "GetToolFormatter",
+        "newBaseTagToolFormatter",
+        "(*baseTagToolFormatter).extractToolsStreamingBase",
+        "trimMaybePartialEndTag",
+        "toolCallDiff",
+        "extractTagName",
+        "isPotentialTagStart",
+        "buildTagRegex"
       ]
     },
     {
@@ -5425,6 +5634,27 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/language_server/modelapiccpa/modelapiccpa",
+      "func_count": 45,
+      "file_count": 3,
+      "code_bytes": 13168,
+      "files": [
+        "third_party/jetski/language_server/modelapiccpa/client.go",
+        "third_party/jetski/language_server/modelapiccpa/experiments.go",
+        "third_party/jetski/language_server/modelapiccpa/keepalive.go"
+      ],
+      "sample_funcs": [
+        "NewModelAPIClient",
+        "(*ModelAwareError).Error",
+        "(*ModelAwareError).Unwrap",
+        "(*ModelAwareError).ShouldRetryModelCapacityExhausted",
+        "(*Client).Generate",
+        "(*Client).ClassifyError",
+        "(*Client).modelRequestToGetChatMessageRequest",
+        "(*apiServerModelResponseStream).firePromptRead"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cli/remotecontrol/remotecontrol",
       "func_count": 28,
       "file_count": 4,
@@ -5448,9 +5678,9 @@
     },
     {
       "package": "google3/third_party/jetski/code_edit/utils/utils",
-      "func_count": 32,
+      "func_count": 31,
       "file_count": 2,
-      "code_bytes": 12976,
+      "code_bytes": 12960,
       "files": [
         "third_party/jetski/code_edit/utils/file_state_tracker.go",
         "third_party/jetski/code_edit/utils/filechange_utils.go"
@@ -5470,7 +5700,7 @@
       "package": "google3/third_party/jetski/cortex/core/posthooks/posthooks",
       "func_count": 25,
       "file_count": 10,
-      "code_bytes": 12960,
+      "code_bytes": 12928,
       "files": [
         "third_party/jetski/cortex/core/posthooks/chain_check.go",
         "third_party/jetski/cortex/core/posthooks/command_assessor.go",
@@ -5495,26 +5725,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/model_api/backends/geminiapi/geminiapi",
-      "func_count": 25,
-      "file_count": 2,
-      "code_bytes": 12928,
-      "files": [
-        "third_party/jetski/model_api/backends/geminiapi/client.go",
-        "third_party/jetski/model_api/backends/geminiapi/web.go"
-      ],
-      "sample_funcs": [
-        "(*Client).Generate",
-        "(*Client).ClassifyError",
-        "(*apiServerModelResponseStream).Receive",
-        "(*apiServerModelResponseStream).Msg",
-        "(*apiServerModelResponseStream).Err",
-        "(*apiServerModelResponseStream).Close",
-        "(*Client).GetImageGeneration",
-        "(*Client).imageGenerationModelName"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/policyguardian/product/remy/remy",
       "func_count": 14,
       "file_count": 1,
@@ -5534,24 +5744,23 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/language_server/extension_server_client/extension_server_client",
-      "func_count": 56,
-      "file_count": 3,
-      "code_bytes": 12496,
+      "package": "google3/third_party/jetski/cli/swarm/live/live",
+      "func_count": 52,
+      "file_count": 2,
+      "code_bytes": 12464,
       "files": [
-        "third_party/jetski/language_server/extension_server_client/client.go",
-        "third_party/jetski/language_server/extension_server_client/reconnectable_client.go",
-        "third_party/jetski/language_server/extension_server_client/reverse_proxy.go"
+        "third_party/jetski/cli/swarm/live/live.go",
+        "third_party/jetski/cli/swarm/live/watcher.go"
       ],
       "sample_funcs": [
-        "NewExtensionServerClient",
-        "(*connectClient).LanguageServerStarted",
-        "(*connectClient).ExecuteCommand",
-        "(*connectClient).ReadTerminal",
-        "(*connectClient).CheckTerminalShellSupport",
-        "(*connectClient).SaveDocument",
-        "(*connectClient).GetLintErrors",
-        "(*connectClient).OpenDiffZones"
+        "init.0",
+        "conversationID",
+        "start",
+        "sessionLoad",
+        "swarmItemSource.Present",
+        "swarmItemSource.Render",
+        "swarmItemSource.Open",
+        "swarmItemSource.Dismiss"
       ]
     },
     {
@@ -5615,26 +5824,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cli/swarm/live/live",
-      "func_count": 51,
-      "file_count": 2,
-      "code_bytes": 12112,
-      "files": [
-        "third_party/jetski/cli/swarm/live/live.go",
-        "third_party/jetski/cli/swarm/live/watcher.go"
-      ],
-      "sample_funcs": [
-        "init.0",
-        "conversationID",
-        "start",
-        "sessionLoad",
-        "swarmItemSource.Present",
-        "swarmItemSource.Render",
-        "swarmItemSource.Open",
-        "swarmItemSource.Dismiss"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski_prod/localharness/structconv",
       "func_count": 10,
       "file_count": 1,
@@ -5654,6 +5843,25 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/acp/sessionconfig/sessionconfig",
+      "func_count": 17,
+      "file_count": 1,
+      "code_bytes": 12016,
+      "files": [
+        "third_party/jetski/cli/acp/sessionconfig/models.go"
+      ],
+      "sample_funcs": [
+        "stripEffortSuffix",
+        "parseLabelSlug",
+        "modelSlugParts",
+        "(*modelFamily).variantForEffort",
+        "(*modelFamily).effortForModel",
+        "(*modelFamily).efforts",
+        "(*modelFamily).defaultModel",
+        "(*modelFamily).nearestEffortModel"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/hookutils/recording/recording",
       "func_count": 29,
       "file_count": 1,
@@ -5670,27 +5878,6 @@
         "pageIDArg",
         "(*RecordingManagerV2).selectedPageID",
         "(*RecordingManagerV2).follow"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/language_server/modelapiccpa/modelapiccpa",
-      "func_count": 40,
-      "file_count": 3,
-      "code_bytes": 11696,
-      "files": [
-        "third_party/jetski/language_server/modelapiccpa/client.go",
-        "third_party/jetski/language_server/modelapiccpa/experiments.go",
-        "third_party/jetski/language_server/modelapiccpa/keepalive.go"
-      ],
-      "sample_funcs": [
-        "NewModelAPIClient",
-        "(*ModelAwareError).Error",
-        "(*ModelAwareError).Unwrap",
-        "(*ModelAwareError).ShouldRetryModelCapacityExhausted",
-        "(*Client).Generate",
-        "(*Client).ClassifyError",
-        "(*Client).modelRequestToGetChatMessageRequest",
-        "(*apiServerModelResponseStream).Receive"
       ]
     },
     {
@@ -5714,26 +5901,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cli/swarm/swarm",
-      "func_count": 14,
-      "file_count": 2,
-      "code_bytes": 11520,
-      "files": [
-        "third_party/jetski/cli/swarm/board.go",
-        "third_party/jetski/cli/swarm/pulse.go"
-      ],
-      "sample_funcs": [
-        "Dir",
-        "LoadIn",
-        "noSuchChannel",
-        "members",
-        "Format",
-        "stateText",
-        "Clock",
-        "OneLine"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/telemetryutil/telemetryutil",
       "func_count": 24,
       "file_count": 3,
@@ -5752,6 +5919,52 @@
         "(*PhaseLatencyRecorder).Emit",
         "Redact",
         "(*fieldSanitizer).ShouldSanitizeField"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/language_server/extension_server_client/extension_server_client",
+      "func_count": 49,
+      "file_count": 3,
+      "code_bytes": 11200,
+      "files": [
+        "third_party/jetski/language_server/extension_server_client/client.go",
+        "third_party/jetski/language_server/extension_server_client/reconnectable_client.go",
+        "third_party/jetski/language_server/extension_server_client/reverse_proxy.go"
+      ],
+      "sample_funcs": [
+        "NewExtensionServerClient",
+        "(*connectClient).LanguageServerStarted",
+        "(*connectClient).ExecuteCommand",
+        "(*connectClient).ReadTerminal",
+        "(*connectClient).CheckTerminalShellSupport",
+        "(*connectClient).SaveDocument",
+        "(*connectClient).GetLintErrors",
+        "(*connectClient).OpenDiffZones"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/core/planexecute/planexecute",
+      "func_count": 39,
+      "file_count": 7,
+      "code_bytes": 10800,
+      "files": [
+        "third_party/jetski/cortex/core/planexecute/gate.go",
+        "third_party/jetski/cortex/core/planexecute/handoff.go",
+        "third_party/jetski/cortex/core/planexecute/handoff_hook.go",
+        "third_party/jetski/cortex/core/planexecute/phase.go",
+        "third_party/jetski/cortex/core/planexecute/protocol_section.go",
+        "third_party/jetski/cortex/core/planexecute/review_hook.go",
+        "third_party/jetski/cortex/core/planexecute/tools.go"
+      ],
+      "sample_funcs": [
+        "NewGateHook",
+        "phaseTool.chainTo",
+        "phaseTool.plannerConfig",
+        "phaseTool.withPlanModel",
+        "latestPlanningOverride",
+        "NewHandoffHook",
+        "checkPreconditions",
+        "hiddenSystemStep"
       ]
     },
     {
@@ -5833,28 +6046,23 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/core/planexecute/planexecute",
-      "func_count": 39,
-      "file_count": 7,
-      "code_bytes": 10560,
+      "package": "google3/third_party/jetski/cli/acp/stepview/stepview",
+      "func_count": 9,
+      "file_count": 2,
+      "code_bytes": 10432,
       "files": [
-        "third_party/jetski/cortex/core/planexecute/gate.go",
-        "third_party/jetski/cortex/core/planexecute/handoff.go",
-        "third_party/jetski/cortex/core/planexecute/handoff_hook.go",
-        "third_party/jetski/cortex/core/planexecute/phase.go",
-        "third_party/jetski/cortex/core/planexecute/protocol_section.go",
-        "third_party/jetski/cortex/core/planexecute/review_hook.go",
-        "third_party/jetski/cortex/core/planexecute/tools.go"
+        "third_party/jetski/cli/acp/stepview/relpath.go",
+        "third_party/jetski/cli/acp/stepview/stepview.go"
       ],
       "sample_funcs": [
-        "NewGateHook",
-        "phaseTool.chainTo",
-        "phaseTool.plannerConfig",
-        "phaseTool.withPlanModel",
-        "latestPlanningOverride",
-        "NewHandoffHook",
-        "checkPreconditions",
-        "hiddenSystemStep"
+        "relPath",
+        "ToolOutput",
+        "FirstNonEmptyArg",
+        "codeActionFilePath",
+        "stepFilePath",
+        "KindTitleAndLocations",
+        "Arg[go.shape.[]string]",
+        "Arg[go.shape.string]"
       ]
     },
     {
@@ -5879,9 +6087,9 @@
     },
     {
       "package": "google3/third_party/jetski/project_pb/netbox_config_go_proto",
-      "func_count": 107,
+      "func_count": 108,
       "file_count": 1,
-      "code_bytes": 10304,
+      "code_bytes": 10336,
       "files": [
         "blaze-out/darwin_arm64-opt/bin/third_party/jetski/project_pb/netbox_config.pb.go"
       ],
@@ -5894,6 +6102,27 @@
         "OAuth2Config_Provider.EnumDescriptor",
         "(*NetboxConfig).Reset",
         "(*NetboxConfig).String"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/vcs/gitparse/gitparse",
+      "func_count": 9,
+      "file_count": 3,
+      "code_bytes": 10320,
+      "files": [
+        "third_party/jetski/vcs/gitparse/discard.go",
+        "third_party/jetski/vcs/gitparse/gitparse.go",
+        "third_party/jetski/vcs/gitparse/push.go"
+      ],
+      "sample_funcs": [
+        "PlanDiscard",
+        "PlanDiscardUnstaged",
+        "(*Status).addChangeEntry",
+        "ParseStatus",
+        "(*Status).WorkspaceState",
+        "ClassifyPushFailure",
+        "RemoteHost",
+        "ClassifyRemoteURL"
       ]
     },
     {
@@ -6079,7 +6308,7 @@
       "package": "google3/third_party/jetski/cortex/traj/traj",
       "func_count": 38,
       "file_count": 1,
-      "code_bytes": 9744,
+      "code_bytes": 9712,
       "files": [
         "third_party/jetski/cortex/traj/trajectory.go"
       ],
@@ -6130,6 +6359,25 @@
         "DiffChangeType.Enum",
         "DiffChangeType.String",
         "DiffChangeType.Descriptor"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cli/acp/jsonrpc/jsonrpc",
+      "func_count": 24,
+      "file_count": 1,
+      "code_bytes": 9552,
+      "files": [
+        "third_party/jetski/cli/acp/jsonrpc/jsonrpc.go"
+      ],
+      "sample_funcs": [
+        "NewStream",
+        "(*Stream).ReadMessage",
+        "(*Stream).WriteMessage",
+        "NewConn",
+        "(*Conn).SetOnClose",
+        "(*Conn).Done",
+        "(*Conn).IsClosed",
+        "(*Conn).Run"
       ]
     },
     {
@@ -6253,27 +6501,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/vcs/gitparse/gitparse",
-      "func_count": 9,
-      "file_count": 3,
-      "code_bytes": 9504,
-      "files": [
-        "third_party/jetski/vcs/gitparse/discard.go",
-        "third_party/jetski/vcs/gitparse/gitparse.go",
-        "third_party/jetski/vcs/gitparse/push.go"
-      ],
-      "sample_funcs": [
-        "PlanDiscard",
-        "PlanDiscardUnstaged",
-        "(*Status).addChangeEntry",
-        "ParseStatus",
-        "(*Status).WorkspaceState",
-        "ClassifyPushFailure",
-        "RemoteHost",
-        "ClassifyRemoteURL"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cli/acp/messages/messages",
       "func_count": 69,
       "file_count": 2,
@@ -6317,7 +6544,7 @@
       "package": "google3/third_party/jetski/cortex/revert/revert",
       "func_count": 20,
       "file_count": 1,
-      "code_bytes": 9264,
+      "code_bytes": 9248,
       "files": [
         "third_party/jetski/cortex/revert/revert_utils.go"
       ],
@@ -6330,34 +6557,6 @@
         "HasArtifactSnapshot",
         "HasWorkspaceSnapshot",
         "FindSnapshotMetadataForStep"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/executors/posthooks/posthooks",
-      "func_count": 28,
-      "file_count": 10,
-      "code_bytes": 9248,
-      "files": [
-        "third_party/jetski/cortex/executors/posthooks/checkpoint_hook.go",
-        "third_party/jetski/cortex/executors/posthooks/command_assessor_hook.go",
-        "third_party/jetski/cortex/executors/posthooks/conversation_log_hook.go",
-        "third_party/jetski/cortex/executors/posthooks/empty_output_continuation_check.go",
-        "third_party/jetski/cortex/executors/posthooks/force_invocation.go",
-        "third_party/jetski/cortex/executors/posthooks/max_generator_invocations_check.go",
-        "third_party/jetski/cortex/executors/posthooks/message_continue_check.go",
-        "third_party/jetski/cortex/executors/posthooks/no_op_hook.go",
-        "third_party/jetski/cortex/executors/posthooks/no_tool_call_check.go",
-        "third_party/jetski/cortex/executors/posthooks/terminal_step_check.go"
-      ],
-      "sample_funcs": [
-        "NewCheckpointHook",
-        "NewCommandAssessorPostInvocationHook",
-        "NewConversationLogHook",
-        "NewEmptyOutputContinuationCheckHook",
-        "NewForceInvocationHook",
-        "NewForceInvocationHookWithOpts",
-        "scanCurrentTurn",
-        "addContinueStep"
       ]
     },
     {
@@ -6423,6 +6622,34 @@
         "snapshotArgs",
         "saveSnapshot",
         "saveTempText"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/executors/posthooks/posthooks",
+      "func_count": 27,
+      "file_count": 10,
+      "code_bytes": 9104,
+      "files": [
+        "third_party/jetski/cortex/executors/posthooks/checkpoint_hook.go",
+        "third_party/jetski/cortex/executors/posthooks/command_assessor_hook.go",
+        "third_party/jetski/cortex/executors/posthooks/conversation_log_hook.go",
+        "third_party/jetski/cortex/executors/posthooks/empty_output_continuation_check.go",
+        "third_party/jetski/cortex/executors/posthooks/force_invocation.go",
+        "third_party/jetski/cortex/executors/posthooks/max_generator_invocations_check.go",
+        "third_party/jetski/cortex/executors/posthooks/message_continue_check.go",
+        "third_party/jetski/cortex/executors/posthooks/no_op_hook.go",
+        "third_party/jetski/cortex/executors/posthooks/no_tool_call_check.go",
+        "third_party/jetski/cortex/executors/posthooks/terminal_step_check.go"
+      ],
+      "sample_funcs": [
+        "NewCheckpointHook",
+        "NewCommandAssessorPostInvocationHook",
+        "NewConversationLogHook",
+        "NewEmptyOutputContinuationCheckHook",
+        "NewForceInvocationHook",
+        "NewForceInvocationHookWithOpts",
+        "scanCurrentTurn",
+        "addContinueStep"
       ]
     },
     {
@@ -6568,6 +6795,26 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/slashcommands/slashcommands",
+      "func_count": 24,
+      "file_count": 2,
+      "code_bytes": 8560,
+      "files": [
+        "third_party/jetski/cortex/slashcommands/slash_command_prompts.go",
+        "third_party/jetski/cortex/slashcommands/slash_commands.go"
+      ],
+      "sample_funcs": [
+        "learnPrompt",
+        "hasBuiltinAgents",
+        "GetSystemSlashCommandsDefinitions",
+        "GetSkillSlashCommands",
+        "GetWorkflowSlashCommands",
+        "workflowModelFacingText",
+        "HideSkillsClaimedByWorkflows",
+        "HideLegacyWorkflowsClaimedByWorkflows"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/providers/mcp/mcp",
       "func_count": 22,
       "file_count": 3,
@@ -6608,26 +6855,6 @@
       ]
     },
     {
-      "package": "google3/devtools/jetski/telemetry/cel/cel",
-      "func_count": 11,
-      "file_count": 2,
-      "code_bytes": 8448,
-      "files": [
-        "devtools/jetski/telemetry/cel/client.go",
-        "devtools/jetski/telemetry/cel/stacktrace.go"
-      ],
-      "sample_funcs": [
-        "(*Client).Shutdown",
-        "New",
-        "(*Client).LogError",
-        "parseGoStacktrace",
-        "parseJSStacktrace",
-        "filterInternalFrames",
-        "buildThrowableProto",
-        "(*Client).onDiagnosticEvent-fm"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/ext/plugins/shared/actuatorsandbox/actuatorsandbox",
       "func_count": 11,
       "file_count": 2,
@@ -6665,6 +6892,26 @@
         "Gemini36Flash",
         "Gemini37Flash",
         "Gemini38Flash"
+      ]
+    },
+    {
+      "package": "google3/devtools/jetski/telemetry/cel/cel",
+      "func_count": 11,
+      "file_count": 2,
+      "code_bytes": 8288,
+      "files": [
+        "devtools/jetski/telemetry/cel/client.go",
+        "devtools/jetski/telemetry/cel/stacktrace.go"
+      ],
+      "sample_funcs": [
+        "(*Client).Shutdown",
+        "New",
+        "(*Client).LogError",
+        "parseGoStacktrace",
+        "parseJSStacktrace",
+        "filterInternalFrames",
+        "buildThrowableProto",
+        "(*Client).onDiagnosticEvent-fm"
       ]
     },
     {
@@ -6788,26 +7035,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/slashcommands/slashcommands",
-      "func_count": 24,
-      "file_count": 2,
-      "code_bytes": 7952,
-      "files": [
-        "third_party/jetski/cortex/slashcommands/slash_command_prompts.go",
-        "third_party/jetski/cortex/slashcommands/slash_commands.go"
-      ],
-      "sample_funcs": [
-        "learnPrompt",
-        "hasBuiltinAgents",
-        "GetSystemSlashCommandsDefinitions",
-        "GetSkillSlashCommands",
-        "GetWorkflowSlashCommands",
-        "workflowModelFacingText",
-        "HideSkillsClaimedByWorkflows",
-        "HideLegacyWorkflowsClaimedByWorkflows"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cli/audio/miniaudio/miniaudio",
       "func_count": 37,
       "file_count": 4,
@@ -6846,27 +7073,6 @@
         "Variant",
         "cloneItems[go.shape.*uint8]",
         "filterByName[go.shape.*uint8]"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/language_server/settings/settings",
-      "func_count": 51,
-      "file_count": 3,
-      "code_bytes": 7792,
-      "files": [
-        "third_party/jetski/language_server/settings/cli_settings_store.go",
-        "third_party/jetski/language_server/settings/ide_settings_store.go",
-        "third_party/jetski/language_server/settings/jetski_hub_settings_store.go"
-      ],
-      "sample_funcs": [
-        "(*CliSettingsStore).GrantsV2Migrated",
-        "(*CliSettingsStore).SetProvider",
-        "(*CliSettingsStore).ClientPermissionGrants",
-        "(*CliSettingsStore).GetGlobalPermissionGrants",
-        "(*CliSettingsStore).GetProjectPermissionGrants",
-        "(*CliSettingsStore).AddGlobalPermissionGrants",
-        "(*CliSettingsStore).AddProjectPermissionGrants",
-        "(*CliSettingsStore).GetFileAccessPolicyForProject"
       ]
     },
     {
@@ -6948,6 +7154,25 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/config_pb/config_go_proto",
+      "func_count": 74,
+      "file_count": 1,
+      "code_bytes": 7456,
+      "files": [
+        "blaze-out/darwin_arm64-opt/bin/third_party/jetski/config_pb/config.pb.go"
+      ],
+      "sample_funcs": [
+        "ConversationGroupSortMode.Enum",
+        "ConversationGroupSortMode.String",
+        "ConversationGroupSortMode.Descriptor",
+        "ConversationGroupSortMode.Type",
+        "ConversationGroupSortMode.Number",
+        "ConversationGroupSortMode.EnumDescriptor",
+        "(*UserConfig).Reset",
+        "(*UserConfig).String"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/sdk/sdkprocess/sdkprocess",
       "func_count": 23,
       "file_count": 1,
@@ -6987,25 +7212,6 @@
         "runsOutsideSandbox",
         "trajectoryUsage",
         "autorunAdjudicator.1"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/config_pb/config_go_proto",
-      "func_count": 73,
-      "file_count": 1,
-      "code_bytes": 7424,
-      "files": [
-        "blaze-out/darwin_arm64-opt/bin/third_party/jetski/config_pb/config.pb.go"
-      ],
-      "sample_funcs": [
-        "ConversationGroupSortMode.Enum",
-        "ConversationGroupSortMode.String",
-        "ConversationGroupSortMode.Descriptor",
-        "ConversationGroupSortMode.Type",
-        "ConversationGroupSortMode.Number",
-        "ConversationGroupSortMode.EnumDescriptor",
-        "(*UserConfig).Reset",
-        "(*UserConfig).String"
       ]
     },
     {
@@ -7183,28 +7389,11 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/customizations/builtin/teamwork/teamwork",
-      "func_count": 5,
-      "file_count": 2,
+      "package": "google3/third_party/jetski/cortex/core/pretoolhooks/pretoolhooks",
+      "func_count": 19,
+      "file_count": 6,
       "code_bytes": 7008,
       "files": [
-        "third_party/jetski/cortex/customizations/builtin/teamwork/all_agents_external.go",
-        "third_party/jetski/cortex/customizations/builtin/teamwork/registry.go"
-      ],
-      "sample_funcs": [
-        "AllAgents",
-        "RootAgent",
-        "indexByName",
-        "buildAgentItem"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/core/pretoolhooks/pretoolhooks",
-      "func_count": 18,
-      "file_count": 7,
-      "code_bytes": 6864,
-      "files": [
-        "third_party/jetski/cortex/core/pretoolhooks/adapt.go",
         "third_party/jetski/cortex/core/pretoolhooks/auto_run_safety_gate_hook.go",
         "third_party/jetski/cortex/core/pretoolhooks/battle_mode_tool_args_hook.go",
         "third_party/jetski/cortex/core/pretoolhooks/citc_top_level_write_guard_hook.go",
@@ -7218,9 +7407,25 @@
         "newCitcTopLevelWriteGuardHook",
         "citcTopLevelEntry",
         "newCommandAssessorHooks",
+        "sonarToolCall",
         "migrateDeprecatedFields",
-        "Construct",
-        "newCommandAssessorHook"
+        "Construct"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/customizations/builtin/teamwork/teamwork",
+      "func_count": 5,
+      "file_count": 2,
+      "code_bytes": 7008,
+      "files": [
+        "third_party/jetski/cortex/customizations/builtin/teamwork/all_agents_external.go",
+        "third_party/jetski/cortex/customizations/builtin/teamwork/registry.go"
+      ],
+      "sample_funcs": [
+        "AllAgents",
+        "RootAgent",
+        "indexByName",
+        "buildAgentItem"
       ]
     },
     {
@@ -7260,6 +7465,47 @@
         "resolveCitationOffset",
         "collapseWhitespace",
         "escapeMarkdownDestination"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/core/providerhooks/providerhooks",
+      "func_count": 24,
+      "file_count": 3,
+      "code_bytes": 6736,
+      "files": [
+        "third_party/jetski/cortex/core/providerhooks/factory.go",
+        "third_party/jetski/cortex/core/providerhooks/iapi.go",
+        "third_party/jetski/cortex/core/providerhooks/legacy.go"
+      ],
+      "sample_funcs": [
+        "ForProvider",
+        "(*IAPIHookFactory).NewPreInvocationHook",
+        "(*IAPIHookFactory).NewPostInvocationHook",
+        "(*IAPIHookFactory).NewStopHook",
+        "(*IAPIHookFactory).NewPreToolHook",
+        "(*IAPIHookFactory).NewPostToolHook",
+        "toolResultStep",
+        "toolError"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/language_server/settings/settings",
+      "func_count": 38,
+      "file_count": 2,
+      "code_bytes": 6688,
+      "files": [
+        "third_party/jetski/language_server/settings/cli_settings_store.go",
+        "third_party/jetski/language_server/settings/jetski_hub_settings_store.go"
+      ],
+      "sample_funcs": [
+        "(*CliSettingsStore).GrantsV2Migrated",
+        "(*CliSettingsStore).SetProvider",
+        "(*CliSettingsStore).ClientPermissionGrants",
+        "(*CliSettingsStore).GetGlobalPermissionGrants",
+        "(*CliSettingsStore).GetProjectPermissionGrants",
+        "(*CliSettingsStore).AddGlobalPermissionGrants",
+        "(*CliSettingsStore).AddProjectPermissionGrants",
+        "(*CliSettingsStore).GetFileAccessPolicyForProject"
       ]
     },
     {
@@ -7455,27 +7701,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cortex/core/providerhooks/providerhooks",
-      "func_count": 21,
-      "file_count": 3,
-      "code_bytes": 6128,
-      "files": [
-        "third_party/jetski/cortex/core/providerhooks/factory.go",
-        "third_party/jetski/cortex/core/providerhooks/iapi.go",
-        "third_party/jetski/cortex/core/providerhooks/legacy.go"
-      ],
-      "sample_funcs": [
-        "ForProvider",
-        "(*IAPIHookFactory).NewPreInvocationHook",
-        "(*IAPIHookFactory).NewPostInvocationHook",
-        "(*IAPIHookFactory).NewStopHook",
-        "(*IAPIHookFactory).NewPreToolHook",
-        "(*IAPIHookFactory).NewPostToolHook",
-        "(*IAPIHookFactory).unsupported",
-        "(*IAPIHookFactory).call"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/git_utils/git_cci/git_cci",
       "func_count": 8,
       "file_count": 1,
@@ -7565,10 +7790,46 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/acp/schema/schema",
+      "func_count": 27,
+      "file_count": 5,
+      "code_bytes": 5872,
+      "files": [
+        "third_party/jetski/cli/acp/schema/auth.go",
+        "third_party/jetski/cli/acp/schema/client_info.go",
+        "third_party/jetski/cli/acp/schema/elicitation.go",
+        "third_party/jetski/cli/acp/schema/initialize.go",
+        "third_party/jetski/cli/acp/schema/protocol.go"
+      ],
+      "sample_funcs": [
+        "(*AuthenticateParams).UnmarshalJSON",
+        "parseClientInfo",
+        "sanitizeSurfaceSegment",
+        "ClientInfo.SurfaceSegments",
+        "ClientInfo.HostPath",
+        "(*ClientElicitationCapabilities).SupportsForm",
+        "BuildInitializeResult",
+        "(*ClientAuthCapabilities).SupportsTerminal"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/model_api/backends/components/genairesponse/genairesponse",
+      "func_count": 2,
+      "file_count": 1,
+      "code_bytes": 5840,
+      "files": [
+        "third_party/jetski/model_api/backends/components/genairesponse/genairesponse.go"
+      ],
+      "sample_funcs": [
+        "ConvertGeminiResponseToModelResponseChunk",
+        "MapUsageMetadata"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/utils/truncator/truncator",
       "func_count": 12,
       "file_count": 4,
-      "code_bytes": 5856,
+      "code_bytes": 5824,
       "files": [
         "third_party/jetski/cortex/utils/truncator/metadata.go",
         "third_party/jetski/cortex/utils/truncator/steps.go",
@@ -7878,6 +8139,25 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/state_go_proto",
+      "func_count": 57,
+      "file_count": 1,
+      "code_bytes": 4768,
+      "files": [
+        "blaze-out/darwin_arm64-opt/bin/third_party/jetski/cortex/policyguardian/state.pb.go"
+      ],
+      "sample_funcs": [
+        "(*DeniedAction).Reset",
+        "(*DeniedAction).String",
+        "(*DeniedAction).ProtoMessage",
+        "(*DeniedAction).ProtoReflect",
+        "(*DeniedAction).Descriptor",
+        "(*DeniedAction).GetToolName",
+        "(*DeniedAction).GetArgs",
+        "(*DeniedAction).GetReason"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/core/tools/listpluginaccounts/listpluginaccounts",
       "func_count": 8,
       "file_count": 1,
@@ -7894,25 +8174,6 @@
         "formatPluginAccounts",
         "formatMcpSignIns",
         "formatAccountList"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/policyguardian/state_go_proto",
-      "func_count": 54,
-      "file_count": 1,
-      "code_bytes": 4656,
-      "files": [
-        "blaze-out/darwin_arm64-opt/bin/third_party/jetski/cortex/policyguardian/state.pb.go"
-      ],
-      "sample_funcs": [
-        "(*DeniedAction).Reset",
-        "(*DeniedAction).String",
-        "(*DeniedAction).ProtoMessage",
-        "(*DeniedAction).ProtoReflect",
-        "(*DeniedAction).Descriptor",
-        "(*DeniedAction).GetToolName",
-        "(*DeniedAction).GetArgs",
-        "(*DeniedAction).GetReason"
       ]
     },
     {
@@ -7935,6 +8196,44 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/core/posttoolhooks/posttoolhooks",
+      "func_count": 11,
+      "file_count": 4,
+      "code_bytes": 4624,
+      "files": [
+        "third_party/jetski/cortex/core/posttoolhooks/command_assessor_hook.go",
+        "third_party/jetski/cortex/core/posttoolhooks/provider.go",
+        "third_party/jetski/cortex/core/posttoolhooks/registry.go",
+        "third_party/jetski/cortex/core/posttoolhooks/stained_creds_guidance_hook.go"
+      ],
+      "sample_funcs": [
+        "newCommandAssessorHooks",
+        "sonarToolCall",
+        "Construct",
+        "newCommandAssessorHook",
+        "newStainedCredsGuidanceHook"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/policyguardian/provenance/lattice/lattice",
+      "func_count": 26,
+      "file_count": 1,
+      "code_bytes": 4624,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/provenance/lattice/taint.go"
+      ],
+      "sample_funcs": [
+        "TrustLevel.String",
+        "TrustLevel.Join",
+        "parseTrustLevel",
+        "SensitivityLevel.String",
+        "SensitivityLevel.Join",
+        "parseSensitivityLevel",
+        "TaintVector.Join",
+        "TaintVector.WithTrust"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/core/contrib/variants/model_router_alt/modelrouteralt",
       "func_count": 8,
       "file_count": 2,
@@ -7949,42 +8248,6 @@
         "buildWorker",
         "Variant",
         "cloneItems[go.shape.*uint8]"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski_prod/localharness/mediamime/mediamime",
-      "func_count": 7,
-      "file_count": 1,
-      "code_bytes": 4464,
-      "files": [
-        "third_party/jetski_prod/localharness/mediamime/mediamime.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "InferMimeType",
-        "SniffMimeTypeFromBytes",
-        "sniffISOBMFFBrand",
-        "mimeTypeFromLocation",
-        "isYouTubePublicURL"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/core/posttoolhooks/posttoolhooks",
-      "func_count": 10,
-      "file_count": 5,
-      "code_bytes": 4416,
-      "files": [
-        "third_party/jetski/cortex/core/posttoolhooks/adapt.go",
-        "third_party/jetski/cortex/core/posttoolhooks/command_assessor_hook.go",
-        "third_party/jetski/cortex/core/posttoolhooks/provider.go",
-        "third_party/jetski/cortex/core/posttoolhooks/registry.go",
-        "third_party/jetski/cortex/core/posttoolhooks/stained_creds_guidance_hook.go"
-      ],
-      "sample_funcs": [
-        "newCommandAssessorHooks",
-        "Construct",
-        "newCommandAssessorHook",
-        "newStainedCredsGuidanceHook"
       ]
     },
     {
@@ -8184,10 +8447,22 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/ext/plugins/computer/agent/agent",
+      "func_count": 1,
+      "file_count": 1,
+      "code_bytes": 3968,
+      "files": [
+        "third_party/jetski/cortex/ext/plugins/computer/agent/agent.go"
+      ],
+      "sample_funcs": [
+        "Build"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cli/termstatus/termstatus",
       "func_count": 9,
       "file_count": 1,
-      "code_bytes": 3920,
+      "code_bytes": 3936,
       "files": [
         "third_party/jetski/cli/termstatus/termstatus.go"
       ],
@@ -8200,18 +8475,6 @@
         "Derive",
         "firstLine",
         "clean"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/ext/plugins/computer/agent/agent",
-      "func_count": 1,
-      "file_count": 1,
-      "code_bytes": 3904,
-      "files": [
-        "third_party/jetski/cortex/ext/plugins/computer/agent/agent.go"
-      ],
-      "sample_funcs": [
-        "Build"
       ]
     },
     {
@@ -8325,6 +8588,23 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cli/acp/mcp/mcp",
+      "func_count": 7,
+      "file_count": 1,
+      "code_bytes": 3056,
+      "files": [
+        "third_party/jetski/cli/acp/mcp/mcp.go"
+      ],
+      "sample_funcs": [
+        "(*Names).Assign",
+        "Fingerprint",
+        "IDEPortSpec",
+        "FromConfig",
+        "parseKeyValuePairs",
+        "(*Names).Assign.deferwrap1"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cortex/customizations/builtin/owl/common/common",
       "func_count": 2,
       "file_count": 1,
@@ -8404,6 +8684,23 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/artifacts/trajectorylog/trajectorylog",
+      "func_count": 7,
+      "file_count": 1,
+      "code_bytes": 2912,
+      "files": [
+        "third_party/jetski/cortex/artifacts/trajectorylog/trajectory_artifact_converter.go"
+      ],
+      "sample_funcs": [
+        "(*ArtifactConverter).WriteFullTranscript",
+        "(*ArtifactConverter).AppendStepToTranscript",
+        "(*ArtifactConverter).writeStepRange",
+        "(*ArtifactConverter).writeTranscriptFile",
+        "(*ArtifactConverter).WriteFullTranscript.deferwrap1",
+        "(*ArtifactConverter).AppendStepToTranscript.deferwrap1"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/actuator_pb/actuator_go_proto_connect",
       "func_count": 6,
       "file_count": 1,
@@ -8417,23 +8714,6 @@
         "ActuatorServiceHandler.Update-fm",
         "ActuatorServiceHandler.Fulfill-fm",
         "ActuatorServiceHandler.ReportStatus-fm"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/artifacts/trajectorylog/trajectorylog",
-      "func_count": 7,
-      "file_count": 1,
-      "code_bytes": 2768,
-      "files": [
-        "third_party/jetski/cortex/artifacts/trajectorylog/trajectory_artifact_converter.go"
-      ],
-      "sample_funcs": [
-        "(*ArtifactConverter).WriteFullTranscript",
-        "(*ArtifactConverter).AppendStepToTranscript",
-        "(*ArtifactConverter).writeStepRange",
-        "(*ArtifactConverter).writeTranscriptFile",
-        "(*ArtifactConverter).WriteFullTranscript.deferwrap1",
-        "(*ArtifactConverter).AppendStepToTranscript.deferwrap1"
       ]
     },
     {
@@ -8518,18 +8798,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/model_api/backends/components/genairesponse/genairesponse",
-      "func_count": 1,
-      "file_count": 1,
-      "code_bytes": 2592,
-      "files": [
-        "third_party/jetski/model_api/backends/components/genairesponse/genairesponse.go"
-      ],
-      "sample_funcs": [
-        "MapUsageMetadata"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/language_server/types/doc_pos_types/doc_pos_types",
       "func_count": 28,
       "file_count": 1,
@@ -8563,6 +8831,19 @@
         "InsideMultiplexer",
         "Override.State",
         "snapshot"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/core/contrib/contrib",
+      "func_count": 3,
+      "file_count": 1,
+      "code_bytes": 2480,
+      "files": [
+        "third_party/jetski/cortex/core/contrib/variants.go"
+      ],
+      "sample_funcs": [
+        "map.init.0",
+        "VariantNames"
       ]
     },
     {
@@ -8647,19 +8928,6 @@
         "map.init.1",
         "LanguageFromEnryLanguage",
         "EnryLanguageFromLanguage"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/core/contrib/contrib",
-      "func_count": 3,
-      "file_count": 1,
-      "code_bytes": 2416,
-      "files": [
-        "third_party/jetski/cortex/core/contrib/variants.go"
-      ],
-      "sample_funcs": [
-        "map.init.0",
-        "VariantNames"
       ]
     },
     {
@@ -8787,6 +9055,22 @@
         "AddUsageCostWithPricing",
         "AddSection",
         "ModelDisplayName"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/policyguardian/provenance/agentpath/agentpath",
+      "func_count": 5,
+      "file_count": 1,
+      "code_bytes": 2144,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/provenance/agentpath/agentpath.go"
+      ],
+      "sample_funcs": [
+        "fromWindows",
+        "trimNames",
+        "toWindows",
+        "HasDirPrefix",
+        "CommandName"
       ]
     },
     {
@@ -8920,23 +9204,6 @@
         "NormalizeTargetKey",
         "TruncateUTF8Bytes",
         "FetchLinkInfos"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cortex/utils/steputils/steputils",
-      "func_count": 7,
-      "file_count": 1,
-      "code_bytes": 1776,
-      "files": [
-        "third_party/jetski/cortex/utils/steputils/step_helpers.go"
-      ],
-      "sample_funcs": [
-        "ToolName",
-        "PopulateDiffStats",
-        "cutPrefixLine",
-        "stripTimestampLines",
-        "stripDurationLine",
-        "StripToolOutputPrefixes"
       ]
     },
     {
@@ -9165,25 +9432,6 @@
       ]
     },
     {
-      "package": "google3/third_party/jetski/cli/acp/acpsettings/acpsettings",
-      "func_count": 14,
-      "file_count": 1,
-      "code_bytes": 1376,
-      "files": [
-        "third_party/jetski/cli/acp/acpsettings/acpsettings.go"
-      ],
-      "sample_funcs": [
-        "(*Provider).Set",
-        "(*Provider).get",
-        "(*Provider).EffectivePermissionMode",
-        "(*Provider).GetGlobalPermissionGrants",
-        "(*Provider).AddGlobalPermissionGrants",
-        "(*Provider).GetAllowNonWorkspaceAccess",
-        "(*Provider).GetEnableTerminalSandbox",
-        "(*Provider).GetSandboxMode"
-      ]
-    },
-    {
       "package": "google3/third_party/jetski/cortex/executors/prehooks/prehooks",
       "func_count": 8,
       "file_count": 4,
@@ -9245,6 +9493,18 @@
         "(*Manager).Undo",
         "(*Manager).Redo",
         "(*Manager).Reset"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/cortex/core/contrib/variants/multi_edit/multiedit",
+      "func_count": 1,
+      "file_count": 1,
+      "code_bytes": 1280,
+      "files": [
+        "third_party/jetski/cortex/core/contrib/variants/multi_edit/variant.go"
+      ],
+      "sample_funcs": [
+        "Variant"
       ]
     },
     {
@@ -9743,6 +10003,18 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/judge/judgeprompt/judgeprompt",
+      "func_count": 2,
+      "file_count": 1,
+      "code_bytes": 608,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/judge/judgeprompt/judgeprompt.go"
+      ],
+      "sample_funcs": [
+        "TruncateMiddle"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/cli/plugins/marketplace/marketplace",
       "func_count": 3,
       "file_count": 1,
@@ -9783,6 +10055,18 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/utils/steputils/steputils",
+      "func_count": 2,
+      "file_count": 1,
+      "code_bytes": 448,
+      "files": [
+        "third_party/jetski/cortex/utils/steputils/step_helpers.go"
+      ],
+      "sample_funcs": [
+        "PopulateDiffStats"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/scm_utils/scm_utils",
       "func_count": 3,
       "file_count": 1,
@@ -9793,19 +10077,6 @@
       "sample_funcs": [
         "retryablehttpLogger.Printf",
         "(*retryablehttpLogger).Printf"
-      ]
-    },
-    {
-      "package": "google3/third_party/jetski/cli/acp/relpath/relpath",
-      "func_count": 2,
-      "file_count": 1,
-      "code_bytes": 400,
-      "files": [
-        "third_party/jetski/cli/acp/relpath/relpath.go"
-      ],
-      "sample_funcs": [
-        "Distance",
-        "From"
       ]
     },
     {
@@ -10020,6 +10291,18 @@
       ]
     },
     {
+      "package": "google3/third_party/jetski/cortex/policyguardian/shellparse/shellparse",
+      "func_count": 1,
+      "file_count": 1,
+      "code_bytes": 240,
+      "files": [
+        "third_party/jetski/cortex/policyguardian/shellparse/shellparse.go"
+      ],
+      "sample_funcs": [
+        "Parse"
+      ]
+    },
+    {
       "package": "google3/third_party/jetski/language_server/agy_hub_web_bundle/agy_hub_web_bundle",
       "func_count": 1,
       "file_count": 1,
@@ -10041,6 +10324,18 @@
       ],
       "sample_funcs": [
         "AssetRelPath"
+      ]
+    },
+    {
+      "package": "go:struct { google3/third_party/jetski/cli/acp/schema/schema",
+      "func_count": 3,
+      "file_count": 0,
+      "code_bytes": 192,
+      "files": [],
+      "sample_funcs": [
+        "NewSessionParams; SessionID string \"json:\\\"sessionId\\\"\"; SessionIDSnake string \"json:\\\"session_id\\\"\" }.AdditionalDirs",
+        "NewSessionParams; SessionID string \"json:\\\"sessionId\\\"\"; SessionIDSnake string \"json:\\\"session_id\\\"\" }.DisableBuiltInTools",
+        "NewSessionParams; SessionID string \"json:\\\"sessionId\\\"\"; SessionIDSnake string \"json:\\\"session_id\\\"\" }.MCPServerList"
       ]
     },
     {
@@ -10103,6 +10398,19 @@
         "CreateCitcWorkspace",
         "ShareCitcWorkspaceState",
         "SyncJJWorkspaceToHead"
+      ]
+    },
+    {
+      "package": "google3/third_party/jetski/go_utils/loascreds/loascreds",
+      "func_count": 2,
+      "file_count": 1,
+      "code_bytes": 32,
+      "files": [
+        "third_party/jetski/go_utils/loascreds/loascreds_external.go"
+      ],
+      "sample_funcs": [
+        "SetStainedLOAS2CredsDisabled",
+        "StainedLOAS2CredsPath"
       ]
     },
     {

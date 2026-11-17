@@ -1,0 +1,20 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d011bf (va 0x103d011bf, __TEXT.__rodata), descriptor length 147 B, sha256 39defb26e1385ce0
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package proto2.bridge;
+
+option java_outer_classname = "MessageSetProtos";
+option java_multiple_files = true;
+option objc_class_prefix = "GPB";
+option (unresolved_option_26) = 1;
+
+message MessageSet {
+  option message_set_wire_format = true;
+  option deprecated = true;
+  extensions 4 to 524999999;
+  extensions 525000000 to 525099999;
+  extensions 525100000 to max;
+}

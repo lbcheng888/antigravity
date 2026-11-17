@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3eeae (va 0x103d3eeae, __TEXT.__rodata), descriptor length 606 B, sha256 014d21c4bd013d43
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/gemini_coder/proto/trajectory.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "TrajectorySegmentAnalyticsMetadataOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message TrajectorySegmentAnalyticsMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  gemini_coder.Trajectory trajectory_segment = 1;
+  uint32 start_step_index = 2 [(unresolved_option_40075780) = 2300];
+  uint32 start_generator_metadata_index = 3 [(unresolved_option_40075780) = 2800];
+}

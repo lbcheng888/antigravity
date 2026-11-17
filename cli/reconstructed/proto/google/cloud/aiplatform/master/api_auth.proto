@@ -1,0 +1,32 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d5c22e (va 0x103d5c22e, __TEXT.__rodata), descriptor length 971 B, sha256 fb61b06fb175a845
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/resource.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "ApiAuthProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+option (unresolved_option_525000017) = "\n\003all";
+
+message ApiAuth {
+  oneof auth_config {
+    ApiKeyConfig api_key_config = 1;
+  }
+
+  message ApiKeyConfig {
+    string api_key_secret_version = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n*secretmanager.googleapis.com/SecretVersion", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022zempty($) or isValidResourceName($, `SecretVersion`) ?: [FIELD_INVALID] Invalid Secret Manager SecretVersion resource name."];
+    string api_key_string = 2 [(unresolved_option_40075780) = 2601, (unresolved_option_127878962) = "\022Onot empty($) or not empty($api_key_secret_version) ?: [REQURIRED_FIELD_MISSING]"];
+  }
+}

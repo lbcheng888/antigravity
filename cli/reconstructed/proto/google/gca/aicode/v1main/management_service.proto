@@ -1,0 +1,251 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f500c1 (va 0x103f500c1, __TEXT.__rodata), descriptor length 8378 B, sha256 b1717cf3969a6394
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.gca.aicode.v1main;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/protobuf/field_mask.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.gca.aicode.v1main";
+option java_outer_classname = "ManagementServiceProto";
+option java_multiple_files = true;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_46) = "OPAQUE_V0";
+
+message UserSettings {
+  option (unresolved_option_1053) = "\n\"aicode.googleapis.com/UserSettings\022\014userSettings*\014userSettings2\014userSettings";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 999];
+  optional bool data_collection_optin = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1906];
+}
+
+message GetUserSettingsRequest {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aicode.googleapis.com/UserSettings", (unresolved_option_40075780) = 999];
+}
+
+message UpdateUserSettingsRequest {
+  UserSettings user_settings = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1906];
+  protobuf.FieldMask update_mask = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message GetUserInfoRequest {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\036aicode.googleapis.com/UserInfo", (unresolved_option_40075780) = 999];
+}
+
+message UserInfo {
+  option (unresolved_option_1053) = "\n\036aicode.googleapis.com/UserInfo\022\010userInfo*\010userInfo2\010userInfo";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 999];
+  UserTier legacy_tier = 2 [deprecated = true];
+}
+
+message UserTier {
+  string id = 1;
+}
+
+message FetchConfigRequest {
+}
+
+message FetchConfigResponse {
+  ExperimentConfig experiment_config = 1;
+  repeated Experience available_experiences = 2;
+  repeated Model available_models = 3;
+  SurfaceConfig agy_surface_config = 4 [(unresolved_option_143069646) = "\022\007v1alpha"];
+
+  message ExperimentConfig {
+    repeated int32 enabled_experiment_ids = 1;
+    repeated ExperimentFlag experiment_flags = 2;
+
+    message ExperimentFlag {
+      string name = 1;
+      oneof value {
+        bool bool_value = 2;
+        double float_value = 3;
+        int64 int_value = 4;
+        string string_value = 5;
+        Int32List int32_list_value = 6;
+        Int64List int64_list_value = 7;
+        StringList string_list_value = 8;
+      }
+
+      message Int32List {
+        repeated int32 values = 1;
+      }
+
+      message Int64List {
+        repeated int64 values = 1;
+      }
+
+      message StringList {
+        repeated string values = 1;
+      }
+    }
+  }
+
+  message Model {
+    option (unresolved_option_41149386) = 999;
+    string model_id = 1;
+    string name = 2;
+    string display_name = 3;
+    string base_model_id = 4;
+    string version = 5;
+    string description = 6;
+    optional int32 input_token_limit = 7;
+    optional int32 output_token_limit = 8;
+    repeated ThinkingConfig.ThinkingLevel supported_thinking_levels = 9;
+    repeated Feature supported_features = 10;
+    optional GenerationConfig generation_config = 11;
+    ModelProvider model_provider = 12 [(unresolved_option_143069646) = "\022\007v1alpha"];
+    repeated string agy_supported_mime_types = 13 [(unresolved_option_143069646) = "\022\007v1alpha"];
+
+    enum Feature {
+      FEATURE_UNSPECIFIED = 0;
+      IMAGE_INPUT = 1;
+      IMAGE_OUTPUT = 2;
+      JSON_SCHEMA_OUTPUT = 3;
+      BROWSE_AS_A_TOOL = 4;
+      SEARCH_AS_A_TOOL = 5;
+      TOP_P = 6;
+      AUDIO_INPUT = 7;
+      AUDIO_OUTPUT = 8;
+      CODE_EXECUTION = 9;
+      FUNCTION_CALLING = 10;
+      THINKING = 11;
+      THINKING_LEVEL = 12;
+      VIDEO_INPUT = 13;
+      DOCUMENT_INPUT = 14;
+    }
+
+    enum ModelProvider {
+      option (unresolved_option_143069646) = "\022\007v1alpha";
+      MODEL_PROVIDER_UNSPECIFIED = 0;
+      GOOGLE = 1;
+      ANTHROPIC = 2;
+      OTHER = 3;
+      OPENAI = 4;
+    }
+
+    message GenerationConfig {
+      optional ThinkingConfig thinking_config = 1;
+      optional int32 max_output_tokens = 2;
+    }
+  }
+
+  message ThinkingConfig {
+    optional bool include_thoughts = 1;
+    optional int32 thinking_budget = 2;
+    optional ThinkingLevel thinking_level = 3;
+    optional int32 min_thinking_budget = 4;
+
+    enum ThinkingLevel {
+      THINKING_LEVEL_UNSPECIFIED = 0;
+      MINIMAL = 1;
+      LOW = 2;
+      MEDIUM = 3;
+      HIGH = 4;
+      EXTRA_HIGH = 5;
+    }
+  }
+
+  message Experience {
+    string name = 1;
+    Model model = 2;
+    ExperienceSurfaceConfig surface_config = 3 [(unresolved_option_143069646) = "\022\007v1alpha"];
+
+    message ExperienceSurfaceConfig {
+      option (unresolved_option_41149386) = 999;
+      option (unresolved_option_143069646) = "\022\007v1alpha";
+      string client_model_enum_name = 1;
+      repeated Tag tags = 2;
+      bool disabled = 3;
+      map<string, ModelExperimentValue> model_experiments = 4;
+
+      message Tag {
+        option (unresolved_option_41149386) = 999;
+        string title = 1;
+        string description = 2;
+      }
+
+      message ModelExperimentValue {
+        option (unresolved_option_41149386) = 12028;
+        oneof value {
+          bool bool_value = 1;
+          double float_value = 2;
+          int64 int_value = 3;
+          string string_value = 4;
+        }
+      }
+    }
+  }
+
+  message SurfaceConfig {
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    ExperienceGroup image_generation_experiences = 1;
+    ExperienceGroup commit_message_experiences = 2;
+    ExperienceGroup web_search_experiences = 3;
+    ExperienceGroup agent_experiences = 4;
+    ExperienceGroup tiered_flash_lite_experiences = 5;
+    ExperienceGroup tiered_flash_experiences = 6;
+    ExperienceGroup tiered_pro_experiences = 7;
+    ExperienceGroup audio_transcription_experiences = 8;
+
+    message ExperienceGroup {
+      repeated string experience_names = 1 [(unresolved_option_40075780) = 999];
+      string default_experience = 2 [(unresolved_option_40075780) = 999];
+    }
+  }
+}
+
+message FetchLicensesRequest {
+}
+
+message FetchLicensesResponse {
+  repeated License licenses = 1 [(unresolved_option_40075780) = 3000];
+}
+
+message License {
+  string user_tier = 1 [(unresolved_option_40075780) = 3000];
+  string tier_display_name = 2 [(unresolved_option_40075780) = 3000];
+  UpgradeSubscription upgrade_subscription = 3 [(unresolved_option_40075780) = 3000];
+}
+
+message UpgradeSubscription {
+  string text = 1 [(unresolved_option_40075780) = 3000];
+  optional string url = 2 [(unresolved_option_40075780) = 3000];
+  string button_text = 3 [(unresolved_option_40075780) = 3000];
+}
+
+service ManagementService {
+  rpc GetUserSettings(GetUserSettingsRequest) returns (UserSettings) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "\022#/{$api_version}/{name=userSettings}";
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc UpdateUserSettings(UpdateUserSettingsRequest) returns (UserSettings) {
+    option (unresolved_option_1051) = "user_settings,update_mask";
+    option (unresolved_option_72295728) = ":\ruser_settings21/{$api_version}/{user_settings.name=userSettings}";
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc GetUserInfo(GetUserInfoRequest) returns (UserInfo) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "\022\037/{$api_version}/{name=userInfo}";
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc FetchConfig(FetchConfigRequest) returns (FetchConfigResponse) {
+    option (unresolved_option_72295728) = "\022\033/{$api_version}:fetchConfig";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc FetchLicenses(FetchLicensesRequest) returns (FetchLicensesResponse) {
+    option (unresolved_option_72295728) = "\022\035/{$api_version}:fetchLicenses";
+    option (unresolved_option_8) = 0x402e000000000000;
+  }
+}

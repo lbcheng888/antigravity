@@ -1,10 +1,10 @@
 {
   "source_binary": "/Users/mac/.local/bin/agy",
-  "source_sha256": "fad3628ad91fe8613a72f074a1c5fde7cd816517788a5b9be96703f7d256741a",
-  "source_size": 223424816,
+  "source_sha256": "780ee763a9938a37b45c7f9d6ae31747d7c574358fd10c64d3a1cdc36faf2798",
+  "source_size": 224809248,
   "embed_fs": {
     "prompts": {
-      "header_offset": 153236192,
+      "header_offset": 154458784,
       "entries": 27,
       "files": 16,
       "dirs": 11,
@@ -12,7 +12,7 @@
       "tree_sha256": "7c3ceb4a55442b9fa172f8150cc9945b1c4aa426b82383836ca9d753aabe2ccb"
     },
     "metaschemas": {
-      "header_offset": 153529888,
+      "header_offset": 154756672,
       "entries": 48,
       "files": 35,
       "dirs": 13,
@@ -20,15 +20,15 @@
       "tree_sha256": "eecc62363a99d2bb90a1d2c0cdb5d3182afd824ef46033522a6a845d9309c3cf"
     },
     "assets": {
-      "header_offset": 153832384,
+      "header_offset": 155059168,
       "entries": 69,
       "files": 42,
       "dirs": 27,
-      "total_bytes": 556176,
-      "tree_sha256": "08908587cca96c9f97d86dd40fb5155f2ab3de93cf6b5abca17e6e44ca8d87c3"
+      "total_bytes": 558426,
+      "tree_sha256": "37e09a84e30252f6b7ed1a4cd5d64f72e3f6bb57a8340d9c210a717104cbe05f"
     },
     "chroma-styles": {
-      "header_offset": 153894016,
+      "header_offset": 155120800,
       "entries": 74,
       "files": 74,
       "dirs": 0,
@@ -36,7 +36,7 @@
       "tree_sha256": "e1f89e4885b8561bb495984b9bda043e51f890ba79839a3d8c87fb7ebe67a969"
     },
     "chroma-lexers": {
-      "header_offset": 155326720,
+      "header_offset": 156553536,
       "entries": 280,
       "files": 279,
       "dirs": 1,
@@ -46,8 +46,8 @@
   },
   "zips": {
     "tzdata": {
-      "offset_start": 71741576,
-      "offset_end": 72150043,
+      "offset_start": 72294295,
+      "offset_end": 72702762,
       "archive_size": 408467,
       "archive_sha256": "b2d18a7c8fa8142097a48c99609fb3c92db5ee98bc740294e57eab8ae9f94779",
       "files": 598,
@@ -55,18 +55,18 @@
       "extracted_bytes": 345989
     },
     "web-bundle": {
-      "offset_start": 185185462,
-      "offset_end": 191204609,
-      "archive_size": 6019147,
-      "archive_sha256": "789506846e816108a1e9da530c71c4804800f1ca0fe1744bd7f076373be13521",
+      "offset_start": 186524894,
+      "offset_end": 192565147,
+      "archive_size": 6040253,
+      "archive_sha256": "89e830cb14514a90a951db428c47584e20cbc8230ef36bc5802d7ee8eb971a43",
       "files": 540,
       "dirs": 8,
-      "extracted_bytes": 19795543
+      "extracted_bytes": 19862680
     }
   },
   "targz": {
     "tsserver": {
-      "offset_start": 182979732,
+      "offset_start": 184319164,
       "compressed_size": 2205730,
       "compressed_sha256": "b06602e703808a4af872f43b06d5b4492094e01e7c38469334c9984b2f3c7e79",
       "tar_size": 13066240,
@@ -76,7 +76,7 @@
       "extracted_bytes": 12967948
     },
     "python": {
-      "offset_start": 198567345,
+      "offset_start": 199927883,
       "compressed_size": 22034834,
       "compressed_sha256": "5f464f54b0e054454596a4cc52f562a8a7d6c7002cb97d86600b246ac8fca637",
       "tar_size": 59187200,
@@ -88,153 +88,135 @@
   },
   "fonts": [
     {
-      "file": "font_1_offset_180998464.ttf",
-      "offset": 180998464,
+      "file": "font_1_offset_182337896.ttf",
+      "offset": 182337896,
       "size": 521588,
       "sha256": "60a0e8ef0c04dd5dd69ffe91025fa2ae5836cbd35600a82ba031977557e2cb61"
     },
     {
-      "file": "font_2_offset_181275028.ttf",
-      "offset": 181275028,
+      "file": "font_2_offset_182614460.ttf",
+      "offset": 182614460,
       "size": 597880,
       "sha256": "393269dbab8899f938db19783eca5eac92eb431f7ae0ab45b8349ca895f1a06b"
-    },
-    {
-      "file": "font_3_offset_181575693.ttf",
-      "offset": 181575693,
-      "size": 565016,
-      "sha256": "5942266ed398b155d7dc23e36833e7ec6be988f2439bdbeb8ef1bede808eaa91"
-    },
-    {
-      "file": "font_4_offset_181879548.ttf",
-      "offset": 181879548,
-      "size": 578976,
-      "sha256": "a5de79f0fe863ea0954757acb3d47b3ccd0a930ce3dd5b97230cd3866790a06e"
-    },
-    {
-      "file": "font_5_offset_182186930.ttf",
-      "offset": 182186930,
-      "size": 1517976,
-      "sha256": "562551b15b836e6e01d1b7350909baf3c8c8d83260c1190fbf4544333e6936de"
     }
   ],
   "proto_descriptors": [
     {
       "proto": "errorspb/testing.proto",
       "file": "errorspb/testing.pb",
-      "offset": 178127605,
+      "offset": 179471253,
       "size": 109,
       "sha256": "1fee1aaeecc9202411cf6ed0258547314b200d2f8442cbeef8f8198d63f04d6e"
     },
     {
       "proto": "errorspb/hintdetail.proto",
       "file": "errorspb/hintdetail.pb",
-      "offset": 178133024,
+      "offset": 179476544,
       "size": 134,
       "sha256": "c396b99d7851b653614c2200e64793cbb58d5e230508ba9b84dcf8f323783e6c"
     },
     {
       "proto": "google/protobuf/empty.proto",
       "file": "google/protobuf/empty.pb",
-      "offset": 178138958,
+      "offset": 179482638,
       "size": 198,
       "sha256": "3b131cd598930cfb91b40ea173a31c9739e9fe6fec0795b5ae974ddd8210884f"
     },
     {
       "proto": "errorspb/markers.proto",
       "file": "errorspb/markers.pb",
-      "offset": 178142177,
+      "offset": 179485825,
       "size": 237,
       "sha256": "0939ebfc5426eba60a6435f454eada386acc930dffa71d4f15132a0c1e77374e"
     },
     {
       "proto": "errorspb/tags.proto",
       "file": "errorspb/tags.pb",
-      "offset": 178144040,
+      "offset": 179487688,
       "size": 242,
       "sha256": "2477c27172e51b6e1541e1a62c3d141416a7b28a35fc2dc9c04b00dd0813b233"
     },
     {
       "proto": "google/protobuf/field_mask.proto",
       "file": "google/protobuf/field_mask.pb",
-      "offset": 178144241,
+      "offset": 179487889,
       "size": 233,
       "sha256": "08a79b0e7bb48316ce2c5c6d6c02d02be312d2ea6d80bce2faade0c97dc18f15"
     },
     {
       "proto": "google/protobuf/duration.proto",
       "file": "google/protobuf/duration.pb",
-      "offset": 178144860,
+      "offset": 179488508,
       "size": 246,
       "sha256": "47478add25333e45e5d85b2f73f1959c38aedef3cb58eed4aa59d47cf936eae6"
     },
     {
       "proto": "google/protobuf/any.proto",
       "file": "google/protobuf/any.pb",
-      "offset": 178145069,
+      "offset": 179488717,
       "size": 237,
       "sha256": "9b24d9b7025d53dbdef56fa78878266308184d009d26059a7b664a10ace6fbdc"
     },
     {
       "proto": "google/protobuf/source_context.proto",
       "file": "google/protobuf/source_context.pb",
-      "offset": 178145491,
+      "offset": 179489139,
       "size": 249,
       "sha256": "ac850f365026b91a3bd11cc4d1e34cd2aed0635b0bd88c39e93a202b3de8ed5c"
     },
     {
       "proto": "google/protobuf/timestamp.proto",
       "file": "google/protobuf/timestamp.pb",
-      "offset": 178145703,
+      "offset": 179489351,
       "size": 250,
       "sha256": "68200ef7a9809b7f60ca86688f869c191e6fea38773e3d0f64f2cd332a97d390"
     },
     {
       "proto": "google/protobuf/wrappers.proto",
       "file": "google/protobuf/wrappers.pb",
-      "offset": 178175152,
+      "offset": 179518604,
       "size": 522,
       "sha256": "bc4b3508a089239835d091a5a765df874560b2b5ffbd1b049bb2ea1fd8301d09"
     },
     {
       "proto": "google/protobuf/struct.proto",
       "file": "google/protobuf/struct.pb",
-      "offset": 178189668,
+      "offset": 179533124,
       "size": 745,
       "sha256": "40df47c1e60487ef45cd844369370c4d27d41749736a3fba2c752d8565a8e6e8"
     },
     {
       "proto": "google/protobuf/api.proto",
       "file": "google/protobuf/api.pb",
-      "offset": 178192396,
+      "offset": 179535852,
       "size": 929,
       "sha256": "6448557e4f711847f0a743e709bf1c7c1a27686df76056d3b5a38a3f1c4e7f52"
     },
     {
       "proto": "errorspb/errors.proto",
       "file": "errorspb/errors.pb",
-      "offset": 178233280,
+      "offset": 179576768,
       "size": 1397,
       "sha256": "46c631781abaa04d2fefe7c400e756a051f24a09f5364fd7f82a66fc5f5285b5"
     },
     {
       "proto": "google/protobuf/type.proto",
       "file": "google/protobuf/type.pb",
-      "offset": 178253136,
+      "offset": 179596624,
       "size": 1835,
       "sha256": "255b2292b156f281803a968ea86bbf3fa7b27b043d7fa481f54f47979112ca5e"
     },
     {
       "proto": "gogo.proto",
       "file": "gogo.pb",
-      "offset": 178293486,
+      "offset": 179636974,
       "size": 5507,
       "sha256": "a1da4b8fa62fa9684780d7fda154b96dd930ee2f2df513eb88d2adbd9cbe4f8b"
     },
     {
       "proto": "descriptor.proto",
       "file": "descriptor.pb",
-      "offset": 178368607,
+      "offset": 179709879,
       "size": 7480,
       "sha256": "ff68d796715700a734f7ff3bcbb3feb87b3ecdda7b692f623293e3237e77958b"
     }

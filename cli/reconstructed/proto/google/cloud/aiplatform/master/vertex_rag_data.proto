@@ -1,0 +1,456 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x40a1564 (va 0x1040a1564, __TEXT.__rodata), descriptor length 19487 B, sha256 09075dc3a3fea8a6
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/master/api_auth.proto";
+import "google/cloud/aiplatform/master/encryption_spec.proto";
+import "google/cloud/aiplatform/master/io.proto";
+import "google/cloud/automl/common/proto_field_options.proto";
+import "google/protobuf/timestamp.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "VertexRagDataProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+option (unresolved_option_525000017) = "\n'package:google/firebase/machinelearning\n\037package:google/cloud/aiplatform\n package:google/firebase/vertexai";
+
+message RagEmbeddingModelConfig {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  oneof model_config {
+    VertexPredictionEndpoint vertex_prediction_endpoint = 1;
+    HybridSearchConfig hybrid_search_config = 2 [(unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  }
+
+  message VertexPredictionEndpoint {
+    string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100];
+    string model = 2 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Model", (unresolved_option_40075780) = 1100];
+    string model_version_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  }
+
+  message SparseEmbeddingConfig {
+    option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+    oneof model {
+      Bm25 bm25 = 1;
+    }
+
+    message Bm25 {
+      bool multilingual = 1 [(unresolved_option_1052) = "\001"];
+      optional float k1 = 2 [(unresolved_option_1052) = "\001"];
+      optional float b = 3 [(unresolved_option_1052) = "\001"];
+    }
+  }
+
+  message HybridSearchConfig {
+    option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+    SparseEmbeddingConfig sparse_embedding_config = 1 [(unresolved_option_1052) = "\001"];
+    VertexPredictionEndpoint dense_embedding_model_prediction_endpoint = 2 [(unresolved_option_1052) = "\002"];
+  }
+}
+
+message RagVectorDbConfig {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  oneof vector_db {
+    RagManagedDb rag_managed_db = 1;
+    Weaviate weaviate = 2 [(unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+    Pinecone pinecone = 3;
+    VertexFeatureStore vertex_feature_store = 4 [(unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+    VertexVectorSearch vertex_vector_search = 6;
+    RagManagedVertexVectorSearch rag_managed_vertex_vector_search = 8 [(unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+  }
+  ApiAuth api_auth = 5;
+  RagEmbeddingModelConfig rag_embedding_model_config = 7 [(unresolved_option_1052) = "\001\005"];
+
+  message RagManagedDb {
+    oneof retrieval_strategy {
+      KNN knn = 1 [(unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+      ANN ann = 2 [(unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+    }
+
+    message KNN {
+      option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+    }
+
+    message ANN {
+      option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+      int32 tree_depth = 1;
+      int32 leaf_count = 2;
+    }
+  }
+
+  message Weaviate {
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+    string http_endpoint = 1 [(unresolved_option_40075780) = 1300];
+    string collection_name = 2 [(unresolved_option_40075780) = 1100];
+  }
+
+  message Pinecone {
+    string index_name = 1 [(unresolved_option_40075780) = 1100];
+  }
+
+  message VertexFeatureStore {
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+    string feature_view_resource_name = 1 [(unresolved_option_40075780) = 1100];
+  }
+
+  message VertexVectorSearch {
+    string index_endpoint = 1 [(unresolved_option_40075780) = 1100];
+    string index = 2 [(unresolved_option_40075780) = 1100];
+  }
+
+  message RagManagedVertexVectorSearch {
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+    string collection_name = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  }
+}
+
+message FileStatus {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  State state = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string error_status = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    ACTIVE = 1;
+    ERROR = 2;
+  }
+}
+
+message VertexAiSearchConfig {
+  string serving_config = 1 [(unresolved_option_40075780) = 1100];
+}
+
+message CorpusStatus {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  State state = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string error_status = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum State {
+    UNKNOWN = 0;
+    INITIALIZED = 1;
+    ACTIVE = 2;
+    ERROR = 3;
+  }
+}
+
+message RagCorpus {
+  option (unresolved_option_1053) = "\n#aiplatform.googleapis.com/RagCorpus\022?projects/{project}/locations/{location}/ragCorpora/{rag_corpus}*\nragCorpora2\tragCorpus";
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  string name = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_135496935) = "\022\010RESOURCE", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string display_name = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string description = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022BisValidGenericStringLength($) ?: [GENERIC_STRING_INVALID_TOO_LONG]"];
+  RagEmbeddingModelConfig rag_embedding_model_config = 6 [deprecated = true, (unresolved_option_1052) = "\001\005", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  RagVectorDbConfig rag_vector_db_config = 7 [deprecated = true, (unresolved_option_1052) = "\001\005", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  oneof backend_config {
+    RagVectorDbConfig vector_db_config = 9 [(unresolved_option_1052) = "\001\005"];
+    VertexAiSearchConfig vertex_ai_search_config = 10 [(unresolved_option_1052) = "\001\005"];
+  }
+  protobuf.Timestamp create_time = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  protobuf.Timestamp update_time = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  CorpusStatus corpus_status = 8 [(unresolved_option_1052) = "\003"];
+  int32 rag_files_count = 11 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+  EncryptionSpec encryption_spec = 12 [(unresolved_option_1052) = "\005\001", (unresolved_option_143069646) = "\022\026v1beta1,internal,ui,v1", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_337978583) = 1];
+  CorpusTypeConfig corpus_type_config = 13 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+  bool satisfies_pzs = 19 [(unresolved_option_1052) = "\003", (unresolved_option_143069646) = "\022\026ui,internal,v1,v1beta1"];
+  bool satisfies_pzi = 20 [(unresolved_option_1052) = "\003", (unresolved_option_143069646) = "\022\026ui,internal,v1,v1beta1"];
+
+  message CorpusTypeConfig {
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+    oneof corpus_type_config {
+      DocumentCorpus document_corpus = 1 [(unresolved_option_1052) = "\001"];
+      MemoryCorpus memory_corpus = 2 [(unresolved_option_1052) = "\001"];
+    }
+
+    message DocumentCorpus {
+    }
+
+    message MemoryCorpus {
+      RagFileParsingConfig.LlmParser llm_parser = 1;
+    }
+  }
+}
+
+message RagFile {
+  option (unresolved_option_1053) = "\n!aiplatform.googleapis.com/RagFile\022Sprojects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}*\010ragFiles2\007ragFile";
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  string name = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_135496935) = "\022\010RESOURCE", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string display_name = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string description = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022BisValidGenericStringLength($) ?: [GENERIC_STRING_INVALID_TOO_LONG]"];
+  int64 size_bytes = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  RagFileType rag_file_type = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  protobuf.Timestamp create_time = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  protobuf.Timestamp update_time = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  oneof rag_file_source {
+    GcsSource gcs_source = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022:isValidGcsSource($) ?: [FIELD_INVALID] Invalid GCS source.", (unresolved_option_158361448) = "\"\005AUDIT"];
+    GoogleDriveSource google_drive_source = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    DirectUploadSource direct_upload_source = 10 [(unresolved_option_1052) = "\003", (unresolved_option_158361448) = "\"\005AUDIT"];
+    SlackSource slack_source = 11 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    JiraSource jira_source = 12 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    SharePointSources share_point_sources = 14 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  FileStatus file_status = 13 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string user_metadata = 15 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999, (unresolved_option_158361448) = "\"\005AUDIT"];
+
+  enum RagFileType {
+    option (unresolved_option_143069646) = "\022\020v1beta1,internal";
+    RAG_FILE_TYPE_UNSPECIFIED = 0;
+    RAG_FILE_TYPE_TXT = 1;
+    RAG_FILE_TYPE_PDF = 2;
+  }
+}
+
+message RagChunk {
+  string text = 1 [(unresolved_option_40075780) = 1900];
+  optional PageSpan page_span = 2;
+  string file_id = 3 [(unresolved_option_40075780) = 1100, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+  string chunk_id = 4 [(unresolved_option_40075780) = 1100, (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+
+  message PageSpan {
+    int32 first_page = 1 [(unresolved_option_40075780) = 999];
+    int32 last_page = 2 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message RagFileChunkingConfig {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  int32 chunk_size = 1 [deprecated = true, (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  int32 chunk_overlap = 2 [deprecated = true, (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  oneof chunking_config {
+    FixedLengthChunking fixed_length_chunking = 3;
+  }
+
+  message FixedLengthChunking {
+    int32 chunk_size = 1 [(unresolved_option_40075780) = 999];
+    int32 chunk_overlap = 2 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message RagFileTransformationConfig {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  RagFileChunkingConfig rag_file_chunking_config = 1;
+}
+
+message RagFileParsingConfig {
+  reserved 1;
+  bool use_advanced_pdf_parsing = 2 [deprecated = true, (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  oneof parser {
+    AdvancedParser advanced_parser = 3 [(unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+    LayoutParser layout_parser = 4;
+    LlmParser llm_parser = 5;
+  }
+
+  message AdvancedParser {
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+    bool use_advanced_pdf_parsing = 1;
+  }
+
+  message LayoutParser {
+    string processor_name = 1 [(unresolved_option_40075780) = 1100];
+    int32 max_parsing_requests_per_min = 2;
+    int32 global_max_parsing_requests_per_min = 3 [(unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  }
+
+  message LlmParser {
+    string model_name = 1 [(unresolved_option_40075780) = 1100];
+    int32 max_parsing_requests_per_min = 2;
+    int32 global_max_parsing_requests_per_min = 4 [(unresolved_option_143069646) = "\022\020v1beta1,internal"];
+    string custom_parsing_prompt = 3 [(unresolved_option_40075780) = 1900];
+    bool memory_mode = 5 [(unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\016VERTEX_RAG_EXP", (unresolved_option_143069646) = "\022\007v1beta1"];
+  }
+}
+
+message RagFileMetadataConfig {
+  option (unresolved_option_143069646) = "\022\023v1beta1,ui,internal";
+  oneof metadata_schema_source {
+    GcsSource gcs_metadata_schema_source = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022:isValidGcsSource($) ?: [FIELD_INVALID] Invalid GCS source.", (unresolved_option_158361448) = "\"\005AUDIT"];
+    GoogleDriveSource google_drive_metadata_schema_source = 2 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    string inline_metadata_schema_source = 3 [(unresolved_option_40075780) = 1900];
+  }
+  oneof metadata_source {
+    GcsSource gcs_metadata_source = 4 [(unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022:isValidGcsSource($) ?: [FIELD_INVALID] Invalid GCS source.", (unresolved_option_158361448) = "\"\005AUDIT"];
+    GoogleDriveSource google_drive_metadata_source = 5 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    string inline_metadata_source = 6 [(unresolved_option_40075780) = 1900];
+  }
+}
+
+message AdditionalConfig {
+  option (unresolved_option_143069646) = "\022\010internal";
+  bool parse_as_scanned_pdf = 1 [(unresolved_option_40075780) = 999];
+}
+
+message UploadRagFileConfig {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  RagFileChunkingConfig rag_file_chunking_config = 1 [deprecated = true, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  RagFileTransformationConfig rag_file_transformation_config = 3 [(unresolved_option_40075780) = 999];
+  string inline_metadata = 2 [deprecated = true, (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\016VERTEX_RAG_EXP"];
+  RagFileMetadataConfig rag_file_metadata_config = 4 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\023v1beta1,ui,internal"];
+  RagFileParsingConfig rag_file_parsing_config = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\023v1beta1,ui,internal"];
+  int32 max_embedding_requests_per_min = 6 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\016VERTEX_RAG_EXP", (unresolved_option_143069646) = "\022\007v1beta1"];
+  int32 global_max_embedding_requests_per_min = 7 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\016VERTEX_RAG_EXP", (unresolved_option_143069646) = "\022\007v1beta1"];
+}
+
+message ImportRagFilesConfig {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  reserved 1;
+  oneof import_source {
+    GcsSource gcs_source = 2 [(unresolved_option_40075780) = 1100, (unresolved_option_127878962) = "\022:isValidGcsSource($) ?: [FIELD_INVALID] Invalid GCS source.", (unresolved_option_158361448) = "\"\005AUDIT"];
+    GoogleDriveSource google_drive_source = 3 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    SlackSource slack_source = 6 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    JiraSource jira_source = 7 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    SharePointSources share_point_sources = 13 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  RagFileChunkingConfig rag_file_chunking_config = 4 [deprecated = true, (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  RagFileTransformationConfig rag_file_transformation_config = 16 [(unresolved_option_40075780) = 999];
+  RagFileParsingConfig rag_file_parsing_config = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  RagFileMetadataConfig rag_file_metadata_config = 17 [deprecated = true, (unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\023v1beta1,ui,internal"];
+  AdditionalConfig additional_config = 10 [(unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\010internal"];
+  int32 max_embedding_requests_per_min = 5 [(unresolved_option_1052) = "\001"];
+  int32 global_max_embedding_requests_per_min = 18 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\020v1beta1,internal"];
+  string task_topic = 9 [(unresolved_option_40075780) = 999, (unresolved_option_143069646) = "\022\010internal"];
+  oneof partial_failure_sink {
+    GcsDestination partial_failure_gcs_sink = 11 [deprecated = true, (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    BigQueryDestination partial_failure_bigquery_sink = 12 [deprecated = true, (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  oneof import_result_sink {
+    GcsDestination import_result_gcs_sink = 14 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+    BigQueryDestination import_result_bigquery_sink = 15 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  }
+  bool rebuild_ann_index = 19 [(unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui"];
+}
+
+message RagManagedDbConfig {
+  option (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1";
+  oneof tier {
+    Enterprise enterprise = 1 [deprecated = true, (unresolved_option_143069646) = "\022\023v1beta1,ui,internal"];
+    Scaled scaled = 4 [deprecated = true];
+    Basic basic = 2 [deprecated = true];
+    Unprovisioned unprovisioned = 3 [deprecated = true];
+  }
+  oneof mode {
+    Serverless serverless = 5;
+    Spanner spanner = 6;
+  }
+
+  message Enterprise {
+    option deprecated = true;
+    option (unresolved_option_143069646) = "\022\023v1beta1,ui,internal";
+  }
+
+  message Scaled {
+  }
+
+  message Basic {
+  }
+
+  message Unprovisioned {
+  }
+
+  message Spanner {
+    oneof tier {
+      Scaled scaled = 1;
+      Basic basic = 2;
+      Unprovisioned unprovisioned = 3;
+    }
+  }
+
+  message Serverless {
+  }
+}
+
+message RagEngineConfig {
+  option (unresolved_option_1053) = "\n)aiplatform.googleapis.com/RagEngineConfig\0227projects/{project}/locations/{location}/ragEngineConfig*\020ragEngineConfigs2\017ragEngineConfig";
+  option (unresolved_option_143069646) = "\022\026v1beta1,ui,internal,v1";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_135496935) = "\022\010RESOURCE", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  RagManagedDbConfig rag_managed_db_config = 2 [(unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message RagDataSchema {
+  option (unresolved_option_1053) = "\n'aiplatform.googleapis.com/RagDataSchema\022`projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragDataSchemas/{rag_data_schema}*\016ragDataSchemas2\rragDataSchema";
+  option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string key = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022imatches($, `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`)?: The DataSchema key does not match the expected pattern."];
+  RagMetadataSchemaDetails schema_details = 3 [(unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+}
+
+message RagMetadataSchemaDetails {
+  option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+  optional DataType type = 1 [(unresolved_option_40075780) = 1900];
+  ListConfig list_config = 2;
+  optional Granularity granularity = 3;
+  optional SearchStrategy search_strategy = 4;
+
+  enum DataType {
+    DATA_TYPE_UNSPECIFIED = 0;
+    INTEGER = 1;
+    FLOAT = 2;
+    STRING = 3;
+    DATETIME = 4;
+    BOOLEAN = 5;
+    LIST = 6;
+  }
+
+  enum Granularity {
+    GRANULARITY_UNSPECIFIED = 0;
+    GRANULARITY_FILE_LEVEL = 1;
+  }
+
+  message ListConfig {
+    RagMetadataSchemaDetails value_schema = 1;
+  }
+
+  message SearchStrategy {
+    optional SearchStrategyType search_strategy_type = 1;
+
+    enum SearchStrategyType {
+      SEARCH_STRATEGY_TYPE_UNSPECIFIED = 0;
+      NO_SEARCH = 1;
+      EXACT_SEARCH = 2;
+    }
+  }
+}
+
+message RagMetadata {
+  option (unresolved_option_1053) = "\n%aiplatform.googleapis.com/RagMetadata\022nprojects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}/ragMetadata/{rag_metadata}*\013ragMetadata2\013ragMetadata";
+  option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+  string name = 1 [(unresolved_option_1052) = "\010", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  UserSpecifiedMetadata user_specified_metadata = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_143069646) = "\022\023v1beta1,internal,ui"];
+  protobuf.Timestamp create_time = 3 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  protobuf.Timestamp update_time = 4 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message UserSpecifiedMetadata {
+  option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+  string key = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  MetadataValue value = 2 [(unresolved_option_40075780) = 1900];
+}
+
+message MetadataValue {
+  option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+  oneof value {
+    int64 int_value = 1 [(unresolved_option_40075780) = 1900];
+    float float_value = 2 [(unresolved_option_40075780) = 1900];
+    string str_value = 3 [(unresolved_option_40075780) = 1900];
+    string datetime_value = 4 [(unresolved_option_40075780) = 1900];
+    bool bool_value = 5 [(unresolved_option_40075780) = 1900];
+    MetadataList list_value = 6 [(unresolved_option_40075780) = 1900];
+  }
+}
+
+message MetadataList {
+  option (unresolved_option_143069646) = "\022\023v1beta1,internal,ui";
+  repeated MetadataValue values = 1 [(unresolved_option_40075780) = 1900];
+}

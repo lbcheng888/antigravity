@@ -1,0 +1,45 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3da1fbe (va 0x103da1fbe, __TEXT.__rodata), descriptor length 1912 B, sha256 caf07259f49876ab
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/prompt_pb/prompt.proto";
+import option "third_party/java/protobuf/java_features.proto";
+import option "third_party/protobuf/cpp_features.proto";
+
+option java_outer_classname = "CommandUsageMetadataOuterClass";
+option features.utf8_validation = NONE;
+option features.(unresolved_option_1000) = "\010\001";
+option features.(unresolved_option_1001) = "\010\001";
+option (unresolved_option_71304954) = "latest";
+
+export message CommandUsageMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  string command = 1 [(unresolved_option_40075780) = 1900];
+  string selection = 2 [(unresolved_option_40075780) = 1900];
+  exa.codeium_common_pb.CommandRequestSource request_source = 3 [(unresolved_option_40075780) = 2800];
+  string prompt_id = 4 [(unresolved_option_40075780) = 2300];
+  string completion_id = 5 [(unresolved_option_40075780) = 2300];
+  string completion = 6 [(unresolved_option_40075780) = 1900];
+  string command_prompt = 7 [(unresolved_option_40075780) = 1900];
+  exa.codeium_common_pb.Model requested_model_id = 8 [(unresolved_option_40075780) = 2800];
+  exa.codeium_common_pb.StopReason stop_reason = 9 [(unresolved_option_40075780) = 2800];
+  exa.codeium_common_pb.Language language = 10 [(unresolved_option_40075780) = 2800];
+  exa.codeium_common_pb.ProviderSource provider_source = 11 [(unresolved_option_40075780) = 2800];
+  exa.prompt_pb.UnifiedPromptComponents prompt_components = 12;
+  exa.codeium_common_pb.SuperCompleteFilterReason super_complete_filter_reason = 13;
+  repeated exa.codeium_common_pb.PromptStageLatency prompt_stage_latencies = 14;
+  exa.codeium_common_pb.SupercompleteTriggerCondition supercomplete_trigger_condition = 15 [(unresolved_option_40075780) = 2800];
+  int32 max_ccis_with_subranges = 16 [deprecated = true, (unresolved_option_40075780) = 2800];
+  string locale = 17 [(unresolved_option_40075780) = 1601];
+  exa.cortex_pb.CortexTrajectoryReference cortex_trajectory_reference = 18;
+  string ide_version = 19 [(unresolved_option_40075780) = 1500];
+  string ide_name = 20 [(unresolved_option_40075780) = 1500];
+  string os = 21 [(unresolved_option_40075780) = 1500];
+}

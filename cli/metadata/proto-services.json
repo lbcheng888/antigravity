@@ -9,7 +9,7 @@
         "google3/third_party/jetski/language_server_pb/language_server_go_proto",
         "google3/third_party/jetski/language_server_pb/language_server_go_proto_connect"
       ],
-      "method_count": 377,
+      "method_count": 378,
       "methods": [
         "AcceptTermsOfService",
         "AcknowledgeCascadeCodeEdit",
@@ -134,6 +134,7 @@
         "GetGoogleChatLinkInfo",
         "GetGrantedScopes",
         "GetHover",
+        "GetHubOAuthAccessToken",
         "GetInputCompletion",
         "GetJJWorktrees",
         "GetKnowledgeItems",

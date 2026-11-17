@@ -1,0 +1,38 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d57ba4 (va 0x103d57ba4, __TEXT.__rodata), descriptor length 929 B, sha256 c4949877267b6cb4
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package codesearch;
+
+import "devtools/search/lang/lang.proto";
+import option "third_party/java/protobuf/java_features.proto";
+import option "third_party/protobuf/cpp_features.proto";
+
+option java_outer_classname = "RecognizeLanguage";
+option features.utf8_validation = NONE;
+option features.(unresolved_option_1000) = "\010\001";
+
+message RecognizeLanguageClassifiers {
+  option features.(unresolved_option_1001) = "(\002";
+  repeated Classifier anchored_classifiers = 1;
+  repeated Classifier content_classifiers = 2;
+  repeated Classifier filename_classifiers = 3;
+  repeated LanguageDescriptor languages = 4;
+}
+
+message Classifier {
+  option features.(unresolved_option_1001) = "(\002";
+  devtools.search.Language language = 1 [features.field_presence = LEGACY_REQUIRED];
+  double score = 2 [features.field_presence = LEGACY_REQUIRED];
+  string regexp = 3 [features.field_presence = LEGACY_REQUIRED, features.(unresolved_option_1000) = "\020\003"];
+}
+
+message LanguageDescriptor {
+  option features.(unresolved_option_1001) = "(\002";
+  devtools.search.Language language = 1;
+  string name = 2 [features.(unresolved_option_1000) = "\020\003"];
+  repeated string aliases = 3 [features.(unresolved_option_1000) = "\020\003"];
+  repeated devtools.search.Language also_search_for = 4 [features.repeated_field_encoding = EXPANDED];
+}

@@ -1,0 +1,87 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3db1416 (va 0x103db1416, __TEXT.__rodata), descriptor length 2111 B, sha256 c7ba723b16342f76
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.project_pb;
+
+option java_outer_classname = "NetboxConfigOuterClass";
+option java_multiple_files = true;
+option go_package = "google3/third_party/jetski/project_pb;project_pb";
+
+message NetboxConfig {
+  bool verbose = 1;
+  repeated NetboxRule allowed = 2;
+  repeated NetboxRule denied = 3;
+  map<string, NetboxAuth> auth = 4;
+  oneof secret_storage {
+    EnvSecretStorage env_storage = 5;
+    InMemorySecretStorage in_memory_storage = 6;
+    KeychainSecretStorage keychain_storage = 7;
+  }
+}
+
+message EnvSecretStorage {
+}
+
+message InMemorySecretStorage {
+}
+
+message KeychainSecretStorage {
+}
+
+message NetboxRule {
+  string host = 1;
+  string method = 2;
+  string path = 3;
+}
+
+message NetboxAuth {
+  repeated NetboxRule rules = 1;
+  oneof auth {
+    HeaderAuthConfig header_auth = 3;
+    OAuth2Config oauth2 = 4;
+    TokenAuthConfig token_auth = 5;
+    BasicAuthConfig basic_auth = 6;
+  }
+  string delivery = 7;
+  map<string, string> env = 8;
+  bool implicit_allow = 9;
+  IdentityProbeConfig identity = 10;
+  repeated string clis = 11;
+  bool optional = 12;
+  map<string, string> basic_auth_users = 13;
+}
+
+message IdentityProbeConfig {
+  string url = 1;
+  string json_path = 2;
+}
+
+message HeaderAuthConfig {
+  string header = 1;
+  string value_prefix = 2;
+}
+
+message TokenAuthConfig {
+}
+
+message BasicAuthConfig {
+}
+
+message OAuth2Config {
+  Provider provider = 1;
+  string client_id = 2;
+  string client_secret = 3;
+  repeated string scopes = 4;
+  string auth_url = 5;
+  string token_url = 6;
+
+  enum Provider {
+    UNSPECIFIED = 0;
+    GOOGLE = 1;
+    GITHUB = 2;
+    CUSTOM = 3;
+  }
+}

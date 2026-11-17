@@ -1,0 +1,38 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d5be65 (va 0x103d5be65, __TEXT.__rodata), descriptor length 969 B, sha256 74d68e0125f88e59
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "RemoteAgentVmEventOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message RemoteAgentVmEvent {
+  EventType event_type = 1 [(unresolved_option_40075780) = 2800];
+  StopReason stop_reason = 2 [(unresolved_option_40075780) = 2800];
+  string kind = 3 [(unresolved_option_40075780) = 2800];
+  string uvm_name = 4 [(unresolved_option_40075780) = 2300];
+  google.protobuf.Timestamp start_time = 5 [(unresolved_option_40075780) = 2100];
+  google.protobuf.Timestamp end_time = 6 [(unresolved_option_40075780) = 2100];
+
+  enum EventType {
+    EVENT_TYPE_UNSPECIFIED = 0;
+    EVENT_TYPE_START = 1;
+    EVENT_TYPE_STOP = 2;
+    EVENT_TYPE_CLAIM = 3;
+  }
+
+  enum StopReason {
+    STOP_REASON_UNSPECIFIED = 0;
+    STOP_REASON_IDLE = 1;
+    STOP_REASON_TTL = 2;
+    STOP_REASON_UNEXPECTED = 3;
+    STOP_REASON_DELETED = 4;
+    STOP_REASON_OTHER = 5;
+  }
+}

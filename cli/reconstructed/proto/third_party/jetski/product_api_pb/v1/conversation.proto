@@ -1,0 +1,47 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d6a113 (va 0x103d6a113, __TEXT.__rodata), descriptor length 1177 B, sha256 6999e3e7762c36bf
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package jetski.product.v1;
+
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+
+enum RunState {
+  RUN_STATE_UNSPECIFIED = 0;
+  RUN_STATE_IDLE = 1;
+  RUN_STATE_RUNNING = 2;
+  RUN_STATE_CANCELLING = 3;
+}
+
+message ConversationMetadata {
+  google.protobuf.Timestamp create_time = 1;
+  string project_id = 2;
+  string environment_id = 3;
+  string parent_conversation_id = 4;
+  string root_conversation_id = 5;
+  repeated string tags = 6;
+}
+
+message ConversationAnnotations {
+  optional string title = 1;
+  repeated string tags = 2;
+  optional bool archived = 3;
+  optional bool pinned = 4;
+  optional bool starred = 5;
+}
+
+message ConversationState {
+  string summary = 1;
+  RunState run_state = 2;
+  google.protobuf.Timestamp update_time = 3;
+}
+
+message Conversation {
+  string id = 1 [(unresolved_option_1052) = "\003"];
+  ConversationMetadata metadata = 2 [(unresolved_option_1052) = "\003"];
+  ConversationAnnotations annotations = 3;
+  ConversationState state = 4 [(unresolved_option_1052) = "\003"];
+}

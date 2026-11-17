@@ -1,0 +1,20 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d1178f (va 0x103d1178f, __TEXT.__rodata), descriptor length 210 B, sha256 d668941fce1f5d66
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.dev_pb;
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message DevRequest {
+  string command = 1;
+}
+
+message DevResponse {
+}
+
+service DevService {
+  rpc Dev(DevRequest) returns (DevResponse);
+}

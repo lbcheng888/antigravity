@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d1794e (va 0x103d1794e, __TEXT.__rodata), descriptor length 238 B, sha256 d650df16c9109904
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.type;
+
+option java_package = "com.google.type.proto1api";
+option java_outer_classname = "DateProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/type/date;date";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GTP";
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.type";
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}

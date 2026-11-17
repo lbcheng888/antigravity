@@ -1,0 +1,45 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d7e64e (va 0x103d7e64e, __TEXT.__rodata), descriptor length 1454 B, sha256 64b967ec79f64594
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/api/inclusion.proto";
+import "google/protobuf/duration.proto";
+import "logs/proto/wireless/performance/mobile/android/trace_record.proto";
+import "logs/proto/wireless/performance/mobile/extension_metric.proto";
+import "logs/proto/wireless/performance/mobile/tracing.proto";
+import "privacy/pattributes/annotations/proto_field.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_multiple_files = true;
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\006legacy";
+option (unresolved_option_5) = 2;
+
+message TraceContext {
+  oneof trace_type {
+    Trace trace = 1 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+    android.TraceRecord tiktok_trace_record = 3 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  }
+  optional TraceMetadata trace_metadata = 2 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+}
+
+message TraceMetadata {
+  repeated Entry entries = 1;
+  optional google.protobuf.Duration time_since_boot = 2;
+  optional bool is_partial_trace = 3;
+
+  message Entry {
+    optional uint64 entity_id = 1 [(unresolved_option_40075780) = 999];
+    optional MetricExtension metric_extension = 2;
+    optional bool is_dominant_span = 3;
+    optional bool is_ui_thread = 4;
+    optional bool is_synthetic_entity = 5;
+    optional uint64 original_parent_id = 6 [(unresolved_option_40075780) = 999];
+  }
+}

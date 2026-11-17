@@ -1,0 +1,45 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d85a7c (va 0x103d85a7c, __TEXT.__rodata), descriptor length 1523 B, sha256 b62e2dd9ac6664f0
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "search/wga/proto/logged_enums.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "WgaProto";
+option java_multiple_files = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message WgaClientInfo {
+  optional string build_version = 1 [(unresolved_option_40075780) = 1500];
+  optional OsVersion os_version = 2 [(unresolved_option_40075780) = 1500];
+  optional wga.NetworkEnvironment network_environment = 3 [(unresolved_option_40075780) = 1300];
+  optional wga.CpuArchitecture cpu_architecture = 4 [(unresolved_option_40075780) = 1402];
+  optional wga.D3DFeatureLevel d3d_feature_level = 5 [(unresolved_option_40075780) = 1402];
+  optional WebView2Version webview2_version = 6;
+  optional bool has_package_identity = 7 [(unresolved_option_40075780) = 12017];
+
+  message OsVersion {
+    optional int32 major_version = 1 [(unresolved_option_40075780) = 1500];
+    optional int32 minor_version = 2 [(unresolved_option_40075780) = 1500];
+    optional int32 build_number = 3 [(unresolved_option_40075780) = 1500];
+    optional int32 product_type = 4 [(unresolved_option_40075780) = 1500];
+    optional wga.WindowsEdition windows_edition = 5 [(unresolved_option_40075780) = 1500];
+  }
+
+  message WebView2Version {
+    optional int32 major_version = 1 [(unresolved_option_40075780) = 1500];
+    optional int32 build_number = 2 [(unresolved_option_40075780) = 1500];
+  }
+}

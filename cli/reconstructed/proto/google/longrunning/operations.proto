@@ -1,0 +1,97 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3db1c55 (va 0x103db1c55, __TEXT.__rodata), descriptor length 2114 B, sha256 5b9294aa9a7c216b
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.longrunning;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.longrunning";
+option java_outer_classname = "OperationsProto";
+option java_multiple_files = true;
+option go_package = "cloud.google.com/go/longrunning/autogen/longrunningpb;longrunningpb";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GLRUN";
+option csharp_namespace = "Google.LongRunning";
+option php_namespace = "Google\\LongRunning";
+option (unresolved_option_28) = 0;
+option (unresolved_option_52) = 1;
+
+message Operation {
+  string name = 1;
+  protobuf.Any metadata = 2;
+  bool done = 3;
+  oneof result {
+    rpc.Status error = 4;
+    protobuf.Any response = 5;
+  }
+}
+
+message GetOperationRequest {
+  string name = 1;
+}
+
+message ListOperationsRequest {
+  string name = 4;
+  string filter = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  bool return_partial_success = 5;
+}
+
+message ListOperationsResponse {
+  repeated Operation operations = 1;
+  string next_page_token = 2;
+  repeated string unreachable = 3 [(unresolved_option_1052) = "\006"];
+}
+
+message CancelOperationRequest {
+  string name = 1;
+}
+
+message DeleteOperationRequest {
+  string name = 1;
+}
+
+message WaitOperationRequest {
+  string name = 1;
+  protobuf.Duration timeout = 2;
+}
+
+message OperationInfo {
+  string response_type = 1;
+  string metadata_type = 2;
+}
+
+extend proto2.MethodOptions {
+  OperationInfo operation_info = 1049;
+}
+
+service Operations {
+  rpc ListOperations(ListOperationsRequest) returns (ListOperationsResponse) {
+    option (unresolved_option_1051) = "name,filter";
+    option (unresolved_option_72295728) = "\022\025/v1/{name=operations}";
+  }
+  rpc GetOperation(GetOperationRequest) returns (Operation) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "\022\030/v1/{name=operations/**}";
+  }
+  rpc DeleteOperation(DeleteOperationRequest) returns (protobuf.Empty) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "*\030/v1/{name=operations/**}";
+  }
+  rpc CancelOperation(CancelOperationRequest) returns (protobuf.Empty) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = ":\001*\"\037/v1/{name=operations/**}:cancel";
+  }
+  rpc WaitOperation(WaitOperationRequest) returns (Operation);
+}

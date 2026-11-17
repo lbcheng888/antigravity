@@ -1,0 +1,5565 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x43f1aff (va 0x1043f1aff, __TEXT.__rodata), descriptor length 179102 B, sha256 6b68fc5f045e7178
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.language_server_pb;
+
+import "google/internal/cloud/code/v1internal/jetski_service.proto";
+import "google/internal/cloud/code/v1internal/model_configs.proto";
+import "google/internal/cloud/code/v1internal/onboarding.proto";
+import "google/internal/cloud/code/v1internal/quota_summary.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "third_party/gemini_coder/proto/trajectory.proto";
+import "third_party/jetski/cascade_plugins_pb/cascade_plugins.proto";
+import "third_party/jetski/chat_client_server_pb/chat_client_server.proto";
+import "third_party/jetski/chat_pb/chat.proto";
+import "third_party/jetski/code_edit/code_edit_pb/code_edit.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/config_pb/config.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/cortex_pb/custom_extensions.proto";
+import "third_party/jetski/diff_action_pb/diff_action.proto";
+import "third_party/jetski/host_bridge_pb/host_bridge.proto";
+import "third_party/jetski/jetbox_state_pb/jetbox_state.proto";
+import "third_party/jetski/jetski_cortex_pb/jetski_cortex.proto";
+import "third_party/jetski/plugin_context_pb/plugin_context.proto";
+import "third_party/jetski/project_pb/project.proto";
+import "third_party/jetski/reactive_component_pb/reactive_component.proto";
+import "third_party/jetski/remote_agent_proxy_pb/remote_agent_proxy.proto";
+import "third_party/jetski/vcs_pb/vcs.proto";
+
+option java_package = "com.google.jetski.language_server";
+option java_multiple_files = true;
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+option (unresolved_option_52) = 1;
+
+enum IdeAction {
+  IDE_ACTION_UNSPECIFIED = 0;
+  IDE_ACTION_SAVE = 1;
+  IDE_ACTION_SELECTION_CHANGED = 2;
+  IDE_ACTION_VISIBLE_RANGES_CHANGED = 3;
+  IDE_ACTION_ACTIVE_EDITOR_CHANGED = 4;
+  IDE_ACTION_STARTUP = 5;
+}
+
+enum CodeiumState {
+  CODEIUM_STATE_UNSPECIFIED = 0;
+  CODEIUM_STATE_INACTIVE = 1;
+  CODEIUM_STATE_PROCESSING = 2;
+  CODEIUM_STATE_SUCCESS = 3;
+  CODEIUM_STATE_WARNING = 4;
+  CODEIUM_STATE_ERROR = 5;
+}
+
+enum CompletionPartType {
+  COMPLETION_PART_TYPE_UNSPECIFIED = 0;
+  COMPLETION_PART_TYPE_INLINE = 1;
+  COMPLETION_PART_TYPE_BLOCK = 2;
+  COMPLETION_PART_TYPE_INLINE_MASK = 3;
+}
+
+enum VcsType {
+  VCS_TYPE_UNSPECIFIED = 0;
+  VCS_TYPE_PIPER = 1;
+  VCS_TYPE_FIG = 2;
+  VCS_TYPE_JJ = 3;
+  VCS_TYPE_GIT = 4;
+}
+
+enum UnifiedDiffChangeType {
+  UNIFIED_DIFF_CHANGE_TYPE_UNSPECIFIED = 0;
+  UNIFIED_DIFF_CHANGE_TYPE_INSERT = 1;
+  UNIFIED_DIFF_CHANGE_TYPE_DELETE = 2;
+  UNIFIED_DIFF_CHANGE_TYPE_UNCHANGED = 3;
+}
+
+enum EditorThemeType {
+  EDITOR_THEME_TYPE_UNSPECIFIED = 0;
+  EDITOR_THEME_TYPE_LIGHT = 1;
+  EDITOR_THEME_TYPE_DARK = 2;
+  EDITOR_THEME_TYPE_HIGH_CONTRAST = 3;
+  EDITOR_THEME_TYPE_HIGH_CONTRAST_LIGHT = 4;
+}
+
+enum ClientTrajectoryVerbosity {
+  CLIENT_TRAJECTORY_VERBOSITY_UNSPECIFIED = 0;
+  CLIENT_TRAJECTORY_VERBOSITY_DEBUG = 1 [deprecated = true];
+  CLIENT_TRAJECTORY_VERBOSITY_PROD_UI = 2;
+  CLIENT_TRAJECTORY_VERBOSITY_FULL = 3;
+}
+
+enum AgentMessageOrigin {
+  AGENT_MESSAGE_ORIGIN_UNSPECIFIED = 0;
+  AGENT_MESSAGE_ORIGIN_IDE = 1;
+  AGENT_MESSAGE_ORIGIN_SDK_EXECUTABLE = 2;
+  AGENT_MESSAGE_ORIGIN_SUBAGENT = 3;
+}
+
+enum MergeStrategy {
+  MERGE_STRATEGY_UNSPECIFIED = 0;
+  MERGE_STRATEGY_OVERWRITE = 1;
+  MERGE_STRATEGY_SAFE_MERGE = 2;
+  MERGE_STRATEGY_MERGE_WITH_CONFLICTS = 3;
+  MERGE_STRATEGY_DISCARD = 4;
+}
+
+enum EndBattleModeErrorType {
+  END_BATTLE_MODE_ERROR_TYPE_UNSPECIFIED = 0;
+  END_BATTLE_MODE_ERROR_TYPE_TRAJECTORY_RUNNING = 1;
+  END_BATTLE_MODE_ERROR_TYPE_MERGE_BACK_FAILED = 2;
+  END_BATTLE_MODE_ERROR_TYPE_OTHER = 3;
+  END_BATTLE_MODE_ERROR_TYPE_SUBAGENTS_RUNNING = 4;
+  END_BATTLE_MODE_ERROR_TYPE_BACKGROUND_TASKS_RUNNING = 5;
+  END_BATTLE_MODE_ERROR_TYPE_ALREADY_ELIMINATED = 6;
+  END_BATTLE_MODE_ERROR_TYPE_ALREADY_ENDED = 7;
+}
+
+enum CodeRevertActionType {
+  CODE_REVERT_ACTION_TYPE_UNSPECIFIED = 0;
+  CODE_REVERT_ACTION_TYPE_MODIFY = 1;
+  CODE_REVERT_ACTION_TYPE_CREATE = 2;
+  CODE_REVERT_ACTION_TYPE_DELETE = 3;
+}
+
+enum CustomizationFileType {
+  CUSTOMIZATION_FILE_TYPE_UNSPECIFIED = 0;
+  CUSTOMIZATION_FILE_TYPE_RULES = 1;
+  CUSTOMIZATION_FILE_TYPE_WORKFLOWS = 2;
+  CUSTOMIZATION_FILE_TYPE_GLOBAL_WORKFLOWS = 3;
+  CUSTOMIZATION_FILE_TYPE_SKILLS = 4;
+  CUSTOMIZATION_FILE_TYPE_GLOBAL_SKILLS = 5;
+  CUSTOMIZATION_FILE_TYPE_AGENT = 6;
+  CUSTOMIZATION_FILE_TYPE_GLOBAL_AGENT = 7;
+  CUSTOMIZATION_FILE_TYPE_PLUGIN = 8;
+  CUSTOMIZATION_FILE_TYPE_GLOBAL_PLUGIN = 9;
+  CUSTOMIZATION_FILE_TYPE_HOOKS = 10;
+  CUSTOMIZATION_FILE_TYPE_MCP = 11;
+  CUSTOMIZATION_FILE_TYPE_FLOWS = 12;
+}
+
+enum FileType {
+  FILE_TYPE_UNSPECIFIED = 0;
+  FILE_TYPE_FILE = 1;
+  FILE_TYPE_DIRECTORY = 2;
+  FILE_TYPE_SYMLINK = 3;
+}
+
+enum CustomizationPathsOperation {
+  CUSTOMIZATION_PATHS_OPERATION_UNSPECIFIED = 0;
+  CUSTOMIZATION_PATHS_OPERATION_ADD = 1;
+  CUSTOMIZATION_PATHS_OPERATION_REMOVE = 2;
+  CUSTOMIZATION_PATHS_OPERATION_SET = 3;
+}
+
+enum PluginAuthSignInMode {
+  PLUGIN_AUTH_SIGN_IN_MODE_UNSPECIFIED = 0;
+  PLUGIN_AUTH_SIGN_IN_MODE_REDIRECT = 1;
+  PLUGIN_AUTH_SIGN_IN_MODE_PASTE = 2;
+}
+
+enum MarketplaceSort {
+  MARKETPLACE_SORT_UNSPECIFIED = 0;
+  MARKETPLACE_SORT_MOST_INSTALLED = 1;
+  MARKETPLACE_SORT_NAME = 2;
+}
+
+enum CaseSensitivity {
+  CASE_SENSITIVITY_UNSPECIFIED = 0;
+  CASE_SENSITIVITY_AUTO = 1;
+  CASE_SENSITIVITY_YES = 2;
+  CASE_SENSITIVITY_NO = 3;
+}
+
+enum MatchSource {
+  MATCH_SOURCE_UNSPECIFIED = 0;
+  MATCH_SOURCE_TITLE = 1;
+  MATCH_SOURCE_USER = 2;
+  MATCH_SOURCE_AGENT = 3;
+  MATCH_SOURCE_WORKSPACE = 4;
+}
+
+enum ForkTarget {
+  FORK_TARGET_UNSPECIFIED = 0;
+  FORK_TARGET_CURRENT_WORKSPACE = 1;
+  FORK_TARGET_NEW_WORKTREE = 2;
+  FORK_TARGET_NEW_WORKSPACE = 3;
+}
+
+enum SidecarAction {
+  SIDECAR_ACTION_UNSPECIFIED = 0;
+  SIDECAR_ACTION_DISABLE = 1;
+  SIDECAR_ACTION_ENABLE = 2;
+  SIDECAR_ACTION_DELETE = 3;
+  SIDECAR_ACTION_RESTART = 4;
+  SIDECAR_ACTION_CREATE = 5;
+  SIDECAR_ACTION_SET_PROJECT = 6 [deprecated = true];
+  SIDECAR_ACTION_UPDATE = 7;
+  SIDECAR_ACTION_SET_ALL_PROJECTS = 8 [deprecated = true];
+  SIDECAR_ACTION_UPDATE_ARGS = 9;
+  SIDECAR_ACTION_RUN_NOW = 10;
+}
+
+enum CompletionFeedback {
+  COMPLETION_FEEDBACK_UNSPECIFIED = 0;
+  COMPLETION_FEEDBACK_ACCEPTED = 1;
+  COMPLETION_FEEDBACK_REJECTED = 2;
+  COMPLETION_FEEDBACK_HIDDEN = 3;
+}
+
+enum LoginSessionMode {
+  LOGIN_SESSION_MODE_UNSPECIFIED = 0;
+  LOGIN_SESSION_MODE_LOOPBACK = 1;
+  LOGIN_SESSION_MODE_AUTH_CODE = 2;
+}
+
+enum WorkspaceResourceType {
+  WORKSPACE_RESOURCE_TYPE_UNSPECIFIED = 0;
+  WORKSPACE_RESOURCE_TYPE_DOCS = 1;
+  WORKSPACE_RESOURCE_TYPE_SHEETS = 2;
+  WORKSPACE_RESOURCE_TYPE_SLIDES = 3;
+  WORKSPACE_RESOURCE_TYPE_DRIVE = 4;
+}
+
+enum ChangelistReviewState {
+  CHANGELIST_REVIEW_STATE_UNSPECIFIED = 0;
+  CHANGELIST_REVIEW_STATE_PENDING = 1;
+  CHANGELIST_REVIEW_STATE_IN_REVIEW = 2;
+  CHANGELIST_REVIEW_STATE_LGTM = 3;
+  CHANGELIST_REVIEW_STATE_SUBMITTED = 4;
+}
+
+enum ChangelistCheckState {
+  CHANGELIST_CHECK_STATE_UNSPECIFIED = 0;
+  CHANGELIST_CHECK_STATE_RUNNING = 1;
+  CHANGELIST_CHECK_STATE_BLOCKING = 2;
+  CHANGELIST_CHECK_STATE_ACTIONABLE = 3;
+}
+
+enum GerritChangeReviewState {
+  GERRIT_CHANGE_REVIEW_STATE_UNSPECIFIED = 0;
+  GERRIT_CHANGE_REVIEW_STATE_PENDING = 1;
+  GERRIT_CHANGE_REVIEW_STATE_IN_REVIEW = 2;
+  GERRIT_CHANGE_REVIEW_STATE_APPROVED = 3;
+  GERRIT_CHANGE_REVIEW_STATE_MERGED = 4;
+  GERRIT_CHANGE_REVIEW_STATE_ABANDONED = 5;
+}
+
+enum GoogleChatSpaceType {
+  GOOGLE_CHAT_SPACE_TYPE_UNSPECIFIED = 0;
+  GOOGLE_CHAT_SPACE_TYPE_SPACE = 1;
+  GOOGLE_CHAT_SPACE_TYPE_GROUP_CHAT = 2;
+  GOOGLE_CHAT_SPACE_TYPE_DIRECT_MESSAGE = 3;
+}
+
+enum GoogleChatLinkKind {
+  GOOGLE_CHAT_LINK_KIND_UNSPECIFIED = 0;
+  GOOGLE_CHAT_LINK_KIND_SPACE = 1;
+  GOOGLE_CHAT_LINK_KIND_THREAD = 2;
+  GOOGLE_CHAT_LINK_KIND_MESSAGE = 3;
+}
+
+enum GitHubPullRequestState {
+  GITHUB_PULL_REQUEST_STATE_UNSPECIFIED = 0;
+  GITHUB_PULL_REQUEST_STATE_OPEN = 1;
+  GITHUB_PULL_REQUEST_STATE_DRAFT = 2;
+  GITHUB_PULL_REQUEST_STATE_MERGED = 3;
+  GITHUB_PULL_REQUEST_STATE_CLOSED = 4;
+}
+
+enum GitHubPullRequestErrorCode {
+  GITHUB_PULL_REQUEST_ERROR_CODE_UNSPECIFIED = 0;
+  GITHUB_PULL_REQUEST_ERROR_CODE_NOT_SIGNED_IN = 1;
+  GITHUB_PULL_REQUEST_ERROR_CODE_CORP_AUTH_REQUIRED = 2;
+  GITHUB_PULL_REQUEST_ERROR_CODE_NOT_FOUND = 3;
+  GITHUB_PULL_REQUEST_ERROR_CODE_RATE_LIMITED = 4;
+  GITHUB_PULL_REQUEST_ERROR_CODE_HOST_NOT_ALLOWED = 5;
+  GITHUB_PULL_REQUEST_ERROR_CODE_UNSUPPORTED = 6;
+  GITHUB_PULL_REQUEST_ERROR_CODE_FAILED = 7;
+}
+
+enum GitHubAuthRemedy {
+  GITHUB_AUTH_REMEDY_UNSPECIFIED = 0;
+  GITHUB_AUTH_REMEDY_RUN_GH_AUTH_LOGIN = 1;
+  GITHUB_AUTH_REMEDY_FIX_GH_TOKEN = 2;
+  GITHUB_AUTH_REMEDY_CONNECT_GITHUB_PLUGIN = 3;
+  GITHUB_AUTH_REMEDY_GRANT_APP_REPO_ACCESS = 4;
+}
+
+enum SetupChatState {
+  SETUP_CHAT_STATE_UNSPECIFIED = 0;
+  SETUP_CHAT_STATE_CREATING_CLOUD_PROJECT = 1;
+  SETUP_CHAT_STATE_CONFIGURING_CHAT_BOT = 2;
+  SETUP_CHAT_STATE_INSTALLING_TO_CHAT = 3;
+  SETUP_CHAT_STATE_CREATING_DM_SPACE = 4;
+  SETUP_CHAT_STATE_CONFIGURING_CHAT_SECTION = 5;
+  SETUP_CHAT_STATE_MOVING_TO_AGENTS_SECTION = 6;
+  SETUP_CHAT_STATE_CREATING_SIDECAR = 7;
+  SETUP_CHAT_STATE_COMPLETED = 8;
+  SETUP_CHAT_STATE_AUTH_REQUIRED = 9;
+  SETUP_CHAT_STATE_ERROR = 10;
+}
+
+enum CheckoutMode {
+  CHECKOUT_MODE_UNSPECIFIED = 0;
+  CHECKOUT_MODE_EDIT_IN_PLACE = 1;
+}
+
+enum CogSquashMode {
+  COG_SQUASH_MODE_UNSPECIFIED = 0;
+  COG_SQUASH_MODE_PRUNE = 1;
+  COG_SQUASH_MODE_PRUNE_AND_ABANDON_CHANGE = 2;
+}
+
+message GetCapabilitiesRequest {
+}
+
+message GetCapabilitiesResponse {
+  bool supports_hook_result_proto_bytes = 1;
+}
+
+message GetServerConfigurationRequest {
+}
+
+message GetServerConfigurationResponse {
+  LanguageServerConfig config = 1;
+}
+
+message LanguageServerConfig {
+  SidecarConfig sidecars = 1;
+  bool dev_mode = 2;
+  bool is_google_environment = 3;
+  bool standalone = 4;
+  bool is_jetski = 5;
+  string workspace_id = 6;
+  string app_data_dir = 7;
+  bool running_in_xbox = 8;
+  bool running_in_actor = 9;
+  bool use_local_chrome = 10;
+  bool antigravity_hub = 11;
+  int32 max_num_tracked_workspaces = 12;
+  string subclient_type = 13;
+  string config_dir = 14;
+  optional bool sandbox_available = 15;
+}
+
+message SidecarConfig {
+  bool enabled = 1;
+  bool allow_all = 2;
+  bool bypass_user_config = 3;
+  bool bypass_project_check = 4 [deprecated = true];
+  bool inherit_global = 5 [deprecated = true];
+  bool disable_sandbox = 6;
+}
+
+message GetLoadCodeAssistRequest {
+  bool force_refresh = 1;
+}
+
+message GetLoadCodeAssistResponse {
+  google.internal.cloud.code.v1internal.LoadCodeAssistResponse response = 1;
+}
+
+message GetAvailableModelsRequest {
+  bool force_refresh = 1;
+}
+
+message GetAvailableModelsResponse {
+  google.internal.cloud.code.v1internal.FetchAvailableModelsResponse response = 1;
+}
+
+message RetrieveUserQuotaSummaryRequest {
+  google.internal.cloud.code.v1internal.RetrieveUserQuotaSummaryRequest request = 1;
+  bool force_refresh = 2;
+}
+
+message RetrieveUserQuotaSummaryResponse {
+  google.internal.cloud.code.v1internal.RetrieveUserQuotaSummaryResponse response = 1;
+}
+
+message HandleStreamingCommandRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.Document document = 2;
+  codeium_common_pb.EditorOptions editor_options = 3;
+  codeium_common_pb.Model requested_model_id = 4;
+  uint64 selection_start_line = 6;
+  uint64 selection_end_line = 7;
+  string command_text = 8;
+  codeium_common_pb.CommandRequestSource request_source = 9;
+  codeium_common_pb.ContextScope mentioned_scope = 10;
+  codeium_common_pb.ActionPointer action_pointer = 11;
+  string parent_completion_id = 12;
+  diff_action_pb.DiffType diff_type = 13;
+  repeated codeium_common_pb.CodeDiagnostic diagnostics = 14;
+  codeium_common_pb.SupercompleteTriggerCondition supercomplete_trigger_condition = 15;
+  codeium_common_pb.TerminalCommandData terminal_command_data = 16;
+  codeium_common_pb.ExperimentConfig experiment_config = 5 [deprecated = true];
+  bool ignore_supercomplete_debounce = 17;
+  string clipboard_entry = 18;
+  repeated codeium_common_pb.IntellisenseSuggestion intellisense_suggestions = 19;
+}
+
+message HandleStreamingCommandResponse {
+  string completion_id = 1;
+  string prompt_id = 2;
+  diff_action_pb.UnifiedDiff diff = 3;
+  LatencyInfo latency_info = 4;
+  uint64 selection_start_line = 5;
+  uint64 selection_end_line = 6;
+  double score = 7;
+  diff_action_pb.CharacterDiff character_diff = 8;
+  diff_action_pb.ComboDiff combo_diff = 9;
+  codeium_common_pb.SuperCompleteFilterReason filter_reason = 10;
+  optional codeium_common_pb.DocumentPosition jump_position = 14;
+  RequestInfo request_info = 12;
+  codeium_common_pb.StopReason stop_reason = 13;
+  gemini_coder.Trajectory trajectory = 15;
+  string raw_text = 16;
+  string trace_id = 17;
+  optional uint64 closest_changed_line = 11 [deprecated = true];
+}
+
+message MultilineConfig {
+  float threshold = 1;
+}
+
+message GetCompletionsRequest {
+  reserved 4, 11;
+  reserved "api_server_params", "super_complete";
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.Document document = 2;
+  codeium_common_pb.EditorOptions editor_options = 3;
+  repeated codeium_common_pb.Document other_documents = 5;
+  codeium_common_pb.MockResponseData mock_response_data = 6;
+  bool disable_cache = 8;
+  repeated codeium_common_pb.CodeContextItem oracle_items = 9;
+  string model_name = 10;
+  codeium_common_pb.Model requested_model_id = 12;
+  MultilineConfig multiline_config = 13;
+  codeium_common_pb.ExperimentConfig experiment_config = 7 [deprecated = true];
+}
+
+message GetCompletionsResponse {
+  State state = 1;
+  repeated CompletionItem completion_items = 2;
+  repeated CompletionItem filtered_completion_items = 7;
+  RequestInfo request_info = 3;
+  LatencyInfo latency_info = 4;
+  string model_tag = 5;
+  string prompt_id = 6;
+  repeated CodeRange code_ranges = 8;
+}
+
+message ProvideCompletionFeedbackRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  bool is_accepted = 2;
+  int64 feedback_delay_ms = 3;
+  string completion_id = 4;
+  string prompt_id = 5;
+  LatencyInfo latency_info = 6;
+  codeium_common_pb.ProviderSource source = 7;
+  codeium_common_pb.Document document = 8;
+  uint64 view_columns_open = 10;
+  bool is_intentional_reject = 11;
+  bool is_partial = 12;
+  string midstream_autocomplete_text = 13;
+  bool has_active_vim_extension = 14;
+  string trace_id = 15;
+  int64 accepted_lines = 16;
+  int64 removed_lines = 17;
+  codeium_common_pb.ExperimentConfig experiment_config = 9 [deprecated = true];
+}
+
+message ProvideCompletionFeedbackResponse {
+}
+
+message HeartbeatRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated codeium_common_pb.ErrorTrace previous_error_traces = 2;
+  codeium_common_pb.ExperimentConfig experiment_config = 3 [deprecated = true];
+}
+
+message HeartbeatResponse {
+  google.protobuf.Timestamp last_extension_heartbeat = 1;
+}
+
+message GetRemoteControlInfoRequest {
+}
+
+message GetRemoteControlInfoResponse {
+  bool enabled = 1;
+  string instance_id = 2;
+  string companion_origin = 3;
+}
+
+message ReconnectExtensionServerRequest {
+  int32 extension_server_port = 1;
+  string extension_server_csrf_token = 2;
+}
+
+message ReconnectExtensionServerResponse {
+}
+
+message SetCloudCodeURLRequest {
+  string url = 1;
+}
+
+message SetCloudCodeURLResponse {
+}
+
+message GetStatusRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetStatusResponse {
+  codeium_common_pb.Status status = 1;
+}
+
+message GetCascadeModelConfigsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  optional bool filter = 2;
+}
+
+message GetCascadeModelConfigsResponse {
+  repeated codeium_common_pb.ClientModelConfig client_model_configs = 1;
+  repeated codeium_common_pb.ClientModelSort client_model_sorts = 2;
+  optional codeium_common_pb.DefaultOverrideModelConfig default_override_model_config = 3;
+}
+
+message TeamOrganizationalControls {
+  string team_id = 1;
+  repeated string cascade_model_labels = 2;
+  repeated string command_model_labels = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  repeated string extension_model_labels = 6;
+}
+
+message GetTeamOrganizationalControlsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetTeamOrganizationalControlsResponse {
+  codeium_common_pb.TeamOrganizationalControls controls = 1;
+}
+
+message GetMcpServerTemplatesRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetMcpServerTemplatesResponse {
+  repeated codeium_common_pb.McpServerTemplate templates = 1;
+}
+
+message GetCommandModelConfigsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetCommandModelConfigsResponse {
+  repeated codeium_common_pb.ClientModelConfig client_model_configs = 1;
+}
+
+message RecordEventRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.Event event = 2;
+}
+
+message RecordEventResponse {
+}
+
+message CancelRequestRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  uint64 request_id = 2;
+}
+
+message CancelRequestResponse {
+}
+
+message EditConfigurationRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.CompletionConfiguration completion_configuration = 2;
+}
+
+message EditConfigurationResponse {
+  codeium_common_pb.CompletionConfiguration completion_configuration = 1;
+}
+
+message GetTranscriptionRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  bytes audio_data = 2;
+}
+
+message GetTranscriptionResponse {
+  string transcribed_text = 1;
+}
+
+message RegisterGdmUserRequest {
+}
+
+message RegisterGdmUserResponse {
+  bool created = 1;
+  string name = 2;
+  string email = 3;
+  string api_key = 4;
+}
+
+message MigrateApiKeyRequest {
+  string api_key = 1 [json_name = "api_key"];
+}
+
+message MigrateApiKeyResponse {
+  string session_token = 1 [json_name = "session_token"];
+}
+
+message WellSupportedLanguagesRequest {
+}
+
+message WellSupportedLanguagesResponse {
+  repeated codeium_common_pb.Language languages = 1;
+}
+
+message RecordSearchDocOpenRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string result_id = 2;
+}
+
+message RecordSearchDocOpenResponse {
+}
+
+message RecordSearchResultsViewRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string cluster_search_id = 2;
+  string exact_search_id = 3;
+  repeated string search_result_ids = 4;
+}
+
+message RecordSearchResultsViewResponse {
+}
+
+message ContextInfoRequest {
+}
+
+message ContextInfoResponse {
+  repeated string active_workspaces = 1;
+  repeated string ignored_workspaces = 2;
+}
+
+message RefreshContextForIdeActionRequest {
+  codeium_common_pb.Metadata metadata = 8 [deprecated = true];
+  codeium_common_pb.Document active_document = 1;
+  repeated string open_document_filepaths_migrate_me_to_uri = 2 [deprecated = true];
+  repeated string open_document_uris = 6;
+  repeated codeium_common_pb.Document other_documents = 5;
+  repeated string workspace_paths_migrate_me_to_uri = 3 [deprecated = true];
+  repeated string workspace_uris = 7;
+  bool blocking = 4;
+  codeium_common_pb.ExperimentConfig experiment_config = 9 [deprecated = true];
+  IdeAction ide_action = 10;
+}
+
+message RefreshContextForIdeActionResponse {
+}
+
+message RecordChatFeedbackRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string message_id = 2;
+  chat_pb.ChatFeedbackType feedback = 3;
+  string reason = 4;
+  google.protobuf.Timestamp timestamp = 5;
+}
+
+message RecordChatFeedbackResponse {
+}
+
+message RecordChatPanelSessionRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  google.protobuf.Timestamp start_timestamp = 2;
+  google.protobuf.Timestamp end_timestamp = 3;
+}
+
+message RecordChatPanelSessionResponse {
+}
+
+message GetUserAnalyticsSummaryRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string time_zone = 2;
+  google.protobuf.Timestamp start_timestamp = 3;
+  google.protobuf.Timestamp end_timestamp = 4;
+}
+
+message GetUserAnalyticsSummaryResponse {
+  codeium_common_pb.CompletionStatistics completion_statistics = 1;
+  repeated codeium_common_pb.CompletionByDateEntry completions_by_day = 2;
+  repeated codeium_common_pb.CompletionByLanguageEntry completions_by_language = 3;
+  repeated codeium_common_pb.ChatStatsByModelEntry chats_by_model = 4;
+}
+
+message GetUserStatusRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetUserStatusResponse {
+  codeium_common_pb.UserStatus user_status = 1;
+  codeium_common_pb.PlanInfo plan_info = 2;
+}
+
+message GetProfileDataRequest {
+  string api_key = 1;
+}
+
+message GetProfileDataResponse {
+  string profile_picture_url = 1;
+}
+
+message GetChangelogRequest {
+  string version = 1;
+}
+
+message GetChangelogResponse {
+  string path = 1;
+}
+
+message ExitRequest {
+}
+
+message ExitResponse {
+}
+
+message RestartRequest {
+}
+
+message RestartResponse {
+}
+
+message State {
+  CodeiumState state = 1;
+  string message = 2;
+}
+
+message RequestInfo {
+  reserved 2, 3;
+  reserved "prompt", "line_type";
+  string prompt_id = 1;
+  codeium_common_pb.CompletionsRequest completions_request = 4;
+  string typing_as_suggested_prompt_suffix = 5;
+  codeium_common_pb.CompletionType completion_type = 6;
+}
+
+message LatencyInfo {
+  uint64 client_latency_ms = 1;
+  uint64 prompt_latency_ms = 2;
+  repeated codeium_common_pb.PromptStageLatency prompt_stage_latencies = 3;
+  uint64 debounce_latency_ms = 4;
+  uint64 rpc_latency_ms = 5;
+  uint64 network_latency_ms = 6;
+}
+
+message Suffix {
+  string text = 1;
+  int64 delta_cursor_offset = 2;
+}
+
+message CompletionPart {
+  string text = 1;
+  uint64 offset = 2;
+  CompletionPartType type = 3;
+  string prefix = 4;
+  uint64 line = 5;
+}
+
+message CompletionItem {
+  reserved 4, 6, 7;
+  reserved "latency_ms", "network_latency_ms", "client_latency_ms";
+  codeium_common_pb.Completion completion = 1;
+  Suffix suffix = 5;
+  codeium_common_pb.Range range = 2;
+  codeium_common_pb.CompletionSource source = 3;
+  repeated CompletionPart completion_parts = 8;
+}
+
+message AddTrackedWorkspaceRequest {
+  option deprecated = true;
+  string workspace = 1;
+  bool do_not_watch_files = 2;
+  bool is_passive_workspace = 3 [deprecated = true];
+}
+
+message AddTrackedWorkspaceResponse {
+  option deprecated = true;
+}
+
+message RemoveTrackedWorkspaceRequest {
+  option deprecated = true;
+  string workspace = 1;
+  bool is_passive_workspace = 2 [deprecated = true];
+}
+
+message RemoveTrackedWorkspaceResponse {
+  option deprecated = true;
+}
+
+message GetWorkspaceEditStateRequest {
+}
+
+message WorkspaceEditState {
+  string repo_root = 1;
+  uint64 num_additions = 2;
+  uint64 num_deletions = 3;
+  repeated cortex_pb.ActionResultEdit edits = 4;
+}
+
+message GetWorkspaceEditStateResponse {
+  repeated WorkspaceEditState workspace_edits = 1;
+}
+
+message BranchInfo {
+  string name = 1;
+  bool is_current_branch = 2;
+  string worktree_path = 3;
+}
+
+message RepoInfo {
+  string name = 1;
+  string repo_path = 2 [deprecated = true];
+  repeated BranchInfo branches = 3;
+  codeium_common_pb.ScmType scm_type = 4;
+  string repo_uri = 5;
+  bool abfs_workspace = 6;
+  string github_repo = 7;
+  string head_commit = 8;
+}
+
+message GetRepoInfosRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated string repo_uris = 2;
+}
+
+message GetRepoInfosResponse {
+  repeated RepoInfo repos = 1;
+}
+
+message GetWorkspaceInfosRequest {
+  option deprecated = true;
+}
+
+message WorkspaceInfo {
+  string workspace_uri = 1;
+  string git_root_uri = 2;
+}
+
+message GetWorkspaceInfosResponse {
+  option deprecated = true;
+  string home_dir_path = 1;
+  repeated WorkspaceInfo workspace_infos = 2;
+  string home_dir_uri = 3;
+  string gemini_dir_uri = 4;
+}
+
+message GetLocalUserInfoRequest {
+}
+
+message GetLocalUserInfoResponse {
+  string username = 1;
+  string home_dir_uri = 2;
+  string machine_type = 3;
+}
+
+message SetWorkingDirectoriesRequest {
+  repeated string directory_uris = 1;
+}
+
+message SetWorkingDirectoriesResponse {
+}
+
+message GetWorkingDirectoriesRequest {
+}
+
+message GetWorkingDirectoriesResponse {
+  repeated codeium_common_pb.WorkingDirectoryInfo directories = 1;
+}
+
+message GetJJWorktreesRequest {
+  string repo_uri = 1;
+}
+
+message GetJJWorktreesResponse {
+  repeated vcs_pb.JJWorktree worktrees = 1;
+}
+
+message CreateWorktreeRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string repo_path = 2 [deprecated = true];
+  string repo_uri = 9;
+  string base_branch_name = 3;
+  codeium_common_pb.PlanInfo plan_info = 4;
+  repeated codeium_common_pb.TextOrScopeItem items = 5;
+  repeated codeium_common_pb.ImageData images = 6 [deprecated = true];
+  repeated codeium_common_pb.Media media = 7;
+  optional string worktree_name = 8;
+}
+
+message CreateWorktreeResponse {
+  string worktree_dir_uri = 1;
+  string worktree_name = 2;
+}
+
+message DeleteWorktreeRequest {
+  string worktree_dir_uri = 1;
+  string repo_uri = 2;
+}
+
+message DeleteWorktreeResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message CheckoutWorktreeRequest {
+  string worktree_dir_uri = 1;
+  string target_workspace_uri = 2;
+  bool delete_worktree_after_checkout = 3;
+  MergeStrategy merge_strategy = 4;
+}
+
+message CheckoutWorktreeResponse {
+  bool success = 1;
+  string error_message = 2;
+  CheckoutSummary summary = 3;
+  string diff_patch = 4;
+}
+
+message CheckoutSummary {
+  int32 files_changed = 1;
+  int32 additions = 2;
+  int32 deletions = 3;
+}
+
+message GetWorktreeDiffRequest {
+  string worktree_dir_uri = 1;
+  string target_workspace_uri = 2;
+}
+
+message GetWorktreeDiffResponse {
+  string diff_patch = 1;
+  CheckoutSummary summary = 2;
+}
+
+message GetBattleWorktreeDiffRequest {
+  string arm_workspace_uri = 1;
+  string parent_workspace_uri = 2;
+}
+
+message GetBattleWorktreeDiffResponse {
+  repeated vcs_pb.VcsFileChange file_changes = 1;
+}
+
+message CreateCitcWorkspaceRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated codeium_common_pb.TextOrScopeItem items = 2;
+  repeated codeium_common_pb.Media media = 3;
+  bool clone_current_workspace = 4;
+  string source_workspace_uri = 5;
+  vcs_pb.VcsType vcs_type = 6;
+  optional string workspace_name = 7;
+}
+
+message CreateCitcWorkspaceResponse {
+  string workspace_dir_uri = 1;
+  string workspace_name = 2;
+}
+
+message GenerateCommitMessageRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.PlanInfo plan_info = 2;
+  string repo_root = 3;
+}
+
+message CommitMessageData {
+  string repo_root = 1;
+  string commit_message_summary = 2;
+  string commit_message_description = 3;
+  repeated string changed_files_migrate_me_to_uri = 4 [deprecated = true];
+  repeated string changed_file_uris = 5;
+}
+
+message GenerateCommitMessageResponse {
+  reserved 1;
+  reserved "commit_messages";
+  CommitMessageData commit_message = 2;
+}
+
+message RecordCommitMessageSaveRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string repo_root = 2;
+  string branch_name = 3;
+  string commit_hash = 4;
+  string commit_message = 5;
+  google.protobuf.Timestamp commit_timestamp = 6;
+  string parent_commit_hash = 7;
+  string author_name = 8;
+  string author_email = 9;
+}
+
+message RecordCommitMessageSaveResponse {
+}
+
+message UpdatePRForWorktreeRequest {
+  string worktree_fs_path = 1;
+  string commit_message = 2;
+  string title = 3;
+  string body = 4;
+}
+
+message UpdatePRForWorktreeResponse {
+  string pr_url = 1;
+}
+
+message GetUserSettingsRequest {
+}
+
+message GetUserSettingsResponse {
+  codeium_common_pb.UserSettings user_settings = 1;
+}
+
+message SetUserSettingsRequest {
+  codeium_common_pb.UserSettings user_settings = 1;
+}
+
+message SetUserSettingsResponse {
+  codeium_common_pb.UserSettings user_settings = 1;
+}
+
+message FetchUserInfoRequest {
+}
+
+message FetchUserInfoResponse {
+  google.internal.cloud.code.v1internal.UserSettings user_settings = 1;
+}
+
+message SetUserInfoRequest {
+  google.internal.cloud.code.v1internal.UserSettings user_settings = 1;
+}
+
+message SetUserInfoResponse {
+  google.internal.cloud.code.v1internal.UserSettings user_settings = 1;
+}
+
+message GetDebugDiagnosticsRequest {
+}
+
+message GetDebugDiagnosticsResponse {
+  codeium_common_pb.LanguageServerDiagnostics language_server_diagnostics = 1;
+}
+
+message CodeRange {
+  codeium_common_pb.CodeSource source = 1;
+  uint64 start_offset = 2;
+  uint64 end_offset = 3;
+  bool modified = 4;
+  string completion_id = 5;
+  codeium_common_pb.CompletionType completion_type = 6;
+  codeium_common_pb.ProviderSource provider_source = 7;
+}
+
+message CodeTrackerState {
+  string absolute_path_migrate_me_to_uri = 1 [deprecated = true];
+  string absolute_uri = 6;
+  string text = 2;
+  repeated CodeRange ranges = 3;
+  string commit = 4;
+  string repo_root_migrate_me_to_uri = 5 [deprecated = true];
+  string repo_root_uri = 7;
+}
+
+message GetMatchingContextScopeItemsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated codeium_common_pb.ContextScopeType allowed_types = 2;
+  repeated codeium_common_pb.CodeContextType allowed_context_types = 7;
+  string query = 3;
+  bool fuzzy_match = 4;
+  int32 max_items = 5;
+  bool case_insensitive = 6;
+  string repo_filter = 8;
+  uint64 cancel_token = 9;
+}
+
+message GetMatchingContextScopeItemsResponse {
+  repeated codeium_common_pb.ContextScopeItem items = 1;
+}
+
+message SetupUniversitySandboxRequest {
+}
+
+message SetupUniversitySandboxResponse {
+  string base_directory = 1;
+}
+
+message UnifiedDiffChange {
+  string text = 1;
+  UnifiedDiffChangeType type = 2;
+}
+
+message UnifiedDiff {
+  repeated UnifiedDiffChange changes = 1;
+}
+
+message CodeTheme {
+  string background = 1;
+  string text = 2;
+  string whitespace = 3;
+  string other = 4;
+  string literal = 5;
+  string literal_string = 6;
+  string number = 7;
+  string operator = 8;
+  string punctuation = 9;
+  string generic = 10;
+  string name = 11;
+  string keyword = 12;
+  string comment = 13;
+  string error = 14;
+}
+
+message OnboardingItemState {
+  option deprecated = true;
+  codeium_common_pb.OnboardingActionType action_type = 1;
+  bool completed = 2;
+}
+
+message OnboardingState {
+  option deprecated = true;
+  bool has_skipped = 1;
+  repeated OnboardingItemState items = 2;
+}
+
+message ResetOnboardingRequest {
+  option deprecated = true;
+  bool clear_history = 1;
+}
+
+message ResetOnboardingResponse {
+  option deprecated = true;
+}
+
+message SkipOnboardingRequest {
+  option deprecated = true;
+}
+
+message SkipOnboardingResponse {
+  option deprecated = true;
+}
+
+message GetUserTrajectoryDebugRequest {
+  bool include_all_trajectories = 1 [deprecated = true];
+}
+
+message GetUserTrajectoryDebugResponse {
+  repeated jetski_cortex_pb.ImplicitTrajectory mainline = 1;
+  gemini_coder.Trajectory granular = 2;
+  SupercompletePromptTrajectory supercomplete = 3;
+}
+
+message SupercompletePromptTrajectory {
+  gemini_coder.Trajectory trajectory = 1;
+  repeated int32 included_steps = 2;
+}
+
+message GetUserTrajectoryDescriptionsRequest {
+}
+
+message GetUserTrajectoryDescriptionsResponse {
+  repeated cortex_pb.ImplicitTrajectoryDescription trajectories = 1;
+}
+
+message ForceBackgroundResearchRefreshRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string mainline_trajectory_id = 2;
+  bool blocking = 3;
+  bool full_refresh = 4;
+}
+
+message ForceBackgroundResearchRefreshResponse {
+}
+
+message ReplayGroundTruthTrajectoryRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  repeated gemini_coder.Step replay_steps = 2;
+  string cascade_id = 3;
+  cortex_pb.CascadeConfig cascade_config = 4;
+}
+
+message ReplayGroundTruthTrajectoryResponse {
+  gemini_coder.Trajectory trajectory = 1;
+}
+
+message InitializeCascadePanelStateRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.UserStatus user_status = 2;
+}
+
+message InitializeCascadePanelStateResponse {
+}
+
+message GetConversationMetadataRequest {
+  string conversation_id = 1;
+}
+
+message GetConversationMetadataResponse {
+  cortex_pb.CortexTrajectoryMetadata metadata = 1;
+  uint32 num_steps = 2;
+  string trajectory_id = 3;
+}
+
+message WarmUpAgentProcessRequest {
+  string cascade_id = 1;
+}
+
+message WarmUpAgentProcessResponse {
+}
+
+message WarmUpEnvironmentRequest {
+  string cascade_id = 1;
+  string project_id = 2;
+}
+
+message WarmUpEnvironmentResponse {
+}
+
+message FetchSandboxPortRequest {
+  string conversation_id = 1;
+  int32 port = 2;
+  string method = 3;
+  string path = 4;
+  repeated remote_agent_proxy_pb.SandboxHttpHeader headers = 5;
+  bytes body = 6;
+  bool user_initiated = 7;
+}
+
+message FetchSandboxPortResponse {
+  int32 status_code = 1;
+  repeated remote_agent_proxy_pb.SandboxHttpHeader headers = 2;
+  bytes body = 3;
+  bool truncated = 4;
+}
+
+message GetTurnDiffRequest {
+  string conversation_id = 1;
+  uint32 step_index = 2;
+  bool stats_only = 3;
+  repeated string file_uris = 4;
+}
+
+message FileDiffData {
+  int32 additions = 1;
+  int32 deletions = 2;
+  string original_contents = 3;
+  string modified_contents = 4;
+  bool is_artifact_file = 5;
+}
+
+message GetTurnDiffResponse {
+  map<string, FileDiffData> file_diffs = 1;
+  int32 total_additions = 2;
+  int32 total_deletions = 3;
+  cortex_pb.CortexStepUserInput user_input = 4;
+  int32 turn_start_index = 5;
+  int32 turn_end_index_exclusive = 6;
+}
+
+message GetTrajectoryFileDiffsRequest {
+  string conversation_id = 1;
+  repeated string file_uris = 2;
+}
+
+message GetTrajectoryFileDiffsResponse {
+  repeated cortex_pb.TrajectoryFileDiff diffs = 1;
+  repeated string unavailable_uris = 2;
+}
+
+message GetCodeActionDiffRequest {
+  string cascade_id = 1;
+  int32 step_index = 2;
+}
+
+message GetCodeActionDiffResponse {
+  diff_action_pb.DiffBlock diff = 1;
+}
+
+message NewEnvironmentArgs {
+  string name = 1;
+  string environment_id = 2;
+  bool sync_jj_workspace_to_head = 3;
+}
+
+message DefaultProjectEnvironment {
+}
+
+message ProjectEnvironmentConfig {
+  string project_id = 1;
+  oneof target {
+    string environment_id = 2;
+    NewEnvironmentArgs new_environment_args = 3;
+    DefaultProjectEnvironment default_project_environment = 4;
+  }
+}
+
+message ProjectEnvironmentInfo {
+  string environment_id = 1;
+  repeated string workspace_uris = 2;
+  string warning = 3;
+}
+
+message LoadSharedTrajectoryRequest {
+  string path = 1;
+}
+
+message LoadSharedTrajectoryResponse {
+  string cascade_id = 1;
+}
+
+message StartCascadeRequest {
+  reserved 15, 16;
+  jetski_cortex_pb.BaseTrajectoryIdentifier base_trajectory_identifier = 3;
+  cortex_pb.SourceMetadata source_metadata = 13;
+  cortex_pb.CortexTrajectorySource source = 4;
+  cortex_pb.CortexTrajectoryType trajectory_type = 5;
+  cortex_pb.AgentScriptItem agent_script_item = 6;
+  codeium_common_pb.Model requested_model = 14;
+  optional string cascade_id = 7;
+  repeated string workspace_uris = 8;
+  repeated string override_workspace_uris = 9;
+  string parent_conversation_id = 12;
+  cortex_pb.SubagentDescriptor subagent_descriptor = 21;
+  map<string, CitcWorkspaceDetails> citc_workspace_details = 10;
+  cortex_pb.CustomAgentSpec custom_agent_spec = 11;
+  ProjectEnvironmentConfig project_env_config = 17;
+  repeated string tags = 18;
+  optional string active_profile = 19 [deprecated = true];
+  optional string agent_path = 20;
+  codeium_common_pb.RemoteControlDetails remote_control_details = 22;
+  project_pb.BackendType backend = 24;
+  CloudOptions cloud_options = 23;
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  codeium_common_pb.ExperimentConfig experiment_config = 2 [deprecated = true];
+
+  message CitcWorkspaceDetails {
+    string username = 1;
+    string citc_alias = 2;
+    int64 citc_id = 3;
+  }
+
+  message CloudOptions {
+    EnvironmentType environment_type = 1;
+    string capsule_id = 2;
+    string execution_identity = 3;
+    bool force_third_party_routing = 4 [deprecated = true];
+
+    enum EnvironmentType {
+      ENVIRONMENT_TYPE_UNSPECIFIED = 0;
+      ENVIRONMENT_TYPE_CAPSULE = 1;
+      ENVIRONMENT_TYPE_ACE = 2 [deprecated = true];
+    }
+  }
+}
+
+message StartCascadeResponse {
+  string cascade_id = 1;
+  ProjectEnvironmentInfo project_env_info = 2;
+}
+
+message SlashCommandArgument {
+  string name = 1;
+  string description = 2;
+  bool required = 3;
+  optional string default_value = 4;
+}
+
+message SlashCommandDefinition {
+  codeium_common_pb.SlashCommandInfo info = 1;
+  string title = 2;
+  string description = 3;
+  repeated SlashCommandArgument arguments = 4;
+}
+
+message GetSlashCommandsRequest {
+  cortex_pb.CascadeConfig cascade_config = 1;
+  string cascade_id = 2;
+  repeated string workspace_uris = 3;
+  optional string active_profile = 4 [deprecated = true];
+  optional bool enable_personal = 5 [deprecated = true];
+  cortex_pb.CustomAgentSpec custom_agent_spec = 6;
+  cortex_pb.AgentScriptItem selected_agent_script = 7;
+  string project_id = 8;
+  repeated string global_customization_dirs = 9;
+}
+
+message GetSlashCommandsResponse {
+  repeated SlashCommandDefinition commands = 1;
+}
+
+message SetOrVerifyStaticConfigRequest {
+  option deprecated = true;
+  string cascade_id = 1;
+  cortex_pb.CustomAgentSpec custom_agent_spec = 2;
+}
+
+message SetOrVerifyStaticConfigResponse {
+  option deprecated = true;
+}
+
+message GetCascadeTrajectoryRequest {
+  string cascade_id = 1;
+  ClientTrajectoryVerbosity verbosity = 2 [deprecated = true];
+  jetski_cortex_pb.ClientTrajectoryVerbosity trajectory_verbosity = 3;
+  bool disable_rehydration = 4;
+}
+
+message GetCascadeTrajectoryResponse {
+  gemini_coder.Trajectory trajectory = 1;
+  cortex_pb.CascadeRunStatus status = 2;
+  uint32 num_total_steps = 3;
+  uint32 num_total_generator_metadata = 4;
+  uint32 num_total_executor_metadata = 5;
+}
+
+message GetArtifactSnapshotsRequest {
+  string cascade_id = 1;
+}
+
+message GetArtifactSnapshotsResponse {
+  repeated cortex_pb.ArtifactSnapshot artifact_snapshots = 1;
+}
+
+message GetUserTrajectoryRequest {
+  string trajectory_id = 1;
+}
+
+message GetUserTrajectoryResponse {
+  gemini_coder.Trajectory trajectory = 1;
+}
+
+message GetCascadeTrajectoryStepsRequest {
+  string cascade_id = 1;
+  uint32 step_offset = 2;
+  ClientTrajectoryVerbosity verbosity = 3 [deprecated = true];
+  jetski_cortex_pb.ClientTrajectoryVerbosity trajectory_verbosity = 4;
+  bool disable_rehydration = 5;
+}
+
+message GetCascadeTrajectoryStepsResponse {
+  repeated gemini_coder.Step steps = 1;
+}
+
+message GetTrajectoryTurnsRequest {
+  string cascade_id = 1;
+  repeated uint32 step_indices = 2;
+  jetski_cortex_pb.ClientTrajectoryVerbosity trajectory_verbosity = 3;
+}
+
+message GetTrajectoryTurnsResponse {
+  repeated jetski_cortex_pb.TurnSummary turns = 1;
+}
+
+message StepRange {
+  int32 start_step_index = 1;
+  int32 end_step_index_exclusive = 2;
+}
+
+message GetChapterTitlesRequest {
+  string cascade_id = 1;
+  repeated StepRange ranges = 2;
+}
+
+message GetChapterTitlesResponse {
+  repeated jetski_cortex_pb.ConversationChapter chapters = 1;
+}
+
+message GetCascadeTrajectoryGeneratorMetadataRequest {
+  string cascade_id = 1;
+  uint32 generator_metadata_offset = 2;
+  bool include_messages = 3;
+}
+
+message GetCascadeTrajectoryGeneratorMetadataResponse {
+  repeated cortex_pb.CortexStepGeneratorMetadata generator_metadata = 1;
+}
+
+message GetCascadeTrajectoryExecutorMetadatasRequest {
+  string cascade_id = 1;
+  uint32 executor_metadata_offset = 2;
+}
+
+message GetCascadeTrajectoryExecutorMetadatasResponse {
+  repeated cortex_pb.ExecutorMetadata executor_metadata = 1;
+}
+
+message GetAllCascadeTrajectoriesRequest {
+  bool exclude_subtrajectories = 1;
+}
+
+message GetAllCascadeTrajectoriesResponse {
+  map<string, jetski_cortex_pb.CascadeTrajectorySummary> trajectory_summaries = 1;
+}
+
+message CancelCascadeInvocationRequest {
+  string cascade_id = 1;
+  bool kill_background_tasks = 2;
+  optional bool notify_parent = 3;
+}
+
+message CancelCascadeInvocationResponse {
+}
+
+message ForceStopCascadeTreeRequest {
+  string conversation_id = 1;
+}
+
+message ForceStopCascadeTreeResponse {
+  repeated string stopped_conversation_ids = 1;
+}
+
+message CancelCascadeStepsRequest {
+  string cascade_id = 1;
+  repeated uint32 step_indices = 2;
+}
+
+message CancelCascadeStepsResponse {
+}
+
+message SendStepsToBackgroundRequest {
+  option deprecated = true;
+  string conversation_id = 1 [deprecated = true];
+  repeated uint32 step_indices = 2 [deprecated = true];
+}
+
+message SendStepsToBackgroundResponse {
+  option deprecated = true;
+}
+
+message SkipBrowserSubagentRequest {
+  option deprecated = true;
+  string cascade_id = 1 [deprecated = true];
+  int32 step_index = 2 [deprecated = true];
+}
+
+message SkipBrowserSubagentResponse {
+  option deprecated = true;
+}
+
+message EditorState {
+  codeium_common_pb.Document active_document = 1;
+  repeated codeium_common_pb.Document other_documents = 2;
+}
+
+message SendUserCascadeMessageRequest {
+  reserved 7, 15;
+  codeium_common_pb.Metadata metadata = 3 [deprecated = true];
+  string cascade_id = 1;
+  repeated codeium_common_pb.TextOrScopeItem items = 2;
+  repeated codeium_common_pb.ImageData images = 6 [deprecated = true];
+  repeated codeium_common_pb.ArtifactComment artifact_comments = 10;
+  repeated codeium_common_pb.FileDiffComment file_diff_comments = 12;
+  repeated codeium_common_pb.FileComment file_comments = 13;
+  repeated codeium_common_pb.Media media = 14;
+  cortex_pb.CascadeConfig cascade_config = 5;
+  cortex_pb.CustomAgentSpec custom_agent_spec = 19;
+  optional string active_profile = 23 [deprecated = true];
+  optional cortex_pb.UserIdentity user_identity = 24;
+  codeium_common_pb.ExperimentConfig experiment_config = 4 [deprecated = true];
+  bool blocking = 8;
+  repeated gemini_coder.Step additional_steps = 9;
+  chat_client_server_pb.ChatClientRequestStreamClientType client_type = 11;
+  bool propagate_error = 16;
+  cortex_pb.CortexStepPlannerResponse planner_response = 17;
+  bool continue_after_injection = 20;
+  AgentMessageOrigin message_origin = 18;
+  repeated string tags = 21;
+  cortex_pb.MessageDeliveryStrategy delivery_strategy = 22;
+  optional EditorState editor_state = 25;
+  cortex_pb.CustomExtensions custom_extensions = 27;
+  codeium_common_pb.RemoteControlDetails remote_control_details = 26;
+  optional string sender_window_id = 28;
+  string client_message_id = 29;
+}
+
+message SendUserCascadeMessageResponse {
+  reserved 1;
+}
+
+message DetectBattleModeAutoTriggerRequest {
+  string cascade_id = 1;
+  codeium_common_pb.Model model = 2;
+  SendUserCascadeMessageRequest user_message = 3;
+}
+
+message DetectBattleModeAutoTriggerResponse {
+  int32 target_battle_n = 2;
+  string trigger_tag = 3;
+  string banner_text = 4;
+}
+
+message StartBattleModeRequest {
+  repeated SendUserCascadeMessageRequest requests = 11;
+  int32 num_forks = 2;
+  repeated codeium_common_pb.Model models = 3;
+  optional int32 fork_at_step_index = 4;
+  bool auto_triggered = 5;
+  repeated cortex_pb.AgentScriptItem agent_scripts = 6;
+  repeated string agent_paths = 9;
+  repeated string children_conversation_ids = 7;
+  string trigger_tag = 8;
+  cortex_pb.CloneStrategy clone_strategy = 10;
+  repeated string contrib_variants = 12;
+  SendUserCascadeMessageRequest request = 1 [deprecated = true];
+}
+
+message StartBattleModeResponse {
+  repeated string children_conversation_ids = 1;
+  int32 start_step_index = 2;
+}
+
+message GetContribVariantsRequest {
+}
+
+message GetContribVariantsResponse {
+  repeated string variants = 1;
+}
+
+message EndBattleModeRequest {
+  string winner_conversation_id = 1;
+  MergeStrategy merge_strategy = 2;
+  cortex_pb.BattleEndType end_type = 3;
+  string source_conversation_id = 4;
+  bool force_stop_running = 5;
+}
+
+message EndBattleModeError {
+  EndBattleModeErrorType error_type = 1;
+  string error_message = 2;
+}
+
+message EndBattleModeResponse {
+  string main_conversation_id = 1;
+  EndBattleModeError error = 2;
+  codeium_common_pb.Model winning_model = 3;
+}
+
+message EliminateBattleModeArmRequest {
+  string source_conversation_id = 1;
+  string eliminated_conversation_id = 2;
+}
+
+message EliminateBattleModeArmResponse {
+  cortex_pb.BattleModeInfo battle_mode_info = 1;
+}
+
+message SignalExecutableIdleRequest {
+  string conversation_id = 1;
+}
+
+message SignalExecutableIdleResponse {
+}
+
+message WaitForConversationFullyIdleRequest {
+  string conversation_id = 1;
+  int32 inactivity_timeout_seconds = 2;
+  int32 stabilization_duration_seconds = 3 [deprecated = true];
+  bool return_on_executor_error = 4;
+}
+
+message WaitForConversationFullyIdleResponse {
+  bool timed_out = 1;
+}
+
+message SendAllQueuedMessagesRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string cascade_id = 2;
+  cortex_pb.CascadeConfig cascade_config = 3;
+}
+
+message SendAllQueuedMessagesResponse {
+}
+
+message DeleteQueuedUserInputStepRequest {
+  string cascade_id = 1;
+  int32 step_index = 2;
+}
+
+message DeleteQueuedUserInputStepResponse {
+}
+
+message SaveMediaAsArtifactRequest {
+  codeium_common_pb.Media media = 1;
+}
+
+message SaveMediaAsArtifactResponse {
+  string uri = 1;
+}
+
+message DeleteMediaArtifactRequest {
+  string uri = 1;
+}
+
+message DeleteMediaArtifactResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message RevertToCascadeStepRequest {
+  codeium_common_pb.Metadata metadata = 3 [deprecated = true];
+  string cascade_id = 1;
+  int32 step_index = 2;
+  codeium_common_pb.ExperimentConfig experiment_config = 4 [deprecated = true];
+  cortex_pb.CascadeConfig override_config = 5;
+  bool conversation_only = 6;
+  bool suppress_error_step = 7;
+}
+
+message RevertToCascadeStepResponse {
+  cortex_pb.RevertMetadata metadata = 1;
+}
+
+message CodeEditRevertPreview {
+  string file_uri = 1;
+  diff_action_pb.UnifiedDiff diff = 2;
+  CodeRevertActionType action_type = 3;
+}
+
+message GetRevertPreviewRequest {
+  string cascade_id = 1;
+  int32 step_index = 2;
+  codeium_common_pb.Metadata metadata = 3 [deprecated = true];
+  cortex_pb.CascadeConfig override_config = 4;
+}
+
+message GetRevertPreviewResponse {
+  repeated CodeEditRevertPreview code_edit_previews = 1;
+}
+
+message RecordUserStepSnapshotRequest {
+  string cascade_id = 1;
+  int32 step_index = 2;
+  cortex_pb.UserStepSnapshot snapshot = 3;
+}
+
+message RecordUserStepSnapshotResponse {
+}
+
+message HandleCascadeUserInteractionRequest {
+  string cascade_id = 1;
+  cortex_pb.CascadeUserInteraction interaction = 2;
+}
+
+message HandleCascadeUserInteractionResponse {
+}
+
+message AcknowledgeCascadeCodeEditRequest {
+  reserved 6, 7, 8;
+  reserved "acknowledgement_scope", "written_feedback", "step_indices";
+  codeium_common_pb.Metadata metadata = 4 [deprecated = true];
+  string cascade_id = 1;
+  repeated string absolute_uri = 2;
+  repeated string contents = 5;
+  bool accept = 3;
+}
+
+message AcknowledgeCascadeCodeEditResponse {
+}
+
+message CodeAcknowledgementRequestInfo {
+  string uri_path = 1;
+  repeated uint32 step_indices = 2;
+  string pre_code_actions_state = 3;
+  string post_code_actions_state = 4;
+}
+
+message AcknowledgeCodeActionStepRequest {
+  reserved 2, 6;
+  reserved "step_indices", "absolute_uris";
+  string cascade_id = 1;
+  bool accept = 3;
+  string written_feedback = 4;
+  cortex_pb.CodeAcknowledgementScope acknowledgement_scope = 5;
+  repeated CodeAcknowledgementRequestInfo code_acknowledgement_request_infos = 7;
+}
+
+message AcknowledgeCodeActionStepResponse {
+}
+
+message GetCodeValidationStatesRequest {
+  string cascade_id = 1;
+}
+
+message GetCodeValidationStatesResponse {
+  repeated ValidationState states = 1;
+}
+
+message ValidationState {
+  string uri = 1;
+  string last_acknowledged_state = 2;
+  string current_state = 3;
+  bool last_state_file_nonexistent = 4;
+}
+
+message DeleteCascadeTrajectoryRequest {
+  string cascade_id = 1;
+}
+
+message DeleteCascadeTrajectoryResponse {
+}
+
+message ResolveOutstandingStepsRequest {
+  option deprecated = true;
+  string cascade_id = 1;
+}
+
+message ResolveOutstandingStepsResponse {
+  option deprecated = true;
+}
+
+message StreamTerminalShellCommandResponse {
+}
+
+message GetWebDocsOptionsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetWebDocsOptionsResponse {
+  repeated codeium_common_pb.WebDocsOption options = 1;
+}
+
+message UpdateDevExperimentsRequest {
+  codeium_common_pb.ExperimentConfig experiment_config = 1;
+}
+
+message UpdateDevExperimentsResponse {
+}
+
+message SetBaseExperimentsRequest {
+  codeium_common_pb.ExperimentConfig experiment_config = 1;
+}
+
+message SetBaseExperimentsResponse {
+}
+
+message SetMendelFlagOverridesRequest {
+  map<string, bool> overrides = 1;
+}
+
+message SetMendelFlagOverridesResponse {
+}
+
+message GetCascadeModelConfigDataRequest {
+}
+
+message GetCascadeMemoriesRequest {
+}
+
+message GetCascadeMemoriesResponse {
+  repeated cortex_pb.CortexMemory memories = 1;
+}
+
+message GetModelStatusesRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetModelStatusesResponse {
+  repeated codeium_common_pb.ModelStatusInfo model_status_infos = 1;
+}
+
+message DeleteCascadeMemoryRequest {
+  string memory_id = 1;
+}
+
+message DeleteCascadeMemoryResponse {
+}
+
+message UpdateCascadeMemoryRequest {
+  string memory_id = 1;
+  string title = 2;
+  string content = 3;
+  repeated string tags = 4;
+}
+
+message UpdateCascadeMemoryResponse {
+}
+
+message GetUserMemoriesRequest {
+}
+
+message GetUserMemoriesResponse {
+  repeated cortex_pb.CortexMemory memories = 1;
+}
+
+message GetConversationTagsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetConversationTagsResponse {
+  map<string, ConversationTagList> conversation_tags = 1;
+}
+
+message ConversationTagList {
+  repeated string tags = 1;
+}
+
+message UpdateConversationTagsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string cascade_id = 2;
+  repeated string tags = 3;
+}
+
+message UpdateConversationTagsResponse {
+}
+
+message UpdateConversationAnnotationsRequest {
+  string cascade_id = 1 [deprecated = true];
+  jetski_cortex_pb.ConversationAnnotations annotations = 2;
+  bool merge_annotations = 3;
+  repeated string cascade_ids = 4;
+}
+
+message UpdateConversationAnnotationsResponse {
+}
+
+message RefreshMcpServersRequest {
+  bool shallow = 1;
+  optional string server_name = 2;
+}
+
+message RefreshMcpServersResponse {
+}
+
+message ToggleMcpServerRequest {
+  string server_name = 1;
+  bool enabled = 2;
+}
+
+message ToggleMcpServerResponse {
+}
+
+message GetMcpServerStatesRequest {
+}
+
+message GetMcpServerStatesResponse {
+  repeated cortex_pb.McpServerState states = 1;
+  bool is_loading = 2;
+}
+
+message SubscribeToMcpServerStatesRequest {
+}
+
+message SubscribeToMcpServerStatesResponse {
+  repeated cortex_pb.McpServerState states = 1;
+  bool is_loading = 2;
+}
+
+message CompleteMcpOAuthRequest {
+  string server_name = 1;
+  string authorization_code = 2;
+}
+
+message CompleteMcpOAuthResponse {
+}
+
+message DisconnectMcpOAuthRequest {
+  string server_name = 1;
+  string account = 2;
+}
+
+message DisconnectMcpOAuthResponse {
+}
+
+message StartMcpOAuthSignInRequest {
+  string server_name = 1;
+  PluginAuthSignInMode mode = 2;
+}
+
+message StartMcpOAuthSignInResponse {
+  string auth_url = 1;
+  PluginAuthSignInMode mode = 2;
+}
+
+message GetAllWorkflowsRequest {
+  repeated string workspace_uris = 1;
+  optional string active_profile = 2 [deprecated = true];
+  optional bool enable_personal = 3 [deprecated = true];
+}
+
+message GetAllWorkflowsResponse {
+  reserved 1;
+  repeated cortex_pb.WorkflowSpec workflows = 2;
+}
+
+message GetAllCustomAgentConfigsRequest {
+}
+
+message GetAllCustomAgentConfigsResponse {
+  map<string, string> config_map = 1;
+}
+
+message CopyBuiltinWorkflowToWorkspaceRequest {
+  cortex_pb.WorkflowSpec workflow = 1;
+  codeium_common_pb.Metadata metadata = 2 [deprecated = true];
+}
+
+message CopyBuiltinWorkflowToWorkspaceResponse {
+  cortex_pb.WorkflowSpec workflow = 1;
+}
+
+message GetAllRulesRequest {
+  repeated string workspace_uris = 1;
+  optional string active_profile = 2 [deprecated = true];
+  optional bool enable_personal = 3 [deprecated = true];
+}
+
+message GetAllRulesResponse {
+  reserved 1;
+  repeated cortex_pb.CortexMemory memories = 2;
+}
+
+message GetCustomizationStatesRequest {
+  repeated string workspace_uris = 1;
+}
+
+message GetCustomizationStatesResponse {
+  repeated cortex_pb.LoadedCustomizations.LoadedCustomization states = 1;
+}
+
+message GetAllSkillsRequest {
+  repeated string workspace_uris = 1;
+  optional string active_profile = 2 [deprecated = true];
+  optional bool enable_personal = 3 [deprecated = true];
+  optional bool include_shadowed = 4;
+  repeated string global_customization_dirs = 5;
+}
+
+message GetAllSkillsResponse {
+  repeated cortex_pb.WorkflowSpec skills = 1;
+}
+
+message GetSkillMarketplaceLinkRequest {
+  string skill_path = 1;
+}
+
+message GetSkillMarketplaceLinkResponse {
+  string marketplace_url = 1;
+}
+
+message ScanSkillsConfigFileRequest {
+  string config_file_path = 1;
+  string workspace_uri = 2;
+}
+
+message ScanSkillsConfigFileResponse {
+  repeated cortex_pb.WorkflowSpec skills = 1;
+}
+
+message ListMcpResourcesRequest {
+  optional string server_name = 1;
+  optional string query = 2;
+}
+
+message ListMcpResourcesResponse {
+  repeated codeium_common_pb.McpResourceItem resources = 1;
+}
+
+message ListMcpPromptsRequest {
+}
+
+message ListMcpPromptsResponse {
+  repeated cortex_pb.McpPromptSpec prompts = 1;
+}
+
+message GetMcpPromptRequest {
+  string server_name = 1;
+  string name = 2;
+  map<string, string> arguments = 3;
+}
+
+message GetMcpPromptResponse {
+  string description = 1;
+  repeated codeium_common_pb.McpPromptMessage messages = 2;
+}
+
+message GetMcpAppResourceRequest {
+  string server_name = 1;
+  string uri = 2;
+}
+
+message GetMcpAppResourceResponse {
+  string html = 1;
+  string mime_type = 2;
+  string meta_json = 3;
+}
+
+message LaunchMcpAppRequest {
+  string server_name = 1;
+  string tool_name = 2;
+  string arguments_json = 3;
+  string cascade_id = 4;
+}
+
+message LaunchMcpAppResponse {
+  string call_tool_result_json = 1;
+}
+
+message CallMcpAppToolRequest {
+  string server_name = 1;
+  string tool_name = 2;
+  string arguments_json = 3;
+  string cascade_id = 4;
+  string app_resource_uri = 5;
+}
+
+message CallMcpAppToolResponse {
+  string call_tool_result_json = 1;
+}
+
+message UpdateEnterpriseExperimentsFromUrlRequest {
+  string portal_url = 1;
+}
+
+message UpdateEnterpriseExperimentsFromUrlResponse {
+  bool success = 1;
+  string error_message = 2;
+  codeium_common_pb.ExperimentConfig experiment_config = 3;
+}
+
+message ImportFromCursorRequest {
+  string source_path = 1;
+}
+
+message ImportFromCursorResponse {
+  repeated string copied_files = 1;
+  repeated string duplicate_files = 2;
+  repeated string problem_files = 3;
+}
+
+message CreateCustomizationFileRequest {
+  CustomizationFileType file_type = 1;
+  string file_name = 2;
+  string workspace_uri = 3;
+}
+
+message CreateCustomizationFileResponse {
+  string file_path = 1;
+}
+
+message SendActionToChatPanelRequest {
+  string action_type = 1;
+  repeated bytes payload = 2;
+}
+
+message SendActionToChatPanelResponse {
+}
+
+message RecordUserGrepRequest {
+  string query = 1;
+  repeated cortex_pb.GrepSearchResult results = 2;
+  google.protobuf.Timestamp timestamp = 3;
+}
+
+message RecordUserGrepResponse {
+}
+
+message GetUnleashDataRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  map<string, string> properties = 2;
+}
+
+message GetUnleashDataResponse {
+  codeium_common_pb.UnleashContext context = 1;
+  codeium_common_pb.ExperimentConfig experiment_config = 2;
+}
+
+message GetMendelFlagsRequest {
+}
+
+message GetMendelFlagsResponse {
+  codeium_common_pb.ExperimentConfig experiment_config = 1;
+  optional bool webrtc_mesh_ready = 2;
+}
+
+message ShouldEnableUnleashRequest {
+}
+
+message ShouldEnableUnleashResponse {
+  bool should_enable = 1;
+}
+
+message GetPatchAndCodeChangeRequest {
+  string intent = 1;
+  codeium_common_pb.GitRepoInfo base_state_repo_info = 2;
+  string repo_path = 3;
+}
+
+message GetPatchAndCodeChangeResponse {
+  string patch_string = 1;
+  code_edit.code_edit_pb.CodeChangeWithContext code_change_with_context = 2;
+}
+
+message ConvertTrajectoryToMarkdownRequest {
+  gemini_coder.Trajectory trajectory = 1 [deprecated = true];
+  string conversation_id = 2;
+}
+
+message ConvertTrajectoryToMarkdownResponse {
+  string markdown = 1;
+}
+
+message LoadTrajectoryRequest {
+  string cascade_id = 1;
+}
+
+message LoadTrajectoryResponse {
+}
+
+message ImportProjectFromUrlRequest {
+  string blob_id = 1;
+  string signature = 2;
+  optional string gcp_group_name = 3 [deprecated = true];
+}
+
+message ImportProjectFromUrlResponse {
+  string project_name = 1;
+  string project_root_uri = 2;
+  bool should_download_firebase_skill = 3;
+  string latest_conversation_id = 4;
+}
+
+message CreateTrajectoryShareRequest {
+  reserved 2;
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  cortex_pb.TrajectoryShareStatus share_status = 3;
+  string cascade_id = 4;
+}
+
+message CreateTrajectoryShareResponse {
+  string url = 1;
+}
+
+message GetAvailableCascadePluginsRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string os = 2;
+  optional string search_query = 3;
+}
+
+message GetAvailableCascadePluginsResponse {
+  repeated cascade_plugins_pb.CascadePluginTemplate plugins = 1;
+}
+
+message InstallCascadePluginRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string plugin_id = 2;
+}
+
+message InstallCascadePluginResponse {
+  int64 installation_count = 1;
+}
+
+message GetCascadePluginByIdRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string os = 2;
+  string plugin_id = 3;
+}
+
+message GetCascadePluginByIdResponse {
+  cascade_plugins_pb.CascadePluginTemplate plugin = 1;
+}
+
+message RecordLintsRequest {
+  codeium_common_pb.Language current_language = 1;
+  repeated codeium_common_pb.CodeDiagnostic lints = 2;
+  google.protobuf.Timestamp timestamp = 3;
+}
+
+message RecordLintsResponse {
+}
+
+message StatUriRequest {
+  string uri = 1;
+  string conversation_id = 2;
+  bool user_initiated = 3;
+  int64 max_content_bytes = 4;
+}
+
+message StatUriResponse {
+  FileType file_type = 1;
+  google.protobuf.Timestamp mod_time = 2;
+  string normalized_uri = 3;
+  int64 size = 4;
+  optional bytes content = 5;
+}
+
+message ReadFileRequest {
+  string uri = 1;
+  string conversation_id = 2;
+  bool user_initiated = 3;
+  optional int64 offset = 4;
+}
+
+message ReadFileResponse {
+  bytes content = 1;
+  codeium_common_pb.Language language = 2;
+  bool truncated = 3;
+}
+
+message CheckDevToolsActivePortRequest {
+  string cascade_id = 1;
+}
+
+message CheckDevToolsActivePortResponse {
+  bool exists = 1;
+}
+
+message WriteFileRequest {
+  string uri = 1;
+  bytes content = 2;
+  bool overwrite = 3;
+}
+
+message WriteFileResponse {
+}
+
+message CreateDebugBundleRequest {
+  map<string, bytes> extra_files = 1;
+  bool include_voice = 2;
+  bool include_voice_audio = 3;
+}
+
+message CreateDebugBundleResponse {
+  string bundle_uri = 1;
+}
+
+message UploadToDriveRequest {
+  oneof source {
+    string file_uri = 1;
+    InlineFile inline_file = 2;
+  }
+}
+
+message InlineFile {
+  string name = 1;
+  bytes content = 2;
+}
+
+message UploadToDriveResponse {
+  string web_view_link = 1;
+}
+
+message ReadDirRequest {
+  string uri = 1;
+  string conversation_id = 2;
+  bool user_initiated = 3;
+}
+
+message ReadDirEntry {
+  string uri = 1;
+  FileType file_type = 2;
+}
+
+message ReadDirResponse {
+  repeated ReadDirEntry entries = 1;
+}
+
+message DeleteFileOrDirectoryRequest {
+  string uri = 1;
+}
+
+message DeleteFileOrDirectoryResponse {
+}
+
+message CreateDirectoryRequest {
+  string uri = 1;
+}
+
+message CreateDirectoryResponse {
+}
+
+message WatchDirectoryRequest {
+  reserved 1, 2;
+  repeated string uris = 3;
+  string conversation_id = 4;
+}
+
+message WatchDirectoryResponse {
+  repeated string uri = 1;
+  bool ready = 2;
+}
+
+message SetBrowserOpenConversationRequest {
+  string cascade_id = 1;
+  optional google.protobuf.Timestamp expires_at = 2 [deprecated = true];
+}
+
+message SetBrowserOpenConversationResponse {
+}
+
+message GetBrowserOpenConversationRequest {
+}
+
+message GetBrowserOpenConversationResponse {
+  optional string cascade_id = 1;
+}
+
+message RecordInteractiveCascadeFeedbackRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string cascade_id = 2;
+  int32 step_index = 3;
+  int32 chunk_index = 4;
+  cortex_pb.AcknowledgementType acknowledgement_type = 5;
+}
+
+message RecordInteractiveCascadeFeedbackResponse {
+}
+
+message GetCascadeNuxesRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetCascadeNuxesResponse {
+  repeated codeium_common_pb.CascadeNUXConfig nuxes = 1;
+}
+
+message RegisterInteractionRequest {
+  google.internal.cloud.code.v1internal.Interaction interaction = 1;
+}
+
+message RegisterInteractionResponse {
+  string message = 1;
+}
+
+message GetStaticExperimentStatusRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetStaticExperimentStatusResponse {
+  repeated chat_pb.ChatExperimentStatus status = 1;
+}
+
+message AnalyticsEvent {
+  string event_name = 1;
+  map<string, string> extra = 2;
+  map<string, bool> experiments = 3;
+  codeium_common_pb.RuntimeEnvironment runtime_environment = 4;
+  int64 client_timestamp_ms = 5;
+}
+
+message RecordAnalyticsEventRequest {
+  string event_name = 1;
+  codeium_common_pb.Metadata metadata = 2 [deprecated = true];
+  map<string, string> extra = 3;
+  map<string, bool> experiments = 4;
+  codeium_common_pb.RuntimeEnvironment runtime_environment = 5;
+  repeated AnalyticsEvent events = 6;
+  repeated string enabled_labs_features = 7;
+}
+
+message RecordAnalyticsEventResponse {
+}
+
+message RecordErrorRequest {
+  codeium_common_pb.ErrorTrace error_trace = 1;
+  bool should_upload_immediately = 2;
+}
+
+message RecordErrorResponse {
+}
+
+message RecordObservabilityDataRequest {
+  string datatype = 1;
+  map<string, string> extra = 2;
+  map<string, string> sensitive_data = 3;
+}
+
+message RecordObservabilityDataResponse {
+}
+
+message GetTermsOfServiceRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+}
+
+message GetTermsOfServiceResponse {
+  string terms_of_service_text = 1;
+  string version = 2;
+}
+
+message AcceptTermsOfServiceRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string version = 2;
+}
+
+message AcceptTermsOfServiceResponse {
+}
+
+message DumpFlightRecorderRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string trace_file_path = 2;
+}
+
+message DumpFlightRecorderResponse {
+}
+
+message DumpPprofRequest {
+  codeium_common_pb.Metadata metadata = 1 [deprecated = true];
+  string heap_file_path = 2;
+  string goroutine_file_path = 3;
+  string mutex_file_path = 4;
+}
+
+message DumpPprofResponse {
+}
+
+message OAuthTokenInfo {
+  reserved 5;
+  string access_token = 1;
+  string token_type = 2;
+  string refresh_token = 3;
+  google.protobuf.Timestamp expiry = 4;
+  bool is_gcp_tos = 6;
+  bool enable_business_login = 7 [deprecated = true];
+}
+
+message SaveOAuthTokenInfoRequest {
+  OAuthTokenInfo token_info = 1;
+}
+
+message SaveOAuthTokenInfoResponse {
+}
+
+message RemoveOAuthTokenInfoRequest {
+}
+
+message RemoveOAuthTokenInfoResponse {
+}
+
+message LoadReplayConversationRequest {
+  string workspace_name = 1;
+  string user = 2;
+  string cascade_id = 3;
+}
+
+message LoadReplayConversationResponse {
+}
+
+message ListPagesRequest {
+}
+
+message ListPagesResponse {
+  repeated codeium_common_pb.BrowserPageMetadata pages = 1;
+}
+
+message BrowserValidateCascadeOrCancelOverlayRequest {
+  string cascade_id = 1;
+}
+
+message BrowserValidateCascadeOrCancelOverlayResponse {
+}
+
+message SmartFocusConversationRequest {
+  string cascade_id = 1;
+}
+
+message SmartFocusConversationResponse {
+}
+
+message OpenUrlRequest {
+  string url = 1;
+}
+
+message OpenUrlResponse {
+}
+
+message FocusUserPageRequest {
+  string page_id = 1;
+}
+
+message FocusUserPageResponse {
+}
+
+message AddToBrowserWhitelistRequest {
+  string hostname = 1 [deprecated = true];
+  repeated string hostnames = 2;
+}
+
+message AddToBrowserWhitelistResponse {
+}
+
+message CaptureConsoleLogsRequest {
+  string page_id = 1;
+}
+
+message CaptureConsoleLogsResponse {
+  codeium_common_pb.ConsoleLogScopeItem console_logs = 1;
+}
+
+message StartScreenRecordingRequest {
+  string cascade_id = 1;
+  bool onboarded = 2;
+}
+
+message StartScreenRecordingResponse {
+}
+
+message SaveScreenRecordingRequest {
+  bytes video_data = 1;
+  string filename = 2;
+  string cascade_id = 3;
+}
+
+message SaveScreenRecordingResponse {
+  string file_path = 1;
+}
+
+message GetBrowserWhitelistFilePathRequest {
+}
+
+message GetBrowserWhitelistFilePathResponse {
+  string path = 1;
+}
+
+message GetAllBrowserWhitelistedUrlsRequest {
+}
+
+message GetAllBrowserWhitelistedUrlsResponse {
+  repeated string whitelisted_urls = 1;
+}
+
+message CaptureScreenshotRequest {
+  string page_id = 1;
+}
+
+message CaptureScreenshotResponse {
+  codeium_common_pb.ImageData screenshot = 2 [deprecated = true];
+  codeium_common_pb.Media media_screenshot = 3;
+}
+
+message SmartOpenBrowserRequest {
+  string url = 1;
+  bool is_onboarded = 2 [deprecated = true];
+}
+
+message SmartOpenBrowserResponse {
+}
+
+message SimulateSegFaultRequest {
+}
+
+message SimulateSegFaultResponse {
+}
+
+message HandleScreenRecordingRequest {
+  string cascade_id = 1;
+}
+
+message HandleScreenRecordingResponse {
+  bytes video_data = 1;
+}
+
+message PatchStats {
+  int32 num_files_changed = 1;
+  int32 num_line_additions = 2;
+  int32 num_line_deletions = 3;
+}
+
+message GetRevisionArtifactRequest {
+  string repo_path_uri = 1;
+  optional string base_commit = 2;
+}
+
+message GetRevisionArtifactResponse {
+  PatchStats stats = 1;
+  string patch = 2;
+}
+
+message GetModelResponseRequest {
+  string prompt = 1;
+  codeium_common_pb.Model model = 2;
+}
+
+message GetModelResponseResponse {
+  string response = 1;
+}
+
+message GetAgentScriptsRequest {
+  repeated string workspace_uris = 1;
+  optional string active_profile = 2 [deprecated = true];
+}
+
+message GetAgentScriptsResponse {
+  repeated cortex_pb.AgentScriptItem agent_scripts = 1 [deprecated = true];
+  repeated cortex_pb.AgentCustomization agent_customizations = 2;
+}
+
+message SaveAgentScriptCommandSpecRequest {
+  string name = 1;
+  bool save_to_workspace = 2;
+  bool overwrite = 3;
+  cortex_pb.AgentScriptCommandSpec command_spec = 4;
+}
+
+message SaveAgentScriptCommandSpecResponse {
+  bool created = 1;
+  cortex_pb.AgentScriptItem agent_script = 2;
+}
+
+message ListCustomizationPathsByFileRequest {
+  codeium_common_pb.RefreshCustomizationType type = 1;
+  bool is_global = 2;
+}
+
+message ListCustomizationPathsByFileResponse {
+  map<string, CustomizationPathsList> paths_files = 1;
+}
+
+message CustomizationPathsList {
+  repeated string paths = 1;
+}
+
+message UpdateCustomizationPathsFileRequest {
+  string file_path = 1;
+  repeated string paths = 2;
+  CustomizationPathsOperation operation = 3;
+}
+
+message UpdateCustomizationPathsFileResponse {
+}
+
+message UpdateCustomizationRequest {
+  string path = 1;
+  CustomizationPathsOperation operation = 2;
+  oneof customization {
+    cortex_pb.AgentScriptItem agent = 3;
+    cortex_pb.PluginItem plugin = 4;
+  }
+}
+
+message UpdateCustomizationResponse {
+}
+
+message GetAllPluginsRequest {
+  repeated string workspace_uris = 1;
+  optional string active_profile = 2 [deprecated = true];
+}
+
+message PluginSidecar {
+  string sidecar_id = 1;
+  cortex_pb.SidecarConfig config = 2;
+}
+
+message Plugin {
+  string name = 1;
+  string path = 2;
+  bool is_global = 3;
+  repeated cortex_pb.WorkflowSpec skills = 4;
+  repeated cortex_pb.AgentCustomization agents = 5;
+  repeated cortex_pb.McpServerSpec mcp_servers = 6;
+  repeated cortex_pb.CortexMemory rules = 7;
+  string hooks_json = 8;
+  repeated cortex_pb.FlowSpec workflows = 26;
+  bool disabled = 9;
+  string description = 10;
+  string readme = 11;
+  string logo = 12;
+  repeated PluginSidecar sidecars = 13;
+  cortex_pb.MarketplaceInstall installed_from = 14;
+  config_pb.PluginUserConfig user_config = 15;
+  string version = 16;
+  repeated string suggested_prompts = 17;
+  string display_name = 18;
+  bool is_builtin = 19;
+  bool force_disabled = 20;
+  string disabled_reason = 21;
+  bool auth_required = 22;
+  string authorize_uri = 23;
+  bool is_authenticated = 24;
+  repeated PluginAccount accounts = 25;
+  repeated cortex_pb.PluginThemeItem themes = 27;
+  cortex_pb.PluginAuthor author = 28;
+  string homepage = 29;
+  string repository = 30;
+  string connect_uri = 31;
+  repeated string bundle_members = 32;
+  string runtime_version = 33;
+}
+
+message PluginAccount {
+  string account = 1;
+  bool is_authenticated = 2;
+}
+
+message GetAllPluginsResponse {
+  repeated Plugin plugins = 1;
+}
+
+message SubscribeToPluginsRequest {
+  repeated string workspace_uris = 1;
+}
+
+message SubscribeToPluginsResponse {
+  repeated Plugin plugins = 1;
+}
+
+message GetPluginRequest {
+  string plugin_id = 1;
+}
+
+message GetPluginResponse {
+  Plugin plugin = 1;
+}
+
+message ResolveCommandPluginRequest {
+  string cascade_id = 1;
+  string command_line = 2;
+  string shell_name = 3;
+}
+
+message ResolveCommandPluginResponse {
+  codeium_common_pb.PluginRef plugin = 1;
+}
+
+message GetBuildWithGooglePluginsRequest {
+}
+
+message GetBuildWithGooglePluginsResponse {
+  repeated google.internal.cloud.code.v1internal.BuildWithGooglePlugin plugins = 1;
+}
+
+message DownloadBuildWithGooglePluginRequest {
+  string plugin_id = 1;
+}
+
+message DownloadBuildWithGooglePluginResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DeletePluginRequest {
+  string plugin_id = 1;
+}
+
+message DeletePluginResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message PluginAuthProvider {
+  string plugin = 1;
+  string provider = 2;
+  string type = 3;
+  repeated string domains = 4;
+  repeated string scopes = 5;
+  string storage_key = 6;
+  bool connected = 7;
+  string identity = 8;
+  bool needs_auth = 9;
+  string needs_auth_reason = 10;
+  repeated PluginAuthAccount accounts = 11;
+  bool sign_in_pending = 12;
+  repeated string clis = 13;
+  string last_sign_in_error = 14;
+  bool optional = 15;
+  string description = 16;
+  string setup_instructions = 17;
+  string setup_url = 18;
+  bool kept_on_server = 19;
+  string remote_plugin_id = 20;
+}
+
+message PluginAuthAccount {
+  string account_id = 1;
+  string alias = 2;
+  string identity = 3;
+  bool needs_auth = 4;
+  string needs_auth_reason = 5;
+  bool is_default = 6;
+  string label = 7;
+}
+
+message ListPluginAuthProvidersRequest {
+  string plugin = 1;
+  bool sync_remote_sign_ins = 2;
+}
+
+message ListPluginAuthProvidersResponse {
+  repeated PluginAuthProvider providers = 1;
+}
+
+message SignInPluginAuthProviderRequest {
+  string plugin = 1;
+  string provider = 2;
+  string secret = 3;
+  string account_id = 4;
+  bool add_account = 5;
+}
+
+message SignInPluginAuthProviderResponse {
+  bool connected = 1;
+  string account_id = 2;
+}
+
+message SignOutPluginAuthProviderRequest {
+  string plugin = 1;
+  string provider = 2;
+  string account_id = 3;
+}
+
+message SignOutPluginAuthProviderResponse {
+}
+
+message SetDefaultPluginAuthAccountRequest {
+  string plugin = 1;
+  string provider = 2;
+  string account_id = 3;
+}
+
+message SetDefaultPluginAuthAccountResponse {
+}
+
+message SetPluginAuthAccountLabelRequest {
+  string plugin = 1;
+  string provider = 2;
+  string account_id = 3;
+  string label = 4;
+}
+
+message SetPluginAuthAccountLabelResponse {
+}
+
+message StartPluginAuthSignInRequest {
+  string plugin = 1;
+  string provider = 2;
+  string account_id = 3;
+  bool add_account = 4;
+  PluginAuthSignInMode mode = 5;
+}
+
+message StartPluginAuthSignInResponse {
+  string auth_url = 1;
+  string account_id = 2;
+  PluginAuthSignInMode mode = 3;
+}
+
+message DeleteSkillRequest {
+  string skill_id = 1;
+}
+
+message DeleteSkillResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message Google3Source {
+  string depot_path = 1;
+}
+
+message ArchiveSource {
+  string url = 1;
+  string sha256 = 2;
+}
+
+message SyntheticSource {
+  string name = 1;
+  string display_name = 2;
+  string description = 3;
+  string logo = 4;
+  string version = 5;
+  string repository = 6;
+  repeated string member_ids = 7;
+}
+
+message CustomizationSource {
+  oneof source {
+    Google3Source google3 = 1;
+    ArchiveSource archive = 2;
+    SyntheticSource synthetic = 3;
+  }
+}
+
+message PluginFacet {
+}
+
+message SkillFacet {
+}
+
+message MarketplaceCustomization {
+  string marketplace = 1;
+  string id = 2;
+  string display_name = 3;
+  string description = 4;
+  CustomizationSource source = 5;
+  oneof kind {
+    PluginFacet plugin = 6;
+    SkillFacet skill = 8;
+  }
+  string logo = 7;
+  string version = 9;
+  cortex_pb.PluginAuthor author = 10;
+  string homepage = 11;
+  string repository = 12;
+  optional int64 install_count = 13;
+  google.protobuf.Timestamp first_seen_time = 14;
+  optional int64 user_count = 15;
+}
+
+message MarketplaceBundle {
+  string marketplace = 1;
+  string id = 2;
+  string display_name = 3;
+  string description = 4;
+  string logo = 5;
+  optional string repository = 6;
+  repeated string member_ids = 7;
+  int32 member_count = 8;
+}
+
+message GetMarketplaceBundlesRequest {
+  repeated string ids = 1;
+}
+
+message GetMarketplaceBundlesResponse {
+  repeated MarketplaceBundle bundles = 1;
+  repeated MarketplaceCustomization customizations = 2;
+}
+
+message SearchMarketplaceRequest {
+  string query = 1;
+  string group_id = 2;
+  string page_token = 3;
+  MarketplaceSort sort = 4;
+}
+
+message ResultGroup {
+  string id = 1;
+  string display_name = 2;
+  string description = 3;
+  repeated string member_ids = 4;
+  string next_page_token = 5;
+}
+
+message PluginShelfQuery {
+  repeated string categories = 1;
+  string filter = 2;
+  string sort = 3;
+  bool include_experimental = 4;
+}
+
+message PluginPromotionShelf {
+  string id = 1;
+  string display_name = 2;
+  string description = 3;
+  repeated string plugin_depot_paths = 4;
+  int32 position = 5;
+  repeated string customization_ids = 6;
+  PluginShelfQuery query = 7;
+}
+
+message PluginPromotions {
+  repeated PluginPromotionShelf shelves = 1;
+}
+
+message BundlePromotionShelf {
+  repeated string bundle_paths = 1;
+}
+
+message BundlePromotions {
+  repeated BundlePromotionShelf shelves = 1;
+}
+
+message BannedPluginEntry {
+  string marketplace = 1;
+  string id = 2;
+  string reason = 3;
+  string version_regex = 4;
+}
+
+message PluginKillSwitchConfig {
+  repeated BannedPluginEntry banned_plugins = 1;
+}
+
+message CustomizationFeaturedCard {
+  string id = 1;
+  string eyebrow = 2;
+  string display_name = 3;
+  string description = 4;
+  repeated string plugin_depot_paths = 5;
+  repeated string customization_ids = 6;
+}
+
+message CustomizationsFeaturedPromotions {
+  repeated CustomizationFeaturedCard cards = 1;
+}
+
+message FeaturedCard {
+  string id = 1;
+  string eyebrow = 2;
+  string display_name = 3;
+  string description = 4;
+  repeated string member_ids = 5;
+}
+
+message GetMarketplaceFeaturedRequest {
+}
+
+message GetMarketplaceFeaturedResponse {
+  repeated FeaturedCard featured = 1;
+  repeated MarketplaceCustomization customizations = 2;
+}
+
+message OnboardingPersonaSuggestion {
+  string label = 1;
+  string customization_id = 2;
+  string prompt = 3;
+}
+
+message OnboardingPersona {
+  string id = 1;
+  string display_name = 2;
+  string description = 3;
+  jetbox_state_pb.ProductSkin skin = 4;
+  repeated OnboardingPersonaSuggestion suggestions = 5;
+}
+
+message OnboardingCustomPersona {
+  string description = 1;
+  jetbox_state_pb.ProductSkin skin = 2;
+  repeated OnboardingPersonaSuggestion suggestions = 3;
+}
+
+message OnboardingPersonasConfig {
+  repeated OnboardingPersona personas = 1;
+  OnboardingCustomPersona custom_persona = 2;
+}
+
+message GetOnboardingPersonasRequest {
+}
+
+message GetOnboardingPersonasResponse {
+  repeated OnboardingPersona personas = 1;
+  OnboardingCustomPersona custom_persona = 2;
+  repeated MarketplaceCustomization customizations = 3;
+}
+
+message SearchMarketplaceResponse {
+  repeated MarketplaceCustomization customizations = 1;
+  string next_page_token = 2;
+  repeated ResultGroup groups = 3;
+}
+
+message GetMarketplaceCustomizationRequest {
+  string id = 1;
+  bool include_preview = 2;
+}
+
+message GetMarketplaceCustomizationResponse {
+  MarketplaceCustomization customization = 1;
+  oneof preview {
+    Plugin plugin = 2;
+    SkillPreview skill = 3;
+  }
+}
+
+message SkillPreview {
+  string skill_md = 1;
+}
+
+message InstallCustomizationRequest {
+  reserved 1;
+  reserved "marketplace";
+  string id = 2;
+  string bundle_id = 3;
+}
+
+message InstallCustomizationResponse {
+  bool success = 1;
+  string message = 2;
+  string install_dir = 3;
+  repeated string member_install_dirs = 4;
+}
+
+message IncludeBundleMemberRequest {
+  string bundle_plugin_id = 1;
+  string member_customization_id = 2;
+}
+
+message IncludeBundleMemberResponse {
+  bool success = 1;
+  string message = 2;
+  string install_dir = 3;
+}
+
+message GetTokenBaseRequest {
+  cortex_pb.CascadeConfig cascade_config = 1;
+  repeated string workspace_uris = 2;
+  optional string active_profile = 3 [deprecated = true];
+}
+
+message GetTokenBaseResponse {
+  cortex_pb.TokenBreakdown customization_token_base = 3;
+  int32 remaining_budget = 4;
+  int32 customization_budget = 5;
+  cortex_pb.TokenBreakdown truncated_customization_token_base = 6;
+  int32 rules_budget = 7;
+  int32 remaining_rules_budget = 8;
+  cortex_pb.TokenBreakdown token_base = 1 [deprecated = true];
+  int32 max_token_base = 2 [deprecated = true];
+}
+
+message RunCommandRequest {
+  option deprecated = true;
+  string command = 1;
+  repeated string args = 2;
+  string cwd = 3;
+  int64 timeout_ms = 4;
+}
+
+message RunCommandResponse {
+  option deprecated = true;
+  string stdout = 1;
+  string stderr = 2;
+  int32 exit_code = 3;
+  bool timed_out = 4;
+}
+
+message ValidateTerminalSetupScriptRequest {
+  string setup_command = 1;
+  string cwd = 2;
+}
+
+message ValidateTerminalSetupScriptResponse {
+  int32 exit_code = 1;
+  bytes output = 2;
+}
+
+message JetboxWriteStateRequest {
+  jetbox_state_pb.State state = 1 [deprecated = true];
+  jetbox_state_pb.JetboxAppState app_state = 2;
+  config_pb.UserConfig user_config = 3;
+}
+
+message JetboxWriteStateResponse {
+}
+
+message JetboxSubscribeToStateRequest {
+}
+
+message JetboxSubscribeToStateResponse {
+  jetbox_state_pb.State state = 1 [deprecated = true];
+  jetbox_state_pb.JetboxAppState app_state = 2;
+  config_pb.UserConfig user_config = 3;
+}
+
+message JetboxReadAppStateRequest {
+}
+
+message JetboxReadAppStateResponse {
+}
+
+message JetboxReadUserConfigRequest {
+}
+
+message JetboxReadUserConfigResponse {
+}
+
+message JetboxWriteSummaryRequest {
+  string cascade_id = 1;
+  jetski_cortex_pb.CascadeTrajectorySummary summary = 2;
+}
+
+message JetboxWriteSummaryResponse {
+}
+
+message JetboxDeleteSummaryRequest {
+  string cascade_id = 1;
+}
+
+message JetboxDeleteSummaryResponse {
+}
+
+message JetboxSubscribeToSummariesRequest {
+  reserved 1;
+  reserved "cloud";
+  project_pb.BackendType backend = 2;
+}
+
+message JetboxSubscribeToSummariesResponse {
+  map<string, jetski_cortex_pb.CascadeTrajectorySummary> updates = 1;
+  repeated string deletes = 2;
+}
+
+message GcertStatus {
+  bool valid = 1;
+  string error = 2;
+  google.protobuf.Timestamp expires_at = 3;
+  google.protobuf.Timestamp issued_at = 4;
+}
+
+message OAuthStatus {
+  bool valid = 1;
+  string error = 2;
+}
+
+message JetboxSubscribeToGcertStateRequest {
+}
+
+message JetboxSubscribeToGcertStateResponse {
+  GcertStatus gcert_status = 1;
+}
+
+message JetboxSubscribeToOAuthStateRequest {
+}
+
+message JetboxSubscribeToOAuthStateResponse {
+  OAuthStatus oauth_status = 1;
+}
+
+message SearchFilesRequest {
+  string query = 1;
+  string workspace_uri = 2;
+  int32 max_results = 3;
+  bool include_directories = 4;
+  uint64 cancel_token = 5;
+  string conversation_id = 6;
+}
+
+message SearchFilesResponse {
+  repeated codeium_common_pb.PathScopeItem results = 1;
+}
+
+message SearchCodeRequest {
+  string query = 1;
+  string workspace_uri = 2;
+  int32 max_results = 3;
+  int32 lines_context = 4;
+  uint64 cancel_token = 5;
+  bool is_regex = 6;
+  CaseSensitivity case_sensitivity = 7;
+  bool whole_word = 8;
+  repeated string target_paths = 9;
+  repeated string include_globs = 10;
+  repeated string exclude_globs = 11;
+  int32 max_columns = 13;
+  string file_pattern = 14;
+  bool raw_query = 15;
+}
+
+message SearchCodeResponse {
+  repeated SearchCodeResult results = 1;
+}
+
+message StreamSearchCodeResponse {
+  SearchCodeResult result = 1;
+}
+
+message SearchCodeResult {
+  string absolute_uri = 1;
+  map<string, string> workspace_uris_to_relative_paths = 2;
+  int32 line_number = 3;
+  string snippet = 4;
+  int32 match_start_col = 5;
+  int32 match_end_col = 6;
+  repeated string context_before = 7;
+  repeated string context_after = 8;
+}
+
+message SearchConversationsFilters {
+  bool archived_only = 1;
+  bool include_side_questions = 2;
+}
+
+message SearchConversationsRequest {
+  string query = 1;
+  int32 limit = 2;
+  SearchConversationsFilters filters = 3;
+}
+
+message StringMatchRange {
+  int32 start_offset = 1;
+  int32 end_offset_exclusive = 2;
+}
+
+message ConversationSearchResult {
+  string cascade_id = 1;
+  string title = 2;
+  string workspace_name = 3;
+  string snippet = 4;
+  google.protobuf.Timestamp last_modified_time = 5;
+  bool needs_attention = 6;
+  repeated StringMatchRange title_match_ranges = 7;
+  repeated StringMatchRange snippet_match_ranges = 8;
+  MatchSource match_source = 9;
+  bool archived = 10;
+  optional int32 matched_step_index = 11;
+  optional string side_question_cascade_id = 12;
+}
+
+message SearchConversationsResponse {
+  repeated ConversationSearchResult results = 1;
+  bool index_stale = 2;
+  bool disk_full = 3;
+}
+
+message GenerateSkillInstallationCLRequest {
+  repeated string skill_paths = 1;
+  string ldap = 2;
+}
+
+message GenerateSkillInstallationCLResponse {
+  int64 cl_number = 1;
+  string cl_url = 2;
+}
+
+message SearchMarketplaceCustomizationsRequest {
+  string query = 1;
+  int32 page_size = 2;
+  repeated string extension_types = 3;
+}
+
+message SearchMarketplaceCustomizationsResponse {
+  repeated cortex_pb.WorkflowSpec extensions = 1;
+  bool has_more = 2;
+}
+
+message GetAgentTeamMetadataRequest {
+  string project_dir_uri = 1;
+}
+
+message AgentInstance {
+  string name = 1;
+  string log_file_path = 2;
+  string latest_trajectory_id = 3;
+  string latest_cascade_id = 4;
+  google.protobuf.Timestamp last_step_updated_at = 5;
+  string description = 6;
+}
+
+message AgentTeamTask {
+  string id = 1;
+  bool is_completed = 2;
+  string task_file_uri = 3;
+}
+
+message GetAgentTeamMetadataResponse {
+  repeated AgentInstance agents = 1;
+  repeated AgentTeamTask tasks = 2;
+}
+
+message GetCodeFrequencyForRepoRequest {
+  string repo_uri = 1;
+  string branch = 2;
+  int32 minutes_per_bucket = 3;
+}
+
+message CodeFrequencyRecord {
+  int32 num_commits = 1;
+  int32 lines_added = 2;
+  int32 lines_deleted = 3;
+  google.protobuf.Timestamp record_start_time = 4;
+  google.protobuf.Timestamp record_end_time = 5;
+}
+
+message GetCodeFrequencyForRepoResponse {
+  repeated CodeFrequencyRecord code_frequency = 1;
+}
+
+message ForkConversationRequest {
+  string source_cascade_id = 1;
+  int32 fork_at_step_index = 2;
+  ForkTarget target_fork_workspace = 3;
+  repeated string source_workspace_uris = 4;
+  repeated codeium_common_pb.TextOrScopeItem items = 5;
+  repeated codeium_common_pb.Media media = 6;
+  cortex_pb.AgentScriptItem agent_script_override = 7;
+  optional cortex_pb.CortexTrajectoryReferenceType reference_type = 8;
+}
+
+message ForkConversationResponse {
+  string new_cascade_id = 1;
+  string new_workspace_uri = 2;
+  string new_workspace_name = 3;
+  int32 forked_at_step_index = 4;
+  string new_project_id = 5;
+  string new_environment_id = 6;
+  repeated string warnings = 7;
+}
+
+message SendAgentMessageRequest {
+  string content = 1;
+  string recipient = 2;
+  string sender_id = 3;
+  cortex_pb.SourceMetadata source_metadata = 4;
+  optional string display_title = 5;
+}
+
+message SendAgentMessageResponse {
+}
+
+message DeleteAgentMessageRequest {
+  string message_id = 1;
+  string recipient = 2;
+}
+
+message DeleteAgentMessageResponse {
+}
+
+message RecordSidecarEventRequest {
+  string sidecar_id = 1;
+  cortex_pb.SidecarEventPayload payload = 2;
+  string error = 3;
+}
+
+message RecordSidecarEventResponse {
+}
+
+message GetSidecarsRequest {
+}
+
+message GetSidecarsResponse {
+  repeated cortex_pb.SidecarStatusInfo sidecars = 1;
+}
+
+message SubscribeToSidecarsRequest {
+}
+
+message SubscribeToSidecarsResponse {
+  repeated cortex_pb.SidecarStatusInfo sidecars = 1;
+}
+
+message GetSidecarEventsRequest {
+  string sidecar_id = 1;
+}
+
+message GetSidecarEventsResponse {
+  repeated cortex_pb.SidecarEvent events = 1;
+}
+
+message GetSidecarLogsRequest {
+  string sidecar_id = 1;
+  int32 tail_lines = 2;
+  string log_filename = 3;
+}
+
+message GetSidecarLogsResponse {
+  string logs = 1;
+}
+
+message ListSidecarLogFilesRequest {
+  string sidecar_id = 1;
+}
+
+message ListSidecarLogFilesResponse {
+  repeated string log_filenames = 1;
+}
+
+message ManageSidecarRequest {
+  string sidecar_id = 1;
+  SidecarAction action = 2;
+  cortex_pb.SidecarConfig config = 3;
+  string project_id = 4 [deprecated = true];
+  bool all_projects = 5 [deprecated = true];
+  map<string, string> argument_values = 6;
+}
+
+message ResolveSidecarConfigRequest {
+  string sidecar_id = 1;
+  map<string, string> argument_values = 2;
+}
+
+message ResolveSidecarConfigResponse {
+  cortex_pb.SidecarConfig resolved_config = 1;
+}
+
+message ManageSidecarResponse {
+}
+
+message ListTriggerOptionsRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message ListTriggerOptionsResponse {
+  repeated remote_agent_proxy_pb.TriggerOption options = 1;
+}
+
+message ListTriggersRequest {
+  project_pb.BackendType backend = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListTriggersResponse {
+  repeated remote_agent_proxy_pb.RemoteTrigger triggers = 1;
+  string next_page_token = 2;
+}
+
+message CreateTriggerRequest {
+  project_pb.BackendType backend = 1;
+  remote_agent_proxy_pb.RemoteTrigger trigger = 2;
+}
+
+message CreateTriggerResponse {
+  remote_agent_proxy_pb.RemoteTrigger trigger = 1;
+}
+
+message UpdateTriggerRequest {
+  project_pb.BackendType backend = 1;
+  remote_agent_proxy_pb.RemoteTrigger trigger = 2;
+  repeated string update_mask = 3;
+}
+
+message UpdateTriggerResponse {
+  remote_agent_proxy_pb.RemoteTrigger trigger = 1;
+}
+
+message DeleteTriggerRequest {
+  project_pb.BackendType backend = 1;
+  string trigger_id = 2;
+}
+
+message DeleteTriggerResponse {
+}
+
+message RunTriggerRequest {
+  project_pb.BackendType backend = 1;
+  string trigger_id = 2;
+}
+
+message RunTriggerResponse {
+}
+
+message ListEnvironmentsRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message ListEnvironmentsResponse {
+  repeated remote_agent_proxy_pb.EnvironmentInfo environments = 1;
+}
+
+message DeleteAllUserDataRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message DeleteAllUserDataResponse {
+}
+
+message GetUserDataDeletionStatusRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message GetUserDataDeletionStatusResponse {
+  State state = 1;
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_NONE = 1;
+    STATE_IN_PROGRESS = 2;
+  }
+}
+
+message StartAudioTranscriptionRequest {
+  string mime_type = 1;
+  string model = 2;
+  string pre_cursor_text = 3;
+  string post_cursor_text = 4;
+  string cascade_id = 5;
+  bool continuous = 6;
+  repeated AudioTranscriptionContext context = 7;
+  repeated string language_codes = 8;
+}
+
+message AudioTranscriptionContext {
+  string target = 1;
+  string text = 2;
+}
+
+message StreamAudioTranscriptionResponse {
+  oneof message {
+    AudioStreamReady ready = 1;
+    TranscriptionUpdate transcription = 2;
+    AudioStreamComplete complete = 3;
+  }
+}
+
+message AudioStreamReady {
+  string session_id = 1;
+}
+
+message TranscriptionUpdate {
+  string text = 1;
+  bool is_final = 2;
+}
+
+message AudioStreamComplete {
+}
+
+message SendAudioChunkRequest {
+  string session_id = 1;
+  bytes data = 2;
+  uint32 sequence_number = 3;
+}
+
+message SendAudioChunkResponse {
+}
+
+message EndAudioSessionRequest {
+  string session_id = 1;
+  optional uint32 last_sequence_number = 2;
+}
+
+message EndAudioSessionResponse {
+}
+
+message StartNarrationRequest {
+  string user_text = 1;
+}
+
+message StreamNarrationResponse {
+  oneof message {
+    NarrationReady ready = 1;
+    NarrationAudioChunk audio = 2;
+    NarrationComplete complete = 3;
+  }
+}
+
+message NarrationReady {
+  string session_id = 1;
+}
+
+message NarrationAudioChunk {
+  bytes data = 1;
+  string mime_type = 2;
+}
+
+message NarrationComplete {
+}
+
+message SendNarrationTurnRequest {
+  string session_id = 1;
+  string text = 2;
+  string role = 3;
+  bool turn_complete = 4;
+}
+
+message SendNarrationTurnResponse {
+}
+
+message EndNarrationRequest {
+  string session_id = 1;
+}
+
+message EndNarrationResponse {
+}
+
+message GetInputCompletionRequest {
+  string completion_id = 1;
+  string cascade_id = 4;
+  string content = 2;
+  int32 cursor = 3;
+}
+
+message GetInputCompletionResponse {
+  string completion_id = 1;
+  int32 start_offset = 2;
+  int32 end_offset = 3;
+  string replacement = 4;
+}
+
+message SendInputCompletionFeedbackRequest {
+  string completion_id = 1;
+  CompletionFeedback feedback = 2;
+  int64 duration_ms = 3;
+  string output_text_id = 4;
+}
+
+message SendInputCompletionFeedbackResponse {
+}
+
+message GetKnowledgeItemsRequest {
+  option deprecated = true;
+}
+
+message KnowledgeItem {
+  option deprecated = true;
+  string dir_name = 1;
+  string dir_uri = 2;
+  string metadata_uri = 3;
+  string metadata_contents = 4;
+  repeated string artifact_source_uris = 5;
+}
+
+message GetKnowledgeItemsResponse {
+  option deprecated = true;
+  repeated KnowledgeItem items = 1;
+}
+
+message CreateProjectRequest {
+  project_pb.Project project = 1;
+  project_pb.BackendType backend = 2;
+  repeated codeium_common_pb.Media files = 3;
+}
+
+message CreateProjectResponse {
+}
+
+message CogWorkspaceOptions {
+  optional string repo_name = 1;
+  optional string branch_name = 2;
+}
+
+message CreateMagicProjectRequest {
+  repeated codeium_common_pb.TextOrScopeItem items = 1;
+  repeated codeium_common_pb.Media media = 2;
+  string project_id = 3;
+  optional vcs_pb.VcsType vcs_type = 4;
+  optional CogWorkspaceOptions cog_options = 5;
+}
+
+message CreateMagicProjectResponse {
+  string project_id = 1;
+}
+
+message GetPermissionSettingsRequest {
+}
+
+message GetPermissionSettingsResponse {
+  codeium_common_pb.AgentPermissionPreset global_preset = 1;
+  codeium_common_pb.ArtifactReviewMode global_artifact_review_mode = 2;
+  codeium_common_pb.PermissionGrantsConfig global_grants = 3;
+}
+
+message UpdatePermissionSettingsRequest {
+  codeium_common_pb.AgentPermissionPreset preset = 1;
+  codeium_common_pb.ArtifactReviewMode artifact_review_mode = 2;
+  codeium_common_pb.PermissionGrantsConfig grants = 3;
+}
+
+message UpdatePermissionSettingsResponse {
+}
+
+message UpdateProjectRequest {
+  project_pb.Project project = 1;
+  repeated codeium_common_pb.Media files = 2;
+  bool rename = 3;
+}
+
+message UpdateProjectResponse {
+}
+
+message ListResourceProvidersRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message ListResourceProvidersResponse {
+  repeated remote_agent_proxy_pb.ResourceProviderInfo providers = 1;
+}
+
+message ListAvailableResourcesRequest {
+  project_pb.BackendType backend = 1;
+  string type = 2;
+}
+
+message ListAvailableResourcesResponse {
+  repeated project_pb.RemoteResource resources = 1;
+  string oauth_access_token = 2;
+  string oauth_client_id = 3;
+}
+
+message ListRemotePluginsRequest {
+  project_pb.BackendType backend = 1;
+  optional string return_to_app = 2;
+}
+
+message ListRemotePluginsResponse {
+  repeated remote_agent_proxy_pb.PluginInfo plugins = 1;
+}
+
+message DisconnectRemotePluginRequest {
+  project_pb.BackendType backend = 1;
+  string plugin_id = 2;
+  string account = 3;
+}
+
+message DisconnectRemotePluginResponse {
+}
+
+message DeleteProjectRequest {
+  string id = 1;
+}
+
+message DeleteProjectResponse {
+}
+
+message ProjectUpdatesStreamRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message ProjectUpdatesStreamResponse {
+  oneof update {
+    ProjectList project_list = 1;
+    string project_updated_id = 2;
+  }
+}
+
+message ProjectList {
+  repeated string project_ids = 1;
+}
+
+message ReadProjectRequest {
+  string id = 1;
+}
+
+message ReadProjectResponse {
+  project_pb.Project project = 1;
+  bool not_found_on_disk = 2;
+  string error_message = 3;
+}
+
+message ReadProjectsRequest {
+  repeated string ids = 1;
+}
+
+message ReadProjectsResponse {
+  repeated project_pb.Project projects = 1;
+  repeated string not_found_ids = 2;
+  repeated string failed_ids = 3;
+  map<string, string> error_messages = 4;
+}
+
+message ListProjectsRequest {
+  project_pb.BackendType backend = 1;
+}
+
+message ListProjectsResponse {
+  repeated string project_ids = 1;
+}
+
+message GenerateEnvironmentNameRequest {
+  repeated codeium_common_pb.TextOrScopeItem items = 1;
+  repeated codeium_common_pb.Media media = 2;
+  repeated string existing_names = 3;
+}
+
+message GenerateEnvironmentNameResponse {
+  string name = 1;
+}
+
+message AddEnvironmentToProjectRequest {
+  string project_id = 1;
+  project_pb.Environment environment = 2;
+}
+
+message AddEnvironmentToProjectResponse {
+}
+
+message FolderTrustStatus {
+  string folder_uri = 1;
+  string path = 2;
+  bool trusted = 3;
+  repeated string trusted_via = 4;
+}
+
+message ProjectTrustStatus {
+  bool is_project_trusted = 1;
+  bool has_blocked_items = 2;
+  repeated FolderTrustStatus folders = 3;
+}
+
+message GetProjectTrustStatusRequest {
+  string project_id = 1;
+}
+
+message GetProjectTrustStatusResponse {
+  ProjectTrustStatus status = 1;
+}
+
+message SetWorkspaceTrustRequest {
+  repeated string paths = 1;
+  bool trusted = 2;
+  string project_id = 3;
+}
+
+message SetWorkspaceTrustResponse {
+  ProjectTrustStatus status = 1;
+}
+
+message GetAuthStatusRequest {
+}
+
+message TosErrorInfo {
+  string message = 1 [deprecated = true];
+  string appeal_url = 2;
+  string appeal_link_text = 3;
+}
+
+message IneligibleInfo {
+  string reason = 1 [deprecated = true];
+  string verification_url = 2;
+}
+
+message VerificationRequired {
+  string verification_url = 1;
+}
+
+message HeadlessAuthRequired {
+  string auth_url = 1;
+}
+
+message GeneralError {
+  string reason = 1 [deprecated = true];
+}
+
+message ProjectRequiredInfo {
+  reserved 1;
+}
+
+message AuthResult {
+  bool has_valid_auth = 1;
+  string ui_message = 2;
+  bool is_gcp_tos = 10;
+  string project_id = 11;
+  string location = 12;
+  oneof failure_details {
+    IneligibleInfo ineligible = 3;
+    VerificationRequired verification_required = 4;
+    TosErrorInfo tos_violation = 5;
+    GeneralError general_error = 6;
+    ProjectRequiredInfo project_required = 7;
+    HeadlessAuthRequired headless_auth_required = 9;
+    LicenseRequiredInfo license_required = 13;
+  }
+  repeated string granted_scopes = 8;
+  string wif_provider = 14;
+  AuthMode auth_mode = 15;
+
+  enum AuthMode {
+    AUTH_MODE_UNSPECIFIED = 0;
+    AUTH_MODE_PERSONAL_CONSUMER = 1;
+    AUTH_MODE_BUSINESS_LICENSED_ENTERPRISE = 2;
+    AUTH_MODE_BUSINESS_AGENT_PLATFORM_PAYGO = 3;
+    AUTH_MODE_GEMINI_API_KEY = 4;
+    AUTH_MODE_ENTERPRISE_GATEWAY = 5;
+  }
+}
+
+message GetAuthStatusResponse {
+  AuthResult auth_result = 1;
+}
+
+message LoginWithBrowserRequest {
+  option deprecated = true;
+  bool is_gcp_tos = 1;
+  repeated string additional_scopes = 2;
+}
+
+message LoginWithBrowserResponse {
+  option deprecated = true;
+  AuthResult auth_result = 1;
+}
+
+message WifLoginInfo {
+  string provider_name = 1;
+  optional string email = 2;
+}
+
+message LoginRequest {
+  bool is_gcp_tos = 1;
+  repeated string additional_scopes = 2;
+  bool enable_business_login = 3;
+  optional WifLoginInfo wif_login_info = 4;
+}
+
+message LoginResponse {
+  AuthResult auth_result = 1;
+}
+
+message AuthLogoutRequest {
+}
+
+message AuthLogoutResponse {
+}
+
+message GetLoginSessionRequest {
+}
+
+message GetLoginSessionResponse {
+  bool active = 1;
+  string auth_url = 2;
+  LoginSessionMode mode = 3;
+}
+
+message CancelLoginRequest {
+}
+
+message CancelLoginResponse {
+}
+
+message SwitchLoginToAuthCodeRequest {
+  bool open_browser = 1;
+}
+
+message SwitchLoginToAuthCodeResponse {
+  bool active = 1;
+  string auth_url = 2;
+  LoginSessionMode mode = 3;
+}
+
+message SubmitLoginAuthCodeRequest {
+  string code = 1;
+}
+
+message SubmitLoginAuthCodeResponse {
+  bool accepted = 1;
+  string retry_error = 2;
+}
+
+message HasAuthTokenRequest {
+}
+
+message HasAuthTokenResponse {
+  bool has_token = 1;
+  bool is_gcp_tos = 2;
+  string project_id = 3;
+  string location = 4;
+  string wif_provider = 5;
+}
+
+message GetHubOAuthAccessTokenRequest {
+}
+
+message GetHubOAuthAccessTokenResponse {
+  string access_token = 1;
+  google.protobuf.Timestamp expiry = 2;
+}
+
+message ResolveFolderRequest {
+  string folder_uri = 1;
+}
+
+message ResolveFolderResponse {
+  project_pb.FolderType resource_type = 1;
+  vcs_pb.VcsType vcs_type = 2;
+}
+
+message CloneGitHubRepoRequest {
+  string repo_slug = 1;
+  string parent_dir_uri = 2;
+}
+
+message CloneGitHubRepoResponse {
+  string folder_uri = 1;
+}
+
+message ValidateProjectRequest {
+  reserved 1;
+  string project_id = 2;
+  string location = 3;
+}
+
+message ValidateProjectResponse {
+  AuthResult auth_result = 1;
+}
+
+message GetGrantedScopesRequest {
+  bool is_gcp_tos = 1;
+}
+
+message GetGrantedScopesResponse {
+  repeated string scopes = 1;
+}
+
+message ResolveWorkspaceUrlPreviewRequest {
+  oneof identifier {
+    string url = 1;
+    string document_id = 2;
+  }
+}
+
+message ResolveWorkspaceUrlPreviewResponse {
+  string title = 1;
+  WorkspaceResourceType resource_type = 2;
+}
+
+message SearchDriveFilesRequest {
+  string query = 1;
+  int32 page_size = 2;
+}
+
+message DriveFileResult {
+  string file_id = 1;
+  string name = 2;
+  string url = 3;
+  string mime_type = 4;
+  WorkspaceResourceType resource_type = 5;
+}
+
+message SearchDriveFilesResponse {
+  repeated DriveFileResult files = 1;
+}
+
+message GetChangelistStatusRequest {
+  repeated int64 cl_numbers = 1;
+  bool include_content = 2;
+  bool include_checks = 3;
+}
+
+message ChangelistCheckItem {
+  string label = 1;
+  ChangelistCheckState state = 2;
+  string summary = 3;
+  string target_url = 4;
+}
+
+message ChangelistChecks {
+  int32 running_count = 1;
+  int32 blocking_count = 2;
+  int32 actionable_count = 3;
+  int32 passed_count = 4;
+  bool is_submitting = 5;
+  repeated ChangelistCheckItem items = 6;
+  bool awaiting_runs = 7;
+}
+
+message ChangelistStatus {
+  reserved 7;
+  int64 cl_number = 1;
+  string title = 2;
+  ChangelistReviewState review_state = 3;
+  int32 lgtms_count = 4;
+  int32 unresolved_comment_count = 5;
+  string description = 6;
+  bool has_missing_approvals = 8;
+  ChangelistChecks checks = 9;
+}
+
+message GetChangelistStatusResponse {
+  repeated ChangelistStatus statuses = 1;
+}
+
+message GerritChangeId {
+  string host = 1;
+  int64 change_number = 2;
+}
+
+message GerritChangeStatus {
+  string host = 1;
+  int64 change_number = 2;
+  string title = 3;
+  GerritChangeReviewState review_state = 4;
+  int32 code_review_score = 5;
+  int32 unresolved_comment_count = 6;
+  string description = 7;
+  string project = 8;
+  string branch = 9;
+  string owner_name = 10;
+}
+
+message GetGerritChangeStatusRequest {
+  repeated GerritChangeId changes = 1;
+  bool include_content = 2;
+}
+
+message GetGerritChangeStatusResponse {
+  repeated GerritChangeStatus statuses = 1;
+}
+
+message GoogleChatLinkTarget {
+  string space_id = 1;
+  string thread_id = 2;
+  string message_id = 3;
+}
+
+message GoogleChatLinkInfo {
+  string space_id = 1;
+  string thread_id = 2;
+  string message_id = 3;
+  GoogleChatLinkKind link_kind = 4;
+  GoogleChatSpaceType space_type = 5;
+  string display_name = 6;
+  int32 member_count = 7;
+  string description = 8;
+  bool single_user_bot_dm = 9;
+  string sender_name = 10;
+  google.protobuf.Timestamp create_time = 11;
+  string message_text = 12;
+  repeated string attachment_names = 13;
+}
+
+message GetGoogleChatLinkInfoRequest {
+  repeated GoogleChatLinkTarget targets = 1;
+  bool include_content = 2;
+}
+
+message GetGoogleChatLinkInfoResponse {
+  repeated GoogleChatLinkInfo infos = 1;
+}
+
+message GetWorkspaceChangelistsRequest {
+  repeated string workspace_uris = 1;
+}
+
+message WorkspaceChangelists {
+  string workspace_uri = 1;
+  repeated ChangelistStatus changelists = 2;
+}
+
+message GetWorkspaceChangelistsResponse {
+  repeated WorkspaceChangelists workspaces = 1;
+}
+
+message GitHubPullRequestRef {
+  string host = 1;
+  string owner = 2;
+  string repo = 3;
+  int32 number = 4;
+}
+
+message GitHubPullRequestError {
+  GitHubPullRequestErrorCode code = 1;
+  string message = 2;
+  int32 retry_after_seconds = 3;
+  GitHubAuthRemedy remedy = 4;
+  string action_url = 5;
+}
+
+message GitHubPullRequestStatus {
+  GitHubPullRequestRef ref = 1;
+  string url = 2;
+  string title = 3;
+  GitHubPullRequestState state = 4;
+  string author_login = 5;
+  string head_ref_name = 6;
+  string base_ref_name = 7;
+  string body = 8;
+  GitHubPullRequestError error = 9;
+}
+
+message GetGitHubPullRequestsRequest {
+  repeated GitHubPullRequestRef pull_requests = 1;
+}
+
+message GetGitHubPullRequestsResponse {
+  repeated GitHubPullRequestStatus statuses = 1;
+}
+
+message GetStandaloneDirRequest {
+}
+
+message GetStandaloneDirResponse {
+  string standalone_dir = 1;
+}
+
+message GetDefaultProjectDirRequest {
+}
+
+message GetDefaultProjectDirResponse {
+  string default_project_dir_uri = 1;
+}
+
+message CreateScratchProjectFolderRequest {
+  string name = 1;
+}
+
+message CreateScratchProjectFolderResponse {
+  string folder_uri = 1;
+  bool is_git_repo = 2;
+  string error_message = 3;
+}
+
+message SetupJetskiChatRequest {
+  string display_name = 1;
+  string avatar_url = 2;
+  string version_info = 3;
+}
+
+message SetupJetskiChatResponse {
+  SetupChatState state = 1;
+  string message = 2;
+  string oauth_url = 3;
+}
+
+message GetVersionControlStateRequest {
+  optional string workspace_path = 1;
+}
+
+message GetVersionControlStateResponse {
+  vcs_pb.VcsWorkspaceState state = 1;
+}
+
+message CreateTerminalRequest {
+  string workspace_uri = 1;
+  string conversation_id = 2;
+  string project_id = 3;
+  string split_from_terminal_id = 4;
+}
+
+message CreateTerminalResponse {
+  TerminalInfo terminal = 1;
+}
+
+message TerminalSize {
+  int32 cols = 1;
+  int32 rows = 2;
+}
+
+message StreamTerminalOutputRequest {
+  string terminal_id = 1;
+}
+
+message StreamTerminalOutputResponse {
+  oneof event {
+    bytes output = 1;
+    int32 exit_code = 2;
+    string title = 3;
+    string cwd = 4;
+  }
+  bool is_scrollback = 5;
+}
+
+message SendTerminalInputRequest {
+  string terminal_id = 1;
+  oneof action {
+    bytes input = 2;
+    TerminalSize resize = 3;
+  }
+  string input_stream_id = 4;
+  int64 input_offset = 5;
+}
+
+message SendTerminalInputResponse {
+  int64 acked_offset = 1;
+}
+
+message CloseTerminalRequest {
+  string terminal_id = 1;
+  bool force = 2;
+}
+
+message CloseTerminalResponse {
+}
+
+message ListTerminalsRequest {
+  string conversation_id = 1;
+  string project_id = 2;
+  string workspace_uri = 3;
+}
+
+message ListTerminalsResponse {
+  repeated TerminalInfo terminals = 1;
+}
+
+message TerminalInfo {
+  string terminal_id = 1;
+  int32 pid = 2;
+  string title = 3;
+  string conversation_id = 4;
+  string project_id = 5;
+  string cwd = 6;
+  string split_group_id = 7;
+  string workspace_uri = 8;
+  google.protobuf.Timestamp created_at = 9;
+}
+
+message RunningBackgroundTask {
+  string conversation_id = 1;
+  cortex_pb.TaskSnapshot task = 2;
+}
+
+message ListBackgroundTasksRequest {
+}
+
+message ListBackgroundTasksResponse {
+  repeated RunningBackgroundTask tasks = 1;
+}
+
+message WatchVersionControlStateRequest {
+  string workspace_uri = 1;
+  string conversation_id = 2;
+}
+
+message WatchVersionControlStateResponse {
+  vcs_pb.VcsWorkspaceState state = 1;
+}
+
+message GetVersionControlFileContentRequest {
+  string uri = 1;
+  oneof source {
+    string commit_id = 2;
+    bool staged = 3;
+  }
+  string conversation_id = 4;
+}
+
+message GetVersionControlFileContentResponse {
+  bytes content = 1;
+}
+
+message GetCommitDetailsRequest {
+  string workspace_uri = 1;
+  string commit_id = 2;
+}
+
+message GetCommitDetailsResponse {
+  repeated vcs_pb.VcsFileChange changed_files = 1;
+  repeated string parent_commit_ids = 2;
+  vcs_pb.VcsDiffStats stats = 3;
+}
+
+message CheckoutCommitRequest {
+  string workspace_uri = 1;
+  string commit_id = 2;
+  CheckoutMode mode = 3;
+}
+
+message CheckoutCommitResponse {
+}
+
+message DiscardFileChangesRequest {
+  string workspace_uri = 1;
+  repeated string uris = 2;
+}
+
+message DiscardFileChangesResponse {
+}
+
+message FigSyncRequest {
+  string workspace_uri = 1;
+}
+
+message FigSyncResponse {
+}
+
+message FigCommitRequest {
+  string workspace_uri = 1;
+  string message = 2;
+}
+
+message FigCommitResponse {
+  optional string commit_id = 1;
+}
+
+message FigAmendRequest {
+  string workspace_uri = 1;
+  optional string message = 2;
+}
+
+message FigAmendResponse {
+  optional string commit_id = 1;
+}
+
+message FigUploadRequest {
+  string workspace_uri = 1;
+  optional string commit_id = 2;
+}
+
+message FigUploadResponse {
+  repeated string cl_numbers = 1;
+}
+
+message JjSyncRequest {
+  string workspace_uri = 1;
+}
+
+message JjSyncResponse {
+}
+
+message JjCommitRequest {
+  string workspace_uri = 1;
+  string message = 2;
+}
+
+message JjCommitResponse {
+  optional string commit_id = 1;
+}
+
+message JjSquashRequest {
+  string workspace_uri = 1;
+  optional string message = 2;
+}
+
+message JjSquashResponse {
+  optional string commit_id = 1;
+}
+
+message JjUploadRequest {
+  string workspace_uri = 1;
+  optional string revset = 2;
+}
+
+message JjUploadResponse {
+  repeated string cl_numbers = 1;
+}
+
+message JjAbandonRequest {
+  string workspace_uri = 1;
+  string commit_id = 2;
+}
+
+message JjAbandonResponse {
+}
+
+message CogSyncRequest {
+  string workspace_uri = 1;
+  optional string repo_path = 2;
+  optional string target = 3;
+}
+
+message CogSyncResponse {
+}
+
+message CogCommitRequest {
+  string workspace_uri = 1;
+  string message = 2;
+  optional string repo_path = 3;
+}
+
+message CogCommitResponse {
+  optional string commit_id = 1;
+}
+
+message CogUploadRequest {
+  string workspace_uri = 1;
+  optional string repo_path = 2;
+  string commit_id = 3;
+}
+
+message CogUploadResponse {
+  optional string cl_number = 1;
+}
+
+message CogSquashRequest {
+  string workspace_uri = 1;
+  optional string repo_path = 2;
+  string commit_id = 3;
+  string commit_message = 4;
+  CogSquashMode mode = 5;
+}
+
+message CogSquashResponse {
+}
+
+message RepoSyncRequest {
+  string workspace_uri = 1;
+  optional string repo_path = 2;
+  optional string target = 3;
+}
+
+message RepoSyncResponse {
+}
+
+message RepoCommitRequest {
+  string workspace_uri = 1;
+  string message = 2;
+  string repo_path = 3;
+}
+
+message RepoCommitResponse {
+  optional string commit_id = 1;
+}
+
+message RepoAmendRequest {
+  string workspace_uri = 1;
+  optional string message = 2;
+  string repo_path = 3;
+}
+
+message RepoAmendResponse {
+  optional string commit_id = 1;
+}
+
+message RepoUploadRequest {
+  string workspace_uri = 1;
+  string repo_path = 2;
+  optional string commit_id = 3;
+}
+
+message RepoUploadResponse {
+  optional string change_id = 1;
+}
+
+message ListProfilesRequest {
+  option deprecated = true;
+  repeated string workspace_uris = 1;
+}
+
+message ProfileItem {
+  option deprecated = true;
+  string name = 1;
+  string description = 2;
+  string path = 3;
+  cortex_pb.ProfileConfig config = 4;
+  bool is_default = 5;
+}
+
+message ListProfilesResponse {
+  option deprecated = true;
+  repeated ProfileItem profiles = 1;
+}
+
+message GitStageRequest {
+  string workspace_uri = 1;
+  repeated string uris = 2;
+}
+
+message GitStageResponse {
+}
+
+message GitUnstageRequest {
+  string workspace_uri = 1;
+  repeated string uris = 2;
+}
+
+message GitUnstageResponse {
+}
+
+message GitCommitRequest {
+  string workspace_uri = 1;
+  string message = 2;
+  bool amend = 3;
+}
+
+message GitCommitResponse {
+  optional string commit_id = 1;
+}
+
+message GitDiscardRequest {
+  string workspace_uri = 1;
+  repeated string uris = 2;
+  bool unstaged_only = 3;
+}
+
+message GitDiscardResponse {
+}
+
+message GitPushRequest {
+  string workspace_uri = 1;
+}
+
+message GitPushResponse {
+  string review_url = 1;
+  string remote_kind = 2;
+  string transport = 3;
+  string push_mode = 4;
+}
+
+message FetchAdminControlsRequest {
+}
+
+message FetchAdminControlsResponse {
+  bool admin_controls_applicable = 1;
+  AgentControls agent_controls = 2;
+  BrowserControls browser_controls = 3;
+  McpControls mcp_controls = 4;
+  FeatureControls feature_controls = 5;
+  PluginControls plugin_controls = 6;
+
+  enum JavascriptExecutionPolicy {
+    JAVASCRIPT_EXECUTION_POLICY_UNSPECIFIED = 0;
+    JAVASCRIPT_EXECUTION_POLICY_DISABLED = 1;
+    JAVASCRIPT_EXECUTION_POLICY_REQUEST_REVIEW = 2;
+    JAVASCRIPT_EXECUTION_POLICY_NOT_ENFORCED = 3;
+  }
+
+  message AgentControls {
+    bool sandbox_mode_enabled = 1;
+    FileAccessPolicy outside_workspace_file_access_policy = 2;
+    TerminalCommandAutoExecutionPolicy terminal_command_auto_execution_policy = 3;
+    bool permission_preset_locked = 4;
+
+    enum FileAccessPolicy {
+      FILE_ACCESS_POLICY_UNSPECIFIED = 0;
+      FILE_ACCESS_POLICY_DENY = 1;
+      FILE_ACCESS_POLICY_ALWAYS_ASK = 2;
+      FILE_ACCESS_POLICY_NOT_ENFORCED = 3;
+    }
+
+    enum TerminalCommandAutoExecutionPolicy {
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_UNSPECIFIED = 0;
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_REQUIRE_REVIEW = 1;
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_PROCEED_IN_SANDBOX = 2;
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_NOT_ENFORCED = 3;
+    }
+  }
+
+  message BrowserControls {
+    bool browser_enabled = 1;
+    JavascriptExecutionPolicy javascript_execution_policy = 2;
+    repeated string actuation_allowed_urls = 3;
+  }
+
+  message McpControls {
+    bool mcp_enabled = 1;
+    google.protobuf.Struct mcp_allowlist = 2;
+  }
+
+  message FeatureControls {
+    MultiagentControls multiagent_controls = 1;
+    bool remote_control_enabled = 2;
+
+    message MultiagentControls {
+      bool boost_command_disabled = 1;
+      bool teamwork_preview_command_disabled = 2;
+    }
+  }
+
+  message PluginControls {
+    bool plugins_disabled = 1;
+    bool marketplace_disabled = 2;
+  }
+}
+
+message ListGobReposRequest {
+  string query = 1;
+  int32 max_results = 2;
+}
+
+message ListGobReposResponse {
+  repeated string repos = 1;
+}
+
+message ListLicensesRequest {
+}
+
+message ListLicensesResponse {
+  repeated License licenses = 1;
+  string data_sharing_disclaimer = 2 [deprecated = true];
+}
+
+message License {
+  string user_tier = 1;
+  string tier_display_name = 2;
+  string project_id = 3;
+  string location = 4;
+}
+
+message SelectLicenseRequest {
+  string user_tier = 1;
+  string project_id = 2;
+  string location = 3;
+  string tier_display_name = 4;
+}
+
+message SelectLicenseResponse {
+  AuthResult auth_result = 1;
+}
+
+message SelfAssignLicenseRequest {
+  string project_id = 1;
+  string location = 2;
+}
+
+message SelfAssignLicenseResponse {
+  License license = 1;
+  bool assigned = 2;
+  string error_message = 3;
+  string data_sharing_disclaimer = 4 [deprecated = true];
+}
+
+message LicenseRequiredInfo {
+}
+
+message GcpProject {
+  string project_id = 1;
+  string display_name = 2;
+}
+
+message SearchGcpProjectsRequest {
+  string query = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  bool force_refresh = 4;
+}
+
+message SearchGcpProjectsResponse {
+  repeated GcpProject projects = 1;
+  string next_page_token = 2;
+}
+
+message GetHoverRequest {
+  string file_uri = 1;
+  int32 line = 2;
+  int32 column = 3;
+}
+
+message GetHoverResponse {
+  string contents = 1;
+  optional codeium_common_pb.Range range = 2;
+}
+
+message LspLocation {
+  string uri = 1;
+  codeium_common_pb.Range range = 2;
+  string line_preview = 3;
+}
+
+message GetDefinitionRequest {
+  string file_uri = 1;
+  int32 line = 2;
+  int32 column = 3;
+}
+
+message GetDefinitionResponse {
+  repeated LspLocation locations = 1;
+}
+
+message GetReferencesRequest {
+  string file_uri = 1;
+  int32 line = 2;
+  int32 column = 3;
+  optional bool include_declaration = 4;
+}
+
+message GetReferencesResponse {
+  repeated LspLocation locations = 1;
+  bool truncated = 2;
+}
+
+message ApplyUpdateRequest {
+}
+
+message ApplyUpdateResponse {
+  bool notified_host = 1;
+}
+
+message GetUpdateStatusRequest {
+}
+
+message GetUpdateStatusResponse {
+  host_bridge_pb.UpdateStatus status = 1;
+}
+
+message ContextProvider {
+  string id = 1;
+  string trigger = 2;
+  string label = 3;
+  string icon_uri = 4;
+  string description = 5;
+  int32 debounce_ms = 6;
+  bool supports_multi_word = 7;
+  repeated string uri_patterns = 8;
+  bool disabled = 9;
+  string plugin_name = 10;
+  plugin_context_pb.ProbeStatus status = 11;
+  string status_message = 12;
+  string plugin_dir = 13;
+  string plugin_auth_provider = 14;
+  string plugin_display_name = 15;
+}
+
+message ListContextProvidersRequest {
+}
+
+message ListContextProvidersResponse {
+  repeated ContextProvider providers = 1;
+}
+
+message ContextItem {
+  string uri = 1;
+  string icon_uri = 2;
+  string label = 3;
+  string description = 4;
+}
+
+message SearchContextRequest {
+  string provider_id = 1;
+  string query = 2;
+  string page_token = 3;
+}
+
+message SearchContextResponse {
+  bool ok = 1;
+  string reason = 2;
+  repeated ContextItem items = 3;
+  int32 cache_ttl_seconds = 4;
+  string next_page_token = 5;
+  plugin_context_pb.ContextFailureKind failure_kind = 6;
+  string user_help = 7;
+}
+
+message ResolveContextUriRequest {
+  string provider_id = 1;
+  string uri = 2;
+}
+
+message ResolveContextUriResponse {
+  bool ok = 1;
+  string reason = 2;
+  ContextItem item = 3;
+  plugin_context_pb.ContextFailureKind failure_kind = 4;
+  string user_help = 5;
+}
+
+message AgentBrowserWireRequest {
+  string request_id = 1;
+  string cascade_id = 2;
+  string root_conversation_id = 3;
+  string action = 4;
+  string params_json = 5;
+  string target_window_id = 6;
+}
+
+message AgentBrowserWireResponse {
+  string request_id = 1;
+  bool ok = 2;
+  string result_json = 3;
+  string error = 4;
+  string error_code = 5;
+  string window_id = 6;
+  bytes screenshot_png = 7;
+}
+
+message SubscribeToAgentBrowserRequestsRequest {
+  string window_id = 1;
+  string surface = 2;
+  repeated string open_conversation_ids = 3;
+  bool supports_isolated_world = 4;
+  optional string displayed_root_conversation_id = 5;
+  string backend_instructions = 6;
+  bool supports_scripts = 7;
+}
+
+message SubscribeToAgentBrowserRequestsResponse {
+  AgentBrowserWireRequest request = 1;
+}
+
+message FulfillAgentBrowserRequestRequest {
+  AgentBrowserWireResponse response = 1;
+}
+
+message FulfillAgentBrowserRequestResponse {
+}
+
+message UpdateAgentBrowserSubscriptionRequest {
+  string window_id = 1;
+  string displayed_root_conversation_id = 2;
+  bool supports_isolated_world = 3;
+  bool supports_scripts = 4;
+}
+
+message UpdateAgentBrowserSubscriptionResponse {
+}
+
+message VoiceToolDeclaration {
+  string name = 1;
+  string description = 2;
+  string parameters_json = 3;
+  string behavior = 4;
+}
+
+message VoicePromptTemplate {
+  string name = 1;
+  string content = 2;
+}
+
+message VoiceContextEntry {
+  string role = 1;
+  string kind = 2;
+  string text = 3;
+  string invocation_id = 4;
+  string delivery_mode = 5;
+  google.protobuf.Timestamp timestamp = 6;
+  int64 latency_ms = 7;
+  repeated uint32 step_indices = 8;
+  google.protobuf.Timestamp ended_at = 9;
+  int32 spoken_chars = 10;
+  bool cut_off = 11;
+  string asr_text = 12;
+  string talker_heard_text = 13;
+  string transcript_source = 14;
+  string interaction_id = 15;
+}
+
+message VoiceDebugEvent {
+  string event_name = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  map<string, string> attributes = 3;
+}
+
+message VoicePlaybackStats {
+  int64 duration_ms = 1;
+  int64 mic_audio_ms = 2;
+  int64 talker_audio_ms = 3;
+  int32 user_turns = 4;
+  int32 talker_turns = 5;
+  int32 handoffs = 6;
+  int32 barge_ins = 7;
+  int32 reconnects = 8;
+  int32 errors = 9;
+  string end_reason = 10;
+}
+
+message VoiceContextSnapshot {
+  reserved 16;
+  string session_id = 1;
+  string interaction_id = 2;
+  string recipe_id = 3;
+  string variant_id = 4;
+  string voice_name = 5;
+  string actor_name = 6;
+  int32 sample_rate = 7;
+  google.protobuf.Timestamp started_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  string system_instruction = 10;
+  repeated VoiceToolDeclaration tool_declarations = 11;
+  repeated VoicePromptTemplate prompt_templates = 12;
+  repeated VoiceContextEntry entries = 13;
+  repeated VoiceDebugEvent events = 14;
+  VoicePlaybackStats playback_stats = 15;
+  string cascade_id = 17;
+  int32 dropped_entries = 18;
+}
+
+message GetVoiceCallDebugRequest {
+  string cascade_id = 1;
+}
+
+message GetVoiceCallDebugResponse {
+  repeated VoiceContextSnapshot sessions = 1;
+}
+
+service LanguageServerService {
+  rpc ProvideCompletionFeedback(ProvideCompletionFeedbackRequest) returns (ProvideCompletionFeedbackResponse);
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  rpc GetRemoteControlInfo(GetRemoteControlInfoRequest) returns (GetRemoteControlInfoResponse);
+  rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
+  rpc GetCommandModelConfigs(GetCommandModelConfigsRequest) returns (GetCommandModelConfigsResponse);
+  rpc GetCascadeModelConfigs(GetCascadeModelConfigsRequest) returns (GetCascadeModelConfigsResponse);
+  rpc GetStandaloneDir(GetStandaloneDirRequest) returns (GetStandaloneDirResponse);
+  rpc RecordEvent(RecordEventRequest) returns (RecordEventResponse);
+  rpc RecordSidecarEvent(RecordSidecarEventRequest) returns (RecordSidecarEventResponse);
+  rpc GetSidecars(GetSidecarsRequest) returns (GetSidecarsResponse);
+  rpc SubscribeToSidecars(SubscribeToSidecarsRequest) returns (stream SubscribeToSidecarsResponse);
+  rpc GetSidecarEvents(GetSidecarEventsRequest) returns (GetSidecarEventsResponse);
+  rpc GetSidecarLogs(GetSidecarLogsRequest) returns (stream GetSidecarLogsResponse);
+  rpc ListSidecarLogFiles(ListSidecarLogFilesRequest) returns (ListSidecarLogFilesResponse);
+  rpc ManageSidecar(ManageSidecarRequest) returns (ManageSidecarResponse);
+  rpc ResolveSidecarConfig(ResolveSidecarConfigRequest) returns (ResolveSidecarConfigResponse);
+  rpc ListTriggerOptions(ListTriggerOptionsRequest) returns (ListTriggerOptionsResponse);
+  rpc ListTriggers(ListTriggersRequest) returns (ListTriggersResponse);
+  rpc CreateTrigger(CreateTriggerRequest) returns (CreateTriggerResponse);
+  rpc UpdateTrigger(UpdateTriggerRequest) returns (UpdateTriggerResponse);
+  rpc DeleteTrigger(DeleteTriggerRequest) returns (DeleteTriggerResponse);
+  rpc RunTrigger(RunTriggerRequest) returns (RunTriggerResponse);
+  rpc ListEnvironments(ListEnvironmentsRequest) returns (ListEnvironmentsResponse);
+  rpc DeleteAllUserData(DeleteAllUserDataRequest) returns (DeleteAllUserDataResponse);
+  rpc GetUserDataDeletionStatus(GetUserDataDeletionStatusRequest) returns (GetUserDataDeletionStatusResponse);
+  rpc RegisterGdmUser(RegisterGdmUserRequest) returns (RegisterGdmUserResponse);
+  rpc MigrateApiKey(MigrateApiKeyRequest) returns (MigrateApiKeyResponse);
+  rpc WellSupportedLanguages(WellSupportedLanguagesRequest) returns (WellSupportedLanguagesResponse);
+  rpc RecordSearchDocOpen(RecordSearchDocOpenRequest) returns (RecordSearchDocOpenResponse);
+  rpc RecordSearchResultsView(RecordSearchResultsViewRequest) returns (RecordSearchResultsViewResponse);
+  rpc HandleStreamingCommand(HandleStreamingCommandRequest) returns (stream HandleStreamingCommandResponse);
+  rpc GetMcpServerTemplates(GetMcpServerTemplatesRequest) returns (GetMcpServerTemplatesResponse);
+  rpc AddTrackedWorkspace(AddTrackedWorkspaceRequest) returns (AddTrackedWorkspaceResponse) {
+    option deprecated = true;
+  }
+  rpc RemoveTrackedWorkspace(RemoveTrackedWorkspaceRequest) returns (RemoveTrackedWorkspaceResponse) {
+    option deprecated = true;
+  }
+  rpc SmartFocusConversation(SmartFocusConversationRequest) returns (SmartFocusConversationResponse);
+  rpc StatUri(StatUriRequest) returns (StatUriResponse);
+  rpc ReadFile(ReadFileRequest) returns (ReadFileResponse);
+  rpc CheckDevToolsActivePort(CheckDevToolsActivePortRequest) returns (CheckDevToolsActivePortResponse);
+  rpc WriteFile(WriteFileRequest) returns (WriteFileResponse);
+  rpc CreateDebugBundle(CreateDebugBundleRequest) returns (CreateDebugBundleResponse);
+  rpc UploadToDrive(UploadToDriveRequest) returns (UploadToDriveResponse);
+  rpc ReadDir(ReadDirRequest) returns (ReadDirResponse);
+  rpc DeleteFileOrDirectory(DeleteFileOrDirectoryRequest) returns (DeleteFileOrDirectoryResponse);
+  rpc CreateDirectory(CreateDirectoryRequest) returns (CreateDirectoryResponse);
+  rpc WatchDirectory(WatchDirectoryRequest) returns (stream WatchDirectoryResponse);
+  rpc GetKnowledgeItems(GetKnowledgeItemsRequest) returns (GetKnowledgeItemsResponse) {
+    option deprecated = true;
+  }
+  rpc SetBrowserOpenConversation(SetBrowserOpenConversationRequest) returns (SetBrowserOpenConversationResponse);
+  rpc GetBrowserOpenConversation(GetBrowserOpenConversationRequest) returns (GetBrowserOpenConversationResponse);
+  rpc RefreshContextForIdeAction(RefreshContextForIdeActionRequest) returns (RefreshContextForIdeActionResponse);
+  rpc GetMatchingContextScopeItems(GetMatchingContextScopeItemsRequest) returns (GetMatchingContextScopeItemsResponse);
+  rpc RecordChatFeedback(RecordChatFeedbackRequest) returns (RecordChatFeedbackResponse);
+  rpc RecordChatPanelSession(RecordChatPanelSessionRequest) returns (RecordChatPanelSessionResponse);
+  rpc ShouldEnableUnleash(ShouldEnableUnleashRequest) returns (ShouldEnableUnleashResponse) {
+    option deprecated = true;
+  }
+  rpc GetWorkspaceEditState(GetWorkspaceEditStateRequest) returns (GetWorkspaceEditStateResponse);
+  rpc GetRepoInfos(GetRepoInfosRequest) returns (GetRepoInfosResponse);
+  rpc ListGobRepos(ListGobReposRequest) returns (ListGobReposResponse);
+  rpc GetWorkspaceInfos(GetWorkspaceInfosRequest) returns (GetWorkspaceInfosResponse) {
+    option deprecated = true;
+  }
+  rpc GetLocalUserInfo(GetLocalUserInfoRequest) returns (GetLocalUserInfoResponse);
+  rpc ResolveWorkspaceUrlPreview(ResolveWorkspaceUrlPreviewRequest) returns (ResolveWorkspaceUrlPreviewResponse);
+  rpc SearchDriveFiles(SearchDriveFilesRequest) returns (SearchDriveFilesResponse);
+  rpc ListContextProviders(ListContextProvidersRequest) returns (ListContextProvidersResponse);
+  rpc SearchContext(SearchContextRequest) returns (SearchContextResponse);
+  rpc ResolveContextUri(ResolveContextUriRequest) returns (ResolveContextUriResponse);
+  rpc GetChangelistStatus(GetChangelistStatusRequest) returns (GetChangelistStatusResponse);
+  rpc GetGerritChangeStatus(GetGerritChangeStatusRequest) returns (GetGerritChangeStatusResponse);
+  rpc GetGoogleChatLinkInfo(GetGoogleChatLinkInfoRequest) returns (GetGoogleChatLinkInfoResponse);
+  rpc GetWorkspaceChangelists(GetWorkspaceChangelistsRequest) returns (GetWorkspaceChangelistsResponse);
+  rpc GetGitHubPullRequests(GetGitHubPullRequestsRequest) returns (GetGitHubPullRequestsResponse);
+  rpc CreateWorktree(CreateWorktreeRequest) returns (CreateWorktreeResponse);
+  rpc DeleteWorktree(DeleteWorktreeRequest) returns (DeleteWorktreeResponse);
+  rpc CheckoutWorktree(CheckoutWorktreeRequest) returns (CheckoutWorktreeResponse);
+  rpc GetWorktreeDiff(GetWorktreeDiffRequest) returns (GetWorktreeDiffResponse);
+  rpc GetBattleWorktreeDiff(GetBattleWorktreeDiffRequest) returns (GetBattleWorktreeDiffResponse);
+  rpc CreateCitcWorkspace(CreateCitcWorkspaceRequest) returns (CreateCitcWorkspaceResponse);
+  rpc SetWorkingDirectories(SetWorkingDirectoriesRequest) returns (SetWorkingDirectoriesResponse);
+  rpc GetWorkingDirectories(GetWorkingDirectoriesRequest) returns (GetWorkingDirectoriesResponse);
+  rpc GetJJWorktrees(GetJJWorktreesRequest) returns (GetJJWorktreesResponse);
+  rpc GetRevisionArtifact(GetRevisionArtifactRequest) returns (GetRevisionArtifactResponse);
+  rpc GetVersionControlState(GetVersionControlStateRequest) returns (GetVersionControlStateResponse);
+  rpc WatchVersionControlState(WatchVersionControlStateRequest) returns (stream WatchVersionControlStateResponse);
+  rpc GetVersionControlFileContent(GetVersionControlFileContentRequest) returns (GetVersionControlFileContentResponse);
+  rpc GetCommitDetails(GetCommitDetailsRequest) returns (GetCommitDetailsResponse);
+  rpc CheckoutCommit(CheckoutCommitRequest) returns (CheckoutCommitResponse);
+  rpc DiscardFileChanges(DiscardFileChangesRequest) returns (DiscardFileChangesResponse);
+  rpc FigSync(FigSyncRequest) returns (FigSyncResponse);
+  rpc FigCommit(FigCommitRequest) returns (FigCommitResponse);
+  rpc FigAmend(FigAmendRequest) returns (FigAmendResponse);
+  rpc FigUpload(FigUploadRequest) returns (FigUploadResponse);
+  rpc JjSync(JjSyncRequest) returns (JjSyncResponse);
+  rpc JjCommit(JjCommitRequest) returns (JjCommitResponse);
+  rpc JjSquash(JjSquashRequest) returns (JjSquashResponse);
+  rpc JjUpload(JjUploadRequest) returns (JjUploadResponse);
+  rpc JjAbandon(JjAbandonRequest) returns (JjAbandonResponse);
+  rpc CogSync(CogSyncRequest) returns (CogSyncResponse);
+  rpc CogCommit(CogCommitRequest) returns (CogCommitResponse);
+  rpc CogUpload(CogUploadRequest) returns (CogUploadResponse);
+  rpc CogSquash(CogSquashRequest) returns (CogSquashResponse);
+  rpc RepoSync(RepoSyncRequest) returns (RepoSyncResponse);
+  rpc RepoCommit(RepoCommitRequest) returns (RepoCommitResponse);
+  rpc RepoAmend(RepoAmendRequest) returns (RepoAmendResponse);
+  rpc RepoUpload(RepoUploadRequest) returns (RepoUploadResponse);
+  rpc GitStage(GitStageRequest) returns (GitStageResponse);
+  rpc GitUnstage(GitUnstageRequest) returns (GitUnstageResponse);
+  rpc GitCommit(GitCommitRequest) returns (GitCommitResponse);
+  rpc GitDiscard(GitDiscardRequest) returns (GitDiscardResponse);
+  rpc GitPush(GitPushRequest) returns (GitPushResponse);
+  rpc GenerateCommitMessage(GenerateCommitMessageRequest) returns (GenerateCommitMessageResponse);
+  rpc RecordCommitMessageSave(RecordCommitMessageSaveRequest) returns (RecordCommitMessageSaveResponse);
+  rpc UpdatePRForWorktree(UpdatePRForWorktreeRequest) returns (UpdatePRForWorktreeResponse);
+  rpc SendActionToChatPanel(SendActionToChatPanelRequest) returns (SendActionToChatPanelResponse) {
+    option deprecated = true;
+  }
+  rpc GetUserSettings(GetUserSettingsRequest) returns (GetUserSettingsResponse);
+  rpc SetUserSettings(SetUserSettingsRequest) returns (SetUserSettingsResponse);
+  rpc FetchUserInfo(FetchUserInfoRequest) returns (FetchUserInfoResponse);
+  rpc SetUserInfo(SetUserInfoRequest) returns (SetUserInfoResponse);
+  rpc GetDebugDiagnostics(GetDebugDiagnosticsRequest) returns (GetDebugDiagnosticsResponse);
+  rpc DumpFlightRecorder(DumpFlightRecorderRequest) returns (DumpFlightRecorderResponse);
+  rpc DumpPprof(DumpPprofRequest) returns (DumpPprofResponse);
+  rpc GetUserAnalyticsSummary(GetUserAnalyticsSummaryRequest) returns (GetUserAnalyticsSummaryResponse);
+  rpc GetUserStatus(GetUserStatusRequest) returns (GetUserStatusResponse);
+  rpc GetProfileData(GetProfileDataRequest) returns (GetProfileDataResponse);
+  rpc GetChangelog(GetChangelogRequest) returns (GetChangelogResponse);
+  rpc SetupUniversitySandbox(SetupUniversitySandboxRequest) returns (SetupUniversitySandboxResponse);
+  rpc Exit(ExitRequest) returns (ExitResponse);
+  rpc Restart(RestartRequest) returns (RestartResponse);
+  rpc ResetOnboarding(ResetOnboardingRequest) returns (ResetOnboardingResponse) {
+    option deprecated = true;
+  }
+  rpc SkipOnboarding(SkipOnboardingRequest) returns (SkipOnboardingResponse) {
+    option deprecated = true;
+  }
+  rpc GetTermsOfService(GetTermsOfServiceRequest) returns (GetTermsOfServiceResponse) {
+    option deprecated = true;
+  }
+  rpc AcceptTermsOfService(AcceptTermsOfServiceRequest) returns (AcceptTermsOfServiceResponse) {
+    option deprecated = true;
+  }
+  rpc ListLicenses(ListLicensesRequest) returns (ListLicensesResponse);
+  rpc SelectLicense(SelectLicenseRequest) returns (SelectLicenseResponse);
+  rpc SelfAssignLicense(SelfAssignLicenseRequest) returns (SelfAssignLicenseResponse);
+  rpc SearchGcpProjects(SearchGcpProjectsRequest) returns (SearchGcpProjectsResponse);
+  rpc GetUserTrajectoryDebug(GetUserTrajectoryDebugRequest) returns (GetUserTrajectoryDebugResponse);
+  rpc GetUserTrajectoryDescriptions(GetUserTrajectoryDescriptionsRequest) returns (GetUserTrajectoryDescriptionsResponse);
+  rpc StreamUserTrajectoryReactiveUpdates(reactive_component_pb.StreamReactiveUpdatesRequest) returns (stream reactive_component_pb.StreamReactiveUpdatesResponse) {
+    option deprecated = true;
+  }
+  rpc GetCascadeMemories(GetCascadeMemoriesRequest) returns (GetCascadeMemoriesResponse);
+  rpc DeleteCascadeMemory(DeleteCascadeMemoryRequest) returns (DeleteCascadeMemoryResponse);
+  rpc UpdateCascadeMemory(UpdateCascadeMemoryRequest) returns (UpdateCascadeMemoryResponse);
+  rpc GetUserMemories(GetUserMemoriesRequest) returns (GetUserMemoriesResponse);
+  rpc UpdateConversationAnnotations(UpdateConversationAnnotationsRequest) returns (UpdateConversationAnnotationsResponse);
+  rpc StartCascade(StartCascadeRequest) returns (StartCascadeResponse);
+  rpc LoadSharedTrajectory(LoadSharedTrajectoryRequest) returns (LoadSharedTrajectoryResponse);
+  rpc GetSlashCommands(GetSlashCommandsRequest) returns (GetSlashCommandsResponse);
+  rpc StartBattleMode(StartBattleModeRequest) returns (StartBattleModeResponse);
+  rpc GetContribVariants(GetContribVariantsRequest) returns (GetContribVariantsResponse);
+  rpc EndBattleMode(EndBattleModeRequest) returns (EndBattleModeResponse);
+  rpc EliminateBattleModeArm(EliminateBattleModeArmRequest) returns (EliminateBattleModeArmResponse);
+  rpc SetOrVerifyStaticConfig(SetOrVerifyStaticConfigRequest) returns (SetOrVerifyStaticConfigResponse) {
+    option deprecated = true;
+  }
+  rpc ForkConversation(ForkConversationRequest) returns (ForkConversationResponse);
+  rpc CancelCascadeInvocation(CancelCascadeInvocationRequest) returns (CancelCascadeInvocationResponse);
+  rpc ForceStopCascadeTree(ForceStopCascadeTreeRequest) returns (ForceStopCascadeTreeResponse);
+  rpc CancelCascadeSteps(CancelCascadeStepsRequest) returns (CancelCascadeStepsResponse);
+  rpc SendStepsToBackground(SendStepsToBackgroundRequest) returns (SendStepsToBackgroundResponse) {
+    option deprecated = true;
+  }
+  rpc SkipBrowserSubagent(SkipBrowserSubagentRequest) returns (SkipBrowserSubagentResponse) {
+    option deprecated = true;
+  }
+  rpc GetCascadeModelConfigData(GetCascadeModelConfigDataRequest) returns (codeium_common_pb.CascadeModelConfigData);
+  rpc SendUserCascadeMessage(SendUserCascadeMessageRequest) returns (SendUserCascadeMessageResponse);
+  rpc DetectBattleModeAutoTrigger(DetectBattleModeAutoTriggerRequest) returns (DetectBattleModeAutoTriggerResponse);
+  rpc SignalExecutableIdle(SignalExecutableIdleRequest) returns (SignalExecutableIdleResponse);
+  rpc WaitForConversationFullyIdle(WaitForConversationFullyIdleRequest) returns (WaitForConversationFullyIdleResponse);
+  rpc SendAllQueuedMessages(SendAllQueuedMessagesRequest) returns (SendAllQueuedMessagesResponse) {
+    option deprecated = true;
+  }
+  rpc DeleteQueuedUserInputStep(DeleteQueuedUserInputStepRequest) returns (DeleteQueuedUserInputStepResponse) {
+    option deprecated = true;
+  }
+  rpc RevertToCascadeStep(RevertToCascadeStepRequest) returns (RevertToCascadeStepResponse);
+  rpc GetRevertPreview(GetRevertPreviewRequest) returns (GetRevertPreviewResponse);
+  rpc RecordUserStepSnapshot(RecordUserStepSnapshotRequest) returns (RecordUserStepSnapshotResponse);
+  rpc GetAllCascadeTrajectories(GetAllCascadeTrajectoriesRequest) returns (GetAllCascadeTrajectoriesResponse);
+  rpc HandleCascadeUserInteraction(HandleCascadeUserInteractionRequest) returns (HandleCascadeUserInteractionResponse);
+  rpc AcknowledgeCascadeCodeEdit(AcknowledgeCascadeCodeEditRequest) returns (AcknowledgeCascadeCodeEditResponse);
+  rpc AcknowledgeCodeActionStep(AcknowledgeCodeActionStepRequest) returns (AcknowledgeCodeActionStepResponse);
+  rpc GetCodeValidationStates(GetCodeValidationStatesRequest) returns (GetCodeValidationStatesResponse);
+  rpc DeleteCascadeTrajectory(DeleteCascadeTrajectoryRequest) returns (DeleteCascadeTrajectoryResponse);
+  rpc GetConversationMetadata(GetConversationMetadataRequest) returns (GetConversationMetadataResponse);
+  rpc WarmUpAgentProcess(WarmUpAgentProcessRequest) returns (WarmUpAgentProcessResponse);
+  rpc WarmUpEnvironment(WarmUpEnvironmentRequest) returns (WarmUpEnvironmentResponse);
+  rpc FetchSandboxPort(FetchSandboxPortRequest) returns (FetchSandboxPortResponse);
+  rpc GetVoiceCallDebug(GetVoiceCallDebugRequest) returns (GetVoiceCallDebugResponse);
+  rpc GetTurnDiff(GetTurnDiffRequest) returns (GetTurnDiffResponse);
+  rpc GetTrajectoryFileDiffs(GetTrajectoryFileDiffsRequest) returns (GetTrajectoryFileDiffsResponse);
+  rpc GetCodeActionDiff(GetCodeActionDiffRequest) returns (GetCodeActionDiffResponse);
+  rpc InitializeCascadePanelState(InitializeCascadePanelStateRequest) returns (InitializeCascadePanelStateResponse) {
+    option deprecated = true;
+  }
+  rpc StreamCascadePanelReactiveUpdates(reactive_component_pb.StreamReactiveUpdatesRequest) returns (stream reactive_component_pb.StreamReactiveUpdatesResponse) {
+    option deprecated = true;
+  }
+  rpc StreamCascadeReactiveUpdates(reactive_component_pb.StreamReactiveUpdatesRequest) returns (stream reactive_component_pb.StreamReactiveUpdatesResponse) {
+    option deprecated = true;
+  }
+  rpc StreamCascadeSummariesReactiveUpdates(reactive_component_pb.StreamReactiveUpdatesRequest) returns (stream reactive_component_pb.StreamReactiveUpdatesResponse) {
+    option deprecated = true;
+  }
+  rpc StreamAgentStateUpdates(jetski_cortex_pb.StreamAgentStateUpdatesRequest) returns (stream jetski_cortex_pb.StreamAgentStateUpdatesResponse);
+  rpc RequestAgentStatePageUpdate(jetski_cortex_pb.AgentStatePageUpdateRequest) returns (jetski_cortex_pb.AgentStatePageUpdateResponse);
+  rpc ForceBackgroundResearchRefresh(ForceBackgroundResearchRefreshRequest) returns (ForceBackgroundResearchRefreshResponse);
+  rpc ResolveOutstandingSteps(ResolveOutstandingStepsRequest) returns (ResolveOutstandingStepsResponse) {
+    option deprecated = true;
+  }
+  rpc RefreshMcpServers(RefreshMcpServersRequest) returns (RefreshMcpServersResponse);
+  rpc ToggleMcpServer(ToggleMcpServerRequest) returns (ToggleMcpServerResponse);
+  rpc GetMcpServerStates(GetMcpServerStatesRequest) returns (GetMcpServerStatesResponse);
+  rpc SubscribeToMcpServerStates(SubscribeToMcpServerStatesRequest) returns (stream SubscribeToMcpServerStatesResponse);
+  rpc CompleteMcpOAuth(CompleteMcpOAuthRequest) returns (CompleteMcpOAuthResponse);
+  rpc DisconnectMcpOAuth(DisconnectMcpOAuthRequest) returns (DisconnectMcpOAuthResponse);
+  rpc StartMcpOAuthSignIn(StartMcpOAuthSignInRequest) returns (StartMcpOAuthSignInResponse);
+  rpc StreamTerminalShellCommand(stream codeium_common_pb.TerminalShellCommandStreamChunk) returns (StreamTerminalShellCommandResponse);
+  rpc CreateTerminal(CreateTerminalRequest) returns (CreateTerminalResponse);
+  rpc StreamTerminalOutput(StreamTerminalOutputRequest) returns (stream StreamTerminalOutputResponse);
+  rpc SendTerminalInput(SendTerminalInputRequest) returns (SendTerminalInputResponse);
+  rpc CloseTerminal(CloseTerminalRequest) returns (CloseTerminalResponse);
+  rpc ListTerminals(ListTerminalsRequest) returns (ListTerminalsResponse);
+  rpc ListBackgroundTasks(ListBackgroundTasksRequest) returns (ListBackgroundTasksResponse);
+  rpc GetModelResponse(GetModelResponseRequest) returns (GetModelResponseResponse);
+  rpc SaveMediaAsArtifact(SaveMediaAsArtifactRequest) returns (SaveMediaAsArtifactResponse);
+  rpc DeleteMediaArtifact(DeleteMediaArtifactRequest) returns (DeleteMediaArtifactResponse);
+  rpc GetWebDocsOptions(GetWebDocsOptionsRequest) returns (GetWebDocsOptionsResponse);
+  rpc UpdateDevExperiments(UpdateDevExperimentsRequest) returns (UpdateDevExperimentsResponse) {
+    option deprecated = true;
+  }
+  rpc SetBaseExperiments(SetBaseExperimentsRequest) returns (SetBaseExperimentsResponse) {
+    option deprecated = true;
+  }
+  rpc GetUnleashData(GetUnleashDataRequest) returns (GetUnleashDataResponse) {
+    option deprecated = true;
+  }
+  rpc GetMendelFlags(GetMendelFlagsRequest) returns (GetMendelFlagsResponse);
+  rpc SetMendelFlagOverrides(SetMendelFlagOverridesRequest) returns (SetMendelFlagOverridesResponse);
+  rpc GetModelStatuses(GetModelStatusesRequest) returns (GetModelStatusesResponse);
+  rpc GetAllWorkflows(GetAllWorkflowsRequest) returns (GetAllWorkflowsResponse);
+  rpc GetAllCustomAgentConfigs(GetAllCustomAgentConfigsRequest) returns (GetAllCustomAgentConfigsResponse);
+  rpc CopyBuiltinWorkflowToWorkspace(CopyBuiltinWorkflowToWorkspaceRequest) returns (CopyBuiltinWorkflowToWorkspaceResponse);
+  rpc GetAllRules(GetAllRulesRequest) returns (GetAllRulesResponse);
+  rpc GetAllSkills(GetAllSkillsRequest) returns (GetAllSkillsResponse);
+  rpc GetCustomizationStates(GetCustomizationStatesRequest) returns (GetCustomizationStatesResponse);
+  rpc GetSkillMarketplaceLink(GetSkillMarketplaceLinkRequest) returns (GetSkillMarketplaceLinkResponse);
+  rpc GenerateSkillInstallationCL(GenerateSkillInstallationCLRequest) returns (GenerateSkillInstallationCLResponse);
+  rpc SearchMarketplaceCustomizations(SearchMarketplaceCustomizationsRequest) returns (SearchMarketplaceCustomizationsResponse);
+  rpc ScanSkillsConfigFile(ScanSkillsConfigFileRequest) returns (ScanSkillsConfigFileResponse);
+  rpc ListMcpResources(ListMcpResourcesRequest) returns (ListMcpResourcesResponse);
+  rpc ListMcpPrompts(ListMcpPromptsRequest) returns (ListMcpPromptsResponse);
+  rpc GetMcpPrompt(GetMcpPromptRequest) returns (GetMcpPromptResponse);
+  rpc GetMcpAppResource(GetMcpAppResourceRequest) returns (GetMcpAppResourceResponse);
+  rpc LaunchMcpApp(LaunchMcpAppRequest) returns (LaunchMcpAppResponse);
+  rpc CallMcpAppTool(CallMcpAppToolRequest) returns (CallMcpAppToolResponse);
+  rpc UpdateEnterpriseExperimentsFromUrl(UpdateEnterpriseExperimentsFromUrlRequest) returns (UpdateEnterpriseExperimentsFromUrlResponse) {
+    option deprecated = true;
+  }
+  rpc ImportFromCursor(ImportFromCursorRequest) returns (ImportFromCursorResponse);
+  rpc CreateCustomizationFile(CreateCustomizationFileRequest) returns (CreateCustomizationFileResponse);
+  rpc ListCustomizationPathsByFile(ListCustomizationPathsByFileRequest) returns (ListCustomizationPathsByFileResponse);
+  rpc UpdateCustomizationPathsFile(UpdateCustomizationPathsFileRequest) returns (UpdateCustomizationPathsFileResponse);
+  rpc GetTeamOrganizationalControls(GetTeamOrganizationalControlsRequest) returns (GetTeamOrganizationalControlsResponse);
+  rpc RecordUserGrep(RecordUserGrepRequest) returns (RecordUserGrepResponse);
+  rpc CreateTrajectoryShare(CreateTrajectoryShareRequest) returns (CreateTrajectoryShareResponse);
+  rpc GetCascadeTrajectory(GetCascadeTrajectoryRequest) returns (GetCascadeTrajectoryResponse);
+  rpc GetArtifactSnapshots(GetArtifactSnapshotsRequest) returns (GetArtifactSnapshotsResponse);
+  rpc GetUserTrajectory(GetUserTrajectoryRequest) returns (GetUserTrajectoryResponse);
+  rpc GetCascadeTrajectorySteps(GetCascadeTrajectoryStepsRequest) returns (GetCascadeTrajectoryStepsResponse);
+  rpc GetTrajectoryTurns(GetTrajectoryTurnsRequest) returns (GetTrajectoryTurnsResponse);
+  rpc GetChapterTitles(GetChapterTitlesRequest) returns (GetChapterTitlesResponse);
+  rpc GetCascadeTrajectoryGeneratorMetadata(GetCascadeTrajectoryGeneratorMetadataRequest) returns (GetCascadeTrajectoryGeneratorMetadataResponse);
+  rpc GetCascadeTrajectoryExecutorMetadatas(GetCascadeTrajectoryExecutorMetadatasRequest) returns (GetCascadeTrajectoryExecutorMetadatasResponse);
+  rpc GetPatchAndCodeChange(GetPatchAndCodeChangeRequest) returns (GetPatchAndCodeChangeResponse);
+  rpc ConvertTrajectoryToMarkdown(ConvertTrajectoryToMarkdownRequest) returns (ConvertTrajectoryToMarkdownResponse);
+  rpc LoadTrajectory(LoadTrajectoryRequest) returns (LoadTrajectoryResponse);
+  rpc ImportProjectFromUrl(ImportProjectFromUrlRequest) returns (ImportProjectFromUrlResponse);
+  rpc GetAvailableCascadePlugins(GetAvailableCascadePluginsRequest) returns (GetAvailableCascadePluginsResponse);
+  rpc InstallCascadePlugin(InstallCascadePluginRequest) returns (InstallCascadePluginResponse);
+  rpc GetCascadePluginById(GetCascadePluginByIdRequest) returns (GetCascadePluginByIdResponse);
+  rpc GetAllPlugins(GetAllPluginsRequest) returns (GetAllPluginsResponse);
+  rpc SubscribeToPlugins(SubscribeToPluginsRequest) returns (stream SubscribeToPluginsResponse);
+  rpc GetPlugin(GetPluginRequest) returns (GetPluginResponse);
+  rpc ResolveCommandPlugin(ResolveCommandPluginRequest) returns (ResolveCommandPluginResponse);
+  rpc ListPluginAuthProviders(ListPluginAuthProvidersRequest) returns (ListPluginAuthProvidersResponse);
+  rpc SignInPluginAuthProvider(SignInPluginAuthProviderRequest) returns (SignInPluginAuthProviderResponse);
+  rpc SignOutPluginAuthProvider(SignOutPluginAuthProviderRequest) returns (SignOutPluginAuthProviderResponse);
+  rpc StartPluginAuthSignIn(StartPluginAuthSignInRequest) returns (StartPluginAuthSignInResponse);
+  rpc SetDefaultPluginAuthAccount(SetDefaultPluginAuthAccountRequest) returns (SetDefaultPluginAuthAccountResponse);
+  rpc SetPluginAuthAccountLabel(SetPluginAuthAccountLabelRequest) returns (SetPluginAuthAccountLabelResponse);
+  rpc GetBuildWithGooglePlugins(GetBuildWithGooglePluginsRequest) returns (GetBuildWithGooglePluginsResponse);
+  rpc DownloadBuildWithGooglePlugin(DownloadBuildWithGooglePluginRequest) returns (DownloadBuildWithGooglePluginResponse);
+  rpc DeletePlugin(DeletePluginRequest) returns (DeletePluginResponse);
+  rpc DeleteSkill(DeleteSkillRequest) returns (DeleteSkillResponse);
+  rpc SearchMarketplace(SearchMarketplaceRequest) returns (SearchMarketplaceResponse);
+  rpc GetMarketplaceCustomization(GetMarketplaceCustomizationRequest) returns (GetMarketplaceCustomizationResponse);
+  rpc GetMarketplaceBundles(GetMarketplaceBundlesRequest) returns (GetMarketplaceBundlesResponse);
+  rpc GetMarketplaceFeatured(GetMarketplaceFeaturedRequest) returns (GetMarketplaceFeaturedResponse);
+  rpc GetOnboardingPersonas(GetOnboardingPersonasRequest) returns (GetOnboardingPersonasResponse);
+  rpc InstallCustomization(InstallCustomizationRequest) returns (InstallCustomizationResponse);
+  rpc IncludeBundleMember(IncludeBundleMemberRequest) returns (IncludeBundleMemberResponse);
+  rpc UpdateCustomization(UpdateCustomizationRequest) returns (UpdateCustomizationResponse);
+  rpc GetAgentScripts(GetAgentScriptsRequest) returns (GetAgentScriptsResponse);
+  rpc ListProfiles(ListProfilesRequest) returns (ListProfilesResponse) {
+    option deprecated = true;
+  }
+  rpc SaveAgentScriptCommandSpec(SaveAgentScriptCommandSpecRequest) returns (SaveAgentScriptCommandSpecResponse) {
+    option deprecated = true;
+  }
+  rpc RecordLints(RecordLintsRequest) returns (RecordLintsResponse);
+  rpc ReplayGroundTruthTrajectory(ReplayGroundTruthTrajectoryRequest) returns (ReplayGroundTruthTrajectoryResponse) {
+    option deprecated = true;
+  }
+  rpc LoadReplayConversation(LoadReplayConversationRequest) returns (LoadReplayConversationResponse);
+  rpc RecordInteractiveCascadeFeedback(RecordInteractiveCascadeFeedbackRequest) returns (RecordInteractiveCascadeFeedbackResponse);
+  rpc GetCascadeNuxes(GetCascadeNuxesRequest) returns (GetCascadeNuxesResponse);
+  rpc RegisterInteraction(RegisterInteractionRequest) returns (RegisterInteractionResponse);
+  rpc GetTranscription(GetTranscriptionRequest) returns (GetTranscriptionResponse);
+  rpc StreamAudioTranscription(StartAudioTranscriptionRequest) returns (stream StreamAudioTranscriptionResponse);
+  rpc SendAudioChunk(SendAudioChunkRequest) returns (SendAudioChunkResponse);
+  rpc EndAudioSession(EndAudioSessionRequest) returns (EndAudioSessionResponse);
+  rpc StartNarration(StartNarrationRequest) returns (stream StreamNarrationResponse);
+  rpc SendNarrationTurn(SendNarrationTurnRequest) returns (SendNarrationTurnResponse);
+  rpc EndNarration(EndNarrationRequest) returns (EndNarrationResponse);
+  rpc GetInputCompletion(GetInputCompletionRequest) returns (GetInputCompletionResponse);
+  rpc SendInputCompletionFeedback(SendInputCompletionFeedbackRequest) returns (SendInputCompletionFeedbackResponse);
+  rpc GetStaticExperimentStatus(GetStaticExperimentStatusRequest) returns (GetStaticExperimentStatusResponse) {
+    option deprecated = true;
+  }
+  rpc RecordAnalyticsEvent(RecordAnalyticsEventRequest) returns (RecordAnalyticsEventResponse);
+  rpc RecordError(RecordErrorRequest) returns (RecordErrorResponse);
+  rpc RecordObservabilityData(RecordObservabilityDataRequest) returns (RecordObservabilityDataResponse);
+  rpc ListPages(ListPagesRequest) returns (ListPagesResponse);
+  rpc BrowserValidateCascadeOrCancelOverlay(BrowserValidateCascadeOrCancelOverlayRequest) returns (BrowserValidateCascadeOrCancelOverlayResponse);
+  rpc OpenUrl(OpenUrlRequest) returns (OpenUrlResponse);
+  rpc FocusUserPage(FocusUserPageRequest) returns (FocusUserPageResponse);
+  rpc AddToBrowserWhitelist(AddToBrowserWhitelistRequest) returns (AddToBrowserWhitelistResponse);
+  rpc CaptureConsoleLogs(CaptureConsoleLogsRequest) returns (CaptureConsoleLogsResponse);
+  rpc StartScreenRecording(StartScreenRecordingRequest) returns (StartScreenRecordingResponse) {
+    option deprecated = true;
+  }
+  rpc SaveScreenRecording(SaveScreenRecordingRequest) returns (SaveScreenRecordingResponse) {
+    option deprecated = true;
+  }
+  rpc GetBrowserWhitelistFilePath(GetBrowserWhitelistFilePathRequest) returns (GetBrowserWhitelistFilePathResponse);
+  rpc HandleScreenRecording(HandleScreenRecordingRequest) returns (HandleScreenRecordingResponse);
+  rpc GetAllBrowserWhitelistedUrls(GetAllBrowserWhitelistedUrlsRequest) returns (GetAllBrowserWhitelistedUrlsResponse);
+  rpc CaptureScreenshot(CaptureScreenshotRequest) returns (CaptureScreenshotResponse);
+  rpc SmartOpenBrowser(SmartOpenBrowserRequest) returns (SmartOpenBrowserResponse);
+  rpc SimulateSegFault(SimulateSegFaultRequest) returns (SimulateSegFaultResponse);
+  rpc ReconnectExtensionServer(ReconnectExtensionServerRequest) returns (ReconnectExtensionServerResponse);
+  rpc SetCloudCodeURL(SetCloudCodeURLRequest) returns (SetCloudCodeURLResponse);
+  rpc GetTokenBase(GetTokenBaseRequest) returns (GetTokenBaseResponse);
+  rpc RunCommand(RunCommandRequest) returns (RunCommandResponse) {
+    option deprecated = true;
+  }
+  rpc ValidateTerminalSetupScript(ValidateTerminalSetupScriptRequest) returns (ValidateTerminalSetupScriptResponse);
+  rpc JetboxWriteState(JetboxWriteStateRequest) returns (JetboxWriteStateResponse);
+  rpc JetboxSubscribeToState(JetboxSubscribeToStateRequest) returns (stream JetboxSubscribeToStateResponse);
+  rpc JetboxReadAppState(JetboxReadAppStateRequest) returns (JetboxReadAppStateResponse);
+  rpc JetboxReadUserConfig(JetboxReadUserConfigRequest) returns (JetboxReadUserConfigResponse);
+  rpc JetboxWriteSummary(JetboxWriteSummaryRequest) returns (JetboxWriteSummaryResponse);
+  rpc JetboxDeleteSummary(JetboxDeleteSummaryRequest) returns (JetboxDeleteSummaryResponse);
+  rpc JetboxSubscribeToSummaries(JetboxSubscribeToSummariesRequest) returns (stream JetboxSubscribeToSummariesResponse);
+  rpc JetboxSubscribeToGcertState(JetboxSubscribeToGcertStateRequest) returns (stream JetboxSubscribeToGcertStateResponse);
+  rpc JetboxSubscribeToOAuthState(JetboxSubscribeToOAuthStateRequest) returns (stream JetboxSubscribeToOAuthStateResponse);
+  rpc SearchFiles(SearchFilesRequest) returns (SearchFilesResponse);
+  rpc SearchCode(SearchCodeRequest) returns (SearchCodeResponse);
+  rpc StreamSearchCode(SearchCodeRequest) returns (stream StreamSearchCodeResponse);
+  rpc SearchConversations(SearchConversationsRequest) returns (SearchConversationsResponse);
+  rpc GetAgentTeamMetadata(GetAgentTeamMetadataRequest) returns (GetAgentTeamMetadataResponse);
+  rpc GetCodeFrequencyForRepo(GetCodeFrequencyForRepoRequest) returns (GetCodeFrequencyForRepoResponse);
+  rpc SendAgentMessage(SendAgentMessageRequest) returns (SendAgentMessageResponse);
+  rpc DeleteAgentMessage(DeleteAgentMessageRequest) returns (DeleteAgentMessageResponse);
+  rpc GetLoadCodeAssist(GetLoadCodeAssistRequest) returns (GetLoadCodeAssistResponse);
+  rpc GetAvailableModels(GetAvailableModelsRequest) returns (GetAvailableModelsResponse);
+  rpc RetrieveUserQuotaSummary(RetrieveUserQuotaSummaryRequest) returns (RetrieveUserQuotaSummaryResponse);
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
+  rpc CreateMagicProject(CreateMagicProjectRequest) returns (CreateMagicProjectResponse);
+  rpc GetPermissionSettings(GetPermissionSettingsRequest) returns (GetPermissionSettingsResponse);
+  rpc UpdatePermissionSettings(UpdatePermissionSettingsRequest) returns (UpdatePermissionSettingsResponse);
+  rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
+  rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse);
+  rpc GenerateEnvironmentName(GenerateEnvironmentNameRequest) returns (GenerateEnvironmentNameResponse);
+  rpc AddEnvironmentToProject(AddEnvironmentToProjectRequest) returns (AddEnvironmentToProjectResponse);
+  rpc GetProjectTrustStatus(GetProjectTrustStatusRequest) returns (GetProjectTrustStatusResponse);
+  rpc SetWorkspaceTrust(SetWorkspaceTrustRequest) returns (SetWorkspaceTrustResponse);
+  rpc ResolveFolder(ResolveFolderRequest) returns (ResolveFolderResponse);
+  rpc CloneGitHubRepo(CloneGitHubRepoRequest) returns (CloneGitHubRepoResponse);
+  rpc ProjectUpdatesStream(ProjectUpdatesStreamRequest) returns (stream ProjectUpdatesStreamResponse);
+  rpc ReadProject(ReadProjectRequest) returns (ReadProjectResponse);
+  rpc ReadProjects(ReadProjectsRequest) returns (ReadProjectsResponse);
+  rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse);
+  rpc ListResourceProviders(ListResourceProvidersRequest) returns (ListResourceProvidersResponse);
+  rpc ListAvailableResources(ListAvailableResourcesRequest) returns (ListAvailableResourcesResponse);
+  rpc ListRemotePlugins(ListRemotePluginsRequest) returns (ListRemotePluginsResponse);
+  rpc DisconnectRemotePlugin(DisconnectRemotePluginRequest) returns (DisconnectRemotePluginResponse);
+  rpc GetDefaultProjectDir(GetDefaultProjectDirRequest) returns (GetDefaultProjectDirResponse);
+  rpc GetAuthStatus(GetAuthStatusRequest) returns (GetAuthStatusResponse);
+  rpc LoginWithBrowser(LoginWithBrowserRequest) returns (LoginWithBrowserResponse) {
+    option deprecated = true;
+  }
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc GetLoginSession(GetLoginSessionRequest) returns (GetLoginSessionResponse);
+  rpc CancelLogin(CancelLoginRequest) returns (CancelLoginResponse);
+  rpc SwitchLoginToAuthCode(SwitchLoginToAuthCodeRequest) returns (SwitchLoginToAuthCodeResponse);
+  rpc SubmitLoginAuthCode(SubmitLoginAuthCodeRequest) returns (SubmitLoginAuthCodeResponse);
+  rpc AuthLogout(AuthLogoutRequest) returns (AuthLogoutResponse);
+  rpc HasAuthToken(HasAuthTokenRequest) returns (HasAuthTokenResponse);
+  rpc GetHubOAuthAccessToken(GetHubOAuthAccessTokenRequest) returns (GetHubOAuthAccessTokenResponse);
+  rpc ValidateProject(ValidateProjectRequest) returns (ValidateProjectResponse);
+  rpc GetGrantedScopes(GetGrantedScopesRequest) returns (GetGrantedScopesResponse);
+  rpc CreateScratchProjectFolder(CreateScratchProjectFolderRequest) returns (CreateScratchProjectFolderResponse);
+  rpc SetupJetskiChat(SetupJetskiChatRequest) returns (stream SetupJetskiChatResponse);
+  rpc GetServerConfiguration(GetServerConfigurationRequest) returns (GetServerConfigurationResponse);
+  rpc GetCapabilities(GetCapabilitiesRequest) returns (GetCapabilitiesResponse);
+  rpc FetchAdminControls(FetchAdminControlsRequest) returns (FetchAdminControlsResponse);
+  rpc GetHover(GetHoverRequest) returns (GetHoverResponse);
+  rpc GetDefinition(GetDefinitionRequest) returns (GetDefinitionResponse);
+  rpc GetReferences(GetReferencesRequest) returns (GetReferencesResponse);
+  rpc ApplyUpdate(ApplyUpdateRequest) returns (ApplyUpdateResponse);
+  rpc GetUpdateStatus(GetUpdateStatusRequest) returns (GetUpdateStatusResponse);
+  rpc SubscribeToAgentBrowserRequests(SubscribeToAgentBrowserRequestsRequest) returns (stream SubscribeToAgentBrowserRequestsResponse);
+  rpc FulfillAgentBrowserRequest(FulfillAgentBrowserRequestRequest) returns (FulfillAgentBrowserRequestResponse);
+  rpc UpdateAgentBrowserSubscription(UpdateAgentBrowserSubscriptionRequest) returns (UpdateAgentBrowserSubscriptionResponse);
+}

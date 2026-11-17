@@ -1,0 +1,29 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d37889 (va 0x103d37889, __TEXT.__rodata), descriptor length 503 B, sha256 f38970be7607e127
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package frameworks.client.logging.proto;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import option "third_party/protobuf/cpp_features.proto";
+
+option java_package = "com.google.frameworks.client.logging.proto";
+option java_outer_classname = "ClientReleaseOuterClass";
+option objc_class_prefix = "CLI";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+export message ClientRelease {
+  ClientReleaseType release = 6;
+
+  enum ClientReleaseType {
+    option features.enum_type = CLOSED;
+    option features.(unresolved_option_1000) = "\030\000";
+    RELEASE_TYPE_UNSPECIFIED = 0;
+    DEV = 1;
+    DOGFOOD = 2;
+    PROD = 3;
+  }
+}

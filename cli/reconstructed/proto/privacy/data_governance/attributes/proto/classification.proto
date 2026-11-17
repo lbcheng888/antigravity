@@ -1,0 +1,259 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x41c31d1 (va 0x1041c31d1, __TEXT.__rodata), descriptor length 38014 B, sha256 f18aa7cda504bc0d
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package privacy.data_governance.attributes.classification;
+
+import "google/api/inclusion.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.privacy.datagovernance.attributes.classification";
+option java_multiple_files = true;
+option (unresolved_option_525000017) = "\nEproto_file:privacy/data_governance/attributes/proto/annotations.proto";
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+enum Source {
+  option (unresolved_option_306455367) = "The data source describes where the data originated from (see go/dg-classification:source for more information).";
+  SOURCE_UNDEFINED = 0;
+  SOURCE_OTHER = 1 [deprecated = true, (unresolved_option_204438976) = "Other", (unresolved_option_204438977) = "Other is to be used if none of the other categories are a match. Please contact ppi-pattributes@ if you want to use this. (Deprecated in b/342232822).", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "SOURCE_OTHER is deprecated. If none of the other Source categories are appropriate, then contact pdi-pattributes@ to create a new category."];
+  SOURCE_GOOGLE = 2 [(unresolved_option_204438976) = "Google", (unresolved_option_204438977) = "Data that was produced by Google, including by its employees. Examples are internal docs, emails, code, collected monarch metrics, or business data. This can also be used to express 'empty'."];
+  SOURCE_OTHER_BETS = 8 [(unresolved_option_204438976) = "Non-Google Alphabet", (unresolved_option_204438977) = "Data that is produced by other bets (including by its employees), excluding Google. Examples are internal docs, emails, business data. Note that data coming from users and collected by other bets should be classified as SOURCE_USER."];
+  SOURCE_GENERATED_TEST = 3 [(unresolved_option_204438976) = "Generated for Testing", (unresolved_option_204438977) = "Data that was auto-generated for tests, and does not contain any real user data. Anonymized user data is not included here and should be annotated with SOURCE_USER."];
+  SOURCE_USER = 4 [(unresolved_option_204438976) = "User", (unresolved_option_204438977) = "Data from users. This also includes internal generated IDs associated with a user, such as a gaia id.", (unresolved_option_307833595) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  SOURCE_END_USER = 5 [(unresolved_option_204438976) = "End User", (unresolved_option_204438977) = "Data from or about private end users (e.g. data in a personal, non-dasher Gmail account), excluding business user data (see SOURCE_BUSINESS_USER). Private end users includes cases where users pay for an additional service or product, e.g. Play store data.", (unresolved_option_206747693) = "SOURCE_USER", (unresolved_option_307833595) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  SOURCE_CUSTOMER = 6 [(unresolved_option_204438976) = "Customer", (unresolved_option_204438977) = "Data from or about customers, excluding business user data (see SOURCE_BUSINESS_USER). Customers, such as G Suite or GCP users, do not necessarily need to pay money to Google.", (unresolved_option_206747693) = "SOURCE_USER", (unresolved_option_307833595) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  SOURCE_CUSTOMER_OF_CUSTOMER = 10 [deprecated = true, (unresolved_option_204438976) = "Customer of customer", (unresolved_option_204438977) = "Data which is about the customers of customers (regardless of business model). (Deprecated in b/142477079)", (unresolved_option_206747693) = "SOURCE_CUSTOMER", (unresolved_option_307833595) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "SOURCE_CUSTOMER_OF_CUSTOMER is deprecated. Use SOURCE_CUSTOMER instead."];
+  SOURCE_ENTERPRISE_CUSTOMER = 11 [deprecated = true, (unresolved_option_204438976) = "Enterprise customer", (unresolved_option_204438977) = "Data of enterprise customers (Apps / GSuite and/or GCP), even when they don't pay money to Google, such as when they have free GCP accounts. (Deprecated in b/142477079)", (unresolved_option_206747693) = "SOURCE_CUSTOMER", (unresolved_option_307833595) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "SOURCE_ENTERPRISE_CUSTOMER is deprecated. Use SOURCE_CUSTOMER instead."];
+  SOURCE_PUBLIC = 7 [(unresolved_option_204438976) = "Public", (unresolved_option_204438977) = "External (non-Google hosted) data that is publicly crawled."];
+  SOURCE_THIRD_PARTY = 9 [(unresolved_option_204438976) = "Third Party", (unresolved_option_204438977) = "Data coming from third parties, usually under contract. Examples are satellite pictures or map data."];
+  SOURCE_BUSINESS_USER = 12 [(unresolved_option_204438976) = "Business User", (unresolved_option_204438977) = "Data provided by a person, company, or other organization acting in a commercial or professional capacity and using a service for the purpose of or in the course of providing goods or services to end users. (DMA defines an \342\200\234end user\342\200\235 as anyone (including a company) using a Core Platform service who is not a business user.) This classification does not automatically apply to a given account, but rather is dependent upon the activity of a given account.", (unresolved_option_206747693) = "SOURCE_USER", (unresolved_option_307833595) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+}
+
+enum SemanticContext {
+  option (unresolved_option_306455367) = "The context describes how the data is used and seen in a project or product (see go/dg-classification:semantic-context for more information).";
+  CONTEXT_UNDEFINED = 0;
+  CONTEXT_OTHER = 1 [deprecated = true, (unresolved_option_204438976) = "Other", (unresolved_option_204438977) = "CONTEXT_OTHER is deprecated and should not be used.", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CONTEXT_OTHER is deprecated and should not be used."];
+  CONTEXT_METADATA = 2 [(unresolved_option_204438976) = "Metadata (not content)", (unresolved_option_204438977) = "Metadata is anything that does not qualify as content, and which is not derived in whole or in part, directly or indirectly, from any User Content (e.g. document ids, timestamps, IP addresses, cookie or device ID, enum values, and ACLs).<br>User Metadata also includes attributes of User Content that are not derived from the substance, purport, or meaning of the User Content (e.g. the byte size of a piece of User Content, the pixel dimensions of the box used to display User Content, the MIME structure of an email, and its detected language). User Metadata excludes topical entities referenced in User Content, URLs extracted, or its subject line."];
+  CONTEXT_CONTENT = 3 [(unresolved_option_204438976) = "Content", (unresolved_option_204438977) = "Content is any data that users generate themselves, such as data that Google receives or collects on behalf of users (like email or chat messages), or that users generate using Google services (like a report on their use of Google products or browsing activity)."];
+  CONTEXT_CORE_CONTENT = 4 [(unresolved_option_204438976) = "Core content", (unresolved_option_204438977) = "Core Content is any data that qualifies as content and is not directly used to operate the service. Examples of core content can be files uploaded to Google Cloud Storage, binary files uploaded to Google Drive. PWG of certain PA might have more specific rules for core content.", (unresolved_option_206747693) = "CONTEXT_CONTENT"];
+  CONTEXT_SECURITY_CONFIGURATION = 7 [(unresolved_option_204438976) = "Security configuration", (unresolved_option_204438977) = "Security configuration is any data that qualifies as content and is used to change the behavior of the service in the context of the project but contains security sensitive data. The public disclosure of the data could compromise security posture, expose security vulnerability, or reveal privileged/confidential information through inference. Examples can be IAM policies or firewall rules.", (unresolved_option_206747693) = "CONTEXT_CONTENT"];
+  CONTEXT_CONFIGURATION = 5 [(unresolved_option_204438976) = "Configuration", (unresolved_option_204438977) = "Configuration is any data that qualifies as content and is used to change the behavior of the service in the context of the project. Examples can be language preferences or background color.", (unresolved_option_206747693) = "CONTEXT_CONTENT"];
+  CONTEXT_ATTRIBUTE = 6 [(unresolved_option_204438976) = "Attribute", (unresolved_option_204438977) = "Attribute is any data that qualifies as content and is used by the service to provide management related meta-functionality like searching/indexing, grouping or listing. Examples can be labels for GCP, title of YouTube video.", (unresolved_option_206747693) = "CONTEXT_CONTENT"];
+}
+
+enum Confidentiality {
+  option (unresolved_option_306455367) = "The confidentiality describes the confidentiality of the data, according to go/data-security-policy#data-classification (see go/dg-classification:confidentiality for more information).";
+  CONFIDENTIALITY_UNDEFINED = 0;
+  CONFIDENTIALITY_PUBLIC = 1 [(unresolved_option_204438976) = "Public", (unresolved_option_204438977) = "Publicly shared data, which is readily available online. Eg, Google Trends data, or transparency report data. See http://go/data-security-policy#public-data"];
+  CONFIDENTIALITY_CONFIDENTIAL = 2 [(unresolved_option_204438976) = "Confidential", (unresolved_option_204438977) = "Confidential data is appropriate to share with all Googlers. Datasets where Google-wide reading permissions are appropriate fall into this category, as do RPC endpoints open to all Googlers. See http://go/data-security-policy#confidential-data"];
+  CONFIDENTIALITY_NEED_TO_KNOW = 3 [(unresolved_option_204438976) = "Need to Know", (unresolved_option_204438977) = "Need to know data: most user data falls into this category. See http://go/data-security-policy#need-to-know-data"];
+}
+
+enum DatasetTag {
+  UNKNOWN_DATASET = 0;
+  OTHER_DATASET = 1 [(unresolved_option_308218636) = 1];
+  HULK = 2 [(unresolved_option_204438976) = "Data belonging to HULK", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#HULK-definition"];
+  OOLONG = 3 [(unresolved_option_204438976) = "Data belonging to OOLong", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#OOLONG-definition"];
+  PHOTOS_BACKEND_DATA = 4 [(unresolved_option_204438976) = "Data managed by Photos Backend.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#PHOTOS_BACKEND_DATA-definition"];
+  PHOTOS_BACKEND_GMAIL_DATA = 5 [(unresolved_option_204438976) = "Gmail-owned data served by Photos Backend.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#PHOTOS_BACKEND_GMAIL_DATA-definition"];
+  PHOTOS_BACKEND_BENCHMARKS_DATA = 6 [(unresolved_option_204438976) = "Benchmarks (go/photos-benchmarks) data served by Photos Backend.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#PHOTOS_BACKEND_BENCHMARKS_DATA-definition"];
+  GMAIL_DATA = 7 [(unresolved_option_204438976) = "'Gmail data', as defined in go/gmail-product-data-use-policy.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#GMAIL_DATA-definition"];
+  LOCAL_REVIEWS = 8 [(unresolved_option_204438976) = "Local review data published by user. The data is publicly visible but owned by users.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#LOCAL_REVIEWS-definition"];
+  DATASET_FOOTPRINTS_ASSISTANT_DATA = 9 [deprecated = true, (unresolved_option_204438976) = "Footprints corpora containing user data generated from user interactions with the Assistant such as audio, transcription, typed query, responses, impression, actions.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_FOOTPRINTS_ASSISTANT_DATA-definition", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "DATASET_FOOTPRINTS_ASSISTANT_DATA is deprecated. Replaced with DATASET_ASSISTANT_DATA."];
+  DATASET_FOOTPRINTS_CHROME_DATA = 10 [(unresolved_option_204438976) = "Footprints corpora containing Chrome browser user interaction data, e.g., navigation history.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_FOOTPRINTS_CHROME_DATA-definition"];
+  DATASET_FOOTPRINTS_LENS_DATA = 11 [(unresolved_option_204438976) = "Footprints corpora containing user data collected from the Google Lens app.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_FOOTPRINTS_LENS_DATA-definition"];
+  DATASET_FOOTPRINTS_PHOTOS_DATA = 12 [(unresolved_option_204438976) = "Footprints corpora containing user data collected from the Google Photos product.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_FOOTPRINTS_PHOTOS_DATA-definition"];
+  DATASET_FOOTPRINTS_SPEECH_DATA = 13 [(unresolved_option_204438976) = "Footprints corpora containing speech data, e.g., audio history waveform, metadata, and SPUDS annotations.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_FOOTPRINTS_SPEECH_DATA-definition"];
+  DATASET_ASSISTANT_DATA = 14 [(unresolved_option_204438976) = "User data generated from user interactions with the Assistant such as audio, transcription, typed query, responses, impression, actions.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_ASSISTANT_DATA-definition"];
+  DATASET_PAYMENTS_DATA = 15 [(unresolved_option_204438976) = "User data generated from user interactions with Google Payments platform and GPay services, including Tap n Pay transactions, platform visit and interaction data, and payments profile data.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_PAYMENTS_DATA-definition"];
+  DATASET_ML_WORKFLOW_DATA = 16 [(unresolved_option_204438976) = "Data that is part of an ML workflow at Google. This could include models or datasets used for training models.", (unresolved_option_321358229) = "go/dg-classification:dataset-tags#DATASET_ML_WORKFLOW_DATA-definition"];
+}
+
+enum Identifiability {
+  option (unresolved_option_306455367) = "Identifiability is the data attribute that designates how the user/customer is identified by the data (see go/dg-classification:identifiability for more information).";
+  IDENTIFIABILITY_UNDEFINED = 0;
+  IDENTIFIABILITY_IDENTIFIABLE = 1 [(unresolved_option_204438976) = "Identifiable", (unresolved_option_204438977) = "Data is either linked to a specific identifiable person, or is re-identifiable (http://go/dcg#identifiable-data)."];
+  IDENTIFIABILITY_PSEUDONYMOUS = 2 [(unresolved_option_204438976) = "Pseudonymous", (unresolved_option_204438977) = "Data that can be attributed to an identified individual only in conjunction with other data that is kept separated using technical and administrative measures (http://go/dcg#pseudonymous-data)."];
+  IDENTIFIABILITY_ANONYMOUS = 3 [(unresolved_option_204438976) = "Anonymous", (unresolved_option_204438977) = "Data derived from Identifiable Data that is not reasonably identifiable, either alone or in combination with another dataset (go/dcg#anonymous-data). This value is not intended to be used for data that is not derived from Identifiable Data: for such data please use IDENTIFIABILITY_INHERENTLY_NON_IDENTIFIABLE. Data annotated with IDENTIFIABILITY_ANONYMOUS should include a reference to its approved Anonymization plan (go/anon-annotate-datasets). "];
+  IDENTIFIABILITY_TWO_PHASE_AGGREGATED = 4 [(unresolved_option_204438976) = "Two-phase Aggregated", (unresolved_option_204438977) = "This is data that has been specifically aggregated following the exact two-phase process outlined at go/two-phase-processing."];
+  IDENTIFIABILITY_INHERENTLY_NON_IDENTIFIABLE = 5 [(unresolved_option_204438976) = "Inherently non-identifiable", (unresolved_option_204438977) = "This is data that is not identifiable and was not derived from identifiable data (go/dcg#inherently-non-identifiable-data)."];
+}
+
+enum Pseudonymization {
+  option (unresolved_option_306455367) = "Pseudonymization is the data attribute that designates if the data set is user aggregated, and how the data set is identified, or not identified at all. See go/dg-classification:pseudonymization for more information.";
+  PSEUDONYMIZATION_UNDEFINED = 0 [(unresolved_option_204438976) = "Enum value not set.", (unresolved_option_204438977) = "Default option indicates that the value has not been set / defined."];
+  PSEUDONYMIZATION_PER_USER_UNAGGREGATED_PSEUDO_IDENTIFIED = 1 [(unresolved_option_204438976) = "Per-user Unaggregated Pseudo-identified", (unresolved_option_204438977) = "Per-user record has exactly one per-dataset-scoped pseudonymous user ID field with non aggregated values."];
+  PSEUDONYMIZATION_PER_USER_UNAGGREGATED_DEIDENTIFIED = 2 [(unresolved_option_204438976) = "Per-user Unaggregated Deidentified", (unresolved_option_204438977) = "Per-user record without any user ID field\342\200\231s with non aggregated values."];
+  PSEUDONYMIZATION_PER_USER_AGGREGATED_PSEUDO_IDENTIFIED = 3 [(unresolved_option_204438976) = "Per-user Aggregated Pseudo-identified", (unresolved_option_204438977) = "Record has exactly one per-dataset-scoped pseudonymous user ID field with per user aggregated values."];
+  PSEUDONYMIZATION_PER_USER_AGGREGATED_DEIDENTIFIED = 4 [(unresolved_option_204438976) = "Per-user Aggregated Deidentified", (unresolved_option_204438977) = "Record without any user ID field\342\200\231s with per user aggregated values."];
+  PSEUDONYMIZATION_MULTI_USER_AGGREGATED_WITH_ID_LISTS = 5 [(unresolved_option_204438976) = "Multi-user Aggregated with Pseudo-identifiers", (unresolved_option_204438977) = "Multi-user aggregated records with user list or other data structures like Sketches. See go/hyperloglog-privacy-practice for details."];
+  PSEUDONYMIZATION_MULTI_USER_AGGREGATED_WITH_ID_COUNTS = 6 [(unresolved_option_204438976) = "Multi-user Aggregated with User Counts", (unresolved_option_204438977) = "Multi-user aggregated records with user counts."];
+  PSEUDONYMIZATION_MULTI_USER_AGGREGATED_NO_IDS = 7 [(unresolved_option_204438976) = "Multi-user Aggregated with no Identifiers", (unresolved_option_204438977) = "Multi-user aggregated without any information about IDs."];
+  PSEUDONYMIZATION_PER_USER_NONSTANDARD = 8 [(unresolved_option_204438976) = "Per-user Non-standard", (unresolved_option_204438977) = "Per-user record pseudonymous record that does not fit to any standard categories."];
+  PSEUDONYMIZATION_MULTI_USER_NONSTANDARD = 9 [(unresolved_option_204438976) = "Multi-user Non-standard", (unresolved_option_204438977) = "Multi-user record pseudonymous record that does not fit to any standard categories."];
+}
+
+message Category {
+  option (unresolved_option_306457841) = "A category classifies assets with particularly sensitive information (see go/dg-classification:categories for more information).";
+  reserved 6;
+  HasCategory location = 1 [(unresolved_option_233938569) = "Location", (unresolved_option_233938575) = "Information regarding an individual's current or past location.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  HasCategory financial = 2 [(unresolved_option_233938569) = "Financial", (unresolved_option_233938575) = "Whether the data contains detailed information about financial transactions or the financial situation of a company or an individual. go/dg-classification:financial_data#financial.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:financial_data#financial"];
+  HasCategory payment_instrument = 3 [(unresolved_option_233938569) = "Payment Instrument", (unresolved_option_233938575) = "Whether the data contains details about an individual's or company's payment instruments, such as account details or credit card data.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:financial_data#payment_instrument"];
+  HasCategory health = 4 [(unresolved_option_233938569) = "Health", (unresolved_option_233938575) = "Whether the data contains details about an individual's past, present, or future physical or mental health or condition. go/dg-classification:health_information#health", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  HasCategory hipaa = 5 [(unresolved_option_233938569) = "HIPAA", (unresolved_option_233938575) = "Information covered under the 'Health Insurance Portability and Accountability Act'. go/dg-classification:health_information#hipaa", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  HasCategory employee = 7 [(unresolved_option_233938569) = "Employee", (unresolved_option_233938575) = "Information Google collects or generates about a (potential) Googler in the context of the individuals recruitment and employment at the company.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW"];
+  GeoLocation geo_location = 8 [(unresolved_option_233938575) = "The Geo Location field is a set of privacy attributes that describe more precisely an individual's location."];
+  HasCategory children_data = 9 [deprecated = true, (unresolved_option_233938569) = "Children's data", (unresolved_option_233938575) = "Children's data is any user data relating to children, including user data collected from children's products or from users known to be children.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.children_data", (unresolved_option_377079205) = "The children_data category is deprecated. Please use minors_data (go/dg-classification:categories#minors-data) instead.", (unresolved_option_377276026) = 1];
+  HasCategory children_product = 10 [(unresolved_option_233938569) = "Children product", (unresolved_option_233938575) = "Product that targets or directs itself to children based on its design, content, features, marketing, and intended and actual audience.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.children_product"];
+  HasCategory audio_data = 11 [(unresolved_option_233938569) = "Audio", (unresolved_option_233938575) = "The dataset contains any audio data (waveforms, their features, and transformations) capable of containing information related to speech (natural or synthesized), biometrics, or human characteristics and activities.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:categories#audio_data"];
+  HasCategory has_xfood = 12 [(unresolved_option_233938569) = "xfood", (unresolved_option_233938575) = "The dataset contains employee generated data, as a result of using Google's product prototypes from internal programs such as Dogfood, Teamfood, Fishfood, Droidfood, etc.", (unresolved_option_321231810) = "go/dg-classification:categories#has_xfood"];
+  ConsumerHealthAndFitness consumer_health_and_fitness = 13 [deprecated = true, (unresolved_option_377079205) = "consumer_health_and_fitness is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+  repeated PublicUserData public_user_data = 14 [(unresolved_option_233938575) = "The PublicUserData field and enum represent the categories of public user data described at go/public-user-data-standard.", (unresolved_option_321231810) = "go/dg-classification:public_user_data"];
+  MinorData minors_data = 15 [(unresolved_option_233938575) = "A Minor is a user that is under the age of 18, which includes Children and Teen users. Within the overall Minors category, there are sub-categories of Minors that need to adhere to different standards, e.g. Unicorns and Griffins. go/dg-classification:minors_data.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/pgraph-minor_data_category-proposal"];
+  UserClass user_class = 16;
+  HasCategory smart_home = 17 [(unresolved_option_233938569) = "Smart Home", (unresolved_option_233938575) = "The dataset contains Smart Home data collected from any device (e.g., video cameras, smoke detectors, thermostats, security systems, etc.) excluding those collected by/via Assistant.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:smart_home"];
+  optional ChildrenDataLifecycleType children_data_lifecycle_type = 18 [(unresolved_option_233938569) = "Children Data Lifecycle Type", (unresolved_option_233938575) = "It categorizes how the \"child\" attribute of data behaves over time. go/dg-classification:children_data_lifecycle_type", (unresolved_option_321231810) = "go/dg-classification:children_data_lifecycle_type"];
+
+  enum HasCategory {
+    UNDEFINED = 0;
+    YES = 1 [(unresolved_option_204438976) = "Yes"];
+    NO = 2 [(unresolved_option_204438976) = "No"];
+  }
+
+  enum ConsumerHealthAndFitness {
+    option deprecated = true;
+    option (unresolved_option_306455367) = "It defines what type of health data at the moment of recording the described dataset contains. This is a tree of values, the children values are specialization that can be used to define more precisely the health type.";
+    option (unresolved_option_321189327) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness";
+    CONSUMER_HEALTH_AND_FITNESS_TYPE_UNDEFINED = 0 [deprecated = true, (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "ConsumerHealthAndFitness category is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_PROTECTED_HEALTH_INFORMATION = 1 [deprecated = true, (unresolved_option_204438976) = "Protected Health Information (PHI)", (unresolved_option_204438977) = "It is protected health information (PHI) as described at go/healthpolicy and subject to go/hipaa-standard.", (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_PROTECTED_HEALTH_INFORMATION", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_PROTECTED_HEALTH_INFORMATION is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_NON_PROTECTED_HEALTH_INFORMATION = 2 [deprecated = true, (unresolved_option_204438976) = "Health data which is not Protected Health Information (PHI)", (unresolved_option_204438977) = "All the data which is not protected health information (PHI) as described at go/healthpolicy and it is not subject to go/hipaa-standard. DO NOT USE directly, but choose one of the subset categories instead.", (unresolved_option_308218636) = 1, (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_NON_PROTECTED_HEALTH_INFORMATION", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_NON_PROTECTED_HEALTH_INFORMATION is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_ENTERPRISE = 3 [deprecated = true, (unresolved_option_204438976) = "Non-PHI Health data for the enterprise", (unresolved_option_204438977) = "Non-PHI health data which is used for enterprise / cloud purposes.", (unresolved_option_206747693) = "CHF_NON_PROTECTED_HEALTH_INFORMATION", (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_ENTERPRISE", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_ENTERPRISE is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_RESEARCH = 4 [deprecated = true, (unresolved_option_204438976) = "Non-PHI Health data for Research purposes", (unresolved_option_204438977) = "Non-PHI health data which is used for research purposes.", (unresolved_option_206747693) = "CHF_NON_PROTECTED_HEALTH_INFORMATION", (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_RESEARCH", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_RESEARCH is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_ACHF = 5 [deprecated = true, (unresolved_option_204438976) = "Non-PHI Alphabet Consumer Health and Fitness (ACHF) data", (unresolved_option_204438977) = "Non-PHI Alphabet Consumer Health and Fitness (ACHF) data as described at go/achf-policy. DO NOT USE directly, but choose one of the subset categories instead.", (unresolved_option_206747693) = "CHF_NON_PROTECTED_HEALTH_INFORMATION", (unresolved_option_308218636) = 1, (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_ACHF", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_ACHF is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_ACHF_MBD_HFALD = 6 [deprecated = true, (unresolved_option_204438976) = "Non-PHI Alphabet Consumer Health and Fitness (ACHF) data, MBD and HFALD", (unresolved_option_204438977) = "Non-PHI Alphabet Consumer Health and Fitness (ACHF) data as described at go/achf-policy and identified as Measured Body Data (MBD) and Health and Fitness Activity Location Data (HFALD) based on go/achf-policy", (unresolved_option_206747693) = "CHF_ACHF", (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_ACHF_MBD_HFALD", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_ACHF_MBD_HFALD is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+    CHF_ACHF_NON_MBD_HFALD = 7 [deprecated = true, (unresolved_option_204438976) = "Non-PHI Alphabet Consumer Health and Fitness (ACHF) data, but non MBD and HFALD", (unresolved_option_204438977) = "Non-PHI Alphabet Consumer Health and Fitness (ACHF) data as described at go/achf-policy, but not identified as Measured Body Data (MBD) and Health and Fitness Activity Location Data (HFALD) based on go/achf-policy", (unresolved_option_206747693) = "CHF_ACHF", (unresolved_option_321358229) = "go/dg-classification:consumer_health_and_fitness#Data.ConsumerHealthAndFitness.CHF_ACHF_NON_MBD_HFALD", (unresolved_option_376796538) = 1, (unresolved_option_377074388) = "CHF_ACHF_NON_MBD_HFALD is deprecated. Refer go/health-annotation-guidance to migrate off of this."];
+  }
+
+  enum PublicUserData {
+    option (unresolved_option_306455367) = "It defines what type of public user data or separated data the described dataset contains.";
+    option (unresolved_option_321189327) = "go/dg-classification:public_user_data#Data.PublicUserData";
+    PUBLIC_USER_DATA_UNDEFINED = 0;
+    NOT_PUBLIC_USER_DATA = 1 [(unresolved_option_204438976) = "Not Public User Data", (unresolved_option_204438977) = "It is not Public User Data.", (unresolved_option_321358229) = "go/dg-classification:public_user_data#Data.PublicUserData.NOT_PUBLIC_USER_DATA"];
+    PUBLIC_USER_DATA = 2 [(unresolved_option_204438976) = "Public User Data", (unresolved_option_204438977) = "It is Public User Data (PUD) as defined by go/public-user-data-standard which may be separated subject to the guidelines at go/public-user-data-standard#guideline-activities.", (unresolved_option_321358229) = "go/dg-classification:public_user_data#Data.PublicUserData.PUBLIC_USER_DATA"];
+    SEPARATED_PUBLIC_USER_DATA = 3 [(unresolved_option_204438976) = "Separated Public User Data", (unresolved_option_204438977) = "It is Separated Data as described at go/public-user-data-standard#separated-data subject to the requirements of go/public-user-data-standard#proposed-requirements.", (unresolved_option_206747693) = "PUBLIC_USER_DATA", (unresolved_option_321358229) = "go/dg-classification:public_user_data#Data.PublicUserData.SEPARATED_PUBLIC_USER_DATA"];
+  }
+
+  enum ChildrenDataLifecycleType {
+    option (unresolved_option_306455367) = "It categorizes how the 'child' attribute of data behaves over time.";
+    option (unresolved_option_321189327) = "go/dg-classification:children_data_lifecycle_type";
+    CHILDREN_DATA_LIFECYCLE_TYPE_UNDEFINED = 0;
+    CHILDREN_DATA_LIFECYCLE_TYPE_USER_AGE_BASED = 1 [(unresolved_option_204438976) = "User age based children data lifecycle", (unresolved_option_204438977) = "This type of data is linked to the users's current status as a child. The data is only treated as children data while the user is a child.", (unresolved_option_321358229) = "go/dg-classification:children_data_lifecycle_type#Data.ChildrenDataLifecycleType.USER_AGE_BASED"];
+    CHILDREN_DATA_LIFECYCLE_TYPE_DATA_CREATION_TIME_BASED = 2 [(unresolved_option_204438976) = "Data creation time based children data lifecycle", (unresolved_option_204438977) = "This type of data is classified as child data based on the user's status at the time the data was created. The data remains classified as children data even after the user is no longer a child.", (unresolved_option_321358229) = "go/dg-classification:children_data_lifecycle_type#Data.ChildrenDataLifecycleType.DATA_CREATION_TIME_BASED"];
+  }
+
+  message GeoLocation {
+    option (unresolved_option_306457841) = "The Geo Location field is a set of privacy attributes that describe more precisely an individual's location.";
+    option (unresolved_option_321173585) = "go/dg-classification:geo_location#Data";
+    LocationType location_type = 1;
+    Coarse coarse = 2;
+    Traces traces = 3;
+
+    enum LocationType {
+      option (unresolved_option_306455367) = "It defines what type of user location at the moment of recording the described dataset contains. This is a tree of values, the children values are specialisation that can be used to define more precisely the location type.";
+      option (unresolved_option_321189327) = "go/dg-classification:geo_location#Data.LocationType";
+      LOCATION_UNDEFINED = 0;
+      USER_LOCATION = 1 [(unresolved_option_204438976) = "User Location", (unresolved_option_204438977) = "It is the user location at one point in time. Note that if we have a USER_LOCATION, the 'source' field of a DG Annotations needs to at least contain a SOURCE_USER or one of its children.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_LOCATION"];
+      USER_DIRECT_LOCATION = 2 [(unresolved_option_204438976) = "User Direct Location", (unresolved_option_204438977) = "The location is expressed as a coordinate or as geographical element.", (unresolved_option_206747693) = "USER_LOCATION", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_DIRECT_LOCATION"];
+      USER_INDIRECT_LOCATION = 3 [(unresolved_option_204438976) = "User Indirect Location", (unresolved_option_204438977) = "The location can be guessed through a combination of data.", (unresolved_option_206747693) = "USER_LOCATION", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_INDIRECT_LOCATION"];
+      USER_CONTEXTUAL_LOCATION = 4 [(unresolved_option_204438976) = "User Contextual Location", (unresolved_option_204438977) = "The location is not directly a pair of coordinates but a place or a concept.", (unresolved_option_206747693) = "USER_LOCATION", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_CONTEXTUAL_LOCATION"];
+      NOT_A_USER_LOCATION = 5 [(unresolved_option_204438976) = "Not A User Location", (unresolved_option_204438977) = "This is not the location of the user. It might still contain location data -- but not the location of a user. This is equivalent to 'location: NO' value.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.NOT_A_USER_LOCATION"];
+      USER_PLACE_OF_INTEREST = 7 [(unresolved_option_204438976) = "User Place of Interest", (unresolved_option_204438977) = "This is not the location of the user, it is a place inferred to be of interest to the user (e.g. a place a user has browsed, but we have no indication that the user was there or intends to go there). Asking for directions to a place still only makes it a USER_PLACE_OF_INTEREST - not a user location, as they may never go there (e.g. just checking travel time and we have no indication that the user actually had an intent to go). Navigating to a location would make this a USER_LOCATION (or one if its children), not a USER_PLACE_OF_INTEREST.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_PLACE_OF_INTEREST"];
+      USER_HOME_LOCATION = 8 [(unresolved_option_204438976) = "User Home Location", (unresolved_option_204438977) = "This is not the location of the user, it is the user's home location. Only use this label if the location is the Google wide confirmed home location set in Google Account. It should not be used for anything that is inferred, or shipping addresses that happen to be associated with home. Please contact oolong-team@ when in doubt.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_HOME_LOCATION"];
+      USER_WORK_LOCATION = 9 [(unresolved_option_204438976) = "User Work Location", (unresolved_option_204438977) = "This is not the location of the user, it is the user's work location. Only use this label if the location is the Google wide confirmed work location set in Google Account. It should not be used for anything that is inferred, or shipping addresses that happen to be associated with work. Please contact oolong-team@ when in doubt.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.LocationType.USER_WORK_LOCATION"];
+      LOCATION_OTHER = 6 [(unresolved_option_308218636) = 1];
+    }
+
+    enum Coarse {
+      option (unresolved_option_306455367) = "It defines how coarse is the location. It can be the result of coarsening the location or because we are collecting already coarsened data.";
+      option (unresolved_option_321189327) = "go/dg-classification:geo_location#Data.Coarse";
+      COARSE_UNDEFINED = 0;
+      NOT_COARSE = 1 [(unresolved_option_204438976) = "Not Coarse", (unresolved_option_204438977) = "The location can be very precise.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.Coarse.NOT_COARSE"];
+      COARSE_AT_1_PLUS_1_LEVEL = 2 [(unresolved_option_204438976) = "Coarse At 1+1 level", (unresolved_option_204438977) = "The location covers at least 1 square kilometers in size and an estimated of 1000 or more 14-days active internet users.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.Coarse.COARSE_AT_1_PLUS_1_LEVEL"];
+      COARSE_AT_3_PLUS_1_LEVEL = 3 [(unresolved_option_204438976) = "Coarse At 3+1 level", (unresolved_option_204438977) = "The location has at least 3 square kilometers in size and an estimated of 1000 or more 14-days active internet users.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.Coarse.COARSE_AT_3_PLUS_1_LEVEL"];
+      COARSE_AT_COUNTRY_LEVEL = 4 [(unresolved_option_204438976) = "Coarse At Country-level", (unresolved_option_204438977) = "The location is at the country level, typically the location is a ISO 3166-1 country code.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.Coarse.COARSE_AT_COUNTRY_LEVEL"];
+      COARSE_OTHER = 5 [(unresolved_option_308218636) = 1];
+    }
+
+    enum Traces {
+      option (unresolved_option_306455367) = "It defines whether the dataset contains multiple locations that can be combined to uniquely identify an entity.";
+      option (unresolved_option_321189327) = "go/dg-classification:geo_location#Data.Traces";
+      TRACES_UNDEFINED = 0;
+      CONTAIN_MULTIPLE_LOCATIONS = 1 [(unresolved_option_204438976) = "Contains Multiple Locations", (unresolved_option_204438977) = "The dataset contains multiple locations that can be combined to uniquely identify an entity.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.Traces.CONTAIN_MULTIPLE_LOCATIONS"];
+      ONLY_SINGLE_LOCATION = 2 [(unresolved_option_204438976) = "Contains Only Single Location", (unresolved_option_204438977) = "The dataset only contains locations that cannot be combined.", (unresolved_option_321358229) = "go/dg-classification:geo_location#Data.Traces.ONLY_SINGLE_LOCATION"];
+      TRACES_OTHER = 3 [(unresolved_option_308218636) = 1];
+    }
+  }
+
+  message TeensCategory {
+    HasCategory teens_data = 1 [(unresolved_option_233938569) = "Teens' data", (unresolved_option_233938575) = "Teens's data is user data relating to Teens. Teens are users that we know to be above the age of consent in their respective country but below the age of 18 (meaning, Minors who are not Children). Because of regional differences in age of consent, in some countries 'Teens' may be 16-18 while in others they may be from 13, 14 or 15 years old to 18.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.minors_data.teens_data"];
+  }
+
+  message ChildrenCategory {
+    HasCategory children_data = 1 [(unresolved_option_233938569) = "Children's data", (unresolved_option_233938575) = "Children's data is user data relating to Children. Children are users that we know to be below the applicable age of consent in their respective country. If this field is selected, there is no need to select unicorns_data, griffins_data, or edu_children_data as this will cover all of them. Please only select the specific children category if your product has restrictions for certain child users.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.minors_data.children_data"];
+    HasCategory unicorns_data = 2 [(unresolved_option_233938569) = "Unicorns' data", (unresolved_option_233938575) = "Unicorns' data is user data relating to unicorns. Unicorns are consumer accounts that were created with a birthdate under age of consent at creation time. They were created with parental consent, and have always been treated as an underage account.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.minors_data.unicorns_data"];
+    HasCategory griffins_data = 3 [(unresolved_option_233938569) = "Griffins' data", (unresolved_option_233938575) = "Griffins' data is user data relating to griffins. Griffins are consumer accounts that were created as regular Google accounts over age of consent, but are now under age of consent, either because the user's country increased the age of consent, or because the user changed their birthdate on the account. Parental consent and supervision have been added after account creation.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.minors_data.griffins_data"];
+    HasCategory edu_children_data = 4 [(unresolved_option_233938569) = "Edu children's data", (unresolved_option_233938575) = "Edu children's data is user data relating to edu child users. Edu child users are Enterprise/Dasher accounts created and managed by a school administrator. Users created in a K12 (primary or secondary) school are defaulted to <18 status. Due to the sensitivity of users in an educational context, Google Workspace for Education <18 users are often treated similarly to 'children under age of consent', even though they may be up to 18 years old.", (unresolved_option_307041375) = "CONFIDENTIALITY_NEED_TO_KNOW", (unresolved_option_321231810) = "go/dg-classification:minors_data#Data.minors_data.edu_children_data"];
+  }
+
+  message MinorData {
+    TeensCategory teens_category = 1;
+    ChildrenCategory children_category = 2;
+  }
+
+  message ManagedCategory {
+    option (unresolved_option_306457841) = "A managed account aka.Dasher is a Gaia user account whose lifecycleand management are controlled by Dasher on behalf of customers. Thismessage defines different types of managed accounts that the datais related to.";
+    option (unresolved_option_321173585) = "go/dg-classification:user_class#Data.managed";
+    HasCategory non_edu_managed = 1 [(unresolved_option_233938569) = "Non edu managed user data", (unresolved_option_233938575) = "This field represents data related to managed users who are non edu users.", (unresolved_option_321231810) = "go/dg-classification:user_class#Data.managed.non_edu_managed"];
+    HasCategory edu = 2 [(unresolved_option_233938569) = "Edu user data", (unresolved_option_233938575) = "Edu users are Dasher users who belong to an Edu customer. This field represents data related to edu users.", (unresolved_option_321231810) = "go/dg-classification:user_class#Data.managed.edu"];
+  }
+
+  message UserClass {
+    option (unresolved_option_306457841) = "The User Class field describes the user's account type class that the data is related to.";
+    option (unresolved_option_321173585) = "go/dg-classification:user_class#Data";
+    ManagedCategory managed = 1 [(unresolved_option_233938569) = "Managed users data"];
+    HasCategory any_managed_account = 2 [(unresolved_option_233938569) = "Contains any type of managed account", (unresolved_option_233938575) = "Indicates whether the dataset contains any type of managed account.NO means no subtype of managed accounts is present.This field requires a justification, see go/dg-classification:user_class#any_managed_account.", (unresolved_option_321231810) = "go/dg-classification:user_class#any_managed_account"];
+  }
+}
+
+extend proto2.EnumValueOptions {
+  string label = 204438976;
+  string description = 204438977;
+  string parent = 206747693;
+  string expected_confidentiality = 307833595;
+  bool disabled = 308218636;
+  string go_link = 321358229;
+  string deprecated_message = 377074388;
+  bool deprecated_as_an_error = 376796538;
+}
+
+extend proto2.FieldOptions {
+  string field_label = 233938569;
+  string field_description = 233938575;
+  string field_expected_confidentiality = 307041375;
+  bool field_disabled = 308602115;
+  string field_go_link = 321231810;
+  string field_deprecated_message = 377079205;
+  bool field_deprecated_as_an_error = 377276026;
+}
+
+extend proto2.EnumOptions {
+  string enum_description = 306455367;
+  string enum_go_link = 321189327;
+}
+
+extend proto2.MessageOptions {
+  string message_description = 306457841;
+  string message_go_link = 321173585;
+}

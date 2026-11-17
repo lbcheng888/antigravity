@@ -1,0 +1,98 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dc1c9a (va 0x103dc1c9a, __TEXT.__rodata), descriptor length 2267 B, sha256 2655dfbcb9736828
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api;
+
+import "google/api/inclusion.proto";
+import "google/api/visibility.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.api";
+option java_outer_classname = "ResourceProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/annotations;annotations";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GAPI";
+option (unresolved_option_525000017) = "\n\003all";
+
+message ResourceDescriptor {
+  reserved 8, 9;
+  string type = 1;
+  repeated string pattern = 2;
+  string name_field = 3;
+  History history = 4;
+  string plural = 5;
+  string singular = 6;
+  repeated ResourceNameDescriptor name_descriptor = 7 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated Style style = 10;
+
+  enum History {
+    HISTORY_UNSPECIFIED = 0;
+    ORIGINALLY_SINGLE_PATTERN = 1;
+    FUTURE_MULTI_PATTERN = 2;
+  }
+
+  enum Style {
+    STYLE_UNSPECIFIED = 0;
+    DECLARATIVE_FRIENDLY = 1;
+    KRM = 2 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  }
+
+  message ResourceNameDescriptor {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    string pattern = 1;
+    string parent_type = 2;
+    string parent_name_extractor = 3;
+    string location_extractor = 4;
+    repeated LocationType supported_location_types = 5 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+
+    enum LocationType {
+      option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+      LOCATION_TYPE_UNSPECIFIED = 0;
+      CLOUD_ZONE = 1;
+      CLOUD_REGION = 2;
+      GOOGLE_MANAGED_MULTI_REGION = 3;
+      STANDARD_MANAGED_MULTI_REGION = 4;
+      CUSTOMER_MANAGED_MULTI_REGION = 5;
+      GLOBAL = 6;
+    }
+  }
+}
+
+message ResourceReference {
+  string type = 1;
+  string child_type = 2;
+}
+
+message ResourceContainer {
+  option deprecated = true;
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  repeated ResourceContainerRule rules = 1;
+}
+
+message ResourceContainerRule {
+  option deprecated = true;
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  string selector = 1;
+  string type = 2;
+}
+
+extend proto2.MessageOptions {
+  ResourceDescriptor resource = 1053;
+}
+
+extend proto2.FieldOptions {
+  ResourceReference resource_reference = 1055;
+  ResourceContainerRule resource_container = 135496935 [deprecated = true, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+extend proto2.FileOptions {
+  repeated ResourceDescriptor resource_definition = 1053;
+}
+
+extend proto2.MethodOptions {
+  ResourceReference method_resource = 463459046 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}

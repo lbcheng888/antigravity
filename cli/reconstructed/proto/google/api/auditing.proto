@@ -1,0 +1,38 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d49057 (va 0x103d49057, __TEXT.__rodata), descriptor length 736 B, sha256 94fac48cd32470bb
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api;
+
+import "google/api/inclusion.proto";
+import "net/proto2/proto/descriptor.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.api";
+option java_outer_classname = "AuditingProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/auditing;auditing";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GAPI";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\003all";
+
+message Auditing {
+  repeated AuditingRule rules = 1;
+  map<string, string> labels = 2;
+}
+
+message AuditingRule {
+  string selector = 1;
+  string directive = 2;
+}
+
+extend proto2.FieldOptions {
+  AuditingRule field_auditing = 112199341;
+}
+
+extend proto2.MethodOptions {
+  AuditingRule method_auditing = 112199341;
+}

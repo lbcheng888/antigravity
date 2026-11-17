@@ -1,0 +1,79 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e3858d (va 0x103e3858d, __TEXT.__rodata), descriptor length 3785 B, sha256 5a5e22dbfdc42a16
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.prompt_pb;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/gemini_coder/proto/trajectory.proto";
+import "third_party/jetski/chat_pb/chat.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/context_module_pb/context_module.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message PendingCommand {
+  string instruction = 1 [(unresolved_option_40075780) = 1900];
+  string completion = 2 [(unresolved_option_40075780) = 1900];
+}
+
+message CommandIntentInfo {
+  string selection = 1 [(unresolved_option_40075780) = 1900];
+  string instruction = 2 [(unresolved_option_40075780) = 1900];
+  codeium_common_pb.Document input_document = 3;
+  uint64 selection_start_line = 4 [(unresolved_option_40075780) = 2800];
+  uint64 selection_end_line = 5 [(unresolved_option_40075780) = 2800];
+  codeium_common_pb.TerminalCommandData terminal_command_data = 6;
+  repeated codeium_common_pb.TerminalShellCommand previous_commands = 7;
+  repeated PendingCommand pending_commands = 8;
+  codeium_common_pb.CommandRequestSource request_source = 9 [(unresolved_option_40075780) = 2800];
+  repeated codeium_common_pb.IntellisenseSuggestion intellisense_prompt = 10;
+  repeated codeium_common_pb.CodeDiagnostic diagnostics_prompt = 11;
+}
+
+message UnifiedPromptComponents {
+  reserved 6, 7;
+  reserved "knowledge_base_result", "knowledge_base_items";
+  context_module_pb.ContextModuleResult context_module_result = 2;
+  gemini_coder.Trajectory cortex_trajectory = 3;
+  CommandIntentInfo command_intent_info = 4;
+  repeated chat_pb.ChatMessage chat_messages = 1;
+  repeated codeium_common_pb.CodeDiagnostic code_diagnostics = 5;
+  repeated codeium_common_pb.KnowledgeBaseGroup knowledge_base_groups = 8;
+}
+
+message SystemPromptConstructionConfig {
+  string element_separator = 1;
+}
+
+message CommandPromptCacheConfig {
+  int64 max_tracked_files = 1;
+  int64 max_cache_age_seconds = 2;
+}
+
+message CumulativePromptConfig {
+  reserved 1, 3, 4, 5;
+  reserved "active_document_context_multiplier", "context_item_context_multiplier", "cache_context_multiplier", "max_ccis_considered";
+  float persistent_context_multiplier = 7;
+  float persistent_active_document_multiplier = 10;
+  float persistent_open_docs_multiplier = 11;
+  int64 persistent_max_tokens_per_open_doc = 17;
+  int64 persistent_max_ccis_considered = 12;
+  float persistent_document_suffix_frac = 20;
+  float trajectory_context_multiplier = 2;
+  float trajectory_refresh_threshold_multiplier = 15;
+  float trajectory_truncation_multiplier = 16;
+  float ephemeral_context_multiplier = 9;
+  int64 intent_reservation_tokens = 6;
+  float ephemeral_active_document_multiplier = 13;
+  int64 ephemeral_max_ccis_considered = 14;
+  float ephemeral_document_suffix_frac = 21;
+  repeated cortex_pb.CortexStepType allowed_cascade_step_types = 18;
+  map<string, bool> allowed_implicit_step_types = 22;
+  bool disable_custom_step_id = 23;
+  optional int32 trajectory_start_index = 24;
+  int32 trajectory_index_increment = 25;
+}

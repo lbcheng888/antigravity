@@ -1,0 +1,148 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ebde22 (va 0x103ebde22, __TEXT.__rodata), descriptor length 5470 B, sha256 8eecaa61cf9662ab
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "logs/proto/wireless/performance/mobile/cui_metadata.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_outer_classname = "PrimesTracing";
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+message Fixed128 {
+  optional fixed64 high = 1;
+  optional fixed64 low = 2;
+}
+
+message Trace {
+  reserved 3;
+  optional fixed64 id = 1 [(unresolved_option_17703) = 2, (unresolved_option_40075780) = 2300];
+  optional string name = 2 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  optional Sampling sampling = 10 [(unresolved_option_40075780) = 999];
+  repeated ExternalTraceReference external_trace_references = 8 [(unresolved_option_40075780) = 2300];
+  optional TracingOverheadMetrics tracing_overhead_metrics = 9;
+  optional google.protobuf.Timestamp start_time = 4;
+  optional google.protobuf.Duration duration = 11 [(unresolved_option_40075780) = 999];
+  optional int32 num_dropped_entities = 5;
+  optional TraceFailure trace_failure = 6;
+  repeated TraceEdge edges = 7;
+  optional CallSite root_call_site = 12;
+  repeated string call_site_class_names = 13 [(unresolved_option_40075780) = 2800, (unresolved_option_479186792) = "\010\001"];
+  repeated string call_site_method_names = 14 [(unresolved_option_40075780) = 2800, (unresolved_option_479186792) = "\010\001"];
+  optional GlobalTraceMetadata trace_metadata = 15;
+
+  message Sampling {
+    oneof sampling_type {
+      float process_sampling_probability = 1;
+      float trace_sampling_probability = 2;
+    }
+  }
+
+  message ExternalTraceReference {
+    optional ExternalTraceType type = 1;
+    oneof external_trace_id {
+      fixed64 id = 2 [(unresolved_option_40075780) = 2300];
+      Fixed128 id_128 = 3 [(unresolved_option_40075780) = 2300];
+    }
+    repeated EntityIdMapping entity_id_mappings = 4 [(unresolved_option_40075780) = 2300];
+    optional float sampling_probability = 5 [(unresolved_option_40075780) = 999];
+
+    enum ExternalTraceType {
+      EXTERNAL_TRACE_TYPE_UNSPECIFIED = 0;
+      PRIMES = 1;
+      DAPPER = 2;
+    }
+
+    message EntityIdMapping {
+      optional uint64 from_entity_id = 1 [(unresolved_option_40075780) = 999];
+      optional uint64 to_entity_id = 2 [(unresolved_option_40075780) = 2300];
+    }
+  }
+
+  message TracingOverheadMetrics {
+    optional google.protobuf.Duration capture_trace_context_avg = 1 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration capture_trace_context_max = 2 [(unresolved_option_40075780) = 999];
+    optional int64 capture_trace_context_count = 3 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration install_trace_context_avg = 4 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration install_trace_context_max = 5 [(unresolved_option_40075780) = 999];
+    optional int64 install_trace_context_count = 6 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration add_slice_begin_avg = 7 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration add_slice_begin_max = 8 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration add_slice_end_avg = 9 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration add_slice_end_max = 10 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration add_mark_avg = 11 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration add_mark_max = 12 [(unresolved_option_40075780) = 999];
+  }
+
+  message TraceFailure {
+    optional google.protobuf.Duration timed_out_after = 1;
+  }
+
+  message GlobalTraceMetadata {
+    repeated CuiMetadata cui_metadata = 1;
+  }
+}
+
+message TraceEdge {
+  optional uint64 id = 1 [(unresolved_option_40075780) = 999];
+  optional google.protobuf.Duration trace_start_offset = 2;
+  oneof type {
+    SliceBegin slice_begin = 3;
+    SliceEnd slice_end = 4;
+    Mark mark = 5;
+  }
+
+  message TraceEntityDetails {
+    optional string name = 1 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+    optional uint64 parent_id = 2 [(unresolved_option_40075780) = 999];
+    repeated uint64 follows_from_ids = 3 [(unresolved_option_40075780) = 999];
+    repeated uint64 flow_ids = 4 [(unresolved_option_40075780) = 999];
+    optional CallSite call_site = 5;
+  }
+
+  message SliceBegin {
+    optional TraceEntityDetails entity_details = 1;
+    optional uint64 thread_id = 2 [(unresolved_option_40075780) = 999];
+    optional string thread_name = 5 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+    optional string executor_name = 6 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+    optional ExecutorType executor_type = 7 [(unresolved_option_40075780) = 999];
+    optional uint64 executor_id = 8 [(unresolved_option_40075780) = 999];
+    optional google.protobuf.Duration total_cpu_time = 3;
+    optional google.protobuf.Duration user_cpu_time = 4;
+    optional bool interval = 9;
+
+    enum ExecutorType {
+      UNKNOWN = 0;
+      MAIN = 1;
+      SERIAL = 2;
+      CONCURRENT = 3;
+    }
+  }
+
+  message SliceEnd {
+    optional google.protobuf.Duration total_cpu_time = 3;
+    optional google.protobuf.Duration user_cpu_time = 4;
+  }
+
+  message Mark {
+    optional TraceEntityDetails entity_details = 1;
+  }
+}
+
+message CallSite {
+  optional string class_name = 1 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  optional string method_name = 2 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  optional int32 line_number = 3 [(unresolved_option_40075780) = 999];
+  optional int32 class_name_index = 4 [(unresolved_option_40075780) = 999];
+  optional int32 method_name_index = 5 [(unresolved_option_40075780) = 999];
+}

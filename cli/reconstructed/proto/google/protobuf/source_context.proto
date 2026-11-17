@@ -1,0 +1,30 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: gzip @ file offset 0xab2c973 (va 0x10ab2c973, __DATA.__noptrdata), descriptor length 249 B, sha256 ac850f365026b91a
+// boundary: syntax_end
+
+syntax = "proto3";
+
+package google.protobuf;
+
+option java_package = "com.google.protobuf";
+option java_outer_classname = "SourceContextProto";
+option java_multiple_files = true;
+option go_package = "types";
+option objc_class_prefix = "GPB";
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option (unresolved_option_63003) = 0;
+option (unresolved_option_63006) = 1;
+option (unresolved_option_63007) = 1;
+option (unresolved_option_63008) = 1;
+option (unresolved_option_63013) = 1;
+option (unresolved_option_63017) = 1;
+option (unresolved_option_63018) = 1;
+option (unresolved_option_63020) = 1;
+option (unresolved_option_63021) = 0;
+option (unresolved_option_63022) = 1;
+option (unresolved_option_63029) = 1;
+option (unresolved_option_63033) = 1;
+
+message SourceContext {
+  string file_name = 1;
+}

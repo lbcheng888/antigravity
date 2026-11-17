@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d23a27 (va 0x103d23a27, __TEXT.__rodata), descriptor length 313 B, sha256 7f9ea3446ee0529c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc.context;
+
+import "google/protobuf/field_mask.proto";
+
+option java_package = "com.google.rpc.context";
+option java_outer_classname = "FieldMaskContextProto";
+option java_multiple_files = true;
+option objc_class_prefix = "RPC";
+
+message FieldMaskContext {
+  protobuf.FieldMask request_mask = 1;
+  protobuf.FieldMask response_mask = 2;
+}

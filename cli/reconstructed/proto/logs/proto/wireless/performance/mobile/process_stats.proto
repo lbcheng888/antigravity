@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d5e8dd (va 0x103d5e8dd, __TEXT.__rodata), descriptor length 1008 B, sha256 a9eb57af60425e73
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/api/inclusion.proto";
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "privacy/pattributes/annotations/proto_field.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_outer_classname = "ProcessProto";
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\006legacy";
+option (unresolved_option_5) = 2;
+
+message ProcessStats {
+  optional AndroidProcessStats android_process_stats = 1;
+  optional IosProcessStats ios_process_stats = 2 [deprecated = true];
+}
+
+message AndroidProcessStats {
+  optional int64 process_elapsed_time_ms = 1;
+  optional bool is_in_foreground = 2;
+  optional int32 thread_count = 3;
+  optional string process_name = 4 [deprecated = true, (unresolved_option_40075780) = 1500, (unresolved_option_479186792) = "\010\001"];
+  optional int32 oom_score_adj = 5 [(unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+  optional string importance_reason_component = 6 [(unresolved_option_479186792) = "\010\001", (unresolved_option_535801427) = "\212\n\014\300\303\002\007\300\303\002\t\270\303\002\001"];
+}
+
+message IosProcessStats {
+}

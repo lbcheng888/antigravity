@@ -1,0 +1,31 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d42c5d (va 0x103d42c5d, __TEXT.__rodata), descriptor length 655 B, sha256 b4d314488c54239c
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package pattributes;
+
+import "privacy/pattributes/public/proto/collection_basis.proto";
+
+option java_package = "com.google.privacy.pattributes.proto";
+option java_multiple_files = true;
+
+message CollectionBasisAnd {
+  repeated CollectionBasis basis = 1;
+  repeated CollectionBasisOr or_spec = 2;
+}
+
+message CollectionBasisOr {
+  repeated CollectionBasis basis = 1;
+  repeated CollectionBasisAnd2 and_spec = 2;
+}
+
+message CollectionBasisAnd2 {
+  repeated CollectionBasis basis = 1;
+  repeated CollectionBasisOr2 or_spec = 2;
+}
+
+message CollectionBasisOr2 {
+  repeated CollectionBasis basis = 1;
+}

@@ -1,0 +1,18 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d33a5c (va 0x103d33a5c, __TEXT.__rodata), descriptor length 465 B, sha256 095ed1ba08552fdc
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package wireless_android_play_playlog;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "wireless/android/play/playlog/proto/logger_enum.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option (unresolved_option_71304954) = "latest";
+
+message AggregationMetadata {
+  logger_enum.LoggerId logger_id = 1;
+  int64 aggregation_config_hash = 2;
+}

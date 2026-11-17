@@ -1,0 +1,32 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4f974 (va 0x103d4f974, __TEXT.__rodata), descriptor length 825 B, sha256 a700c60b0cbc8eb1
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "G1DesktopProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message G1DesktopClientInfo {
+  optional string build_version = 1 [(unresolved_option_40075780) = 1500];
+  optional G1DesktopClientType g1_desktop_client_type = 2;
+
+  enum G1DesktopClientType {
+    CLIENT_UNKNOWN = 0;
+    PHENOTYPE = 1;
+  }
+}

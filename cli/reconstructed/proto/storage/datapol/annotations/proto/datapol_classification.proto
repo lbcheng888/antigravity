@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d268f4 (va 0x103d268f4, __TEXT.__rodata), descriptor length 341 B, sha256 ed1308259a418c00
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package datapol.classification;
+
+import "net/proto2/proto/descriptor.proto";
+
+message Options {
+  repeated string implies = 1;
+  optional string description = 2;
+  optional string default_semantic_context = 3;
+}
+
+extend proto2.EnumValueOptions {
+  optional Options options = 268862122;
+}

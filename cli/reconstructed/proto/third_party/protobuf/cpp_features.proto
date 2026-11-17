@@ -1,0 +1,37 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x912b234 (va 0x10912b234, __TEXT.__const), descriptor length 833 B, sha256 271e571b6ab7df78
+// boundary: field_boundary
+
+syntax = "proto2";
+
+package pb;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.protobuf";
+option java_outer_classname = "CppFeaturesProto";
+
+message CppFeatures {
+  optional bool legacy_closed_enum = 1 [retention = RETENTION_RUNTIME, targets = TARGET_TYPE_FIELD, targets = TARGET_TYPE_FILE, edition_defaults = { value: "true" edition: EDITION_LEGACY }, edition_defaults = { value: "false" edition: EDITION_PROTO3 }, feature_support = { edition_introduced: EDITION_2023 edition_deprecated: EDITION_2023 deprecation_warning: "The legacy closed enum behavior in C++ is deprecated and is scheduled to be removed in edition 2025.  See go/proto-enum-behavior#cpp for more information" }];
+  optional StringType string_type = 2 [retention = RETENTION_RUNTIME, targets = TARGET_TYPE_FIELD, targets = TARGET_TYPE_FILE, edition_defaults = { value: "STRING" edition: EDITION_LEGACY }, edition_defaults = { value: "VIEW" edition: EDITION_2024 }, feature_support = { edition_introduced: EDITION_2023 }];
+  optional bool enum_name_uses_string_view = 3 [retention = RETENTION_RUNTIME, targets = TARGET_TYPE_ENUM, targets = TARGET_TYPE_FILE, edition_defaults = { value: "false" edition: EDITION_LEGACY }, edition_defaults = { value: "true" edition: EDITION_2024 }, feature_support = { edition_introduced: EDITION_2024 }];
+  optional RepeatedType repeated_type = 4 [retention = RETENTION_RUNTIME, targets = TARGET_TYPE_FIELD, targets = TARGET_TYPE_FILE, edition_defaults = { value: "LEGACY" edition: EDITION_LEGACY }, feature_support = { edition_introduced: EDITION_UNSTABLE }];
+
+  enum StringType {
+    STRING_TYPE_UNKNOWN = 0;
+    VIEW = 1;
+    CORD = 2;
+    STRING = 3;
+    STRING_PIECE = 4 [deprecated = true];
+  }
+
+  enum RepeatedType {
+    REPEATED_TYPE_UNKNOWN = 0;
+    LEGACY = 1;
+    PROXY = 2;
+  }
+}
+
+extend proto2.FeatureSet {
+  optional CppFeatures cpp = 1000;
+}

@@ -1,0 +1,16 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3c802 (va 0x103d3c802, __TEXT.__rodata), descriptor length 568 B, sha256 53acce5512de39bc
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package jetbox_summaries_pb;
+
+import "third_party/jetski/jetski_cortex_pb/jetski_cortex.proto";
+
+option go_package = "google3/third_party/jetski/jetbox_summaries_pb";
+
+message SummariesState {
+  map<string, exa.jetski_cortex_pb.CascadeTrajectorySummary> summaries = 1;
+  map<string, int64> file_mod_times = 2;
+}

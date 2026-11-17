@@ -1,0 +1,44 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d7a4b4 (va 0x103d7a4b4, __TEXT.__rodata), descriptor length 1374 B, sha256 01d05942ff515ac0
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "RemoteControlEventOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message RemoteControlEvent {
+  EventType event_type = 1 [(unresolved_option_40075780) = 2800];
+  string instance_id = 2 [(unresolved_option_40075780) = 1015];
+  string protocol_version = 3 [(unresolved_option_40075780) = 2800];
+  string client_version = 4 [(unresolved_option_40075780) = 1500];
+  int64 duration_ms = 5 [(unresolved_option_40075780) = 2800];
+  string disconnect_reason = 6 [(unresolved_option_40075780) = 2800];
+  int32 reconnect_attempt = 7 [(unresolved_option_40075780) = 2800];
+  string error_category = 8 [(unresolved_option_40075780) = 2800];
+  string rpc_path = 9 [(unresolved_option_40075780) = 2800];
+  string route = 10 [(unresolved_option_40075780) = 2800];
+  string status = 11 [(unresolved_option_40075780) = 2800];
+  int64 command_count = 12 [(unresolved_option_40075780) = 2800];
+  string webrtc_connection_type = 13 [(unresolved_option_40075780) = 2800];
+  int64 webrtc_command_error_count = 14 [(unresolved_option_40075780) = 2800];
+
+  enum EventType {
+    EVENT_TYPE_UNSPECIFIED = 0;
+    EVENT_TYPE_SESSION_START = 1;
+    EVENT_TYPE_SESSION_END = 2;
+    EVENT_TYPE_RECONNECT_ATTEMPT = 3;
+    EVENT_TYPE_CONNECT_FAILED = 4;
+    EVENT_TYPE_PROXY_COMMAND = 5;
+    EVENT_TYPE_STREAM_PROXY_COMMAND = 6;
+    EVENT_TYPE_WEBRTC_ATTEMPT = 7;
+    EVENT_TYPE_WEBRTC_CONNECTED = 8;
+    EVENT_TYPE_WEBRTC_FALLBACK = 9;
+    EVENT_TYPE_WEBRTC_DISCONNECTED = 10;
+    EVENT_TYPE_WEBRTC_HEARTBEAT = 11;
+  }
+}

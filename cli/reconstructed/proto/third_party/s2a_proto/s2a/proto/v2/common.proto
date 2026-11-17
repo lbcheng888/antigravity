@@ -1,0 +1,72 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d9ac6a (va 0x103d9ac6a, __TEXT.__rodata), descriptor length 1806 B, sha256 e3a7ce5ed2c5a13b
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package s2a.proto.v2;
+
+import "third_party/golang/protobuf/v2/src/google/protobuf/go_features.proto";
+
+option java_package = "com.google.s2a.proto.v2";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+option features.field_presence = IMPLICIT;
+option features.(unresolved_option_1002) = "\020\002";
+
+enum Ciphersuite {
+  CIPHERSUITE_UNSPECIFIED = 0;
+  CIPHERSUITE_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 = 1;
+  CIPHERSUITE_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 = 2;
+  CIPHERSUITE_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 = 3;
+  CIPHERSUITE_ECDHE_RSA_WITH_AES_128_GCM_SHA256 = 4;
+  CIPHERSUITE_ECDHE_RSA_WITH_AES_256_GCM_SHA384 = 5;
+  CIPHERSUITE_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 = 6;
+  CIPHERSUITE_ECDHE_ECDSA_WITH_AES_128_CBC_SHA = 7;
+  CIPHERSUITE_ECDHE_RSA_WITH_AES_128_CBC_SHA = 8;
+  CIPHERSUITE_ECDHE_ECDSA_WITH_AES_256_CBC_SHA = 9;
+  CIPHERSUITE_ECDHE_RSA_WITH_AES_256_CBC_SHA = 10;
+  CIPHERSUITE_RSA_WITH_AES_128_GCM_SHA256 = 11;
+  CIPHERSUITE_RSA_WITH_AES_256_GCM_SHA384 = 12;
+  CIPHERSUITE_RSA_WITH_AES_128_CBC_SHA = 13;
+  CIPHERSUITE_RSA_WITH_AES_256_CBC_SHA = 14;
+  CIPHERSUITE_RSA_WITH_3DES_EDE_CBC_SHA = 15;
+}
+
+enum TLSVersion {
+  TLS_VERSION_UNSPECIFIED = 0;
+  TLS_VERSION_1_0 = 1;
+  TLS_VERSION_1_1 = 2;
+  TLS_VERSION_1_2 = 3;
+  TLS_VERSION_1_3 = 4;
+}
+
+enum ConnectionSide {
+  CONNECTION_SIDE_UNSPECIFIED = 0;
+  CONNECTION_SIDE_CLIENT = 1;
+  CONNECTION_SIDE_SERVER = 2;
+}
+
+enum AlpnProtocol {
+  ALPN_PROTOCOL_UNSPECIFIED = 0;
+  ALPN_PROTOCOL_GRPC = 1;
+  ALPN_PROTOCOL_HTTP2 = 2;
+  ALPN_PROTOCOL_HTTP1_1 = 3;
+}
+
+message L7lbId {
+  uint64 project_number = 1;
+  fixed64 backend_service_incarnation_id = 2;
+}
+
+message Identity {
+  oneof identity_oneof {
+    string spiffe_id = 1;
+    string hostname = 2;
+    string uid = 4;
+    string username = 5;
+    string gcp_id = 6;
+    L7lbId l7lb_id = 7;
+  }
+  map<string, string> attributes = 3;
+}

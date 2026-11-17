@@ -1,0 +1,41 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d5660b (va 0x103d5660b, __TEXT.__rodata), descriptor length 914 B, sha256 cab8fda6c1894906
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.cloud.code.v1internal;
+
+import "google/api/field_behavior.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.internal.cloud.code.v1internal";
+option java_outer_classname = "RemoteContextProto";
+option java_multiple_files = true;
+
+message RemoteContext {
+  RagState rag_state = 1 [(unresolved_option_1052) = "\002\003"];
+  repeated RemoteSnippet remote_snippets = 2 [(unresolved_option_1052) = "\001"];
+
+  enum RagState {
+    RAG_STATE_UNSPECIFIED = 0;
+    RAG_DISABLED = 1;
+    RAG_FOUND = 2;
+    RAG_NOT_FOUND = 3;
+    RAG_ERROR = 4;
+  }
+}
+
+message RemoteSnippet {
+  SnippetType type = 1 [(unresolved_option_40075780) = 999];
+  string content = 2 [(unresolved_option_40075780) = 999];
+  string file_url = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string file_path = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string repo_url = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum SnippetType {
+    UNKNOWN = 0;
+    CODE = 1;
+    SUMMARY = 2;
+  }
+}

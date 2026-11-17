@@ -1,0 +1,741 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x413824b (va 0x10413824b, __TEXT.__rodata), descriptor length 26212 B, sha256 77a8ad4ebb044a96
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.gca.aicode.v1main;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/versioning.proto";
+import "google/gca/aicode/v1main/aicode_content.proto";
+import "google/gca/aicode/v1main/quota_status.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/interval.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.gca.aicode.v1main";
+option java_outer_classname = "PredictionServiceProto";
+option java_multiple_files = true;
+
+enum Type {
+  TYPE_UNSPECIFIED = 0;
+  STRING = 1;
+  NUMBER = 2;
+  INTEGER = 3;
+  BOOLEAN = 4;
+  ARRAY = 5;
+  OBJECT = 6;
+  NULL = 7;
+}
+
+enum HarmCategory {
+  HARM_CATEGORY_UNSPECIFIED = 0;
+  HARM_CATEGORY_HARASSMENT = 7;
+  HARM_CATEGORY_HATE_SPEECH = 8;
+  HARM_CATEGORY_SEXUALLY_EXPLICIT = 9;
+  HARM_CATEGORY_DANGEROUS_CONTENT = 10;
+}
+
+enum HarmProbability {
+  HARM_PROBABILITY_UNSPECIFIED = 0;
+  NEGLIGIBLE = 1;
+  LOW = 2;
+  MEDIUM = 3;
+  HIGH = 4;
+}
+
+enum HarmBlockThreshold {
+  HARM_BLOCK_THRESHOLD_UNSPECIFIED = 0;
+  BLOCK_LOW_AND_ABOVE = 1;
+  BLOCK_MEDIUM_AND_ABOVE = 2;
+  BLOCK_ONLY_HIGH = 3;
+  BLOCK_NONE = 4;
+  OFF = 5;
+}
+
+enum FinishReason {
+  FINISH_REASON_UNSPECIFIED = 0;
+  STOP = 1;
+  MAX_TOKENS = 2;
+  SAFETY = 3;
+  RECITATION = 4;
+  OTHER = 5;
+  BLOCKLIST = 6;
+  PROHIBITED_CONTENT = 7;
+  SPII = 8;
+  MALFORMED_FUNCTION_CALL = 9;
+  IMAGE_SAFETY = 10;
+  IMAGE_PROHIBITED_CONTENT = 11;
+  IMAGE_RECITATION = 12;
+  IMAGE_OTHER = 13;
+  UNEXPECTED_TOOL_CALL = 14;
+  NO_IMAGE = 15;
+}
+
+enum Modality {
+  MODALITY_UNSPECIFIED = 0;
+  TEXT = 1;
+  IMAGE = 2;
+  VIDEO = 3;
+  AUDIO = 4;
+  DOCUMENT = 5;
+}
+
+enum ActivityHandling {
+  ACTIVITY_HANDLING_UNSPECIFIED = 0;
+  START_OF_ACTIVITY_INTERRUPTS = 1;
+  NO_INTERRUPTION = 2;
+}
+
+message GenerateContentRequest {
+  oneof inference {
+    string model = 1;
+    AiCodeConfig aicode = 1001;
+  }
+  repeated Content contents = 2 [(unresolved_option_1052) = "\002"];
+  optional Content system_instruction = 3 [(unresolved_option_1052) = "\001"];
+  repeated Tool tools = 4 [(unresolved_option_1052) = "\001"];
+  ToolConfig tool_config = 5 [(unresolved_option_1052) = "\001"];
+  map<string, string> labels = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated SafetySetting safety_settings = 7 [(unresolved_option_1052) = "\001"];
+  GenerationConfig generation_config = 8 [(unresolved_option_1052) = "\001"];
+  string session_id = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300, (unresolved_option_143069646) = "\022\007v1alpha"];
+  Entitlement entitlement = 10 [(unresolved_option_1052) = "\002", (unresolved_option_143069646) = "\022\007v1alpha"];
+}
+
+message GenerateContentResponse {
+  repeated Candidate candidates = 1;
+  PromptFeedback prompt_feedback = 2;
+  UsageMetadata usage_metadata = 3;
+  string model_version = 4;
+  string response_id = 5;
+  CreditUsageMetadata credit_usage_metadata = 6 [(unresolved_option_143069646) = "\022\007v1alpha"];
+
+  message PromptFeedback {
+    BlockReason block_reason = 1;
+    repeated SafetyRating safety_ratings = 2;
+    string block_reason_message = 3;
+
+    enum BlockReason {
+      BLOCKED_REASON_UNSPECIFIED = 0;
+      SAFETY = 1;
+      OTHER = 2;
+      BLOCKLIST = 3;
+      PROHIBITED_CONTENT = 4;
+      IMAGE_SAFETY = 5;
+    }
+  }
+
+  message UsageMetadata {
+    int32 prompt_token_count = 1;
+    int32 candidates_token_count = 2;
+    int32 total_token_count = 3;
+    int32 thoughts_token_count = 4;
+    int32 cached_content_token_count = 5;
+    repeated ModalityTokenCount prompt_tokens_details = 6 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount cache_tokens_details = 7 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount candidates_tokens_details = 8 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount tool_use_prompt_tokens_details = 9 [(unresolved_option_1052) = "\003"];
+  }
+}
+
+message BidiGenerateContentClientMessage {
+  string message_id = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  oneof message_type {
+    BidiGenerateContentSetup setup = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    BidiGenerateContentClientContent client_content = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    BidiGenerateContentRealtimeInput realtime_input = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    BidiGenerateContentToolResponse tool_response = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    BidiGenerateContentContextUpdate context_update = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+}
+
+message BidiGenerateContentServerMessage {
+  oneof message_type {
+    BidiGenerateContentSetupComplete setup_complete = 1 [(unresolved_option_40075780) = 1900];
+    BidiGenerateContentServerContent server_content = 2 [(unresolved_option_40075780) = 1900];
+    BidiGenerateContentToolCall tool_call = 3 [(unresolved_option_40075780) = 1900];
+    BidiGenerateContentToolCallCancellation tool_call_cancellation = 4 [(unresolved_option_40075780) = 1900];
+    GoAway go_away = 5;
+    SessionResumptionUpdate session_resumption_update = 6 [(unresolved_option_40075780) = 1900];
+  }
+}
+
+message FetchQuotaStatusRequest {
+}
+
+message FetchQuotaStatusResponse {
+  repeated BucketInfo buckets = 1;
+  QuotaSummary quota_summary = 2 [(unresolved_option_143069646) = "\022\007v1alpha"];
+  repeated Credit available_credits = 3 [(unresolved_option_143069646) = "\022\007v1alpha"];
+
+  enum QuotaType {
+    QUOTA_TYPE_UNSPECIFIED = 0;
+    REQUESTS = 1;
+  }
+
+  message BucketInfo {
+    float remaining_fraction = 1;
+    protobuf.Timestamp reset_time = 2;
+    QuotaType quota_type = 3;
+    Model model = 4;
+  }
+}
+
+message Entitlement {
+  string user_tier = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1906];
+}
+
+message Model {
+  string model_id = 1;
+  string display_name = 2;
+  string description = 3;
+}
+
+message AiCodeConfig {
+  string experience = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1906, (unresolved_option_127878962) = "\022-not empty($) ?: Experience must not be empty."];
+  repeated SourceFile files = 3 [(unresolved_option_1052) = "\001"];
+  optional AdditionalContent additional_content = 4 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\007v1alpha"];
+  repeated Credit.CreditType enabled_credits = 5 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\007v1alpha"];
+
+  message AdditionalContent {
+    repeated FileEdit file_edits = 1 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\007v1alpha"];
+  }
+}
+
+message Content {
+  repeated Part parts = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string role = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message Part {
+  oneof data {
+    string text = 1 [(unresolved_option_40075780) = 1900];
+    Blob inline_data = 2 [(unresolved_option_40075780) = 1900];
+    FileData file_data = 3 [(unresolved_option_40075780) = 1900];
+    FunctionCall function_call = 4 [(unresolved_option_40075780) = 1900];
+    FunctionResponse function_response = 5 [(unresolved_option_40075780) = 1900];
+    ExecutableCode executable_code = 6;
+    CodeExecutionResult code_execution_result = 7;
+  }
+  oneof metadata {
+    VideoMetadata video_metadata = 8;
+  }
+  bool thought = 9 [(unresolved_option_1052) = "\001"];
+  bytes thought_signature = 10 [(unresolved_option_1052) = "\001"];
+}
+
+message Blob {
+  string mime_type = 1 [(unresolved_option_1052) = "\002"];
+  bytes data = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message FileData {
+  string mime_type = 1 [(unresolved_option_1052) = "\002"];
+  string file_uri = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message FunctionCall {
+  string name = 1 [(unresolved_option_1052) = "\002"];
+  protobuf.Struct args = 2 [(unresolved_option_1052) = "\001"];
+  string id = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message FunctionResponse {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022%not empty($) ?: Name cannot be empty."];
+  protobuf.Struct response = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated FunctionResponsePart parts = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message FunctionResponsePart {
+  oneof data {
+    FunctionResponseBlob inline_data = 1;
+  }
+}
+
+message FunctionResponseBlob {
+  string mime_type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  bytes data = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message Tool {
+  option (unresolved_option_127878962) = "\022\021\n\ttool_type\022\004true";
+  repeated FunctionDeclaration function_declarations = 1 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\022Rlen($)<=512 ?: [FIELD_INVALID] At most 512 function declarations can be specified.\"\ttool_type"];
+  GoogleSearch google_search = 7 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\"\ttool_type"];
+
+  message GoogleSearch {
+    type.Interval time_range_filter = 2 [(unresolved_option_1052) = "\001", (unresolved_option_127878962) = "\022chas($.start_time) and has($.end_time) ?: [FIELD_INVALID] Both start time and end time must be given\022i$.start_time.nanos == 0 and $.end_time.nanos == 0 ?: [FIELD_INVALID] Granularity of nano is not supported\022\204\001$.end_time.seconds > $.start_time.seconds + 86400 ?: [FIELD_INVALID] Invalid time range: end_time must be 24 hours after start_time."];
+  }
+}
+
+message FunctionDeclaration {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022\354\001matches($, `^[a-zA-Z_][a-zA-Z0-9_\\-\\.:]{0,63}$`) ?: Invalid function name. Must start with a letter or an underscore. Must be alphameric (a-z, A-Z, 0-9), underscores (_), dots (.), colons (:), or dashes (-), with a maximum length of 64."];
+  string description = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  Schema parameters = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional protobuf.Value parameters_json_schema = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Vnot has($parameters) ?: parameters_json_schema must not be set when parameters is set."];
+  optional Schema response = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional protobuf.Value response_json_schema = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022Pnot has($response) ?: response_json_schema must not be set when response is set."];
+}
+
+message Schema {
+  Type type = 1 [(unresolved_option_1052) = "\001"];
+  string format = 2 [(unresolved_option_1052) = "\001"];
+  string description = 3 [(unresolved_option_1052) = "\001"];
+  bool nullable = 4 [(unresolved_option_1052) = "\001"];
+  repeated string enum = 5 [(unresolved_option_1052) = "\001"];
+  Schema items = 6 [(unresolved_option_1052) = "\001"];
+  map<string, Schema> properties = 7 [(unresolved_option_1052) = "\001"];
+  repeated string required = 8 [(unresolved_option_1052) = "\001"];
+  optional double minimum = 9 [(unresolved_option_1052) = "\001"];
+  optional double maximum = 10 [(unresolved_option_1052) = "\001"];
+  optional int64 min_length = 11 [(unresolved_option_1052) = "\001"];
+  optional int64 max_length = 12 [(unresolved_option_1052) = "\001"];
+  optional string pattern = 13 [(unresolved_option_1052) = "\001"];
+  optional protobuf.Value example = 14 [(unresolved_option_1052) = "\001"];
+  string title = 15 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Value default = 16 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 min_items = 17 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 max_items = 18 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 min_properties = 19 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int64 max_properties = 20 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string property_ordering = 21 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated Schema any_of = 22 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message ToolConfig {
+  FunctionCallingConfig function_calling_config = 1 [(unresolved_option_1052) = "\001"];
+}
+
+message FunctionCallingConfig {
+  Mode mode = 1;
+  repeated string allowed_function_names = 2;
+
+  enum Mode {
+    MODE_UNSPECIFIED = 0;
+    AUTO = 1;
+    ANY = 2;
+    NONE = 3;
+  }
+}
+
+message SafetySetting {
+  HarmCategory category = 1 [(unresolved_option_1052) = "\002"];
+  HarmBlockThreshold threshold = 2 [(unresolved_option_1052) = "\002"];
+  HarmBlockMethod method = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum HarmBlockMethod {
+    HARM_BLOCK_METHOD_UNSPECIFIED = 0;
+    SEVERITY = 1;
+    PROBABILITY = 2;
+  }
+}
+
+message GenerationConfig {
+  optional int32 candidate_count = 1 [(unresolved_option_1052) = "\001"];
+  repeated string stop_sequences = 2 [(unresolved_option_1052) = "\001"];
+  optional int32 max_output_tokens = 4 [(unresolved_option_1052) = "\001"];
+  optional float temperature = 5 [(unresolved_option_1052) = "\001"];
+  optional float top_p = 6 [(unresolved_option_1052) = "\001"];
+  optional float top_k = 7 [(unresolved_option_1052) = "\001"];
+  optional int32 seed = 8 [(unresolved_option_1052) = "\001"];
+  optional string response_mime_type = 9 [(unresolved_option_1052) = "\001"];
+  optional Schema response_schema = 10 [(unresolved_option_1052) = "\001"];
+  optional protobuf.Value response_json_schema = 11 [(unresolved_option_1052) = "\001"];
+  optional float presence_penalty = 12 [(unresolved_option_1052) = "\001"];
+  optional float frequency_penalty = 13 [(unresolved_option_1052) = "\001"];
+  ThinkingConfig thinking_config = 14 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional bool response_logprobs = 15 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional int32 logprobs = 16 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated Modality response_modalities = 17 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional MediaResolution media_resolution = 18 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum Modality {
+    MODALITY_UNSPECIFIED = 0;
+    TEXT = 1;
+    IMAGE = 2;
+    AUDIO = 3;
+  }
+
+  enum MediaResolution {
+    MEDIA_RESOLUTION_UNSPECIFIED = 0;
+    MEDIA_RESOLUTION_LOW = 1;
+    MEDIA_RESOLUTION_MEDIUM = 2;
+    MEDIA_RESOLUTION_HIGH = 3;
+  }
+
+  message ThinkingConfig {
+    optional bool include_thoughts = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    optional int32 thinking_budget = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    optional ThinkingLevel thinking_level = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+    enum ThinkingLevel {
+      THINKING_LEVEL_UNSPECIFIED = 0;
+      LOW = 1;
+      MEDIUM = 2;
+      HIGH = 3;
+      MINIMAL = 4;
+    }
+  }
+}
+
+message Candidate {
+  int32 index = 1;
+  Content content = 2;
+  FinishReason finish_reason = 3;
+  repeated SafetyRating safety_ratings = 4;
+  CitationMetadata citation_metadata = 5;
+  GroundingMetadata grounding_metadata = 7;
+  AiCodeOutput aicode_output = 1001;
+  optional string finish_message = 6 [(unresolved_option_1052) = "\001\003", (unresolved_option_40075780) = 1900];
+  double avg_logprobs = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  UrlContextMetadata url_context_metadata = 10 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message AiCodeOutput {
+  repeated DerivedContent contents = 1;
+
+  message DerivedContent {
+    optional int32 start_index = 1;
+    optional int32 end_index = 2;
+    oneof content {
+      OutputSourceFile file = 3;
+      CodeBlock code_block = 4;
+      TextBlock text_block = 5;
+      PredictionMetadata prediction_metadata = 6;
+    }
+  }
+}
+
+message OutputSourceFile {
+  string file_uri = 1;
+  string content = 2;
+}
+
+message TextBlock {
+  string content = 1;
+}
+
+message PredictionMetadata {
+  double score = 1;
+  double classifier_score = 2;
+}
+
+message SafetyRating {
+  HarmCategory category = 1;
+  HarmProbability probability = 2;
+  bool blocked = 3;
+}
+
+message CitationMetadata {
+  repeated Citation citations = 1;
+}
+
+message Citation {
+  int32 start_index = 1;
+  int32 end_index = 2;
+  string uri = 3;
+  string license = 4;
+}
+
+message ExecutableCode {
+  Language language = 1;
+  string code = 2;
+
+  enum Language {
+    LANGUAGE_UNSPECIFIED = 0;
+    PYTHON = 1;
+  }
+}
+
+message CodeExecutionResult {
+  Outcome outcome = 1;
+  string output = 2;
+
+  enum Outcome {
+    OUTCOME_UNSPECIFIED = 0;
+    OUTCOME_OK = 1;
+    OUTCOME_FAILED = 2;
+    OUTCOME_DEADLINE_EXCEEDED = 3;
+  }
+}
+
+message VideoMetadata {
+  protobuf.Duration start_offset = 1 [(unresolved_option_1052) = "\001"];
+  protobuf.Duration end_offset = 2 [(unresolved_option_1052) = "\001"];
+  double fps = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message GroundingMetadata {
+  repeated string web_search_queries = 1;
+  optional SearchEntryPoint search_entry_point = 2;
+  repeated GroundingChunk grounding_chunks = 3;
+  repeated GroundingSupport grounding_supports = 4;
+  optional RetrievalMetadata retrieval_metadata = 5;
+
+  message SearchEntryPoint {
+    string rendered_content = 1;
+    bytes sdk_blob = 2;
+  }
+
+  message GroundingChunk {
+    oneof chunk_type {
+      Web web = 1;
+    }
+
+    message Web {
+      optional string uri = 1;
+      optional string title = 2;
+    }
+  }
+
+  message GroundingSupport {
+    optional Segment segment = 1;
+    repeated int32 grounding_chunk_indices = 2;
+    repeated float confidence_scores = 3;
+  }
+
+  message Segment {
+    int32 part_index = 1;
+    int32 start_index = 2;
+    int32 end_index = 3;
+    string text = 4;
+  }
+}
+
+message ModalityTokenCount {
+  Modality modality = 1;
+  int32 token_count = 2;
+}
+
+message RetrievalMetadata {
+  float google_search_dynamic_retrieval_score = 1;
+}
+
+message BidiGenerateContentSetup {
+  string model = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  GenerationConfig generation_config = 2 [(unresolved_option_1052) = "\001"];
+  Content system_instruction = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated Tool tools = 4 [(unresolved_option_1052) = "\001"];
+  RealtimeInputConfig realtime_input_config = 5 [(unresolved_option_1052) = "\001"];
+  SessionResumptionConfig session_resumption = 6 [(unresolved_option_1052) = "\001"];
+  ContextWindowCompressionConfig context_window_compression = 7 [(unresolved_option_1052) = "\001"];
+  AudioTranscriptionConfig input_audio_transcription = 8 [(unresolved_option_1052) = "\001"];
+  AudioTranscriptionConfig output_audio_transcription = 9 [(unresolved_option_1052) = "\001"];
+  ProactivityConfig proactivity = 10 [(unresolved_option_1052) = "\001"];
+  HistoryConfig history_config = 11 [(unresolved_option_1052) = "\001"];
+  repeated AsrContext asr_context = 12 [(unresolved_option_1052) = "\001"];
+}
+
+message BidiGenerateContentClientContent {
+  repeated Content turns = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bool turn_complete = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message BidiGenerateContentRealtimeInput {
+  Blob audio = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional bool audio_stream_end = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  Blob video = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional string text = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  ActivityStart activity_start = 5 [(unresolved_option_1052) = "\001"];
+  ActivityEnd activity_end = 6 [(unresolved_option_1052) = "\001"];
+
+  message ActivityStart {
+  }
+
+  message ActivityEnd {
+  }
+}
+
+message RealtimeInputConfig {
+  AutomaticActivityDetection automatic_activity_detection = 6 [(unresolved_option_1052) = "\001"];
+  optional ActivityHandling activity_handling = 7 [(unresolved_option_1052) = "\001"];
+  optional TurnCoverage turn_coverage = 4 [(unresolved_option_1052) = "\001"];
+
+  enum TurnCoverage {
+    TURN_COVERAGE_UNSPECIFIED = 0;
+    TURN_INCLUDES_ONLY_ACTIVITY = 1;
+    TURN_INCLUDES_ALL_INPUT = 2;
+    TURN_INCLUDES_AUDIO_ACTIVITY_AND_ALL_VIDEO = 3;
+  }
+
+  message AutomaticActivityDetection {
+    optional bool disabled = 1 [(unresolved_option_1052) = "\001"];
+    optional StartSensitivity start_of_speech_sensitivity = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    optional int32 prefix_padding_ms = 3 [(unresolved_option_1052) = "\001"];
+    optional EndSensitivity end_of_speech_sensitivity = 4 [(unresolved_option_1052) = "\001"];
+    optional int32 silence_duration_ms = 5 [(unresolved_option_1052) = "\001"];
+
+    enum StartSensitivity {
+      START_SENSITIVITY_UNSPECIFIED = 0;
+      START_SENSITIVITY_HIGH = 1;
+      START_SENSITIVITY_LOW = 2;
+    }
+
+    enum EndSensitivity {
+      END_SENSITIVITY_UNSPECIFIED = 0;
+      END_SENSITIVITY_HIGH = 1;
+      END_SENSITIVITY_LOW = 2;
+    }
+  }
+}
+
+message SessionResumptionConfig {
+  optional string handle = 1 [(unresolved_option_40075780) = 1100];
+}
+
+message HistoryConfig {
+  bool initial_history_in_client_content = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+}
+
+message ContextWindowCompressionConfig {
+  optional int64 trigger_tokens = 1;
+  oneof compression_mechanism {
+    SlidingWindow sliding_window = 2;
+  }
+
+  message SlidingWindow {
+    optional int64 target_tokens = 1;
+  }
+}
+
+message AudioTranscriptionConfig {
+  oneof language_config {
+    LanguageAuto language_auto = 2 [(unresolved_option_1052) = "\001"];
+    LanguageHints language_hints = 3 [(unresolved_option_1052) = "\001"];
+  }
+
+  message LanguageAuto {
+  }
+
+  message LanguageHints {
+    repeated string language_codes = 1 [(unresolved_option_1052) = "\002"];
+  }
+}
+
+message ProactivityConfig {
+  optional bool proactive_audio = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message BidiGenerateContentTranscription {
+  string text = 1 [(unresolved_option_40075780) = 1900];
+  bool finished = 2;
+  int64 duration_ms = 3;
+  string language_code = 4;
+  HardTokens hard_tokens = 5;
+}
+
+message HardTokens {
+  repeated int32 tokens = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message UrlContextMetadata {
+  repeated UrlMetadata url_metadata = 1;
+}
+
+message UrlMetadata {
+  string retrieved_url = 1 [(unresolved_option_40075780) = 1900];
+  UrlRetrievalStatus url_retrieval_status = 2;
+
+  enum UrlRetrievalStatus {
+    reserved 3, 4;
+    URL_RETRIEVAL_STATUS_UNSPECIFIED = 0;
+    URL_RETRIEVAL_STATUS_SUCCESS = 1;
+    URL_RETRIEVAL_STATUS_ERROR = 2;
+  }
+}
+
+message BidiGenerateContentToolCallCancellation {
+  repeated string ids = 1 [(unresolved_option_40075780) = 1100];
+}
+
+message GoAway {
+  protobuf.Duration time_left = 1;
+}
+
+message SessionResumptionUpdate {
+  string new_handle = 1 [(unresolved_option_40075780) = 1100];
+  bool resumable = 2;
+}
+
+message BidiGenerateContentToolResponse {
+  repeated FunctionResponse function_responses = 1 [(unresolved_option_1052) = "\001"];
+}
+
+message BidiGenerateContentSetupComplete {
+}
+
+message BidiGenerateContentServerContent {
+  optional Content model_turn = 1 [(unresolved_option_40075780) = 1900];
+  bool generation_complete = 2;
+  bool turn_complete = 3;
+  bool interrupted = 4 [(unresolved_option_40075780) = 999];
+  GroundingMetadata grounding_metadata = 5;
+  BidiGenerateContentTranscription input_transcription = 6 [(unresolved_option_40075780) = 1900];
+  BidiGenerateContentTranscription undecided_input_transcription = 11 [(unresolved_option_40075780) = 1900];
+  BidiGenerateContentTranscription output_transcription = 7 [(unresolved_option_40075780) = 1900];
+  UrlContextMetadata url_context_metadata = 8;
+  bool waiting_for_input = 10;
+}
+
+message BidiGenerateContentToolCall {
+  repeated FunctionCall function_calls = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message BidiGenerateContentContextUpdate {
+  repeated AsrContext asr_context = 5 [(unresolved_option_1052) = "\001"];
+}
+
+message AsrContext {
+  Target target = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  Mode mode = 2 [(unresolved_option_1052) = "\001"];
+  Content content = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  HotwordContext hotword_context = 4 [(unresolved_option_1052) = "\001"];
+  string custom_target = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  enum Target {
+    TARGET_UNSPECIFIED = 0;
+    TARGET_TRANSCRIPTION_PREFIX = 1;
+    TARGET_NAM = 2;
+    TARGET_PREDICTED_LANGUAGE = 3;
+    TARGET_HOTWORD = 4;
+    TARGET_CUSTOM = 5;
+    TARGET_CONDITION_LABEL = 6;
+  }
+
+  enum Mode {
+    MODE_UNSPECIFIED = 0;
+    MODE_APPEND = 1;
+    MODE_REPLACE = 2;
+    MODE_APPEND_INTERLEAVED_STREAMING = 3;
+  }
+
+  message HotwordContext {
+    protobuf.Duration preamble_duration = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    string trigger_phrase = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  }
+}
+
+service PredictionService {
+  rpc StreamGenerateContent(GenerateContentRequest) returns (stream GenerateContentResponse) {
+    option (unresolved_option_72295728) = ":\001*Z;:\001*\"6/{$api_version}/{model=models/*}:streamGenerateContentZL:\001*\"G/{$api_version}/{aicode.experience=experiences/*}:streamGenerateContent\"%/{$api_version}:streamGenerateContent";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc GenerateContent(GenerateContentRequest) returns (GenerateContentResponse) {
+    option (unresolved_option_72295728) = ":\001*Z5:\001*\"0/{$api_version}/{model=models/*}:generateContentZF:\001*\"A/{$api_version}/{aicode.experience=experiences/*}:generateContent\"\037/{$api_version}:generateContent";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc BidiGenerateContent(stream BidiGenerateContentClientMessage) returns (stream BidiGenerateContentServerMessage) {
+    option (unresolved_option_143069646) = "\022\007v1alpha";
+    option (unresolved_option_8) = 0x4072c00000000000;
+  }
+  rpc FetchQuotaStatus(FetchQuotaStatusRequest) returns (FetchQuotaStatusResponse) {
+    option (unresolved_option_72295728) = "\022 /{$api_version}:fetchQuotaStatus";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+}

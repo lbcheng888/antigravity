@@ -1,0 +1,23 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d38ea5 (va 0x103d38ea5, __TEXT.__rodata), descriptor length 522 B, sha256 8fcdb611fb9b86af
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package boundary_proxy.proto_modifier;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_multiple_files = true;
+option go_package = "proto_modifier/annotation";
+
+message AlterationOptions {
+  optional bool remove_entirely = 1;
+  optional bool sort_census_tag_string = 2;
+  optional string remove_if_regex_not_matched = 3;
+  optional bool strip_all_except_change_id = 4;
+}
+
+extend proto2.FieldOptions {
+  optional AlterationOptions alteration = 535801346;
+}

@@ -1,0 +1,24 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2ce53 (va 0x103d2ce53, __TEXT.__rodata), descriptor length 399 B, sha256 f95b855b29d92a18
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.type;
+
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.type";
+option java_outer_classname = "IntervalProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/type/interval;interval";
+option objc_class_prefix = "GTP";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_28) = 0;
+
+message Interval {
+  option (unresolved_option_41149386) = 2100;
+  protobuf.Timestamp start_time = 1;
+  protobuf.Timestamp end_time = 2;
+}

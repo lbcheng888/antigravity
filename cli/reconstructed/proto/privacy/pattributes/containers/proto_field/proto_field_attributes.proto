@@ -1,0 +1,16 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2557f (va 0x103d2557f, __TEXT.__rodata), descriptor length 323 B, sha256 97718c2d635f7740
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package pattributes;
+
+import "privacy/pattributes/containers/proto_field/proto_field_upload_justification.proto";
+
+option java_package = "com.google.pattributes.proto";
+option java_multiple_files = true;
+
+message ProtoFieldAttributes {
+  optional ProtoFieldUploadJustification upload_justification = 161;
+}

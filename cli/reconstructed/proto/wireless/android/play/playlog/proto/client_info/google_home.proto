@@ -1,0 +1,60 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dbcd96 (va 0x103dbcd96, __TEXT.__rodata), descriptor length 2235 B, sha256 aaca4804fdb3de83
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "assistant/api/core_types/device_type.proto";
+import "assistant/api/core_types/surface.proto";
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "nest/platform/mesh/platform/proto/platform_information_no_lite_runtime.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "GoogleHomeProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message GoogleHomeClientInfo {
+  reserved 10;
+  optional string device_id = 9 [debug_redact = true, (unresolved_option_40075780) = 1400];
+  optional string device_model = 1 [(unresolved_option_40075780) = 1500];
+  optional string app_version = 2 [(unresolved_option_40075780) = 1500];
+  optional string acp_version = 16 [(unresolved_option_40075780) = 1500];
+  optional string opal_version = 18 [(unresolved_option_40075780) = 1500];
+  optional string fuchsia_version = 22 [(unresolved_option_40075780) = 1500];
+  optional string virtual_release_channel = 17 [(unresolved_option_40075780) = 999];
+  optional string manufacturer = 3 [(unresolved_option_40075780) = 999];
+  optional string product_name = 4 [(unresolved_option_40075780) = 999];
+  optional string factory_country = 5 [(unresolved_option_40075780) = 999];
+  optional string build_type = 6 [(unresolved_option_40075780) = 999];
+  optional string system_build = 7 [(unresolved_option_40075780) = 1500];
+  optional BackendType backend_type = 8 [(unresolved_option_40075780) = 999];
+  optional string locale = 11 [(unresolved_option_40075780) = 1601];
+  optional bool on_device_assistant_enabled = 12 [(unresolved_option_40075780) = 999];
+  optional assistant.api.core_types.SurfaceType.Type surface_type = 13 [(unresolved_option_40075780) = 999];
+  optional smart_home_mesh.platform.OsType os_type = 14 [(unresolved_option_40075780) = 999];
+  optional bool opted_in_metrics_logging = 15 [(unresolved_option_40075780) = 999];
+  optional assistant.api.core_types.Surface.Type ontological_surface_type = 19 [(unresolved_option_40075780) = 999];
+  optional string device_product_name = 20 [deprecated = true, (unresolved_option_40075780) = 1500];
+  optional smart_home_mesh.platform.OsType os_type_replicated = 21 [(unresolved_option_40075780) = 999];
+  optional int32 matter_vid = 23 [(unresolved_option_40075780) = 999];
+  optional int32 matter_pid = 24 [(unresolved_option_40075780) = 999];
+
+  enum BackendType {
+    BACKEND_TYPE_UNKNOWN = 0;
+    BACKEND_TYPE_PRODUCTION = 1;
+    BACKEND_TYPE_ENG = 2;
+    BACKEND_TYPE_TEAMFOOD = 3;
+    BACKEND_TYPE_DOGFOOD = 4;
+  }
+}

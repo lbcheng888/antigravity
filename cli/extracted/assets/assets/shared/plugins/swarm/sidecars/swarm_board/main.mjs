@@ -435,8 +435,10 @@ function summarizeTranscript(appData, conv) {
     break;
   }
   const idle = turnEnded(lines);
-  const replied = endedOnReply(lines);
-  const entry = { key, summary: { steps, activity, activityKind, last, idle, replied, mtime: s.mtime } };
+  const reply = finalReply(lines);
+  const replied = reply !== null;
+  const replyAsk = replied ? replyQuestion(reply) : '';
+  const entry = { key, summary: { steps, activity, activityKind, last, idle, replied, replyAsk, mtime: s.mtime } };
   if (transcriptCache.size > 500) transcriptCache.clear();
   transcriptCache.set(path, entry);
   return entry;
@@ -480,22 +482,37 @@ function turnEnded(lines) {
   return false;
 }
 
-// Whether the newest step is a final reply with no tool calls: the member
-// stopped to talk to the user rather than parking on swarm_wait. For the
-// coordinator, that means the swarm waits on the user.
-function endedOnReply(lines) {
+// The text of the newest step when it is a final reply with no tool calls,
+// else null.
+function finalReply(lines) {
   for (let i = lines.length - 1; i >= 0; i--) {
     let step;
     try {
       step = JSON.parse(lines[i]);
     } catch {
-      return false;
+      return null;
     }
-    if (!step || typeof step !== 'object') return false;
+    if (!step || typeof step !== 'object') return null;
     const calls = Array.isArray(step.tool_calls) ? step.tool_calls : [];
-    return step.type === 'PLANNER_RESPONSE' && calls.length === 0;
+    return step.type === 'PLANNER_RESPONSE' && calls.length === 0 ? String(step.content || '') : null;
   }
-  return false;
+  return null;
+}
+
+// The last question a final reply asks the user, or ''. A coordinator ends
+// most turns on a report ("The stack is back up."); only a reply that asks
+// something waits on the user. Links, code and quoted text are dropped first
+// so a "?" in a URL or a quote does not count.
+function replyQuestion(text) {
+  const plain = String(text || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`\n]*)`/g, (_, s) => s.replace(/\?/g, ''))
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/https?:\/\/\S+/g, ' ')
+    .replace(/"[^"\n]*"|“[^”\n]*”/g, ' ')
+    .replace(/\*\*|__/g, '');
+  const qs = plain.split(/\n+|(?<=[.!?])\s+/).map((x) => x.replace(/^[\s>*-]+/, '').trim()).filter((x) => /\?$/.test(x) && x.length > 3);
+  return qs.length ? oneLine(qs[qs.length - 1], 200) : '';
 }
 
 // A member's state, as `manage_swarm status` reports it (board.StateOf):
@@ -876,6 +893,7 @@ function buildSnapshot(appData, id, dir, { roster, msgs, sourceKey, raw, remote 
       activity: tr?.activity || '',
       activityKind: tr?.activityKind || '',
       replied: !!tr?.replied,
+      replyAsk: tr?.replyAsk || '',
       narrator: narratorRank(name, m) >= 0,
       roleWorker: isRoleWorker(name, m),
       failure: failures.get(name),

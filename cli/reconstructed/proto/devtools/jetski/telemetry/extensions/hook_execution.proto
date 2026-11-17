@@ -1,0 +1,57 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d8d578 (va 0x103d8d578, __TEXT.__rodata), descriptor length 1632 B, sha256 9dd0f1c24dd06221
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "google/protobuf/struct.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "HookExecutionOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message HookExecution {
+  string hook_type = 1 [(unresolved_option_40075780) = 2800];
+  string hook_name = 2 [(unresolved_option_40075780) = 1900];
+  string hook_source = 3 [(unresolved_option_40075780) = 2800];
+  string outcome = 4 [(unresolved_option_40075780) = 2800];
+  int64 duration_ms = 5 [(unresolved_option_40075780) = 2800];
+  int64 started_at_micros = 6 [(unresolved_option_40075780) = 2100];
+  string trajectory_id = 7 [(unresolved_option_40075780) = 2300];
+  string execution_id = 8 [(unresolved_option_40075780) = 2300];
+  uint64 hook_seq = 9 [(unresolved_option_40075780) = 2800];
+  int32 metadata_index = 10 [(unresolved_option_40075780) = 2800];
+  int32 step_index = 11 [(unresolved_option_40075780) = 2300];
+  HookResult result = 12;
+}
+
+export message HookResult {
+  oneof result {
+    InvocationHookResult invocation = 1;
+    StopHookResult stop = 2;
+    PreToolHookResult pre_tool = 3;
+    PostToolHookResult post_tool = 4;
+  }
+}
+
+export message InvocationHookResult {
+  string termination_reason = 1 [(unresolved_option_40075780) = 2800];
+}
+
+export message StopHookResult {
+  bool block = 1 [(unresolved_option_40075780) = 2800];
+  string reason = 2 [(unresolved_option_40075780) = 1900];
+}
+
+export message PreToolHookResult {
+  string decision = 1 [(unresolved_option_40075780) = 2800];
+  string reason = 2 [(unresolved_option_40075780) = 1900];
+  google.protobuf.Struct overwrite = 3 [(unresolved_option_40075780) = 1900];
+  repeated string permission_overrides = 4 [(unresolved_option_40075780) = 1900];
+}
+
+export message PostToolHookResult {
+  string overwrite_result = 1 [(unresolved_option_40075780) = 1900];
+}

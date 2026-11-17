@@ -1,0 +1,52 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d394c6 (va 0x103d394c6, __TEXT.__rodata), descriptor length 525 B, sha256 c45256449490f594
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.protobuf;
+
+option java_package = "com.google.protobuf";
+option java_outer_classname = "WrappersProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/protobuf/types/known/wrapperspb";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GPB";
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option (unresolved_option_28) = 0;
+
+message DoubleValue {
+  double value = 1;
+}
+
+message FloatValue {
+  float value = 1;
+}
+
+message Int64Value {
+  int64 value = 1;
+}
+
+message UInt64Value {
+  uint64 value = 1;
+}
+
+message Int32Value {
+  int32 value = 1;
+}
+
+message UInt32Value {
+  uint32 value = 1;
+}
+
+message BoolValue {
+  bool value = 1;
+}
+
+message StringValue {
+  string value = 1;
+}
+
+message BytesValue {
+  bytes value = 1 [ctype = CORD];
+}

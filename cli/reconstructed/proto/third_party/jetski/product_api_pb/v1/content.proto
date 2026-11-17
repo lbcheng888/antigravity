@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d1e76a (va 0x103d1e76a, __TEXT.__rodata), descriptor length 276 B, sha256 7286cdb5346457b5
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package jetski.product.v1;
+
+import "google/api/field_behavior.proto";
+
+message Media {
+  string mime_type = 1 [(unresolved_option_1052) = "\002"];
+  bytes data = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message Content {
+  oneof content {
+    string text = 1;
+    Media media = 2;
+  }
+}

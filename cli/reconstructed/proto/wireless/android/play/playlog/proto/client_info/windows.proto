@@ -1,0 +1,68 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dcc146 (va 0x103dcc146, __TEXT.__rodata), descriptor length 2453 B, sha256 353eca04f0de7b4a
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "WindowsProto";
+option java_multiple_files = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message WindowsClientInfo {
+  optional DeviceType device_type = 1 [(unresolved_option_40075780) = 999];
+  optional string device_manufacturer = 2 [(unresolved_option_40075780) = 999];
+  optional string device_model = 3 [(unresolved_option_40075780) = 999];
+  optional int64 physical_memory = 4 [(unresolved_option_40075780) = 999];
+  optional int32 processor_count = 5 [(unresolved_option_40075780) = 999];
+  optional int32 logical_processor_count = 6 [(unresolved_option_40075780) = 999];
+  optional string os_name = 7 [(unresolved_option_40075780) = 999];
+  optional string os_version = 8 [(unresolved_option_40075780) = 1500];
+  optional string os_architecture = 9 [(unresolved_option_40075780) = 999];
+  optional string os_language_code = 10 [(unresolved_option_40075780) = 1601];
+  optional string cpu_manufacturer = 11 [(unresolved_option_40075780) = 999];
+  optional string cpu_name = 12 [(unresolved_option_40075780) = 999];
+  repeated DriverInfo bluetooth_driver_infos = 13 [(unresolved_option_40075780) = 999];
+  repeated DriverInfo network_driver_infos = 14 [(unresolved_option_40075780) = 999];
+  optional bool ble_extd_adv_supported = 15 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional BluetoothInfo bluetooth_info = 16 [(unresolved_option_40075780) = 999];
+  optional UsageType usage_type = 17 [(unresolved_option_40075780) = 999];
+
+  enum DeviceType {
+    UNKNOWN_DEVICE_TYPE = 0;
+    PHONE = 1;
+    TABLET = 2;
+    LAPTOP = 3;
+  }
+
+  enum UsageType {
+    UNKNOWN_USAGE_TYPE = 0;
+    USAGE_TYPE_PHENOTYPE = 1;
+  }
+
+  message DriverInfo {
+    optional string manufacturer = 1 [(unresolved_option_40075780) = 999];
+    optional string device_name = 2 [(unresolved_option_40075780) = 999];
+    optional string driver_provider_name = 3 [(unresolved_option_40075780) = 999];
+    optional string driver_version = 4 [(unresolved_option_40075780) = 1500];
+    optional string driver_date = 5 [(unresolved_option_40075780) = 999];
+  }
+
+  message BluetoothInfo {
+    optional bool is_extended_advertising_supported = 1 [(unresolved_option_40075780) = 999];
+    optional bool is_peripheral_role_supported = 2 [(unresolved_option_40075780) = 999];
+    optional bool is_low_energy_supported = 3 [(unresolved_option_40075780) = 999];
+    optional bool is_advertisement_offload_supported = 4 [(unresolved_option_40075780) = 999];
+  }
+}

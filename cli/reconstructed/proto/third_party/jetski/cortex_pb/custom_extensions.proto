@@ -1,0 +1,11 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3cedc9f (va 0x103cedc9f, __TEXT.__rodata), descriptor length 112 B, sha256 8d450f469ee8768e
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package exa.cortex_pb;
+
+message CustomExtensions {
+  extensions 100 to max;
+}

@@ -1,0 +1,27 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2c51a (va 0x103d2c51a, __TEXT.__rodata), descriptor length 392 B, sha256 2ea30b2aaf73c793
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api;
+
+import "google/api/inclusion.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.api";
+option java_outer_classname = "AuthzProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GAPI";
+option (unresolved_option_525000017) = "\n\003all";
+
+message AuthorizationRule {
+  string selector = 1;
+  string permissions = 2;
+}
+
+extend proto2.FieldOptions {
+  AuthorizationRule authz = 119718449;
+}

@@ -1,0 +1,15 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d1b06e (va 0x103d1b06e, __TEXT.__rodata), descriptor length 257 B, sha256 e2c5655428a23cc5
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package grpc.status.v1;
+
+import "google/protobuf/any.proto";
+
+message Status {
+  int32 code = 1;
+  string message = 2;
+  repeated google.protobuf.Any details = 3;
+}

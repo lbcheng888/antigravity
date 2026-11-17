@@ -1,0 +1,187 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e42d01 (va 0x103e42d01, __TEXT.__rodata), descriptor length 3938 B, sha256 47670ab38725f9da
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "learning/genai/api/interactions/proto/agents.proto";
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/interactions/proto/state_update.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+option features.utf8_validation = NONE;
+
+message CallHookRequest {
+  string request_id = 1;
+  string name = 2;
+  AntigravityAgentConfig.LifecycleHook type = 7;
+  oneof args {
+    PreTurnArgs pre_turn_args = 3;
+    PostTurnArgs post_turn_args = 4;
+    PreToolArgs pre_tool_args = 5;
+    PostToolArgs post_tool_args = 6;
+    OnToolErrorArgs on_tool_error_args = 8;
+    OnCompactionArgs on_compaction_args = 9;
+    StopArgs stop_args = 10;
+  }
+}
+
+message CallHookResponse {
+  string request_id = 1;
+  oneof result {
+    PreTurnResult pre_turn_result = 2;
+    PreToolResult pre_tool_result = 3;
+    EmptyResult empty_result = 4;
+    string error_message = 5;
+    OnToolErrorResult on_tool_error_result = 6;
+    StopResult stop_result = 7;
+  }
+}
+
+message PreTurnArgs {
+  UserInputStep user_input = 1;
+}
+
+message PostTurnArgs {
+  string response_text = 1;
+}
+
+message PreToolArgs {
+  string tool_name = 1;
+  string arguments_json = 2;
+  string server_name = 3;
+  string call_id = 4;
+}
+
+message PostToolArgs {
+  string tool_name = 1;
+  string result = 2;
+  string server_name = 3;
+  string call_id = 4;
+}
+
+message OnToolErrorArgs {
+  string tool_name = 1;
+  string error_message = 2;
+  string server_name = 3;
+  string call_id = 4;
+}
+
+message EmptyResult {
+}
+
+message OnToolErrorResult {
+  string custom_error_message = 1;
+}
+
+message PreToolResult {
+  Decision decision = 1;
+  string reason = 2;
+  Struct modified_args = 4;
+
+  enum Decision {
+    DECISION_UNSPECIFIED = 0;
+    ALLOW = 1;
+    DENY = 2;
+  }
+}
+
+message PreTurnResult {
+  Decision decision = 1;
+  string reason = 2;
+
+  enum Decision {
+    DECISION_UNSPECIFIED = 0;
+    ALLOW = 1;
+    DENY = 2;
+  }
+}
+
+message OnCompactionArgs {
+  string interaction_id = 1;
+  uint32 step_index = 2;
+  string summary = 3;
+}
+
+message StopArgs {
+  string response_text = 1;
+  string interaction_id = 2;
+  int32 continuation_count = 3;
+  StopReason stop_reason = 4;
+  string error_message = 5;
+}
+
+message StopResult {
+  Decision decision = 1;
+  string reason = 2;
+
+  enum Decision {
+    DECISION_UNSPECIFIED = 0;
+    ALLOW_STOP = 1;
+    CONTINUE = 2;
+  }
+}
+
+message HookRequest {
+  string request_id = 1;
+  string hook_name = 2;
+  oneof args {
+    PreInvocationHookArgs pre_invocation = 10;
+    PostInvocationHookArgs post_invocation = 11;
+    StopHookArgs stop = 12;
+    PreToolHookArgs pre_tool = 13;
+    PostToolHookArgs post_tool = 14;
+  }
+}
+
+message HookResponse {
+  string request_id = 1;
+  oneof result {
+    HookError error = 2;
+    PreInvocationHookResult pre_invocation = 10;
+    PostInvocationHookResult post_invocation = 11;
+    StopHookResult stop = 12;
+    PreToolHookResult pre_tool = 13;
+    PostToolHookResult post_tool = 14;
+  }
+}
+
+message HookError {
+  string message = 1;
+}
+
+message PreInvocationHookArgs {
+}
+
+message PreInvocationHookResult {
+}
+
+message PostInvocationHookArgs {
+}
+
+message PostInvocationHookResult {
+}
+
+message StopHookArgs {
+}
+
+message StopHookResult {
+}
+
+message PreToolHookArgs {
+  ToolCallStep tool_call = 1;
+}
+
+message PreToolHookResult {
+}
+
+message PostToolHookArgs {
+  ToolResultStep tool_result = 1;
+}
+
+message PostToolHookResult {
+}

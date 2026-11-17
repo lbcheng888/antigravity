@@ -1,0 +1,84 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ddfacc (va 0x103ddfacc, __TEXT.__rodata), descriptor length 2694 B, sha256 2ef98bda18aa5d07
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package logs.proto.wireless.performance.mobile.android;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "logs/proto/wireless/performance/mobile/cui_metadata.proto";
+import "logs/proto/wireless/performance/mobile/extension_metric.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile.android";
+option java_outer_classname = "TiktokTraceProto";
+option java_multiple_files = true;
+option features.enum_type = CLOSED;
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+
+message TraceRecord {
+  reserved 9;
+  fixed64 id = 1 [(unresolved_option_40075780) = 2300];
+  repeated Span spans = 3;
+  google.protobuf.Timestamp start_time = 4;
+  google.protobuf.Duration start_elapsed_time = 5;
+  CollectionError error = 6;
+  ClockType clock_type = 7;
+  bool is_partial_trace = 8;
+  repeated string class_names = 10 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  repeated string method_names = 11 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  float trace_sampling_rate = 12;
+  repeated CuiMetadata cui_metadata = 13;
+
+  enum ClockType {
+    UNKNOWN = 0;
+    REALTIME = 1;
+    UPTIME = 2;
+  }
+}
+
+message Span {
+  string name = 1 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  int32 id = 2;
+  int32 parent_id = 3;
+  google.protobuf.Duration relative_start_time = 4;
+  google.protobuf.Duration duration = 5;
+  google.protobuf.Duration cpu_time = 6;
+  bool ui_thread = 7;
+  Kind kind = 8;
+  bool is_synchronous_child = 9;
+  bool is_dominant_span = 10;
+  MetricExtension metric_extension = 11;
+  int64 backend_trace_id = 12 [(unresolved_option_40075780) = 2300];
+  int64 backend_span_id = 13 [(unresolved_option_40075780) = 2300];
+  int32 class_name_index = 14;
+  int32 method_name_index = 15;
+  int32 line_number = 16;
+  repeated uint64 flow_ids = 17 [(unresolved_option_40075780) = 2300];
+  float backend_trace_sampling_probability = 18;
+
+  enum Kind {
+    INVALID = 0;
+    REGION = 1;
+    INTERVAL = 2;
+    MARKER = 3;
+  }
+}
+
+message CollectionError {
+  TooManySpans too_many_spans = 1;
+  TimedOut timed_out = 2;
+
+  message TooManySpans {
+    int32 num_dropped_spans = 1;
+  }
+
+  message TimedOut {
+    google.protobuf.Duration timed_out_after = 1;
+    int32 num_unfinished_spans = 2;
+  }
+}

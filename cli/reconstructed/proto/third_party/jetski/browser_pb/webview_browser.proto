@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2e154 (va 0x103d2e154, __TEXT.__rodata), descriptor length 410 B, sha256 e4428f4e30d409bd
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.browser_pb;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option go_package = "google3/third_party/jetski/browser_pb/webview_browser_go_proto";
+option (unresolved_option_71304954) = "latest";
+
+message WebviewBrowser {
+  string url = 1 [(unresolved_option_40075780) = 1900];
+  string blocked_url = 2 [(unresolved_option_40075780) = 1900];
+  string protected_auth_origin = 3 [(unresolved_option_40075780) = 1900];
+  repeated string visited_urls = 4 [(unresolved_option_40075780) = 1900];
+}

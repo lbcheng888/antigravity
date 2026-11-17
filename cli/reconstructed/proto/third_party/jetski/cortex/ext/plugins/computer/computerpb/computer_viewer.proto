@@ -1,0 +1,66 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d7fd1d (va 0x103d7fd1d, __TEXT.__rodata), descriptor length 1467 B, sha256 7b1da56d4b5b95f6
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.computer_payload_pb;
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message ComputerViewerHello {
+  uint32 max_sessions = 1;
+  repeated string video_codecs = 2;
+  string desktop_label = 3;
+}
+
+message ComputerViewerRequest {
+  string session_id = 1;
+  oneof op {
+    ComputerViewerOffer offer = 2;
+    ComputerViewerClose close = 3;
+    ComputerViewerRenew renew = 4;
+  }
+}
+
+message ComputerViewerOffer {
+  string sdp = 1;
+  string root_conversation_id = 2;
+  int64 expires_unix_ms = 3;
+  repeated ComputerIceServer ice_servers = 4;
+  ComputerViewerDevice device = 5;
+}
+
+message ComputerIceServer {
+  repeated string urls = 1;
+  string username = 2;
+  string credential = 3;
+}
+
+message ComputerViewerDevice {
+  string public_key_spki = 1;
+  string label = 2;
+  string nonce = 3;
+  string signature = 4;
+}
+
+message ComputerViewerRenew {
+  int64 expires_unix_ms = 1;
+}
+
+message ComputerViewerClose {
+  string reason = 1;
+}
+
+message ComputerViewerResult {
+  string answer_sdp = 1;
+  repeated ComputerViewerStream streams = 2;
+  string error_code = 3;
+  string error = 4;
+}
+
+message ComputerViewerStream {
+  string stream_id = 1;
+  string bundle_id = 2;
+  uint32 window_id = 3;
+}

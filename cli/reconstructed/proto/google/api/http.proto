@@ -1,0 +1,61 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d90fe9 (va 0x103d90fe9, __TEXT.__rodata), descriptor length 1693 B, sha256 b9f332f95042a8df
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api;
+
+import "google/api/authz.proto";
+import "google/api/inclusion.proto";
+import "google/api/media.proto";
+import "google/api/visibility.proto";
+
+option java_package = "com.google.api";
+option java_outer_classname = "HttpProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/annotations;annotations";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GAPI";
+option (unresolved_option_525000017) = "\n\003all";
+
+message Http {
+  repeated HttpRule rules = 1;
+  bool fully_decode_reserved_expansion = 2;
+}
+
+message HttpRule {
+  string selector = 1;
+  oneof pattern {
+    string get = 2;
+    string put = 3;
+    string post = 4;
+    string delete = 5;
+    string patch = 6;
+    CustomHttpPattern custom = 8;
+  }
+  string body = 7;
+  string response_body = 12;
+  MediaUpload media_upload = 9 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  MediaDownload media_download = 10 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated HttpRule additional_bindings = 11;
+  string rest_collection = 13 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string rest_method_name = 14 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated AuthorizationRule authorizations = 15 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  bool allow_half_duplex = 16 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  bool derived = 17 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated CrossOriginValidation cross_origin_validation = 18 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message CrossOriginValidation {
+  repeated string allowed_origins = 1;
+  repeated string allowed_methods = 2;
+  repeated string allowed_headers = 3;
+  repeated int64 allowed_origin_pen_users = 4;
+  string legacy_path_prefix = 5;
+}
+
+message CustomHttpPattern {
+  string kind = 1;
+  string path = 2;
+}

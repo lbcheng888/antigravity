@@ -1,0 +1,27 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3fcf9 (va 0x103d3fcf9, __TEXT.__rodata), descriptor length 618 B, sha256 0bbcf3618e403f3e
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile.ios;
+
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile.ios";
+option java_outer_classname = "NSErrorOuterClass";
+option java_multiple_files = true;
+option objc_class_prefix = "PRM";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+message NSError {
+  repeated NSErrorNode underlying_errors = 3;
+}
+
+message NSErrorNode {
+  optional string compile_time_literal_error_domain = 1 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+  optional int64 error_code = 2;
+  repeated int64 underlying_error_indices = 3;
+}

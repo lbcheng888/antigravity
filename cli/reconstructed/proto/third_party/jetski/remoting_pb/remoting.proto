@@ -1,0 +1,91 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dac2df (va 0x103dac2df, __TEXT.__rodata), descriptor length 2058 B, sha256 286c6932db51c19b
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.remoting;
+
+import "google/rpc/status.proto";
+
+option java_outer_classname = "Remoting";
+option java_multiple_files = true;
+
+message RemoteDescriptor {
+  string remote_multi_hop = 1;
+  string name = 2;
+  string description = 3;
+  string type = 4;
+}
+
+message RemoteConnectionPrompt {
+  string message = 1;
+  bool is_secret = 2;
+}
+
+message ConnectRemoteRequest {
+  string remote_multi_hop = 1;
+}
+
+message ConnectRemoteResponse {
+  oneof update {
+    RemoteConnectionPrompt prompt = 1;
+    google.rpc.Status status = 2;
+  }
+  string remote_id = 3;
+}
+
+message DisconnectRemoteRequest {
+  string remote_id = 1;
+}
+
+message DisconnectRemoteResponse {
+}
+
+message RespondToPromptRequest {
+  string remote_id = 1;
+  string response = 2;
+}
+
+message RespondToPromptResponse {
+}
+
+message SaveRemoteRequest {
+  RemoteDescriptor descriptor = 1;
+}
+
+message SaveRemoteResponse {
+}
+
+message DeleteRemoteRequest {
+  string remote_id = 1;
+}
+
+message DeleteRemoteResponse {
+}
+
+message ListRemotesRequest {
+  bool include_autodetected = 1;
+  bool include_saved = 2;
+}
+
+message ListRemotesResponse {
+  repeated RemoteDescriptor remotes = 1;
+}
+
+message ListConnectedRemotesRequest {
+}
+
+message ListConnectedRemotesResponse {
+  map<string, RemoteDescriptor> remotes = 1;
+}
+
+service RemotingService {
+  rpc ConnectRemote(ConnectRemoteRequest) returns (stream ConnectRemoteResponse);
+  rpc RespondToPrompt(RespondToPromptRequest) returns (RespondToPromptResponse);
+  rpc DisconnectRemote(DisconnectRemoteRequest) returns (DisconnectRemoteResponse);
+  rpc SaveRemote(SaveRemoteRequest) returns (SaveRemoteResponse);
+  rpc DeleteRemote(DeleteRemoteRequest) returns (DeleteRemoteResponse);
+  rpc ListRemotes(ListRemotesRequest) returns (ListRemotesResponse);
+  rpc ListConnectedRemotes(ListConnectedRemotesRequest) returns (ListConnectedRemotesResponse);
+}

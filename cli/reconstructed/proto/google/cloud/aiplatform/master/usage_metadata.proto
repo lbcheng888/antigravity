@@ -1,0 +1,56 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dc0af3 (va 0x103dc0af3, __TEXT.__rodata), descriptor length 2257 B, sha256 8fe5cd56ed4ef0fe
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.master;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/master/aai_live_messages.proto";
+import "google/cloud/aiplatform/master/content.proto";
+
+option java_package = "com.google.cloud.aiplatform.master";
+option java_outer_classname = "UsageMetadataProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.Master";
+option php_namespace = "Google\\Cloud\\AIPlatform\\Master";
+option ruby_package = "Google::Cloud::AIPlatform::Master";
+option (unresolved_option_525000017) = "\n'package:google/firebase/machinelearning\n\037package:google/cloud/aiplatform\n package:google/firebase/vertexai";
+
+message UsageMetadata {
+  reserved 6;
+  int32 prompt_token_count = 1;
+  int32 candidates_token_count = 2;
+  int32 total_token_count = 3;
+  int32 tool_use_prompt_token_count = 13 [(unresolved_option_1052) = "\003"];
+  int32 thoughts_token_count = 14 [(unresolved_option_1052) = "\003"];
+  int32 cached_content_token_count = 5 [(unresolved_option_1052) = "\003"];
+  repeated ModalityTokenCount prompt_tokens_details = 9 [(unresolved_option_1052) = "\003"];
+  repeated ModalityTokenCount cache_tokens_details = 10 [(unresolved_option_1052) = "\003"];
+  repeated ModalityTokenCount candidates_tokens_details = 11 [(unresolved_option_1052) = "\003"];
+  repeated ModalityTokenCount tool_use_prompt_tokens_details = 12 [(unresolved_option_1052) = "\003"];
+  TrafficType traffic_type = 8 [(unresolved_option_1052) = "\003"];
+  BillablleUsage billable_prompt_usage = 4 [deprecated = true, (unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  BillablleUsage billable_cached_content_usage = 7 [deprecated = true, (unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated ToolCallStats tool_call_stats = 15 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+
+  enum TrafficType {
+    TRAFFIC_TYPE_UNSPECIFIED = 0;
+    ON_DEMAND = 1;
+    ON_DEMAND_PRIORITY = 3;
+    ON_DEMAND_FLEX = 4;
+    ON_DEMAND_OFFPEAK = 5;
+    PROVISIONED_THROUGHPUT = 2;
+  }
+
+  message BillablleUsage {
+    option deprecated = true;
+    int32 text_count = 1;
+    int32 image_count = 2;
+    int32 video_duration_seconds = 3;
+    int32 audio_duration_seconds = 4;
+  }
+}

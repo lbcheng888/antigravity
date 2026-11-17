@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3b454 (va 0x103d3b454, __TEXT.__rodata), descriptor length 556 B, sha256 6229025b569c5760
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.cortex.native_swarm;
+
+message ModelDescriptions {
+  repeated ModelDescription models = 1;
+  map<string, QuotaBucketDescription> quota_buckets = 2;
+}
+
+message ModelDescription {
+  string name = 1;
+  string quota_bucket = 2;
+  string notes = 3;
+}
+
+message QuotaBucketDescription {
+  string notes = 1;
+}

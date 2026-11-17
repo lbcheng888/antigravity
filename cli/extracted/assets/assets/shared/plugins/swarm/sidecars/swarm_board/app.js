@@ -1390,8 +1390,7 @@
     const lastMsg = msgs[msgs.length - 1];
     const swarmDone = !!coord && lastMsg?.agent === coord.name && /^\[done\]/i.test(String(lastMsg.text || '').trim());
     const coordSys = coord ? sys.filter((it) => it.member === coord.name).length : 0;
-    const anyWorking = (s.members || []).some((m) => m.status === 'working' && !isRoleWorker(m));
-    const want = swarmDone ? 0 : coordSys + (coord?.status === 'waiting' && coord.replied && !anyWorking ? 1 : 0);
+    const want = swarmDone ? 0 : coordSys + (coord?.status === 'waiting' && coord.replied && coord.replyAsk ? 1 : 0);
     $('tab-badge-overview').textContent = want ? String(want) : '';
     $('tab-badge-overview').classList.toggle('hidden', !want);
   }

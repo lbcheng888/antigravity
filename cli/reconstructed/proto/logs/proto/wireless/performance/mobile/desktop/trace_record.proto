@@ -1,0 +1,36 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d5fcb8 (va 0x103d5fcb8, __TEXT.__rodata), descriptor length 1025 B, sha256 ea7c32a4e08dd611
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package logs.proto.wireless.performance.mobile.desktop;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "logs/proto/wireless/performance/mobile/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile.desktop";
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+
+export message TraceRecord {
+  fixed64 trace_id = 1 [(unresolved_option_40075780) = 2300];
+  google.protobuf.Timestamp start_time = 2;
+  repeated Span spans = 3;
+
+  message Span {
+    string name = 1 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+    uint64 id = 2 [(unresolved_option_40075780) = 999];
+    uint64 parent_id = 3 [(unresolved_option_40075780) = 999];
+    google.protobuf.Duration relative_start_time = 4;
+    google.protobuf.Duration duration = 5;
+    repeated Marker markers = 6;
+  }
+
+  message Marker {
+    string name = 1 [(unresolved_option_40075780) = 999, (unresolved_option_479186792) = "\010\001"];
+    google.protobuf.Duration relative_time = 2;
+  }
+}

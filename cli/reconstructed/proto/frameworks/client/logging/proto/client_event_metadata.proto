@@ -1,0 +1,23 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3d55d (va 0x103d3d55d, __TEXT.__rodata), descriptor length 573 B, sha256 d00e795afeaa6ed2
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package frameworks.client.logging.proto;
+
+import "frameworks/client/logging/proto/client_info.proto";
+import "frameworks/client/logging/proto/client_release.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.frameworks.client.logging.proto";
+option java_outer_classname = "ClientEventMetadataOuterClass";
+option objc_class_prefix = "CLI";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+export message ClientEventMetadata {
+  reserved 1, 3 to 5;
+  ClientInfo client_info = 2;
+  ClientRelease release_type = 6;
+}

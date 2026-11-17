@@ -1,0 +1,78 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3da8348 (va 0x103da8348, __TEXT.__rodata), descriptor length 2017 B, sha256 275b5465c3ffa0f8
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package logs.proto.wireless.performance.mobile.desktop;
+
+import "logs/proto/wireless/performance/mobile/desktop/extension_metric.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "AntigravityExtensionOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+message AntigravityExtension {
+  ClientType client_type = 1 [(unresolved_option_40075780) = 999];
+  UserTier user_tier = 2 [(unresolved_option_40075780) = 999];
+  Severity severity = 6 [(unresolved_option_40075780) = 999];
+  string error_id = 3 [(unresolved_option_40075780) = 999];
+  repeated string backend_trace_id = 4 [(unresolved_option_40075780) = 999];
+  string installation_id = 5 [(unresolved_option_40075780) = 999];
+
+  enum Severity {
+    SEVERITY_UNSPECIFIED = 0;
+    LOW = 1;
+    MEDIUM = 2;
+    HIGH = 3;
+  }
+
+  enum ClientType {
+    CLIENT_TYPE_UNSPECIFIED = 0;
+    IDE = 1;
+    HUB = 2;
+    CLI = 3;
+    SDK = 4;
+  }
+
+  enum UserTier {
+    reserved 11, 23 to 28;
+    reserved GCP_GE_ULTRA_TIER;
+    USER_TIER_UNSPECIFIED = 0;
+    AIDA_TIER = 1;
+    CS_STANDARD_TIER = 2;
+    AGY_BUSINESS_PAYGO_TIER = 3;
+    ENTERPRISE_AGENT_TIER = 4;
+    FREE_TIER = 5;
+    G1_PRO_TIER = 6;
+    G1_ULTRA_TIER = 7;
+    G1_ULTRA_LITE_TIER = 8;
+    G1_PLUS_TIER = 30;
+    GCP_ENTERPRISE_TIER = 9;
+    GCP_GE_PAYGO_TIER = 29;
+    GCP_GE_PLUS_TIER = 10;
+    GCP_GE_STANDARD_TIER = 12;
+    GCP_GE_STANDARD_EMERGING_TIER = 31;
+    GCP_GE_EDU_TIER = 32;
+    GCP_GE_EDU_PRO_TIER = 33;
+    GCP_GE_EDU_EMERGING_TIER = 34;
+    GCP_GE_EDU_PRO_EMERGING_TIER = 35;
+    GCP_GE_EDU_GOV_EMERGING_TIER = 36;
+    GCP_GE_FRONTLINE_WORKER_TIER = 37;
+    GCP_GE_FRONTLINE_STARTER_TIER = 38;
+    GCP_STANDARD_TIER = 13;
+    GDP_PREMIUM_TIER = 14;
+    GE_BUSINESS_TIER = 15;
+    GE_BUSINESS_TRIAL_TIER = 16;
+    GOOGLER_DOGFOOD_TIER = 17;
+    GOOGLER_TIER = 18;
+    LEGACY_TIER = 19;
+    STANDARD_TIER = 20;
+    UNLICENSED_TIER = 21;
+    WS_AI_ULTRA_BUSINESS_TIER = 22;
+  }
+}
+
+extend MetricExtension {
+  AntigravityExtension desktop_antigravity_extension = 2;
+}

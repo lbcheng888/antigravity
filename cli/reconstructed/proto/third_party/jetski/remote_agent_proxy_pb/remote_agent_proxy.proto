@@ -1,0 +1,171 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e88243 (va 0x103e88243, __TEXT.__rodata), descriptor length 4823 B, sha256 f43fc11e52f34a93
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.remote_agent_proxy_pb;
+
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+
+option java_package = "com.exafunction.codeium.remoteagentproxy";
+option java_outer_classname = "RemoteAgentProxySharedProto";
+option java_multiple_files = true;
+
+enum ModelTier {
+  MODEL_TIER_UNSPECIFIED = 0;
+  MODEL_TIER_FLASH_LITE = 1;
+  MODEL_TIER_FLASH = 2;
+  MODEL_TIER_PRO = 3;
+}
+
+enum TriggerCategory {
+  TRIGGER_CATEGORY_UNSPECIFIED = 0;
+  TRIGGER_CATEGORY_TIME = 1;
+  TRIGGER_CATEGORY_EVENT = 2;
+}
+
+enum TriggerState {
+  TRIGGER_STATE_UNSPECIFIED = 0;
+  TRIGGER_STATE_ACTIVE = 1;
+  TRIGGER_STATE_PAUSED = 2;
+  TRIGGER_STATE_EXPIRED = 3;
+  TRIGGER_STATE_COMPLETED = 4;
+  TRIGGER_STATE_ERROR = 5;
+}
+
+message Environment {
+  oneof provider {
+    CapsuleConfig capsule = 1;
+    AceConfig ace = 3 [deprecated = true];
+  }
+  string execution_identity = 2 [(unresolved_option_40075780) = 1100];
+
+  message CapsuleConfig {
+    string capsule_id = 1 [(unresolved_option_40075780) = 1100];
+  }
+
+  message AceConfig {
+    option deprecated = true;
+  }
+}
+
+message EnvironmentInfo {
+  oneof provider {
+    Capsule capsule = 1;
+    Ace ace = 3 [deprecated = true];
+  }
+  bool is_default = 2;
+  ConnectionState connection_state = 4 [(unresolved_option_40075780) = 999];
+
+  enum ConnectionState {
+    CONNECTION_STATE_UNSPECIFIED = 0;
+    STARTING = 1;
+    CONNECTED = 2;
+    DISCONNECTED = 3;
+  }
+
+  message Capsule {
+    string capsule_id = 1 [(unresolved_option_40075780) = 1100];
+    repeated string tags = 2 [(unresolved_option_40075780) = 12028];
+    google.protobuf.Timestamp expiration_time = 3;
+  }
+
+  message Ace {
+    option deprecated = true;
+  }
+}
+
+message ConfigOverrides {
+  codeium_common_pb.Model model = 1;
+  ModelTier model_tier = 2;
+  bool autonomous = 3 [(unresolved_option_40075780) = 999];
+  codeium_common_pb.AgentPermissionPreset permission_preset = 4 [(unresolved_option_40075780) = 999];
+  string finish_tool_schema_json = 5 [(unresolved_option_40075780) = 999];
+}
+
+message FieldSpec {
+  string name = 1 [(unresolved_option_40075780) = 999];
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string description = 3 [(unresolved_option_40075780) = 999];
+  bool is_required = 4 [(unresolved_option_40075780) = 999];
+  bool is_repeated = 5 [(unresolved_option_40075780) = 999];
+  string placeholder = 6 [(unresolved_option_40075780) = 999];
+  repeated string allowed_values = 7 [(unresolved_option_40075780) = 999];
+  bool is_cel_only = 8 [(unresolved_option_40075780) = 999];
+  string cel_type = 9 [(unresolved_option_40075780) = 999];
+}
+
+message TriggerOption {
+  string id = 1 [(unresolved_option_40075780) = 999];
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string description = 3 [(unresolved_option_40075780) = 999];
+  TriggerCategory category = 4;
+  repeated FieldSpec fields = 5;
+  bool oauth_consent_required = 6 [(unresolved_option_40075780) = 3000];
+  string oauth_authorize_uri = 7 [(unresolved_option_40075780) = 1300, (unresolved_option_40093572) = "\010\316\010", (unresolved_option_40221563) = 3];
+}
+
+message FieldValues {
+  repeated string values = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message RemoteTrigger {
+  reserved 2;
+  reserved "trigger_source";
+  string trigger_id = 1 [(unresolved_option_40075780) = 1100];
+  TriggerState state = 3 [(unresolved_option_40075780) = 999];
+  string display_name = 4 [(unresolved_option_40075780) = 1900];
+  string prompt = 5 [(unresolved_option_40075780) = 1900];
+  repeated string workspace_uris = 6 [(unresolved_option_40075780) = 1100];
+  Environment environment = 7;
+  ConfigOverrides config_overrides = 8;
+  google.protobuf.Timestamp create_time = 9;
+  google.protobuf.Timestamp update_time = 10;
+  string option_id = 11 [(unresolved_option_40075780) = 999];
+  map<string, FieldValues> fields = 12 [(unresolved_option_40075780) = 999];
+  string summary = 13 [(unresolved_option_40075780) = 1900];
+  google.protobuf.Timestamp credential_expiration_time = 14;
+  string project_id = 15 [(unresolved_option_40075780) = 2300];
+  string interaction_id = 16 [(unresolved_option_40075780) = 2300];
+}
+
+message ResourceProviderInfo {
+  string type = 1 [(unresolved_option_40075780) = 999];
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string icon_url = 3 [(unresolved_option_40075780) = 999];
+}
+
+message PluginConnection {
+  string connection_id = 1 [(unresolved_option_40075780) = 999];
+  State state = 2 [(unresolved_option_40075780) = 999];
+  repeated string granted_scopes = 3 [(unresolved_option_40075780) = 999];
+  string account = 4 [(unresolved_option_40075780) = 1106];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    CONNECTED = 1;
+    EXPIRED = 2;
+  }
+}
+
+message PluginInfo {
+  string plugin_id = 1 [(unresolved_option_40075780) = 1100];
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string version = 3 [(unresolved_option_40075780) = 999];
+  string description = 4 [(unresolved_option_40075780) = 999];
+  string logo_uri = 5 [(unresolved_option_40075780) = 999];
+  bool auth_required = 6 [(unresolved_option_40075780) = 999];
+  repeated PluginConnection connections = 7;
+  string authorize_uri = 8 [(unresolved_option_40075780) = 999];
+  string credential_key = 9 [(unresolved_option_40075780) = 999];
+  string connect_uri = 10 [(unresolved_option_40075780) = 999];
+  string bundle_uri = 11 [(unresolved_option_40075780) = 999];
+}
+
+message SandboxHttpHeader {
+  string name = 1 [(unresolved_option_40075780) = 1900];
+  string value = 2 [(unresolved_option_40075780) = 1900];
+}

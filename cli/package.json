@@ -1,13 +1,20 @@
 {
   "name": "antigravity-cli-analysis",
-  "version": "1.5.9",
+  "version": "1.5.10",
   "description": "Offline extracted resources and static Go/JS metadata analysis workspace for Antigravity CLI (agy)",
   "private": true,
   "scripts": {
     "extract": "python3 scripts/extract-agy.py",
+    "recover:protos": "python3 scripts/recover-protos.py",
+    "recover:gotypes": "python3 scripts/recover-gotypes.py",
+    "callgraph": "python3 scripts/decompile-workbench.py --build-callgraph",
     "build": "../node_modules/.bin/tsc -p tsconfig.json",
     "typecheck": "../node_modules/.bin/tsc -p tsconfig.json --noEmit",
     "report": "npm run build && node build/cliAnalyzer.js",
-    "check": "node scripts/check-cli.js"
+    "deep-query": "npm run build && node build/deepAnalyzer.js",
+    "check": "node scripts/check-cli.js",
+    "go:vet": "/Users/mac/.local/bin/go -C go-sdk vet ./...",
+    "go:test": "/Users/mac/.local/bin/go -C go-sdk test ./...",
+    "go:build": "/Users/mac/.local/bin/go -C go-sdk build -o bin/agy-sdk ./cmd/agy-sdk"
   }
 }

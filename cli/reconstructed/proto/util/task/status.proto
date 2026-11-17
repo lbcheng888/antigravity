@@ -1,0 +1,33 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d57464 (va 0x103d57464, __TEXT.__rodata), descriptor length 927 B, sha256 fc8ecd427c218135
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package util;
+
+import "net/proto2/bridge/proto/message_set.proto";
+import "security/loas/l2/internal/securewrapper/multihop_clients/boundary_proxy.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/boundary_proxy/proto_compare/annotation.proto";
+
+option java_package = "com.google.net.util";
+option cc_enable_arenas = true;
+option objc_class_prefix = "UTIL";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 1;
+option (unresolved_option_12) = "com.google.net.util";
+option (unresolved_option_26) = 0;
+
+message StatusProto {
+  reserved 4;
+  optional int32 code = 1 [(unresolved_option_40075780) = 12017, (unresolved_option_484519953) = 2, (unresolved_option_485077330) = "(\0000\200 "];
+  optional string space = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_484519953) = 2, (unresolved_option_485077330) = "\"W^(ZERO_APP|RPC|generic|throttling|extensible_stubs|monarch|APP|ForwarderErrorSpace|OK)$", (unresolved_option_535801346) = "\032W^(ZERO_APP|RPC|generic|throttling|extensible_stubs|monarch|APP|ForwarderErrorSpace|OK)$"];
+  optional string message = 3 [(unresolved_option_485077330) = "\010\001", (unresolved_option_535801346) = "\010\001"];
+  optional int32 canonical_code = 6 [(unresolved_option_40075780) = 12017, (unresolved_option_484519953) = 2, (unresolved_option_485077330) = "(\0000\200 "];
+  optional proto2.bridge.MessageSet message_set = 5 [(unresolved_option_485077330) = "\010\001", (unresolved_option_535801346) = "\010\001"];
+
+  extend proto2.bridge.MessageSet {
+    optional StatusProto message_set_extension = 10071;
+  }
+}

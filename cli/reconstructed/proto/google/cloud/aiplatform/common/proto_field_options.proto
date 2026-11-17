@@ -1,0 +1,52 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d83711 (va 0x103d83711, __TEXT.__rodata), descriptor length 1502 B, sha256 7e860a16ca81ab97
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.common;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.cloud.aiplatform.common";
+option java_outer_classname = "ProtoFieldOptionsProto";
+option java_multiple_files = true;
+
+message FieldAnnotations {
+
+  enum EncryptionSpecType {
+    ENCRYPTION_SPEC_TYPE_UNSPECIFIED = 0;
+    ENCRYPTION_SPEC = 1;
+    PRIMARY_ENCRYPTION_RESOURCE = 2;
+    SECONDARY_ENCRYPTION_RESOURCE = 3;
+  }
+
+  enum GenAiArtifactType {
+    GEN_AI_ARTIFACT_TYPE_UNSPECIFIED = 0;
+    GEN_AI_ARTIFACT_TYPE_TUNING_PIPELINE_TEMPLATE_URI = 1;
+    GEN_AI_ARTIFACT_TYPE_MODEL_NAME = 2;
+  }
+
+  message VpcScOption {
+    repeated string supported_value = 1;
+  }
+
+  message AxtOption {
+    repeated string supported_value = 1;
+  }
+}
+
+extend proto2.FieldOptions {
+  FieldAnnotations.VpcScOption vpc_sc_option = 331491176;
+  FieldAnnotations.AxtOption axt_option = 333626227;
+  FieldAnnotations.EncryptionSpecType encryption_spec_type = 337978583;
+  bool is_container_image = 427917711;
+  string any_java_type = 416377438;
+  string int_enum_java_type = 415097036;
+  FieldAnnotations.GenAiArtifactType gen_ai_artifact_type = 535801172;
+}
+
+extend proto2.MessageOptions {
+  bool support_vpc_sc = 331491176;
+  bool is_axt_compliant = 333626227;
+}

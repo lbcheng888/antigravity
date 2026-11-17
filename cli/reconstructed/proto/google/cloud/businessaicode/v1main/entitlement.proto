@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3187f (va 0x103d3187f, __TEXT.__rodata), descriptor length 445 B, sha256 2757a16409076868
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.businessaicode.v1main;
+
+import "google/api/field_behavior.proto";
+import "google/api/visibility.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.businessaicode.v1main";
+option java_outer_classname = "EntitlementProto";
+option java_multiple_files = true;
+
+message Entitlement {
+  reserved 1;
+  string user_tier = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1906];
+  string license_location = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\010\001\020\000", (unresolved_option_72295727) = "\022\027BUSINESSAICODE_INTERNAL"];
+}

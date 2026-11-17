@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d370bf (va 0x103d370bf, __TEXT.__rodata), descriptor length 493 B, sha256 dad299954fdd77a4
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package privacy.context.external;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_multiple_files = true;
+option objc_class_prefix = "PCEP";
+
+message ExternalSotMappings {
+  optional ExternalClientProvidedMapping client_provided_mapping = 8;
+
+  message ExternalClientProvidedMapping {
+    optional int32 apple_age_range_lower_bound = 1 [(unresolved_option_40075780) = 1601];
+    optional int32 apple_age_range_upper_bound = 2 [(unresolved_option_40075780) = 1601];
+  }
+}

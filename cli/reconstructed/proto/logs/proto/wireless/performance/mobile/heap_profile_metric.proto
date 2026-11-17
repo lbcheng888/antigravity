@@ -1,0 +1,55 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d87260 (va 0x103d87260, __TEXT.__rodata), descriptor length 1553 B, sha256 2a07ecfc7f30103d
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/protobuf/duration.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_outer_classname = "HeapProfileMetricProto";
+option (unresolved_option_71304954) = "latest";
+
+message HeapProfileMetric {
+  optional google.protobuf.Duration duration = 1;
+  optional bytes heap_profile = 2;
+  optional MemorySnapshot memory_snapshot_start = 3;
+  optional MemorySnapshot memory_snapshot_stop = 4;
+  optional int64 total_mem = 5 [(unresolved_option_40075780) = 1402];
+  optional ProfilingType profiling_type = 6;
+  optional ProfileStatus profile_status = 7;
+  optional StopReason stop_reason = 8;
+
+  enum ProfilingType {
+    PROFILING_TYPE_UNSPECIFIED = 0;
+    JAVA = 1;
+    NATIVE = 2;
+  }
+
+  enum ProfileStatus {
+    PROFILE_STATUS_UNSPECIFIED = 0;
+    ERROR_FAILED_RATE_LIMIT_SYSTEM = 1;
+    ERROR_FAILED_RATE_LIMIT_PROCESS = 2;
+    ERROR_FAILED_PROFILING_IN_PROGRESS = 3;
+    ERROR_FAILED_EXECUTING = 4;
+    ERROR_FAILED_POST_PROCESSING = 5;
+    ERROR_FAILED_NO_DISK_SPACE = 6;
+    ERROR_FAILED_INVALID_REQUEST = 7;
+    ERROR_UNKNOWN = 8;
+    ERROR_NONE = 9;
+  }
+
+  enum StopReason {
+    STOP_REASON_UNSPECIFIED = 0;
+    STOP_PROFILING = 1;
+    TIMEOUT = 2;
+  }
+
+  message MemorySnapshot {
+    optional int64 anon_rss_kb = 1;
+    optional int64 swap_kb = 2;
+  }
+}

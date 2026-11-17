@@ -1,0 +1,48 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d81fbd (va 0x103d81fbd, __TEXT.__rodata), descriptor length 1489 B, sha256 b523cd0985f85d7a
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_disable_randomization.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "storage/googlesql/public/proto/type_annotation.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option java_outer_classname = "SamplingProto";
+option java_multiple_files = true;
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n\006legacy";
+option (unresolved_option_5) = 2;
+
+message SamplingParameters {
+  option (unresolved_option_49659010) = 0;
+  option (unresolved_option_448127181) = 1;
+  optional double per_time_interval_sampling_probability = 1;
+  oneof sampling_rate {
+    uint32 sample_rate_permille = 2;
+    Rate sample_rate = 4;
+  }
+  optional SamplingStrategy sampling_strategy = 3;
+  optional Rate applied_clearcut_server_sampling_rate = 6;
+  repeated fixed64 evaluated_clearcut_sampling_rule_fingerprints = 7 [packed = true];
+  optional fixed64 applied_clearcut_sampling_rule_fingerprint = 8;
+
+  enum SamplingStrategy {
+    UNKNOWN = 0;
+    SAMPLING_STRATEGY_FLOOR = 1;
+    SAMPLING_STRATEGY_ALWAYS_ON = 2;
+    SAMPLING_STRATEGY_PROCESS_LEVEL_PROBABILITY = 3;
+    SAMPLING_STRATEGY_FIXED_EVENT_PROBABILITY = 5 [deprecated = true];
+    SAMPLING_STRATEGY_DYNAMIC_EVENT_PROBABILITY = 4;
+  }
+
+  message Rate {
+    optional uint32 numerator = 1;
+    optional uint32 denominator_powers_of_ten = 2;
+  }
+}

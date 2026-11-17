@@ -1,0 +1,71 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e9675a (va 0x103e9675a, __TEXT.__rodata), descriptor length 4945 B, sha256 7b370f807e3e3cf4
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package logs.proto.wireless.performance.mobile;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "logs.proto.wireless.performance.mobile";
+option objc_class_prefix = "PRMS";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_5) = 2;
+
+message MetricExtension {
+  extensions 1 [(unresolved_option_1) = "\0225logs.proto.wireless.performance.mobile.GmailExtension"];
+  extensions 2 [(unresolved_option_1) = "\n\rgmm_extension\0223logs.proto.wireless.performance.mobile.GmmExtension"];
+  extensions 3 [(unresolved_option_1) = "\022=logs.proto.wireless.performance.mobile.PhotosScannerExtension"];
+  extensions 4 [(unresolved_option_1) = "\0228logs.proto.wireless.performance.mobile.CalendarExtension"];
+  extensions 5 [(unresolved_option_1) = "\n\020photos_extension\0226logs.proto.wireless.performance.mobile.PhotosExtension"];
+  extensions 6 [(unresolved_option_1) = "\n\021youtube_extension\0227logs.proto.wireless.performance.mobile.YouTubeExtension"];
+  extensions 7 [(unresolved_option_1) = "\n\023cloud_dpc_extension\0228logs.proto.wireless.performance.mobile.CloudDpcExtension"];
+  extensions 8 [(unresolved_option_1) = "\n\017gcore_dimension\022=wireless_android_play_playlog_gcore_framework.GCoreDimensions"];
+  extensions 9 [(unresolved_option_1) = "\0223logs.proto.wireless.performance.mobile.GcsExtension"];
+  extensions 10 [(unresolved_option_1) = "\0229logs.proto.wireless.performance.mobile.TranslateExtension"];
+  extensions 11 [(unresolved_option_1) = "\n\017bugle_extension\0225logs.proto.wireless.performance.mobile.BugleExtension"];
+  extensions 12 [(unresolved_option_1) = "\n\017csapk_extension\0225logs.proto.wireless.performance.mobile.CsapkExtension"];
+  extensions 13 [(unresolved_option_1) = "\n\022microapp_extension\0228logs.proto.wireless.performance.mobile.MicroappExtension"];
+  extensions 14 [(unresolved_option_1) = "\0228logs.proto.wireless.performance.mobile.CurrentsExtension"];
+  extensions 15 [(unresolved_option_1) = "\n\017opatv_extension\0225logs.proto.wireless.performance.mobile.OpaTvExtension"];
+  extensions 16 [(unresolved_option_1) = "\n\rhub_extension\0223logs.proto.wireless.performance.mobile.HubExtension"];
+  extensions 17 [(unresolved_option_1) = "\0223logs.proto.wireless.performance.mobile.PcpExtension"];
+  extensions 18 [(unresolved_option_1) = "\n\016gpay_extension\0224logs.proto.wireless.performance.mobile.GPayExtension"];
+  extensions 19 [(unresolved_option_1) = "\n\016agsa_extension\0224logs.proto.wireless.performance.mobile.AGSAExtension"];
+  extensions 20 [(unresolved_option_1) = "\n\025tvlauncherx_extension\022;logs.proto.wireless.performance.mobile.TvLauncherxExtension"];
+  extensions 21 [(unresolved_option_1) = "\n\016happ_extension\0224logs.proto.wireless.performance.mobile.HappExtension"];
+  extensions 22 [(unresolved_option_1) = "\n\023chauffeur_extension\0229logs.proto.wireless.performance.mobile.ChauffeurExtension"];
+  extensions 23 [(unresolved_option_1) = "\n\021lighter_extension\0227logs.proto.wireless.performance.mobile.LighterExtension"];
+  extensions 24 [(unresolved_option_1) = "\n$test_only_logsite_metadata_extension\022Glogs.proto.wireless.performance.mobile.TestOnlyLogsiteMetadataExtension"];
+  extensions 440991245 [(unresolved_option_1) = "\n\022gearhead_extension\0228logs.proto.wireless.performance.mobile.GearheadExtension"];
+  extensions 455160663 [(unresolved_option_1) = "\0225logs.proto.wireless.performance.mobile.PcpV2Extension"];
+  extensions 484141439 [(unresolved_option_1) = "\n\016play_extension\0224logs.proto.wireless.performance.mobile.PlayExtension"];
+  extensions 486185550 [(unresolved_option_1) = "\n#xuikit_error_log_metadata_extension\022(logs.proto.xuikit.XUiKitErrorLogMetadata"];
+  extensions 483048578 [(unresolved_option_1) = "\n\022atvsetup_extension\0228logs.proto.wireless.performance.mobile.ATVSetupExtension"];
+  extensions 490491270 [(unresolved_option_1) = "\n\016keep_extension\0224logs.proto.wireless.performance.mobile.KeepExtension"];
+  extensions 508713347 [(unresolved_option_1) = "\n\017drive_extension\0225logs.proto.wireless.performance.mobile.DriveExtension"];
+  extensions 508674538 [(unresolved_option_1) = "\n\030android_delphi_extension\022=logs.proto.wireless.performance.mobile.AndroidDelphiExtension"];
+  extensions 516454629 [(unresolved_option_1) = "\n\rgca_extension\0223logs.proto.wireless.performance.mobile.GCAExtension"];
+  extensions 25 [(unresolved_option_1) = "\n\025fitbit_wear_extension\022:logs.proto.wireless.performance.mobile.FitbitWearExtension"];
+  extensions 26 [(unresolved_option_1) = "\n\017tasks_extension\0225logs.proto.wireless.performance.mobile.TasksExtension"];
+  extensions 27 [(unresolved_option_1) = "\n\016grpc_extension\022>logs.proto.wireless.performance.mobile.OnDeviceServerExtension"];
+  extensions 28 [(unresolved_option_1) = "\n\022talkback_extension\0228logs.proto.wireless.performance.mobile.TalkbackExtension"];
+  extensions 29 [(unresolved_option_1) = "\n-apps_telemetry_system_health_metric_extension\022+apps.telemetry.proto.AppsTelemetryExtension"];
+  extensions 30 [(unresolved_option_1) = "\n\020dialer_extension\0226logs.proto.wireless.performance.mobile.DialerExtension"];
+  extensions 31 [(unresolved_option_1) = "\n\025docs_common_extension\022:logs.proto.wireless.performance.mobile.DocsCommonExtension"];
+  extensions 32 [(unresolved_option_1) = "\n\035android_google_home_extension\022Alogs.proto.wireless.performance.mobile.AndroidGoogleHomeExtension"];
+  extensions 33 [(unresolved_option_1) = "\n\016meet_extension\0224logs.proto.wireless.performance.mobile.MeetExtension"];
+  extensions 34 [(unresolved_option_1) = "\n\021glasses_extension\0227logs.proto.wireless.performance.mobile.GlassesExtension"];
+  extensions 35 [(unresolved_option_1) = "\n\031edge_perception_extension\022>logs.proto.wireless.performance.mobile.EdgePerceptionExtension"];
+  extensions 36 [(unresolved_option_1) = "\n\027admin_console_extension\022<logs.proto.wireless.performance.mobile.AdminConsoleExtension"];
+  extensions 37 [(unresolved_option_1) = "\n\017spark_extension\0225logs.proto.wireless.performance.mobile.SparkExtension"];
+  extensions 571321 [(unresolved_option_1) = "\n\021overlay_extension\0227logs.proto.wireless.performance.mobile.OverlayExtension"];
+  extensions 38 [(unresolved_option_1) = "\n\020charon_extension\0226logs.proto.wireless.performance.mobile.CharonExtension"];
+  extensions 39 [(unresolved_option_1) = "\n\024meet_rooms_extension\0229logs.proto.wireless.performance.mobile.MeetRoomsExtension"];
+  extensions 40 [(unresolved_option_1) = "\n!pixel_watch_loguploader_extension\022Elogs.proto.wireless.performance.mobile.PixelWatchLogUploaderExtension"];
+  extensions 41 [(unresolved_option_1) = "\n\022snapseed_extension\0228logs.proto.wireless.performance.mobile.SnapseedExtension"];
+  extensions 42 [(unresolved_option_1) = "\n\023bugle_cui_extension\0228logs.proto.wireless.performance.mobile.BugleCuiExtension"];
+  extensions 43 [(unresolved_option_1) = "\n\030pixel_recorder_extension\022=logs.proto.wireless.performance.mobile.PixelRecorderExtension"];
+  extensions 44 [(unresolved_option_1) = "\n\025supervision_extension\022;logs.proto.wireless.performance.mobile.SupervisionExtension"];
+}

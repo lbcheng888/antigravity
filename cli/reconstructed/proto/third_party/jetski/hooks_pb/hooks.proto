@@ -1,0 +1,185 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3eb9e2b (va 0x103eb9e2b, __TEXT.__rodata), descriptor length 5449 B, sha256 67abc7fd33eb2168
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.hooks_pb;
+
+import "google/protobuf/struct.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/cortex_pb/options.proto";
+
+option java_outer_classname = "Hooks";
+option java_multiple_files = true;
+option go_package = "google3/third_party/jetski/hooks_pb/hooks_go_proto";
+
+message HookToolCall {
+  string name = 1 [(unresolved_option_40075780) = 2800];
+  google.protobuf.Struct args = 2 [(unresolved_option_40075780) = 1900];
+  string id = 3 [(unresolved_option_40075780) = 2300];
+}
+
+message HookSystemMessageRenderInfo {
+  string title = 1 [(unresolved_option_40075780) = 1900];
+  string title_prefix = 2 [(unresolved_option_40075780) = 1900];
+  string markdown = 3 [(unresolved_option_40075780) = 1900];
+  bool hidden = 4 [(unresolved_option_40075780) = 2800];
+}
+
+message HookSystemMessage {
+  string system_message = 1 [(unresolved_option_40075780) = 1900];
+  map<string, string> metadata = 2 [(unresolved_option_40093572) = "\022\004\n\002\360\025\032\004\n\002\354\016"];
+  repeated codeium_common_pb.Media media = 3;
+  HookSystemMessageRenderInfo render_info = 4 [(unresolved_option_535815292) = 1];
+}
+
+message HookErrorMessage {
+  string model_message = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_535815292) = 1];
+  string user_message = 2 [(unresolved_option_40075780) = 1900];
+}
+
+message HookUserMessage {
+  string content = 1 [(unresolved_option_40075780) = 1900];
+  repeated codeium_common_pb.Media media = 2;
+}
+
+message HookEphemeralMessage {
+  option deprecated = true;
+  string content = 1 [(unresolved_option_40075780) = 1900];
+  repeated codeium_common_pb.Media media = 2;
+  map<string, string> metadata = 3 [(unresolved_option_40093572) = "\022\004\n\002\360\025\032\004\n\002\354\016"];
+}
+
+message HookCheckpoint {
+  string session_summary = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message HookInjectedStep {
+  oneof step {
+    HookToolCall tool_call = 1 [deprecated = true, (unresolved_option_535815292) = 1];
+    string user_message = 2 [(unresolved_option_40075780) = 1900];
+    string ephemeral_message = 3 [deprecated = true, (unresolved_option_40075780) = 1900];
+    HookSystemMessage system_message = 4;
+    HookErrorMessage error_message = 6;
+    HookUserMessage hook_user_message = 7 [(unresolved_option_535815292) = 1];
+    HookEphemeralMessage hook_ephemeral_message = 8 [deprecated = true, (unresolved_option_535815292) = 1];
+    HookCheckpoint checkpoint = 9 [(unresolved_option_535815292) = 1];
+  }
+  string model_api_content_id = 5 [(unresolved_option_40075780) = 1100, (unresolved_option_535815292) = 1];
+}
+
+message HookArgsCommon {
+  string conversation_id = 1;
+  repeated string workspace_paths = 2;
+  string transcript_path = 3;
+  string artifact_directory_path = 4;
+  string execution_id = 5 [(unresolved_option_535815292) = 1];
+  string model_name = 6;
+  bool is_battle_mode = 7 [(unresolved_option_535815292) = 1];
+  string last_user_input = 8;
+  string agent_name = 9 [(unresolved_option_535815292) = 1];
+  string parent_conversation_id = 10 [(unresolved_option_535815292) = 1];
+  string caller_context = 11 [(unresolved_option_535815292) = 1];
+  string root_conversation_id = 12 [(unresolved_option_535815292) = 1];
+  string hook_event_name = 13;
+  string cwd = 14;
+}
+
+message HookArgs {
+  HookArgsCommon common = 6;
+  oneof args {
+    PreToolHookArgs pre_tool_hook_args = 2;
+    PostToolHookArgs post_tool_hook_args = 3;
+    PreInvocationHookArgs pre_invocation_hook_args = 1;
+    PostInvocationHookArgs post_invocation_hook_args = 5;
+    StopHookArgs stop_hook_args = 4;
+    SessionStartHookArgs session_start_hook_args = 7;
+  }
+}
+
+message PreToolHookArgs {
+  HookToolCall tool_call = 1;
+  int32 step_idx = 2;
+}
+
+message PreToolHookResult {
+  string decision = 4 [(unresolved_option_40075780) = 2800];
+  string reason = 5 [(unresolved_option_40075780) = 1900];
+  google.protobuf.Struct overwrite = 3 [(unresolved_option_40075780) = 1900];
+  repeated string permission_overrides = 6 [(unresolved_option_40075780) = 1900];
+  bool allow_tool = 1 [deprecated = true, (unresolved_option_40075780) = 2800];
+  string deny_reason = 2 [deprecated = true, (unresolved_option_40075780) = 1900];
+}
+
+message PostToolHookArgs {
+  int32 step_idx = 1;
+  HookToolCall tool_call = 2;
+  string error = 3;
+  string result = 4 [(unresolved_option_535815292) = 1];
+}
+
+message PostToolHookResult {
+  optional string overwrite_result = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_535815292) = 1];
+}
+
+message PreInvocationHookArgs {
+  int32 invocation_num = 1;
+  int32 initial_num_steps = 2;
+}
+
+message PreInvocationHookResult {
+  repeated HookInjectedStep inject_steps = 1;
+  string termination_behavior = 2 [(unresolved_option_40075780) = 2800];
+}
+
+message PostInvocationHookArgs {
+  int32 invocation_num = 1;
+  int32 initial_num_steps = 2;
+  string model_output = 3 [(unresolved_option_535815292) = 1];
+  string model_thinking = 4 [(unresolved_option_535815292) = 1];
+}
+
+message PostInvocationHookResult {
+  repeated HookInjectedStep inject_steps = 1;
+  string termination_behavior = 2 [(unresolved_option_40075780) = 2800];
+}
+
+message StopHookArgs {
+  int32 execution_num = 1;
+  string termination_reason = 2;
+  string error = 3;
+  bool fully_idle = 4;
+  string final_model_output = 5 [(unresolved_option_535815292) = 1];
+  bool continuation_active = 6;
+}
+
+message StopHookResult {
+  string decision = 1 [(unresolved_option_40075780) = 2800];
+  string reason = 2 [(unresolved_option_40075780) = 1900];
+}
+
+message SessionStartHookArgs {
+}
+
+message SessionStartHookResult {
+  repeated HookInjectedStep inject_steps = 1;
+}
+
+message CommandHook {
+  string command = 1;
+}
+
+message PromptHook {
+  string prompt = 1;
+  string model = 2;
+}
+
+message HookHandlerConfig {
+  int32 timeout = 1;
+  oneof handler {
+    CommandHook command = 2;
+    PromptHook prompt = 3;
+  }
+}

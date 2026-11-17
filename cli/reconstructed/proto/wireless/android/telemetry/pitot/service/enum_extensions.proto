@@ -1,0 +1,19 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2b454 (va 0x103d2b454, __TEXT.__rodata), descriptor length 388 B, sha256 ad7af9b830e62c7d
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package android.telemetry.pitot;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.wireless.android.telemetry.pitot.service";
+option java_outer_classname = "PitotStatsEnumExtensionsProto";
+option features.utf8_validation = NONE;
+
+extend proto2.EnumValueOptions {
+  string disp = 512045532;
+  string doc_text = 535802509;
+  string doc_md = 535802510;
+}

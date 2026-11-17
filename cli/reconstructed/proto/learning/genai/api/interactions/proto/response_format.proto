@@ -1,0 +1,132 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e17bc5 (va 0x103e17bc5, __TEXT.__rodata), descriptor length 3463 B, sha256 d09c4273cac97df6
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+import "google/protobuf/duration.proto";
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+message AudioResponseFormat {
+  MimeType mime_type = 1;
+  Delivery delivery = 2;
+  int32 sample_rate = 3;
+  int32 bit_rate = 4;
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_MP3 = 1 [(unresolved_option_535802949) = "audio/mp3"];
+    TYPE_OGG_OPUS = 2 [(unresolved_option_535802949) = "audio/ogg_opus"];
+    TYPE_L16 = 3 [(unresolved_option_535802949) = "audio/l16"];
+    TYPE_WAV = 4 [(unresolved_option_535802949) = "audio/wav"];
+    TYPE_ALAW = 5 [(unresolved_option_535802949) = "audio/alaw"];
+    TYPE_MULAW = 6 [(unresolved_option_535802949) = "audio/mulaw"];
+  }
+
+  enum Delivery {
+    DELIVERY_UNSPECIFIED = 0;
+    INLINE = 1 [(unresolved_option_535802949) = "inline"];
+    URI = 2 [(unresolved_option_535802949) = "uri"];
+  }
+}
+
+message TextResponseFormat {
+  MimeType mime_type = 1;
+  Struct schema = 2;
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_APPLICATION_JSON = 1 [(unresolved_option_535802949) = "application/json"];
+    TYPE_TEXT_PLAIN = 2 [(unresolved_option_535802949) = "text/plain"];
+  }
+}
+
+message ImageResponseFormat {
+  MimeType mime_type = 1;
+  Delivery delivery = 2;
+  AspectRatio aspect_ratio = 3;
+  ImageSize image_size = 4;
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_JPEG = 1 [(unresolved_option_535802949) = "image/jpeg"];
+  }
+
+  enum Delivery {
+    DELIVERY_UNSPECIFIED = 0;
+    INLINE = 1 [(unresolved_option_535802949) = "inline"];
+    URI = 2 [(unresolved_option_535802949) = "uri"];
+  }
+
+  enum AspectRatio {
+    ASPECT_RATIO_UNSPECIFIED = 0;
+    ASPECT_RATIO_ONE_BY_ONE = 1 [(unresolved_option_535802949) = "1:1"];
+    ASPECT_RATIO_TWO_BY_THREE = 2 [(unresolved_option_535802949) = "2:3"];
+    ASPECT_RATIO_THREE_BY_TWO = 3 [(unresolved_option_535802949) = "3:2"];
+    ASPECT_RATIO_THREE_BY_FOUR = 4 [(unresolved_option_535802949) = "3:4"];
+    ASPECT_RATIO_FOUR_BY_THREE = 5 [(unresolved_option_535802949) = "4:3"];
+    ASPECT_RATIO_FOUR_BY_FIVE = 6 [(unresolved_option_535802949) = "4:5"];
+    ASPECT_RATIO_FIVE_BY_FOUR = 7 [(unresolved_option_535802949) = "5:4"];
+    ASPECT_RATIO_NINE_BY_SIXTEEN = 8 [(unresolved_option_535802949) = "9:16"];
+    ASPECT_RATIO_SIXTEEN_BY_NINE = 9 [(unresolved_option_535802949) = "16:9"];
+    ASPECT_RATIO_TWENTY_ONE_BY_NINE = 10 [(unresolved_option_535802949) = "21:9"];
+    ASPECT_RATIO_ONE_BY_EIGHT = 11 [(unresolved_option_535802949) = "1:8"];
+    ASPECT_RATIO_EIGHT_BY_ONE = 12 [(unresolved_option_535802949) = "8:1"];
+    ASPECT_RATIO_ONE_BY_FOUR = 13 [(unresolved_option_535802949) = "1:4"];
+    ASPECT_RATIO_FOUR_BY_ONE = 14 [(unresolved_option_535802949) = "4:1"];
+  }
+
+  enum ImageSize {
+    IMAGE_SIZE_UNSPECIFIED = 0;
+    IMAGE_SIZE_FIVE_TWELVE = 1 [(unresolved_option_535802949) = "512"];
+    IMAGE_SIZE_ONE_K = 2 [(unresolved_option_535802949) = "1K"];
+    IMAGE_SIZE_TWO_K = 3 [(unresolved_option_535802949) = "2K"];
+    IMAGE_SIZE_FOUR_K = 4 [(unresolved_option_535802949) = "4K"];
+  }
+}
+
+message VideoResponseFormat {
+  Delivery delivery = 1;
+  AspectRatio aspect_ratio = 3;
+  google.protobuf.Duration duration = 4;
+  Resolution resolution = 5;
+
+  enum Delivery {
+    DELIVERY_UNSPECIFIED = 0;
+    INLINE = 1 [(unresolved_option_535802949) = "inline"];
+    URI = 2 [(unresolved_option_535802949) = "uri"];
+  }
+
+  enum AspectRatio {
+    ASPECT_RATIO_UNSPECIFIED = 0;
+    ASPECT_RATIO_SIXTEEN_BY_NINE = 1 [(unresolved_option_535802949) = "16:9"];
+    ASPECT_RATIO_NINE_BY_SIXTEEN = 2 [(unresolved_option_535802949) = "9:16"];
+  }
+
+  enum Resolution {
+    RESOLUTION_UNSPECIFIED = 0;
+    RESOLUTION_THREE_SIXTY_P = 1 [(unresolved_option_535802949) = "360p"];
+    RESOLUTION_SEVEN_TWENTY_P = 2 [(unresolved_option_535802949) = "720p"];
+    RESOLUTION_TEN_EIGHTY_P = 3 [(unresolved_option_535802949) = "1080p"];
+    RESOLUTION_FOUR_K = 4 [(unresolved_option_535802949) = "4k"];
+  }
+}
+
+message ResponseFormat {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    AudioResponseFormat audio = 1;
+    TextResponseFormat text = 2;
+    ImageResponseFormat image = 3;
+    VideoResponseFormat video = 4;
+    Struct struct_value = 5 [(unresolved_option_525000220) = "string", (unresolved_option_525000220) = "number", (unresolved_option_525000220) = "integer", (unresolved_option_525000220) = "boolean", (unresolved_option_525000220) = "array", (unresolved_option_525000220) = "object"];
+  }
+}
+
+message ResponseFormatList {
+  option (unresolved_option_535801963) = 2;
+  repeated ResponseFormat response_formats = 1;
+}

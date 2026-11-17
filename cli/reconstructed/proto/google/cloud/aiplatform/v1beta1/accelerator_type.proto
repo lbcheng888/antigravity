@@ -1,0 +1,40 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4f646 (va 0x103d4f646, __TEXT.__rodata), descriptor length 814 B, sha256 bb79903ebb1ec458
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "AcceleratorTypeProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+enum AcceleratorType {
+  ACCELERATOR_TYPE_UNSPECIFIED = 0;
+  NVIDIA_TESLA_K80 = 1 [deprecated = true];
+  NVIDIA_TESLA_P100 = 2;
+  NVIDIA_TESLA_V100 = 3;
+  NVIDIA_TESLA_P4 = 4;
+  NVIDIA_TESLA_T4 = 5;
+  NVIDIA_TESLA_A100 = 8;
+  NVIDIA_A100_80GB = 9;
+  NVIDIA_L4 = 11;
+  NVIDIA_H100_80GB = 13;
+  NVIDIA_H100_MEGA_80GB = 14;
+  NVIDIA_H200_141GB = 15;
+  NVIDIA_B200 = 16;
+  NVIDIA_GB200 = 17;
+  NVIDIA_RTX_PRO_6000 = 18;
+  NVIDIA_GB300 = 19 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\023v1beta1,internal,v1"];
+  TPU_V2 = 6;
+  TPU_V3 = 7;
+  TPU_V4_POD = 10;
+  TPU_V5_LITEPOD = 12;
+}

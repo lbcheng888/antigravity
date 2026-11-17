@@ -1,0 +1,236 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f3a247 (va 0x103f3a247, __TEXT.__rodata), descriptor length 7969 B, sha256 0ef4a9bcf77929b6
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/v1beta1/task.proto";
+import "learning/genai/api/interactions/proto/interaction.proto";
+import "learning/genai/api/interactions/proto/media_stream_steps.proto";
+import "learning/genai/api/interactions/proto/sse_events.proto";
+import "learning/genai/api/interactions/proto/steps.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "TaskEventsProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+
+enum InteractionMode {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  INTERACTION_MODE_UNSPECIFIED = 0;
+  INTERACTION_MODE_LIVE = 1;
+}
+
+message TaskClientEventBatch {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  option (unresolved_option_331491176) = 1;
+  oneof connect_request {
+    CreateTaskEvent create_task = 1;
+    SubscribeTaskEvent subscribe_task = 2;
+  }
+  oneof end_request {
+    CompleteTaskEvent complete_task = 4;
+    CancelTaskEvent cancel_task = 5;
+    SuspendTaskEvent suspend_task = 8;
+  }
+  oneof directives {
+    Goal add_goal = 9 [(unresolved_option_143069646) = "\022\020internal,v1beta1"];
+    GoalDrop drop_goal = 10 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+    GoalUpdate update_goal = 11 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+    VerifierAddition add_verifier = 12 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+    VerifierRemoval remove_verifier = 13 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+    VerifierReview review_verifier = 14 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+  }
+  string parent = 7 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  repeated TaskClientEvent events = 3;
+  int64 ack_output_seq_num = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message CreateTaskEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string unique_creation_token = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  Task task = 3 [(unresolved_option_1052) = "\002"];
+  string client_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  InteractionMode interaction_mode = 5 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  UserContext user_context = 6 [(unresolved_option_1052) = "\001"];
+}
+
+message SubscribeTaskEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  int64 next_step_seq_num = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool background = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string client_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  string continuation_token = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  InteractionMode interaction_mode = 6 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message TaskClientEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof event_type {
+    genai.Step input = 1 [(unresolved_option_40075780) = 1900];
+    genai.MediaStreamAppend media_chunk = 2 [(unresolved_option_40075780) = 1900];
+  }
+  string event_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string traceparent = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+  UserContext user_context = 5 [(unresolved_option_1052) = "\001"];
+  int64 seq_num = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  int64 timestamp_micros = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2100];
+}
+
+message UserContext {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  reserved 1;
+  string location = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1700];
+  string time_zone = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1700];
+  Channel channel = 4 [(unresolved_option_1052) = "\001"];
+
+  enum Channel {
+    CHANNEL_UNSPECIFIED = 0;
+    CHAT = 1;
+    EMAIL = 2;
+  }
+}
+
+message CompleteTaskEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message CancelTaskEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message SuspendTaskEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Task.StatusDetail status_detail = 1;
+  optional bool operate_on_self = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message GoalDrop {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string goal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message GoalUpdate {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string goal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string spec = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message VerifierAddition {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string goal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  Verifier verifier = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message VerifierRemoval {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string goal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  optional int32 verifier_index = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message VerifierReview {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string goal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  optional int32 verifier_index = 2 [(unresolved_option_1052) = "\002"];
+  bool approved = 3 [(unresolved_option_1052) = "\002"];
+  string reason = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message TaskServerEventBatch {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof connect_reply {
+    TaskCreatedEvent task_created = 1 [(unresolved_option_158361448) = "\"\005AUDIT"];
+    TaskSubscribedEvent task_subscribed = 2;
+  }
+  oneof end_signal {
+    TaskCompletedEvent task_completed = 4;
+  }
+  repeated TaskServerEvent events = 3;
+  int64 ack_input_seq_num = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  TaskYieldedEvent yielded = 6 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+  string assigned_agent_identity = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  PlaybackInterruptedEvent playback_interruption = 8 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_143069646) = "\022\020internal,v1beta1"];
+}
+
+message TaskCreatedEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  string task = 1 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string client_id = 2 [(unresolved_option_40075780) = 2300];
+}
+
+message TaskSubscribedEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  int64 next_step_seq_num = 1 [(unresolved_option_40075780) = 999];
+  Task.Status status = 2;
+  string client_id = 3 [(unresolved_option_40075780) = 2300];
+}
+
+message TaskServerEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  oneof event_type {
+    genai.Step step = 1 [(unresolved_option_40075780) = 1900];
+    TaskStatusEvent status_changed = 2;
+    genai.StepStart step_start = 3 [(unresolved_option_40075780) = 1900];
+    genai.StepDelta step_delta = 4 [(unresolved_option_40075780) = 1900];
+    genai.StepStop step_stop = 5 [(unresolved_option_40075780) = 1900];
+    TaskUpdateEvent task_update = 9 [(unresolved_option_143069646) = "\022\020internal,v1beta1"];
+  }
+  string event_id = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string trajectory_id = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  int64 seq_num = 10 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  int64 timestamp_micros = 11 [(unresolved_option_40075780) = 2100];
+  string continuation_token = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  genai.Interaction.Usage step_usage = 13 [(unresolved_option_1052) = "\001"];
+}
+
+message TaskStatusEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  Task.Status task_status = 1;
+  Task.StatusDetail status_detail = 2;
+}
+
+message TaskCompletedEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  TaskOutcome outcome = 1 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message TaskYieldedEvent {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message PlaybackInterruptedEvent {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  int32 source_step_index = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+}
+
+message TaskUpdateEvent {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  repeated TaskUpdate updates = 1;
+
+  message TaskUpdate {
+    oneof update {
+      string title = 1 [(unresolved_option_40075780) = 1900];
+      string summary = 2 [(unresolved_option_40075780) = 1900];
+    }
+  }
+}

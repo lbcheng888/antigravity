@@ -1,0 +1,125 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3edcc4c (va 0x103edcc4c, __TEXT.__rodata), descriptor length 6139 B, sha256 0dd984506565ceba
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.businessaicode.v1main;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/cloud/businessaicode/v1main/content.proto";
+import "google/cloud/businessaicode/v1main/entitlement.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.businessaicode.v1main";
+option java_outer_classname = "PredictionServiceProto";
+option java_multiple_files = true;
+
+message GenerateContentRequest {
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n&businessaicode.googleapis.com/Location", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE\"\033AUDIT,AUDIT_TARGET_RESOURCE"];
+  oneof inference {
+    string model = 1000 [deprecated = true];
+    AiCodeConfig aicode = 1001 [(unresolved_option_1052) = "\001"];
+  }
+  repeated Content contents = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  Content system_instruction = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated Tool tools = 4 [(unresolved_option_1052) = "\001"];
+  ToolConfig tool_config = 5 [(unresolved_option_1052) = "\001"];
+  map<string, string> labels = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated SafetySetting safety_settings = 7 [(unresolved_option_1052) = "\001"];
+  GenerationConfig generation_config = 8 [(unresolved_option_1052) = "\001"];
+  Entitlement entitlement = 9 [(unresolved_option_1052) = "\002"];
+}
+
+message GenerateContentResponse {
+  repeated Candidate candidates = 1;
+  PromptFeedback prompt_feedback = 2;
+  UsageMetadata usage_metadata = 3;
+  string model_version = 4 [(unresolved_option_40075780) = 999];
+  string response_id = 5 [(unresolved_option_40075780) = 999];
+
+  message PromptFeedback {
+    BlockReason block_reason = 1;
+    repeated SafetyRating safety_ratings = 2;
+    string block_reason_message = 3;
+
+    enum BlockReason {
+      BLOCK_REASON_UNSPECIFIED = 0;
+      SAFETY = 1;
+      OTHER = 2;
+      BLOCKLIST = 3;
+      PROHIBITED_CONTENT = 4;
+      IMAGE_SAFETY = 5;
+    }
+  }
+
+  message UsageMetadata {
+    int32 prompt_token_count = 1;
+    int32 candidates_token_count = 2;
+    int32 total_token_count = 3;
+    int32 thoughts_token_count = 4;
+    int32 cached_content_token_count = 5;
+    repeated ModalityTokenCount prompt_tokens_details = 6 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount cache_tokens_details = 7 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount candidates_tokens_details = 8 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount tool_use_prompt_tokens_details = 9 [(unresolved_option_1052) = "\003"];
+  }
+}
+
+message FetchQuotaStatusRequest {
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n&businessaicode.googleapis.com/Location", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE\"\033AUDIT,AUDIT_TARGET_RESOURCE"];
+  Entitlement entitlement = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message FetchQuotaStatusResponse {
+  repeated QuotaSummaryGroup groups = 1 [(unresolved_option_1052) = "\003"];
+  string description = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  OverageInfo overage_info = 3 [(unresolved_option_1052) = "\003"];
+}
+
+message OverageInfo {
+  bool enabled = 1 [(unresolved_option_1052) = "\003"];
+}
+
+message QuotaSummaryGroup {
+  string display_name = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string description = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  repeated QuotaSummaryBucket buckets = 3 [(unresolved_option_1052) = "\003"];
+}
+
+message QuotaSummaryBucket {
+  string bucket_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string display_name = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string description = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string window = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  oneof remaining {
+    float remaining_fraction = 5;
+    int64 remaining_amount = 6;
+  }
+  bool disabled = 7 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp reset_time = 8 [(unresolved_option_1052) = "\003"];
+}
+
+service PredictionService {
+  option (unresolved_option_143069646) = "\022\016v1alpha,v1beta";
+  rpc StreamGenerateContent(GenerateContentRequest) returns (stream GenerateContentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"E/{$api_version}/{parent=projects/*/locations/*}:streamGenerateContent";
+    option (unresolved_option_161893301) = "\022\177\n\006parent\0227businessaicode.googleapis.com/locations.generateContent\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\tDATA_READ\"*CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc GenerateContent(GenerateContentRequest) returns (GenerateContentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"?/{$api_version}/{parent=projects/*/locations/*}:generateContent";
+    option (unresolved_option_161893301) = "\022\177\n\006parent\0227businessaicode.googleapis.com/locations.generateContent\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\tDATA_READ\"*CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc FetchQuotaStatus(FetchQuotaStatusRequest) returns (FetchQuotaStatusResponse) {
+    option (unresolved_option_72295728) = "\022@/{$api_version}/{parent=projects/*/locations/*}:fetchQuotaStatus";
+    option (unresolved_option_161893301) = "\022\200\001\n\006parent\0228businessaicode.googleapis.com/locations.fetchQuotaStatus\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\tDATA_READ\"*CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+}

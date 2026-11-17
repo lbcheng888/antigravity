@@ -148,7 +148,7 @@
 .pane .o2-progh:hover { background: var(--o2-hover); color: var(--o2-fg); }
 .pane .o2-progt { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .pane .o2-progt b { font-weight: 600; color: var(--o2-fg); }
-.pane .o2-progr { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.pane .o2-progr { margin-left: auto; display: inline-flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 2px 8px; min-width: 0; }
 .pane .o2-progr .o2-chev { margin-left: 2px; transform: rotate(45deg); margin-top: -2px; }
 .pane .o2-prog.open .o2-progr .o2-chev { transform: rotate(-135deg); margin-top: 3px; }
 .pane .o2-ring { flex: none; transform: rotate(-90deg); }
@@ -167,7 +167,8 @@
 .pane .o2-donelist li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid color-mix(in srgb, var(--o2-border) 55%, transparent); }
 .pane .o2-donelist li:first-child { border-top: 0; }
 .pane .o2-donem { flex: 1; min-width: 0; }
-.pane .o2-donem b { display: block; font-size: 12.5px; font-weight: 500; color: var(--o2-fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Titles wrap to two lines; the detail line stays one. */
+.pane .o2-donem b { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 12.5px; font-weight: 500; line-height: 1.4; color: var(--o2-fg); overflow: hidden; overflow-wrap: anywhere; }
 .pane .o2-donem span { display: block; font-size: 11.5px; color: var(--o2-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pane .o2-doneempty { margin: 6px 0 2px; font-size: 12.5px; color: var(--o2-muted); }
 .pane .o2-queuedsub { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--o2-border); }

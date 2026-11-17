@@ -1,0 +1,79 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d95968 (va 0x103d95968, __TEXT.__rodata), descriptor length 1731 B, sha256 c1fcbe0513956872
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.diff_action_pb;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+enum UnifiedDiffLineType {
+  UNIFIED_DIFF_LINE_TYPE_UNSPECIFIED = 0;
+  UNIFIED_DIFF_LINE_TYPE_INSERT = 1;
+  UNIFIED_DIFF_LINE_TYPE_DELETE = 2;
+  UNIFIED_DIFF_LINE_TYPE_UNCHANGED = 3;
+}
+
+enum DiffChangeType {
+  DIFF_CHANGE_TYPE_UNSPECIFIED = 0;
+  DIFF_CHANGE_TYPE_INSERT = 1;
+  DIFF_CHANGE_TYPE_DELETE = 2;
+  DIFF_CHANGE_TYPE_UNCHANGED = 3;
+}
+
+enum DiffType {
+  DIFF_TYPE_UNSPECIFIED = 0;
+  DIFF_TYPE_UNIFIED = 1;
+  DIFF_TYPE_CHARACTER = 2;
+  DIFF_TYPE_COMBO = 3;
+  DIFF_TYPE_TMP_SUPERCOMPLETE = 4;
+  DIFF_TYPE_TMP_TAB_JUMP = 5;
+}
+
+message UnifiedDiff {
+  repeated UnifiedDiffLine lines = 3;
+
+  message UnifiedDiffLine {
+    string text = 1 [(unresolved_option_40075780) = 1900];
+    UnifiedDiffLineType type = 2 [(unresolved_option_40075780) = 2800];
+  }
+}
+
+message DiffBlock {
+  reserved 4, 5;
+  int32 start_line = 1 [(unresolved_option_40075780) = 2801];
+  int32 end_line = 2 [(unresolved_option_40075780) = 2801];
+  UnifiedDiff unified_diff = 3;
+}
+
+message CharacterDiffChange {
+  string text = 1;
+  DiffChangeType type = 2;
+}
+
+message CharacterDiff {
+  repeated CharacterDiffChange changes = 1;
+}
+
+message ComboDiffLine {
+  string text = 1;
+  DiffChangeType type = 2;
+  CharacterDiff character_diff = 3;
+}
+
+message ComboDiff {
+  repeated ComboDiffLine lines = 1;
+}
+
+message DiffSet {
+  UnifiedDiff unified_diff = 1;
+  CharacterDiff character_diff = 2;
+  ComboDiff combo_diff = 3;
+}
+
+message DiffList {
+  repeated DiffBlock diffs = 2;
+}

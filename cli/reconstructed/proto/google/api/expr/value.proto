@@ -1,0 +1,50 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d6150b (va 0x103d6150b, __TEXT.__rodata), descriptor length 1051 B, sha256 3a486c8a72fe4f1c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api.expr;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/struct.proto";
+
+option java_package = "com.google.api.expr";
+option java_outer_classname = "ValueProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/expr;expr";
+
+message Value {
+  oneof kind {
+    protobuf.NullValue null_value = 1;
+    bool bool_value = 2;
+    int64 int64_value = 3;
+    uint64 uint64_value = 4;
+    double double_value = 5;
+    string string_value = 6;
+    bytes bytes_value = 7;
+    EnumValue enum_value = 9;
+    protobuf.Any object_value = 10;
+    MapValue map_value = 11;
+    ListValue list_value = 12;
+    string type_value = 15;
+  }
+}
+
+message EnumValue {
+  string type = 1;
+  int32 value = 2;
+}
+
+message ListValue {
+  repeated Value values = 1;
+}
+
+message MapValue {
+  repeated Entry entries = 1;
+
+  message Entry {
+    Value key = 1;
+    Value value = 2;
+  }
+}

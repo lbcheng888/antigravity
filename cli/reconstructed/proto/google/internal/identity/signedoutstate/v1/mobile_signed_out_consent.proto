@@ -1,0 +1,70 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dbbc36 (va 0x103dbbc36, __TEXT.__rodata), descriptor length 2221 B, sha256 89be0b7a085c0f3f
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.identity.signedoutstate.v1;
+
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.identity.signedoutstate.v1";
+option java_outer_classname = "MobileSignedOutStateProto";
+option java_multiple_files = true;
+option objc_class_prefix = "SOS";
+option (unresolved_option_71304954) = "latest";
+
+message DebugOverrides {
+  optional DebugRegion debug_region = 1;
+
+  enum DebugRegion {
+    DEBUG_REGION_UNSPECIFIED = 0;
+    DEBUG_REGION_DE = 1;
+    DEBUG_REGION_US = 2;
+    DEBUG_REGION_NG = 3;
+  }
+}
+
+message MobileSignedOutConsent {
+  ConsentChoice consent_choice = 1;
+  protobuf.Timestamp day_of_creation = 2;
+  Treatment essential_only_mode_treatment = 3;
+  Ui ui_to_display = 4;
+  optional DebugOverrides debug_overrides = 5;
+  EssentialUseConsentState essential_use_consent_state = 6;
+  EpdEligibility epd_eligibility = 7;
+
+  enum ConsentChoice {
+    CONSENT_CHOICE_UNSPECIFIED = 0;
+    CONSENT_CHOICE_ESSENTIAL_ONLY = 1;
+    CONSENT_CHOICE_ACCEPT_NON_ESSENTIAL = 2;
+  }
+
+  enum Treatment {
+    TREATMENT_UNSPECIFIED = 0;
+    TREATMENT_ESSENTIAL_ONLY = 1;
+    TREATMENT_NON_ESSENTIAL_PERMITTED = 2;
+  }
+
+  enum Ui {
+    UI_UNSPECIFIED = 0;
+    UI_CONSENT_BUMP = 1;
+    UI_CONSENT_REBUMP = 2;
+  }
+
+  enum EssentialUseConsentState {
+    ESSENTIAL_USE_CONSENT_STATE_UNSPECIFIED = 0;
+    ESSENTIAL_USE_CONSENT_STATE_REGION_OUT_OF_SCOPE = 1;
+    ESSENTIAL_USE_CONSENT_STATE_APPLICATION_OUT_OF_SCOPE = 4;
+    ESSENTIAL_USE_CONSENT_STATE_UNRESTRICTED = 2;
+    ESSENTIAL_USE_CONSENT_STATE_ESSENTIAL_ONLY = 3;
+  }
+
+  enum EpdEligibility {
+    EPD_ELIGIBILITY_UNSPECIFIED = 0;
+    EPD_ELIGIBILITY_ELIGIBLE = 1;
+    EPD_ELIGIBILITY_NOT_ELIGIBLE_REGION_OUT_OF_SCOPE = 2;
+    EPD_ELIGIBILITY_NOT_ELIGIBLE_APPLICATION_OUT_OF_SCOPE = 3;
+  }
+}

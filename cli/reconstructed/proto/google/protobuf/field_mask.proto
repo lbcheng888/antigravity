@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d200ba (va 0x103d200ba, __TEXT.__rodata), descriptor length 288 B, sha256 ee740dbc4f52f562
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.protobuf;
+
+option java_package = "com.google.protobuf.proto1api";
+option java_outer_classname = "FieldMaskProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/protobuf/types/known/fieldmaskpb";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GPB";
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option (unresolved_option_5) = 1;
+option (unresolved_option_19) = "com.google.protobuf";
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message FieldMask {
+  repeated string paths = 1;
+}

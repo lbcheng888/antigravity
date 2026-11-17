@@ -1,0 +1,60 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dd058c (va 0x103dd058c, __TEXT.__rodata), descriptor length 2524 B, sha256 e23c531ed3c470f6
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.config_pb;
+
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/jetbox_state_pb/jetbox_state.proto";
+
+option java_package = "com.exafunction.codeium.config";
+option java_multiple_files = true;
+
+enum ConversationGroupSortMode {
+  CONVERSATION_GROUP_SORT_MODE_UNSPECIFIED = 0;
+  CONVERSATION_GROUP_SORT_MODE_CUSTOM = 1;
+  CONVERSATION_GROUP_SORT_MODE_LAST_UPDATED = 2;
+  CONVERSATION_GROUP_SORT_MODE_DATE_CREATED = 3;
+  CONVERSATION_GROUP_SORT_MODE_LAST_USER_PROMPT = 4;
+}
+
+message UserConfig {
+  map<string, cortex_pb.SidecarUserConfig> sidecars = 1;
+  jetbox_state_pb.UserSettings user_settings = 2;
+  map<string, PluginUserConfig> plugins = 3;
+  optional ConversationGroupRegistry conversation_groups = 4;
+  map<string, SkillUserConfig> skills = 5;
+}
+
+message ConversationGroupRegistry {
+  map<string, ConversationGroupConfig> groups = 1;
+}
+
+message ConversationGroupConfig {
+  optional string name = 1;
+  optional int32 sort_order = 2;
+  optional ConversationGroupSortMode sort_mode = 3;
+  repeated string conversation_ids = 4;
+}
+
+message PluginBundleUserConfig {
+  map<string, bool> excluded_plugins = 1;
+}
+
+message PluginUserConfig {
+  optional bool enabled = 1;
+  optional cortex_pb.MarketplaceInstall installed_from = 2;
+  map<string, PluginMcpUserConfig> mcp = 3;
+  optional PluginBundleUserConfig bundle = 4;
+  optional string install_dir = 5;
+}
+
+message PluginMcpUserConfig {
+  map<string, string> variables = 1;
+}
+
+message SkillUserConfig {
+  optional cortex_pb.MarketplaceInstall installed_from = 1;
+}

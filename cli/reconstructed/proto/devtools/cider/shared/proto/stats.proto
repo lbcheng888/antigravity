@@ -1,0 +1,15 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d1d22e (va 0x103d1d22e, __TEXT.__rodata), descriptor length 268 B, sha256 baef89f6247a2520
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package editorservices.logging;
+
+message Activity {
+  string activity_type = 1;
+  int32 count = 2;
+  int64 walltime_usec = 3;
+  int64 total_duration_usec = 4;
+  int64 total_bytes = 5;
+}

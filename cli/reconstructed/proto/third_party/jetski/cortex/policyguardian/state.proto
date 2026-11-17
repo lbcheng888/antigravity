@@ -1,0 +1,53 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3da8b29 (va 0x103da8b29, __TEXT.__rodata), descriptor length 2029 B, sha256 e62f9fbf13d6d49f
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package jetski.cortex.policyguardian;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "google3/third_party/jetski/cortex/policyguardian/state_go_proto";
+
+message DeniedAction {
+  string tool_name = 1;
+  google.protobuf.Struct args = 2;
+  string reason = 3;
+  bool proctor_flagged = 4;
+  bool proctor_would_stop = 5;
+}
+
+message EnvState {
+  repeated string untrusted_downloads = 1;
+  map<string, string> symlinks = 2;
+  repeated string modified_files = 3;
+  map<string, string> env_changes = 4;
+  repeated string executable_files = 5;
+  repeated DeniedAction denied_actions = 6;
+  repeated string created_files = 7;
+}
+
+message PendingEnvUpdates {
+  repeated string untrusted_downloads = 1;
+  map<string, string> symlinks = 2;
+  repeated string modified_files = 3;
+  map<string, string> env_changes = 4;
+  repeated string executable_files = 5;
+  repeated string created_files = 6;
+}
+
+message UserTurn {
+  int32 index = 1;
+  string text = 2;
+  string prior_assistant_text = 3;
+}
+
+message GuardianState {
+  EnvState state = 1;
+  map<int32, PendingEnvUpdates> pending_state = 2;
+  repeated string user_prompts = 3;
+  repeated UserTurn user_turns = 4;
+  int32 user_turn_count = 5;
+  bytes provenance = 6;
+}

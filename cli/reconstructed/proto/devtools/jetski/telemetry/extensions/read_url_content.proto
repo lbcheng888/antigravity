@@ -1,0 +1,29 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4da3b (va 0x103d4da3b, __TEXT.__rodata), descriptor length 784 B, sha256 17edfd997b8cec53
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.proto;
+
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "ReadUrlContent";
+option features.field_presence = IMPLICIT;
+option (unresolved_option_71304954) = "latest";
+
+export message ReadUrlContentMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  string url = 1 [(unresolved_option_40075780) = 1900];
+  string title = 2 [(unresolved_option_40075780) = 1900];
+  string markdown_content = 3 [(unresolved_option_40075780) = 1900];
+  google.protobuf.Timestamp timestamp = 4 [(unresolved_option_40075780) = 2100];
+  bool is_cached = 5 [(unresolved_option_40075780) = 2800];
+  int32 latency_ms = 6 [(unresolved_option_40075780) = 2801];
+  int32 total_num_words = 7 [(unresolved_option_40075780) = 2801];
+  bool trawler_fetch = 8 [(unresolved_option_40075780) = 2800];
+  string trawler_cache_error = 9 [(unresolved_option_40075780) = 9901];
+  string trawler_live_error = 10 [(unresolved_option_40075780) = 9901];
+}

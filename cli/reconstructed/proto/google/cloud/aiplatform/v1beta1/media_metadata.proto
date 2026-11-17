@@ -1,0 +1,55 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dadb0a (va 0x103dadb0a, __TEXT.__rodata), descriptor length 2069 B, sha256 74869b51025aed13
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/field_behavior.proto";
+import "google/api/inclusion.proto";
+import "google/api/versioning.proto";
+import "google/protobuf/duration.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "MediaMetadataProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+option (unresolved_option_525000017) = "\n\003all";
+
+message DocumentMediaMetadata {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  optional int32 start_page = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\0221$ >= 1 ?: [FIELD_INVALID] start_page must be >= 1"];
+  optional int32 end_page = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022/$ >= 1 ?: [FIELD_INVALID] end_page must be >= 1\022Znot has($start_page) or $ >= $start_page ?: [FIELD_INVALID] end_page must be >= start_page"];
+  repeated ContentLayer content_layers = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum ContentLayer {
+    CONTENT_LAYER_UNSPECIFIED = 0;
+    PAGE_IMAGE = 1;
+    PAGE_TEXT = 2;
+  }
+}
+
+message SpreadsheetMetadata {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  optional string visible_cells = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional int32 sheet_index = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\0222$ >= 1 ?: [FIELD_INVALID] sheet_index must be >= 1"];
+  repeated ContentLayer content_layers = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  enum ContentLayer {
+    CONTENT_LAYER_UNSPECIFIED = 0;
+    DATA = 1;
+    FORMULAS = 2;
+    VISUAL = 3;
+  }
+}
+
+message AudioMetadata {
+  option (unresolved_option_143069646) = "\022\026v1,v1beta1,internal,ui";
+  protobuf.Duration start_offset = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022\\isValidDuration($) and toMicros($) >= 0 ?: [FIELD_INVALID] start_offset must be non-negative"];
+  protobuf.Duration end_offset = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\022UisValidDuration($) and toMicros($) > 0 ?: [FIELD_INVALID] end_offset must be positive\022\177not has($start_offset) or toMicros($) > toMicros($start_offset) ?: [FIELD_INVALID] end_offset must be greater than start_offset"];
+}

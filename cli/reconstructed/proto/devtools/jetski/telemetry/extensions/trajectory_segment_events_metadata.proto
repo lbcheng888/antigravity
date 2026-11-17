@@ -1,0 +1,31 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d647c2 (va 0x103d647c2, __TEXT.__rodata), descriptor length 1115 B, sha256 178f538cc5b8cbcd
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import option "third_party/java/protobuf/java_features.proto";
+import option "third_party/protobuf/cpp_features.proto";
+
+option java_outer_classname = "TrajectorySegmentEventsMetadataOuterClass";
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+
+export message TrajectorySegmentEventsMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  string trajectory_id = 1 [features.(unresolved_option_1000) = "\020\003", (unresolved_option_40075780) = 2300];
+  string execution_id = 2 [features.(unresolved_option_1000) = "\020\003", (unresolved_option_40075780) = 2300];
+  string event_type = 3 [features.(unresolved_option_1000) = "\020\003", (unresolved_option_40075780) = 2800];
+  repeated exa.codeium_common_pb.MetricsRecord records = 4;
+  exa.cortex_pb.CortexTrajectoryType trajectory_type = 5 [(unresolved_option_40075780) = 2800];
+  exa.cortex_pb.CortexTrajectorySource trajectory_source = 6 [(unresolved_option_40075780) = 2800];
+  exa.codeium_common_pb.Model model = 7 [(unresolved_option_40075780) = 2800];
+  string response_model = 8 [features.(unresolved_option_1000) = "\020\003", (unresolved_option_40075780) = 2800];
+  repeated int32 mendel_experiment_ids = 9 [(unresolved_option_40075780) = 2301];
+  string model_name = 10 [features.(unresolved_option_1000) = "\020\003", (unresolved_option_40075780) = 2800];
+}

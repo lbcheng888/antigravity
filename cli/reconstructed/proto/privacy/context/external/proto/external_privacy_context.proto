@@ -1,0 +1,18 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d2cb3d (va 0x103d2cb3d, __TEXT.__rodata), descriptor length 395 B, sha256 120628e08e74cf72
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package privacy.context.external;
+
+import "privacy/context/external/proto/external_prequest_context.proto";
+import "privacy/context/external/proto/external_sot_mappings.proto";
+
+option java_multiple_files = true;
+option objc_class_prefix = "PCEP";
+
+message ExternalPrivacyContext {
+  optional ExternalPRequestContext prequest = 2;
+  optional ExternalSotMappings sot = 3;
+}

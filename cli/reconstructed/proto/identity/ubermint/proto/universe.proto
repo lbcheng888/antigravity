@@ -1,0 +1,45 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e0b4d9 (va 0x103e0b4d9, __TEXT.__rodata), descriptor length 3326 B, sha256 43fa371b0a57e6d1
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package ubermint;
+
+import "google/api/inclusion.proto";
+import "identity/ubermint/proto/platform_options.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.identity.ubermint";
+option java_outer_classname = "UniverseProtoFile";
+option java_multiple_files = true;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_525000017) = "\n5package:cloud/commerce/businessenablement/internal/v1\n,package:google/api/serviceconsumermanagement\n$package:google/api/servicemanagement\n\037package:google/api/serviceusage\n\037package:google/apps/drive/genoa\n/package:google/cloud/commercebusinessenablement\n2package:google/cloud/commercebusinessenablement/v1\n package:google/cloud/marketplace\n&package:google/cloud/servicenetworking\n<package:google/corp/production/resources/frontend/graphql/v1\n'package:google/corp/security/eventstore\n\037package:google/corp/tag/nirvana\n-package:google/internal/api/servicemanagement\n(package:google/internal/cloud/apigateway\n'package:google/internal/cloud/clientapi\n+package:google/internal/devtools/sourcerepo\n6package:google/internal/privacy/dataaccessauditlogging\n\032package:google/longrunning\n<package:java/com/google/cloud/commerce/bizen/bizenapi/server\n:package:java/com/google/prod/resources/frontend/boq/server\n?package:java/com/google/developers/console/testing/fakebackends";
+option (unresolved_option_5) = 2;
+
+enum UberMintPlatform {
+  PLATFORM_UNSPECIFIED = 0;
+  SANDBOX = 1 [(unresolved_option_301347376) = "ubermint.sandbox.SandboxUberMintPayload", (unresolved_option_301347424) = "ubermint.sandbox.SandboxUberMintLoggablePayload", (unresolved_option_301347512) = 74713, (unresolved_option_336272391) = "ubermint.sandbox.SandboxUberMintUnsignedPayload", (unresolved_option_336637490) = "ubermint.sandbox.SandboxUberMintLoggableUnsignedPayload", (unresolved_option_374410703) = 1209600, (unresolved_option_374662232) = 900];
+  CLOUD = 2 [(unresolved_option_301347376) = "ubermint.cloud.CloudUberMintPayload", (unresolved_option_301347424) = "ubermint.cloud.loggable.CloudUberMintLoggablePayload", (unresolved_option_374410703) = 1209600];
+  DEVICE = 3 [(unresolved_option_301347376) = "ubermint.device.DeviceUberMintPayload", (unresolved_option_301347424) = "ubermint.device.loggable.DeviceUberMintLoggablePayload", (unresolved_option_301347512) = 74776];
+  SANDCASTLE = 4 [(unresolved_option_301347376) = "ubermint.sandcastle.SandcastleUberMintPayload", (unresolved_option_301347424) = "ubermint.sandcastle.SandcastleUberMintLoggablePayload", (unresolved_option_301347565) = 1, (unresolved_option_521677670) = "\001\005"];
+  LEGACY_GAIA = 5 [(unresolved_option_301347376) = "gaia_mint.GaiaMint", (unresolved_option_301347424) = "security.credentials.LoggableGaiaMintProto", (unresolved_option_336272391) = "ubermint.legacygaia.LegacyGaiaUberMintUnsignedPayload", (unresolved_option_336637490) = "ubermint.legacygaia.loggable.LegacyGaiaUberMintLoggableUnsignedPayload", (unresolved_option_374662232) = 7200];
+  PROD_ACCOUNT = 6 [(unresolved_option_301347376) = "ubermint.prodaccount.ProdMintPayload", (unresolved_option_301347424) = "ubermint.prodaccount.loggable.LoggableProdMintPayload"];
+  FITBIT = 7 [(unresolved_option_301347376) = "ubermint.fitbit.FitbitUberMintPayload", (unresolved_option_301347424) = "ubermint.fitbit.loggable.FitbitUberMintLoggablePayload", (unresolved_option_301347512) = 76141, (unresolved_option_516181937) = 3456000];
+  BORG_NOTARY_ATTESTATION = 8 [(unresolved_option_301347376) = "borg.gateway.NotaryAttestationSignedPayload", (unresolved_option_301347424) = "borg.gateway.NotaryAttestationLoggablePayload", (unresolved_option_336272391) = "borg.gateway.NotaryAttestationUnsignedPayload", (unresolved_option_374662232) = 2592000, (unresolved_option_516181937) = 2592000];
+  BORG_NOTARY_APPROVAL = 9 [(unresolved_option_301347376) = "borg.gateway.NotaryApprovalSignedPayload", (unresolved_option_301347424) = "borg.gateway.NotaryApprovalLoggablePayload", (unresolved_option_301347565) = 1, (unresolved_option_374662232) = 2592000, (unresolved_option_516181937) = 2592000, (unresolved_option_521677670) = "\010"];
+  BORG_NOTARY_ENDORSEMENT = 10 [(unresolved_option_301347376) = "borg.gateway.NotaryEndorsementSignedPayload", (unresolved_option_301347424) = "borg.gateway.NotaryEndorsementLoggablePayload", (unresolved_option_374662232) = 2592000, (unresolved_option_516181937) = 2592000];
+  HOME_FEDERATED_USER = 11 [(unresolved_option_301347376) = "ubermint.homefederateduser.HomeFederatedUserUberMintPayload", (unresolved_option_301347424) = "ubermint.homefederateduser.loggable.HomeFederatedUserLoggablePayload", (unresolved_option_301347512) = 79873];
+}
+
+message UberMintUniverse {
+  UberMintPlatform platform = 1;
+  UberMintDataRealm data_realm = 2;
+
+  enum UberMintDataRealm {
+    DATA_REALM_UNSPECIFIED = 0;
+    PROD = 1;
+    TEST = 2;
+    FAKE = 3;
+  }
+}

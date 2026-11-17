@@ -1,0 +1,28 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4e68d (va 0x103d4e68d, __TEXT.__rodata), descriptor length 797 B, sha256 c72f758977ab3186
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package gms.platform;
+
+import "google/api/inclusion.proto";
+import "wireless/android/telemetry/pitot/service/enum_extensions.proto";
+
+option java_package = "com.google.gms.platform";
+option java_multiple_files = true;
+option (unresolved_option_525000017) = "\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+enum DeviceType {
+  DEVICE_TYPE_UNKNOWN = 0 [(unresolved_option_512045532) = "Unknown"];
+  DEVICE_TYPE_PHONE = 1 [(unresolved_option_512045532) = "Phone"];
+  DEVICE_TYPE_PHONE_GO = 2 [(unresolved_option_512045532) = "Phone (Go)"];
+  DEVICE_TYPE_TV = 3 [(unresolved_option_512045532) = "TV"];
+  DEVICE_TYPE_WEARABLE = 4 [(unresolved_option_512045532) = "Wearable"];
+  DEVICE_TYPE_AUTOMOTIVE = 5 [(unresolved_option_512045532) = "Automotive"];
+  DEVICE_TYPE_BATTLESTAR = 6 [(unresolved_option_512045532) = "Battlestar"];
+  DEVICE_TYPE_CHROME_OS = 7 [(unresolved_option_512045532) = "Chrome OS"];
+  DEVICE_TYPE_XR = 8 [(unresolved_option_512045532) = "XR"];
+  DEVICE_TYPE_DESKTOP = 9 [(unresolved_option_512045532) = "Desktop"];
+  DEVICE_TYPE_XR_PERIPHERAL = 10 [(unresolved_option_512045532) = "XR Peripheral"];
+}

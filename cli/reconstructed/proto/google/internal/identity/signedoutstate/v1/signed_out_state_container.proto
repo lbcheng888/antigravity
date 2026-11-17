@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3fa93 (va 0x103d3fa93, __TEXT.__rodata), descriptor length 614 B, sha256 92977ced34f86f8b
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.identity.signedoutstate.v1;
+
+import "google/internal/identity/signedoutstate/v1/mobile_signed_out_consent.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.identity.signedoutstate.v1";
+option java_outer_classname = "SignedOutStateContainerProto";
+option java_multiple_files = true;
+option objc_class_prefix = "SOS";
+option (unresolved_option_71304954) = "latest";
+
+message SignedOutState {
+  string zwieback_token = 1 [(unresolved_option_40075780) = 1000, (unresolved_option_40093572) = "\010\351\007\010\265\020\010\251\024", (unresolved_option_40270992) = "8\001"];
+  MobileSignedOutConsent mobile_signed_out_consent = 2;
+  bytes rollout_bucket = 3;
+}

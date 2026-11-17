@@ -1,0 +1,391 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fa9215 (va 0x103fa9215, __TEXT.__rodata), descriptor length 11039 B, sha256 dd720464e55fd437
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package devtools.cider.agent.trajectory_steps;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/golang/protobuf/v2/src/google/protobuf/go_features.proto";
+
+option java_outer_classname = "CiderAgentSteps";
+option java_multiple_files = true;
+option features.(unresolved_option_1002) = "\020\002";
+
+message DummyStep {
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  Reply reply = 3;
+
+  message Args {
+    int32 a = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    int32 b = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Reply {
+    int32 a_plus_b = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    Image image_data = 2;
+
+    message Image {
+      string mime_type = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+      bytes data = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    }
+  }
+}
+
+message ToolStatus {
+  string widget_update = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string warning = 2 [(unresolved_option_40075780) = 9901, (unresolved_option_40270992) = "\020\001"];
+}
+
+message BuildCleanerStep {
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  Reply reply = 3;
+  ToolStatus tool_status = 4;
+
+  message Args {
+    option (unresolved_option_41149386) = 1901;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated string workspace_paths = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Issue {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    string blaze_package = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string action = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string action_label = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string status = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string status_detail = 5 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Reply {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated string updated_build_files = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated Issue issues = 2;
+  }
+}
+
+message BuildFailure {
+  option (unresolved_option_41149386) = 1900;
+  option (unresolved_option_41551199) = "\020\001";
+  string target = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string stderr = 2 [(unresolved_option_40075780) = 9901, (unresolved_option_40270992) = "\020\001"];
+}
+
+message BuildReply {
+  option (unresolved_option_41149386) = 1900;
+  option (unresolved_option_41551199) = "\020\001";
+  reserved 4;
+  string invocation_id = 5 [(unresolved_option_40075780) = 2300, (unresolved_option_40270992) = "\020\001"];
+  bool succeeded = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  string error_message = 2 [(unresolved_option_40075780) = 9901, (unresolved_option_40270992) = "\020\001"];
+  repeated BuildFailure failure_details = 3;
+}
+
+message BuildTargetsStep {
+  reserved 4;
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  BuildReply reply = 3;
+
+  message Args {
+    option (unresolved_option_41149386) = 1901;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated string targets = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated string arguments = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    uint64 wait_ms_before_async = 3 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  }
+}
+
+message TestReply {
+  option (unresolved_option_41149386) = 1900;
+  option (unresolved_option_41551199) = "\020\001";
+  reserved 6, 7;
+  string invocation_id = 8 [(unresolved_option_40075780) = 2300, (unresolved_option_40270992) = "\020\001"];
+  bool succeeded = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  string error_message = 2 [(unresolved_option_40075780) = 9901, (unresolved_option_40270992) = "\020\001"];
+  repeated BuildFailure build_failure_details = 3;
+  repeated TestFailure test_failure_details = 4;
+  string raw_lcov = 5 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+}
+
+message TestLog {
+  option (unresolved_option_41149386) = 1900;
+  option (unresolved_option_41551199) = "\020\001";
+  string target = 1;
+  string log = 2;
+}
+
+message TestFailure {
+  option (unresolved_option_41149386) = 1900;
+  option (unresolved_option_41551199) = "\020\001";
+  string target = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string test_case = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string failure_message = 3 [(unresolved_option_40075780) = 9901, (unresolved_option_40270992) = "\020\001"];
+}
+
+message TestTargetsStep {
+  reserved 4;
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  TestReply reply = 3;
+
+  message Args {
+    option (unresolved_option_41149386) = 1901;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated string targets = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated string arguments = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated string coverage_files = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    uint64 wait_ms_before_async = 4 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  }
+}
+
+message MomaStep {
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  Reply reply = 3;
+  ToolStatus tool_status = 4;
+
+  message Args {
+    option (unresolved_option_41149386) = 1901;
+    option (unresolved_option_41551199) = "\020\001";
+    string query = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Result {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    string uri = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string title = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string content = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Reply {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated Result search_results = 1;
+  }
+}
+
+message LookupResult {
+  string uri = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string content = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string binary_content = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string error = 4 [(unresolved_option_40075780) = 9901, (unresolved_option_40270992) = "\020\001"];
+  string title = 5 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string mime_type = 6 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+}
+
+message RetrieveContentStep {
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  Reply reply = 3;
+
+  message Args {
+    option (unresolved_option_41149386) = 1901;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated string uri = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Reply {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated LookupResult results = 1;
+  }
+}
+
+message CritiqueStep {
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  Reply reply = 3;
+  ToolStatus tool_status = 4;
+
+  message Args {
+    option (unresolved_option_41149386) = 1100;
+    option (unresolved_option_41551199) = "\020\001";
+    string changelist = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    bool include_code_changes = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    bool include_reviewer_comments = 3 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    repeated string paths = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Reply {
+    string changelist_content = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated Comment comments = 2;
+    repeated string modified_paths = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Comment {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    string depot_path = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string type = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    string author = 3 [(unresolved_option_40075780) = 1106, (unresolved_option_40270992) = "\020\001"];
+    string content = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    bool resolved = 5 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    repeated Approval approval = 6;
+    repeated CommentReply replies = 7;
+  }
+
+  message Approval {
+    string type = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    string display_name = 2 [(unresolved_option_40075780) = 1106, (unresolved_option_40270992) = "\020\001"];
+    bool approved = 3 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message CommentReply {
+    string author = 1 [(unresolved_option_40075780) = 1106, (unresolved_option_40270992) = "\020\001"];
+    string content = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string action = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+}
+
+message FindingsStep {
+  string tool_name = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  Args args = 2;
+  Reply reply = 3;
+  ToolStatus tool_status = 4;
+
+  message Args {
+    option (unresolved_option_41149386) = 1901;
+    option (unresolved_option_41551199) = "\020\001";
+    string changelist = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Finding {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    string category = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    string subcategory = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    string description = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    bool actionable = 4 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    Location location = 5;
+
+    message Location {
+      option (unresolved_option_41149386) = 1900;
+      option (unresolved_option_41551199) = "\020\001";
+      string depot_path = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+      int32 line_number_start = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+      int32 line_number_end = 3 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    }
+  }
+
+  message Reply {
+    option (unresolved_option_41149386) = 1900;
+    option (unresolved_option_41551199) = "\020\001";
+    repeated Finding findings = 1;
+  }
+}
+
+message ProposeAICommentsStep {
+  Args args = 2;
+
+  message AIComment {
+    string file_path = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    Side side = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    int32 line_number = 3 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    string comment = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+
+    enum Side {
+      SIDE_UNSPECIFIED = 0;
+      SIDE_LEFT = 1;
+      SIDE_RIGHT = 2;
+    }
+  }
+
+  message Args {
+    repeated AIComment comments = 1;
+  }
+}
+
+message StartCodeReviewStep {
+  Args args = 1;
+  ChangeData change_data = 2;
+  repeated ContextData context_data = 3;
+  bool continue_review = 4 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+
+  message FileVersion {
+    oneof version {
+      CritiqueSnapshot critique_snapshot = 1;
+      int64 piper_cl_number = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+      int64 piper_file_revision = 3 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    }
+  }
+
+  message CritiqueSnapshot {
+    int64 ocl_number = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    int64 snapshot_number = 2 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Args {
+    oneof review_target {
+      CritiqueSnapshot critique_snapshot = 1;
+    }
+    string user_prompt = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated ExternalContext external_contexts = 3;
+    repeated string file_paths = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+
+    message ExternalContext {
+      oneof context_data {
+        string g3doc_path = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+      }
+    }
+  }
+
+  message G3DocData {
+    string g3doc_path = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string content = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    FileVersion file_version = 3;
+  }
+
+  message FileContentData {
+    string file_path = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string content = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    FileVersion file_version = 3;
+  }
+
+  message ContextData {
+    oneof context_data {
+      G3DocData g3doc = 1;
+      FileContentData file = 2;
+    }
+  }
+
+  message ChangedFileData {
+    FileOperation operation = 1 [(unresolved_option_40075780) = 2800, (unresolved_option_40270992) = "\020\001"];
+    string old_file_path = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string new_file_path = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string file_diff = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+
+    enum FileOperation {
+      FILE_OPERATION_UNSPECIFIED = 0;
+      FILE_OPERATION_ADD = 1;
+      FILE_OPERATION_DELETE = 2;
+      FILE_OPERATION_MODIFY = 3;
+      FILE_OPERATION_RENAME = 4;
+      FILE_OPERATION_BRANCH = 5;
+    }
+  }
+
+  message BugData {
+    int64 bug_id = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string title = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string description = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message Tag {
+    string name = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    string value = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  }
+
+  message ChangeData {
+    string description = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    repeated ChangedFileData files = 3;
+    repeated BugData bugs = 2;
+    repeated Tag tags = 4;
+  }
+}

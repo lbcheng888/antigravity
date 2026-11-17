@@ -1,0 +1,445 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x40dbf56 (va 0x1040dbf56, __TEXT.__rodata), descriptor length 20821 B, sha256 920d4946b27284a5
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package gdm.security.agi_control.agent_monitoring.monitors;
+
+import "learning/genai/beyond/server/quota/proto/quota.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import option "net/proto2/contrib/validator/annotations.proto";
+
+option go_package = "google3/gdm/security/agi_control/agent_monitoring/monitors";
+option features.field_presence = IMPLICIT;
+
+enum ExecutionPhase {
+  EXECUTION_PHASE_UNSPECIFIED = 0;
+  EXECUTION_PHASE_PRE_TOOL = 1;
+  EXECUTION_PHASE_POST_TOOL = 2;
+  EXECUTION_PHASE_POST_INVOCATION = 3;
+}
+
+enum ModelTier {
+  MODEL_TIER_UNSPECIFIED = 0;
+  MODEL_TIER_FLASH_LITE = 1;
+  MODEL_TIER_FLASH = 2;
+  MODEL_TIER_PRO = 3;
+}
+
+enum TrajectoryCompaction {
+  TRAJECTORY_COMPACTION_UNSPECIFIED = 0;
+  TRAJECTORY_COMPACTION_HEAD_TAIL = 1;
+  TRAJECTORY_COMPACTION_INITIAL_USER_AND_LATEST_STEP = 2;
+  TRAJECTORY_COMPACTION_USER_ANCHORED_HEAD_TAIL = 3;
+  TRAJECTORY_COMPACTION_BACKWARD_WALK = 4;
+  TRAJECTORY_COMPACTION_ROLLING_CHECKPOINT = 5;
+  TRAJECTORY_COMPACTION_LATEST_STEP_ONLY = 6;
+}
+
+message RollingCheckpointConfig {
+  float retain_fraction = 1;
+  float checkpoint_fraction = 2;
+}
+
+message FlaggedStepInclusionConfig {
+  float min_severity = 1;
+  int32 max_included_steps = 2;
+  repeated string source_monitor_names = 3;
+  int32 max_step_bytes = 4;
+}
+
+message MonitorConfig {
+  reserved 14;
+  string name = 1 [(unresolved_option_127878962) = "\022&not empty($) ?: name must not be empty"];
+  bool enabled = 2;
+  repeated int32 enable_if = 31;
+  Mode mode = 3;
+  int32 timeout_seconds = 4 [(unresolved_option_127878962) = "\022)$ > 0 ?: timeout_seconds must be positive"];
+  string version = 5;
+  repeated string owners = 8 [(unresolved_option_127878962) = "\0222len($) > 0 ?: at least one owner must be specified\032Fmatches($, `^[a-z0-9-_]+$`) ?: owner must be a valid LDAP or MDB group"];
+  string description = 9 [(unresolved_option_127878962) = "\022-not empty($) ?: description must not be empty"];
+  repeated ExecutionPhase execution_phases = 10;
+  int32 max_output_chars = 16;
+  oneof type_config {
+    LlmMonitorConfig llm_config = 6;
+    ToolSafetyConfig tool_safety_config = 11;
+    EmbeddingMonitorConfig embedding_config = 12;
+    AapMonitorConfig aap_config = 17;
+    AgcisMonitorConfig agcis_config = 19;
+    AgcisReasoningMonitorConfig agcis_reasoning_config = 20;
+    PolicyGuardianMonitorConfig policy_guardian_config = 24;
+    AcsvMonitorConfig acsv_config = 25;
+    LogprobMonitorConfig logprob_config = 27;
+    IntrospectionVerdictsMonitorConfig introspection_verdicts_config = 28;
+    EmbeddingVerdictsMonitorConfig embedding_verdicts_config = 29;
+    AgentTrustEngineMonitorConfig agent_trust_engine_config = 32;
+    TrifectaEmbedMonitorConfig trifecta_embed_config = 33;
+    AresNgMonitorConfig aresng_config = 34;
+    GuardianAgentMonitorConfig guardian_agent_config = 36;
+    TruncatedToolCallMonitorConfig truncated_tool_call_config = 37;
+  }
+  DependencyConfig dependency_config = 7;
+  string injected_message = 13;
+  ExperimentAssignment experiment = 15;
+  bool experimental_only = 18;
+  bool pss_experimental_only = 21;
+  repeated string user_groups = 22;
+  repeated string tags = 23;
+  repeated string skip_tags = 30;
+  repeated string excluded_user_groups = 26;
+  FailClosedBudget fail_closed_budget = 35;
+
+  enum Mode {
+    MODE_UNSPECIFIED = 0;
+    BLOCK = 1;
+    LOG = 2;
+    SOFT_BLOCK_INJECT = 3;
+    ASK = 4;
+    FORCE_ASK = 5;
+  }
+}
+
+export message MonitorsConfig {
+  repeated MonitorConfig monitors = 1;
+  repeated ExperimentConfig experiments = 2;
+  repeated UserGroup user_groups = 3;
+  repeated string active_tags = 4;
+}
+
+message ModelBackendConfig {
+  string backend_id = 1;
+  string model_name_override = 2;
+  string target = 3;
+}
+
+message LlmMonitorConfig {
+  reserved 3, 16, 17, 18;
+  string prompt = 1 [(unresolved_option_127878962) = "\022(not empty($) ?: prompt must not be empty"];
+  ModelBackendConfig backend = 9;
+  int32 max_trajectory_tokens = 4;
+  int32 num_monitor_samples = 5;
+  StepsToConsider steps_to_consider = 6;
+  map<string, string> template_vars = 7;
+  beyond.QuotaBucketKey quota_bucket_key = 10;
+  float severity_threshold = 11;
+  ModelTier model_tier = 12;
+  ThinkingLevel thinking_level = 13;
+  string api_key = 14;
+  int32 max_prompt_tokens = 15;
+  TrajectoryCompaction trajectory_compaction = 19;
+  RollingCheckpointConfig rolling_checkpoint = 20;
+  string quota_sub_buckets = 21;
+  FlaggedStepInclusionConfig flagged_step_inclusion = 22;
+  bool truncation_risk_fragments = 25;
+  string traffic_stream_selfid = 23;
+  float temperature = 24 [features.field_presence = EXPLICIT, (unresolved_option_127878962) = "\022:$ >= 0.0 and $ <= 2.0 ?: temperature must be in [0.0, 2.0]"];
+
+  enum StepsToConsider {
+    ONLY_PENDING_TOOL_CALL = 0;
+    ALL_STEPS = 1;
+  }
+
+  enum ThinkingLevel {
+    THINKING_LEVEL_UNSPECIFIED = 0;
+    LOW = 1;
+    MEDIUM = 2;
+    HIGH = 3;
+    MINIMAL = 4;
+    EXTRA_HIGH = 5;
+  }
+}
+
+message AcsvMonitorConfig {
+  string prompt = 1 [(unresolved_option_127878962) = "\022(not empty($) ?: prompt must not be empty"];
+  ModelBackendConfig backend = 2;
+  int32 max_trajectory_tokens = 3;
+  int32 max_prompt_tokens = 4;
+  LlmMonitorConfig.StepsToConsider steps_to_consider = 5;
+  beyond.QuotaBucketKey quota_bucket_key = 6;
+  float severity_threshold = 7;
+  LlmMonitorConfig.ThinkingLevel thinking_level = 8;
+  ModelTier model_tier = 12;
+  string api_key = 9;
+  repeated AcsvTaxonomyScope acsv_taxonomy_scope = 10;
+  AcsvScoringConfig acsv_scoring_config = 11;
+  TrajectoryCompaction trajectory_compaction = 13;
+  string quota_sub_buckets = 14;
+  float temperature = 15 [features.field_presence = EXPLICIT, (unresolved_option_127878962) = "\022:$ >= 0.0 and $ <= 2.0 ?: temperature must be in [0.0, 2.0]"];
+}
+
+message AcsvTaxonomyScope {
+  string path = 1;
+  double base_severity = 2 [features.field_presence = EXPLICIT];
+  bool critical = 3;
+}
+
+message AcsvScoringConfig {
+  reserved 9, 10, 11;
+  double blast_local = 1 [features.field_presence = EXPLICIT];
+  double blast_team = 2 [features.field_presence = EXPLICIT];
+  double blast_enterprise = 3 [features.field_presence = EXPLICIT];
+  double blast_external = 4 [features.field_presence = EXPLICIT];
+  double rev_reversible = 5 [features.field_presence = EXPLICIT];
+  double rev_irreversible = 6 [features.field_presence = EXPLICIT];
+  double exec_attempted = 7 [features.field_presence = EXPLICIT];
+  double exec_successful = 8 [features.field_presence = EXPLICIT];
+}
+
+message LogprobOption {
+  string token = 1;
+  string description = 2;
+  double weight = 3;
+}
+
+message LogprobMonitorConfig {
+  string prompt = 1 [(unresolved_option_127878962) = "\022(not empty($) ?: prompt must not be empty"];
+  ModelBackendConfig backend = 2;
+  ModelTier model_tier = 3;
+  int32 max_trajectory_tokens = 4;
+  int32 max_prompt_tokens = 5;
+  LlmMonitorConfig.StepsToConsider steps_to_consider = 6;
+  beyond.QuotaBucketKey quota_bucket_key = 7;
+  repeated LogprobOption options = 8;
+  bool permutation_debias = 9;
+  double platt_scale_a = 10 [features.field_presence = EXPLICIT];
+  double platt_intercept_b = 11 [features.field_presence = EXPLICIT];
+  float severity_threshold = 12;
+  TrajectoryCompaction trajectory_compaction = 13;
+  string api_key = 14;
+  int32 max_output_tokens = 15;
+  string quota_sub_buckets = 16;
+}
+
+message ToolSafetyConfig {
+  reserved 2, 5;
+  DefaultPolicy default_policy = 7;
+  repeated string allowed_tools = 1;
+  repeated string allowed_commands = 3;
+  map<string, SubcommandAllowlist> allowed_subcommands = 4;
+  map<string, ActionAllowlist> allowed_tool_actions = 6;
+  repeated string allowed_tool_prefixes = 10 [(unresolved_option_127878962) = "\032@not empty($) ?: allowed_tool_prefixes elements must not be empty"];
+  repeated string denied_tools = 8;
+  repeated string denied_command_patterns = 9;
+  repeated string denied_tool_prefixes = 12 [(unresolved_option_127878962) = "\032?not empty($) ?: denied_tool_prefixes elements must not be empty"];
+  repeated string denied_gcloud_account_domains = 13 [(unresolved_option_127878962) = "\032Hnot empty($) ?: denied_gcloud_account_domains elements must not be empty"];
+
+  enum DefaultPolicy {
+    DENY_BY_DEFAULT = 0;
+    ALLOW_BY_DEFAULT = 1;
+  }
+}
+
+message SubcommandAllowlist {
+  repeated string subcommands = 1;
+  FlagAllowlist flags = 2;
+  map<string, SubcommandRule> subcommand_rules = 3;
+}
+
+message FlagAllowlist {
+  repeated string exact = 1;
+  repeated string prefixes = 2 [(unresolved_option_127878962) = "\032Anot empty($) ?: FlagAllowlist.prefixes elements must not be empty"];
+}
+
+message SubcommandRule {
+  FlagAllowlist flags = 1;
+  repeated string allowed_first_args = 2;
+}
+
+message ActionAllowlist {
+  repeated string actions = 1;
+}
+
+message EmbeddingMonitorConfig {
+  ModelBackendConfig embedding_backend = 1;
+  ModelBackendConfig prompt_tower_backend = 2;
+  repeated EmbeddingClassConfig classes = 3;
+  beyond.QuotaBucketKey quota_bucket_key = 4;
+  string api_key = 5;
+  int32 max_trajectory_tokens = 6;
+  TrajectoryCompaction trajectory_compaction = 7;
+  LlmMonitorConfig.StepsToConsider steps_to_consider = 8 [features.field_presence = EXPLICIT];
+  string quota_sub_buckets = 9;
+}
+
+message EmbeddingClassConfig {
+  reserved 4;
+  string class_name = 1;
+  string query = 2;
+  float threshold = 3;
+}
+
+message AapMonitorConfig {
+}
+
+message AgcisMonitorConfig {
+  string agcis_policy = 1;
+  string agcis_rules_textproto = 2;
+}
+
+message AgcisReasoningMonitorConfig {
+  string agcis_policy = 1;
+}
+
+message PolicyGuardianMonitorConfig {
+  ModelTier model_tier = 1;
+  int32 max_tool_rounds = 2;
+  bool fail_open_on_error = 3;
+  repeated string vetted_tools = 4;
+  ModelBackendConfig backend = 7;
+  string deployment = 8;
+  beyond.QuotaBucketKey quota_bucket_key = 9;
+  string quota_sub_buckets = 10;
+  bool enable_irreversible_vetting = 11;
+  bool enable_reversibility_adjudication = 12;
+  bool fail_closed_on_timeout = 13;
+}
+
+message GuardianAgentMonitorConfig {
+  string sup_address = 1 [(unresolved_option_40075780) = 1300];
+  string signal_request_name = 2;
+  repeated string enabled_policies = 3;
+  repeated string disabled_policies = 4;
+  bool trigger_on_confirm = 5 [features.field_presence = EXPLICIT];
+  float confirm_severity = 6 [features.field_presence = EXPLICIT];
+}
+
+message IntrospectionVerdictsMonitorConfig {
+  repeated string classifier_names = 1 [(unresolved_option_127878962) = "\022<len($) > 0 ?: at least one classifier name must be specified\0322not empty($) ?: classifier names must not be empty"];
+}
+
+message TruncatedToolCallMonitorConfig {
+  repeated string tool_names = 1 [(unresolved_option_127878962) = "\0325not empty($) ?: tool_names elements must not be empty"];
+}
+
+message EmbeddingVerdictsMonitorConfig {
+  repeated string classifier_names = 1 [(unresolved_option_127878962) = "\022<len($) > 0 ?: at least one classifier name must be specified\0322not empty($) ?: classifier names must not be empty"];
+}
+
+message AgentTrustEngineMonitorConfig {
+  string backend_target = 1 [(unresolved_option_127878962) = "\0220not empty($) ?: backend_target must not be empty"];
+  float trust_score_threshold = 2 [(unresolved_option_127878962) = "\022C$ > 0.0 and $ <= 1.0 ?: trust_score_threshold must be in (0.0, 1.0]"];
+  int32 max_sessions = 3 [(unresolved_option_127878962) = "\022&$ > 0 ?: max_sessions must be positive"];
+}
+
+message TrifectaEmbedPolicy {
+  string id = 1 [(unresolved_option_127878962) = "\022+not empty($) ?: policy id must not be empty"];
+  string text = 2;
+  float threshold = 3 [features.field_presence = EXPLICIT, (unresolved_option_127878962) = "\0228$ >= 0.0 and $ <= 1.0 ?: threshold must be in [0.0, 1.0]"];
+}
+
+message TrifectaEmbedMonitorConfig {
+  string scorer_address = 1;
+  int32 rpc_deadline_ms = 2 [(unresolved_option_127878962) = "\022.$ >= 0 ?: rpc_deadline_ms must not be negative"];
+  repeated TrifectaEmbedPolicy policies = 3 [(unresolved_option_127878962) = "\0223len($) > 0 ?: at least one policy must be specified"];
+  HistoryMode history_mode = 4;
+  bool fail_closed = 5;
+  int32 max_history_chars = 6 [(unresolved_option_127878962) = "\0220$ >= 0 ?: max_history_chars must not be negative"];
+  int32 max_history_steps = 7 [(unresolved_option_127878962) = "\0220$ >= 0 ?: max_history_steps must not be negative"];
+  int32 session_ttl_seconds = 8 [(unresolved_option_127878962) = "\0222$ >= 0 ?: session_ttl_seconds must not be negative"];
+  string expected_model_version = 9;
+
+  enum HistoryMode {
+    HISTORY_MODE_UNSPECIFIED = 0;
+    DELTA_STEPS = 1;
+    FULL_TEXT = 2;
+  }
+}
+
+message AresNgMonitorConfig {
+  string product_id = 1 [(unresolved_option_127878962) = "\022,not empty($) ?: product_id must not be empty"];
+  string backend_target = 2 [(unresolved_option_127878962) = "\0220not empty($) ?: backend_target must not be empty"];
+  string service_name = 3;
+}
+
+message DependencyConfig {
+  string parent_monitor_name = 1;
+  float confidence_threshold = 2;
+  float severity_threshold = 3;
+  bool skip_on_parent_failure = 4;
+  repeated Parent parents = 5;
+  Operator operator = 6;
+  repeated DependencyConfig conditions = 7;
+
+  enum Operator {
+    OPERATOR_UNSPECIFIED = 0;
+    OR = 1;
+    AND = 2;
+  }
+
+  message Parent {
+    string parent_monitor_name = 1 [(unresolved_option_127878962) = "\0225not empty($) ?: parent_monitor_name must not be empty"];
+    float confidence_threshold = 2;
+    float severity_threshold = 3;
+  }
+}
+
+message FailClosedBudget {
+  string scope_root_monitor_name = 1 [(unresolved_option_127878962) = "\0229not empty($) ?: scope_root_monitor_name must not be empty"];
+  int32 max_unverified_steps = 2 [(unresolved_option_127878962) = "\022.$ > 0 ?: max_unverified_steps must be positive"];
+  MonitorConfig.Mode on_exhausted = 3;
+}
+
+message ExperimentConfig {
+  string name = 1;
+  float traffic_fraction = 2;
+  repeated Group groups = 3;
+
+  message Group {
+    string name = 1;
+    float weight = 2;
+  }
+}
+
+message ExperimentAssignment {
+  string experiment_name = 1;
+  string experiment_group = 2;
+}
+
+message UserGroup {
+  string name = 1 [(unresolved_option_127878962) = "\022,not empty($) ?: group name must not be empty"];
+  repeated string users = 2;
+  repeated string mdb_groups = 3;
+  string description = 4;
+}
+
+message SurfaceMonitorBinding {
+  string monitor_name = 1;
+  bool enabled = 2 [features.field_presence = EXPLICIT];
+  repeated string enable_if = 21;
+  MonitorConfig.Mode mode = 3 [features.field_presence = EXPLICIT];
+  int32 timeout_seconds = 4 [features.field_presence = EXPLICIT];
+  bool experimental_only = 5 [features.field_presence = EXPLICIT];
+  bool pss_experimental_only = 6 [features.field_presence = EXPLICIT];
+  ExperimentAssignment experiment = 7;
+  repeated string tags = 8;
+  repeated string user_groups = 9;
+  repeated string excluded_user_groups = 17;
+  repeated string skip_tags = 18;
+  DependencyConfig dependency_config = 10;
+  string injected_message = 11 [features.field_presence = EXPLICIT];
+  float severity_threshold = 12 [features.field_presence = EXPLICIT];
+  ModelBackendConfig backend_override = 13;
+  string monitor_name_override = 14 [features.field_presence = EXPLICIT];
+  string description = 15 [features.field_presence = EXPLICIT];
+  LlmMonitorConfig.ThinkingLevel thinking_level = 16 [features.field_presence = EXPLICIT];
+  string quota_sub_buckets = 19 [features.field_presence = EXPLICIT];
+  beyond.QuotaBucketKey quota_bucket_key = 20;
+  string policy_guardian_deployment = 22 [features.field_presence = EXPLICIT];
+  repeated string policy_guardian_vetted_tools = 25;
+  string aresng_product_id = 26 [features.field_presence = EXPLICIT];
+  TrajectoryCompaction trajectory_compaction = 23 [features.field_presence = EXPLICIT];
+  FlaggedStepInclusionConfig flagged_step_inclusion = 24;
+  FailClosedBudget fail_closed_budget = 27;
+  string traffic_stream_selfid = 28 [features.field_presence = EXPLICIT];
+  float temperature = 29 [features.field_presence = EXPLICIT, (unresolved_option_127878962) = "\022:$ >= 0.0 and $ <= 2.0 ?: temperature must be in [0.0, 2.0]"];
+  bool truncation_risk_fragments = 30 [features.field_presence = EXPLICIT];
+}
+
+message SurfaceProfile {
+  string surface_name = 1;
+  repeated SurfaceMonitorBinding monitors = 2;
+  repeated ExperimentConfig experiments = 3;
+  repeated UserGroup user_groups = 4;
+  repeated string active_tags = 5;
+}

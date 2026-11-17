@@ -1,0 +1,20 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4092d (va 0x103d4092d, __TEXT.__rodata), descriptor length 631 B, sha256 2768c41a1439a931
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "devtools/jetski/telemetry/extensions/common.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_outer_classname = "ObservabilityDataOuterClass";
+option (unresolved_option_71304954) = "latest";
+
+export message ObservabilityData {
+  string type = 1 [(unresolved_option_40075780) = 2800];
+  repeated ExtraMetadata non_sensitive_data = 2;
+  repeated ExtraMetadata sensitive_data = 3 [deprecated = true];
+  repeated SensitiveExtraMetadata sensitive_user_data = 4;
+}

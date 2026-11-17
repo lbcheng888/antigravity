@@ -1,0 +1,34 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d520d1 (va 0x103d520d1, __TEXT.__rodata), descriptor length 860 B, sha256 bfe720481c731080
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc.context;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.rpc.context";
+option java_outer_classname = "CheckContextProto";
+option java_multiple_files = true;
+option objc_class_prefix = "RPC";
+
+message CheckContext {
+  string service_config_id = 1;
+  string service_rollout_id = 2;
+  repeated string restricted_containers = 3;
+  repeated string unrestricted_containers = 4;
+  ConsumerType consumer_type = 5;
+  bool has_only_fail_open_errors = 6;
+  string principal_email = 7;
+  bool has_quota_unavailability_error = 8;
+  string iam_principal = 9 [(unresolved_option_40075780) = 1100];
+  int64 auth_api_key_project_number = 10 [(unresolved_option_40075780) = 1805];
+
+  enum ConsumerType {
+    UNKNOWN = 0;
+    CLIENT_PROJECT = 1;
+    RESOURCE_CONTAINER = 2;
+    USER_PROJECT = 3;
+  }
+}

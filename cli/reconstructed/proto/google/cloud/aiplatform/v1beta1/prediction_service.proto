@@ -1,0 +1,876 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x41e0623 (va 0x1041e0623, __TEXT.__rodata), descriptor length 41830 B, sha256 38a1fa34e1350ec7
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.aiplatform.v1beta1;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/httpbody.proto";
+import "google/api/inclusion.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/aiplatform/common/proto_field_options.proto";
+import "google/cloud/aiplatform/v1beta1/cached_content.proto";
+import "google/cloud/aiplatform/v1beta1/content.proto";
+import "google/cloud/aiplatform/v1beta1/explanation.proto";
+import "google/cloud/aiplatform/v1beta1/operation.proto";
+import "google/cloud/aiplatform/v1beta1/service_tier.proto";
+import "google/cloud/aiplatform/v1beta1/tool.proto";
+import "google/cloud/aiplatform/v1beta1/types.proto";
+import "google/cloud/aiplatform/v1beta1/usage_metadata.proto";
+import "google/cloud/automl/common/proto_field_options.proto";
+import "google/cloud/speech/v1p1beta1/cloud_speech.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "net/proto2/contrib/validator/annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.aiplatform.v1beta1";
+option java_outer_classname = "PredictionServiceProto";
+option java_multiple_files = true;
+option csharp_namespace = "Google.Cloud.AIPlatform.V1Beta1";
+option php_namespace = "Google\\Cloud\\AIPlatform\\V1beta1";
+option ruby_package = "Google::Cloud::AIPlatform::V1beta1";
+option (unresolved_option_525000017) = "\n\003all";
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+option (unresolved_option_52) = 1;
+
+message PredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  repeated protobuf.Value instances = 2 [(unresolved_option_1052) = "\002"];
+  protobuf.Value parameters = 3;
+  map<string, string> labels = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message PredictResponse {
+  repeated protobuf.Value predictions = 1;
+  string deployed_model_id = 2 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string model = 3 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Model"];
+  string model_version_id = 5 [(unresolved_option_1052) = "\003", (unresolved_option_143069646) = "\022\026internal,ui,v1,v1beta1"];
+  string model_display_name = 4 [(unresolved_option_1052) = "\003"];
+  protobuf.Value metadata = 6 [(unresolved_option_1052) = "\003"];
+}
+
+message RawPredictRequest {
+  reserved 3;
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2;
+}
+
+message StreamRawPredictRequest {
+  reserved 3;
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2;
+}
+
+message DirectPredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  repeated Tensor inputs = 2 [(unresolved_option_40075780) = 1900];
+  Tensor parameters = 3;
+}
+
+message DirectPredictResponse {
+  repeated Tensor outputs = 1 [(unresolved_option_40075780) = 1900];
+  Tensor parameters = 2;
+}
+
+message DirectRawPredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  string method_name = 2 [(unresolved_option_40075780) = 1500];
+  bytes input = 3 [ctype = CORD, (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp send_time = 4 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message DirectRawPredictResponse {
+  bytes output = 1 [ctype = CORD, (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp send_time = 2 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamDirectPredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  repeated Tensor inputs = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  Tensor parameters = 3 [(unresolved_option_1052) = "\001"];
+  protobuf.Timestamp send_time = 4 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamDirectPredictResponse {
+  repeated Tensor outputs = 1 [(unresolved_option_40075780) = 1900];
+  Tensor parameters = 2;
+  protobuf.Timestamp send_time = 3 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamDirectRawPredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  string method_name = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1500];
+  bytes input = 3 [ctype = CORD, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp send_time = 4 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamDirectRawPredictResponse {
+  bytes output = 1 [ctype = CORD, (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp send_time = 2 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamingPredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  repeated Tensor inputs = 2 [(unresolved_option_40075780) = 1900];
+  Tensor parameters = 3;
+  protobuf.Timestamp send_time = 4 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamingPredictResponse {
+  repeated Tensor outputs = 1 [(unresolved_option_40075780) = 1900];
+  Tensor parameters = 2;
+  protobuf.Timestamp send_time = 3 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamingRawPredictRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  string method_name = 2 [(unresolved_option_40075780) = 1500];
+  bytes input = 3 [ctype = CORD, (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp send_time = 4 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message StreamingRawPredictResponse {
+  bytes output = 1 [ctype = CORD, (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp send_time = 2 [(unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message PredictLongRunningRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  repeated protobuf.Value instances = 2 [(unresolved_option_1052) = "\002"];
+  protobuf.Value parameters = 3 [(unresolved_option_1052) = "\001"];
+  map<string, string> labels = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message RawPredictLongRunningRequest {
+  option (unresolved_option_72295727) = "\022\rUNIMPLEMENTED";
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message FetchPredictOperationRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string operation_name = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message InvokeRequest {
+  option (unresolved_option_331491176) = 1;
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string deployed_model_id = 3 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  api.HttpBody http_body = 2;
+}
+
+message StreamPublisherInvokeRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message StreamInvokeRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2 [(unresolved_option_1052) = "\002"];
+  string deployed_model_id = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message StreamInvokeResponse {
+  api.HttpBody http_body = 1;
+}
+
+message InvokeApiRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2 [(unresolved_option_1052) = "\001"];
+}
+
+message ExplainRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  repeated protobuf.Value instances = 2 [(unresolved_option_1052) = "\002"];
+  protobuf.Value parameters = 4;
+  ExplanationSpecOverride explanation_spec_override = 5 [(unresolved_option_143069646) = "\022\026v1beta1,v1,ui,internal"];
+  map<string, ExplanationSpecOverride> concurrent_explanation_spec_override = 6 [(unresolved_option_1052) = "\001", (unresolved_option_143069646) = "\022\023v1beta1,ui,internal"];
+  string deployed_model_id = 3 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+}
+
+message ExplainResponse {
+  repeated Explanation explanations = 1;
+  map<string, ConcurrentExplanation> concurrent_explanations = 4 [(unresolved_option_143069646) = "\022\023v1beta1,ui,internal"];
+  string deployed_model_id = 2 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  repeated protobuf.Value predictions = 3;
+
+  message ConcurrentExplanation {
+    repeated Explanation explanations = 1;
+  }
+}
+
+message CountTokensRequest {
+  string endpoint = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  string model = 3 [(unresolved_option_1052) = "\n\001", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  repeated protobuf.Value instances = 2 [(unresolved_option_1052) = "\001"];
+  repeated Content contents = 4 [(unresolved_option_1052) = "\001"];
+  optional Content system_instruction = 5 [(unresolved_option_1052) = "\001"];
+  repeated Tool tools = 6 [(unresolved_option_1052) = "\001"];
+  optional GenerationConfig generation_config = 7 [(unresolved_option_1052) = "\001"];
+}
+
+message CountTokensResponse {
+  int32 total_tokens = 1;
+  int32 total_billable_characters = 2;
+  repeated ModalityTokenCount prompt_tokens_details = 3 [(unresolved_option_1052) = "\003"];
+}
+
+message TestGrpcPredictRequest {
+  option (unresolved_option_72295727) = "\022\026VERTEX_PREDICTION_GRPC";
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_188057776) = 1];
+  protobuf.Any instances = 2;
+}
+
+message TestGrpcPredictResponse {
+  option (unresolved_option_72295727) = "\022\026VERTEX_PREDICTION_GRPC";
+  protobuf.Any predictions = 1;
+}
+
+message SpeechStreamingRecognizeRequest {
+  option (unresolved_option_72295727) = "\022\026VERTEX_PREDICTION_GRPC";
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_188057776) = 1];
+  speech.v1p1beta1.StreamingRecognizeRequest speech_req = 2;
+}
+
+message SpeechStreamingRecognizeResponse {
+  option (unresolved_option_72295727) = "\022\026VERTEX_PREDICTION_GRPC";
+  string endpoint = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  speech.v1p1beta1.StreamingRecognizeResponse speech_resp = 2;
+}
+
+message GenerateContentRequest {
+  option (unresolved_option_331491176) = 1;
+  string endpoint = 1 [deprecated = true, (unresolved_option_1052) = "\n\001", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL", (unresolved_option_158361448) = "\"\005AUDIT"];
+  string model = 5 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  repeated Content contents = 2 [(unresolved_option_1052) = "\002"];
+  optional Content system_instruction = 8 [(unresolved_option_1052) = "\001"];
+  string cached_content = 9 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n'aiplatform.googleapis.com/CachedContent", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_143069646) = "\022\023internal,v1beta1,v1", (unresolved_option_158361448) = "\"\005AUDIT"];
+  repeated Tool tools = 6 [(unresolved_option_1052) = "\001"];
+  ToolConfig tool_config = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  map<string, string> labels = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated SafetySetting safety_settings = 3 [(unresolved_option_1052) = "\001"];
+  ModelArmorConfig model_armor_config = 11 [(unresolved_option_1052) = "\001"];
+  GenerationConfig generation_config = 4 [(unresolved_option_1052) = "\001"];
+  string service_account = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string session_id = 13 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300, (unresolved_option_72295727) = "\022\016LLM_SESSION_ID"];
+  string uniserve_endpoint_override = 14 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100, (unresolved_option_72295727) = "\022'VERTEX_UNISERVE_ENDPOINT_OVERRIDE_USERS"];
+  string global_endpoint_target_location_hint_testing_only = 15 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  optional ServiceTier service_tier = 16 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  optional ContextCacheConfig implicit_cache_config = 17 [(unresolved_option_1052) = "\001", (unresolved_option_72295727) = "\022\033DURABLE_CACHE_TRUSTED_USERS"];
+  protobuf.Timestamp admit_time = 19 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  bool fail_fast = 20 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\035GOOGLE_INTERNAL,FAIL_FAST_EAP"];
+  bytes continuation_token = 21 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  OutputConfig output_config = 22 [(unresolved_option_1052) = "\001"];
+
+  message OutputConfig {
+    string output_uri_prefix = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  }
+}
+
+message GenerateContentResponse {
+  repeated Candidate candidates = 2 [(unresolved_option_1052) = "\003"];
+  string model_version = 11 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp create_time = 12 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string response_id = 13 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  PromptFeedback prompt_feedback = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  UsageMetadata usage_metadata = 4;
+  protobuf.Timestamp send_time = 10 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  InternalDebugInfo internal_debug_info = 14 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\026MODEL_OPTIMIZER_TESTER", (unresolved_option_143069646) = "\022\023internal,v1beta1,ui"];
+  ModelLifecycleStatus model_lifecycle_status = 15 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017MODEL_LIFECYCLE"];
+  LogprobsResult logprobs_result = 16 [(unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\035PROMPT_LOGPROBS_TRUSTED_USERS"];
+
+  message PromptFeedback {
+    BlockedReason block_reason = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+    repeated SafetyRating safety_ratings = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+    string block_reason_message = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+    enum BlockedReason {
+      BLOCKED_REASON_UNSPECIFIED = 0;
+      SAFETY = 1;
+      OTHER = 2;
+      BLOCKLIST = 3;
+      PROHIBITED_CONTENT = 4;
+      MODEL_ARMOR = 5;
+      IMAGE_SAFETY = 6;
+      JAILBREAK = 7;
+    }
+  }
+
+  message UsageMetadata {
+    reserved 6;
+    int32 prompt_token_count = 1;
+    int32 candidates_token_count = 2;
+    int32 total_token_count = 3;
+    int32 tool_use_prompt_token_count = 13 [(unresolved_option_1052) = "\003"];
+    int32 thoughts_token_count = 14 [(unresolved_option_1052) = "\003"];
+    int32 cached_content_token_count = 5 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount prompt_tokens_details = 9 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount cache_tokens_details = 10 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount candidates_tokens_details = 11 [(unresolved_option_1052) = "\003"];
+    repeated ModalityTokenCount tool_use_prompt_tokens_details = 12 [(unresolved_option_1052) = "\003"];
+    TrafficType traffic_type = 8 [(unresolved_option_1052) = "\003"];
+    BillablleUsage billable_prompt_usage = 4 [deprecated = true, (unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+    BillablleUsage billable_cached_content_usage = 7 [deprecated = true, (unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+
+    enum TrafficType {
+      TRAFFIC_TYPE_UNSPECIFIED = 0;
+      ON_DEMAND = 1;
+      ON_DEMAND_PRIORITY = 3;
+      ON_DEMAND_FLEX = 4;
+      ON_DEMAND_OFFPEAK = 5;
+      PROVISIONED_THROUGHPUT = 2;
+    }
+
+    message BillablleUsage {
+      option deprecated = true;
+      int32 text_count = 1;
+      int32 image_count = 2;
+      int32 video_duration_seconds = 3;
+      int32 audio_duration_seconds = 4;
+    }
+  }
+
+  message InternalDebugInfo {
+    option (unresolved_option_72295727) = "\022\026MODEL_OPTIMIZER_TESTER";
+    string routed_model_name = 1;
+  }
+
+  message ModelLifecycleStatus {
+    ModelLifecycleStage model_lifecycle_stage = 1;
+    string retirement_date = 2;
+    string recommended_upgrade_model = 3;
+
+    enum ModelLifecycleStage {
+      MODEL_LIFECYCLE_STAGE_UNSPECIFIED = 0;
+      EXPERIMENTAL = 1;
+      PREVIEW = 2;
+      STABLE = 3;
+      LEGACY = 4;
+      RETIRED = 5;
+    }
+  }
+}
+
+message CompleteCodeRequest {
+  option (unresolved_option_72295727) = "\022\rUNIMPLEMENTED";
+  string model = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  repeated CompleteCodePrompt prompts = 2 [(unresolved_option_1052) = "\002"];
+  CompletionConfig completion_config = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message CompleteCodeResponse {
+  option (unresolved_option_72295727) = "\022\rUNIMPLEMENTED";
+  repeated CompleteCodePrediction candidates = 1 [(unresolved_option_1052) = "\003"];
+  string deployed_model_id = 2 [(unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\"\005AUDIT"];
+  string model = 3 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\037aiplatform.googleapis.com/Model", (unresolved_option_40075780) = 1100];
+  string model_version_id = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string model_display_name = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  Metadata metadata = 6;
+
+  message Metadata {
+    TokenMetadata output_token_count = 1;
+    TokenMetadata input_token_count = 2;
+
+    message TokenMetadata {
+      int32 total_billable_characters = 1;
+      int32 total_tokens = 2;
+    }
+  }
+}
+
+message ChatCompletionsRequest {
+  option (unresolved_option_331491176) = 1;
+  string endpoint = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  api.HttpBody http_body = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+
+  message ExtraBody {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    oneof retrieval_source {
+      VertexRagStore vertex_rag_store = 2;
+    }
+    repeated ModelSafetySettings model_safety_settings = 1;
+    repeated SafetySetting safety_settings = 3 [(unresolved_option_1052) = "\001"];
+    string thought_tag_marker = 4;
+    string cached_content = 5;
+    GenerationConfig.ThinkingConfig thinking_config = 6;
+    string session_id = 7;
+    repeated Tool tools = 8;
+    GenerationConfig.MediaResolution media_resolution = 9;
+    bool stream_function_call_arguments = 10;
+    ContextCacheConfig implicit_cache_config = 11 [(unresolved_option_1052) = "\001"];
+
+    message ModelSafetySettings {
+      option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+      oneof settings {
+        LlamaGuardSettings llama_guard_settings = 2;
+      }
+      bool enabled = 1 [(unresolved_option_1052) = "\001"];
+
+      message LlamaGuardSettings {
+        option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+      }
+    }
+  }
+
+  message ExtraPart {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    reserved 1;
+    oneof metadata {
+      VideoMetadata video_metadata = 4;
+    }
+    optional bool thought = 2;
+    bytes thought_signature = 3;
+  }
+
+  message PerChoiceResponseExtraProperties {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    GroundingMetadata grounding_metadata = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  }
+
+  message ResponseExtraProperties {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  }
+
+  message ExtraToolPart {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    repeated FunctionResponsePart parts = 1;
+  }
+}
+
+message PredictLongRunningResponse {
+  oneof response {
+    GenerateVideoResponse generate_video_response = 1 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message PredictLongRunningMetadata {
+}
+
+message FetchPredictOperationMetadata {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  TaskState task_state = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum TaskState {
+    TASK_STATE_UNSPECIFIED = 0;
+    STARTED = 1;
+    PENDING = 2;
+  }
+}
+
+message GenerateVideoResponse {
+  repeated string generated_samples = 1 [deprecated = true];
+  optional int32 rai_media_filtered_count = 2 [(unresolved_option_40075780) = 999];
+  repeated string rai_media_filtered_reasons = 3 [(unresolved_option_40075780) = 999];
+  repeated Video videos = 4 [(unresolved_option_40075780) = 1900];
+
+  message Video {
+    oneof data {
+      string gcs_uri = 1 [(unresolved_option_40075780) = 1900];
+      string bytes_base64_encoded = 2 [(unresolved_option_40075780) = 1900];
+    }
+    string mime_type = 3 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message EmbedContentRequest {
+  reserved 3;
+  optional string model = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\n\004true", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  optional Content content = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\n\004true"];
+  optional string title = 4 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  optional EmbeddingTaskType task_type = 5 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+  optional int32 output_dimensionality = 6 [deprecated = true, (unresolved_option_1052) = "\001"];
+  optional bool auto_truncate = 7 [deprecated = true, (unresolved_option_1052) = "\001"];
+  optional EmbedContentConfig embed_content_config = 8 [(unresolved_option_1052) = "\001"];
+  optional string service_account = 9 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n!iam.googleapis.com/ServiceAccount", (unresolved_option_40075780) = 1100, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+
+  enum EmbeddingTaskType {
+    UNSPECIFIED = 0;
+    NONE = 1 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+    RETRIEVAL_QUERY = 2;
+    RETRIEVAL_DOCUMENT = 3;
+    SEMANTIC_SIMILARITY = 4;
+    CLASSIFICATION = 5;
+    CLUSTERING = 6;
+    QUESTION_ANSWERING = 7;
+    FACT_VERIFICATION = 8;
+    CODE_RETRIEVAL_QUERY = 9;
+  }
+
+  message EmbedContentConfig {
+    optional string title = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    optional EmbeddingTaskType task_type = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12012];
+    optional bool auto_truncate = 3 [(unresolved_option_1052) = "\001"];
+    optional int32 output_dimensionality = 4 [(unresolved_option_1052) = "\001"];
+    optional bool document_ocr = 5 [(unresolved_option_1052) = "\001"];
+    optional bool audio_track_extraction = 6 [(unresolved_option_1052) = "\001"];
+  }
+}
+
+message EmbedContentResponse {
+  reserved 3;
+  Embedding embedding = 1;
+  UsageMetadata usage_metadata = 2;
+  bool truncated = 4;
+
+  message Embedding {
+    repeated float values = 1;
+  }
+}
+
+message BatchEmbedContentsRequest {
+  option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+  string model = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  repeated EmbedContentRequest requests = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message BatchEmbedContentsResponse {
+  option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+  repeated Embedding embeddings = 1 [(unresolved_option_40075780) = 999];
+  UsageMetadata usage_metadata = 2 [(unresolved_option_40075780) = 999];
+
+  message Embedding {
+    repeated float values = 1 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message AsyncGenerateContentOperationMetadata {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+  GenericOperationMetadata generic_metadata = 1;
+  string session_id = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  repeated GenerateContentResponse.UsageMetadata usage_metadata = 3 [(unresolved_option_1052) = "\003"];
+  string model_name = 4 [(unresolved_option_1052) = "\003"];
+}
+
+message AsyncGenerateContentOperationResponse {
+  option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+}
+
+message Response {
+  option (unresolved_option_1053) = "\n\"aiplatform.googleapis.com/Response\022Qprojects/{project}/locations/{location}/endpoints/{endpoint}/responses/{response}\022Vprojects/{project}/locations/{location}/publishers/{publisher}/v1/responses/{response}*\tresponses2\010response";
+  option (unresolved_option_143069646) = "\022\023internal,v1beta1,ui";
+}
+
+message MaasModel {
+  option (unresolved_option_1053) = "\n#aiplatform.googleapis.com/MaasModel\022Tprojects/{project}/locations/{location}/publishers/{publisher}/v1/models/{maasModel}*\nmaasModels2\tmaasModel";
+  option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+}
+
+message GetMaasModelRequest {
+  option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n#aiplatform.googleapis.com/MaasModel", (unresolved_option_40075780) = 1100, (unresolved_option_188057776) = 1];
+}
+
+message ListMaasModelsRequest {
+  option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\022#aiplatform.googleapis.com/MaasModel", (unresolved_option_40075780) = 1100, (unresolved_option_188057776) = 1];
+}
+
+message GetResponseRequest {
+  option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Response", (unresolved_option_40075780) = 1100, (unresolved_option_188057776) = 1];
+}
+
+message DeleteResponseRequest {
+  option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Response", (unresolved_option_40075780) = 1100, (unresolved_option_188057776) = 1];
+}
+
+message DetectContentRequest {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+  optional string model = 1 [(unresolved_option_1052) = "\n\002", (unresolved_option_1055) = "\n\"aiplatform.googleapis.com/Endpoint", (unresolved_option_40075780) = 1100, (unresolved_option_40270992) = "`\001", (unresolved_option_127878962) = "\n\004true", (unresolved_option_158361448) = "\"\005AUDIT", (unresolved_option_188057776) = 1];
+  optional Content content = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900, (unresolved_option_127878962) = "\n\004true"];
+}
+
+message DetectContentResponse {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+  AiGeneratedLikelihood ai_generated_likelihood = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  repeated C2paResult c2pa = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string response_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string model_version = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999, (unresolved_option_158361448) = "\"\005AUDIT"];
+
+  enum AiGeneratedLikelihood {
+    AI_GENERATED_LIKELIHOOD_UNSPECIFIED = 0;
+    VERY_LOW = 1;
+    LOW = 2;
+    MEDIUM = 3;
+    HIGH = 4;
+    VERY_HIGH = 5;
+  }
+
+  message C2paResult {
+    Outcome outcome = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+    Manifest manifest = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+
+    enum Outcome {
+      OUTCOME_UNSPECIFIED = 0;
+      VALID_MANIFEST = 1;
+      NOT_DETECTED = 2;
+      INVALID_MANIFEST = 3;
+      UNSUPPORTED_FORMAT = 4;
+    }
+
+    message Manifest {
+      repeated CreationType creation_types = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+      repeated Action actions = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+      string signer_organization = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+      string signer_common_name = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+      string claim_generator = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+      protobuf.Timestamp sign_time = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+
+      enum CreationType {
+        CREATION_TYPE_UNSPECIFIED = 0;
+        MEDIA_OF_UNKNOWN_PROVENANCE = 1;
+        BLANK_FILE = 2;
+        REAL_LIFE_CAPTURE = 3;
+        REAL_LIFE_CAPTURE_WITH_IN_LINE_NON_GENAI_ENHANCEMENTS = 4;
+        REAL_LIFE_STITCHED_CAPTURE = 5;
+        PARTLY_GENAI_CREATION = 6;
+        FULLY_GENAI_CREATION = 7;
+        NON_GENAI_DIGITAL_CREATION = 8;
+        COMPOSITION_WHICH_MAY_CONTAIN_GENAI_CONTENT = 9;
+        DIGITAL_ART_WHICH_MAY_CONTAIN_GENAI_CONTENT = 10;
+        SCREEN_CAPTURE_WHICH_MAY_CONTAIN_GENAI_CONTENT = 11;
+      }
+
+      enum Action {
+        ACTION_UNSPECIFIED = 0;
+        ADJUSTED_COLOR_USING_GENAI_TOOLS = 1;
+        ADJUSTED_COLOR_USING_NON_GENAI_TOOLS = 2;
+        ADJUSTED_COLOR_USING_TOOLS_POSSIBLY_POWERED_BY_GENAI = 3;
+        CHANGED_ORIENTATION = 4;
+        CROPPED_USING_GENAI_TOOLS = 5;
+        CROPPED_USING_NON_GENAI_TOOLS = 6;
+        CROPPED_USING_TOOLS_POSSIBLY_POWERED_BY_GENAI = 7;
+        DELETED_CONTENT_USING_GENAI_TOOLS = 8;
+        DELETED_CONTENT_USING_NON_GENAI_TOOLS = 9;
+        DELETED_CONTENT_USING_TOOLS_POSSIBLY_POWERED_BY_GENAI = 10;
+        EDITED_USING_GENAI_TOOLS = 11;
+        EDITED_USING_NON_GENAI_TOOLS = 12;
+        EDITED_USING_TOOLS_POSSIBLY_POWERED_BY_GENAI = 13;
+        EDITED_METADATA = 14;
+        ENHANCED_WITHOUT_CHANGING_CONTENT = 15;
+        STYLIZED_USING_GENAI_FILTERS = 16;
+        STYLIZED_USING_NON_GENAI_FILTERS = 17;
+        STYLIZED_USING_FILTERS_POSSIBLY_POWERED_BY_GENAI = 18;
+        REMOVED_SENSITIVE_METADATA = 19;
+      }
+    }
+  }
+}
+
+service PredictionService {
+  rpc Predict(PredictRequest) returns (PredictResponse) {
+    option (unresolved_option_1051) = "endpoint,instances,parameters";
+    option (unresolved_option_72295728) = ":\001*ZM:\001*\"H/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:predict\">/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:predict";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc RawPredict(RawPredictRequest) returns (api.HttpBody) {
+    option (unresolved_option_1051) = "endpoint,http_body";
+    option (unresolved_option_72295728) = ":\001*ZP:\001*\"K/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:rawPredict\"A/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:rawPredict";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamRawPredict(StreamRawPredictRequest) returns (stream api.HttpBody) {
+    option (unresolved_option_1051) = "endpoint,http_body";
+    option (unresolved_option_72295728) = ":\001*ZV:\001*\"Q/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:streamRawPredict\"G/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:streamRawPredict";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DirectPredict(DirectPredictRequest) returns (DirectPredictResponse) {
+    option (unresolved_option_72295728) = ":\001*\"D/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:directPredict";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DirectRawPredict(DirectRawPredictRequest) returns (DirectRawPredictResponse) {
+    option (unresolved_option_72295728) = ":\001*\"G/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:directRawPredict";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamDirectPredict(stream StreamDirectPredictRequest) returns (stream StreamDirectPredictResponse) {
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamDirectRawPredict(stream StreamDirectRawPredictRequest) returns (stream StreamDirectRawPredictResponse) {
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamingPredict(stream StreamingPredictRequest) returns (stream StreamingPredictResponse) {
+    option deprecated = true;
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ServerStreamingPredict(StreamingPredictRequest) returns (stream StreamingPredictResponse) {
+    option (unresolved_option_72295728) = ":\001*Z\\:\001*\"W/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:serverStreamingPredict\"M/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:serverStreamingPredict";
+    option (unresolved_option_143069646) = "\022\rui,v1,v1beta1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamingRawPredict(stream StreamingRawPredictRequest) returns (stream StreamingRawPredictResponse) {
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc PredictLongRunning(PredictLongRunningRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1051) = "endpoint,instances,parameters";
+    option (unresolved_option_72295728) = ":\001*ZX:\001*\"S/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:predictLongRunning\"I/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:predictLongRunning";
+    option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc FetchPredictOperation(FetchPredictOperationRequest) returns (longrunning.Operation) {
+    option (unresolved_option_1051) = "endpoint,operation_name";
+    option (unresolved_option_72295728) = ":\001*Z[:\001*\"V/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:fetchPredictOperation\"L/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:fetchPredictOperation";
+    option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc Invoke(InvokeRequest) returns (stream api.HttpBody) {
+    option (unresolved_option_1051) = "endpoint";
+    option (unresolved_option_72295728) = ":\001*Zh:\001*\"c/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}/deployedModels/{deployed_model_id}/invoke/**ZT:\thttp_body\"G/v1beta1/{endpoint=projects/*/locations/*/endpoints/openapi}/embeddingsZU:\thttp_body\"H/v1beta1/{endpoint=projects/*/locations/*/endpoints/openapi}/completionsZS:\thttp_body\"F/v1beta1/{endpoint=projects/*/locations/*/endpoints/openapi}/responsesZQ:\thttp_body\"D/v1beta1/{endpoint=projects/*/locations/*/publishers/*}/v1/responsesZY:\thttp_body\"L/v1beta1/{endpoint=projects/*/locations/*/publishers/*}/v1/responses/compactZZ:\thttp_body\"M/v1beta1/{endpoint=projects/*/locations/*/endpoints/google}/science/inferenceZO:\001*\"J/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}/invoke/**\"@/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}/invoke/**";
+    option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamPublisherInvoke(stream StreamPublisherInvokeRequest) returns (stream api.HttpBody) {
+    option (unresolved_option_1051) = "endpoint";
+    option (unresolved_option_72295728) = "r\024$HIDE_FROM_DISCOVERY\022D/v1beta1/{endpoint=projects/*/locations/*/publishers/*}/v1/responses";
+    option (unresolved_option_143069646) = "\022\023internal,v1,v1beta1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_8) = 0x40ac200000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc InvokeApi(InvokeApiRequest) returns (stream api.HttpBody) {
+    option (unresolved_option_1051) = "endpoint";
+    option (unresolved_option_72295727) = "\022\036GOOGLE_INTERNAL,TRUSTED_TESTER";
+    option (unresolved_option_72295728) = ":\001*ZE\022C/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}/invokeApi/**ZE*C/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}/invokeApi/**\"C/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}/invokeApi/**";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc GetMaasModel(GetMaasModelRequest) returns (api.HttpBody) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    option (unresolved_option_72295728) = "\022?/v1beta1/{name=projects/*/locations/*/publishers/*/v1/models/*}";
+    option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+    option (unresolved_option_161893301) = "\022\215\001\n\004name\022(aiplatform.googleapis.com/maasModels.get\032,RESOURCE,aiplatform.googleapis.com/MaasModel\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\016META_DATA_READ\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ListMaasModels(ListMaasModelsRequest) returns (api.HttpBody) {
+    option (unresolved_option_1051) = "parent";
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    option (unresolved_option_72295728) = "\022?/v1beta1/{parent=projects/*/locations/*}/publishers/*/v1/models";
+    option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+    option (unresolved_option_161893301) = "\022\217\001\n\006parent\022)aiplatform.googleapis.com/maasModels.list\032+RESOURCE,aiplatform.googleapis.com/Location\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\016META_DATA_READ\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc GetResponse(GetResponseRequest) returns (api.HttpBody) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "ZD\022B/v1beta1/{name=projects/*/locations/*/publishers/*/v1/responses/*}\022>/v1beta1/{name=projects/*/locations/*/endpoints/*/responses/*}";
+    option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+    option (unresolved_option_161893301) = "\022\206\001\n\004name\022'aiplatform.googleapis.com/responses.get\032+RESOURCE,aiplatform.googleapis.com/Response\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DeleteResponse(DeleteResponseRequest) returns (api.HttpBody) {
+    option (unresolved_option_1051) = "name";
+    option (unresolved_option_72295728) = "ZD*B/v1beta1/{name=projects/*/locations/*/publishers/*/v1/responses/*}*>/v1beta1/{name=projects/*/locations/*/endpoints/*/responses/*}";
+    option (unresolved_option_143069646) = "\022\026internal,v1beta1,ui,v1";
+    option (unresolved_option_161893301) = "\022\212\001\n\004name\022*aiplatform.googleapis.com/responses.delete\032+RESOURCE,aiplatform.googleapis.com/Response\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\nDATA_WRITE\";CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION,WRITE_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc Explain(ExplainRequest) returns (ExplainResponse) {
+    option (unresolved_option_1051) = "endpoint,instances,parameters,deployed_model_id";
+    option (unresolved_option_72295728) = ":\001*\">/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:explain";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.explain\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc CountTokens(CountTokensRequest) returns (CountTokensResponse) {
+    option (unresolved_option_1051) = "endpoint,instances";
+    option (unresolved_option_72295728) = ":\001*ZQ:\001*\"L/v1beta1/{endpoint=projects/*/locations/*/publishers/*/models/*}:countTokens\"B/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}:countTokens";
+    option (unresolved_option_143069646) = "\022\020internal,v1beta1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\".CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc GenerateContent(GenerateContentRequest) returns (GenerateContentResponse) {
+    option (unresolved_option_1051) = "model,contents";
+    option (unresolved_option_72295728) = ":\001*ZR:\001*\"M/v1beta1/{model=projects/*/locations/*/publishers/*/models/*}:generateContent\"C/v1beta1/{model=projects/*/locations/*/endpoints/*}:generateContent";
+    option (unresolved_option_161893301) = "\022\213\001\n\005model\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc StreamGenerateContent(GenerateContentRequest) returns (stream GenerateContentResponse) {
+    option (unresolved_option_1051) = "model,contents";
+    option (unresolved_option_72295728) = ":\001*ZX:\001*\"S/v1beta1/{model=projects/*/locations/*/publishers/*/models/*}:streamGenerateContent\"I/v1beta1/{model=projects/*/locations/*/endpoints/*}:streamGenerateContent";
+    option (unresolved_option_161893301) = "\022\213\001\n\005model\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc ChatCompletions(ChatCompletionsRequest) returns (stream api.HttpBody) {
+    option (unresolved_option_1051) = "endpoint,http_body";
+    option (unresolved_option_72295728) = ":\thttp_body\"G/v1beta1/{endpoint=projects/*/locations/*/endpoints/*}/chat/completions";
+    option (unresolved_option_143069646) = "\022\026ui,internal,v1beta1,v1";
+    option (unresolved_option_161893301) = "\022\216\001\n\010endpoint\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc DetectContent(DetectContentRequest) returns (DetectContentResponse) {
+    option (unresolved_option_1051) = "model,content";
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    option (unresolved_option_72295728) = ":\001*\"K/v1beta1/{model=projects/*/locations/*/publishers/*/models/*}:detectContent";
+    option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+    option (unresolved_option_161893301) = "\022\213\001\n\005model\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc EmbedContent(EmbedContentRequest) returns (EmbedContentResponse) {
+    option (unresolved_option_1051) = "model,content";
+    option (unresolved_option_72295728) = ":\001*\"J/v1beta1/{model=projects/*/locations/*/publishers/*/models/*}:embedContent";
+    option (unresolved_option_143069646) = "\022\023v1beta1,internal,v1";
+    option (unresolved_option_161893301) = "\022\213\001\n\005model\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_8) = 0x404e000000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+  rpc BatchEmbedContents(BatchEmbedContentsRequest) returns (BatchEmbedContentsResponse) {
+    option (unresolved_option_1051) = "model,requests";
+    option (unresolved_option_72295728) = ":\001*\"P/v1beta1/{model=projects/*/locations/*/publishers/*/models/*}:batchEmbedContents";
+    option (unresolved_option_143069646) = "\022\023internal,v1beta1,v1";
+    option (unresolved_option_161893301) = "\022\213\001\n\005model\022+aiplatform.googleapis.com/endpoints.predict\032+RESOURCE,aiplatform.googleapis.com/Endpoint\"\033AUDIT,AUDIT_TARGET_RESOURCE0\001b\tDATA_READ\"6CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT,READ_ACTION2\016AUTO_CLOUD_IAM@\001";
+    option (unresolved_option_8) = 0x4082c00000000000;
+    option (unresolved_option_10) = 1;
+    option (unresolved_option_13) = 2;
+  }
+}

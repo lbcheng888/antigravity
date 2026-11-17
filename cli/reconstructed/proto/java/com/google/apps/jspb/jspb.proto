@@ -1,0 +1,42 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d6b38f (va 0x103d6b38f, __TEXT.__rodata), descriptor length 1192 B, sha256 a0f800bcac09cfc9
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package jspb;
+
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.apps.jspb";
+option go_package = "google.golang.org/apps/jspb";
+option cc_enable_arenas = true;
+option (unresolved_option_2) = 2;
+
+enum JsType {
+  reserved 100;
+  INT52 = 0;
+  NUMBER = 1;
+  STRING = 2;
+  GBIGINT = 3;
+}
+
+extend proto2.FieldOptions {
+  optional bool ignore = 17702;
+  optional JsType jstype = 17703;
+  optional bool use_broken_java_unsigned_serialization_behavior = 17705 [deprecated = true];
+  optional bool allow_broken_java_unsigned_deserialization_behavior = 17706 [deprecated = true];
+  optional bool deprecated_use_binary_values_for_any = 448127177;
+}
+
+extend proto2.MessageOptions {
+  optional string message_id = 17701 [deprecated = true];
+  optional bool generate_xid = 78050980;
+  optional bool extensions_may_contain_message_id = 448127180;
+}
+
+extend proto2.FileOptions {
+  optional string js_namespace = 17702 [deprecated = true];
+  optional bool generate_legacy_nullable_accessors = 448127176;
+  optional bool generate_binary_format_methods_on_message = 448127179 [default = true];
+}

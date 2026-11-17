@@ -1,0 +1,33 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3b8ae (va 0x103d3b8ae, __TEXT.__rodata), descriptor length 558 B, sha256 3b0703e637dfe548
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+import "java/com/google/apps/jspb/jspb.proto";
+import "net/proto2/bridge/proto/message_set.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.common.logging";
+option cc_enable_arenas = true;
+option objc_class_prefix = "EID";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127176) = 1;
+option (unresolved_option_2) = 2;
+option (unresolved_option_5) = 1;
+option (unresolved_option_26) = 1;
+
+message EventIdMessage {
+  required int64 time_usec = 1;
+  required fixed32 server_ip = 2 [(unresolved_option_40075780) = 1301, (unresolved_option_40270992) = "\020\001"];
+  required fixed32 process_id = 3;
+
+  extend proto2.bridge.MessageSet {
+    optional EventIdMessage message_set_extension = 4156379;
+  }
+}
+
+message ClientEventIdMessage {
+  optional EventIdMessage base = 1;
+  optional int64 client_counter = 2;
+}

@@ -1,0 +1,183 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ef70e0 (va 0x103ef70e0, __TEXT.__rodata), descriptor length 6541 B, sha256 7ef1b2bfd5ca367a
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.internal.cloud.code.v1internal;
+
+import public "google/internal/cloud/code/v1internal/model_configs.proto";
+import "apps/framework/data/service_annotations.proto";
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/cloud/aiplatform/master/prediction_service.proto";
+import "google/internal/cloud/code/v1internal/credits.proto";
+import "google/internal/cloud/code/v1internal/quota_summary.proto";
+import "google/internal/cloud/code/v1internal/remote_context.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.internal.cloud.code.v1internal";
+option java_outer_classname = "PredictionServiceProto";
+option java_multiple_files = true;
+option (unresolved_option_52) = 1;
+
+message GenerateContentRequest {
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  google.cloud.aiplatform.master.GenerateContentRequest request = 3 [(unresolved_option_1052) = "\002"];
+  string model = 4 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string user_prompt_id = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string user_agent = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1501];
+  string request_type = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated Credits.CreditType enabled_credit_types = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message GenerateContentResponse {
+  google.cloud.aiplatform.master.GenerateContentResponse response = 1;
+  string trace_id = 2 [(unresolved_option_40075780) = 2300];
+  repeated Credits consumed_credits = 3 [(unresolved_option_40075780) = 999];
+  repeated Credits remaining_credits = 4 [(unresolved_option_40075780) = 999];
+  Metadata metadata = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+  message Metadata {
+    RemoteContext remote_context = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+    SafetySignals safety_signals = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+    message SafetySignals {
+      IntrospectionVerdicts introspection_verdicts = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+      EmbeddingVerdicts embedding_verdicts = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+      SybillVerdicts sybill_verdicts = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+      IntrospectionScores introspection_scores = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+      message IntrospectionVerdicts {
+        repeated Result results = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+        enum Verdict {
+          VERDICT_UNSPECIFIED = 0;
+          NON_VIOLATIVE = 1;
+          VIOLATIVE = 2;
+        }
+
+        message Result {
+          string name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+          string label = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+          Verdict verdict = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+        }
+      }
+
+      message EmbeddingVerdicts {
+        repeated CorpusResult results = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+        enum Verdict {
+          VERDICT_UNSPECIFIED = 0;
+          NON_VIOLATIVE = 1;
+          VIOLATIVE = 2;
+        }
+
+        message CorpusResult {
+          string name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+          string corpus = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+          Verdict verdict = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+        }
+      }
+
+      message SybillVerdicts {
+        Verdict verdict = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+        enum Verdict {
+          VERDICT_UNSPECIFIED = 0;
+          NON_VIOLATIVE = 1;
+          VIOLATIVE = 2;
+        }
+      }
+
+      message IntrospectionScores {
+        repeated ClassifierResult results = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+
+        message HeadScore {
+          string label = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+          float score = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+        }
+
+        message ClassifierResult {
+          string name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+          repeated HeadScore head_scores = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+        }
+      }
+    }
+  }
+}
+
+message CountTokensRequest {
+  google.cloud.aiplatform.master.CountTokensRequest request = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message CountTokensResponse {
+  int32 total_tokens = 1;
+}
+
+message RetrieveUserQuotaRequest {
+  reserved 2;
+  string project = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE"];
+}
+
+message RetrieveUserQuotaResponse {
+  repeated BucketInfo buckets = 1;
+
+  enum TokenType {
+    TOKEN_TYPE_UNSPECIFIED = 0;
+    REQUESTS = 1;
+    WTUS = 2;
+  }
+
+  message BucketInfo {
+    oneof remaining {
+      int64 remaining_amount = 1;
+      float remaining_fraction = 5;
+    }
+    protobuf.Timestamp reset_time = 2;
+    TokenType token_type = 3;
+    string model_id = 4 [(unresolved_option_40075780) = 999];
+  }
+}
+
+service PredictionService {
+  rpc GenerateContent(GenerateContentRequest) returns (GenerateContentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\033/v1internal:generateContent";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc StreamGenerateContent(GenerateContentRequest) returns (stream GenerateContentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"!/v1internal:streamGenerateContent";
+    option (unresolved_option_140442103) = 3;
+    option (unresolved_option_161893301) = "\022\023\n\007project\032\010RESOURCE";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc CountTokens(CountTokensRequest) returns (CountTokensResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\027/v1internal:countTokens";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = ":\013SKIP_VPC_SC";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc RetrieveUserQuota(RetrieveUserQuotaRequest) returns (RetrieveUserQuotaResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\035/v1internal:retrieveUserQuota";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = ":\013SKIP_VPC_SC";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc FetchAvailableModels(FetchAvailableModelsRequest) returns (FetchAvailableModelsResponse) {
+    option (unresolved_option_72295728) = ":\001*\" /v1internal:fetchAvailableModels";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = ":\013SKIP_VPC_SC";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc RetrieveUserQuotaSummary(RetrieveUserQuotaSummaryRequest) returns (RetrieveUserQuotaSummaryResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/v1internal:retrieveUserQuotaSummary";
+    option (unresolved_option_140442103) = 1;
+    option (unresolved_option_161893301) = ":\013SKIP_VPC_SC";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+}

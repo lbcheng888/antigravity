@@ -1,0 +1,2561 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x43ac43e (va 0x1043ac43e, __TEXT.__rodata), descriptor length 85699 B, sha256 f5f3bb9e0807c541
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.gca.aicode.v1main;
+
+import "apiserving/proto/media.proto";
+import "gdata/rosy/proto/data.proto";
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/longrunning/operations.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/rpc/status.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/codeium_common_pb/codeium_common.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import "third_party/jetski/diff_action_pb/diff_action.proto";
+import "third_party/jetski/jetski_cortex_pb/jetski_cortex.proto";
+import "third_party/jetski/language_server_pb/language_server.proto";
+import "third_party/jetski/remote_agent_proxy_pb/remote_agent_proxy.proto";
+import "third_party/jetski/remote_agent_proxy_pb/voice.proto";
+import "third_party/jetski/remote_agent_proxy_pb/voice_trajectory.proto";
+
+option java_package = "com.google.gca.aicode.v1main";
+option java_outer_classname = "RemoteAgentProxyProto";
+option java_multiple_files = true;
+
+enum VcsType {
+  VCS_TYPE_UNSPECIFIED = 0;
+  VCS_TYPE_PIPER = 1;
+  VCS_TYPE_FIG = 2;
+  VCS_TYPE_JJ = 3;
+  VCS_TYPE_GOB_COG = 6;
+}
+
+enum IdentityType {
+  IDENTITY_TYPE_UNSPECIFIED = 0;
+  IDENTITY_TYPE_SELF = 1;
+  IDENTITY_TYPE_CORP_AGENT = 2;
+  IDENTITY_TYPE_GROUP_AGENT = 3;
+}
+
+enum PermissionSettingsScope {
+  PERMISSION_SETTINGS_SCOPE_UNSPECIFIED = 0;
+  PERMISSION_SETTINGS_SCOPE_GLOBAL = 1;
+  PERMISSION_SETTINGS_SCOPE_PROJECT = 2;
+}
+
+enum PermissionGrantList {
+  PERMISSION_GRANT_LIST_UNSPECIFIED = 0;
+  PERMISSION_GRANT_LIST_ALLOW = 1;
+  PERMISSION_GRANT_LIST_ASK = 2;
+  PERMISSION_GRANT_LIST_DENY = 3;
+}
+
+enum AgentStatus {
+  AGENT_STATUS_UNSPECIFIED = 0;
+  AGENT_STATUS_PROVISIONING = 1;
+  AGENT_STATUS_ACTIVE = 2;
+  AGENT_STATUS_STOPPED = 3;
+  AGENT_STATUS_FAILED = 4;
+  AGENT_STATUS_UPDATING = 5;
+  AGENT_STATUS_DISABLED = 6;
+}
+
+enum AgentRole {
+  AGENT_ROLE_UNSPECIFIED = 0;
+  AGENT_ROLE_TEAM = 1;
+  AGENT_ROLE_ADMIN = 2;
+}
+
+enum AgentBrainStyle {
+  AGENT_BRAIN_STYLE_UNSPECIFIED = 0;
+  AGENT_BRAIN_STYLE_ONESWARM = 1;
+  AGENT_BRAIN_STYLE_DISPATCHER = 2;
+  AGENT_BRAIN_STYLE_OTTO = 3;
+}
+
+enum AgentMemoryMode {
+  AGENT_MEMORY_MODE_UNSPECIFIED = 0;
+  AGENT_MEMORY_MODE_OFF = 1;
+  AGENT_MEMORY_MODE_ON = 2;
+  AGENT_MEMORY_MODE_PER_KEY = 3;
+}
+
+enum AgentConnectorTriggerState {
+  AGENT_CONNECTOR_TRIGGER_STATE_UNSPECIFIED = 0;
+  AGENT_CONNECTOR_TRIGGER_STATE_PENDING = 1;
+  AGENT_CONNECTOR_TRIGGER_STATE_ACTIVE = 2;
+  AGENT_CONNECTOR_TRIGGER_STATE_PAUSED = 3;
+  AGENT_CONNECTOR_TRIGGER_STATE_FAILED = 4;
+}
+
+enum AgentRemoteSessionAuthor {
+  AGENT_REMOTE_SESSION_AUTHOR_UNSPECIFIED = 0;
+  AGENT_REMOTE_SESSION_AUTHOR_USER = 1;
+  AGENT_REMOTE_SESSION_AUTHOR_AGENT = 2;
+}
+
+enum AgentRemoteSessionDeliveryState {
+  AGENT_REMOTE_SESSION_DELIVERY_STATE_UNSPECIFIED = 0;
+  AGENT_REMOTE_SESSION_DELIVERY_STATE_NOT_DELIVERED = 1;
+  AGENT_REMOTE_SESSION_DELIVERY_STATE_DELIVERED = 2;
+  AGENT_REMOTE_SESSION_DELIVERY_STATE_PENDING = 3;
+  AGENT_REMOTE_SESSION_DELIVERY_STATE_FAILED = 4;
+}
+
+enum AgentSessionKey {
+  AGENT_SESSION_KEY_UNSPECIFIED = 0;
+  AGENT_SESSION_KEY_THREAD = 1;
+  AGENT_SESSION_KEY_INCIDENT = 2;
+}
+
+enum CustomizationKind {
+  CUSTOMIZATION_KIND_UNSPECIFIED = 0;
+  CUSTOMIZATION_KIND_PLUGIN = 1;
+  CUSTOMIZATION_KIND_SKILL = 2;
+}
+
+message StartCascadeRequest {
+  reserved 1, 3;
+  reserved "cascade_id", "requested_model";
+  string initial_prompt = 2 [(unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.TextOrScopeItem items = 7 [(unresolved_option_40075780) = 1900];
+  repeated string workspace_uris = 4 [(unresolved_option_40075780) = 1100];
+  exa.remote_agent_proxy_pb.Environment environment = 5;
+  bool force_third_party_routing = 8 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  exa.remote_agent_proxy_pb.ConfigOverrides config_overrides = 6;
+  string project_id = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1111];
+  string ace_vm_id = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  repeated exa.codeium_common_pb.Media media = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string title = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string tags = 13 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string client_message_id = 14 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  string agent_path = 15 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  CoordinatorConfig coordinator = 16 [(unresolved_option_1052) = "\001"];
+  exa.codeium_common_pb.PermissionGrantsConfig permissions_config = 17 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message StartCascadeResponse {
+  string cascade_id = 1 [(unresolved_option_40075780) = 2300];
+  exa.jetski_cortex_pb.ExecutionStatus execution_status = 2 [(unresolved_option_40075780) = 999];
+}
+
+message SendUserCascadeMessageRequest {
+  reserved 3;
+  reserved "client_turn_seq_num";
+  string cascade_id = 1 [(unresolved_option_40075780) = 2300];
+  string message_text = 2 [(unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.TextOrScopeItem items = 4 [(unresolved_option_40075780) = 1900];
+  exa.cortex_pb.MessageDeliveryStrategy delivery_strategy = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  bool continue_execution = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  exa.remote_agent_proxy_pb.ConfigOverrides config_overrides = 7 [(unresolved_option_1052) = "\001"];
+  repeated exa.codeium_common_pb.Media media = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.ArtifactComment artifact_comments = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.FileDiffComment file_diff_comments = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.FileComment file_comments = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string tags = 12 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string client_message_id = 13 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  exa.codeium_common_pb.PermissionGrantsConfig permissions_config = 14 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message SendUserCascadeMessageResponse {
+  string cascade_id = 1 [(unresolved_option_40075780) = 2300];
+  exa.jetski_cortex_pb.ExecutionStatus execution_status = 2 [(unresolved_option_40075780) = 999];
+}
+
+message StreamAgentStateUpdatesRequest {
+  reserved 2;
+  reserved "disable_rehydration";
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  string resume_token = 5 [(unresolved_option_40075780) = 999];
+  exa.jetski_cortex_pb.Slice initial_steps_page_bounds = 3 [(unresolved_option_40075780) = 999];
+  exa.jetski_cortex_pb.ClientTrajectoryVerbosity trajectory_verbosity = 4;
+}
+
+message StreamAgentStateUpdatesResponse {
+  exa.jetski_cortex_pb.AgentStateUpdate update = 1;
+  string resume_token = 2 [(unresolved_option_40075780) = 999];
+  int64 pending_agent_messages_sequence_number = 3 [(unresolved_option_40075780) = 999];
+  TrajectoryTruncation main_trajectory_truncation = 4;
+}
+
+message GetConversationRequest {
+  reserved 4;
+  reserved "initial_steps_page_bounds";
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  string page_token = 2 [(unresolved_option_40075780) = 999];
+  int32 page_size = 3 [(unresolved_option_40075780) = 999];
+  exa.jetski_cortex_pb.ClientTrajectoryVerbosity trajectory_verbosity = 5;
+}
+
+message GetConversationResponse {
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  exa.jetski_cortex_pb.AgentStateUpdate update = 2 [(unresolved_option_40075780) = 1900];
+  string next_page_token = 3 [(unresolved_option_40075780) = 999];
+  string resume_token = 4 [(unresolved_option_40075780) = 999];
+  exa.codeium_common_pb.Model pinned_model = 5;
+  string model_display_name = 6 [(unresolved_option_40075780) = 999];
+  string execution_identity = 7 [(unresolved_option_40075780) = 1100];
+  string pinned_capsule_id = 8 [(unresolved_option_40075780) = 1100];
+  int64 pending_agent_messages_sequence_number = 9 [(unresolved_option_40075780) = 999];
+}
+
+message ListConversationsRequest {
+  reserved 3;
+  reserved "agent";
+  string page_token = 1 [(unresolved_option_40075780) = 999];
+  int32 page_size = 2 [(unresolved_option_40075780) = 999];
+  string project_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  repeated string agent_identities = 5 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n\001*", (unresolved_option_40075780) = 1100];
+}
+
+message ListConversationsResponse {
+  repeated exa.jetski_cortex_pb.CascadeTrajectorySummary conversations = 1 [(unresolved_option_40075780) = 1900];
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+  map<string, string> execution_identities = 3 [(unresolved_option_40075780) = 1100];
+}
+
+message Workspace {
+  string workspace_uri = 1 [(unresolved_option_40075780) = 1100];
+  string display_name = 2 [(unresolved_option_40075780) = 1100];
+  int64 update_time_micros = 3 [(unresolved_option_40075780) = 2100];
+  string project_id = 4 [deprecated = true, (unresolved_option_40075780) = 1111];
+  bool archived = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string owner = 7 [(unresolved_option_1052) = "\003", (unresolved_option_1055) = "\n\001*", (unresolved_option_40075780) = 1100];
+}
+
+message ListWorkspacesRequest {
+  string execution_identity = 1 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  repeated string agent_identities = 2 [(unresolved_option_1052) = "\001", (unresolved_option_1055) = "\n\001*", (unresolved_option_40075780) = 1100];
+}
+
+message ListWorkspacesResponse {
+  repeated Workspace workspaces = 1;
+}
+
+message CreateWorkspaceRequest {
+  string workspace_name = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  VcsType vcs_type = 2 [(unresolved_option_1052) = "\002"];
+  string prompt_text = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string execution_identity = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  oneof vcs_options {
+    CogWorkspaceOptions cog_options = 5;
+  }
+}
+
+message CogWorkspaceOptions {
+  string gob_repo = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string branch_ref = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message CreateWorkspaceResponse {
+  Workspace workspace = 1;
+}
+
+message SearchGobReposRequest {
+  string query = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  int32 max_results = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+}
+
+message SearchGobReposResponse {
+  repeated string repo_keys = 1 [(unresolved_option_40075780) = 1100];
+}
+
+message ListAvailableModelsRequest {
+  string execution_identity = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message ModelOption {
+  exa.codeium_common_pb.Model model = 1;
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  string description = 3 [(unresolved_option_40075780) = 999];
+  bool is_default = 4;
+  exa.codeium_common_pb.QuotaInfo quota_info = 5;
+  string model_id = 6 [(unresolved_option_40075780) = 999];
+}
+
+message ListAvailableModelsResponse {
+  repeated ModelOption models = 1;
+}
+
+message GetMendelFlagsRequest {
+}
+
+message GetMendelFlagsResponse {
+  exa.codeium_common_pb.ExperimentConfig experiment_config = 1 [(unresolved_option_40075780) = 999];
+}
+
+message UserAccountSettings {
+  bool telemetry_enabled = 1 [(unresolved_option_40075780) = 999];
+  bool user_data_collection_force_disabled = 2 [(unresolved_option_40075780) = 999];
+  bool marketing_emails_enabled = 3 [(unresolved_option_40075780) = 999];
+}
+
+message GetUserAccountSettingsRequest {
+}
+
+message GetUserAccountSettingsResponse {
+  UserAccountSettings settings = 1;
+}
+
+message SetUserAccountSettingsRequest {
+  UserAccountSettings settings = 1;
+}
+
+message SetUserAccountSettingsResponse {
+  UserAccountSettings settings = 1;
+}
+
+message GetUserProfileRequest {
+}
+
+message GetUserProfileResponse {
+  string email = 1 [(unresolved_option_40075780) = 1102];
+  UserPlan plan = 2 [(unresolved_option_40075780) = 999];
+}
+
+message UserPlan {
+  string id = 1 [(unresolved_option_40075780) = 3000];
+  string display_name = 2 [(unresolved_option_40075780) = 3000];
+  string upgrade_text = 3 [(unresolved_option_40075780) = 3000];
+  string upgrade_uri = 4 [(unresolved_option_40075780) = 3000];
+  string upgrade_button_text = 5 [(unresolved_option_40075780) = 3000];
+}
+
+message DeleteAllUserDataRequest {
+}
+
+message DeleteAllUserDataResponse {
+}
+
+message GetUserDataDeletionStatusRequest {
+}
+
+message GetUserDataDeletionStatusResponse {
+  State state = 1;
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    NONE = 1;
+    IN_PROGRESS = 2;
+  }
+}
+
+message ListSlashCommandsRequest {
+  repeated string workspace_uris = 1 [(unresolved_option_40075780) = 1100];
+  string execution_identity = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string conversation_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+}
+
+message ListSlashCommandsResponse {
+  repeated exa.language_server_pb.SlashCommandDefinition commands = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message ListCustomizationsRequest {
+  string workspace_uri = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string execution_identity = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message ListCustomizationsResponse {
+  repeated exa.cortex_pb.WorkflowSpec skills = 1 [(unresolved_option_40075780) = 1900];
+  repeated exa.cortex_pb.WorkflowSpec shadowed_skills = 2 [(unresolved_option_40075780) = 1900];
+  repeated exa.cortex_pb.CortexMemory rules = 3 [(unresolved_option_40075780) = 1900];
+  repeated exa.cortex_pb.AgentCustomization agents = 4 [(unresolved_option_40075780) = 1900];
+  repeated PartialReason partial_reasons = 5 [(unresolved_option_40075780) = 999];
+
+  enum PartialReason {
+    PARTIAL_REASON_UNSPECIFIED = 0;
+    DEADLINE_EXCEEDED = 1;
+    WORKSPACE_UNREADABLE = 2;
+  }
+}
+
+message ReadFileRequest {
+  string path = 1 [(unresolved_option_40075780) = 1118];
+  string conversation_id = 2 [(unresolved_option_40075780) = 2300];
+  string revision = 3 [(unresolved_option_40075780) = 999];
+  bool user_initiated = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional int64 max_content_bytes = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  optional int64 offset = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  oneof git_version {
+    string git_commit_id = 7 [(unresolved_option_40075780) = 999];
+    bool git_staged = 8 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message ReadFileResponse {
+  bytes content = 1 [(unresolved_option_40075780) = 1900];
+  bool truncated = 2 [(unresolved_option_40075780) = 999];
+  FileMetadata metadata = 3;
+
+  message FileMetadata {
+    ReadDirResponse.Type type = 1 [(unresolved_option_40075780) = 999];
+    int64 size_bytes = 2 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message ReadDirRequest {
+  string path = 1 [(unresolved_option_40075780) = 1118];
+  string conversation_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  bool user_initiated = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ReadDirResponse {
+  repeated Entry entries = 1;
+  bool truncated = 2 [(unresolved_option_40075780) = 999];
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_FILE = 1;
+    TYPE_DIRECTORY = 2;
+    TYPE_SYMLINK = 3;
+  }
+
+  message Entry {
+    string name = 1 [(unresolved_option_40075780) = 1118];
+    Type type = 2 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message SearchFilesRequest {
+  string path = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1118];
+  string query = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string conversation_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  int32 max_results = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool include_directories = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool user_initiated = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message SearchFilesResponse {
+  repeated Match matches = 1;
+  bool truncated = 2 [(unresolved_option_40075780) = 999];
+
+  message Match {
+    string path = 1 [(unresolved_option_40075780) = 1118];
+    string relative_path = 2 [(unresolved_option_40075780) = 1118];
+    bool is_directory = 3 [(unresolved_option_40075780) = 999];
+  }
+}
+
+message GetTurnDiffRequest {
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  uint32 step_index = 2 [(unresolved_option_40075780) = 999];
+  bool stats_only = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated string file_uris = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message GetTurnDiffResponse {
+  map<string, exa.language_server_pb.FileDiffData> file_diffs = 1 [(unresolved_option_40075780) = 1900];
+  int32 total_additions = 2 [(unresolved_option_40075780) = 999];
+  int32 total_deletions = 3 [(unresolved_option_40075780) = 999];
+  exa.cortex_pb.CortexStepUserInput user_input = 4 [(unresolved_option_40075780) = 1900];
+  int32 turn_start_index = 5 [(unresolved_option_40075780) = 999];
+  int32 turn_end_index_exclusive = 6 [(unresolved_option_40075780) = 999];
+}
+
+message GetCodeActionDiffRequest {
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  int32 step_index = 2 [(unresolved_option_40075780) = 999];
+}
+
+message GetCodeActionDiffResponse {
+  exa.diff_action_pb.DiffBlock diff = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message ListEnvironmentsRequest {
+  string execution_identity = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message Environment {
+  oneof provider {
+    Capsule capsule = 1;
+    Ace ace = 3;
+  }
+  bool is_default = 2;
+  ConnectionState connection_state = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum ConnectionState {
+    CONNECTION_STATE_UNSPECIFIED = 0;
+    STARTING = 1;
+    CONNECTED = 2;
+    DISCONNECTED = 3;
+  }
+
+  message Capsule {
+    string capsule_id = 1 [(unresolved_option_40075780) = 1100];
+    repeated string tags = 2 [(unresolved_option_40075780) = 12028];
+    protobuf.Timestamp expiration_time = 3;
+  }
+
+  message Ace {
+    string vm_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+    SetupStep setup_step = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+    enum SetupStep {
+      SETUP_STEP_UNSPECIFIED = 0;
+      SETTING_UP_VM = 1;
+      SETTING_UP_ENVIRONMENT = 2;
+      CLONING_REPOSITORIES = 3;
+      COPYING_FILES = 4;
+    }
+  }
+}
+
+message ListEnvironmentsResponse {
+  repeated Environment environments = 1;
+}
+
+message EnsureEnvironmentRequest {
+  oneof provider {
+    CapsuleOptions capsule = 1;
+    AceOptions ace = 2;
+  }
+  string execution_identity = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+
+  message CapsuleOptions {
+    protobuf.Duration min_remaining_lifetime_duration = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  }
+
+  message AceOptions {
+    string project_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1111];
+    string vm_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+    string cascade_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+    bool prepare_spare = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  }
+}
+
+message EnsureEnvironmentResponse {
+  Environment environment = 1;
+}
+
+message ListTriggerOptionsRequest {
+}
+
+message ListTriggerOptionsResponse {
+  repeated exa.remote_agent_proxy_pb.TriggerOption trigger_options = 1;
+  bool oauth_consent_required = 2 [(unresolved_option_40075780) = 999];
+  string oauth_authorize_uri = 3 [(unresolved_option_40075780) = 1300, (unresolved_option_40093572) = "\010\316\010", (unresolved_option_40221563) = 3];
+}
+
+message CreateTriggerRequest {
+  exa.remote_agent_proxy_pb.RemoteTrigger trigger = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message CreateTriggerResponse {
+  exa.remote_agent_proxy_pb.RemoteTrigger trigger = 1;
+}
+
+message UpdateTriggerRequest {
+  exa.remote_agent_proxy_pb.RemoteTrigger trigger = 1 [(unresolved_option_1052) = "\002"];
+  repeated string update_mask = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message UpdateTriggerResponse {
+  exa.remote_agent_proxy_pb.RemoteTrigger trigger = 1;
+}
+
+message DeleteTriggerRequest {
+  string trigger_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  bool abort_active_runs = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message DeleteTriggerResponse {
+}
+
+message ListTriggersRequest {
+  int32 page_size = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListTriggersResponse {
+  repeated exa.remote_agent_proxy_pb.RemoteTrigger triggers = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message RunTriggerRequest {
+  string trigger_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message RunTriggerResponse {
+}
+
+message IdentityOption {
+  string username = 1 [(unresolved_option_40075780) = 1100];
+  string display_name = 2 [(unresolved_option_40075780) = 999];
+  IdentityType identity_type = 3 [(unresolved_option_40075780) = 999];
+}
+
+message ListIdentitiesRequest {
+  string page_token = 1 [(unresolved_option_40075780) = 999];
+  int32 page_size = 2 [(unresolved_option_40075780) = 999];
+}
+
+message ListIdentitiesResponse {
+  repeated IdentityOption identities = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message GetVersionControlStateRequest {
+  string workspace_uri = 1 [(unresolved_option_40075780) = 1100];
+  oneof workspace {
+    CitcWorkspace citc = 2;
+    GitRepository git = 3;
+  }
+}
+
+message GetVersionControlStateResponse {
+  exa.language_server_pb.WatchVersionControlStateResponse state = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message CitcWorkspace {
+  string workspace_uri = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message GitRepository {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string path = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1118];
+}
+
+message RunVersionControlActionRequest {
+  oneof action {
+    GitAction git = 1;
+  }
+}
+
+message GitAction {
+  GitRepository repository = 1 [(unresolved_option_1052) = "\002"];
+  oneof operation {
+    Stage stage = 2;
+    Unstage unstage = 3;
+    Discard discard = 4;
+    Commit commit = 5;
+    Push push = 6;
+  }
+
+  message Stage {
+    repeated string paths = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1118];
+  }
+
+  message Unstage {
+    repeated string paths = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1118];
+  }
+
+  message Discard {
+    repeated string paths = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1118];
+    bool unstaged_only = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  }
+
+  message Commit {
+    string message = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+    bool amend = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  }
+
+  message Push {
+  }
+}
+
+message RunVersionControlActionResponse {
+  oneof result {
+    exa.language_server_pb.GitCommitResponse git_commit = 1 [(unresolved_option_40075780) = 1900];
+    exa.language_server_pb.GitPushResponse git_push = 2 [(unresolved_option_40075780) = 1900];
+  }
+}
+
+message CancelCascadeRequest {
+  string cascade_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  string reason = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string ace_vm_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  repeated int32 step_indices = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool kill_background_tasks = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message CancelCascadeResponse {
+}
+
+message ListPluginsRequest {
+  string return_to_app = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListPluginsResponse {
+  repeated exa.remote_agent_proxy_pb.PluginInfo plugins = 1;
+}
+
+message PluginInstallation {
+  string plugin_id = 1 [(unresolved_option_40075780) = 1100];
+  Target target = 2 [(unresolved_option_40075780) = 999];
+  repeated exa.remote_agent_proxy_pb.PluginConnection connections = 3;
+  protobuf.Timestamp create_time = 4 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp update_time = 5 [(unresolved_option_1052) = "\003"];
+  string credential_key = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+
+  enum Target {
+    TARGET_UNSPECIFIED = 0;
+    LOCAL = 1;
+    REMOTE = 2;
+    BOTH = 3;
+  }
+}
+
+message InstallPluginRequest {
+  string plugin_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  PluginInstallation.Target target = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string return_to_app = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message InstallPluginResponse {
+  PluginInstallation installation = 1;
+  string authorize_uri = 2 [(unresolved_option_40075780) = 999];
+}
+
+message UninstallPluginRequest {
+  string plugin_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  PluginInstallation.Target target = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+}
+
+message UninstallPluginResponse {
+  PluginInstallation installation = 1;
+}
+
+message ListPluginInstallationsRequest {
+}
+
+message ListPluginInstallationsResponse {
+  repeated PluginInstallation installations = 1;
+}
+
+message GeneratePluginAccessTokenRequest {
+  string plugin_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string account = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1106];
+  bool force_refresh = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message GeneratePluginAccessTokenResponse {
+  string access_token = 1 [(unresolved_option_40075780) = 2602];
+  protobuf.Timestamp expire_time = 2;
+  string account = 3 [(unresolved_option_40075780) = 1106];
+}
+
+message LocalPluginOAuthConfig {
+  string client_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1500];
+  string client_secret = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2600];
+  string authorize_uri = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1300];
+  string token_uri = 4 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1300];
+  repeated string scopes = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12028];
+  repeated string domains = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1300];
+  string identity_uri = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1300];
+  string identity_json_path = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12028];
+}
+
+message StartLocalPluginSignInRequest {
+  LocalPluginOAuthConfig oauth_config = 1 [(unresolved_option_1052) = "\001"];
+  int32 loopback_port = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1300];
+  SignInMode sign_in_mode = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+  string return_to_app = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+  string catalog_plugin_id = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+
+  enum SignInMode {
+    SIGN_IN_MODE_UNSPECIFIED = 0;
+    SIGN_IN_IF_NOT_YET = 1;
+    SIGN_IN_NEVER = 2;
+    SIGN_IN_ALWAYS = 3;
+  }
+}
+
+message StartLocalPluginSignInResponse {
+  string plugin_id = 1 [(unresolved_option_40075780) = 1100];
+  string authorize_uri = 2 [(unresolved_option_40075780) = 1300, (unresolved_option_40093572) = "\010\374\021"];
+  string state = 3 [(unresolved_option_40075780) = 2300];
+  bool connected = 4 [(unresolved_option_40075780) = 3000];
+}
+
+message CompleteLocalPluginSignInRequest {
+  string state = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string code = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2602];
+}
+
+message CompleteLocalPluginSignInResponse {
+  PluginInstallation installation = 1;
+}
+
+message GetChangelistStatusRequest {
+  repeated int64 cl_numbers = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  bool include_content = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool include_checks = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+}
+
+message GetChangelistStatusResponse {
+  repeated exa.language_server_pb.ChangelistStatus statuses = 1;
+}
+
+message GetGitHubPullRequestsRequest {
+  repeated exa.language_server_pb.GitHubPullRequestRef pull_requests = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message GetGitHubPullRequestsResponse {
+  repeated exa.language_server_pb.GitHubPullRequestStatus statuses = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message ProjectResource {
+  string type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string resource_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string display_name = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string url = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string icon_url = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string project_id = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  string mime_type = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  int64 size_bytes = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string mount_path = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1118];
+  protobuf.Timestamp create_time = 10 [(unresolved_option_1052) = "\003"];
+  protobuf.Timestamp update_time = 11 [(unresolved_option_1052) = "\003"];
+  Visibility visibility = 12 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string default_branch = 13 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+
+  enum Visibility {
+    VISIBILITY_UNSPECIFIED = 0;
+    PUBLIC = 1;
+    PRIVATE = 2;
+  }
+}
+
+message ListAvailableResourcesRequest {
+  string type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+}
+
+message ListAvailableResourcesResponse {
+  repeated ProjectResource resources = 1;
+  string oauth_access_token = 2 [(unresolved_option_40075780) = 2602];
+  string oauth_client_id = 3 [(unresolved_option_40075780) = 1100];
+}
+
+message ListResourceProvidersRequest {
+}
+
+message ListResourceProvidersResponse {
+  repeated exa.remote_agent_proxy_pb.ResourceProviderInfo providers = 1;
+}
+
+message UpdateProjectResourcesRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string title = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated ProjectResource add_resources = 3 [(unresolved_option_1052) = "\001"];
+  repeated ProjectResource delete_resources = 4 [(unresolved_option_1052) = "\001"];
+}
+
+message UpdateProjectResourcesResponse {
+  repeated ProjectResource resources = 1;
+}
+
+message ListProjectResourcesRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string type = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListProjectResourcesResponse {
+  repeated ProjectResource resources = 1;
+}
+
+message ProjectConfig {
+  string project_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  string title = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  int64 update_time_micros = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  bool archived = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  repeated ProjectResource resources = 5 [(unresolved_option_1052) = "\003"];
+  PermissionSettings permission_settings = 6 [(unresolved_option_1052) = "\003"];
+  string setup_script = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message CreateProjectRequest {
+  ProjectConfig project = 1 [(unresolved_option_1052) = "\002"];
+  string project_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+}
+
+message CreateProjectResponse {
+  ProjectConfig project = 1;
+}
+
+message ListProjectsRequest {
+}
+
+message ListProjectsResponse {
+  repeated ProjectConfig projects = 1;
+}
+
+message ConversationConfig {
+  string interaction_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  bool pinned = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool archived = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string title = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bool marked_as_unread = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp last_user_view_time = 6 [(unresolved_option_1052) = "\001"];
+  string conversation_group_id = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  exa.codeium_common_pb.AgentPermissionPreset permission_preset = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  CoordinatorConfig coordinator = 9 [(unresolved_option_1052) = "\001"];
+}
+
+message CoordinatorConfig {
+  string icon = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string color = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string goal = 3 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 1900];
+  string instructions = 4 [(unresolved_option_1052) = "\001\005", (unresolved_option_40075780) = 1900];
+  repeated CoordinatorResource resources = 5 [(unresolved_option_1052) = "\001\005"];
+}
+
+message CoordinatorResource {
+  string type = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string resource_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message UpsertConversationConfigRequest {
+  ConversationConfig config = 1 [(unresolved_option_1052) = "\002"];
+  protobuf.FieldMask update_mask = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+}
+
+message UpsertConversationConfigResponse {
+  ConversationConfig config = 1;
+}
+
+message DisconnectPluginRequest {
+  string plugin_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string account = 2 [(unresolved_option_40075780) = 1106];
+}
+
+message DisconnectPluginResponse {
+}
+
+message UpdateProjectRequest {
+  ProjectConfig project = 1 [(unresolved_option_1052) = "\002"];
+  protobuf.FieldMask update_mask = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+}
+
+message UpdateProjectResponse {
+  ProjectConfig project = 1;
+}
+
+message DeleteAgentMessageRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string message_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message DeleteAgentMessageResponse {
+}
+
+message CreateTerminalRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string request_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+}
+
+message CreateTerminalResponse {
+  exa.language_server_pb.TerminalInfo terminal = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message ListTerminalsRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message ListTerminalsResponse {
+  repeated exa.language_server_pb.TerminalInfo terminals = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message SendTerminalInputRequest {
+  string terminal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  oneof action {
+    bytes input = 2 [(unresolved_option_40075780) = 1900];
+    exa.language_server_pb.TerminalSize resize = 3 [(unresolved_option_40075780) = 999];
+  }
+  string input_stream_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  int64 input_offset = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message SendTerminalInputResponse {
+  int64 acked_offset = 1 [(unresolved_option_40075780) = 999];
+}
+
+message StreamTerminalOutputRequest {
+  string terminal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  int64 resume_offset = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message StreamTerminalOutputResponse {
+  oneof event {
+    bytes output = 1 [(unresolved_option_40075780) = 1900];
+    int32 exit_code = 2 [(unresolved_option_40075780) = 999];
+  }
+  int64 offset = 3 [(unresolved_option_40075780) = 999];
+}
+
+message CloseTerminalRequest {
+  string terminal_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message CloseTerminalResponse {
+}
+
+message UploadProjectFileRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string file_name = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  bytes content = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string mime_type = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  int64 size_bytes = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  oneof source {
+    bytes inline_content = 6 [(unresolved_option_40075780) = 1900];
+    string blob_handle = 7 [(unresolved_option_40075780) = 1100];
+  }
+  string title = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  gdata.Media blob = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  apiserving.MediaRequestInfo media_request_info = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999, (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message UploadProjectFileResponse {
+  ProjectResource resource = 1;
+  apiserving.MediaResponseInfo media_response_info = 2 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message ReadProjectResourceRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string type = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string resource_id = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message ReadProjectResourceResponse {
+  ProjectResource resource = 1;
+  bytes content = 2 [(unresolved_option_40075780) = 1900];
+  bool truncated = 3 [(unresolved_option_40075780) = 999];
+}
+
+message HandleCascadeUserInteractionRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  exa.cortex_pb.CascadeUserInteraction interaction = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message HandleCascadeUserInteractionResponse {
+}
+
+message PermissionSettings {
+  exa.codeium_common_pb.PermissionGrantsConfig grants = 1 [(unresolved_option_40075780) = 1900];
+  exa.codeium_common_pb.AgentPermissionPreset permission_preset = 2 [(unresolved_option_40075780) = 999];
+  optional exa.codeium_common_pb.ArtifactReviewMode artifact_review_mode = 3 [(unresolved_option_40075780) = 999];
+  optional exa.codeium_common_pb.BrowserJsExecutionPolicy browser_js_execution_policy = 4 [(unresolved_option_40075780) = 999];
+}
+
+message GetPermissionSettingsRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message GetPermissionSettingsResponse {
+  PermissionSettings global = 1;
+  PermissionSettings project = 2;
+}
+
+message SetPermissionPresetRequest {
+  PermissionSettingsScope scope = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string project_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  exa.codeium_common_pb.AgentPermissionPreset preset = 3 [(unresolved_option_40075780) = 999];
+}
+
+message SetPermissionPresetResponse {
+  PermissionSettings settings = 1;
+}
+
+message SetArtifactReviewModeRequest {
+  PermissionSettingsScope scope = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string project_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  optional exa.codeium_common_pb.ArtifactReviewMode artifact_review_mode = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message SetArtifactReviewModeResponse {
+  PermissionSettings settings = 1;
+}
+
+message SetBrowserJsExecutionPolicyRequest {
+  PermissionSettingsScope scope = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string project_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  optional exa.codeium_common_pb.BrowserJsExecutionPolicy browser_js_execution_policy = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message SetBrowserJsExecutionPolicyResponse {
+  PermissionSettings settings = 1;
+}
+
+message AddPermissionGrantsRequest {
+  PermissionSettingsScope scope = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string project_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  PermissionGrantList list = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  repeated string grants = 4 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message AddPermissionGrantsResponse {
+  PermissionSettings settings = 1;
+}
+
+message RemovePermissionGrantsRequest {
+  PermissionSettingsScope scope = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string project_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  PermissionGrantList list = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  repeated string grants = 4 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message RemovePermissionGrantsResponse {
+  PermissionSettings settings = 1;
+}
+
+message DeleteProjectRequest {
+  string project_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message DeleteProjectResponse {
+}
+
+message RenewTriggerCredentialsRequest {
+  repeated string trigger_ids = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message RenewTriggerCredentialsResponse {
+  int32 renewed_count = 1 [(unresolved_option_40075780) = 999];
+  int32 trigger_count = 2 [(unresolved_option_40075780) = 999];
+}
+
+message DeleteConversationRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message DeleteConversationResponse {
+}
+
+message GetUserQuotaSummaryRequest {
+  string execution_identity = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message GetUserQuotaSummaryResponse {
+  exa.language_server_pb.RetrieveUserQuotaSummaryResponse summary = 1 [(unresolved_option_40075780) = 999];
+}
+
+message RevertCascadeToStepRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  int32 step_index = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  bool conversation_only = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string request_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message RevertCascadeToStepResponse {
+}
+
+message TrajectoryTruncation {
+  int32 num_steps = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string request_id = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message GetCascadeNuxesRequest {
+}
+
+message GetCascadeNuxesResponse {
+  repeated exa.codeium_common_pb.CascadeNUXConfig nuxes = 1;
+}
+
+message GenerateConversationTitleRequest {
+  string prompt = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.TextOrScopeItem items = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string execution_identity = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message GenerateConversationTitleResponse {
+  string title = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+}
+
+message AskSideQuestionRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string question = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  exa.codeium_common_pb.Model model = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message AskSideQuestionResponse {
+  string answer = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+}
+
+message StartBattleModeRequest {
+  oneof source {
+    string source_conversation_id = 1 [(unresolved_option_40075780) = 2300];
+    BattleModeNewConversation new_source_conversation = 4;
+  }
+  repeated BattleModeArm arms = 2 [(unresolved_option_1052) = "\002"];
+  optional int32 fork_step_index = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message StartBattleModeResponse {
+  repeated string children_conversation_ids = 1 [(unresolved_option_40075780) = 2300];
+  int32 start_step_index = 2 [(unresolved_option_40075780) = 999];
+  string source_conversation_id = 3 [(unresolved_option_40075780) = 2300];
+}
+
+message EndBattleModeRequest {
+  string winner_conversation_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+  exa.language_server_pb.MergeStrategy merge_strategy = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  exa.cortex_pb.BattleEndType end_type = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2800];
+  string source_conversation_id = 4 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  bool force_stop_running = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message EndBattleModeResponse {
+  string main_conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  exa.language_server_pb.EndBattleModeError error = 2 [(unresolved_option_40075780) = 999];
+  exa.codeium_common_pb.Model winning_model = 3 [(unresolved_option_40075780) = 2800];
+}
+
+message EliminateBattleModeArmRequest {
+  string source_conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string eliminated_conversation_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message EliminateBattleModeArmResponse {
+  exa.cortex_pb.BattleModeInfo battle_mode_info = 1 [(unresolved_option_40075780) = 999];
+}
+
+message BattleModeNewConversation {
+  string workspace_uri = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  exa.remote_agent_proxy_pb.Environment environment = 2 [(unresolved_option_1052) = "\001"];
+  exa.remote_agent_proxy_pb.ConfigOverrides config_overrides = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message BattleModeArm {
+  string message_text = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.TextOrScopeItem items = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated exa.codeium_common_pb.Media media = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  exa.remote_agent_proxy_pb.ConfigOverrides config_overrides = 4 [(unresolved_option_1052) = "\001"];
+}
+
+message GetClientStorageItemsRequest {
+}
+
+message GetClientStorageItemsResponse {
+  map<string, string> items = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message UpdateClientStorageItemsRequest {
+  map<string, string> items = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string keys_to_delete = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message UpdateClientStorageItemsResponse {
+}
+
+message SandboxHttpHeader {
+  string name = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string value = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message FetchSandboxPortRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  int32 port = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string method = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string path = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated SandboxHttpHeader headers = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bytes body = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bool user_initiated = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message FetchSandboxPortResponse {
+  int32 status_code = 1 [(unresolved_option_40075780) = 999];
+  repeated SandboxHttpHeader headers = 2 [(unresolved_option_40075780) = 1900];
+  bytes body = 3 [(unresolved_option_40075780) = 1900];
+  bool truncated = 4 [(unresolved_option_40075780) = 999];
+}
+
+message SandboxWebRtcIceServer {
+  repeated string urls = 1 [(unresolved_option_40075780) = 999];
+  string username = 2 [(unresolved_option_40075780) = 999];
+  string credential = 3 [(unresolved_option_40075780) = 2602];
+}
+
+message ConnectSandboxWebRtcRequest {
+  string conversation_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string sdp_offer = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+}
+
+message ConnectSandboxWebRtcResponse {
+  string sdp_answer = 1 [(unresolved_option_40075780) = 1900];
+  string dtls_fingerprint = 2 [(unresolved_option_40075780) = 999];
+  repeated SandboxWebRtcIceServer ice_servers = 3;
+}
+
+message Agent {
+  string agent_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string display_name = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string execution_identity = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  AgentStatus status = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  string capsule_id = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  int64 create_time_micros = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  int64 update_time_micros = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  AgentStatusDetail status_detail = 8 [(unresolved_option_1052) = "\003"];
+  string current_operation_name = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  AgentRole caller_role = 10 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  AgentAccess access = 11 [(unresolved_option_1052) = "\003"];
+  string project_id = 12 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+}
+
+message AgentEnvironment {
+  int32 replica_index = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string environment_id = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  State state = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  protobuf.Timestamp check_in_time = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp expire_time = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string error_message = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 9901];
+  Provider provider = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum Provider {
+    PROVIDER_UNSPECIFIED = 0;
+    CAPSULE = 1;
+  }
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    PENDING = 1;
+    STARTING = 2;
+    ACTIVE = 3;
+    DEGRADED = 4;
+    STOPPING = 5;
+    STOPPED = 6;
+    FAILED = 7;
+  }
+}
+
+message AgentStatusDetail {
+  string message = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 9901];
+  rpc.Status error = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 9901];
+  string failed_phase = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12017];
+  string operation_name = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12015];
+  int64 status_time_micros = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+}
+
+message AgentOperationMetadata {
+  string agent_id = 1 [(unresolved_option_40075780) = 1100];
+  string phase = 2 [(unresolved_option_40075780) = 12017];
+  string message = 3 [(unresolved_option_40075780) = 9901];
+  int64 update_time_micros = 4 [(unresolved_option_40075780) = 2100];
+}
+
+message AgentPrincipal {
+  oneof principal {
+    string user = 1 [(unresolved_option_40075780) = 1106];
+  }
+}
+
+message AgentGrant {
+  AgentPrincipal principal = 1 [(unresolved_option_1052) = "\002"];
+  AgentRole role = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message AgentAccess {
+  repeated AgentGrant grants = 1;
+}
+
+message CreateAgentRequest {
+  reserved 1;
+  string execution_identity = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string agent_id = 3 [deprecated = true, (unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  bool adopt_existing = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  AgentConfig agent_config = 5 [(unresolved_option_1052) = "\001"];
+  string display_name = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string project_id = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+}
+
+message CreateAgentResponse {
+  Agent agent = 1;
+  string operation_name = 2 [(unresolved_option_40075780) = 1100];
+}
+
+message GetAgentRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  bool include_access = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message GetAgentResponse {
+  Agent agent = 1;
+  repeated AgentEnvironment environments = 20;
+}
+
+message AgentConfig {
+  string agent_blueprint_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12015];
+  AgentBrainStyle brain_style = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  AgentMemoryMode memory = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string model = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  int32 pool_size = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  AgentChatskiConnector chatski_connector = 6 [(unresolved_option_1052) = "\001"];
+  optional bool send_session_message = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string managed_by_piper_path = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  AgentConnectors connectors = 9 [(unresolved_option_1052) = "\001"];
+}
+
+message AgentChatskiConnector {
+  string handle = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1106];
+  string instance_plugin_dir = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message AgentConnectors {
+  reserved 1;
+  repeated AgentConnectorSubscription subscriptions = 2 [(unresolved_option_1052) = "\001"];
+  AgentGitHubConnector github = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message AgentGitHubConnector {
+  repeated string allowed_usernames = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1106];
+  string prompt = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  repeated string repos = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message AgentConnectorSubscription {
+  string connector_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string display_name = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string prompt = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  bool paused = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string option_id = 5 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  map<string, exa.remote_agent_proxy_pb.FieldValues> fields = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string static_session_key = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message AgentConnectorTrigger {
+  string connector_id = 1 [(unresolved_option_40075780) = 999];
+  string trigger_id = 2 [(unresolved_option_40075780) = 1100];
+  AgentConnectorTriggerState state = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp last_renew_time = 4;
+  protobuf.Timestamp credential_expire_time = 5;
+  int32 error_code = 6 [(unresolved_option_40075780) = 999];
+  protobuf.Timestamp update_time = 7;
+}
+
+message ListAgentTriggersRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message ListAgentTriggersResponse {
+  repeated AgentConnectorTrigger triggers = 1;
+  protobuf.Timestamp last_sync_time = 2;
+}
+
+message AgentEnvironmentUpdate {
+  rpc.Status status = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 9901];
+  oneof environment {
+    CapsulePoolUpdate capsule_pool = 2;
+  }
+}
+
+message CapsulePoolUpdate {
+  repeated string updated_fields = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message SyncAgentConnectorTriggersRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string holder = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12015];
+}
+
+message AgentConnectorTriggerSync {
+  string connector_id = 1 [(unresolved_option_40075780) = 999];
+  string trigger_id = 2 [(unresolved_option_40075780) = 1100];
+  Action action = 3 [(unresolved_option_40075780) = 999];
+  string error_message = 4 [(unresolved_option_40075780) = 999];
+
+  enum Action {
+    ACTION_UNSPECIFIED = 0;
+    UNCHANGED = 1;
+    CREATED = 2;
+    UPDATED = 3;
+    DELETED = 4;
+    RENEWED = 5;
+    REACTIVATED = 6;
+    PAUSED = 7;
+    FAILED = 8;
+  }
+}
+
+message SyncAgentConnectorTriggersResponse {
+  bool lease_held_elsewhere = 1 [(unresolved_option_40075780) = 999];
+  repeated AgentConnectorTriggerSync results = 2;
+}
+
+message GetAgentConfigRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message GetAgentConfigResponse {
+  AgentConfig config = 1 [(unresolved_option_1052) = "\003"];
+  string etag = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message UpdateAgentConfigRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  AgentConfig config = 2 [(unresolved_option_1052) = "\002"];
+  string etag = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message UpdateAgentConfigResponse {
+  AgentConfig config = 1 [(unresolved_option_1052) = "\003"];
+  string etag = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  AgentEnvironmentUpdate environment_update = 3 [(unresolved_option_1052) = "\003"];
+}
+
+message ListAgentsRequest {
+}
+
+message ListAgentsResponse {
+  repeated Agent agents = 1;
+}
+
+message ListAgentConversationsRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message AgentConversation {
+  string conversation_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  repeated string session_keys = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  int64 create_time_micros = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  int64 update_time_micros = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  repeated AgentConversationSession sessions = 6 [(unresolved_option_1052) = "\003"];
+}
+
+message AgentConversationSession {
+  string session_key = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string source_uri = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12031, (unresolved_option_40221563) = 3];
+}
+
+message ListAgentConversationsResponse {
+  repeated AgentConversation conversations = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message DeleteAgentRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message DeleteAgentResponse {
+}
+
+message DisableAgentRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message DisableAgentResponse {
+  Agent agent = 1;
+}
+
+message EnableAgentRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message EnableAgentResponse {
+  Agent agent = 1;
+}
+
+message DeliverAgentEventRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string tag = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string source = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string key = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string sender = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string message_id = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string content = 7 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  repeated string metadata_tags = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  exa.cortex_pb.MessageDeliveryStrategy delivery_strategy = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  exa.codeium_common_pb.Model model = 10 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+  string source_uri = 11 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12031, (unresolved_option_40221563) = 3];
+}
+
+message DeliverAgentEventResponse {
+  string conversation_id = 1 [(unresolved_option_40075780) = 2300];
+  string session_tag = 2 [(unresolved_option_40075780) = 1900];
+  bool created = 3 [(unresolved_option_40075780) = 3000];
+  string message_id = 4 [(unresolved_option_40075780) = 1100];
+  string error_message = 5 [(unresolved_option_40075780) = 1900];
+}
+
+message StreamVoiceRequest {
+  exa.remote_agent_proxy_pb.VoiceClientMessage message = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message StreamVoiceResponse {
+  exa.remote_agent_proxy_pb.VoiceServerMessage message = 1;
+}
+
+message ListVoiceTrajectoriesRequest {
+  string cascade_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message ListVoiceTrajectoriesResponse {
+  repeated exa.remote_agent_proxy_pb.VoiceTrajectory voice_trajectories = 1;
+}
+
+message GetVoiceTrajectoryDebugRequest {
+  string cascade_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+  string voice_trajectory_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message DeleteVoiceTrajectoriesRequest {
+  string cascade_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2300];
+}
+
+message DeleteVoiceTrajectoriesResponse {
+}
+
+message ReportEnvironmentSidecarsRequest {
+  exa.remote_agent_proxy_pb.Environment environment = 1 [(unresolved_option_1052) = "\002"];
+  string deployment_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  repeated exa.cortex_pb.SidecarStatusInfo sidecars = 3 [(unresolved_option_1052) = "\001"];
+}
+
+message ReportEnvironmentSidecarsResponse {
+  protobuf.Timestamp update_time = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+}
+
+message ListEnvironmentSidecarsRequest {
+  exa.remote_agent_proxy_pb.Environment environment = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message ListEnvironmentSidecarsResponse {
+  repeated exa.cortex_pb.SidecarStatusInfo sidecars = 1;
+  protobuf.Timestamp update_time = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+}
+
+message UpdateAgentAccessRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  repeated AgentGrant grants = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message UpdateAgentAccessResponse {
+  Agent agent = 1;
+}
+
+message ListAgentCoordinationMessagesRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string thread_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  bool roots_only = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string since_cursor = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  string corr = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string mention_target = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  AgentCoordinationMention.State mention_state = 9 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+}
+
+message AgentCoordinationMention {
+  string session_key = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  State state = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string reason = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string acked_by = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  protobuf.Timestamp update_time = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    PENDING = 1;
+    ACKED = 2;
+    NACKED = 3;
+    FAILED = 4;
+  }
+}
+
+message AgentCoordinationMessage {
+  string message_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string session_key = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string envelope = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string reply_to = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string thread_id = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string body = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp create_time = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  repeated AgentCoordinationMention mentions = 8 [(unresolved_option_1052) = "\003"];
+  AgentCoordinationThreadSummary thread = 9 [(unresolved_option_1052) = "\003"];
+  string corr = 10 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+}
+
+message AgentCoordinationThreadSummary {
+  int64 reply_count = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp last_reply_time = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  repeated string replier_session_keys = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+}
+
+message ListAgentCoordinationMessagesResponse {
+  repeated AgentCoordinationMessage agent_coordination_messages = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+  string cursor = 3 [(unresolved_option_40075780) = 2800];
+}
+
+message AppendAgentCoordinationMessageRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string sender_session_key = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string body = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  repeated string mentions = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string reply_to = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string corr = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string envelope = 7 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  string request_id = 8 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message AgentCoordinationMentionDelivery {
+  string session_key = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  bool delivered = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  string conversation_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  bool created = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2800];
+  string delivery_error = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 9901];
+}
+
+message AppendAgentCoordinationMessageResponse {
+  AgentCoordinationMessage message = 1;
+  repeated AgentCoordinationMentionDelivery deliveries = 2;
+}
+
+message AckAgentCoordinationMentionRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string message_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string target_session_key = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  bool nack = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2800];
+  string reason = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+  string acked_by = 6 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message AckAgentCoordinationMentionResponse {
+  AgentCoordinationMention mention = 1;
+}
+
+message AgentRemoteSession {
+  string session_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string agent_id = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string session_key = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string title = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp create_time = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp last_message_time = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+}
+
+message AgentRemoteSessionMessage {
+  string message_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  AgentRemoteSessionAuthor author = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string author_conversation_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  string body = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp create_time = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+}
+
+message AgentRemoteSessionLiveness {
+  State state = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  protobuf.Timestamp last_activity_time = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string conversation_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    RUNNING = 1;
+    IDLE = 2;
+    STALLED = 3;
+    FAILED = 4;
+  }
+}
+
+message CreateAgentRemoteSessionRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string title = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message CreateAgentRemoteSessionResponse {
+  AgentRemoteSession session = 1;
+}
+
+message ListAgentRemoteSessionsRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListAgentRemoteSessionsResponse {
+  repeated AgentRemoteSession sessions = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message ListAgentRemoteSessionMessagesRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string session_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  int32 page_size = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string since_cursor = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListAgentRemoteSessionMessagesResponse {
+  repeated AgentRemoteSessionMessage messages = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+  string cursor = 3 [(unresolved_option_40075780) = 999];
+  AgentRemoteSessionLiveness liveness = 4;
+}
+
+message AppendAgentRemoteSessionMessageRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string session_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string body = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1900];
+  string request_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string author_conversation_id = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 2300];
+}
+
+message AppendAgentRemoteSessionMessageResponse {
+  AgentRemoteSessionMessage message = 1;
+  AgentRemoteSessionDeliveryState delivery_state = 2 [(unresolved_option_40075780) = 999];
+  string delivery_error = 3 [(unresolved_option_40075780) = 999];
+  string conversation_id = 4 [(unresolved_option_40075780) = 2300];
+}
+
+message AgentBlueprint {
+  string id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12015];
+  string display_name = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string description = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  AgentConfig defaults = 4 [(unresolved_option_1052) = "\003"];
+  repeated AgentMemoryMode allowed_memory = 5 [(unresolved_option_1052) = "\003"];
+  AgentSessionKey session_key = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string extends_path = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message ListAgentBlueprintsRequest {
+}
+
+message ListAgentBlueprintsResponse {
+  repeated AgentBlueprint blueprints = 1;
+}
+
+message ListAgentRunsRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message AgentRun {
+  string run_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string session_key = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string conversation_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2300];
+  State state = 4 [(unresolved_option_1052) = "\003"];
+  int64 receive_time_micros = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  int64 start_time_micros = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  int64 end_time_micros = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  string preempting_run_id = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  int32 error_code = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    QUEUED = 1;
+    RUNNING = 2;
+    SUCCEEDED = 3;
+    FAILED = 4;
+    PREEMPTED = 5;
+  }
+}
+
+message ListAgentRunsResponse {
+  repeated AgentRun runs = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+  repeated AgentRunStateCount state_counts = 3;
+  int32 total_slots = 4 [(unresolved_option_40075780) = 999];
+}
+
+message AgentRunStateCount {
+  AgentRun.State state = 1 [(unresolved_option_1052) = "\003"];
+  int64 count = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+}
+
+message DeliverPendingAgentRemoteSessionMessagesRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message AgentRemoteSessionMessageDelivery {
+  string session_id = 1 [(unresolved_option_40075780) = 1100];
+  string message_id = 2 [(unresolved_option_40075780) = 1100];
+  AgentRemoteSessionDeliveryState delivery_state = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string conversation_id = 4 [(unresolved_option_40075780) = 2300];
+  string delivery_error = 5 [(unresolved_option_40075780) = 999];
+}
+
+message DeliverPendingAgentRemoteSessionMessagesResponse {
+  repeated AgentRemoteSessionMessageDelivery deliveries = 1;
+}
+
+message WatchTopic {
+  oneof target {
+    CallerConversations caller_conversations = 1;
+    CallerProjects caller_projects = 2;
+    AgentConversations agent_conversations = 3;
+    AgentCoordination agent_coordination = 4;
+    AgentRemoteSessionMessages agent_remote_session_messages = 5;
+  }
+
+  message CallerConversations {
+  }
+
+  message CallerProjects {
+  }
+
+  message AgentConversations {
+    string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  }
+
+  message AgentCoordination {
+    string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  }
+
+  message AgentRemoteSessionMessages {
+    string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+    string session_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  }
+}
+
+message WatchTopicGeneration {
+  WatchTopic topic = 1 [(unresolved_option_1052) = "\002"];
+  string generation = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12016];
+}
+
+message WatchTopicsRequest {
+  repeated WatchTopicGeneration topics = 1 [(unresolved_option_1052) = "\002"];
+}
+
+message WatchTopicsResponse {
+  oneof frame {
+    InitialFrame initial_frame = 1;
+    WatchTopicGeneration changed_topic = 2;
+    Heartbeat heartbeat = 3;
+  }
+
+  message InitialFrame {
+    repeated WatchTopicGeneration baselines = 1;
+    repeated WatchTopicGeneration changed_topics = 2;
+  }
+
+  message Heartbeat {
+  }
+}
+
+message SearchMarketplaceRequest {
+  string query = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1901];
+  string page_token = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+  string group_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+}
+
+message SearchMarketplaceResponse {
+  exa.language_server_pb.SearchMarketplaceResponse response = 1;
+}
+
+message GetMarketplaceCustomizationRequest {
+  string id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  bool include_preview = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 12027];
+}
+
+message GetMarketplaceCustomizationResponse {
+  exa.language_server_pb.GetMarketplaceCustomizationResponse response = 1;
+}
+
+message GetMarketplaceFeaturedRequest {
+}
+
+message GetMarketplaceFeaturedResponse {
+  exa.language_server_pb.GetMarketplaceFeaturedResponse response = 1;
+}
+
+message InstallCustomizationRequest {
+  string id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string bundle_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message InstallCustomizationResponse {
+  exa.language_server_pb.InstallCustomizationResponse response = 1;
+}
+
+message UninstallCustomizationRequest {
+  CustomizationKind kind = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12027];
+  string customization_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message UninstallCustomizationResponse {
+}
+
+message SetCustomizationEnabledRequest {
+  CustomizationKind kind = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12027];
+  string customization_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  bool enabled = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 12012];
+}
+
+message SetCustomizationEnabledResponse {
+}
+
+message ListInstalledPluginsRequest {
+  string plugin_id = 1 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+}
+
+message ListInstalledPluginsResponse {
+  repeated exa.language_server_pb.Plugin plugins = 1;
+  repeated InstalledPluginSource sources = 2;
+}
+
+message InstalledPluginSource {
+  string plugin_id = 1 [(unresolved_option_40075780) = 1100];
+  string google3_depot_path = 2 [(unresolved_option_40075780) = 1118];
+}
+
+message InvokeSubserviceRequest {
+  int32 method = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  bytes payload = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1900];
+}
+
+message InvokeSubserviceResponse {
+  bytes payload = 1 [(unresolved_option_40075780) = 1900];
+}
+
+message AgentMemoryGroup {
+  string group_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string description = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string prompt = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  protobuf.Timestamp create_time = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+}
+
+message AgentMemory {
+  string group_id = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string memory_id = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1100];
+  string description = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  string content = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1900];
+  repeated string tags = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12005];
+  protobuf.Timestamp create_time = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  protobuf.Timestamp update_time = 7 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2100];
+  int64 content_length = 8 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 999];
+  string mime_type = 9 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000];
+}
+
+message ListAgentMemoryGroupsRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  int32 page_size = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListAgentMemoryGroupsResponse {
+  repeated AgentMemoryGroup memory_groups = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message ListAgentMemoriesRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string group_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  int32 page_size = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string page_token = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  bool include_content = 5 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message ListAgentMemoriesResponse {
+  repeated AgentMemory memories = 1;
+  string next_page_token = 2 [(unresolved_option_40075780) = 999];
+}
+
+message GetAgentMemoryRequest {
+  string agent_id = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+  string group_id = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1100];
+  string memory_id = 3 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 1100];
+}
+
+message GetAgentMemoryResponse {
+  AgentMemory memory = 1;
+}
+
+service JetskiRemoteAgentProxyService {
+  option (unresolved_option_143069646) = "\022\007v1alpha";
+  rpc StartCascade(StartCascadeRequest) returns (StartCascadeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"#/{$api_version}/remote:startCascade";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc SendUserCascadeMessage(SendUserCascadeMessageRequest) returns (SendUserCascadeMessageResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:sendUserCascadeMessage";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc StreamAgentStateUpdates(StreamAgentStateUpdatesRequest) returns (stream StreamAgentStateUpdatesResponse) {
+    option (unresolved_option_72295728) = ":\001*\"./{$api_version}/remote:streamAgentStateUpdates";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc GetConversation(GetConversationRequest) returns (GetConversationResponse) {
+    option (unresolved_option_72295728) = "\022&/{$api_version}/remote:getConversation";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListConversations(ListConversationsRequest) returns (ListConversationsResponse) {
+    option (unresolved_option_72295728) = "\022(/{$api_version}/remote:listConversations";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListWorkspaces(ListWorkspacesRequest) returns (ListWorkspacesResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:listWorkspaces";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc CreateWorkspace(CreateWorkspaceRequest) returns (CreateWorkspaceResponse) {
+    option (unresolved_option_72295728) = ":\001*\"&/{$api_version}/remote:createWorkspace";
+    option (unresolved_option_8) = 0x4072c00000000000;
+  }
+  rpc ListAvailableModels(ListAvailableModelsRequest) returns (ListAvailableModelsResponse) {
+    option (unresolved_option_72295728) = "\022*/{$api_version}/remote:listAvailableModels";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListSlashCommands(ListSlashCommandsRequest) returns (ListSlashCommandsResponse) {
+    option (unresolved_option_72295728) = "\022(/{$api_version}/remote:listSlashCommands";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ReadFile(ReadFileRequest) returns (ReadFileResponse) {
+    option (unresolved_option_72295728) = "\022\037/{$api_version}/remote:readFile";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetTurnDiff(GetTurnDiffRequest) returns (GetTurnDiffResponse) {
+    option (unresolved_option_72295728) = "\022\"/{$api_version}/remote:getTurnDiff";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc GetCodeActionDiff(GetCodeActionDiffRequest) returns (GetCodeActionDiffResponse) {
+    option (unresolved_option_72295728) = "\022(/{$api_version}/remote:getCodeActionDiff";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListEnvironments(ListEnvironmentsRequest) returns (ListEnvironmentsResponse) {
+    option (unresolved_option_72295728) = "\022'/{$api_version}/remote:listEnvironments";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ReadDir(ReadDirRequest) returns (ReadDirResponse) {
+    option (unresolved_option_72295728) = "\022\036/{$api_version}/remote:readDir";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListTriggerOptions(ListTriggerOptionsRequest) returns (ListTriggerOptionsResponse) {
+    option (unresolved_option_72295728) = "\022)/{$api_version}/remote:listTriggerOptions";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc CreateTrigger(CreateTriggerRequest) returns (CreateTriggerResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:createTrigger";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UpdateTrigger(UpdateTriggerRequest) returns (UpdateTriggerResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:updateTrigger";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeleteTrigger(DeleteTriggerRequest) returns (DeleteTriggerResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:deleteTrigger";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListTriggers(ListTriggersRequest) returns (ListTriggersResponse) {
+    option (unresolved_option_72295728) = "\022#/{$api_version}/remote:listTriggers";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListIdentities(ListIdentitiesRequest) returns (ListIdentitiesResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:listIdentities";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetVersionControlState(GetVersionControlStateRequest) returns (GetVersionControlStateResponse) {
+    option (unresolved_option_72295728) = "\022-/{$api_version}/remote:getVersionControlState";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc CancelCascade(CancelCascadeRequest) returns (CancelCascadeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:cancelCascade";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListPlugins(ListPluginsRequest) returns (ListPluginsResponse) {
+    option (unresolved_option_72295728) = "\022\"/{$api_version}/remote:listPlugins";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc EnsureEnvironment(EnsureEnvironmentRequest) returns (EnsureEnvironmentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:ensureEnvironment";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:createProject";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UpsertConversationConfig(UpsertConversationConfigRequest) returns (UpsertConversationConfigResponse) {
+    option (unresolved_option_72295728) = ":\001*\"//{$api_version}/remote:upsertConversationConfig";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListResourceProviders(ListResourceProvidersRequest) returns (ListResourceProvidersResponse) {
+    option (unresolved_option_72295728) = "\022,/{$api_version}/remote:listResourceProviders";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAvailableResources(ListAvailableResourcesRequest) returns (ListAvailableResourcesResponse) {
+    option (unresolved_option_72295728) = "\022-/{$api_version}/remote:listAvailableResources";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UpdateProjectResources(UpdateProjectResourcesRequest) returns (UpdateProjectResourcesResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:updateProjectResources";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListProjectResources(ListProjectResourcesRequest) returns (ListProjectResourcesResponse) {
+    option (unresolved_option_72295728) = "\022+/{$api_version}/remote:listProjectResources";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DisconnectPlugin(DisconnectPluginRequest) returns (DisconnectPluginResponse) {
+    option (unresolved_option_72295728) = ":\001*\"'/{$api_version}/remote:disconnectPlugin";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListProjects(ListProjectsRequest) returns (ListProjectsResponse) {
+    option (unresolved_option_72295728) = "\022#/{$api_version}/remote:listProjects";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:updateProject";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeleteAgentMessage(DeleteAgentMessageRequest) returns (DeleteAgentMessageResponse) {
+    option (unresolved_option_72295728) = ":\001*\")/{$api_version}/remote:deleteAgentMessage";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc CreateTerminal(CreateTerminalRequest) returns (CreateTerminalResponse) {
+    option (unresolved_option_72295728) = ":\001*\"%/{$api_version}/remote:createTerminal";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListTerminals(ListTerminalsRequest) returns (ListTerminalsResponse) {
+    option (unresolved_option_72295728) = "\022$/{$api_version}/remote:listTerminals";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SendTerminalInput(SendTerminalInputRequest) returns (SendTerminalInputResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:sendTerminalInput";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc StreamTerminalOutput(StreamTerminalOutputRequest) returns (stream StreamTerminalOutputResponse) {
+    option (unresolved_option_72295728) = ":\001*\"+/{$api_version}/remote:streamTerminalOutput";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc CloseTerminal(CloseTerminalRequest) returns (CloseTerminalResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:closeTerminal";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UploadProjectFile(UploadProjectFileRequest) returns (UploadProjectFileResponse) {
+    option (unresolved_option_72295728) = ":\001*J$\030\001\"\025scotty.googleapis.com8\200\200\2002@\001P\001X\001\"(/{$api_version}/remote:uploadProjectFile";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ReadProjectResource(ReadProjectResourceRequest) returns (ReadProjectResourceResponse) {
+    option (unresolved_option_72295728) = "\022*/{$api_version}/remote:readProjectResource";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc HandleCascadeUserInteraction(HandleCascadeUserInteractionRequest) returns (HandleCascadeUserInteractionResponse) {
+    option (unresolved_option_72295728) = ":\001*\"3/{$api_version}/remote:handleCascadeUserInteraction";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc DeleteProject(DeleteProjectRequest) returns (DeleteProjectResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:deleteProject";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetPermissionSettings(GetPermissionSettingsRequest) returns (GetPermissionSettingsResponse) {
+    option (unresolved_option_72295728) = "\022,/{$api_version}/remote:getPermissionSettings";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SetPermissionPreset(SetPermissionPresetRequest) returns (SetPermissionPresetResponse) {
+    option (unresolved_option_72295728) = ":\001*\"*/{$api_version}/remote:setPermissionPreset";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SetArtifactReviewMode(SetArtifactReviewModeRequest) returns (SetArtifactReviewModeResponse) {
+    option (unresolved_option_72295728) = ":\001*\",/{$api_version}/remote:setArtifactReviewMode";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SetBrowserJsExecutionPolicy(SetBrowserJsExecutionPolicyRequest) returns (SetBrowserJsExecutionPolicyResponse) {
+    option (unresolved_option_72295728) = ":\001*\"2/{$api_version}/remote:setBrowserJsExecutionPolicy";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc AddPermissionGrants(AddPermissionGrantsRequest) returns (AddPermissionGrantsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"*/{$api_version}/remote:addPermissionGrants";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc RemovePermissionGrants(RemovePermissionGrantsRequest) returns (RemovePermissionGrantsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:removePermissionGrants";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc RenewTriggerCredentials(RenewTriggerCredentialsRequest) returns (RenewTriggerCredentialsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"./{$api_version}/remote:renewTriggerCredentials";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc InstallPlugin(InstallPluginRequest) returns (InstallPluginResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:installPlugin";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UninstallPlugin(UninstallPluginRequest) returns (UninstallPluginResponse) {
+    option (unresolved_option_72295728) = ":\001*\"&/{$api_version}/remote:uninstallPlugin";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListPluginInstallations(ListPluginInstallationsRequest) returns (ListPluginInstallationsResponse) {
+    option (unresolved_option_72295728) = "\022./{$api_version}/remote:listPluginInstallations";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetMendelFlags(GetMendelFlagsRequest) returns (GetMendelFlagsResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:getMendelFlags";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeleteConversation(DeleteConversationRequest) returns (DeleteConversationResponse) {
+    option (unresolved_option_72295728) = ":\001*\")/{$api_version}/remote:deleteConversation";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetUserQuotaSummary(GetUserQuotaSummaryRequest) returns (GetUserQuotaSummaryResponse) {
+    option (unresolved_option_72295728) = "\022*/{$api_version}/remote:getUserQuotaSummary";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetUserAccountSettings(GetUserAccountSettingsRequest) returns (GetUserAccountSettingsResponse) {
+    option (unresolved_option_72295728) = "\022-/{$api_version}/remote:getUserAccountSettings";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SetUserAccountSettings(SetUserAccountSettingsRequest) returns (SetUserAccountSettingsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:setUserAccountSettings";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetUserProfile(GetUserProfileRequest) returns (GetUserProfileResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:getUserProfile";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc RevertCascadeToStep(RevertCascadeToStepRequest) returns (RevertCascadeToStepResponse) {
+    option (unresolved_option_72295728) = ":\001*\"*/{$api_version}/remote:revertCascadeToStep";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetCascadeNuxes(GetCascadeNuxesRequest) returns (GetCascadeNuxesResponse) {
+    option (unresolved_option_72295728) = "\022&/{$api_version}/remote:getCascadeNuxes";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GenerateConversationTitle(GenerateConversationTitleRequest) returns (GenerateConversationTitleResponse) {
+    option (unresolved_option_72295728) = ":\001*\"0/{$api_version}/remote:generateConversationTitle";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc AskSideQuestion(AskSideQuestionRequest) returns (AskSideQuestionResponse) {
+    option (unresolved_option_72295728) = ":\001*\"&/{$api_version}/remote:askSideQuestion";
+    option (unresolved_option_8) = 0x405e000000000000;
+  }
+  rpc DeleteAllUserData(DeleteAllUserDataRequest) returns (DeleteAllUserDataResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:deleteAllUserData";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetUserDataDeletionStatus(GetUserDataDeletionStatusRequest) returns (GetUserDataDeletionStatusResponse) {
+    option (unresolved_option_72295728) = "\0220/{$api_version}/remote:getUserDataDeletionStatus";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc StartBattleMode(StartBattleModeRequest) returns (StartBattleModeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"&/{$api_version}/remote:startBattleMode";
+    option (unresolved_option_8) = 0x405e000000000000;
+  }
+  rpc EndBattleMode(EndBattleModeRequest) returns (EndBattleModeResponse) {
+    option (unresolved_option_72295728) = ":\001*\"$/{$api_version}/remote:endBattleMode";
+    option (unresolved_option_8) = 0x405e000000000000;
+  }
+  rpc EliminateBattleModeArm(EliminateBattleModeArmRequest) returns (EliminateBattleModeArmResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:eliminateBattleModeArm";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc GetClientStorageItems(GetClientStorageItemsRequest) returns (GetClientStorageItemsResponse) {
+    option (unresolved_option_72295728) = "\022,/{$api_version}/remote:getClientStorageItems";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UpdateClientStorageItems(UpdateClientStorageItemsRequest) returns (UpdateClientStorageItemsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"//{$api_version}/remote:updateClientStorageItems";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GeneratePluginAccessToken(GeneratePluginAccessTokenRequest) returns (GeneratePluginAccessTokenResponse) {
+    option (unresolved_option_72295728) = ":\001*\"0/{$api_version}/remote:generatePluginAccessToken";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc FetchSandboxPort(FetchSandboxPortRequest) returns (FetchSandboxPortResponse) {
+    option (unresolved_option_72295728) = ":\001*\"'/{$api_version}/remote:fetchSandboxPort";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SearchFiles(SearchFilesRequest) returns (SearchFilesResponse) {
+    option (unresolved_option_72295728) = "\022\"/{$api_version}/remote:searchFiles";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc StartLocalPluginSignIn(StartLocalPluginSignInRequest) returns (StartLocalPluginSignInResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:startLocalPluginSignIn";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc CompleteLocalPluginSignIn(CompleteLocalPluginSignInRequest) returns (CompleteLocalPluginSignInResponse) {
+    option (unresolved_option_72295728) = ":\001*\"0/{$api_version}/remote:completeLocalPluginSignIn";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc CreateAgent(CreateAgentRequest) returns (CreateAgentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\"/{$api_version}/remote:createAgent";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
+    option (unresolved_option_72295728) = "\022\037/{$api_version}/remote:getAgent";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (unresolved_option_72295728) = "\022!/{$api_version}/remote:listAgents";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DisableAgent(DisableAgentRequest) returns (DisableAgentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"#/{$api_version}/remote:disableAgent";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc EnableAgent(EnableAgentRequest) returns (EnableAgentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\"/{$api_version}/remote:enableAgent";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetChangelistStatus(GetChangelistStatusRequest) returns (GetChangelistStatusResponse) {
+    option (unresolved_option_72295728) = ":\001*\"*/{$api_version}/remote:getChangelistStatus";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc RunTrigger(RunTriggerRequest) returns (RunTriggerResponse) {
+    option (unresolved_option_72295728) = ":\001*\"!/{$api_version}/remote:runTrigger";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc StreamVoice(stream StreamVoiceRequest) returns (stream StreamVoiceResponse) {
+    option (unresolved_option_8) = 0x40ac200000000000;
+  }
+  rpc ListCustomizations(ListCustomizationsRequest) returns (ListCustomizationsResponse) {
+    option (unresolved_option_72295728) = "\022)/{$api_version}/remote:listCustomizations";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetOperation(longrunning.GetOperationRequest) returns (longrunning.Operation) {
+    option (unresolved_option_72295728) = "\022,/{$api_version}/{name=operations/agents/*/*}";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeliverAgentEvent(DeliverAgentEventRequest) returns (DeliverAgentEventResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:deliverAgentEvent";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListVoiceTrajectories(ListVoiceTrajectoriesRequest) returns (ListVoiceTrajectoriesResponse) {
+    option (unresolved_option_72295728) = "\022,/{$api_version}/remote:listVoiceTrajectories";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetVoiceTrajectoryDebug(GetVoiceTrajectoryDebugRequest) returns (exa.remote_agent_proxy_pb.VoiceTrajectory) {
+    option (unresolved_option_72295728) = "\022./{$api_version}/remote:getVoiceTrajectoryDebug";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeleteVoiceTrajectories(DeleteVoiceTrajectoriesRequest) returns (DeleteVoiceTrajectoriesResponse) {
+    option (unresolved_option_72295728) = ":\001*\"./{$api_version}/remote:deleteVoiceTrajectories";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SearchGobRepos(SearchGobReposRequest) returns (SearchGobReposResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:searchGobRepos";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc ReportEnvironmentSidecars(ReportEnvironmentSidecarsRequest) returns (ReportEnvironmentSidecarsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"0/{$api_version}/remote:reportEnvironmentSidecars";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListEnvironmentSidecars(ListEnvironmentSidecarsRequest) returns (ListEnvironmentSidecarsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"./{$api_version}/remote:listEnvironmentSidecars";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetGitHubPullRequests(GetGitHubPullRequestsRequest) returns (GetGitHubPullRequestsResponse) {
+    option (unresolved_option_72295728) = ":\001*\",/{$api_version}/remote:getGitHubPullRequests";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetAgentConfig(GetAgentConfigRequest) returns (GetAgentConfigResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:getAgentConfig";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc UpdateAgentConfig(UpdateAgentConfigRequest) returns (UpdateAgentConfigResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:updateAgentConfig";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc ListAgentConversations(ListAgentConversationsRequest) returns (ListAgentConversationsResponse) {
+    option (unresolved_option_72295728) = "\022-/{$api_version}/remote:listAgentConversations";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UpdateAgentAccess(UpdateAgentAccessRequest) returns (UpdateAgentAccessResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:updateAgentAccess";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc RunVersionControlAction(RunVersionControlActionRequest) returns (RunVersionControlActionResponse) {
+    option (unresolved_option_72295728) = ":\001*\"./{$api_version}/remote:runVersionControlAction";
+    option (unresolved_option_8) = 0x4066800000000000;
+  }
+  rpc ListAgentCoordinationMessages(ListAgentCoordinationMessagesRequest) returns (ListAgentCoordinationMessagesResponse) {
+    option (unresolved_option_72295728) = "\0224/{$api_version}/remote:listAgentCoordinationMessages";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\"/{$api_version}/remote:deleteAgent";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc CreateAgentRemoteSession(CreateAgentRemoteSessionRequest) returns (CreateAgentRemoteSessionResponse) {
+    option (unresolved_option_72295728) = ":\001*\"//{$api_version}/remote:createAgentRemoteSession";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAgentRemoteSessions(ListAgentRemoteSessionsRequest) returns (ListAgentRemoteSessionsResponse) {
+    option (unresolved_option_72295728) = "\022./{$api_version}/remote:listAgentRemoteSessions";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAgentRemoteSessionMessages(ListAgentRemoteSessionMessagesRequest) returns (ListAgentRemoteSessionMessagesResponse) {
+    option (unresolved_option_72295728) = "\0225/{$api_version}/remote:listAgentRemoteSessionMessages";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc AppendAgentRemoteSessionMessage(AppendAgentRemoteSessionMessageRequest) returns (AppendAgentRemoteSessionMessageResponse) {
+    option (unresolved_option_72295728) = ":\001*\"6/{$api_version}/remote:appendAgentRemoteSessionMessage";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc ListAgentBlueprints(ListAgentBlueprintsRequest) returns (ListAgentBlueprintsResponse) {
+    option (unresolved_option_72295728) = "\022*/{$api_version}/remote:listAgentBlueprints";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc ListAgentRuns(ListAgentRunsRequest) returns (ListAgentRunsResponse) {
+    option (unresolved_option_72295728) = "\022$/{$api_version}/remote:listAgentRuns";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc DeliverPendingAgentRemoteSessionMessages(DeliverPendingAgentRemoteSessionMessagesRequest) returns (DeliverPendingAgentRemoteSessionMessagesResponse) {
+    option (unresolved_option_72295728) = ":\001*\"?/{$api_version}/remote:deliverPendingAgentRemoteSessionMessages";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc AppendAgentCoordinationMessage(AppendAgentCoordinationMessageRequest) returns (AppendAgentCoordinationMessageResponse) {
+    option (unresolved_option_72295728) = ":\001*\"5/{$api_version}/remote:appendAgentCoordinationMessage";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc AckAgentCoordinationMention(AckAgentCoordinationMentionRequest) returns (AckAgentCoordinationMentionResponse) {
+    option (unresolved_option_72295728) = ":\001*\"2/{$api_version}/remote:ackAgentCoordinationMention";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAgentTriggers(ListAgentTriggersRequest) returns (ListAgentTriggersResponse) {
+    option (unresolved_option_72295728) = "\022(/{$api_version}/remote:listAgentTriggers";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc SyncAgentConnectorTriggers(SyncAgentConnectorTriggersRequest) returns (SyncAgentConnectorTriggersResponse) {
+    option (unresolved_option_72295728) = ":\001*\"1/{$api_version}/remote:syncAgentConnectorTriggers";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc WatchTopics(WatchTopicsRequest) returns (stream WatchTopicsResponse) {
+    option (unresolved_option_72295728) = ":\001*\"\"/{$api_version}/remote:watchTopics";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc SearchMarketplace(SearchMarketplaceRequest) returns (SearchMarketplaceResponse) {
+    option (unresolved_option_72295728) = ":\001*\"(/{$api_version}/remote:searchMarketplace";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetMarketplaceCustomization(GetMarketplaceCustomizationRequest) returns (GetMarketplaceCustomizationResponse) {
+    option (unresolved_option_72295728) = "\0222/{$api_version}/remote:getMarketplaceCustomization";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetMarketplaceFeatured(GetMarketplaceFeaturedRequest) returns (GetMarketplaceFeaturedResponse) {
+    option (unresolved_option_72295728) = "\022-/{$api_version}/remote:getMarketplaceFeatured";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc InstallCustomization(InstallCustomizationRequest) returns (InstallCustomizationResponse) {
+    option (unresolved_option_72295728) = ":\001*\"+/{$api_version}/remote:installCustomization";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc UninstallCustomization(UninstallCustomizationRequest) returns (UninstallCustomizationResponse) {
+    option (unresolved_option_72295728) = ":\001*\"-/{$api_version}/remote:uninstallCustomization";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc SetCustomizationEnabled(SetCustomizationEnabledRequest) returns (SetCustomizationEnabledResponse) {
+    option (unresolved_option_72295728) = ":\001*\"./{$api_version}/remote:setCustomizationEnabled";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListInstalledPlugins(ListInstalledPluginsRequest) returns (ListInstalledPluginsResponse) {
+    option (unresolved_option_72295728) = "\022+/{$api_version}/remote:listInstalledPlugins";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc InvokeSubservice(InvokeSubserviceRequest) returns (InvokeSubserviceResponse) {
+    option (unresolved_option_72295728) = ":\001*\"'/{$api_version}/remote:invokeSubservice";
+    option (unresolved_option_8) = 0x404e000000000000;
+  }
+  rpc StreamSubservice(InvokeSubserviceRequest) returns (stream InvokeSubserviceResponse) {
+    option (unresolved_option_72295728) = ":\001*\"'/{$api_version}/remote:streamSubservice";
+    option (unresolved_option_8) = 0x4082c00000000000;
+  }
+  rpc ConnectSandboxWebRtc(ConnectSandboxWebRtcRequest) returns (ConnectSandboxWebRtcResponse) {
+    option (unresolved_option_72295728) = ":\001*\"+/{$api_version}/remote:connectSandboxWebRtc";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAgentMemoryGroups(ListAgentMemoryGroupsRequest) returns (ListAgentMemoryGroupsResponse) {
+    option (unresolved_option_72295728) = "\022,/{$api_version}/remote:listAgentMemoryGroups";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc ListAgentMemories(ListAgentMemoriesRequest) returns (ListAgentMemoriesResponse) {
+    option (unresolved_option_72295728) = "\022(/{$api_version}/remote:listAgentMemories";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+  rpc GetAgentMemory(GetAgentMemoryRequest) returns (GetAgentMemoryResponse) {
+    option (unresolved_option_72295728) = "\022%/{$api_version}/remote:getAgentMemory";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+}

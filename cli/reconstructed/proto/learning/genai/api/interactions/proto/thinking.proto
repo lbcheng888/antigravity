@@ -1,0 +1,22 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d29243 (va 0x103d29243, __TEXT.__rodata), descriptor length 369 B, sha256 df8f6931c6ed5f89
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+enum ThinkingLevel {
+  THINKING_LEVEL_UNSPECIFIED = 0;
+  THINKING_LEVEL_MINIMAL = 3;
+  THINKING_LEVEL_LOW = 1;
+  THINKING_LEVEL_MEDIUM = 4;
+  THINKING_LEVEL_HIGH = 2;
+  THINKING_LEVEL_XHIGH = 5;
+}
+
+enum ThinkingSummaries {
+  THINKING_SUMMARIES_UNSPECIFIED = 0;
+  THINKING_SUMMARIES_AUTO = 1;
+  THINKING_SUMMARIES_NONE = 2;
+}

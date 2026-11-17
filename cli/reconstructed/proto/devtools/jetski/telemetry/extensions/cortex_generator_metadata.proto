@@ -1,0 +1,27 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d4b92d (va 0x103d4b92d, __TEXT.__rodata), descriptor length 762 B, sha256 123b5f49b20417e6
+// boundary: option_dependency_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package devtools.jetski.telemetry.extensions;
+
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+import "third_party/jetski/cortex_pb/cortex.proto";
+import option "third_party/java/protobuf/java_features.proto";
+
+option java_outer_classname = "CortexGeneratorMetadataOuterClass";
+option features.utf8_validation = NONE;
+option (unresolved_option_71304954) = "latest";
+
+export message CortexGeneratorMetadata {
+  option features.(unresolved_option_1001) = "(\002";
+  string trajectory_id = 1 [(unresolved_option_40075780) = 2300];
+  string cascade_id = 2 [(unresolved_option_40075780) = 2300];
+  exa.cortex_pb.CortexStepGeneratorMetadata generator_metadata = 3;
+  uint32 metadata_index = 4 [(unresolved_option_40075780) = 2800];
+  int32 last_common_index = 5 [(unresolved_option_40075780) = 2800];
+  bool is_full = 6 [(unresolved_option_40075780) = 2800];
+  string execution_id = 11 [(unresolved_option_40075780) = 2300];
+  string plan_model = 12 [(unresolved_option_40075780) = 2800];
+}

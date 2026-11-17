@@ -112,7 +112,9 @@
   function ui(k){ const c=copy().ui||{}; return c[k] || COPY_UI[k]; }
   function clipWords(s, n){ s=String(s||'').replace(/\s*\([^)]*\)/g,'').replace(/\s+/g,' ').trim(); const w=s.split(' '); return w.length>n ? w.slice(0,n).join(' ').replace(/[,;:.]$/,'')+'…' : s.replace(/\.$/,''); }
   function firstClause(s){ return String(s||'').split(/(?<=[.!?])\s+(?=[A-Z])|;\s|\s[–—-]\s/)[0]; }
-  function itemCopy(id, title, line){ const c=(copy().items||{})[id]||{}; return { title: c.title || clipWords(title, 7), line: c.line || clipWords(firstClause(line), 12) }; }
+  // A leading [done] tag, with markdown wrappers and the punctuation after it.
+  const stripDone = s => String(s||'').replace(/^\s*(?:\*\*|\*|`|_)?\[done\](?:\*\*|\*|`|_)?[\s:,.–—-]*/i,'');
+  function itemCopy(id, title, line, full){ const c=(copy().items||{})[id]||{}; return { title: c.title || (full ? String(title||'') : clipWords(title, 14)), line: c.line || clipWords(firstClause(stripDone(line)), 12) }; }
   // A working member's latest step (newest tool call or thinking heading in its
   // transcript), drawn with the in-progress shimmer. Views re-render on every
   // poll, so the shimmer is phased off the wall clock to keep sweeping.
@@ -123,7 +125,7 @@
   // Live activity beats the narrator's copy, which lags the board.
   function memberLine(n, x){ if(x && x.live) return clipWords(firstClause(x.live.text), 8); const c=copy().members||{}; if(c[n]) return c[n]; if(n==='coordinator'){ const l=(copy().lead||{}).doing; if(l) return l; } return clipWords(firstClause(x.now||''), 6); }
   function cleanNote(s, fallback){
-    let x = String(s||'').replace(/\s*\(#\d+(?:\s*,\s*#\d+)*\)\s*\.?$/,'').replace(/\s+/g,' ').trim();
+    let x = String(s||'').replace(/\s*\(#\d+(?:\s*,\s*#\d+)*\)\s*\.?$/,'').replace(/^\s+/,'').replace(/^(?:\*\*|\*|`|_)?\[done\](?:\*\*|\*|`|_)?[\s:,.–—-]*/i,'').replace(/\*\*|__|`/g,'').replace(/\s+/g,' ').trim();
     if(x) x = x.charAt(0).toUpperCase() + x.slice(1);
     return x || String(fallback||'').trim();
   }
@@ -231,7 +233,7 @@
     if(openAsks > 0) chips.push(`<span class="o2-pchip warn"><i></i>${openAsks} need${openAsks===1?'s':''} you</span>`);
     chips.push(...(extraChips || []));
     if(revCount > 0) chips.push(`<span class="o2-pchip info"><i></i>${revCount} in review</span>`);
-    if(openThreads !== null) chips.push(`<span class="o2-pchip">${openThreads} thread${openThreads===1?'':'s'} open</span>`);
+    if(openThreads) chips.push(`<span class="o2-pchip">${openThreads} thread${openThreads===1?'':'s'} open</span>`);
     else if(tot.running - revCount > 0) chips.push(`<span class="o2-pchip info"><i></i>${tot.running - revCount} active</span>`);
     const doneOrdered = doneWs.slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
     const lim = state.o2doneAll ? doneOrdered.length : 8;
@@ -240,7 +242,7 @@
     const doneBody = visDone.length
       ? `<ul class="o2-donelist">${visDone.map(w=>{
           const c = itemCopy(w.id, w.title, w.note);
-          const sub = c.line || cleanNote(w.note, '');
+          const sub = cleanNote(c.line || w.note, '');
           return `<li><span class="o2-ti done" aria-label="done">✓</span><div class="o2-donem"><b>${esc(c.title)}</b>${sub?`<span>${esc(sub)}</span>`:''}</div>${workerBadges(w.owners, 2, sc)}</li>`;
         }).join('')}</ul>${more>0?`<button class="o2-more" data-o2="doneAll">${ui('more').replace('{n}', more)}</button>`:''}`
       : `<p class="o2-doneempty">No tasks completed yet.</p>`;
@@ -344,11 +346,11 @@
     const ICON = {done:'✓', running:'', blocked:'', queued:''};
     const goalCopy = TM.goal || {};
     const goalTitle = goalCopy.title || clipWords(sc.headline, 9);
-    const g = `<section class="o2-goal">
+    const g = goalTitle ? `<section class="o2-goal">
       <div class="o2-glbl">${ui('goal')}</div>
       <b>${esc(goalTitle)}</b>
       ${goalCopy.line ? `<p>${esc(goalCopy.line)}</p>` : ''}
-    </section>`;
+    </section>` : '';
     const threadSummaryFallback = rows.filter(r=>r.state!=='done' && r.t.now).map(r=>r.t.now).slice(0,2).join(' · ');
     const openThreads = rows.filter(r=>r.state!=='done').length;
     const openAsks = rows.reduce((acc,r)=>acc+r.asks.filter(openYou).length, 0);
@@ -363,7 +365,7 @@
     const progHtml = progressCard(sc, tot, doneWs, queuedWs, openThreads, openAsks, waitChips(waits, stuckN));
     const thread = r => { const id=r.t.id; const open = r.ws.length>0 && (state['o2t:'+id] ?? (r.state==='needs' || r.state==='waiting' || r.state==='stuck'));
       const sum = r.n.done+r.n.running+r.n.blocked+r.n.queued;
-      const asks = [...r.asks, ...r.issues].map(a=>{ const c=itemCopy(a.id, a.title, a.why); const on = (a.wait==='coordinator' && r.t.id!=='t-waiting' && !r.ws.some(w=>w.owners.includes(a.from))) ? `<span class="o2-askon">${esc(waitOn('coordinator'))}</span>` : '';
+      const asks = [...r.asks, ...r.issues].map(a=>{ const c=itemCopy(a.id, a.title, a.why, a.full); const on = (a.wait==='coordinator' && r.t.id!=='t-waiting' && !r.ws.some(w=>w.owners.includes(a.from))) ? `<span class="o2-askon">${esc(waitOn('coordinator'))}</span>` : '';
         // Opens the cited post on the Board (app.js handles data-ov-seq), else the member it is from.
         return `<button type="button" class="o2-ask ${a.wait==='issue'?'issue':''}" ${a.post ? `data-ov-seq="${a.post}"` : `data-open-member="${esc(a.from)}"`}><span class="o2-askd" aria-hidden="true"></span><span class="o2-askb"><b>${esc(c.title)}</b><span class="o2-askl">${esc(c.line)}</span>${on}</span></button>`; }).join('');
       const tasks = r.ws.slice().sort((a,b)=>({blocked:0,running:1,queued:2,done:3}[stOf(a)]-({blocked:0,running:1,queued:2,done:3}[stOf(b)]))).map(w=>{ const s=stOf(w); const c=itemCopy(w.id, w.title, w.note); return `<li class="${s}"><span class="o2-ti ${s}" aria-label="${s}">${ICON[s]}</span><span class="o2-tt">${esc(c.title)}${waiterOf(w) ? `<span class="o2-tw">${esc(waitOn(waiterOf(w)))}</span>` : ''}</span>${taskProgressPill(w)}${workerBadges(w.owners, 2, sc)}</li>`; }).join('');
@@ -455,9 +457,9 @@
       const showRoleSub = !isCoord && !x.killed && (st==='working' || st==='waiting_on' || hasIssue) && x.title;
       let bodyLine = isCoord ? (x.now || memberLine('coordinator', x)) : (x.now || '');
       if(isCoord && st==='needs_you' && x.ask){
-        bodyLine = x.ask.id==='sys-coordinator-reply' ? 'Waiting for your reply in chat' : x.ask.title;
+        bodyLine = x.ask.title;
       } else if(x.ask && (st==='needs_you' || st==='waiting_on')){
-        const ac = itemCopy(x.ask.id, x.ask.title, x.ask.why);
+        const ac = itemCopy(x.ask.id, x.ask.title, x.ask.why, x.ask.full);
         bodyLine = ac.line ? `${ac.title} — ${ac.line}` : ac.title;
       } else if(hasIssue){
         bodyLine = itemCopy(x.issue.id, x.issue.title, x.issue.why).line || x.issue.title;
@@ -579,7 +581,7 @@
       ${crew.length ? `<div class="o2-crew" role="group" aria-label="Filter by worker">${allTile}${shown.map(([n,x])=>`<button class="o2-m ${sc.finished?'':x.status} ${who===n?'on':''}" aria-pressed="${who===n}" title="${esc(n)}: ${esc(memberLine(n,x))}" data-o2who="${esc(n)}">${tile(n,'sm')}<i class="o2-st" aria-hidden="true"></i><span>@${esc(n)}</span></button>`).join('')}${extra>0?`<button class="o2-m more" id="o2More"><span class="o2-tile sm plus">+${extra}</span><span>&nbsp;</span></button>`:''}</div>` : ''}
     </section>`;
 
-    const card = it => { const c=itemCopy(it.id, it.title, it.line);
+    const card = it => { const c=itemCopy(it.id, it.title, it.line, it.full);
       return `<div class="o2-card">${tile(it.owner,'md')}<div class="o2-cb"><b>${esc(c.title)}</b><p>${esc(c.line)}</p><div class="o2-who">@${esc(it.owner)}</div></div></div>`; };
     const branch = (k, list, none, limit) => { const lim=state['o2'+k]?list.length:limit; const vis=list.slice(0,lim); const more=list.length-vis.length;
       return `<section class="o2-br ${k}"><h3 class="o2-h"><i></i>${ui(k)}<em>${list.length}</em></h3>
@@ -596,7 +598,7 @@
       const tot = {done:0, running:0, blocked:0, queued:0};
       const run = [], done = [], queued = [];
       sc.workstreams.filter(w=>!who || w.owners.includes(who)).forEach(w=>{ const st=stOf(w); tot[st]++; if(st==='running'||st==='blocked') run.push({w, st}); else if(st==='done') done.push(w); else queued.push(w); });
-      const toItem = a=>({id:a.id||('ask-'+a.seq), title:a.title, line:a.why, owner:a.from, owners:[a.from]});
+      const toItem = a=>({id:a.id||('ask-'+a.seq), title:a.title, full:a.full, line:a.why, owner:a.from, owners:[a.from]});
       const needs = mine(you.map(toItem)), waiting = mine(hot.map(toItem)), stuck = mine(issues.map(toItem));
       const waits = new Map(); const bump = n => waits.set(n, (waits.get(n)||0)+1);
       waiting.forEach(()=>bump('coordinator'));
@@ -767,7 +769,7 @@
     const msgs = snap.messages.filter(m=>!isRole(m.agent) && !(m.control && typeof m.control==='object'));
     P = msgs.map(m=>({ s:m.seq, a:key(m.agent), t:new Date(m.ts || Date.now()).toISOString(),
       to:(m.all?['*']:(m.mentions||[]).filter(n=>n!==m.agent && !isRole(n)).map(key)),
-      x:String(m.text||'').replace(/\s+/g,' ').trim().slice(0,400) }));
+      x:String(m.text||'').replace(/^\s*(?:[-*]|#+|\d+\.)\s+/gm,'').replace(/\*\*([^*]+)\*\*/g,'$1').replace(/\s+/g,' ').trim().slice(0,400) }));
     const head = snap.head || (P.length?P[P.length-1].s:0);
     const narratorView = snap.view && snap.view.json && typeof snap.view.json==='object' ? snap.view.json : null;
     // Without a narrator view, the coordinator's plan.json supplies the goal,
@@ -788,13 +790,16 @@
       const w = String(str||'').replace(/\s+/g,' ').trim().split(' ').filter(Boolean);
       return w.length > maxW ? w.slice(0, maxW).join(' ').replace(/[,;:.]+$/,'') + '…' : w.join(' ').replace(/[.:]+$/,'');
     };
-    const briefOf = n => { const re=new RegExp('^@'+n.replace(/[.*+?^${}()|[\]\\-]/g,'\\$&')+'\\b'); const p=msgs.find(m=>m.agent===L && re.test(String(m.text||''))); if(!p) return '';
+    const briefOf = n => { const re=new RegExp('^@'+n.replace(/[.*+?^${}()|[\]\\-]/g,'\\$&')+'(?![\\w-])'); const p=msgs.find(m=>m.agent===L && re.test(String(m.text||''))); if(!p) return '';
       let s=String(p.text).replace(/^@\S+[\s,:]*/,'').replace(/\*\*([^*]+)\*\*/g,'$1').split(/(?<=[.!?])\s|\n/)[0];
       s=s.replace(/\s*\((?:you\b|your\b)[^)]*\)/gi,'').replace(/\s*\((?:you\b|your\b)[^)]*$/gi,'');
       s=s.replace(/^(?:you\s+(?:are|own|handle|drive|run|lead|manage)|your\s+(?:role|job|task|assignment|goal|focus)\s+is(?:\s+to)?|assignment\s*:|role\s*:|task\s*:)\s*/i,'');
+      // Briefs often restate the name ("You are `critic-gemini`, a harsh critic"); the badge already shows it.
+      const nm=n.replace(/[.*+?^${}()|[\]\\-]/g,'\\$&');
+      s=s.replace(new RegExp('^[`\'"*]*@?'+nm+'(?![\\w-])[`\'"*]*\\s*(?:[,:–—-]|\\bis\\b)?\\s*','i'),'').replace(/\*\*|__|`/g,'');
       s=s.replace(/^(?:turning|making|building|auditing|fixing)\s+(?:the\s+)?/i, m=>m.charAt(0).toUpperCase()+m.slice(1));
       s=s.replace(/^(?:the|a|an|this\s+swarm's)\s+/i,'');
-      s=clipW(cleanPath(s), 8);
+      s=clipW(cleanPath(s), 16);
       return s ? s.charAt(0).toUpperCase()+s.slice(1) : ''; };
     const lastPostBy = n => { for(let i=P.length-1;i>=0;i--) if(P[i].a===n) return P[i]; return null; };
     const KINDS=['decision','failure','review','stuck','quota','error','fyi'];
@@ -804,7 +809,7 @@
       // The narrator's own jump target beats the first cited post.
       const jump=acts.find(x=>x&&x.type==='board_post'&&P.some(q=>q.s===Number(x.target)));
       return { id: a.id ? String(a.id) : null, kind:KINDS.includes(a.kind)?a.kind:'fyi', severity:a.severity||'low', title:String(a.title).slice(0,160), why:String(a.why||'').slice(0,300), from: memRef?key(memRef.member):(p?p.a:'coordinator'), seq: (seqRef && Number(seqRef.seq)) || head, post: jump ? Number(jump.target) : (p ? p.s : null), url: url?url.target:null }; });
-    (Array.isArray(snap.systemAttention)?snap.systemAttention:[]).forEach(s=>{ if(s && s.member && !isRole(s.member)) attention.push({id: String(s.id || `sys-${s.member}-${s.kind}`), kind: s.kind==='quota'?'quota':s.kind==='stuck'?'stuck':'error', severity:'high', title: s.kind==='quota'?`@${s.member} ran out of quota`:s.kind==='stuck'?`@${s.member} looks stuck`:`@${s.member} hit an error`, why: String(s.text||s.detail||'').slice(0,200), from:key(s.member), seq:head}); });
+    (Array.isArray(snap.systemAttention)?snap.systemAttention:[]).forEach(s=>{ if(s && s.member && !isRole(s.member)) attention.push({id: String(s.id || `sys-${s.member}-${s.kind}`), sys: true, kind: s.kind==='quota'?'quota':s.kind==='stuck'?'stuck':'error', severity:'high', title: s.kind==='quota'?`@${s.member} ran out of quota`:s.kind==='stuck'?`@${s.member} looks stuck`:`@${s.member} hit an error`, why: String(s.text||s.detail||'').slice(0,200), from:key(s.member), seq:head}); });
     // Short copy the narrator writes next to each item (see swarm_narrator: `short`, `now`).
     (()=>{ const items={}, members={}; const sh=x=>x&&typeof x.short==='object'&&x.short?{title:String(x.short.title||'').slice(0,60), line:String(x.short.line||'').slice(0,90)}:null;
       (Array.isArray(vj.attention)?vj.attention:[]).forEach(a=>{ const s=sh(a); if(s&&a.id) items[String(a.id)]=s; });
@@ -817,14 +822,21 @@
     attention.filter(a=>a.kind!=='fyi' && !ISSUE_KINDS.has(a.kind) && a.from!=='coordinator').forEach(a=>{ if(!askByFrom.has(a.from)) askByFrom.set(a.from, a); });
     const issueByFrom = new Map();
     attention.filter(a=>ISSUE_KINDS.has(a.kind)).forEach(a=>{ if(!issueByFrom.has(a.from)) issueByFrom.set(a.from, a); });
-    const needsYou = new Set(askByFrom.keys());
+    // Once the coordinator closes the swarm with [done] and no one is working, the
+    // narrator's earlier asks and reviews are history; only a live system alert
+    // (quota, error, stuck) keeps it open. Known before member status, so a stale
+    // ask or question does not leave a worker waiting in a finished swarm.
+    const lastP = P[P.length-1];
+    const closed = !team.some(m=>!m.killed && m.status==='working') && !attention.some(a=>a.sys) &&
+      !!lastP && lastP.a==='coordinator' && /^(@[A-Za-z0-9_-]+[\s,:–—-]*)*(?:\*\*|\*|`|_)?\[done\]/i.test(lastP.x);
+    const needsYou = new Set(closed ? [] : askByFrom.keys());
     const members = {};
     team.forEach(m=>{ const n=key(m.name); const lp=lastPostBy(n);
       let status = m.killed ? 'parked' : (m.status==='working' ? 'working' : 'parked'); let waiting_on=null, waiting_seq=null;
-      if(status==='parked' && !m.killed && lp && lp.to.length && !lp.to.includes('*') && /\?|could you|can you|please|ping me|waiting on/i.test(lp.x)){ const t=lp.to[0]; if(!P.some(q=>q.s>lp.s && q.a===t)){ status='waiting_on'; waiting_on=t; waiting_seq=lp.s; } }
+      if(status==='parked' && !closed && !m.killed && lp && lp.to.length && !lp.to.includes('*') && /\?|could you|can you|please|ping me|waiting on/i.test(lp.x)){ const t=lp.to[0]; if(!P.some(q=>q.s>lp.s && q.a===t)){ status='waiting_on'; waiting_on=t; waiting_seq=lp.s; } }
       // A worker's ask goes to the coordinator, so the worker waits on it.
       if(needsYou.has(n) && !m.killed){ status='waiting_on'; waiting_on='coordinator'; waiting_seq=askByFrom.get(n).seq; }
-      const rawNow = (m.status==='working' && m.activity) ? String(m.activity) : (lp ? lp.x.replace(/^(@[A-Za-z0-9_-]+[\s,:]*)+/,'') : 'No posts yet');
+      const rawNow = (m.status==='working' && m.activity) ? String(m.activity) : (lp ? lp.x.replace(/^(@[A-Za-z0-9_-]+[\s,:–—-]*)+/,'').replace(/^(?:\*\*|\*|`|_)?\[done\](?:\*\*|\*|`|_)?[\s:,–—-]*/i,'') : 'No posts yet');
       const now = cleanPath(rawNow).replace(/`([^`]+)`/g,'$1').slice(0,180);
       const live = (m.status==='working' && !m.killed && !m.failure && m.activity && (status==='working' || n==='coordinator'))
         ? {text: cleanPath(String(m.activity)).replace(/`([^`]+)`/g,'$1').slice(0,180), kind: m.activityKind==='thinking' ? 'thinking' : 'tool'}
@@ -841,9 +853,7 @@
     // parked after an interim post is in review; waiting on a peer is blocked;
     // only a worker that has not started yet is up next.
     const isDonePost = lp => !!(lp && /^(@[A-Za-z0-9_-]+[\s,:–—-]*)*(?:\*\*|\*|`|_)?\[done\]/i.test(lp.x));
-    const anyWorking = Object.values(members).some(x=>!x.system && x.status==='working');
-    const lastP = P[P.length-1];
-    const finished = !anyWorking && !attention.some(a=>a.kind!=='fyi') && !!lastP && lastP.a==='coordinator' && isDonePost(lastP);
+    const finished = closed;
     const STATES=['queued','active','blocked','review','done','failed'];
     const parseProg = (w)=>{
       if(w.progress && typeof w.progress==='object' && Number(w.progress.total)>0){
@@ -857,7 +867,7 @@
       if(fm){ const d=+fm[1], t=+fm[2]; if(t>=2 && t<=60 && d<=t) return {done:d, total:t, label:`${d}/${t}`}; }
       return null;
     };
-    let workstreams = (Array.isArray(vj.workstreams)?vj.workstreams:[]).filter(w=>w&&w.title).map((w,i)=>{ const seqs=(Array.isArray(w.refs)?w.refs:[]).map(r=>r&&r.seq).filter(Boolean); const rawState=STATES.includes(w.state)?w.state:'active';
+    let workstreams = (Array.isArray(vj.workstreams)?vj.workstreams:[]).filter(w=>w&&w.title).map((w,i)=>{ const seqs=(Array.isArray(w.refs)?w.refs:[]).map(r=>r&&r.seq).filter(Boolean); const rawState0=STATES.includes(w.state)?w.state:'active'; const rawState=(finished && rawState0!=='failed') ? 'done' : rawState0;
       return { id:w.id||('w'+i), title:String(w.title).slice(0,120), owners:(Array.isArray(w.owners)?w.owners:[]).filter(o=>byName.has(o)&&!isRole(o)).map(key), state: rawState==='failed'?'blocked':rawState, rawState, progress:parseProg(w), note:String(w.note||'').slice(0,200), seq: seqs.length?Math.max(...seqs):head }; });
     workstreams.forEach(w=>{ if(!w.owners.length) w.owners=['coordinator']; });
     const fallbackState = (x, lp) => x.killed ? 'done' : x.status==='waiting_on' ? 'blocked' :
@@ -873,11 +883,14 @@
     // Who each item waits on. The coordinator stopping for the user (its turn
     // ended on a reply with no worker still at work, or it failed or ran out of
     // quota) is the only 'you'.
-    const coordReplied = !finished && !anyWorking && !!(leadM && !leadM.killed && leadM.status==='waiting' && leadM.replied);
+    // A reply that only reports progress is not a question; replyAsk is the
+    // question the coordinator's last reply asked, if any.
+    const coordAsk = (!finished && leadM && !leadM.killed && leadM.status==='waiting' && leadM.replied && leadM.replyAsk) ? String(leadM.replyAsk) : '';
+    const coordReplied = !!coordAsk;
     attention.forEach(a=>{ a.wait = a.kind==='fyi' ? null
       : (a.from==='coordinator' && String(a.id||'').startsWith('sys-')) ? 'you'
       : ISSUE_KINDS.has(a.kind) ? 'issue' : 'coordinator'; });
-    if(coordReplied) attention.unshift({id:'sys-coordinator-reply', kind:'decision', severity:'high', title:'The coordinator is waiting for your reply', why:'Answer it in the coordinator chat.', from:'coordinator', seq:head, url:null, wait:'you'});
+    if(coordReplied) attention.unshift({id:'sys-coordinator-reply', kind:'decision', severity:'high', title:coordAsk, full:true, why:'The coordinator asked. Answer it in its chat.', from:'coordinator', seq:head, url:null, wait:'you'});
     const youItems = finished ? [] : attention.filter(a=>a.wait==='you');
     if(youItems.length && members.coordinator){ members.coordinator.status='needs_you'; members.coordinator.ask=youItems[0]; }
     const nowIso = new Date().toISOString();
@@ -885,7 +898,7 @@
     // the thread last said, clipped.
     const planNow = ids => { const x = ids.map(n=>members[n]).find(m=>m && !m.killed && m.status==='working'); return x ? clipW(x.now, 8) : ''; };
     return { title: snap.title||'Untitled swarm',
-      headline: vj.headline ? String(vj.headline).slice(0,220) : (plan && vj.goal && vj.goal.line) ? String(vj.goal.line).slice(0,220) : (lastP ? `@${lastP.a}: ${lastP.x.replace(/^(@[A-Za-z0-9_-]+[\s,:]*)+/,'').slice(0,140)}` : 'Waiting for the first post.'),
+      headline: vj.headline ? String(vj.headline).slice(0,220) : (plan && vj.goal && vj.goal.line) ? String(vj.goal.line).slice(0,220) : '',
       phase: vj.phase && vj.phase.label ? {label:String(vj.phase.label).slice(0,40), index:Number(vj.phase.index)||1, total:Number(vj.phase.total)||1} : {label: finished?'Done':'In progress', index:1, total:1},
       done, total: workstreams.length||1, as_of: head, board_head: head, now: nowIso, started: P.length?P[0].t:nowIso, narrator_seq: Number(vj.as_of_seq)||head, finished,
       builtin: snap.builtinOverview === true,

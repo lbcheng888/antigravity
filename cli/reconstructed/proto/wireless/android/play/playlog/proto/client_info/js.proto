@@ -1,0 +1,89 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3dc9b72 (va 0x103dc9b72, __TEXT.__rodata), descriptor length 2400 B, sha256 475ba8721afca87c
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "JsProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message JsClientInfo {
+  optional string os = 1 [deprecated = true, (unresolved_option_40075780) = 999];
+  optional string os_version = 2 [(unresolved_option_40075780) = 1500];
+  optional DeviceType device_type = 3 [(unresolved_option_40075780) = 999];
+  optional string country = 4 [(unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\020\000"];
+  optional string locale = 5 [(unresolved_option_40075780) = 1601];
+  optional OsType os_type = 6 [(unresolved_option_40075780) = 999];
+  optional string build_label = 7 [(unresolved_option_40075780) = 1500];
+  optional string continent = 8 [(unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\020\000"];
+  optional UserAgentClientHints client_hints = 9 [(unresolved_option_40075780) = 1000];
+  optional FlushInfo flush_info = 10 [(unresolved_option_40075780) = 999];
+
+  enum OsType {
+    reserved 10;
+    OS_UNKNOWN = 0;
+    MAC = 1;
+    WINDOWS = 2;
+    ANDROID = 3;
+    LINUX = 4;
+    CHROME_OS = 5;
+    IPAD = 6;
+    IPHONE = 7;
+    IPOD = 8;
+    CHROMECAST = 9;
+  }
+
+  enum DeviceType {
+    UNKNOWN = 0;
+    MOBILE = 1;
+    TABLET = 2;
+    DESKTOP = 3;
+    GOOGLE_HOME = 4;
+  }
+
+  message FlushInfo {
+    optional TransmissionType transmission_type = 1 [(unresolved_option_40075780) = 999];
+    optional bool is_final = 2 [(unresolved_option_40075780) = 999];
+    optional int32 retry_count = 3 [(unresolved_option_40075780) = 999];
+    optional int32 persisted_log_recovered_count = 4 [(unresolved_option_40075780) = 999];
+    optional int32 persisted_log_expired_count = 5 [(unresolved_option_40075780) = 999];
+
+    enum TransmissionType {
+      TRANSMISSION_TYPE_UNKNOWN = 0;
+      XHR_POST = 1;
+      IMAGE_GET = 2;
+      SEND_BEACON = 3;
+      FETCH = 4;
+    }
+  }
+
+  message UserAgentClientHints {
+    repeated BrandAndVersion ua_list = 1 [(unresolved_option_40075780) = 999];
+    optional bool mobile = 2 [(unresolved_option_40075780) = 999];
+    optional string platform = 3 [(unresolved_option_40075780) = 999];
+    optional string platform_version = 4 [(unresolved_option_40075780) = 1500];
+    optional string architecture = 5 [(unresolved_option_40075780) = 999];
+    optional string model = 6 [(unresolved_option_40075780) = 999];
+    optional string ua_full_version = 7 [(unresolved_option_40075780) = 1500];
+    optional string bitness = 8 [(unresolved_option_40075780) = 999];
+
+    message BrandAndVersion {
+      optional string brand = 1 [(unresolved_option_40075780) = 999];
+      optional string version = 2 [(unresolved_option_40075780) = 1500];
+    }
+  }
+}

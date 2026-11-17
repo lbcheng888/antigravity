@@ -1,0 +1,141 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3ea3ecf (va 0x103ea3ecf, __TEXT.__rodata), descriptor length 5126 B, sha256 25f102f5265c14a3
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.businessaicode.v1beta;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/cloud/businessaicode/v1main/entitlement.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.businessaicode.v1beta";
+option java_outer_classname = "TelemetryServiceProto";
+option java_multiple_files = true;
+option go_package = "cloud.google.com/go/businessaicode/apiv1beta/businessaicodepb;businessaicodepb";
+option (unresolved_option_244132745) = "\n:google/cloud/businessaicode/v1main/telemetry_service.proto\022\"google.cloud.businessaicode.v1main\032\006v1beta\"\221\001\n&com.google.cloud.businessaicode.v1mainB\025TelemetryServiceProtoP\001ZNcloud.google.com/go/businessaicode/apiv1main/businessaicodepb;businessaicodepb";
+
+enum ClientErrorTag {
+  CLIENT_ERROR_TAG_UNSPECIFIED = 0;
+  TIMEOUT = 1;
+  PARSE_ERROR = 2;
+}
+
+enum InteractionType {
+  INTERACTION_TYPE_UNSPECIFIED = 0;
+  NONE = 1;
+  PROPOSAL_ACCEPTANCE = 2;
+  PERMISSION_GRANT = 3;
+  TEXT_CLARIFICATION = 4;
+  INTERACTION_TYPE_OTHER = 5;
+}
+
+enum InitiationMethod {
+  INITIATION_METHOD_UNSPECIFIED = 0;
+  AGENT_CHAT = 1;
+  AGENT_LOOP = 2;
+}
+
+enum Outcome {
+  OUTCOME_UNSPECIFIED = 0;
+  ACCEPTED = 1;
+  REJECTED = 2;
+  MODIFIED = 3;
+}
+
+message SendTelemetryRequest {
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n&businessaicode.googleapis.com/Location", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE\"\033AUDIT,AUDIT_TARGET_RESOURCE"];
+  repeated FeedbackEvent feedback_events = 2 [(unresolved_option_1052) = "\002"];
+  v1main.Entitlement entitlement = 3 [(unresolved_option_1052) = "\002"];
+}
+
+message SendTelemetryResponse {
+}
+
+message FeedbackEvent {
+  oneof event {
+    InferenceResolved inference_resolved = 5 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+    InferenceInteraction inference_interaction = 6 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  }
+  protobuf.Timestamp event_time = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 2100];
+  string inference_request_id = 2 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 999];
+  string prompt_id = 3 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+  string trajectory_id = 4 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 999];
+}
+
+message InferenceResolved {
+  Resolution resolution = 1 [(unresolved_option_1052) = "\002"];
+  string inference_model_version = 2 [(unresolved_option_1052) = "\001"];
+  InitiationMethod initiation_method = 3 [(unresolved_option_1052) = "\001"];
+  string programming_language = 4 [(unresolved_option_1052) = "\001"];
+  optional protobuf.Duration ttft_latency = 5 [(unresolved_option_1052) = "\001"];
+  optional protobuf.Duration ttlt_latency = 6 [(unresolved_option_1052) = "\001"];
+  bool trajectory_start = 7 [(unresolved_option_1052) = "\001"];
+}
+
+message Resolution {
+  oneof error {
+    int32 http_error_code = 2 [(unresolved_option_1052) = "\001"];
+    ClientErrorTag client_error_tag = 3 [(unresolved_option_1052) = "\001"];
+  }
+  Status status = 1 [(unresolved_option_1052) = "\002"];
+  bool streaming = 4 [(unresolved_option_1052) = "\001"];
+  int32 candidate_count = 5 [(unresolved_option_1052) = "\001"];
+  optional int32 winning_candidate_index = 6 [(unresolved_option_1052) = "\001"];
+  InteractionType interaction_type = 7 [(unresolved_option_1052) = "\001"];
+  int32 tool_calls_count = 8 [(unresolved_option_1052) = "\001"];
+  int32 interactive_tool_calls_count = 9 [(unresolved_option_1052) = "\001"];
+
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    SUCCESS = 1;
+    ERROR = 2;
+    CANCELLED = 3;
+  }
+}
+
+message InferenceInteraction {
+  Interaction interaction = 1 [(unresolved_option_1052) = "\002"];
+  string inference_model_version = 2 [(unresolved_option_1052) = "\001"];
+  InitiationMethod initiation_method = 3 [(unresolved_option_1052) = "\001"];
+  string programming_language = 4 [(unresolved_option_1052) = "\001"];
+  Command command = 5 [(unresolved_option_1052) = "\001"];
+  Subcommand subcommand = 6 [(unresolved_option_1052) = "\001"];
+
+  enum Command {
+    COMMAND_UNSPECIFIED = 0;
+    GIT = 1;
+    COMMAND_OTHER = 2;
+  }
+
+  enum Subcommand {
+    SUBCOMMAND_UNSPECIFIED = 0;
+    PULL = 1;
+    COMMIT = 2;
+    PUSH = 3;
+    SUBCOMMAND_OTHER = 4;
+  }
+}
+
+message Interaction {
+  Outcome outcome = 1 [(unresolved_option_1052) = "\002"];
+  InteractionType type = 2 [(unresolved_option_1052) = "\001"];
+  optional protobuf.Duration interaction_latency = 3 [(unresolved_option_1052) = "\001"];
+  optional int32 winning_candidate_index = 4 [(unresolved_option_1052) = "\001"];
+  optional int32 tool_call_index = 5 [(unresolved_option_1052) = "\001"];
+}
+
+service TelemetryService {
+  rpc SendTelemetry(SendTelemetryRequest) returns (SendTelemetryResponse) {
+    option (unresolved_option_72295728) = ":\001*\"5/v1beta/{parent=projects/*/locations/*}:sendTelemetry";
+    option (unresolved_option_161893301) = "\022~\n\006parent\0225businessaicode.googleapis.com/locations.sendTelemetry\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\nDATA_WRITE\"\"CLOUD_AUDIT_REQUEST_ONLY,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x403e000000000000;
+  }
+}

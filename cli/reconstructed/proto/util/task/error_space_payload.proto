@@ -1,0 +1,16 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x9124c04 (va 0x109124c04, __TEXT.__const), descriptor length 164 B, sha256 d5d768d0ef0f9fef
+// boundary: option_dependency_end
+
+edition = "2024";
+
+package util;
+
+import option "third_party/protobuf/cpp_features.proto";
+
+option features.utf8_validation = NONE;
+
+message ErrorSpacePayload {
+  int32 code = 1;
+  string space = 2 [features.(unresolved_option_1000) = "\020\003"];
+}

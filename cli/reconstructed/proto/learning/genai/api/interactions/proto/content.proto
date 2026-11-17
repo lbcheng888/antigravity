@@ -1,0 +1,557 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fe4633 (va 0x103fe4633, __TEXT.__rodata), descriptor length 13349 B, sha256 3af39d3ad490a019
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package genai;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+enum MediaResolution {
+  MEDIA_RESOLUTION_UNSPECIFIED = 0;
+  LOW = 1;
+  MEDIUM = 2;
+  HIGH = 3;
+  ULTRA_HIGH = 4;
+}
+
+message Content {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    TextContent text = 10;
+    ImageContent image = 11;
+    AudioContent audio = 12;
+    DocumentContent document = 13;
+    VideoContent video = 14;
+    ThoughtContent thought = 5;
+    ToolCallContent tool_call = 24;
+    ToolResultContent tool_result = 25;
+  }
+}
+
+message ContentList {
+  option (unresolved_option_535801963) = 2;
+  repeated Content contents = 1;
+}
+
+message WordInfo {
+  string text = 1;
+  google.protobuf.Duration start_offset = 2;
+  google.protobuf.Duration end_offset = 3;
+  string speaker = 4;
+}
+
+message SpeechAnnotation {
+  string speaker = 1;
+  string style = 2;
+}
+
+message TextContent {
+  string text = 3;
+  repeated Annotation annotations = 4;
+
+  message Annotation {
+    int32 start_index = 1;
+    int32 end_index = 2;
+    oneof type {
+      option (unresolved_option_525000030) = 1;
+      UrlCitation url_citation = 5;
+      FileCitation file_citation = 6;
+      PlaceCitation place_citation = 7;
+      WordInfo word_info = 8;
+      SpeechAnnotation speech_metadata = 11;
+    }
+  }
+}
+
+message ImageContent {
+  MimeType mime_type = 1 [json_name = "legacy_mime_type_enum"];
+  string mime_type_string = 8;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 6;
+  }
+  MediaResolution resolution = 5;
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_PNG = 1 [(unresolved_option_535802949) = "image/png"];
+    TYPE_JPEG = 2 [(unresolved_option_535802949) = "image/jpeg"];
+    TYPE_WEBP = 3 [(unresolved_option_535802949) = "image/webp"];
+    TYPE_HEIC = 4 [(unresolved_option_535802949) = "image/heic"];
+    TYPE_HEIF = 5 [(unresolved_option_535802949) = "image/heif"];
+    TYPE_GIF = 7 [(unresolved_option_535802949) = "image/gif"];
+    TYPE_BMP = 8 [(unresolved_option_535802949) = "image/bmp"];
+    TYPE_TIFF = 9 [(unresolved_option_535802949) = "image/tiff"];
+    TYPE_VIDEO_FRAME_JPEG2000 = 10 [(unresolved_option_535802949) = "video/videoframe/jpeg2000"];
+    TYPE_VIDEO_JPEG2000 = 11 [(unresolved_option_535802949) = "video/jpeg2000"];
+  }
+}
+
+message AudioContent {
+  MimeType mime_type = 1 [json_name = "legacy_mime_type_enum"];
+  string mime_type_string = 11;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 5;
+  }
+  int32 channels = 7;
+  int32 sample_rate = 8;
+  oneof processing {
+    option (unresolved_option_525000029) = 1;
+    Processing processing_type = 17;
+    MediaProcessing processing_config = 18;
+  }
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_WAV = 1 [(unresolved_option_535802949) = "audio/wav"];
+    TYPE_MP3 = 2 [(unresolved_option_535802949) = "audio/mp3"];
+    TYPE_AIFF = 3 [(unresolved_option_535802949) = "audio/aiff"];
+    TYPE_AAC = 4 [(unresolved_option_535802949) = "audio/aac"];
+    TYPE_OGG = 5 [(unresolved_option_535802949) = "audio/ogg"];
+    TYPE_FLAC = 6 [(unresolved_option_535802949) = "audio/flac"];
+    TYPE_MPEG = 7 [(unresolved_option_535802949) = "audio/mpeg"];
+    TYPE_M4A = 8 [(unresolved_option_535802949) = "audio/m4a"];
+    TYPE_L16 = 9 [(unresolved_option_535802949) = "audio/l16"];
+    TYPE_S16LE = 10 [(unresolved_option_535802949) = "audio/s16le"];
+    TYPE_OPUS = 11 [(unresolved_option_535802949) = "audio/opus"];
+    TYPE_ALAW = 12 [(unresolved_option_535802949) = "audio/alaw"];
+    TYPE_MULAW = 13 [(unresolved_option_535802949) = "audio/mulaw"];
+    TYPE_VIDEO_AUDIO_S16LE = 14 [(unresolved_option_535802949) = "video/audio/s16le"];
+    TYPE_WEBM = 15 [(unresolved_option_535802949) = "audio/webm"];
+  }
+
+  enum Processing {
+    PROCESSING_UNSPECIFIED = 0;
+    STATIC = 1;
+  }
+
+  message StaticMediaProcessing {
+    google.protobuf.Duration start_offset = 1;
+    google.protobuf.Duration end_offset = 2;
+  }
+
+  message MediaProcessing {
+    oneof type {
+      option (unresolved_option_525000030) = 1;
+      StaticMediaProcessing static = 2;
+    }
+  }
+}
+
+message DocumentContent {
+  MimeType mime_type = 1 [json_name = "legacy_mime_type_enum"];
+  string mime_type_string = 6;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 5;
+  }
+  MediaResolution resolution = 17;
+  oneof processing {
+    option (unresolved_option_525000029) = 1;
+    Processing processing_type = 18;
+    MediaProcessing processing_config = 19;
+  }
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_PDF = 1 [(unresolved_option_535802949) = "application/pdf"];
+    TYPE_CSV = 2 [(unresolved_option_535802949) = "text/csv"];
+    TYPE_PPTX = 3 [(unresolved_option_535802949) = "application/vnd.openxmlformats-officedocument.presentationml.presentation"];
+    TYPE_PPT = 4 [(unresolved_option_535802949) = "application/vnd.ms-powerpoint"];
+    TYPE_ODP = 5 [(unresolved_option_535802949) = "application/vnd.oasis.opendocument.presentation"];
+    TYPE_DOCX = 6 [(unresolved_option_535802949) = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    TYPE_DOC = 7 [(unresolved_option_535802949) = "application/msword"];
+    TYPE_DOTX = 8 [(unresolved_option_535802949) = "application/vnd.openxmlformats-officedocument.wordprocessingml.template"];
+    TYPE_ODT = 9 [(unresolved_option_535802949) = "application/vnd.oasis.opendocument.text"];
+    TYPE_XLSX = 10 [(unresolved_option_535802949) = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"];
+    TYPE_XLS = 11 [(unresolved_option_535802949) = "application/vnd.ms-excel"];
+    TYPE_ODS = 12 [(unresolved_option_535802949) = "application/vnd.oasis.opendocument.spreadsheet"];
+  }
+
+  enum Processing {
+    PROCESSING_UNSPECIFIED = 0;
+    STATIC = 1;
+  }
+
+  message PageProcessingOptions {
+    int32 start_page = 1;
+    int32 end_page = 2;
+    repeated ContentLayer content_layers = 3;
+
+    enum ContentLayer {
+      CONTENT_LAYER_UNSPECIFIED = 0;
+      PAGE_IMAGE = 1;
+      PAGE_TEXT = 2;
+    }
+  }
+
+  message SpreadsheetProcessingOptions {
+    string visible_cells = 1;
+    int32 sheet_index = 2;
+    repeated ContentLayer content_layers = 3;
+
+    enum ContentLayer {
+      CONTENT_LAYER_UNSPECIFIED = 0;
+      VISUAL = 1;
+      DATA = 2;
+      FORMULAS = 3;
+    }
+  }
+
+  message StaticMediaProcessing {
+    oneof format_options {
+      PageProcessingOptions page_options = 1;
+      SpreadsheetProcessingOptions spreadsheet_options = 2;
+    }
+  }
+
+  message MediaProcessing {
+    oneof type {
+      option (unresolved_option_525000030) = 1;
+      StaticMediaProcessing static = 2;
+    }
+  }
+}
+
+message VideoContent {
+  MimeType mime_type = 1 [json_name = "legacy_mime_type_enum"];
+  string mime_type_string = 8;
+  oneof data_or_uri {
+    bytes data = 2;
+    string uri = 6;
+  }
+  MediaResolution resolution = 5;
+  oneof processing {
+    option (unresolved_option_525000029) = 1;
+    Processing processing_type = 17;
+    MediaProcessing processing_config = 18;
+  }
+  string name = 16;
+
+  enum MimeType {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_MP4 = 1 [(unresolved_option_535802949) = "video/mp4"];
+    TYPE_MPEG = 2 [(unresolved_option_535802949) = "video/mpeg"];
+    TYPE_MPG = 3 [(unresolved_option_535802949) = "video/mpg"];
+    TYPE_MOV = 4 [(unresolved_option_535802949) = "video/mov"];
+    TYPE_AVI = 5 [(unresolved_option_535802949) = "video/avi"];
+    TYPE_X_FLV = 6 [(unresolved_option_535802949) = "video/x-flv"];
+    TYPE_WEBM = 7 [(unresolved_option_535802949) = "video/webm"];
+    TYPE_WMV = 8 [(unresolved_option_535802949) = "video/wmv"];
+    TYPE_3GPP = 9 [(unresolved_option_535802949) = "video/3gpp"];
+    TYPE_YT_BEYOND = 10 [(unresolved_option_535802949) = "video/vnd.youtube.yt"];
+    TYPE_JPEG2000 = 11 [(unresolved_option_535802949) = "video/jpeg2000"];
+  }
+
+  enum Processing {
+    PROCESSING_UNSPECIFIED = 0;
+    STATIC = 1;
+    AGENTIC = 2;
+  }
+
+  message StaticMediaProcessing {
+    google.protobuf.Duration start_offset = 1;
+    google.protobuf.Duration end_offset = 2;
+    double fps = 3;
+    repeated ContentLayer content_layers = 4;
+
+    enum ContentLayer {
+      CONTENT_LAYER_UNSPECIFIED = 0;
+      FRAMES = 1;
+      AUDIO = 2;
+      TRANSCRIPT = 3;
+    }
+  }
+
+  message MediaProcessing {
+    oneof type {
+      option (unresolved_option_525000030) = 1;
+      StaticMediaProcessing static = 2;
+    }
+  }
+}
+
+message UrlCitation {
+  string url = 1;
+  string title = 2;
+}
+
+message FileCitation {
+  string document_uri = 1;
+  string file_name = 2;
+  string source = 3;
+  google.protobuf.Struct custom_metadata = 4;
+  int32 page_number = 5;
+  string media_id = 6;
+}
+
+message PlaceCitation {
+  string place_id = 1;
+  string name = 2;
+  string url = 3;
+  repeated ReviewSnippet review_snippets = 4;
+}
+
+message ReviewSnippet {
+  string title = 1;
+  string url = 2;
+  string review_id = 3;
+}
+
+message Struct {
+  option (unresolved_option_535801963) = 1;
+  repeated Field fields = 1;
+}
+
+message Field {
+  option (unresolved_option_535801963) = 1;
+  string name = 1;
+  Value value = 2;
+}
+
+message Value {
+  option (unresolved_option_535801963) = 3;
+  oneof kind {
+    google.protobuf.NullValue null_value = 1;
+    double number_value = 2;
+    string string_value = 3;
+    bool bool_value = 4;
+    Struct struct_value = 5;
+    ListValue list_value = 6;
+    Content content_value = 7;
+    Function function_value = 9 [(unresolved_option_525000216) = "function"];
+  }
+}
+
+message ListValue {
+  option (unresolved_option_535801963) = 2;
+  repeated Value values = 1;
+}
+
+message GoogleSearch {
+  repeated SearchType search_types = 1;
+
+  enum SearchType {
+    SEARCH_TYPE_UNSPECIFIED = 0;
+    SEARCH_TYPE_WEB_SEARCH = 1;
+    SEARCH_TYPE_IMAGE_SEARCH = 2;
+  }
+}
+
+message ThoughtContent {
+  bytes signature = 7;
+  repeated ThoughtSummaryContent summary = 9;
+}
+
+message ThoughtSummaryContent {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    TextContent text = 1;
+    ImageContent image = 2;
+  }
+}
+
+message Turn {
+  string role = 1;
+  oneof content {
+    option (unresolved_option_525000029) = 1;
+    ContentList content_list = 3;
+    string content_string = 4;
+  }
+}
+
+message TurnList {
+  option (unresolved_option_535801963) = 2;
+  repeated Turn turns = 1;
+}
+
+message ToolCallContent {
+  string id = 1;
+  bytes signature = 9;
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    FunctionCallContent function_call = 2;
+    CodeExecutionCallContent code_execution_call = 3;
+    UrlContextCallContent url_context_call = 4;
+    McpServerToolCallContent mcp_server_tool_call = 6;
+    GoogleSearchCallContent google_search_call = 7;
+    FileSearchCallContent file_search_call = 8;
+    GoogleMapsCallContent google_maps_call = 10;
+  }
+}
+
+message ToolResultContent {
+  string call_id = 8;
+  bytes signature = 9;
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    FunctionResultContent function_result = 2;
+    CodeExecutionResultContent code_execution_result = 3;
+    UrlContextResultContent url_context_result = 4;
+    GoogleSearchResultContent google_search_result = 5;
+    McpServerToolResultContent mcp_server_tool_result = 6;
+    FileSearchResultContent file_search_result = 7;
+    GoogleMapsResultContent google_maps_result = 10;
+  }
+}
+
+message FunctionCallContent {
+  string name = 3;
+  Struct arguments = 4;
+}
+
+message FunctionResultContent {
+  string name = 8;
+  bool is_error = 2;
+  oneof result {
+    option (unresolved_option_525000029) = 1;
+    option (unresolved_option_525000031) = 1;
+    Struct struct_result = 3;
+    FunctionResultSubcontentList content_list = 9;
+    string string_result = 7;
+  }
+}
+
+message CodeExecutionCallContent {
+  CodeExecutionCallArguments arguments = 2;
+
+  message CodeExecutionCallArguments {
+    Language language = 1;
+    string code = 2;
+
+    enum Language {
+      LANGUAGE_UNSPECIFIED = 0;
+      PYTHON = 1;
+      BASH = 2;
+    }
+  }
+}
+
+message CodeExecutionResultContent {
+  string result = 1;
+  bool is_error = 2;
+}
+
+message UrlContextCallContent {
+  UrlContextCallArguments arguments = 2;
+
+  message UrlContextCallArguments {
+    repeated string urls = 1;
+  }
+}
+
+message UrlContextResultContent {
+  repeated UrlContextResult result = 2;
+  bool is_error = 3;
+
+  message UrlContextResult {
+    string url = 1;
+    Status status = 2;
+
+    enum Status {
+      STATUS_UNSPECIFIED = 0;
+      SUCCESS = 1;
+      ERROR = 2;
+      PAYWALL = 3;
+      UNSAFE = 4;
+    }
+  }
+}
+
+message McpServerToolCallContent {
+  string name = 1;
+  string server_name = 2;
+  Struct arguments = 3;
+}
+
+message McpServerToolResultContent {
+  string name = 1;
+  string server_name = 2;
+  oneof result {
+    option (unresolved_option_525000029) = 1;
+    option (unresolved_option_525000031) = 1;
+    Struct struct_result = 3;
+    FunctionResultSubcontentList content_list = 6;
+    string string_result = 4;
+  }
+}
+
+message GoogleSearchCallContent {
+  GoogleSearchCallArguments arguments = 1;
+  GoogleSearch.SearchType search_type = 2;
+
+  message GoogleSearchCallArguments {
+    repeated string queries = 1;
+  }
+}
+
+message GoogleSearchResultContent {
+  repeated GoogleSearchResult result = 2;
+  bool is_error = 3;
+
+  message GoogleSearchResult {
+    string search_suggestions = 5;
+  }
+}
+
+message FileSearchCallContent {
+}
+
+message FileSearchResultContent {
+  repeated FileSearchResult result = 1;
+
+  message FileSearchResult {
+  }
+}
+
+message GoogleMapsCallContent {
+  GoogleMapsCallArguments arguments = 1;
+
+  message GoogleMapsCallArguments {
+    repeated string queries = 1;
+  }
+}
+
+message GoogleMapsResultContent {
+  repeated GoogleMapsResult result = 1;
+
+  message GoogleMapsResult {
+    repeated Places places = 1;
+    string widget_context_token = 2;
+
+    message Places {
+      string place_id = 1;
+      string name = 2;
+      string url = 3;
+      repeated ReviewSnippet review_snippets = 4;
+    }
+  }
+}
+
+message Function {
+  string name = 1;
+  string description = 2;
+  Value parameters = 3;
+  Value response = 5;
+  bool defer_loading = 7;
+  string short_description = 8;
+}
+
+message FunctionResultSubcontent {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    TextContent text = 1;
+    ImageContent image = 2;
+    VideoContent video = 4;
+  }
+}
+
+message FunctionResultSubcontentList {
+  option (unresolved_option_535801963) = 2;
+  repeated FunctionResultSubcontent contents = 1;
+}

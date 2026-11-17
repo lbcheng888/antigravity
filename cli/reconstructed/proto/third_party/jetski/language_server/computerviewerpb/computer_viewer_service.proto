@@ -1,0 +1,69 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d8e8b4 (va 0x103d8e8b4, __TEXT.__rodata), descriptor length 1653 B, sha256 2a628a548b673932
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package exa.computer_viewer_pb;
+
+import "third_party/jetski/cortex/ext/plugins/computer/computerpb/computer_viewer.proto";
+
+option (unresolved_option_46) = "OPEN_TO_OPAQUE_HYBRID";
+
+message ListDesktopsRequest {
+}
+
+message ListDesktopsResponse {
+  repeated Desktop desktops = 1;
+}
+
+message Desktop {
+  string desktop_id = 1;
+  string label = 2;
+  uint32 max_sessions = 3;
+}
+
+message OpenViewRequest {
+  string desktop_id = 1;
+  string root_conversation_id = 2;
+  string offer_sdp = 3;
+  computer_payload_pb.ComputerViewerDevice device = 4;
+}
+
+message OpenViewResponse {
+  string session_id = 1;
+  string answer_sdp = 2;
+  repeated computer_payload_pb.ComputerViewerStream streams = 3;
+  int64 expires_unix_ms = 4;
+}
+
+message RenewViewRequest {
+  string session_id = 1;
+}
+
+message RenewViewResponse {
+  int64 expires_unix_ms = 1;
+}
+
+message CloseViewRequest {
+  string session_id = 1;
+}
+
+message CloseViewResponse {
+}
+
+message WatchViewRequest {
+  string session_id = 1;
+}
+
+message WatchViewResponse {
+  string closed_reason = 1;
+}
+
+service ComputerViewerService {
+  rpc ListDesktops(ListDesktopsRequest) returns (ListDesktopsResponse);
+  rpc OpenView(OpenViewRequest) returns (OpenViewResponse);
+  rpc RenewView(RenewViewRequest) returns (RenewViewResponse);
+  rpc CloseView(CloseViewRequest) returns (CloseViewResponse);
+  rpc WatchView(WatchViewRequest) returns (stream WatchViewResponse);
+}

@@ -1,0 +1,263 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3fc26a8 (va 0x103fc26a8, __TEXT.__rodata), descriptor length 11905 B, sha256 f6e7abca40417a1c
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.cloud.businessaicode.v1beta;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/policy.proto";
+import "google/api/resource.proto";
+import "google/api/versioning.proto";
+import "google/api/visibility.proto";
+import "google/cloud/businessaicode/v1main/content.proto";
+import "google/cloud/businessaicode/v1main/entitlement.proto";
+import "google/protobuf/struct.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.cloud.businessaicode.v1beta";
+option java_outer_classname = "ManagementServiceProto";
+option java_multiple_files = true;
+option (unresolved_option_244132745) = "\n;google/cloud/businessaicode/v1main/management_service.proto\022\"google.cloud.businessaicode.v1main\032\006v1beta\"B\n&com.google.cloud.businessaicode.v1mainB\026ManagementServiceProtoP\001";
+
+message FetchConfigRequest {
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n&businessaicode.googleapis.com/Location", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE\"\033AUDIT,AUDIT_TARGET_RESOURCE"];
+  v1main.Entitlement entitlement = 2 [(unresolved_option_1052) = "\002"];
+}
+
+message FetchConfigResponse {
+  AdminControls admin_controls = 1 [(unresolved_option_1052) = "\003"];
+  repeated string allowed_models = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000, (unresolved_option_72295727) = "\022\034BUSINESSACODE_INTERNAL_USAGE"];
+  repeated string allowed_third_party_models = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000, (unresolved_option_72295727) = "\022\034BUSINESSACODE_INTERNAL_USAGE"];
+  repeated Experience available_experiences = 4 [(unresolved_option_1052) = "\003"];
+  AgySurfaceConfig agy_surface_config = 5 [(unresolved_option_1052) = "\003"];
+  ExperimentConfig experiment_config = 6 [(unresolved_option_1052) = "\003", (unresolved_option_72295727) = "\022\027BUSINESSAICODE_INTERNAL"];
+}
+
+message FetchDefaultConfigRequest {
+}
+
+message FetchDefaultConfigResponse {
+  repeated Experience available_experiences = 1 [(unresolved_option_1052) = "\003"];
+  AgySurfaceConfig agy_surface_config = 2 [(unresolved_option_1052) = "\003"];
+}
+
+message ModelExperimentValue {
+  option (unresolved_option_41149386) = 12028;
+  oneof value {
+    bool bool_value = 1 [(unresolved_option_1052) = "\003"];
+    double float_value = 2 [(unresolved_option_1052) = "\003"];
+    int64 int_value = 3 [(unresolved_option_1052) = "\003"];
+    string string_value = 4 [(unresolved_option_1052) = "\003"];
+  }
+}
+
+message Experience {
+  string name = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12028];
+  v1main.Model model = 2 [(unresolved_option_1052) = "\003"];
+  ExperienceSurfaceConfig surface_config = 3 [(unresolved_option_1052) = "\003"];
+
+  message ExperienceSurfaceConfig {
+    option (unresolved_option_41149386) = 12028;
+    string client_model_enum_name = 1 [(unresolved_option_1052) = "\003"];
+    repeated Tag tags = 2 [(unresolved_option_1052) = "\003"];
+    bool disabled = 3 [(unresolved_option_1052) = "\003"];
+    map<string, ModelExperimentValue> model_experiments = 4 [(unresolved_option_1052) = "\003"];
+
+    message Tag {
+      option (unresolved_option_41149386) = 12028;
+      string title = 1 [(unresolved_option_1052) = "\003"];
+      string description = 2 [(unresolved_option_1052) = "\003"];
+    }
+  }
+}
+
+message AgySurfaceConfig {
+  reserved 2, 5;
+  ExperienceGroup image_generation_experiences = 1 [(unresolved_option_1052) = "\003"];
+  ExperienceGroup commit_message_experiences = 3 [(unresolved_option_1052) = "\003"];
+  ExperienceGroup web_search_experiences = 4 [(unresolved_option_1052) = "\003"];
+  ExperienceGroup agent_experiences = 6 [(unresolved_option_1052) = "\003"];
+  ExperienceGroup tiered_flash_lite_experiences = 7 [(unresolved_option_1052) = "\003"];
+  ExperienceGroup tiered_flash_experiences = 8 [(unresolved_option_1052) = "\003"];
+  ExperienceGroup tiered_pro_experiences = 9 [(unresolved_option_1052) = "\003"];
+
+  message ExperienceGroup {
+    repeated string experience_names = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12028];
+    string default_experience = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 12028];
+  }
+}
+
+message ExperimentConfig {
+  option (unresolved_option_72295727) = "\022\027BUSINESSAICODE_INTERNAL";
+  repeated int32 enabled_experiment_ids = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 2301];
+  repeated ExperimentFlag experiment_flags = 2 [(unresolved_option_1052) = "\003"];
+
+  message ExperimentFlag {
+    option (unresolved_option_41149386) = 12028;
+    oneof value {
+      bool bool_value = 2 [(unresolved_option_1052) = "\003"];
+      double float_value = 3 [(unresolved_option_1052) = "\003"];
+      int64 int_value = 4 [(unresolved_option_1052) = "\003"];
+      string string_value = 5 [(unresolved_option_1052) = "\003"];
+      Int32List int32_list_value = 6 [(unresolved_option_1052) = "\003"];
+      Int64List int64_list_value = 7 [(unresolved_option_1052) = "\003"];
+      StringList string_list_value = 8 [(unresolved_option_1052) = "\003"];
+    }
+    string name = 1 [(unresolved_option_1052) = "\003"];
+
+    message Int32List {
+      option (unresolved_option_41149386) = 12028;
+      repeated int32 values = 1 [(unresolved_option_1052) = "\003"];
+    }
+
+    message Int64List {
+      option (unresolved_option_41149386) = 12028;
+      repeated int64 values = 1 [(unresolved_option_1052) = "\003"];
+    }
+
+    message StringList {
+      option (unresolved_option_41149386) = 12028;
+      repeated string values = 1 [(unresolved_option_1052) = "\003"];
+    }
+  }
+}
+
+message AdminControls {
+  AgentControls agent_controls = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  McpControls mcp_controls = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  LoggingControls logging_controls = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  FeatureControls feature_controls = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  BrowserControls browser_controls = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  PluginControls plugin_controls = 6 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+
+  message AgentControls {
+    bool sandbox_mode_enabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    FileAccessPolicy outside_workspace_file_access_policy = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    TerminalCommandAutoExecutionPolicy terminal_command_auto_execution_policy = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+
+    enum FileAccessPolicy {
+      FILE_ACCESS_POLICY_UNSPECIFIED = 0;
+      FILE_ACCESS_POLICY_DENY = 1;
+      FILE_ACCESS_POLICY_ALWAYS_ASK = 2;
+      FILE_ACCESS_POLICY_NOT_ENFORCED = 3;
+    }
+
+    enum TerminalCommandAutoExecutionPolicy {
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_UNSPECIFIED = 0;
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_REQUIRE_REVIEW = 1;
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_PROCEED_IN_SANDBOX = 2;
+      TERMINAL_COMMAND_AUTO_EXECUTION_POLICY_NOT_ENFORCED = 3;
+    }
+  }
+
+  message McpControls {
+    bool mcp_enabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    protobuf.Struct mcp_allowlist = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  }
+
+  message LoggingControls {
+    bool metadata_logging_enabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    bool prompt_and_response_logging_enabled = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  }
+
+  message FeatureControls {
+    bool remote_control_enabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906, (unresolved_option_72295727) = "\022\034BUSINESSACODE_INTERNAL_USAGE"];
+    MultiagentControls multiagent_controls = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+
+    message MultiagentControls {
+      bool boost_command_disabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+      bool teamwork_preview_command_disabled = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    }
+  }
+
+  message BrowserControls {
+    bool browser_enabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    JavascriptExecutionPolicy javascript_execution_policy = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    repeated string actuation_allowed_urls = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+
+    enum JavascriptExecutionPolicy {
+      JAVASCRIPT_EXECUTION_POLICY_UNSPECIFIED = 0;
+      JAVASCRIPT_EXECUTION_POLICY_DISABLED = 1;
+      JAVASCRIPT_EXECUTION_POLICY_REQUEST_REVIEW = 2;
+      JAVASCRIPT_EXECUTION_POLICY_NOT_ENFORCED = 3;
+    }
+  }
+
+  message PluginControls {
+    bool plugins_disabled = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+    bool marketplace_disabled = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1906];
+  }
+}
+
+message FetchLicensesRequest {
+}
+
+message FetchLicensesResponse {
+  repeated License licenses = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000];
+  repeated string unreachable = 2 [(unresolved_option_1052) = "\003\006", (unresolved_option_40075780) = 1700];
+}
+
+message SelfAssignLicenseRequest {
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n&businessaicode.googleapis.com/Location", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE\"\033AUDIT,AUDIT_TARGET_RESOURCE"];
+  string license_location = 2 [(unresolved_option_1052) = "\001", (unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\010\001\020\000", (unresolved_option_72295727) = "\022\027BUSINESSAICODE_INTERNAL"];
+}
+
+message SelfAssignLicenseResponse {
+  License license = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000];
+}
+
+message License {
+  string user_tier = 1 [(unresolved_option_1052) = "\002", (unresolved_option_40075780) = 3000];
+  string tier_display_name = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000];
+  string project_id = 3 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1111];
+  string location = 4 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\010\001\020\000"];
+  string processing_location = 5 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\010\001\020\000", (unresolved_option_72295727) = "\022\027BUSINESSAICODE_INTERNAL"];
+}
+
+message FetchLicenseLocationsRequest {
+  string parent = 1 [(unresolved_option_1052) = "\002", (unresolved_option_1055) = "\n&businessaicode.googleapis.com/Location", (unresolved_option_40075780) = 1100, (unresolved_option_158361448) = "\032\010RESOURCE\"\033AUDIT,AUDIT_TARGET_RESOURCE"];
+}
+
+message FetchLicenseLocationsResponse {
+  repeated LicenseLocation license_locations = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 3000];
+}
+
+message LicenseLocation {
+  string location = 1 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\010\001\020\000"];
+  string processing_location = 2 [(unresolved_option_1052) = "\003", (unresolved_option_40075780) = 1700, (unresolved_option_69646961) = "\010\001\020\000"];
+}
+
+service ManagementService {
+  rpc FetchConfig(FetchConfigRequest) returns (FetchConfigResponse) {
+    option (unresolved_option_1051) = "parent";
+    option (unresolved_option_72295728) = "\0223/v1beta/{parent=projects/*/locations/*}:fetchConfig";
+    option (unresolved_option_161893301) = "\022\202\001\n\006parent\022:businessaicode.googleapis.com/locations.queryConfiguration\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\tDATA_READ\"*CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc FetchDefaultConfig(FetchDefaultConfigRequest) returns (FetchDefaultConfigResponse) {
+    option (unresolved_option_72295728) = "\022\032/v1beta:fetchDefaultConfig";
+    option (unresolved_option_161893301) = "\"#CLOUD_AUDIT_EXEMPT,GIN_AUDIT_EXEMPT*!\n\034axt.googleprod.com/axt_level\022\00132\014NO_CLOUD_IAM:1SKIP_VPC_SC, NO_RESOURCE, DISABLE_AXT_ENFORCEMENT";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc FetchLicenses(FetchLicensesRequest) returns (FetchLicensesResponse) {
+    option (unresolved_option_72295728) = "\022\025/v1beta:fetchLicenses";
+    option (unresolved_option_161893301) = "\"#CLOUD_AUDIT_EXEMPT,GIN_AUDIT_EXEMPT*!\n\034axt.googleprod.com/axt_level\022\00132\014NO_CLOUD_IAM:1SKIP_VPC_SC, NO_RESOURCE, DISABLE_AXT_ENFORCEMENT";
+    option (unresolved_option_8) = 0x402e000000000000;
+  }
+  rpc SelfAssignLicense(SelfAssignLicenseRequest) returns (SelfAssignLicenseResponse) {
+    option (unresolved_option_72295728) = ":\001*\"9/v1beta/{parent=projects/*/locations/*}:selfAssignLicense";
+    option (unresolved_option_161893301) = "\022\202\001\n\006parent\0229businessaicode.googleapis.com/locations.selfAssignLicense\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\nDATA_WRITE\"*CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+  rpc FetchLicenseLocations(FetchLicenseLocationsRequest) returns (FetchLicenseLocationsResponse) {
+    option (unresolved_option_1051) = "parent";
+    option (unresolved_option_72295727) = "\022\027BUSINESSAICODE_INTERNAL";
+    option (unresolved_option_72295728) = "\022=/v1beta/{parent=projects/*/locations/*}:fetchLicenseLocations";
+    option (unresolved_option_161893301) = "\022\202\001\n\006parent\022:businessaicode.googleapis.com/locations.queryConfiguration\032/RESOURCE,businessaicode.googleapis.com/Location0\001b\tDATA_READ\"*CLOUD_AUDIT_REQUEST_AND_RESPONSE,GIN_AUDIT*!\n\034axt.googleprod.com/axt_level\022\0013*:\n+cloudaudit.googleapis.com/onboarding_ticket\022\013b/473989094*=\n)gin.googleprod.com/accessing_process_name\022\020business-ai-code2\016AUTO_CLOUD_IAM";
+    option (unresolved_option_8) = 0x4024000000000000;
+  }
+}

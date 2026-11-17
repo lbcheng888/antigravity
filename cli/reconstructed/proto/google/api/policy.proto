@@ -1,0 +1,94 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3e103a6 (va 0x103e103a6, __TEXT.__rodata), descriptor length 3385 B, sha256 97753b5372b0b7ec
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.api;
+
+import "google/api/inclusion.proto";
+import "google/api/visibility.proto";
+import "google/protobuf/struct.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.api";
+option java_outer_classname = "PolicyProto";
+option java_multiple_files = true;
+option go_package = "google.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig";
+option cc_enable_arenas = true;
+option objc_class_prefix = "GAPI";
+option (unresolved_option_525000017) = "\n\003all";
+
+message FieldPolicy {
+  string selector = 1 [(unresolved_option_158361448) = "\200\001\001"];
+  string resource_permission = 2 [(unresolved_option_158361448) = "\200\001\001"];
+  string resource_type = 3 [(unresolved_option_158361448) = "\200\001\001"];
+  string child_resource_type = 10 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string child_resource_name_extractor = 11 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string auditing = 4 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string resource_access_type = 12 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string monitored_resource_type = 8 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string monitored_resource_label_extractor = 9 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated OrgPolicy org_policies = 5 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  bool is_service_consumer = 6 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string location_selector = 7 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated MetadataPolicy metadata_policies = 13 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string resource_location_selector = 14 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string cmek_key_selector = 15 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  CustomOrgPolicyAccessibility custom_org_policy_accessibility = 16 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string custom_org_policy = 17 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string condition = 18 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string resource_decorator = 19 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+
+  enum CustomOrgPolicyAccessibility {
+    option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+    reserved 2;
+    CUSTOM_ORG_POLICY_ACCESSIBILITY_UNSPECIFIED = 0;
+    PUBLIC = 1;
+  }
+}
+
+message OrgPolicy {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  reserved 3;
+  string constraint = 1;
+  string value_selector = 2;
+  string enabled = 5;
+  repeated string value_extractors = 4;
+}
+
+message MetadataPolicy {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  string type = 1;
+  string value_selector = 2;
+  repeated string value_extractors = 3;
+}
+
+message MethodPolicy {
+  string action = 1 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string selector = 9 [(unresolved_option_158361448) = "\200\001\001"];
+  string auditing = 4 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string authorization = 6 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string flags = 7 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  bool active_developer_method = 8 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated FieldPolicy request_policies = 2 [(unresolved_option_158361448) = "\200\001\001"];
+  repeated FieldPolicy response_policies = 3 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  map<string, string> metadata = 5 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  repeated PolicyAspect policy_aspects = 10 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+  string policy_set = 11 [(unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL"];
+}
+
+message PolicyAspect {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  string kind = 1;
+  protobuf.Struct spec = 2;
+  bool suppress_deterministic_encode = 3;
+}
+
+extend proto2.FieldOptions {
+  FieldPolicy field_policy = 158361448;
+}
+
+extend proto2.MethodOptions {
+  MethodPolicy method_policy = 161893301;
+}

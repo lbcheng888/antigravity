@@ -1,0 +1,23 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d37c7b (va 0x103d37c7b, __TEXT.__rodata), descriptor length 509 B, sha256 4cdf17cc5a927ba1
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package devrel.primes.protos;
+
+import "devrel/primes/protos/anonymization.proto";
+import "net/proto2/proto/descriptor.proto";
+
+option java_package = "com.google.devrel.primes.protos";
+option java_outer_classname = "PrimesAnnotationsProto";
+option java_multiple_files = true;
+
+message PrimesAnonymizationAnnotation {
+  AnonymizedMessageSource source = 1;
+  AnonymizationMethod method = 2;
+}
+
+extend proto2.FieldOptions {
+  PrimesAnonymizationAnnotation anonymization = 535801294;
+}

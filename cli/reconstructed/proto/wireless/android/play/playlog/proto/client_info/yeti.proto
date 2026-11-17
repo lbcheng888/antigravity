@@ -1,0 +1,35 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d5d171 (va 0x103d5d171, __TEXT.__rodata), descriptor length 990 B, sha256 3fa56b63e84b18f5
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package wireless_android_play_playlog;
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb_generate_object_format.proto";
+import "logs/proto/logs_annotations/logs_annotations.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.wireless.android.play.playlog.proto";
+option java_outer_classname = "YetiProto";
+option java_multiple_files = true;
+option cc_enable_arenas = true;
+option objc_class_prefix = "CADP";
+option (unresolved_option_21596320) = 1;
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127178) = 1;
+option (unresolved_option_525000017) = "\n\034package:google/cloud/datahub\n+package:google/internal/assistant/proactive\n/package:google/internal/firebase/logging/legacy\n%package:google/internal/robinfrontend";
+
+message YetiClientInfo {
+  optional string build_label = 1 [(unresolved_option_40075780) = 1500];
+  optional string deployment_type = 2 [(unresolved_option_40075780) = 999];
+  optional string environment = 3 [(unresolved_option_40075780) = 999];
+  optional string location = 4 [(unresolved_option_40075780) = 1700];
+  optional string machine = 5 [(unresolved_option_40075780) = 1400];
+  optional string gamelet_id = 6 [(unresolved_option_40075780) = 1100];
+  optional string machine_shape = 7 [(unresolved_option_40075780) = 999];
+  optional string metro = 8 [(unresolved_option_40075780) = 999];
+  optional string vm_purpose = 9 [(unresolved_option_40075780) = 999];
+  optional string release_stage = 10 [(unresolved_option_40075780) = 999];
+}

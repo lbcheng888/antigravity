@@ -1,0 +1,25 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3a13c (va 0x103d3a13c, __TEXT.__rodata), descriptor length 536 B, sha256 a27d5e343db720a2
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+package pattributes;
+
+import "net/proto2/proto/descriptor.proto";
+import "privacy/pattributes/containers/proto_field/proto_field_attributes.proto";
+
+option java_package = "com.google.pattributes.annotations";
+option java_outer_classname = "ProtoFieldAnnotations";
+
+extend proto2.FieldOptions {
+  repeated ProtoFieldAttributes proto_field = 535801427;
+}
+
+extend proto2.EnumOptions {
+  repeated ProtoFieldAttributes all_enum_fields = 525000038;
+}
+
+extend proto2.MessageOptions {
+  repeated ProtoFieldAttributes all_message_fields = 535801327;
+}

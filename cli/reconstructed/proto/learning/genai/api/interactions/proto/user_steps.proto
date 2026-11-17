@@ -1,0 +1,30 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d3c16b (va 0x103d3c16b, __TEXT.__rodata), descriptor length 561 B, sha256 677d5400b2ca515d
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2024";
+
+package genai;
+
+import "learning/genai/api/interactions/proto/content.proto";
+import "learning/genai/api/parsing/genai_json_annotations.proto";
+
+option features.field_presence = IMPLICIT;
+option features.enum_type = OPEN;
+option features.utf8_validation = NONE;
+
+message UserInputContent {
+  oneof type {
+    option (unresolved_option_525000030) = 1;
+    TextContent text = 10;
+    ImageContent image = 11;
+    AudioContent audio = 12;
+    DocumentContent document = 13;
+    VideoContent video = 14;
+    SlashCommand slash_command = 15;
+  }
+}
+
+message SlashCommand {
+  string name = 1;
+}

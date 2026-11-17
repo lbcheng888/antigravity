@@ -1,0 +1,108 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3deb19e (va 0x103deb19e, __TEXT.__rodata), descriptor length 2837 B, sha256 33595838fd79eb1d
+// boundary: field_boundary; machine-code length cross-check OK
+
+syntax = "proto2";
+
+import "google/api/inclusion.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "logs/eventid/eventid.proto";
+import "net/proto2/bridge/proto/message_set.proto";
+import "net/proto2/go/annotation/go_annotation.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.common.logging";
+option objc_class_prefix = "LJLR";
+option (unresolved_option_17702) = "proto.logs.java";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_448127176) = 1;
+option (unresolved_option_525000017) = "\n2package:google/internal/mothership/maps/mobilemaps\n%package:google/internal/notifications\n$package:google/internal/pixelsupport\n\035package:google/internal/scone";
+option (unresolved_option_5) = 1;
+option (unresolved_option_26) = 1;
+
+message ThrowableBlockProto {
+  required string OriginalClass = 1;
+  optional string Message = 2 [(unresolved_option_40075780) = 9901];
+  optional int64 MessageHash = 3 [(unresolved_option_40075780) = 9901];
+  optional bool HadMessage = 12;
+  repeated group StackTraceElement = 4 {
+    required string DeclaringClass = 5;
+    required string MethodName = 6;
+    optional string FileName = 7;
+    required int32 LineNumber = 8;
+    optional string ClassLoaderName = 9;
+    optional string ModuleName = 10;
+    optional string ModuleVersion = 11;
+  }
+}
+
+message ThrowableProto {
+  required ThrowableBlockProto Outermost = 1;
+  repeated ThrowableBlockProto Causes = 2;
+  oneof kind {
+    ThrowableGraph Graph = 4;
+  }
+  optional LANGUAGE Language = 3 [default = JAVA];
+
+  enum LANGUAGE {
+    JAVA = 1;
+    CPP = 2;
+    PYTHON = 3;
+    JS = 4;
+    GO = 5;
+    DART = 6;
+    OBJC = 7;
+  }
+
+  message ThrowableNode {
+    optional ThrowableBlockProto ThrowableInfo = 1;
+    optional int32 Cause = 2;
+    repeated int32 Suppressed = 3 [packed = true];
+  }
+
+  message ThrowableGraph {
+    repeated ThrowableNode Nodes = 1;
+  }
+
+  extend proto2.bridge.MessageSet {
+    optional ThrowableProto message_set_extension = 509437414;
+  }
+}
+
+message CodeModuleProto {
+  optional int64 BaseAddress = 1;
+  optional int64 Size = 2;
+  optional string CodeFile = 3 [(unresolved_option_40075780) = 1500];
+  optional string CodeIdentifier = 4 [(unresolved_option_40075780) = 1500];
+  optional string DebugFile = 5 [(unresolved_option_40075780) = 1500];
+  optional string DebugIdentifier = 6 [(unresolved_option_40075780) = 1500];
+  optional string Version = 7 [(unresolved_option_40075780) = 1500];
+  optional int64 shrink_down_delta = 8;
+  optional bool is_unloaded = 9;
+}
+
+message IosFrame {
+  optional string file_name = 1;
+  optional string function_name = 2;
+  optional int64 line_number = 3;
+  optional string binary_name = 4;
+}
+
+message LogRecordProto {
+  option (unresolved_option_37383685) = 1;
+  required EventIdMessage EventId = 1;
+  required string ThreadName = 2;
+  required int32 Level = 3;
+  optional string SourceClassName = 4;
+  optional string SourceMethodName = 5;
+  optional int32 line_number = 13;
+  optional string file_name = 14;
+  optional string MessageFormat = 12 [(unresolved_option_40075780) = 9901];
+  optional string Message = 6 [(unresolved_option_40075780) = 9901];
+  optional int64 MessageHash = 9 [(unresolved_option_40075780) = 9901];
+  repeated string Parameter = 7;
+  optional ThrowableProto Thrown = 8;
+  repeated string IosCallStackSymbols = 10 [(unresolved_option_40075780) = 9901];
+  repeated CodeModuleProto IosCodeModules = 11 [(unresolved_option_40075780) = 9901];
+  repeated IosFrame deobfuscated_ios_frames = 15;
+}

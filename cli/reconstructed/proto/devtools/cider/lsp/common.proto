@@ -1,0 +1,421 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3f9993f (va 0x103f9993f, __TEXT.__rodata), descriptor length 10392 B, sha256 fa99b6071126b29c
+// boundary: edition_end; machine-code length cross-check OK
+
+edition = "2023";
+
+package editorservices;
+
+import "devtools/cider/proto/annotations.proto";
+import "google/protobuf/any.proto";
+import "java/com/google/apps/jspb/jspb.proto";
+import "storage/datapol/annotations/proto/semantic_annotations.proto";
+
+option java_package = "com.google.devtools.cider.editorservices";
+option java_multiple_files = true;
+option features.field_presence = IMPLICIT;
+option (unresolved_option_17702) = "editorservices.proto";
+option (unresolved_option_71304954) = "latest";
+option (unresolved_option_12) = "editorservices.proto";
+
+enum LocationTag {
+  UNKNOWN_TAG = 0;
+  DECLARATION = 1;
+  DEFINITION = 2;
+  CALL = 3;
+  READ = 4;
+  WRITE = 5;
+  OVERRIDE = 6;
+  SUPER = 7;
+  SUBTYPE = 8;
+  OVERLOAD = 9;
+}
+
+enum InlayHintKind {
+  UNKNOWN_HINT = 0;
+  HINT_TYPE = 1;
+  HINT_PARAMETER = 2;
+}
+
+enum TriggerKind {
+  TRIGGER_KIND_UNKNOWN = 0;
+  TRIGGER_KIND_INVOKED = 1;
+  TRIGGER_KIND_CHARACTER = 2;
+  TRIGGER_KIND_FOR_INCOMPLETE_COMPLETIONS = 3;
+  TRIGGER_KIND_CURSOR_MOVE = 4;
+}
+
+message Position {
+  int32 line = 1;
+  int32 character = 2;
+}
+
+message Range {
+  Position start = 1;
+  Position end = 2;
+}
+
+message Location {
+  string uri = 1;
+  Range range = 2;
+  repeated LocationTag tags = 3;
+  string provider = 4;
+  string depot_path = 5;
+}
+
+message LocationLink {
+  Range origin_selection_range = 1;
+  string target_uri = 2;
+  Range target_range = 3;
+  Range target_selection_range = 4;
+  repeated LocationTag tags = 5;
+  string provider = 6;
+}
+
+message DiagnosticRelatedInformation {
+  Location location = 1;
+  string message = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+}
+
+message Diagnostic {
+  Range range = 1;
+  DiagnosticSeverity severity = 2;
+  string code = 3;
+  CodeDescription code_description = 9;
+  string source = 4;
+  string message = 5 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  repeated DiagnosticTag tags = 8;
+  repeated DiagnosticRelatedInformation related_information = 7;
+  repeated Fixit fixits = 6;
+
+  enum DiagnosticSeverity {
+    UNKNOWN_SEVERITY = 0;
+    ERROR = 1;
+    WARNING = 2;
+    INFORMATION = 3;
+    HINT = 4;
+  }
+
+  enum DiagnosticTag {
+    UNKNOWN_TAG = 0;
+    UNNECESSARY = 1;
+    DEPRECATED = 2;
+    TYPO = 1001;
+  }
+
+  message CodeDescription {
+    string href = 1;
+  }
+}
+
+message Command {
+  string title = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string command = 2;
+  repeated google.protobuf.Any arguments = 3;
+  repeated bytes json_args = 4 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+}
+
+message TextEdit {
+  Range range = 1;
+  string new_text = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001", (unresolved_option_535801200) = 1];
+  string annotation_id = 3;
+}
+
+message TextEditList {
+  repeated TextEdit edits = 1;
+}
+
+message TextDocumentEdit {
+  TextDocumentIdentifier text_document = 1;
+  repeated TextEdit edits = 2;
+}
+
+message CreateFile {
+  string uri = 1;
+  CreateFileOptions options = 2;
+  string annotation_id = 3;
+
+  message CreateFileOptions {
+    bool overwrite = 1;
+    bool ignore_if_exists = 2;
+  }
+}
+
+message RenameFile {
+  string old_uri = 1;
+  string new_uri = 2;
+  RenameFileOptions options = 3;
+  string annotation_id = 4;
+
+  message RenameFileOptions {
+    bool overwrite = 1;
+    bool ignore_if_exists = 2;
+  }
+}
+
+message DeleteFile {
+  string uri = 1;
+  DeleteFileOptions options = 2;
+  string annotation_id = 3;
+
+  message DeleteFileOptions {
+    bool recursive = 1;
+    bool ignore_if_not_exists = 2;
+  }
+}
+
+message WorkspaceEdit {
+  map<string, TextEditList> changes = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  repeated DocumentChange document_changes = 3;
+  map<string, ChangeAnnotation> change_annotations = 2;
+  string id = 4;
+  string provider = 5;
+  bool show_preview = 6;
+
+  message DocumentChange {
+    oneof change {
+      TextDocumentEdit text_document_edit = 1;
+      CreateFile create_file = 2;
+      RenameFile rename_file = 3;
+      DeleteFile delete_file = 4;
+    }
+  }
+}
+
+message ChangeAnnotation {
+  string label = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  bool needs_confirmation = 2;
+  string description = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+}
+
+message TextDocumentIdentifier {
+  string uri = 1;
+}
+
+message TextDocumentPositionParams {
+  TextDocumentIdentifier text_document = 1;
+  Position position = 2;
+}
+
+message SelectionRange {
+  Range range = 1;
+  SelectionRange parent = 2;
+}
+
+message HighlightedRange {
+  HighlightingKind kind = 1;
+  Range range = 2;
+
+  enum HighlightingKind {
+    UNKNOWN_KIND = 0;
+    KEYWORD = 1;
+    COMMENT = 2;
+    STRING_LITERAL = 3;
+    NUMBER = 4;
+    MATCH = 5;
+  }
+}
+
+message DocumentHighlight {
+  Range range = 1;
+  Kind kind = 2;
+
+  enum Kind {
+    UNKNOWN_KIND = 0;
+    TEXT = 1;
+    READ = 2;
+    WRITE = 3;
+  }
+}
+
+message InlayHintLabelPart {
+  string value = 1 [(unresolved_option_40075780) = 1900];
+  MarkupContent tooltip = 2;
+  Location location = 3;
+  Command command = 4;
+}
+
+message InlayHintLabelPartList {
+  repeated InlayHintLabelPart parts = 1;
+}
+
+message InlayHint {
+  Position position = 1;
+  oneof label {
+    string text_label = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+    InlayHintLabelPartList label_parts = 3;
+  }
+  InlayHintKind kind = 4;
+  TextEditList accept_edits = 5;
+  MarkupContent tooltip = 6;
+  bool padding_left = 7;
+  bool padding_right = 8;
+}
+
+message TextDocumentSnippet {
+  Position position = 1;
+  string text = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001", (unresolved_option_535801200) = 1];
+  repeated HighlightedRange highlighted_ranges = 3;
+  int32 line_count = 4;
+}
+
+message TextDocumentPreview {
+  TextDocumentIdentifier text_document = 1;
+  repeated TextDocumentSnippet snippets = 2;
+}
+
+message CompletionOptions {
+  bool resolve_provider = 1;
+  repeated string trigger_characters = 2;
+}
+
+message SignatureHelpOptions {
+  repeated string trigger_characters = 1;
+}
+
+message CodeLensOptions {
+  bool resolve_provider = 1;
+}
+
+message DocumentOnTypeFormattingOptions {
+  string first_trigger_character = 1;
+  repeated string more_trigger_character = 2;
+}
+
+message ReferenceContext {
+  reserved 2, 4;
+  bool include_declaration = 1;
+  bool include_generated_code = 3;
+}
+
+message CodeAction {
+  string title = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string kind = 2;
+  repeated Diagnostic diagnostics = 3;
+  bool is_preferred = 6;
+  WorkspaceEdit edit = 4;
+  Command command = 5;
+  CodeActionDisabled disabled = 7;
+  bytes data = 8 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001", (unresolved_option_535801200) = 1];
+}
+
+message CodeActionDisabled {
+  string reason = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+}
+
+message CodeActionContext {
+  repeated Diagnostic diagnostics = 1;
+  repeated string only = 2;
+  TriggerKind trigger_kind = 3;
+
+  enum TriggerKind {
+    UNSPECIFIED = 0;
+    INVOKED = 1;
+    AUTOMATIC = 2;
+  }
+}
+
+message CodeLens {
+  Range range = 1;
+  Command command = 2;
+  bytes data = 3 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001", (unresolved_option_535801200) = 1];
+}
+
+message FormattingOptions {
+  int32 tab_size = 1;
+  bool insert_spaces = 2;
+  bool trim_trailing_whitespace = 3;
+  bool insert_final_newline = 4;
+  bool trim_final_newlines = 5;
+}
+
+message Fixit {
+  string title = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+  string kind = 2;
+  oneof edit {
+    TextEditList changes = 3;
+    WorkspaceEdit workspace_edit = 5;
+  }
+  Command command = 4;
+}
+
+message MarkupContent {
+  MarkupKind kind = 1;
+  string value = 2 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001", (unresolved_option_535801200) = 1];
+
+  enum MarkupKind {
+    UNKNOWN_KIND = 0;
+    PLAIN_TEXT = 1;
+    MARK_DOWN = 2;
+  }
+}
+
+message ServerCapabilities {
+  bool hover_provider = 1;
+  CompletionOptions completion_provider = 2;
+  bool completion_load_test = 16;
+  SignatureHelpOptions signature_help_provider = 3;
+  bool definition_provider = 4;
+  bool references_provider = 5;
+  bool document_highlight_provider = 6;
+  bool document_symbol_provider = 7;
+  bool workspace_symbol_provider = 8;
+  bool code_action_provider = 9;
+  CodeLensOptions code_lens_provider = 10;
+  bool document_formatting_provider = 11;
+  bool document_range_formatting_provider = 12;
+  DocumentOnTypeFormattingOptions document_on_type_formatting_provider = 13;
+  bool rename_provider = 14;
+  bool selection_range_provider = 15;
+  bool sync_diagnostics_provider = 17;
+}
+
+message SemanticTokens {
+
+  enum TokenType {
+    UNKNOWN_TOKEN_TYPE = 0;
+    NAMESPACE = 1;
+    TYPE = 2;
+    CLASS = 3;
+    ENUM = 4;
+    INTERFACE = 5;
+    STRUCT = 6;
+    TYPE_PARAMETER = 7;
+    PARAMETER = 8;
+    VARIABLE = 9;
+    PROPERTY = 10;
+    ENUM_MEMBER = 11;
+    EVENT = 12;
+    FUNCTION = 13;
+    METHOD = 14;
+    MACRO = 15;
+    KEYWORD = 16;
+    MODIFIER = 17;
+    COMMENT = 18;
+    STRING = 19;
+    NUMBER = 20;
+    REGEXP = 21;
+    OPERATOR = 22;
+    DEPENDENT = 23;
+    CONCEPT = 24;
+  }
+
+  enum TokenModifier {
+    UNKNOWN_MODIFIER = 0;
+    DECLARATION_TOKEN = 1;
+    DEFINITION_TOKEN = 2;
+    READONLY_TOKEN = 3;
+    STATIC_TOKEN = 4;
+    DEPRECATED_TOKEN = 5;
+    ABSTRACT_TOKEN = 6;
+    ASYNC_TOKEN = 7;
+    MODIFICATION_TOKEN = 8;
+    DOCUMENTATION_TOKEN = 9;
+    DEFAULT_LIBRARY_TOKEN = 10;
+    USED_AS_MUTABLE_REFERENCE_TOKEN = 11;
+  }
+}
+
+message ReferencesStats {
+  string index_status = 1 [(unresolved_option_40075780) = 1900, (unresolved_option_40270992) = "\020\001"];
+}

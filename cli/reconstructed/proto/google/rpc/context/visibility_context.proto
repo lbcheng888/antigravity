@@ -1,0 +1,21 @@
+// Recovered from agy v1.5.10 (/Users/mac/.local/bin/agy) by cli/scripts/recover-protos.py
+// source: rawDesc @ file offset 0x3d24b71 (va 0x103d24b71, __TEXT.__rodata), descriptor length 320 B, sha256 4191dc9815bca3d1
+// boundary: syntax_end; machine-code length cross-check OK
+
+syntax = "proto3";
+
+package google.rpc.context;
+
+import "google/api/visibility.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "com.google.rpc.context";
+option java_outer_classname = "VisibilityContextProto";
+option java_multiple_files = true;
+option objc_class_prefix = "RPC";
+
+message VisibilityContext {
+  option (unresolved_option_72295727) = "\022\017GOOGLE_INTERNAL";
+  repeated string labels = 1;
+  protobuf.Timestamp read_time = 2;
+}
